@@ -4,9 +4,27 @@
 
 ---
 
+-- 19 Jan 2023 --
+
+- Inserted test data to local instance db.
+- Created connection configuration.
+- Created base entity classes.
+- Created Menu Item repository as part of dao.
+- Created Data Rest Config and limited access to read only.
+- Tested endpoint in browser and with Postman.
+- Created basic test classes.
+- Updated README with a rough phase list.
+
+Next tasks will include fleshing out the test classes. Project management with github and jira.
+
+---
+
 -- 18 Jan 2023 --
 
-Created script based on an updated EDR. Established local database for testing. Initialized SpringBoot application and created base packages for further development.
+- Created script based on an updated EDR.
+- Established local database for testing.
+- Initialized SpringBoot application.
+- Created base packages for further development.
 
 ---
 
