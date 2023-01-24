@@ -1,4 +1,4 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.testSupport;
 
-public class GetMenuItemTestSupport {
+public class GetMenuItemTestSupport extends BaseTest {
 }
