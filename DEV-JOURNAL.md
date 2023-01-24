@@ -2,6 +2,19 @@
 
 ---
 
+-- 23 Jan 2023 --
+
+- Created successful route test for a menu item.
+- Created API documentation with swagger for menu-item end point.
+- Added as project on github and linked to repository. Don't know how well I'll be able to keep up with project tracking while simultaneously developing application solo but going to give it a try.
+
+Tomorrow's goals
+
+- Create and Test endpoint for returning items by category.
+- Add documentation for end point.
+- Update DB to add columns 'description' and 'img-url' to menu-item table.
+- Begin work on error handling.
+
 ---
 
 -- 19 Jan 2023 --

@@ -7,7 +7,7 @@ read repo
 
 printf "\x1b[38;5;75m\nEnter comment:\x1b[0m\n";
 read comment
-
+git branch
 printf "\x1b[38;5;75m\nEnter branch name:\x1b[0m\n";
 read branch
 
