@@ -2,6 +2,25 @@
 
 ---
 
+-- 24 Jan 2023 --
+
+Starting to get a bit more dialed with my procedure and what needs to come next. The pieces are falling together. I do find that I am prone to losing time because I worry about best practice and simply questioning if I'm doing this right in order to save work down the road. But sometimes you just gotta fool about and find out ^\_-.
+
+- Created resources for searching menu items by id and category.
+- Refined swagger document a bit more
+- Created test file working with menu items by category
+- Refined menu item path a bit so that a bit more precision is required to call an item and all items do not just become available upon endpoint entry.
+- Updated DB with columns for descriptions and image urls.
+- Added more DB entries to work with.
+
+Tomorrow's goals
+
+- More work on menu item category endpoint.
+- Work on menu item test and error handling.
+- Possibly work on logging.
+
+---
+
 -- 23 Jan 2023 --
 
 - Created successful route test for a menu item.
@@ -10,7 +29,7 @@
 
 Tomorrow's goals
 
-- Create and Test endpoint for returning items by category.
+- Create and Test menu-item endpoint for returning items by category.
 - Add documentation for end point.
 - Update DB to add columns 'description' and 'img-url' to menu-item table.
 - Begin work on error handling.
