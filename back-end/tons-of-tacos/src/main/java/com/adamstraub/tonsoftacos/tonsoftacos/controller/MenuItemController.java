@@ -16,15 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
-
 
 @Validated
-@RequestMapping("/menu-item")
+@RequestMapping("api/menu-item")
 @OpenAPIDefinition(info = @Info(title = "Menu Item Service"),
-        servers = {@Server(url= "http://localhost:8080", description = "Local server.")})
-
-public interface MenuItemDocController {
+servers = {@Server(url="http://localhost:8080/", description = "Local server")})
+public interface MenuItemController {
     @Operation(
             summary = "Return menu item by id",
             description = "Return specific menu items by id for use in building a cart and and creating an order",
@@ -47,19 +44,17 @@ public interface MenuItemDocController {
                             description = "An unplanned error occured.",
                             content = @Content(mediaType = "application/json")),
             },
-            parameters ={
-                    @Parameter(name = "id", allowEmptyValue = false, required = false,
-                            description = "The menu item id(i.e, 1 will return menu-item limon)"),
+            parameters = {
+                    @Parameter(name = "/{id}", allowEmptyValue = false, required = false,
+                            description = "Corresponds to menu item desired (i.e, api/menu-item/1  <- will return " +
+                                    "menu-item " +
+                                    "limon)"),
             }
     )
-            @GetMapping
-            @ResponseStatus(code = HttpStatus.OK)
+    @GetMapping
+    @ResponseStatus(code = HttpStatus.OK)
     MenuItem fetchMenuItem(
-                    @RequestParam(required = false)
-                    MenuItem id);
-
-            }
-
-
-
+            @RequestParam(required = false)
+            Long id);
+}
 
