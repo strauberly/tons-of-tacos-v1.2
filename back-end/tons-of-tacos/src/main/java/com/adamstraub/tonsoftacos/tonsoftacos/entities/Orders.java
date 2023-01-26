@@ -8,32 +8,30 @@ import net.minidev.json.JSONArray;
 import java.sql.Timestamp;
 
 @Entity
-@Table
+@Table(name = "orders")
 @Getter
 @Setter
-public class Order {
+public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "id")
-    private Long id;
+    private Integer id;
 
-    @Column (name = "UUID")
-    private String uuid;
+    @Column (name = "created")
+    private Timestamp created;
 
     @Column (name = "customer_id")
-    private Long customer_id;
+    private Integer customer_id;
 
     @Column (name = "order_data")
     private JSONArray order_data;
 
     @Column (name = "order_total")
-    private Long order_total;
+    private Integer order_total;
 
     @Column (name = "status")
     private String status;
 
-    @Column (name = "created_on")
-    private Timestamp created_on;
-
-
+    @Column (name = "UUID")
+    private String uuid;
 }

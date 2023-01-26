@@ -16,16 +16,16 @@ public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "id")
-    private Long id;
+    private Integer id;
 
     @Column (name = "menu_item_id")
-    private Long menu_item_id;
+    private Integer menu_item_id;
 
     @Column (name = "order_id")
-    private Long order_id;
+    private Integer order_id;
 
     @Column (name = "quantity")
-    private Long quantity;
+    private Integer quantity;
 
     @Column (name = "total")
     private BigDecimal total;
