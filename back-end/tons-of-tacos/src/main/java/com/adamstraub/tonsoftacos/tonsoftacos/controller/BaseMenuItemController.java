@@ -12,4 +12,9 @@ public class BaseMenuItemController implements MenuItemController {
     public MenuItem fetchMenuItem(Integer id) {
         return null;
     }
+
+    @Override
+    public MenuItem fetchMenuCategory(String category) {
+        return null;
+    }
 }
