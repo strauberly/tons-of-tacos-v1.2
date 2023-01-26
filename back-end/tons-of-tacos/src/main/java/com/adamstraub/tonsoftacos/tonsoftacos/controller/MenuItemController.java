@@ -43,18 +43,21 @@ public interface MenuItemController {
                             responseCode = "500",
                             description = "An unplanned error occured.",
                             content = @Content(mediaType = "application/json")),
+
             },
             parameters = {
-                    @Parameter(name = "/{id}", allowEmptyValue = false, required = false,
+                    @Parameter(name = "/<id>", allowEmptyValue = false, required = false,
                             description = "Corresponds to menu item desired (i.e, api/menu-item/1  <- will return " +
                                     "menu-item " +
-                                    "limon)"),
+                                    "limon). Additionally api/menu-item/search/id?id=6 will return the same value. " +
+                                    "Calling menu items by category can be obtained through " +
+                                    "api/menu-item/search/category?category=category name."),
             }
     )
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
     MenuItem fetchMenuItem(
             @RequestParam(required = false)
-            Long id);
+            Integer id);
 }
 

@@ -2,6 +2,19 @@
 
 ---
 
+-- 25 Jan 2023 --
+
+- Revealed entity ids in order to aid in ease of working with data with method constructed in rest config
+- Refined test for CRUD operations against the data base.
+- Calling items by category will remain as simply a query on our menu-item endpoint.
+- Considerable research into configuring H2 in memory database for testing purposes. Have possibly locked on to a configuration that will yield desired results.
+
+Tomorrow's goals
+
+- Try and complete means for full crud testing with in memory database.
+
+---
+
 -- 24 Jan 2023 --
 
 Starting to get a bit more dialed with my procedure and what needs to come next. The pieces are falling together. I do find that I am prone to losing time because I worry about best practice and simply questioning if I'm doing this right in order to save work down the road. But sometimes you just gotta fool about and find out ^\_-.

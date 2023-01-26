@@ -19,7 +19,7 @@ email VARCHAR(40) NOT NULL,
 PRIMARY KEY(id)
 );
 
-CREATE TABLE orders(
+CREATE TABLE orderss(
 id INT(12) NOT NULL AUTO_INCREMENT,
 UUID VARCHAR(255) NOT NULL,
 customer_id INT(12) NOT NULL,
@@ -31,17 +31,19 @@ PRIMARY KEY(id),
 FOREIGN KEY(customer_id) REFERENCES customer(id)
 );
 
-CREATE TABLE menu_item(
+CREATE TABLE menu_items(
 id INT(12) NOT NULL AUTO_INCREMENT,
 item_name VARCHAR(30),
 item_size VARCHAR(3),
-category VARCHAR(30),
+category_type VARCHAR(30),
 unit_price DECIMAL(19, 2),
+img_url VARCHAR(255),
+description VARCHAR(255),
 PRIMARY KEY(id)
 );
 
 
-CREATE TABLE order_item(
+CREATE TABLE order_items(
 id INT(12) NOT NULL AUTO_INCREMENT,
 menu_item_id INT(12) NOT NULL,
 order_id INT(12) NOT NULL,
