@@ -2,6 +2,17 @@
 
 ---
 
+-- 26 Jan 2023 --
+
+- Created a configuration that works for testing in memory as well as against the actual database.
+- Successfully created a test to create a new item in the database. I am not completely pleased with it however and intend to do some more work on it. Right now we create an entity to send through a constructor but I would like for the data to come from a builder instead.
+
+Tomorrow's goals
+
+- Try and complete means for full crud testing with in memory database.
+
+---
+
 -- 25 Jan 2023 --
 
 - Revealed entity ids in order to aid in ease of working with data with method constructed in rest config

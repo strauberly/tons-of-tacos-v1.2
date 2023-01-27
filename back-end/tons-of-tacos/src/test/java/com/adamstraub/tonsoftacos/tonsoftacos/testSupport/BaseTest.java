@@ -15,8 +15,10 @@ public class BaseTest {
 @Getter
 private TestRestTemplate restTemplate;
 
-protected String getBaseUriForMenuItem(){
-    return String.format("http://localhost:%d/api/menu-item", serverPort);
+protected String getBaseUriForMenuItemIdSearch(){
+//    return String.format("http://localhost:3306/api/menu-item/search/id", serverPort);
+     String baseUrl= "http://localhost:3306/api/menu-item/search/id";
+     return baseUrl;
 }
 
 }
