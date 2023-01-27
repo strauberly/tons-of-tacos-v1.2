@@ -8,7 +8,7 @@ node_modules
 
 .client.js
 
-.properties
+application.properties
 
 .config
  
