@@ -51,7 +51,7 @@ public interface MenuItemController {
                                     "menu-item " +
                                     "limon). Additionally api/menu-item/search/id?id=6 will return the same value. " +
                                     "Calling menu items by category can be obtained through " +
-                                    "api/menu-item/search/category?category=category name."),
+                                    "api/menu-item/search/category_type?category_type=category name."),
             }
     )
     @GetMapping
@@ -59,5 +59,8 @@ public interface MenuItemController {
     MenuItem fetchMenuItem(
             @RequestParam(required = false)
             Integer id);
+    MenuItem fetchMenuCategory(
+            @RequestParam(required = false)
+            String category);
 }
 
