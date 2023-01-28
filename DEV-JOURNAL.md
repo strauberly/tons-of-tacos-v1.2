@@ -2,6 +2,14 @@
 
 ---
 
+-- 27 Jan 2023 --
+Not as far as I wanted to get today but I'll take the small victory.
+
+- Created test for retrieving data and comparing it against an expected set of data.
+- Also tested for proper response code from the query.
+
+---
+
 -- 26 Jan 2023 --
 
 - Created a configuration that works for testing in memory as well as against the actual database.

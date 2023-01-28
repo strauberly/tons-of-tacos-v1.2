@@ -59,6 +59,9 @@ public interface MenuItemController {
     MenuItem fetchMenuItem(
             @RequestParam(required = false)
             Integer id);
+
+    @GetMapping (path = "/api/menu-item/category")
+    @ResponseStatus(code = HttpStatus.OK)
     MenuItem fetchMenuCategory(
             @RequestParam(required = false)
             String category);
