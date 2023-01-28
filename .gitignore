@@ -8,7 +8,7 @@ node_modules
 
 .client.js
 
-.properties
+application.properties
 
 .config
  
@@ -17,3 +17,6 @@ create-repo-script.sh
 update-repo-script.sh
 
 TonsOfTacosV1.2.ctb
+
+.properties
+
