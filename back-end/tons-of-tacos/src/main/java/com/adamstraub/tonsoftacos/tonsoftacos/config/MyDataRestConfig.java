@@ -42,14 +42,11 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
     private void exposeIds(RepositoryRestConfiguration config) {
 
 
-        // expose ids
-
         // get a list off all entity classes from entity manager
         Set<EntityType<?>> entities = entityManager.getMetamodel().getEntities();
-        //create arraylist of entity types
         List<Class> entityClasses = new ArrayList<>();
 
-        //get entity types for the entities
+
         for (EntityType tempEntityType : entities) {
             entityClasses.add(tempEntityType.getJavaType());
 

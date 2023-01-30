@@ -2,6 +2,13 @@
 
 ---
 
+-- 28 Jan 2023 --
+
+- Re-organizing menu item test for http responses.
+- Organizing ideas on migrating menu item to order item.
+
+---
+
 -- 27 Jan 2023 --
 Not as far as I wanted to get today but I'll take the small victory.
 
