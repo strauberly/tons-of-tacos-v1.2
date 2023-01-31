@@ -27,9 +27,11 @@ public class BaseResponseTest {
 
     }
 
-//        protected String getBaseUriForOrders(){
-//            return String.format("http://localhost:%d/orders", serverPort);
-//
-//        }
+    protected String getBaseUriForMenuItem(){
+        return String.format("http://localhost:%d/api/menu-item/", Integer.valueOf(serverPort));
+
+    }
+
+
 
 }

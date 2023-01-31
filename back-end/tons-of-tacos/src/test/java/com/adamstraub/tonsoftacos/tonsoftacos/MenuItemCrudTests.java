@@ -14,19 +14,28 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @DataJpaTest
 //@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class MenuItemCrudTests extends MenuItemCrudTestsSupport {
-//    ** CRUD TEST TO BE MIGRATED
+
     @Autowired
     private MenuItemRepository menuItemRepository;
 
     @Test
 //    @Rollback(false)
-    void addMenuItemTestToDB(){
-//        try builder here
-//        MenuItem menuItem = new MenuItem( "taco", "nom nom", "steve's house", "super taco", null, 3.50);
+    void createMenuItemWith201ResponseTest(){
+    String body = createMenuItemBody();
+    String uri = getBaseUriForMenuItem();
 
-        MenuItem savedItem = menuItemRepository.save(sample());
-        assertNotNull(savedItem);
+
     }
+//    ** CRUD TEST TO BE MIGRATED to network transfer protocol
+//    @Test
+////    @Rollback(false)
+//    void addMenuItemTestToDB(){
+
+//
+//
+//        MenuItem savedItem = menuItemRepository.save(sample());
+//        assertNotNull(savedItem);
+//    }
 
     @Test
     void getItemFromDatabase(){
