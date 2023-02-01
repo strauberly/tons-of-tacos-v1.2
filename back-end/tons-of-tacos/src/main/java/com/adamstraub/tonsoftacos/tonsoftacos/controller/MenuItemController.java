@@ -54,6 +54,7 @@ public interface MenuItemController {
                                     "api/menu-item/search/category_type?category_type=category name."),
             }
     )
+
     @GetMapping
     @ResponseStatus(code = HttpStatus.OK)
     MenuItem id(
