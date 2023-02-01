@@ -13,8 +13,8 @@ public class BaseResponseTest {
 
 
     @Autowired
-        @Getter
-        private TestRestTemplate restTemplate;
+    @Getter
+    private TestRestTemplate restTemplate;
 
 
         protected String getBaseUriForMenuItemQuery(){

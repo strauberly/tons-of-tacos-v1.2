@@ -2,7 +2,19 @@
 
 ---
 
--- 28 Jan 2023 --
+-- 31 Jan 2023 --
+
+- Test built for creating a new menu item for when that feature is implemented for the owners.
+- Test built for getting menu items by category.
+- Sprint concluded on target.
+
+Tomorrow's goals
+
+- Build error handler.
+
+---
+
+-- 30 Jan 2023 --
 
 - Re-organizing menu item test for http responses.
 - Organizing ideas on migrating menu item to order item.
