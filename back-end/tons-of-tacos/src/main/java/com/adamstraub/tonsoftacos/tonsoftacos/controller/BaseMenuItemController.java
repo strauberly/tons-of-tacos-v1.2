@@ -13,8 +13,4 @@ public class BaseMenuItemController implements MenuItemController {
         return null;
     }
 
-    @Override
-    public MenuItem category(String category) {
-        return null;
-    }
 }
