@@ -2,6 +2,25 @@
 
 ---
 
+-- 1 Feb 2023 --
+
+- Built global error handler for future implementation.
+- Began fleshing out functionality to be associated with adding items to a cart.
+  - In summary:
+    - click on item >> order uuid is generated >> relevant information is written to DB for the purpose of populating a cart for customer to alter and observe.
+    - On checkout >> uuid and cart will clear after using the data in the cart to create an order and write to DB.
+- Created order item controllers and repository classes.
+- Refactored database based on needs new phase will bring.
+- Update project on GitHub.
+
+Tomorrow's goals
+
+- Start project management with Jira.
+- Update README description.
+- Begin work on controllers and and tests to facilitate writing order items to DB.
+
+---
+
 -- 31 Jan 2023 --
 
 - Test built for creating a new menu item for when that feature is implemented for the owners.
