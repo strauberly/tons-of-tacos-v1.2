@@ -1,15 +1,18 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.entities;
 
 import javax.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+
+import lombok.*;
 
 import java.math.BigDecimal;
 
 @Entity
+@Builder
 @Table(name = "order_item")
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 
 public class OrderItem {
 

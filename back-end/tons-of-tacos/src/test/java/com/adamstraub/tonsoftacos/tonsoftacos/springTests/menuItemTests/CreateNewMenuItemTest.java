@@ -1,7 +1,7 @@
-package com.adamstraub.tonsoftacos.tonsoftacos.springTests;
+package com.adamstraub.tonsoftacos.tonsoftacos.springTests.menuItemTests;
 
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
-import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.GetMenuItemsTestsSupport;
+import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.CreateMenuItemTestSupport;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class CreateNewMenuItemTest {
             "classpath:scripts/tonsOfTacos-Data.sql"},
             config = @SqlConfig(encoding = "utf-8"))
 
-    class testThatDoesNotPolluteTheApplicationContext extends GetMenuItemsTestsSupport {
+    class testThatDoesNotPolluteTheApplicationContext extends CreateMenuItemTestSupport {
         @Test
 
         void createAMenuItemWith201Response(){
@@ -38,8 +38,6 @@ public class CreateNewMenuItemTest {
     headers.setContentType(MediaType.APPLICATION_JSON);
 
     HttpEntity<String> bodyEntity = new HttpEntity<>(body, headers);
-
-
     ResponseEntity<MenuItem> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity, MenuItem.class);
 
    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
