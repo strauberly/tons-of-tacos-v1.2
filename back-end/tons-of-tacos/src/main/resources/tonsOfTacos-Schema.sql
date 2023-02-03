@@ -2,9 +2,11 @@ CREATE DATABASE IF NOT EXISTS tonsOfTacos;
 
 USE tonsOfTacos;
 
-DROP TABLES IF EXISTS order_item;
+
 
 DROP TABLES IF EXISTS orders;
+
+DROP TABLES IF EXISTS order_item;
 
 DROP TABLES IF EXISTS menu_item;
 
@@ -26,7 +28,7 @@ id INT(12) NOT NULL AUTO_INCREMENT,
 category VARCHAR(30) NOT NUll,
 description VARCHAR(255) NOT NUll,
 item_name VARCHAR(30) NOT NUll UNIQUE,
-item_size VARCHAR(100) NOT NUll,
+item_size VARCHAR(100),
 img_url VARCHAR(255) NOT NUll,
 unit_price DECIMAL(19, 2) NOT NUll,
 PRIMARY KEY(id)

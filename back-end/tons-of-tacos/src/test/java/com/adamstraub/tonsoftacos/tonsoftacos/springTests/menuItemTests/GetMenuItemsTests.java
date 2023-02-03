@@ -1,4 +1,4 @@
-package com.adamstraub.tonsoftacos.tonsoftacos.springTests;
+package com.adamstraub.tonsoftacos.tonsoftacos.springTests.menuItemTests;
 
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.GetMenuItemsTestsSupport;

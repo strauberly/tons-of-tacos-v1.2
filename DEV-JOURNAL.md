@@ -2,6 +2,24 @@
 
 ---
 
+-- 2 Feb 2023 --
+
+- added jira project - need to research issue keys.
+- updated read me to include purpose of application and link to dev journal.
+- created endpoint for creating orders and order items.
+- created test for 201 response upon successful creation of order item.
+- tested endpoint with valid data in postman.
+- cleaned up tests.
+- created controller and documentation for order endpoint.
+- cleaned up config file.
+
+Tomorrow's goals
+
+- Refactor Controllers.
+- Continue Crud Operations for order items.
+
+---
+
 -- 1 Feb 2023 --
 
 - Built global error handler for future implementation.

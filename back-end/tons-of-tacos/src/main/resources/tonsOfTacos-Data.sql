@@ -31,22 +31,22 @@ unit_price)
 VALUES('drink', 'refreshing', 'pineapple soda', '16 oz.bottle', 'TBD', 1.25);
 INSERT INTO menu_item (category, description , item_name, item_size, img_url, 
 unit_price) 
-VALUES('drink', 'refreshing', 'horchata', 's', 'TBD', 1.00);
+VALUES('drink', 'refreshing', 'small horchata', 's', 'TBD', 1.00);
 INSERT INTO menu_item (category, description , item_name, item_size, img_url, 
 unit_price) 
-VALUES('drink', 'refreshing', 'horchata', 'm', 'TBD', 1.50);
+VALUES('drink', 'refreshing', 'medium horchata', 'm', 'TBD', 1.50);
 INSERT INTO menu_item (category, description , item_name, item_size, img_url, 
 unit_price) 
-VALUES('drink', 'refreshing', 'horchata', 'l', 'TBD', 2.00);
+VALUES('drink', 'refreshing', 'large horchata', 'l', 'TBD', 2.00);
 INSERT INTO menu_item (category, description , item_name, item_size, img_url, 
 unit_price) 
-VALUES('drink', 'refreshing', 'iced tea', 's', 'TBD', 1.00);
+VALUES('drink', 'refreshing', 'small iced tea', 's', 'TBD', 1.00);
 INSERT INTO menu_item (category, description , item_name, item_size, img_url, 
 unit_price) 
-VALUES('drink', 'refreshing', 'iced tea', 'm', 'TBD', 1.50);
+VALUES('drink', 'refreshing', 'medium iced tea', 'm', 'TBD', 1.50);
 INSERT INTO menu_item (category, description , item_name, item_size, img_url, 
 unit_price) 
-VALUES('drink', 'refreshing', 'iced tea', 'l', 'TBD', 2.00);
+VALUES('drink', 'refreshing', 'large iced tea', 'l', 'TBD', 2.00);
 
 # menu-item  side
 INSERT INTO menu_item (category, description , item_name, item_size, img_url, 
@@ -77,9 +77,6 @@ unit_price)
 VALUES('topping', 'a little extra', 'cilantro', NULL, 'TBD', .50);
 INSERT INTO menu_item (category, description , item_name, item_size, img_url, 
 unit_price) 
-VALUES('topping', 'a little extra', 'cabbage', NULL, 'TBD', .75);
-INSERT INTO menu_item (category, description , item_name, item_size, img_url, 
-unit_price) 
 VALUES('topping', 'a little extra', 'pickled jalepenos and onions', NULL, 
 'TBD', 1.00);
 INSERT INTO menu_item (category, description , item_name, item_size, img_url, 
@@ -88,9 +85,6 @@ VALUES('topping', 'a little extra', 'sour cream', NULL, 'TBD', 1.50);
 INSERT INTO menu_item (category, description , item_name, item_size, img_url, 
 unit_price) 
 VALUES('topping', 'a little extra', 'avocado', NULL, 'TBD', 1.50);
-INSERT INTO menu_item (category, description , item_name, item_size, img_url, 
-unit_price) 
-VALUES('topping', 'a little extra', 'sour cream', NULL, 'TBD', 1.50);
 INSERT INTO menu_item (category, description , item_name, item_size, img_url, 
 unit_price) 
 VALUES('topping', 'a little extra', 'lime', NULL, 'TBD', 1.50);
