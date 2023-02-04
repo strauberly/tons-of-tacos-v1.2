@@ -27,26 +27,32 @@ CREATE TABLE menu_item(
 id INT(12) NOT NULL AUTO_INCREMENT,
 category VARCHAR(30) NOT NUll,
 description VARCHAR(255) NOT NUll,
-item_name VARCHAR(30) NOT NUll UNIQUE,
+item_name VARCHAR(30) NOT NUll,
 item_size VARCHAR(100),
 img_url VARCHAR(255) NOT NUll,
 unit_price DECIMAL(19, 2) NOT NUll,
 PRIMARY KEY(id)
 );
 
+CREATE INDEX ITEM_NAMEX ON menu_item(item_name);
+CREATE INDEX ITEM_IDX ON menu_item(id);
+
 
 CREATE TABLE order_item(
 id INT(12) NOT NULL AUTO_INCREMENT,
 menu_item_id INT(12) NOT NULL,
 menu_item_name VARCHAR(30) NOT NULL,
-order_uuid VARCHAR(255) NOT NULL UNIQUE, 
+order_uuid VARCHAR(255) NOT NULL, 
 quantity INT(2) NOT NULL,
 total DECIMAL(19, 2)NOT NULL,
 PRIMARY KEY(id),
-FOREIGN KEY (menu_item_name) REFERENCES menu_item(item_name),
-FOREIGN KEY (menu_item_id) REFERENCES menu_item(id)
+CONSTRAINT fk_menuItemName_orderItemName FOREIGN KEY (menu_item_name) 
+REFERENCES menu_item(item_name),
+CONSTRAINT fk_menuItemId_orderItemId FOREIGN KEY (menu_item_id) REFERENCES 
+menu_item(id)
 );
 
+CREATE INDEX ORDER_UUIDX ON order_item(order_uuid);
 
 CREATE TABLE orders(
 id INT(12) NOT NULL AUTO_INCREMENT,
@@ -57,8 +63,9 @@ order_total DECIMAL(19, 2) NOT NULL,
 order_uuid VARCHAR(255) NOT NULL,
 status VARCHAR(6) DEFAULT "open",
 PRIMARY KEY(id),
-FOREIGN KEY (order_uuid) REFERENCES order_item(order_uuid),
-FOREIGN KEY(customer_id) REFERENCES customer(id)
+FOREIGN KEY (customer_id) REFERENCES customer(id),
+CONSTRAINT fk_order_item_orders FOREIGN KEY (order_uuid) REFERENCES 
+order_item(order_uuid)
 );
 
 
