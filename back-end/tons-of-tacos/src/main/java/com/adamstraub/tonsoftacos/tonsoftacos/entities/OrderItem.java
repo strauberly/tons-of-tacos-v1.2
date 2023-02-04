@@ -13,7 +13,6 @@ import java.math.BigDecimal;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class OrderItem {
 
     @Id
@@ -28,7 +27,7 @@ public class OrderItem {
     private String menu_item_name;
 
     @Column (name = "order_uuid")
-    private String order_uuid;
+    private String orderUuid;
 
     @Column (name = "quantity")
     private Integer quantity;

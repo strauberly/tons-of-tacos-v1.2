@@ -2,6 +2,14 @@
 
 ---
 
+-- 3 Feb 2023 --
+
+- Refactored menu item controllers and created services that now provides desired functionality of shorthand or jpa search.
+  -Refactored Controller naming convention .
+- Working on functionality of order/cart item in regards to crud operations and then transfering to an order with making these end points open for queries. Will resume next week.
+
+---
+
 -- 2 Feb 2023 --
 
 - added jira project - need to research issue keys.

@@ -1,6 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.config;
 
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
+import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
@@ -32,6 +33,11 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 
         config.getExposureConfiguration()
                 .forDomainType(MenuItem.class)
+                .withItemExposure((metadata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
+                .withCollectionExposure((metadata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
+
+        config.getExposureConfiguration()
+                .forDomainType(OrderItem.class)
                 .withItemExposure((metadata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
                 .withCollectionExposure((metadata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
 
