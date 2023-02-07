@@ -1,4 +1,4 @@
-package com.adamstraub.tonsoftacos.tonsoftacos.controller;
+package com.adamstraub.tonsoftacos.tonsoftacos.controller.menuItemControllers;
 
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
@@ -22,11 +22,11 @@ import java.util.Optional;
 
 @Validated
 @RequestMapping("api/menu-item")
-@OpenAPIDefinition(info = @Info(title = "Menu Item Service"),
+@OpenAPIDefinition(info = @Info(title = "Services for Tons of Tacos."),
         servers = {@Server(url="http://localhost:8080/", description = "Local server")})
 public interface MenuItemControllerInterface {
     @Operation(
-            summary = "Return menu item by id",
+            summary = "Return menu item by id.",
             description = "Return specific menu items by id for use in building a cart and and creating an order",
             responses = {
                     @ApiResponse(
@@ -49,12 +49,10 @@ public interface MenuItemControllerInterface {
 
             },
             parameters = {
-                    @Parameter(name = "/<id>", allowEmptyValue = false, required = false,
+                    @Parameter(name = "id", allowEmptyValue = false, required = false,
                             description = "Corresponds to menu item desired (i.e, api/menu-item/1  <- will return " +
                                     "menu-item " +
-                                    "limon). Additionally api/menu-item/search/id?id=6 will return the same value. " +
-                                    "Calling menu items by category can be obtained through " +
-                                    "api/menu-item/search/category_type?category_type=category name."),
+                                    "limon). Additionally api/menu-item/id?id=1 will return the same value. " ),
             }
     )
 
@@ -63,6 +61,36 @@ public interface MenuItemControllerInterface {
     Optional<MenuItem> getById(
             @RequestParam(required = false)
             Integer id);
+
+    @Operation(
+            summary = "Return menu items by category.",
+            description = "Return specific menu items by category for use in building a cart and and creating an order",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Menu items returned by category.",
+                            content = @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = MenuItem.class))),
+                    @ApiResponse(
+                            responseCode = "400",
+                            description = "Request parameters invalid.",
+                            content = @Content(mediaType = "application/json")),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "No menu-item found according to input.",
+                            content = @Content(mediaType = "application/json")),
+                    @ApiResponse(
+                            responseCode = "500",
+                            description = "An unplanned error occured.",
+                            content = @Content(mediaType = "application/json")),
+
+            },
+            parameters = {
+                    @Parameter(name = "category", allowEmptyValue = false, required = false,
+                            description = "Calling menu items by category can be obtained through " +
+                                    "api/menu-item/category?category= <your desired item category>."),
+            }
+    )
 
     @GetMapping("/category")
     @ResponseStatus(code = HttpStatus.OK)
