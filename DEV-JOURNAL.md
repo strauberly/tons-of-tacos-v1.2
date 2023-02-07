@@ -2,11 +2,22 @@
 
 ---
 
+-- 6 Feb 2023 --
+
+- Refactored order item controllers and services.
+- Refactored packages for organizational purposes.
+- Began working out logic for updating a menu item.
+- Updated documentation for menu item and order item controllers.
+- Will be refactoring data structure in future. Order items will become cart items as this is more descriptive of what is actually happening.
+- Order item endpoints test in browser and with postman for desired functionality. Tests will be written with JUnit following establishment of remaining endpoints for crud functionality of cart items.
+
+---
+
 -- 3 Feb 2023 --
 
 - Refactored menu item controllers and created services that now provides desired functionality of shorthand or jpa search.
   -Refactored Controller naming convention .
-- Working on functionality of order/cart item in regards to crud operations and then transfering to an order with making these end points open for queries. Will resume next week.
+- Working on functionality of order/cart item in regards to crud operations and then transferring to an order with making these end points open for queries. Will resume next week.
 
 ---
 
