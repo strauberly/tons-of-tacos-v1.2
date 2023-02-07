@@ -17,7 +17,10 @@ import java.util.List;
 
 @Validated
 @RestController
-@RequestMapping("/api/order")
+@RequestMapping(
+  value = "/api/order",
+          produces = "application/json",
+          method = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.PATCH, RequestMethod.DELETE})
 @OpenAPIDefinition(info = @Info(title = "services pertaining to cart functions"),
         servers = {@Server(url="http://localhost:8080", description = "Local server")})
 public interface OrderItemControllerInterface {
@@ -77,5 +80,63 @@ public interface OrderItemControllerInterface {
     List<OrderItem> findByOrderUuid(
             @RequestParam
             String orderUuid);
+
+    @Operation(
+            summary = " updates an order item quantity.",
+            description = "Will update the quantity adn a new total based on the new quantity.",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Item removed.",
+                            content = @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = OrderItem.class))),
+                    @ApiResponse(
+                            responseCode = "400",
+                            description = "Request parameters invalid.",
+                            content = @Content(mediaType = "application/json")),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "No order-items found according to input.",
+                            content = @Content(mediaType = "application/json")),
+                    @ApiResponse(
+                            responseCode = "500",
+                            description = "An unplanned error occured.",
+                            content = @Content(mediaType = "application/json")),
+
+            }
+    )
+@PatchMapping("/update-cart/{orderItemId}/{newQuantity}")
+    OrderItem updateCart(
+            @PathVariable
+            Integer orderItemId,
+            @PathVariable
+            Integer newQuantity);
+
+    @Operation(
+            summary = " Removes a cart item.",
+            description = "Updates the cart by removing an item",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Item removed from cart.",
+                            content = @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = OrderItem.class))),
+                    @ApiResponse(
+                            responseCode = "400",
+                            description = "Request parameters invalid.",
+                            content = @Content(mediaType = "application/json")),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "No order-items found according to input.",
+                            content = @Content(mediaType = "application/json")),
+                    @ApiResponse(
+                            responseCode = "500",
+                            description = "An unplanned error occured.",
+                            content = @Content(mediaType = "application/json")),
+
+            }
+    )
+    @DeleteMapping("/remove-cart-item/{orderItemId}")
+    void removeCartItem(@PathVariable Integer orderItemId);
 }
 
