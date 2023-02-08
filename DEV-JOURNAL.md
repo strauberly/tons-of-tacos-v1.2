@@ -2,6 +2,17 @@
 
 ---
 
+-- 7 Feb 2023 --
+
+- DB refactored. Table 'order_item' is now 'cart' as this better reflects its purpose.
+- Initial completion of update quantity of a cart item. Also updates the total.
+- Initial completion of remove cart item. Needs some refactoring to reflect the new schema but methods were all tested and functioning in the browser and posted before changes made.
+- Full crud functions for cart!
+
+Lots to do still but starting to see light. Updated to do list.
+
+---
+
 -- 6 Feb 2023 --
 
 - Refactored order item controllers and services.

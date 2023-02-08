@@ -21,7 +21,7 @@ public class OrderItem {
     private Integer id;
 
     @Column (name = "menu_item_id")
-    private Integer menu_item_id;
+    private Integer menuItemId;
 
     @Column (name = "menu_item_name")
     private String menu_item_name;

@@ -2,8 +2,6 @@ CREATE DATABASE IF NOT EXISTS tonsOfTacos;
 
 USE tonsOfTacos;
 
-
-
 DROP TABLES IF EXISTS orders;
 
 DROP TABLES IF EXISTS order_item;
@@ -38,17 +36,17 @@ CREATE INDEX ITEM_NAMEX ON menu_item(item_name);
 CREATE INDEX ITEM_IDX ON menu_item(id);
 
 
-CREATE TABLE order_item(
+CREATE TABLE cart(
 id INT(12) NOT NULL AUTO_INCREMENT,
 menu_item_id INT(12) NOT NULL,
 menu_item_name VARCHAR(30) NOT NULL,
-order_uuid VARCHAR(255) NOT NULL, 
+cart_uuid VARCHAR(255) NOT NULL, 
 quantity INT(2) NOT NULL,
 total DECIMAL(19, 2)NOT NULL,
 PRIMARY KEY(id),
-CONSTRAINT fk_menuItemName_orderItemName FOREIGN KEY (menu_item_name) 
+CONSTRAINT fk_menuItemName_cartItemName FOREIGN KEY (menu_item_name) 
 REFERENCES menu_item(item_name),
-CONSTRAINT fk_menuItemId_orderItemId FOREIGN KEY (menu_item_id) REFERENCES 
+CONSTRAINT fk_menuItemId_cartItemId FOREIGN KEY (menu_item_id) REFERENCES 
 menu_item(id)
 );
 
@@ -63,9 +61,7 @@ order_total DECIMAL(19, 2) NOT NULL,
 order_uuid VARCHAR(255) NOT NULL,
 status VARCHAR(6) DEFAULT "open",
 PRIMARY KEY(id),
-FOREIGN KEY (customer_id) REFERENCES customer(id),
-CONSTRAINT fk_order_item_orders FOREIGN KEY (order_uuid) REFERENCES 
-order_item(order_uuid)
+FOREIGN KEY (customer_id) REFERENCES customer(id)
 );
 
 
