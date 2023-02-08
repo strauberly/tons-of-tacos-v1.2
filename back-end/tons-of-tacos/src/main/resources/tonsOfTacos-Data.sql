@@ -31,22 +31,22 @@ unit_price)
 VALUES('drink', 'refreshing', 'pineapple soda', '16 oz.bottle', 'TBD', 1.25);
 INSERT INTO menu_item (category, description , item_name, item_size, img_url, 
 unit_price) 
-VALUES('drink', 'refreshing', 'small horchata', 's', 'TBD', 1.00);
+VALUES('drink', 'refreshing', 'horchata', 's', 'TBD', 1.00);
 INSERT INTO menu_item (category, description , item_name, item_size, img_url, 
 unit_price) 
-VALUES('drink', 'refreshing', 'medium horchata', 'm', 'TBD', 1.50);
+VALUES('drink', 'refreshing', 'horchata', 'm', 'TBD', 1.50);
 INSERT INTO menu_item (category, description , item_name, item_size, img_url, 
 unit_price) 
-VALUES('drink', 'refreshing', 'large horchata', 'l', 'TBD', 2.00);
+VALUES('drink', 'refreshing', 'horchata', 'l', 'TBD', 2.00);
 INSERT INTO menu_item (category, description , item_name, item_size, img_url, 
 unit_price) 
-VALUES('drink', 'refreshing', 'small iced tea', 's', 'TBD', 1.00);
+VALUES('drink', 'refreshing', 'iced tea', 's', 'TBD', 1.00);
 INSERT INTO menu_item (category, description , item_name, item_size, img_url, 
 unit_price) 
-VALUES('drink', 'refreshing', 'medium iced tea', 'm', 'TBD', 1.50);
+VALUES('drink', 'refreshing', 'iced tea', 'm', 'TBD', 1.50);
 INSERT INTO menu_item (category, description , item_name, item_size, img_url, 
 unit_price) 
-VALUES('drink', 'refreshing', 'large iced tea', 'l', 'TBD', 2.00);
+VALUES('drink', 'refreshing', 'iced tea', 'l', 'TBD', 2.00);
 
 # menu-item  side
 INSERT INTO menu_item (category, description , item_name, item_size, img_url, 
