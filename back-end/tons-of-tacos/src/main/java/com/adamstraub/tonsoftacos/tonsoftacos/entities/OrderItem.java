@@ -24,9 +24,9 @@ public class OrderItem {
     private Integer menuItemId;
 
     @Column (name = "menu_item_name")
-    private String menu_item_name;
+    private String menuItemName;
 
-    @Column (name = "order_uuid")
+    @Column (name = "order_item_uuid")
     private String orderUuid;
 
     @Column (name = "quantity")

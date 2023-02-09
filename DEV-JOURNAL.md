@@ -2,6 +2,12 @@
 
 ---
 
+-- 8 Feb 2023 --
+
+- Started coming across abnormalities while conducting tests and so spent the day refactoring. Hoping the end result is for the better.
+
+---
+
 -- 7 Feb 2023 --
 
 - DB refactored. Table 'order_item' is now 'cart' as this better reflects its purpose.
