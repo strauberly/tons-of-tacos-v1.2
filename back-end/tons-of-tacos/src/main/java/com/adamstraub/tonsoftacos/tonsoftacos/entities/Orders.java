@@ -32,6 +32,6 @@ public class Orders {
     @Column (name = "status")
     private String status;
 
-    @Column (name = "UUID")
-    private String uuid;
+    @Column (name = "orders_id")
+    private String orderId;
 }
