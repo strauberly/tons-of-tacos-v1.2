@@ -1,6 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.controller.orderItemControllers;
 
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.info.Info;
@@ -50,7 +51,7 @@ public interface OrderItemControllerInterface {
     @ResponseStatus(code = HttpStatus.CREATED)
     OrderItem addToCart(
             @RequestBody
-            OrderItem orderItem );
+            OrderItem orderItem ) throws JsonProcessingException;
 
     @Operation(
             summary = " Get all items stored to cart.",
