@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 public interface OrderItemRepository extends JpaRepository<OrderItem, Integer> {
-    List<OrderItem> findByOrderUuid(@RequestParam("orderUuid") String orderUuid);
+    List<OrderItem> findByOrderUuid(@RequestParam("order_uuid") String orderUuid);
 
     void deleteById(OrderItem referenceById);
 }
