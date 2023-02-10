@@ -1,11 +1,15 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.entities;
 
 import javax.persistence.*;
+
 import lombok.Getter;
 import lombok.Setter;
-import net.minidev.json.JSONArray;
+import org.hibernate.annotations.CreationTimestamp;
+
 
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "orders")
@@ -14,24 +18,26 @@ import java.sql.Timestamp;
 public class Orders {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id")
-    private Integer id;
+    @Column (name = "order_pk")
+    private Integer orderId;
+
+    @Column(name = "customer_fk")
+    private Integer customerId;
 
     @Column (name = "created")
+    @CreationTimestamp
     private Timestamp created;
 
-    @Column (name = "customer_id")
-    private Integer customer_id;
-
-    @Column (name = "order_data")
-    private JSONArray order_data;
-
     @Column (name = "order_total")
-    private Integer order_total;
+    private Double orderTotal;
 
-    @Column (name = "status")
-    private String status;
+    @Column (name = "order_uuid")
+    private String orderUuid;
+//order id is a reference to the reference in the other class that connects to desired column
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "orderId")
+    private Set<OrderItem> orderItems = new HashSet<>();
 
-    @Column (name = "orders_id")
-    private String orderId;
+    @ManyToOne
+    private Customer customer_fk;
+
 }

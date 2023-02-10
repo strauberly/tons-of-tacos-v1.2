@@ -1,7 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.menuItemTests;
 
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
-import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.GetMenuItemsTestsSupport;
+import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.menuitemtestSupport.GetMenuItemsTestsSupport;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -16,6 +16,8 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 
+import java.util.Objects;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 
@@ -27,11 +29,11 @@ class GetMenuItemsTests {
 
     @Nested
     @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-    @ActiveProfiles("test")
-    @Sql(scripts = {
-            "classpath:scripts/tonsOfTacos-Schema.sql",
-            "classpath:scripts/tonsOfTacos-Data.sql"},
-            config = @SqlConfig(encoding = "utf-8"))
+//    @ActiveProfiles("test")
+//    @Sql(scripts = {
+//            "classpath:scripts/tonsOfTacos-Schema.sql",
+//            "classpath:scripts/tonsOfTacos-Data.sql"},
+//            config = @SqlConfig(encoding = "utf-8"))
     class testThatDoesNotPolluteTheApplicationContext extends GetMenuItemsTestsSupport {
         @Test
          void testThatAMenuItemIsReturnedWith200() {
@@ -51,13 +53,13 @@ class GetMenuItemsTests {
                     });
 //            Then: A 200 status code is returned
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-            System.out.println(response.getBody().getId() + " "
-                    + response.getBody().getItem_name() + " "
-                    + response.getBody().getUnit_price() + " "
+            System.out.println(Objects.requireNonNull(response.getBody()).getMenuItemId() + " "
+                    + response.getBody().getItemName() + " "
+                    + response.getBody().getUnitPrice() + " "
             );
             //            And: it matches the expected outcome
-            Integer actual = response.getBody().getId();
-            Object expected = sample().getId();
+            Integer actual = response.getBody().getMenuItemId();
+            Object expected = sample().getMenuItemId();
 
             Assertions.assertThat(actual).isEqualTo(expected);
         }

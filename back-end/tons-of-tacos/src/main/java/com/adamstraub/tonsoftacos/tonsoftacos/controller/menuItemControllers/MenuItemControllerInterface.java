@@ -58,7 +58,7 @@ public interface MenuItemControllerInterface {
 
     @GetMapping("/id")
     @ResponseStatus(code = HttpStatus.OK)
-    Optional<MenuItem> getById(
+    Optional<MenuItem> getByMenuItemId(
             @RequestParam(required = false)
             Integer id);
 

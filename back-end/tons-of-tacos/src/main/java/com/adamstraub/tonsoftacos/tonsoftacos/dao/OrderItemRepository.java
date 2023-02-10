@@ -11,5 +11,5 @@ import java.util.List;
 public interface OrderItemRepository extends JpaRepository<OrderItem, Integer> {
     List<OrderItem> findByOrderUuid(@RequestParam("order_uuid") String orderUuid);
 
-    void deleteById(OrderItem referenceById);
+    void deleteByOrderItemId(OrderItem referenceById);
 }

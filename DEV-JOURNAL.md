@@ -2,6 +2,14 @@
 
 ---
 
+-- 9 Feb 2023 --
+
+- Initial refactor complete. Means for adding a new order item to the database restored. Meaning that it should be feasible to create a cart. From the front end.
+- Test environment scripts need to be restored however as they appear to be belly up at this point. Lots learned through the process.
+  -Also created new erd that represents changes. Will work on getting it up tomorrow.
+
+---
+
 -- 8 Feb 2023 --
 
 - Started coming across abnormalities while conducting tests and so spent the day refactoring. Hoping the end result is for the better.
