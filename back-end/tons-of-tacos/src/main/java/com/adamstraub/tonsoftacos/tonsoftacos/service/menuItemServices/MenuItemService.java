@@ -15,8 +15,8 @@ public class MenuItemService implements MenuItemServiceInterface{
 
     @Transactional(readOnly = true)
     @Override
-    public Optional<MenuItem> findById(Integer id) {
-      return Optional.ofNullable(menuItemRepository.id(id));
+    public Optional<MenuItem> findByMenuItemId(Integer id) {
+      return Optional.ofNullable(menuItemRepository.menuItemId(id));
     }
     @Transactional(readOnly = true)
     @Override

@@ -1,4 +1,6 @@
-package com.adamstraub.tonsoftacos.tonsoftacos.testSupport;
+package com.adamstraub.tonsoftacos.tonsoftacos.testSupport.menuitemtestSupport;
+
+import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.BaseResponseTest;
 
 public class CreateMenuItemTestSupport extends BaseResponseTest {
         protected String createMenuItemBody(){

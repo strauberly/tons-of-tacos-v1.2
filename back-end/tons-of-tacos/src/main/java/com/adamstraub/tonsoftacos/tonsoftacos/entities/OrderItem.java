@@ -1,6 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.entities;
 
 import javax.persistence.*;
+import javax.persistence.criteria.Order;
 
 import lombok.*;
 
@@ -17,21 +18,21 @@ public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id")
-    private Integer id;
+    @Column(name = "order_item_pk")
+    private Integer orderItemId;
 
-    @Column (name = "menu_item_id")
-    private Integer menuItemId;
+    @Column(name = "item_fk")
+    private Integer itemId;
 
-    @Column (name = "menu_item_name")
-    private String menuItemName;
+    @Column (name = "order_fk")
+    private Integer orderId;
 
-    @Column (name = "order_item_uuid")
+    @Column(name = "order_uuid_fk")
     private String orderUuid;
 
-    @Column (name = "quantity")
+    @Column(name = "quantity")
     private Integer quantity;
 
-    @Column (name = "total")
+    @Column(name = "total")
     private BigDecimal total;
-    }
+}

@@ -1,7 +1,3 @@
-CREATE DATABASE IF NOT EXISTS tonsOfTacos;
-
-USE tonsOfTacos;
-
 DROP TABLE IF EXISTS order_item;
 
 DROP TABLE IF EXISTS orders;
@@ -12,41 +8,46 @@ DROP TABLE IF EXISTS customer;
 
 
 CREATE TABLE customer(
-id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-email VARCHAR(40) NOT NULL,
+customer_pk INT(22) NOT NULL AUTO_INCREMENT,
 name VARCHAR(40) NOT NULL,
-phone_number VARCHAR(12) NOT NULL
+email VARCHAR(40) NOT NULL,
+phone_number VARCHAR(12) NOT NULL,
+PRIMARY KEY (customer_pk)
 );
 
 CREATE TABLE menu_item(
-id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+item_pk INT unsigned NOT NULL AUTO_INCREMENT,
 category VARCHAR(30) NOT NUll,
 description VARCHAR(255) NOT NUll,
 item_name VARCHAR(30) NOT NUll,
 item_size VARCHAR(100) DEFAULT NULL,
 img_url VARCHAR(255) NOT NUll,
-unit_price DECIMAL(19, 2) NOT NUll
+unit_price DECIMAL(19, 2) NOT NUll,
+PRIMARY KEY (item_pk)
 );
 
 
 CREATE TABLE orders(
-id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+order_pk INT unsigned NOT NULL AUTO_INCREMENT,
+customer_fk INT unsigned NOT NULL,
 created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-customer_id BIGINT NOT NULL,
 order_total DECIMAL(19, 2) NOT NULL,
 order_uuid VARCHAR(255) NOT NULL,
-CONSTRAINT FK_customer_id FOREIGN KEY (customer_id) REFERENCES customer(id)
+PRIMARY KEY (order_pk),
+FOREIGN KEY (customer_fk) REFERENCES customer(customer_pk) ON DELETE CASCADE
 );
 
 
 CREATE TABLE order_item(
-id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-menu_item_id BIGINT NOT NULL,
-order_id BIGINT NOT NULL, 
+order_item_pk INT unsigned NOT NULL AUTO_INCREMENT,
+item_fk INT unsigned NOT NULL,
+order_fk INT unsigned NOT NULL,
+order_uuid_fk VARCHAR(255) NOT NULL, 
 quantity INT(2) NOT NULL,
 total DECIMAL(19, 2)NOT NULL,
-CONSTRAINT FK_menu_item_id FOREIGN KEY (menu_item_id) REFERENCES menu_item(id),
-CONSTRAINT FK_order_id FOREIGN KEY (order_id) REFERENCES orders(id)
+PRIMARY KEY (order_item_pk),
+FOREIGN KEY (item_fk) REFERENCES menu_item(item_pk) ON DELETE CASCADE,   
+FOREIGN KEY (order_fk) REFERENCES orders(order_pk) ON DELETE CASCADE
 );
 
 

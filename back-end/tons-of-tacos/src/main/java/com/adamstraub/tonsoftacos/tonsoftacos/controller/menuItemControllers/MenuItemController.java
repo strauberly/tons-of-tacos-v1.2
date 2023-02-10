@@ -13,9 +13,10 @@ import java.util.Optional;
 public class MenuItemController implements MenuItemControllerInterface {
     @Autowired
     private MenuItemService menuItemService;
+
     @Override
-    public Optional<MenuItem> getById(Integer id) {
-        return menuItemService.findById(id);
+    public Optional<MenuItem> getByMenuItemId(Integer id) {
+        return menuItemService.findByMenuItemId(id);
     }
 
     @Override

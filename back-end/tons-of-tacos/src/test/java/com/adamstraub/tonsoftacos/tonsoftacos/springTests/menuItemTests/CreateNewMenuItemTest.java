@@ -1,7 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.menuItemTests;
 
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
-import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.CreateMenuItemTestSupport;
+import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.menuitemtestSupport.CreateMenuItemTestSupport;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

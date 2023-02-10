@@ -1,6 +1,7 @@
-package com.adamstraub.tonsoftacos.tonsoftacos.testSupport;
+package com.adamstraub.tonsoftacos.tonsoftacos.testSupport.menuitemtestSupport;
 
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
+import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.BaseResponseTest;
 
 
 public class GetMenuItemsTestsSupport extends BaseResponseTest {
@@ -8,13 +9,13 @@ public class GetMenuItemsTestsSupport extends BaseResponseTest {
     protected MenuItem sample() {
 
         return MenuItem.builder()
-                 .id(1)
+                 .menuItemId(1)
                .category("taco")
                .description("nom nom")
-               .item_name("golden pound")
-               .item_size("NULL")
-               .img_url("TBD")
-               .unit_price(2.25)
+               .itemName("golden pound")
+               .itemSize("NULL")
+               .imgUrl("TBD")
+               .unitPrice(2.25)
                .build();
 
         }
