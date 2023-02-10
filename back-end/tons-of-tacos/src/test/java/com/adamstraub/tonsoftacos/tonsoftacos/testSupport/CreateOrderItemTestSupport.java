@@ -12,11 +12,11 @@ import org.springframework.test.context.jdbc.SqlConfig;
 public class CreateOrderItemTestSupport extends BaseResponseTest {
     protected String createOrderItemBody(){
         return "{\n"
-                + " \"menu_item_id\" : \"1\",\n"
-                + " \"menu_item_name\" : \"pound\",\n"
-                + " \"order_uuid\" : \"45644-65465-46654\",\n"
-                + " \"quantity\" : \"2\",\n"
-                + " \"total\" : \"5.50\"\n"
+                + " \"itemId\" : 3,\n"
+                + " \"orderId\" : 4,\n"
+                + " \"orderUuid\" : \"45644-65325-46654\",\n"
+                + " \"quantity\" : 2,\n"
+                + " \"total\" : 5.50\n"
                 + "}";
     }
 

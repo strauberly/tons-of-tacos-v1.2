@@ -4,6 +4,9 @@ import javax.persistence.*;
 
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 @Entity
 @Builder
@@ -15,8 +18,8 @@ import lombok.*;
 public class MenuItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
+    @Column(name = "item_pk")
+    private Integer menuItemId;
 
     @Column (name = "category")
     private String category;
@@ -25,14 +28,16 @@ public class MenuItem {
     private String description;
 
     @Column(name = "item_name")
-    private String item_name;
+    private String itemName;
 
     @Column (name = "item_size")
-    private String item_size;
+    private String itemSize;
     @Column(name = "img_url")
-    private String img_url;
+    private String imgUrl;
 
     @Column(name = "unit_price")
-    private Double unit_price;
+    private Double unitPrice;
 
+    @ManyToOne
+    OrderItem orderItems;
 }

@@ -39,9 +39,9 @@ public class OrderItemService implements OrderItemServiceInterface {
     @Transactional
     public OrderItem updateCart(@PathVariable Integer orderItemId, @PathVariable Integer newQuantity) {
         OrderItem orderItem = orderItemRepository.getReferenceById(orderItemId);
-        MenuItem menuItem = menuItemRepository.getReferenceById(orderItem.getMenuItemId());
+        MenuItem menuItem = menuItemRepository.getReferenceById(orderItem.getItemId());
         orderItem.setQuantity(newQuantity);
-        orderItem.setTotal(BigDecimal.valueOf(orderItem.getQuantity() * menuItem.getUnit_price()));
+        orderItem.setTotal(BigDecimal.valueOf(orderItem.getQuantity() * menuItem.getUnitPrice()));
         return orderItemRepository.save(orderItem);
     }
 
@@ -49,7 +49,7 @@ public class OrderItemService implements OrderItemServiceInterface {
     @Transactional
     public void removeCartItem(@PathVariable Integer orderItemId) {
         OrderItem orderItem = orderItemRepository.getReferenceById(orderItemId);
-        orderItemRepository.deleteById(orderItem.getId());
+        orderItemRepository.deleteById(Math.toIntExact(orderItem.getOrderItemId()));
     }
 
 
