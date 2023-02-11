@@ -24,10 +24,7 @@ public class OrderItem {
     @Column(name = "item_fk")
     private Integer itemId;
 
-    @Column (name = "order_fk")
-    private Integer orderId;
-
-    @Column(name = "order_uuid_fk")
+    @Column(name = "order_uuid")
     private String orderUuid;
 
     @Column(name = "quantity")
@@ -35,4 +32,7 @@ public class OrderItem {
 
     @Column(name = "total")
     private BigDecimal total;
+
+//        @ManyToOne
+//    MenuItem menuItem;
 }

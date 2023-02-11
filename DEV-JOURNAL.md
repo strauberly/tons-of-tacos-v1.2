@@ -2,11 +2,31 @@
 
 ---
 
+-- 10 Feb 2023 --
+
+- test env config restored.
+- connections and base endpoint functionality re-established.
+- turned off default exposure through config file.
+- menu controller back online.
+- order controller back online.
+- all endpoints functioning as desired.
+- tested in browser and postman.
+- next will be error handler integration and unit testing for each endpoint and feature.
+- updated erd below. Clockwise cascade.
+
+  &nbsp;
+
+<p align="center">
+  <img src="./back-end/supporting-files/erdV1.2.png"/>
+</p>
+
+## &nbsp;
+
 -- 9 Feb 2023 --
 
 - Initial refactor complete. Means for adding a new order item to the database restored. Meaning that it should be feasible to create a cart. From the front end.
 - Test environment scripts need to be restored however as they appear to be belly up at this point. Lots learned through the process.
-  -Also created new erd that represents changes. Will work on getting it up tomorrow.
+- Also created new erd that represents changes. Will work on getting it up tomorrow.
 
 ---
 
