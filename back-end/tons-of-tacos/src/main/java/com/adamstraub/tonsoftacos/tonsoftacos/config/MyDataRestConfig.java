@@ -44,6 +44,8 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 
 //        internal helper
         exposeIds(config);
+// turn off default action of exposing repository through the initial endpoint
+        config.disableDefaultExposure();
 
     }
 

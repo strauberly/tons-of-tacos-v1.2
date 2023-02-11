@@ -42,9 +42,9 @@ class GetMenuItemsTests {
             int itemId = 1;
             String parameter = "id";
             String uri =
-                    String.format("%s%s?%s=%d", getBaseUriForMenuItemQuery(), parameter, parameter, itemId);
+//                    String.format("%s%s?%s=%d", getBaseUriForMenuItemQuery(), parameter, parameter, itemId);
 //             Test endpoint for quick item grab
-            //    String.format("%s%d", getBaseUriForMenuItemFastQuery(), itemId);
+                String.format("%s%d", getBaseUriForMenuItemFastQuery(), itemId);
 
             System.out.println(uri);
 //      When: Connection is made
@@ -53,13 +53,13 @@ class GetMenuItemsTests {
                     });
 //            Then: A 200 status code is returned
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-            System.out.println(Objects.requireNonNull(response.getBody()).getMenuItemId() + " "
+            System.out.println(Objects.requireNonNull(response.getBody()).getId() + " "
                     + response.getBody().getItemName() + " "
                     + response.getBody().getUnitPrice() + " "
             );
             //            And: it matches the expected outcome
-            Integer actual = response.getBody().getMenuItemId();
-            Object expected = sample().getMenuItemId();
+            Integer actual = response.getBody().getId();
+            Object expected = sample().getId();
 
             Assertions.assertThat(actual).isEqualTo(expected);
         }
