@@ -11,17 +11,14 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.servers.Server;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 
 @Validated
-@RequestMapping("api/menu-item")
+@RequestMapping("api/menu")
 @OpenAPIDefinition(info = @Info(title = "Services for Tons of Tacos."),
         servers = {@Server(url="http://localhost:8080/", description = "Local server")})
 public interface MenuItemControllerInterface {
@@ -49,17 +46,17 @@ public interface MenuItemControllerInterface {
 
             },
             parameters = {
-                    @Parameter(name = "id", allowEmptyValue = false, required = false,
+                    @Parameter(name = "/id", allowEmptyValue = false, required = false,
                             description = "Corresponds to menu item desired (i.e, api/menu-item/1  <- will return " +
                                     "menu-item " +
-                                    "limon). Additionally api/menu-item/id?id=1 will return the same value. " ),
+                                    "limon). Additionally api/menu-item/id?id=1 will return the same value. "),
             }
     )
 
     @GetMapping("/id")
     @ResponseStatus(code = HttpStatus.OK)
-    Optional<MenuItem> getByMenuItemId(
-            @RequestParam(required = false)
+    Optional<MenuItem> getById(
+            @RequestParam(required = true)
             Integer id);
 
     @Operation(

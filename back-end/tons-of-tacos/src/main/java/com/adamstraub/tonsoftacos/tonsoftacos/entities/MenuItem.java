@@ -19,7 +19,8 @@ public class MenuItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "item_pk")
-    private Integer menuItemId;
+    private Integer id;
+
 
     @Column (name = "category")
     private String category;
@@ -38,6 +39,9 @@ public class MenuItem {
     @Column(name = "unit_price")
     private Double unitPrice;
 
-    @ManyToOne
-    OrderItem orderItems;
+//    @ManyToOne
+//    OrderItem orderItems;
+
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "itemId")
+//    private Set<OrderItem> orderItems = new HashSet<>();
 }
