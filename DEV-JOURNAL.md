@@ -2,6 +2,12 @@
 
 ---
 
+-- 13 Feb 2023 --
+
+- Test environment refactored for full function of in memory h2 in order to preserve db image.
+
+- Menu item endpoint restored and tested for calling a menu item by id number successfully. Will test for for a 404 and 500 next.
+
 -- 10 Feb 2023 --
 
 - test env config restored.

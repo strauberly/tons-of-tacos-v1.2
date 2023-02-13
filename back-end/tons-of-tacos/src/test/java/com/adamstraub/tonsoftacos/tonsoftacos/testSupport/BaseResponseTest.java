@@ -16,26 +16,17 @@ public class BaseResponseTest {
     @Getter
     private TestRestTemplate restTemplate;
 
-
-        protected String getBaseUriForMenuItemQuery(){
-            return String.format("http://localhost:%d/api/menu-item/search/", Integer.valueOf(serverPort));
+//============== menu item uris ====================//
+        protected String getBaseUriForMenuItemByIdQuery(){
+            return String.format("http://localhost:%d/api/menu/", Integer.valueOf(serverPort));
 
         }
 
-    protected String getBaseUriForMenuItemFastQuery(){
-        return String.format("http://localhost:%d/api/menu-item/", Integer.valueOf(serverPort));
-
-    }
-
-    protected String getBaseUriForMenuItem(){
-        return String.format("http://localhost:%d/api/menu-item/", Integer.valueOf(serverPort));
-
-    }
-
-    protected String getBaseUriForCreateOrderItem(){
-        return String.format("http://localhost:%d/api/order/add-to-cart", Integer.valueOf(serverPort));
-
-    }
+    //============== order item uris ====================//
+//    protected String getBaseUriForCreateOrderItem(){
+//        return String.format("http://localhost:%d/api/order/add-to-cart", Integer.valueOf(serverPort));
+//
+//    }
 
 
 

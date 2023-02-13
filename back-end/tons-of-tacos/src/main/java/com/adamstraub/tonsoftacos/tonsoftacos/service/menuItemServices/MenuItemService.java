@@ -22,9 +22,9 @@ public class MenuItemService implements MenuItemServiceInterface {
 
     @Transactional(readOnly = true)
     @Override
-    public Optional<MenuItem> findById(Integer id) {
+    public Optional<Optional<MenuItem>> findById(Integer id) {
         System.out.println("service");
-        return Optional.ofNullable(menuItemRepository.id(id));
+        return Optional.ofNullable(menuItemRepository.findById(id));
     }
 
     @Transactional(readOnly = true)
