@@ -39,7 +39,8 @@ public class MenuItem {
     @Column(name = "unit_price")
     private Double unitPrice;
 
-//    @ManyToOne
+
+    //    @ManyToOne
 //    OrderItem orderItems;
 
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "itemId")
