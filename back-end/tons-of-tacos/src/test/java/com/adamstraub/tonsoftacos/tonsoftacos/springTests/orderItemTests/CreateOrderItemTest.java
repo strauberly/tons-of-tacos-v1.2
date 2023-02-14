@@ -20,8 +20,8 @@
 //    @Nested
 //    @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 //    @Sql(scripts = {
-//            "classpath:scripts/tonsOfTacos-Schema.sql",
-//            "classpath:scripts/tonsOfTacos-Data.sql"},
+//            "classpath:scripts/schema.sql",
+//            "classpath:scripts/data.sql"},
 //            config = @SqlConfig(encoding = "utf-8"))
 //    class testThatDoesNotPolluteTheApplicationContext extends CreateOrderItemTestSupport {
 //        @Test

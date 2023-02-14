@@ -55,9 +55,11 @@ public interface MenuItemControllerInterface {
 
     @GetMapping("/id")
     @ResponseStatus(code = HttpStatus.OK)
-    Optional<MenuItem> getById(
+    Optional<Optional<MenuItem>> getById(
             @RequestParam(required = true)
-            Integer id);
+            String id);
+
+//    Optional<Optional<MenuItem>> getById(String id);
 
     @Operation(
             summary = "Return menu items by category.",
