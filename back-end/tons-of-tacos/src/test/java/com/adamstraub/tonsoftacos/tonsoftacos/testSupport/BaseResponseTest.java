@@ -18,9 +18,13 @@ public class BaseResponseTest {
 
 //============== menu item uris ====================//
         protected String getBaseUriForMenuItemByIdQuery(){
-            return String.format("http://localhost:%d/api/menu/", Integer.valueOf(serverPort));
+            return String.format("http://localhost:%d/api/menu/id", Integer.valueOf(serverPort));
 
         }
+    protected String getBaseUriForMenuItemByCategoryQuery(){
+        return String.format("http://localhost:%d/api/menu/category", Integer.valueOf(serverPort));
+
+    }
 
     //============== order item uris ====================//
 //    protected String getBaseUriForCreateOrderItem(){

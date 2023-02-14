@@ -8,8 +8,11 @@ import java.util.List;
 import java.util.Optional;
 
 public interface MenuItemServiceInterface {
+//    @Transactional(readOnly = true)
+//    Optional<Optional<MenuItem>> findById(Integer id);
+
     @Transactional(readOnly = true)
-    Optional<Optional<MenuItem>> findById(Integer id);
+    Optional<Optional<MenuItem>> findById(String id);
 
     @Transactional(readOnly = true)
     List<MenuItem> findByCategory(String category);

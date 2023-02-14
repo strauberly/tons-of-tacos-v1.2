@@ -2,11 +2,16 @@
 
 ---
 
+-- 14 Feb 2023 --
+
+- Getting menu items by id tests completed and began organizing tests for getting menu items by category.
+- Documentation to follow.
+
 -- 13 Feb 2023 --
 
 - Test environment refactored for full function of in memory h2 in order to preserve db image.
 
-- Menu item endpoint restored and tested for calling a menu item by id number successfully. Will test for for a 404 and 500 next.
+- Menu item endpoint restored and tested for calling a menu item by id number successfully. Will test for a 404 and 400 next.
 
 -- 10 Feb 2023 --
 

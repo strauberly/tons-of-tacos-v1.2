@@ -17,19 +17,7 @@ public class GetMenuItemsTestsSupport extends BaseResponseTest {
                .imgUrl("TBD")
                .unitPrice(2.25)
                .build();
-//        VALUES('taco', 'nom nom', 'pound', NULL, 'TBD', 2.25);
         }
-
-    protected String createMenuItemBody(){
-        return "{\n" +
-                " \"category\" : \"taco\", \n" +
-                " \"description\" : \"nom-nom\", \n" +
-                " \"item_name\" : \"ton\", \n" +
-                " \"item_size\" : \"NULL\", \n" +
-                " \"img_url\" : \"TBD\", \n" +
-                " \"unit_price\" : \"2.25\", \n" +
-                "}";
-    }
     }
 
 

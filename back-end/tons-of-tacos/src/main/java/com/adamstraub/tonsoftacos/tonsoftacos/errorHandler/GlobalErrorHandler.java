@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.context.request.WebRequest;
 
+import javax.validation.ConstraintViolationException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -16,14 +17,25 @@ import java.util.NoSuchElementException;
 // still needs to be implemented
 @RestControllerAdvice
 public class GlobalErrorHandler {
-    @ExceptionHandler(NoSuchElementException.class)
-    @ResponseStatus(code = HttpStatus.NOT_FOUND)
-    public Map <String, Object> handleNoSuchELementException(
-            NoSuchElementException e, WebRequest webRequest){
-        return createExceptionMessage(e, HttpStatus.NOT_FOUND, webRequest);
+
+    @ExceptionHandler(NumberFormatException.class)
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
+    public Map <String, Object> handleNumberException(
+            NumberFormatException e, WebRequest webRequest){
+        return createExceptionMessage(e, HttpStatus.BAD_REQUEST, webRequest);
     }
 
-    private Map<String,Object> createExceptionMessage(NoSuchElementException e, HttpStatus status, WebRequest webRequest) {
+
+
+
+    @ExceptionHandler(NoSuchElementException.class)
+    @ResponseStatus(code = HttpStatus.NOT_FOUND)
+    public Map <String, Object> handleNoSuchElementException(
+            NoSuchElementException e, WebRequest webRequest){
+        return createExceptionMessage(e, HttpStatus.BAD_REQUEST, webRequest);
+    }
+
+    private Map<String,Object> createExceptionMessage(Exception e, HttpStatus status, WebRequest webRequest) {
     Map <String, Object> error = new HashMap<>();
     String timestamp = ZonedDateTime.now().format(DateTimeFormatter.RFC_1123_DATE_TIME);
 
@@ -32,9 +44,9 @@ public class GlobalErrorHandler {
                 ((ServletWebRequest)webRequest).getRequest().getRequestURI());
     }
     error.put("message", e.toString());
-    error.put("status code", status.value());
+    error.put("status code", HttpStatus.NOT_FOUND.value());
     error.put("tiemstamp", timestamp);
-    error.put("reason", status.getReasonPhrase());
+    error.put("reason", HttpStatus.NOT_FOUND.getReasonPhrase());
     return error;
     }
 }
