@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.Optional;
 @Service
 public class MenuItemService implements MenuItemServiceInterface {
@@ -29,6 +30,11 @@ public class MenuItemService implements MenuItemServiceInterface {
     @Transactional(readOnly = true)
     @Override
     public List<MenuItem> findByCategory(String category) {
-        return menuItemRepository.category(category);
+        System.out.println("service");
+            List<MenuItem> menuItems = menuItemRepository.findByCategory(category);
+            if (menuItems.isEmpty()){
+                throw new NoSuchElementException("You have chosen a category that does not exist.");
+        }
+        return menuItemRepository.findByCategory(category);
     }
 }
