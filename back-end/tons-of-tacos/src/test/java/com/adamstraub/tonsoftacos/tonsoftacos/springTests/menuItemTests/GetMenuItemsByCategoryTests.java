@@ -33,8 +33,8 @@ class GetMenuItemsByCategoryTests {
         @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
         @TestPropertySource("classpath:application-test.properties")
         @Sql(scripts = {
-                "classpath:/schema.sql",
-                "classpath:/data.sql",
+                "classpath:/test-schema.sql",
+                "classpath:/test-data.sql",
         },
                 config = @SqlConfig(encoding = "utf-8"))
         class testThatDoesNotPolluteTheApplicationContext extends GetMenuItemsTestsSupport {
@@ -74,7 +74,7 @@ class GetMenuItemsByCategoryTests {
                 String.format("%s?%s=%s", getBaseUriForMenuItemByCategoryQuery(), parameter, badInput);
 //          When: aconnection is made
 //                needed map as we hit the error handler which is looking for a map
-                ResponseEntity<Map<String,Object>> response =
+                ResponseEntity<Map<String, Object>> response =
                         getRestTemplate().exchange(uri, HttpMethod.GET, null,
                                 new ParameterizedTypeReference<>() {
                         });

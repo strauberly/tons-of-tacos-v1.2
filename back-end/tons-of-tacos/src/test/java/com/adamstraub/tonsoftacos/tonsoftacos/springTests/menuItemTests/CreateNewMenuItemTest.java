@@ -23,8 +23,8 @@
 //    @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 //    @ActiveProfiles("test")
 //    @Sql(scripts = {
-//            "classpath:scripts/schema.sql",
-//            "classpath:scripts/data.sql"},
+//            "classpath:scripts/test-app-schema.sql",
+//            "classpath:scripts/test-app-data.sql"},
 //            config = @SqlConfig(encoding = "utf-8"))
 //
 //    class testThatDoesNotPolluteTheApplicationContext extends CreateMenuItemTestSupport {

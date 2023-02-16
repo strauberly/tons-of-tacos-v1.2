@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 public interface OrderItemServiceInterface {
-    OrderItem addToCart(@RequestBody OrderItem orderItem) throws JsonProcessingException;
+    OrderItem addToCart(@RequestBody OrderItem orderItem) ;
 
-    List<OrderItem>findByOrderUuid(String orderUuid);
-
-    OrderItem updateCart(@PathVariable Integer orderItemId, @RequestBody Integer newQuantity);
-
-    @Transactional
-    void removeCartItem(@PathVariable Integer orderItemId);
+//    List<OrderItem>findByOrderUuid(String orderUuid);
+//
+//    OrderItem updateCart(@PathVariable Integer orderItemId, @RequestBody Integer newQuantity);
+//
+//    @Transactional
+//    void removeCartItem(@PathVariable Integer orderItemId);
 }
