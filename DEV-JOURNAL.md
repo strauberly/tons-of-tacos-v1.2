@@ -2,6 +2,15 @@
 
 ---
 
+-- 16 Feb 2023 --
+
+- initial logic of testing if all order item fields are valid completed.
+- need to possibly redefine test order item through a builder instead of json string values.
+- right now cant compare as the database is in memory and closes after writing to the db so trying to read if value is valid against the repository is mute.
+- need to refine regular expressions and test again after return from break.
+
+---
+
 -- 15 Feb 2023 --
 
 - completed test for returning menu items by category.

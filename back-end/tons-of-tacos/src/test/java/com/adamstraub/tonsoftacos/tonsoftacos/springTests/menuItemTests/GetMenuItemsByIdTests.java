@@ -27,8 +27,8 @@ class GetMenuItemsByIdTests {
     @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
     @TestPropertySource("classpath:application-test.properties")
     @Sql(scripts = {
-            "classpath:/schema.sql",
-            "classpath:/data.sql",
+            "classpath:/test-schema.sql",
+            "classpath:/test-data.sql",
             },
             config = @SqlConfig(encoding = "utf-8"))
     class testThatDoesNotPolluteTheApplicationContext extends GetMenuItemsTestsSupport {
