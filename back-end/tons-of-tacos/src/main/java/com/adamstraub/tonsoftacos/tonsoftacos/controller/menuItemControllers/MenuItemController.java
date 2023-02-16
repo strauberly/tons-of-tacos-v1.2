@@ -22,6 +22,7 @@ public class MenuItemController implements MenuItemControllerInterface {
 //
     @Override
     public List<MenuItem> getByCategory(String category) {
+        System.out.println("controller");
         return menuItemService.findByCategory(category);
     }
 ////    //implments the methods found in the interface

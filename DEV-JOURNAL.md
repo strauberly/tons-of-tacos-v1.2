@@ -2,16 +2,30 @@
 
 ---
 
+-- 15 Feb 2023 --
+
+- completed test for returning menu items by category.
+- properties files split out between application and test.
+- tests for successful call of menu items by category and unsuccessful call created.
+- documentation updated.
+- began piecing order endpoint back together including testing operation for a successful addition to a cart.
+
+---
+
 -- 14 Feb 2023 --
 
 - Getting menu items by id tests completed and began organizing tests for getting menu items by category.
 - Documentation to follow.
+
+---
 
 -- 13 Feb 2023 --
 
 - Test environment refactored for full function of in memory h2 in order to preserve db image.
 
 - Menu item endpoint restored and tested for calling a menu item by id number successfully. Will test for a 404 and 400 next.
+
+---
 
 -- 10 Feb 2023 --
 

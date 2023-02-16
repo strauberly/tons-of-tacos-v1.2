@@ -47,9 +47,7 @@ public interface MenuItemControllerInterface {
             },
             parameters = {
                     @Parameter(name = "/id", allowEmptyValue = false, required = false,
-                            description = "Corresponds to menu item desired (i.e, api/menu-item/1  <- will return " +
-                                    "menu-item " +
-                                    "limon). Additionally api/menu-item/id?id=1 will return the same value. "),
+                            description = "api/menu-item/id?id={idNumber} returns a menu item by id number."),
             }
     )
 
@@ -94,7 +92,7 @@ public interface MenuItemControllerInterface {
     @GetMapping("/category")
     @ResponseStatus(code = HttpStatus.OK)
     List<MenuItem> getByCategory(
-            @RequestParam(required = false)
+            @RequestParam(required = true)
             String category);
 }
 
