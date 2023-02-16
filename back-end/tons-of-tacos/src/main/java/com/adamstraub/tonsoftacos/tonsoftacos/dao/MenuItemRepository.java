@@ -15,6 +15,9 @@ interface MenuItemRepository extends JpaRepository<MenuItem, Integer>{
         Optional<MenuItem> findById(@RequestParam("item_pk") Integer id);
 
         List<MenuItem> findByCategory(@RequestParam("category")String category);
+
+
+        Long countById(int id);
 }
 
 

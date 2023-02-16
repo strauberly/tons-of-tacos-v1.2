@@ -31,7 +31,7 @@ public class OrderItem {
     private Integer quantity;
 
     @Column(name = "total")
-    private BigDecimal total;
+    private Double total;
 
 ////        @ManyToOne
 ////    MenuItem menuItem;
