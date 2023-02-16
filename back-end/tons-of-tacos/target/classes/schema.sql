@@ -30,15 +30,15 @@ unit_price DECIMAL(19, 2) NOT NUll,
 PRIMARY KEY (item_pk)
 );
 
---CREATE TABLE order_item(
---order_item_pk INT unsigned NOT NULL AUTO_INCREMENT,
---item_fk INT unsigned NOT NULL ,
---order_uuid VARCHAR(255) NOT NULL,
---quantity INT(2) NOT NULL,
---total DECIMAL(19, 2)NOT NULL,
---PRIMARY KEY (order_item_pk),
---FOREIGN KEY (item_fk) REFERENCES menu_item(item_pk) ON DELETE CASCADE
---);
+CREATE TABLE order_item(
+order_item_pk INT unsigned NOT NULL AUTO_INCREMENT,
+item_fk INT unsigned NOT NULL ,
+order_uuid VARCHAR(255) NOT NULL,
+quantity INT(2) NOT NULL,
+total DECIMAL(19, 2)NOT NULL,
+PRIMARY KEY (order_item_pk),
+FOREIGN KEY (item_fk) REFERENCES menu_item(item_pk) ON DELETE CASCADE
+);
 
 --
 --CREATE INDEX ORDER_UUID ON order_item(order_uuid);

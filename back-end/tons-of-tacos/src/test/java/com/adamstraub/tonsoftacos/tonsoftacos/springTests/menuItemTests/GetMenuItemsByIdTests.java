@@ -1,17 +1,16 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.menuItemTests;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.menuitemtestSupport.GetMenuItemsTestsSupport;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 
@@ -26,7 +25,7 @@ class GetMenuItemsByIdTests {
 
     @Nested
     @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-    @PropertySource("classpath:application.properties")
+    @TestPropertySource("classpath:application-test.properties")
     @Sql(scripts = {
             "classpath:/schema.sql",
             "classpath:/data.sql",
@@ -53,7 +52,7 @@ class GetMenuItemsByIdTests {
             String actual = String.valueOf(Objects.requireNonNull(response.getBody()).getId());
             String expected = String.valueOf(sample().getId());
             System.out.println("Actual item id returned is " + actual + ", and expected item id is " + expected + ".");
-            Assertions.assertThat(actual).isEqualTo(expected);
+            assertThat(actual).isEqualTo(expected);
         }
 
 
@@ -64,7 +63,7 @@ class GetMenuItemsByIdTests {
             String badInput = "!#%$^";
             String parameter = "id";
             String uri =
-                    String.format("%s%s?%s=%s", getBaseUriForMenuItemByIdQuery(), parameter, parameter, badInput);
+                    String.format("%s?%s=%s", getBaseUriForMenuItemByIdQuery(), parameter, badInput);
             System.out.println(uri);
 //      When: Connection is made
             ResponseEntity<MenuItem> response =
@@ -82,7 +81,7 @@ class GetMenuItemsByIdTests {
             int itemId = 45;
             String parameter = "id";
             String uri =
-                    String.format("%s%s?%s=%d", getBaseUriForMenuItemByIdQuery(), parameter, parameter, itemId);
+                    String.format("%s?%s=%d", getBaseUriForMenuItemByIdQuery(), parameter, itemId);
             System.out.println(uri);
 //      When: Connection is made
             ResponseEntity<MenuItem> response =

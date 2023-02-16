@@ -26,11 +26,11 @@ public class BaseResponseTest {
 
     }
 
-    //============== order item uris ====================//
-//    protected String getBaseUriForCreateOrderItem(){
-//        return String.format("http://localhost:%d/api/order/add-to-cart", Integer.valueOf(serverPort));
-//
-//    }
+//    ============== order item uris ====================//
+    protected String getBaseUriForCreateOrderItem(){
+        return String.format("http://localhost:%d/api/order/add-to-cart", Integer.valueOf(serverPort));
+
+    }
 
 
 
