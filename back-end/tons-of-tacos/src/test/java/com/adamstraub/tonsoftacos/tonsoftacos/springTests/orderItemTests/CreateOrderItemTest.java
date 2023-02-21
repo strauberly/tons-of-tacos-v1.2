@@ -3,7 +3,6 @@ package com.adamstraub.tonsoftacos.tonsoftacos.springTests.orderItemTests;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.MenuItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.CreateOrderItemTestSupport;
-import org.hibernate.TypeMismatchException;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

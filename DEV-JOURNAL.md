@@ -2,6 +2,12 @@
 
 ---
 
+-- 20 Feb 2023 --
+
+- Working through customer and order endpoint correlation, logic, and encryption.
+
+---
+
 -- 16 Feb 2023 --
 
 - initial logic of testing if all order item fields are valid completed.
