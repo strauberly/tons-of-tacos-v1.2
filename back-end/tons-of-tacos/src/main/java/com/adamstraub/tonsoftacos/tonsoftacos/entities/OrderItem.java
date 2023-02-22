@@ -33,6 +33,17 @@ public class OrderItem {
     @Column(name = "total")
     private Double total;
 
-////        @ManyToOne
+    @Override
+    public String toString() {
+        return "OrderItem{" +
+                "orderItemId=" + orderItemId +
+                ", itemId=" + itemId +
+                ", orderUuid='" + orderUuid + '\'' +
+                ", quantity=" + quantity +
+                ", total=" + total +
+                '}';
+    }
+
+    ////        @ManyToOne
 ////    MenuItem menuItem;
 }

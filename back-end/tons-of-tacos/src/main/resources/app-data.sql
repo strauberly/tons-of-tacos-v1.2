@@ -84,6 +84,13 @@ INSERT INTO menu_item (category, description , item_name, item_size, img_url,
 unit_price)
 VALUES('topping', 'a little extra', 'lime', NULL, 'TBD', 1.50);
 
+-- Sample order items
+INSERT INTO order_item (item_fk, order_uuid, quantity, total)
+VALUES(1, '654654-465465-555', 3, 3.00);
+INSERT INTO order_item (item_fk, order_uuid, quantity, total)
+VALUES(2, '654654-4655-555', 4, 4.00);
+INSERT INTO order_item (item_fk, order_uuid, quantity, total)
+VALUES(3, '654654-4655-555', 4, 1.50);
 
 
 -- ========================

@@ -10,12 +10,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
+import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 
 public interface OrderItemServiceInterface {
-    OrderItem addToCart(@RequestBody OrderItem orderItem) ;
+    OrderItem addToCart(@RequestBody OrderItem orderItem) throws InvalidPropertiesFormatException;
 
-//    List<OrderItem>findByOrderUuid(String orderUuid);
+    List<OrderItem>findByOrderUuid(String orderUuid);
 //
 //    OrderItem updateCart(@PathVariable Integer orderItemId, @RequestBody Integer newQuantity);
 //

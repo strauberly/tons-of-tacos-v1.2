@@ -2,6 +2,13 @@
 
 ---
 
+-- 21 Feb 2023 --
+
+- Revised create Order Item tests to produce desired and satisfactory results for successful and unsuccessful scenarios.
+- Began structuring tests for getting order items through a common uuid.
+
+---
+
 -- 20 Feb 2023 --
 
 - Working through customer and order endpoint correlation, logic, and encryption.
