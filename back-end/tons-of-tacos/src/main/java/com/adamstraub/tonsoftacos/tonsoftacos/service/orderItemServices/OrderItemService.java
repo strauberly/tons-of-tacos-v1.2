@@ -22,7 +22,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.client.HttpClientErrorException;
 
+import javax.validation.ConstraintViolationException;
 import java.math.BigDecimal;
+import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Objects;
@@ -37,34 +39,25 @@ public class OrderItemService implements OrderItemServiceInterface {
 
     @Override
    @Transactional
-    public OrderItem addToCart(@RequestBody OrderItem orderItem) {
-         BigDecimal orderItemTotal = BigDecimal.valueOf(1.00);
-//        possibly rewrite as map and switch
-//        rewrite for appropriate patterns
-        System.out.println(menuItemRepository.count());
-        System.out.println(orderItem.getItemId());
-        System.out.println(orderItem.getItemId().toString().matches(".*\\d.*"));
-        System.out.println(orderItem.getOrderUuid().matches("([0-9\\-]+)"));
+    public OrderItem addToCart(@RequestBody OrderItem orderItem) throws InvalidPropertiesFormatException {
         if(orderItem.getItemId()>menuItemRepository.count()) {
             throw new NoSuchElementException("A menu item with that id does not exist.");
         }if (!orderItem.getItemId().toString().matches(".*\\d.*")) {
             throw new NumberFormatException("You have entered in invalid menu item id.");
         }if(!orderItem.getOrderUuid().matches("([0-9\\-]+)")) {
-            throw new TypeMismatchException("You have entered an invalid cart id.");
+            throw new InvalidPropertiesFormatException("You have entered an invalid cart id.");
         }if(!orderItem.getQuantity().toString().matches(".*\\d.*")) {
             throw new NumberFormatException("You have entered in invalid quantity.");
         }if(!orderItem.getTotal().equals(orderItem.getTotal().doubleValue())){
         throw new NumberFormatException("You have enter an invalid format for total");
         }else
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        System.out.println( objectMapper.writeValueAsString(orderItem));
         return orderItemRepository.save(orderItem);
     }
-//
-//    @Override
-//    public List<OrderItem> findByOrderUuid(String orderUuid) {
-//        return orderItemRepository.orderUuid(orderUuid);
-//    }
+
+    @Override
+    public List<OrderItem> findByOrderUuid(String orderUuid) {
+        return orderItemRepository.orderUuid(orderUuid);
+    }
 //
 //    @Override
 //    @Transactional

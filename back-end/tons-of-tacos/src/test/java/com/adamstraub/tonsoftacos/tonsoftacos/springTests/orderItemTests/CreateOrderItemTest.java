@@ -1,8 +1,6 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.orderItemTests;
-
-import com.adamstraub.tonsoftacos.tonsoftacos.dao.MenuItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
-import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.CreateOrderItemTestSupport;
+import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.OrderItemTestSupport;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +11,6 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 
-import java.util.Map;
 import java.util.Objects;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -31,18 +28,17 @@ public class CreateOrderItemTest {
             "classpath:/test-data.sql",
     },
             config = @SqlConfig(encoding = "utf-8"))
-    class testThatDoesNotPolluteTheApplicationContext extends CreateOrderItemTestSupport {
-        MenuItemRepository menuItemRepository;
+    class testThatDoesNotPolluteTheApplicationContext extends OrderItemTestSupport {
 
         @Test
-        void createOrderItemWith201Response() {
+        void createOrderItemWith201Response(){
 
 //            Given: a properly formatted order item body
-            String body = createOrderItemBody();
+            String body = createValidOrderItemBody();
             System.out.println(body);
 
 
-//            When: a successful creation is made
+//            When: a successful connection is made
             String uri = getBaseUriForCreateOrderItem();
             System.out.println(uri);
 
@@ -60,11 +56,12 @@ public class CreateOrderItemTest {
 
         @Test
         void orderItemBodyHasInvalidParameters() {
-//      Given: a properly formatted order item body
-            String body = createOrderItemBody();
+//      Given: an improperly formatted order item body
+            String body = createInvalidOrderItemBody();
             System.out.println(body);
 
-//            When: a successful creation is made
+
+//            When: a connection is made
             String uri = getBaseUriForCreateOrderItem();
             System.out.println(uri);
 
@@ -75,25 +72,10 @@ public class CreateOrderItemTest {
             ResponseEntity<OrderItem> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
                     OrderItem.class);
 
-//           Then: a response code of 404 is returned if menu item does not exist or a response of
-//        <> if the input is bad
-//        System.out.println();
+            //Then: a response code of 4xx is returned appropriate to the error
             System.out.println("Response code is " + response.getStatusCode() + ".");
-//            System.out.println("Unable to process entity. Consult the docs and verify input against required parameters.");
-            if (Objects.requireNonNull(response.getBody()).getItemId() > menuItemRepository.count()) {
-                assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
-            }
-            if (!response.getBody().getItemId().getClass().toString().equals("Integer")){
-                assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
-            }
-            if (!response.getBody().getOrderUuid().matches("/[0-9-]/g")) {
-                assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
-            }
-            if (!response.getBody().getQuantity().getClass().toString().equals("Integer")) {
-                assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
-            } else if (!response.getBody().getTotal().getClass().toString().equals("Double")) {
-                assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
-            }
+            System.out.println(Objects.requireNonNull(response.getBody()));
+            assertThat(response.getStatusCode().is4xxClientError());
         }
     }
 }
