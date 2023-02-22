@@ -37,11 +37,14 @@ class GetMenuItemsByIdTests {
             System.out.println(getBaseUriForMenuItemByIdQuery());
 //        Given: a valid menu item id
             int itemId = 1;
+
+
+            //      When: Connection is made
             String parameter = "id";
             String uri =
                     String.format("%s?%s=%d", getBaseUriForMenuItemByIdQuery(), parameter, itemId);
             System.out.println(uri);
-//      When: Connection is made
+
             ResponseEntity<MenuItem> response =
                     getRestTemplate().exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                     });

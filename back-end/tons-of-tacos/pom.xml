@@ -40,6 +40,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+		<groupId>io.rest-assured</groupId>
+		<artifactId>spring-mock-mvc</artifactId>
+		<version>3.3.0</version>
+		<scope>test</scope>
+	</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -67,7 +73,6 @@
 			<artifactId>spring-boot-starter-data-jdbc</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
