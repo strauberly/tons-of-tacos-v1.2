@@ -16,7 +16,6 @@ public class MenuItemService implements MenuItemServiceInterface {
     @Transactional(readOnly = true)
     @Override
     public Optional<Optional<MenuItem>> findById(String id) {
-        System.out.println("service");
         Optional<MenuItem> menuItem = menuItemRepository.findById(Integer.parseInt(id));
         if(!id.matches(".*\\d.*")){
             throw new NumberFormatException("You have entered invalid data.");
@@ -30,7 +29,6 @@ public class MenuItemService implements MenuItemServiceInterface {
     @Transactional(readOnly = true)
     @Override
     public List<MenuItem> findByCategory(String category) {
-        System.out.println("service");
             List<MenuItem> menuItems = menuItemRepository.findByCategory(category);
             if (menuItems.isEmpty()){
                 throw new NoSuchElementException("You have chosen a category that does not exist.");

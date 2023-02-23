@@ -15,11 +15,11 @@ import java.util.List;
 
 public interface OrderItemServiceInterface {
     OrderItem addToCart(@RequestBody OrderItem orderItem) throws InvalidPropertiesFormatException;
-
+    @Transactional(readOnly = true)
     List<OrderItem>findByOrderUuid(String orderUuid);
 //
-//    OrderItem updateCart(@PathVariable Integer orderItemId, @RequestBody Integer newQuantity);
+    OrderItem updateCart(@PathVariable Integer orderItemId, @RequestBody Integer newQuantity);
 //
-//    @Transactional
-//    void removeCartItem(@PathVariable Integer orderItemId);
+    @Transactional
+    void removeCartItem(@PathVariable Integer orderItemId);
 }

@@ -57,7 +57,7 @@ public interface MenuItemControllerInterface {
             @RequestParam(required = true)
             String id);
 
-//    Optional<Optional<MenuItem>> getById(String id);
+
 
     @Operation(
             summary = "Return menu items by category.",
