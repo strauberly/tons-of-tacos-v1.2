@@ -22,7 +22,12 @@ public class OrderItemController implements OrderItemControllerInterface {
 //
     @Override
     public OrderItem updateCart(Integer orderItemId, Integer newQuantity) {
-        return orderItemService.updateCart(orderItemId, newQuantity);
+//        if (newQuantity == 0) {
+//            System.out.println("quantity zero item removed");
+//            return orderItemService.removeCartItem(orderItemId);
+//        } else {
+            return orderItemService.updateCart(orderItemId, newQuantity);
+//        }
     }
 //
     @Override

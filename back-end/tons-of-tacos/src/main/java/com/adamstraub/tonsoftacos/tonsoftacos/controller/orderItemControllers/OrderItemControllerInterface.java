@@ -43,7 +43,6 @@ public interface OrderItemControllerInterface {
             }
     )
     @PostMapping("/add-to-cart")
-    @ResponseStatus(code = HttpStatus.CREATED)
     OrderItem addToCart(
             @RequestBody
             OrderItem orderItem) throws InvalidPropertiesFormatException;
