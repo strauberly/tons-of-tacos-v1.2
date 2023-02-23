@@ -11,6 +11,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.context.request.WebRequest;
 
+import javax.persistence.EntityNotFoundException;
 import javax.validation.ConstraintViolationException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -25,6 +26,15 @@ public class GlobalErrorHandler {
     private enum LogStatus{
         STACK_TRACE, MESSAGE_ONLY
     }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    @ResponseStatus(code = HttpStatus.NOT_FOUND)
+    public Map <String, Object> handleEntityNotFoundfException(
+            EntityNotFoundException e, WebRequest webRequest) {
+        return createExceptionMessage(e, HttpStatus.NOT_FOUND, webRequest, LogStatus.MESSAGE_ONLY);
+    }
+
+
     @ExceptionHandler(InvalidPropertiesFormatException.class)
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     public Map <String, Object> handleIllegalArgumentException(
