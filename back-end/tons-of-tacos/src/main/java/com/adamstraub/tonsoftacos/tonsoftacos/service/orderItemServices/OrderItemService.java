@@ -52,24 +52,31 @@ public class OrderItemService implements OrderItemServiceInterface {
     @Transactional
     public OrderItem updateCart(@PathVariable Integer orderItemId, @PathVariable Integer newQuantity) {
         OrderItem orderItem = orderItemRepository.getReferenceById(orderItemId);
+        MenuItem menuItem = menuItemRepository.getReferenceById(orderItem.getItemId());
+      
         if(orderItem.getItemId() == null){
             throw new EntityExistsException("That order item does not exist and cannot be updated.");
-        }else {
-            MenuItem menuItem = menuItemRepository.getReferenceById(orderItem.getItemId());
+        }
+        if(newQuantity == 0){
+            orderItemRepository.save(orderItem);
+            removeCartItem(orderItemId);
+        } else {
             orderItem.setQuantity(newQuantity);
             orderItem.setTotal(orderItem.getQuantity() * menuItem.getUnitPrice());
-            return orderItemRepository.save(orderItem);
+            orderItemRepository.save(orderItem);
         }
+            return orderItem;
     }
 //
     @Override
     @Transactional
-    public void removeCartItem(@PathVariable Integer orderItemId) {
+    public OrderItem removeCartItem(@PathVariable Integer orderItemId) {
         OrderItem orderItem = orderItemRepository.getReferenceById(orderItemId);
         if (orderItem.getItemId() == null) {
             throw new NoSuchElementException("This order item does not exist.");
         } else {
             orderItemRepository.deleteById(Math.toIntExact(orderItem.getOrderItemId()));
         }
+        return orderItem;
     }
 }

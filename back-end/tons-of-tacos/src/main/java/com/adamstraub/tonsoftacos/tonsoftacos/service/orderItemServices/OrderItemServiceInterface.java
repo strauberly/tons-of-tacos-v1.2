@@ -3,8 +3,6 @@ package com.adamstraub.tonsoftacos.tonsoftacos.service.orderItemServices;//packa
 //import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 //import com.fasterxml.jackson.core.JsonProcessingException;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,5 +19,5 @@ public interface OrderItemServiceInterface {
     OrderItem updateCart(@PathVariable Integer orderItemId, @RequestBody Integer newQuantity);
 //
     @Transactional
-    void removeCartItem(@PathVariable Integer orderItemId);
+    OrderItem removeCartItem(@PathVariable Integer orderItemId);
 }
