@@ -39,8 +39,20 @@ public class MenuItem {
     @Column(name = "unit_price")
     private Double unitPrice;
 
+    @Override
+    public String toString() {
+        return "MenuItem{" +
+                "id=" + id +
+                ", category='" + category + '\'' +
+                ", description='" + description + '\'' +
+                ", itemName='" + itemName + '\'' +
+                ", itemSize='" + itemSize + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", unitPrice=" + unitPrice +
+                '}';
+    }
 
-    //    @ManyToOne
+//    @ManyToOne
 //    OrderItem orderItems;
 
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "itemId")

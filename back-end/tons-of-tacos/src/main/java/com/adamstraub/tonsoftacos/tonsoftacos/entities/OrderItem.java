@@ -1,11 +1,8 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.entities;
 
 import javax.persistence.*;
-import javax.persistence.criteria.Order;
 
 import lombok.*;
-
-import java.math.BigDecimal;
 
 @Entity
 @Builder

@@ -15,6 +15,5 @@ public interface OrderItemRepository extends JpaRepository<OrderItem, Integer> {
 
     Integer deleteByOrderItemId(OrderItem referenceById);
 
-//        @Query(value = "SELECT MAX(item_pk) FROM menu_item")
-//    int getReferenceByItemIdMax(OrderItem referenceByItemId);
+
 }

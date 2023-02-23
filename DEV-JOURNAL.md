@@ -2,6 +2,16 @@
 
 ---
 
+-- 22 Feb 2023 --
+
+- Get order items by uuid completed including handling bad input.
+- Restored update quantity function to service and controller.
+- Restored delete order item function to service and controller.
+- Created successful test order item quantity is updated as well as order item total.
+- Created successful test to return 404 if order item does not exist.
+
+---
+
 -- 21 Feb 2023 --
 
 - Revised create Order Item tests to produce desired and satisfactory results for successful and unsuccessful scenarios.

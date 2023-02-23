@@ -16,17 +16,17 @@ public class OrderItemController implements OrderItemControllerInterface {
         return orderItemService.addToCart(orderItem);
     }
     @Override
-    public List<OrderItem> findByOrderUuid(String  orderUuid) {
+    public List<OrderItem> findByOrderUuid(String orderUuid) {
         return orderItemService.findByOrderUuid(orderUuid);
     }
 //
-//    @Override
-//    public OrderItem updateCart(Integer orderItemId, Integer newQuantity) {
-//        return orderItemService.updateCart(orderItemId, newQuantity);
-//    }
+    @Override
+    public OrderItem updateCart(Integer orderItemId, Integer newQuantity) {
+        return orderItemService.updateCart(orderItemId, newQuantity);
+    }
 //
-//    @Override
-//    public void removeCartItem(Integer orderItemId) {
-//    orderItemService.removeCartItem(orderItemId);
-//    }
+    @Override
+    public void removeCartItem(Integer orderItemId) {
+    orderItemService.removeCartItem(orderItemId);
+    }
 }
