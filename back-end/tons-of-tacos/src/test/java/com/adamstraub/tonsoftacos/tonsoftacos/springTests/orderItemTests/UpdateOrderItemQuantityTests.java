@@ -1,6 +1,4 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.orderItemTests;
-
-import com.adamstraub.tonsoftacos.tonsoftacos.dao.MenuItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.OrderItemTestSupport;
@@ -8,7 +6,6 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -26,8 +23,7 @@ class UpdateOrderItemQuantityTests {
      @Autowired
     JdbcTemplate jdbcTemplate;
 
-     @Autowired
-     MenuItemRepository menuItemRepository;
+
 
     @Nested
     @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)

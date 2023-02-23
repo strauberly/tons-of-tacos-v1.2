@@ -1,15 +1,9 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.config;
-
-import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
-//import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
-import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
-import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
-
 import javax.persistence.EntityManager;
 import javax.persistence.metamodel.EntityType;
 import java.util.ArrayList;
@@ -31,17 +25,17 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
 //        HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.PATCH, HttpMethod.POST, HttpMethod.DELETE};
 //        HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.PATCH, HttpMethod.DELETE};
-        HttpMethod[] theUnsupportedActions = {HttpMethod.DELETE};
+//        HttpMethod[] theUnsupportedActions = {HttpMethod.DELETE};
 
-        config.getExposureConfiguration()
-                .forDomainType(MenuItem.class)
-                .withItemExposure((metadata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
-                .withCollectionExposure((metadata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
-
-        config.getExposureConfiguration()
-                .forDomainType(OrderItem.class)
-                .withItemExposure((metadata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
-                .withCollectionExposure((metadata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
+//        config.getExposureConfiguration()
+//                .forDomainType(MenuItem.class)
+//                .withItemExposure((metadata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
+//                .withCollectionExposure((metadata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
+//
+//        config.getExposureConfiguration()
+//                .forDomainType(OrderItem.class)
+//                .withItemExposure((metadata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
+//                .withCollectionExposure((metadata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
 
 //        internal helper
         exposeIds(config);

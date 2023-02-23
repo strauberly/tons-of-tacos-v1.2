@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.persistence.EntityExistsException;
-import java.math.BigDecimal;
 import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -67,8 +66,10 @@ public class OrderItemService implements OrderItemServiceInterface {
     @Transactional
     public void removeCartItem(@PathVariable Integer orderItemId) {
         OrderItem orderItem = orderItemRepository.getReferenceById(orderItemId);
-        orderItemRepository.deleteById(Math.toIntExact(orderItem.getOrderItemId()));
+        if (orderItem.getItemId() == null) {
+            throw new NoSuchElementException("This order item does not exist.");
+        } else {
+            orderItemRepository.deleteById(Math.toIntExact(orderItem.getOrderItemId()));
+        }
     }
-//
-
 }
