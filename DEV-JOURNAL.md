@@ -4,10 +4,11 @@
 
 -- 23 Feb 2023 --
 
-- successful test that order item is deleted with a 200 status code
+- Successful test that order item is deleted with a 200 status code
   and cannot be deleted again because it can not be found because it has been deleted.
-- successful test for order item not deleted if order item id invalid.
-- implemented deleting an order item if if quantity is zero and tests verify desired functionality.
+- Successful test for order item not deleted if order item id invalid.
+- Implemented deleting an order item if if quantity is zero and tests verify desired functionality.
+- Re-instantiated orders and customer entities.
 
 ---
 
