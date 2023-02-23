@@ -41,6 +41,10 @@ public class BaseResponseTest {
             return String.format("http://localhost:%d/api/order/update-cart", Integer.valueOf(serverPort));
     }
 
+    protected  String getBaseUriForRemoveOrderItem(){
+        return String.format("http://localhost:%d/api/order/remove-cart-item", Integer.valueOf(serverPort));
+    }
+
 
 
 }
