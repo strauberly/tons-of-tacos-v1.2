@@ -37,7 +37,7 @@ public class OrderItemService implements OrderItemServiceInterface {
         }if(!orderItem.getTotal().equals(orderItem.getTotal().doubleValue())){
             throw new NumberFormatException("You have enter an invalid format for total");
         }else
-            System.out.println(orderItem);
+//            System.out.println(orderItem);
         return orderItemRepository.save(orderItem);
     }
 
@@ -82,7 +82,7 @@ public class OrderItemService implements OrderItemServiceInterface {
         if (orderItem.getItemId() == null) {
             throw new NoSuchElementException("This order id does not exist.");
         } else {
-            orderItemRepository.deleteById(Math.toIntExact(orderItem.getOrderItemId()));
+            orderItemRepository.deleteByOrderItemId(Math.toIntExact(orderItem.getOrderItemId()));
         }
         return orderItem;
     }
