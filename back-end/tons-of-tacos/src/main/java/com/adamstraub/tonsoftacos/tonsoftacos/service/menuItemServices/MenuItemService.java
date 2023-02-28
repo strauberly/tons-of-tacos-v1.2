@@ -19,7 +19,7 @@ public class MenuItemService implements MenuItemServiceInterface {
         if(!id.matches(".*\\d.*")){
             throw new NumberFormatException("You have entered invalid data.");
         } else if (menuItem.isEmpty()) {
-           throw new NoSuchElementException("You have chosen a menu item that does not exist.");
+           throw new NoSuchElementException("You have chosen a menu id that does not exist.");
        }else
        return Optional.of(menuItem);
     }

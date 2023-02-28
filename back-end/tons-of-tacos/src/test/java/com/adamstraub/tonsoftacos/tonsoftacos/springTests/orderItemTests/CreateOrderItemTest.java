@@ -34,7 +34,7 @@ public class CreateOrderItemTest {
         @Test
         void createOrderItemWith201Response(){
 
-//            Given: a properly formatted order item body
+//            Given: a properly formatted order id body
             String body = createValidOrderItemBody();
             System.out.println(body);
 
@@ -50,15 +50,15 @@ public class CreateOrderItemTest {
             ResponseEntity<OrderItemDto> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
                     OrderItemDto.class);
             System.out.println(response.getBody());
-//           Then: a response code of 201 is returned and the order item is added to db
+//           Then: a response code of 201 is returned and the order id is added to db
             System.out.println("Response code is " + response.getStatusCode() + ".");
-            System.out.println("Added an item to the cart with an id of  : " + Objects.requireNonNull(response.getBody()).getOrderUuid());
+            System.out.println("Added an id to the cart with an id of  : " + Objects.requireNonNull(response.getBody()).getOrderUuid());
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
         }
 
         @Test
         void orderItemBodyHasInvalidParameters() {
-//      Given: an improperly formatted order item body
+//      Given: an improperly formatted order id body
             String body = createInvalidOrderItemBody();
             System.out.println(body);
 

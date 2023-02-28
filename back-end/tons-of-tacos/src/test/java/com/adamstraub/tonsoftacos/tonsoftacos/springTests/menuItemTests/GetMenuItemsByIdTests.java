@@ -35,7 +35,7 @@ class GetMenuItemsByIdTests {
         @Test
          void validMenuItemIsReturnedByIdWith200() {
             System.out.println(getBaseUriForMenuItemByIdQuery());
-//        Given: a valid menu item id
+//        Given: a valid menu id id
             int itemId = 1;
 
 
@@ -54,7 +54,7 @@ class GetMenuItemsByIdTests {
             //            And: it matches the expected outcome
             String actual = String.valueOf(Objects.requireNonNull(response.getBody()).getId());
             String expected = String.valueOf(sample().getId());
-            System.out.println("Actual item id returned is " + actual + ", and expected item id is " + expected + ".");
+            System.out.println("Actual id id returned is " + actual + ", and expected id id is " + expected + ".");
             assertThat(actual).isEqualTo(expected);
         }
 
@@ -62,7 +62,7 @@ class GetMenuItemsByIdTests {
         @Test
         void badRequestReturns400() {
             System.out.println(getBaseUriForMenuItemByIdQuery());
-//        Given: an invalid menu item id
+//        Given: an invalid menu id id
             String badInput = "!#%$^";
             String parameter = "id";
             String uri =
@@ -80,7 +80,7 @@ class GetMenuItemsByIdTests {
         @Test
         void nonExistentMenuItemReturns404() {
             System.out.println(getBaseUriForMenuItemByIdQuery());
-//        Given: an invalid menu item id
+//        Given: an invalid menu id id
             int itemId = 45;
             String parameter = "id";
             String uri =

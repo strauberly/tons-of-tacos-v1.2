@@ -32,7 +32,7 @@ class DeleteOrderItemTests {
     class testThatDoesNotPolluteTheApplicationContext extends OrderItemTestSupport {
     @Test
         void deleteOrderItemById(){
-//        Given: a valid order item id
+//        Given: a valid order id id
         int orderItemId = 2;
 //        When: a successful connection is made
         String uri =
@@ -45,10 +45,10 @@ class DeleteOrderItemTests {
                         null,
                         new ParameterizedTypeReference<>() {});
 //        Then: a 200 status is complete
-        System.out.println("Response code is " + response.getStatusCode() + ". Order item deleted.");
+        System.out.println("Response code is " + response.getStatusCode() + ". Order id deleted.");
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
-//        And: deletion verified by trying to delete again but receiving 404 for order item not found.
+//        And: deletion verified by trying to delete again but receiving 404 for order id not found.
         ResponseEntity<OrderItem> response2 =
                 getRestTemplate().exchange(uri,
                         HttpMethod.DELETE,
@@ -62,7 +62,7 @@ class DeleteOrderItemTests {
     }
         @Test
         void deleteOrderItemByInvalidId404(){
-//        Given: a valid order item id
+//        Given: a valid order id id
             int orderItemId = 47;
 //        When: a successful connection is made
             String uri =
@@ -75,7 +75,7 @@ class DeleteOrderItemTests {
                             null,
                             new ParameterizedTypeReference<>() {});
 //        Then: a 4xx status is returned
-            System.out.println("Response code is " + response.getStatusCode() + ". Order item not deleted.");
+            System.out.println("Response code is " + response.getStatusCode() + ". Order id not deleted.");
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
         }
     }

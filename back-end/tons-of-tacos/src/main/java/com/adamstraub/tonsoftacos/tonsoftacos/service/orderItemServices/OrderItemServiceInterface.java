@@ -16,8 +16,6 @@ import java.util.List;
 public interface OrderItemServiceInterface {
     @Transactional
     OrderItem addToCart(OrderItem orderItem) throws InvalidPropertiesFormatException;
-//    @Transactional
-//    OrderItem addToCart(OrderItem orderItem) throws InvalidPropertiesFormatException;
 
     @Transactional(readOnly = true)
     List<OrderItem>findByOrderUuid(String orderUuid);

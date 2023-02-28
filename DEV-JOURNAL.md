@@ -2,6 +2,12 @@
 
 ---
 
+-- 28 Feb 2023 --
+
+- initial order item response formatted.
+
+---
+
 -- 27 Feb 2023 --
 
 - Now using HSQLDB as in memory for testing, way to many issues with H2 being restrictive and not truly modeling database.
