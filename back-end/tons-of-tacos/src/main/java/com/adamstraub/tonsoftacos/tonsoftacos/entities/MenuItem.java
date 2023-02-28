@@ -21,7 +21,6 @@ public class MenuItem {
     @Column(name = "item_pk")
     private Integer id;
 
-
     @Column (name = "category")
     private String category;
 
@@ -51,10 +50,4 @@ public class MenuItem {
                 ", unitPrice=" + unitPrice +
                 '}';
     }
-
-//    @ManyToOne
-//    OrderItem orderItems;
-
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "itemId")
-//    private Set<OrderItem> orderItems = new HashSet<>();
 }

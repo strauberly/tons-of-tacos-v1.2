@@ -26,13 +26,12 @@ PRIMARY KEY (item_pk)
 CREATE TABLE order_item(
 order_item_pk INT unsigned NOT NULL AUTO_INCREMENT,
 item_fk INT unsigned NOT NULL ,
-order_uuid VARCHAR(255) NOT NULL,
+order_uuid VARCHAR(255)NOT NULL,
 quantity INT(2) NOT NULL,
 total DECIMAL(19, 2)NOT NULL,
 PRIMARY KEY (order_item_pk),
 FOREIGN KEY (item_fk) REFERENCES menu_item(item_pk) ON DELETE CASCADE
 );
-
 
 CREATE INDEX ORDER_UUID ON order_item(order_uuid);
 
@@ -41,12 +40,21 @@ order_pk INT unsigned NOT NULL AUTO_INCREMENT,
 customer_fk INT unsigned NOT NULL,
 created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 order_total DECIMAL(19, 2) NOT NULL,
-order_uuid_fk VARCHAR(255) NOT NULL,
+order_uuid_fk VARCHAR(255)NOT NULL,
 PRIMARY KEY (order_pk),
 FOREIGN KEY (customer_fk) REFERENCES customer(customer_pk) ON DELETE CASCADE,
 CONSTRAINT fk_orderItem_orders
 FOREIGN KEY (order_uuid_fk) REFERENCES order_item(order_uuid) ON DELETE CASCADE
 );
+
+--select distinct constraint_name from information_schema.constraints
+--where table_name='PUBLIC_PARTNER' and column_list='INFO'
+--
+--ALTER TABLE PUBLIC_PARTNER DROP CONSTRAINT <xxx>
+
+
+
+
 
 
 

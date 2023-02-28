@@ -105,7 +105,7 @@ class UpdateOrderItemQuantityTests {
         }
         @Test
         void orderItemDeletedForZeroQuantity200(){
-//            Given: an invalid order item id
+//            Given: a valid order item id and quantity of zero
             int orderItemId = 2;
             int newQuantity = 0;
 
@@ -113,20 +113,18 @@ class UpdateOrderItemQuantityTests {
             String uri =
                     String.format("%s/%d/%d", getBaseUriForUpdateOrderItem(), orderItemId, newQuantity);
             System.out.println(uri);
-
             ResponseEntity<OrderItem> response =
                     getRestTemplate().exchange(uri, HttpMethod.PATCH, null,
                             new ParameterizedTypeReference<>() {});
-
-//            Then: a response status of 200 is returned
+//            Then: a response status of 200 is returned for deleted
             System.out.println("Response code is " + response.getStatusCode() + ".");
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 //            And: a repeat call produces 404 because item is deleted for having quantity zero and can not be updated
             ResponseEntity<OrderItem> response2 =
                     getRestTemplate().exchange(uri, HttpMethod.PATCH, null,
                             new ParameterizedTypeReference<>() {});
-            System.out.println("Response code is " + response.getStatusCode() + ".");
-            assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+            System.out.println("Response code is " + response2.getStatusCode() + ".");
+            assertThat(response2.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
         }
     }
 }

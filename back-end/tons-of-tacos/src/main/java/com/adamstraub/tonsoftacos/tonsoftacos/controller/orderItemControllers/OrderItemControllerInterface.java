@@ -1,4 +1,5 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.controller.orderItemControllers;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.OrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
@@ -8,6 +9,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.servers.Server;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import java.util.InvalidPropertiesFormatException;
@@ -20,6 +22,7 @@ import java.util.List;
 @OpenAPIDefinition(info = @Info(title = "services pertaining to cart functions"),
         servers = {@Server(url="http://localhost:8080", description = "Local server")})
 public interface OrderItemControllerInterface {
+
 
     @Operation(
             summary = "Item added to cart is transferred to database.",
@@ -42,10 +45,17 @@ public interface OrderItemControllerInterface {
                             content = @Content(mediaType = "application/json")),
             }
     )
+//    @ResponseStatus(code = HttpStatus.CREATED)
+//    @PostMapping("/add-to-cart")
+//    OrderItem addToCart(
+//            @RequestBody
+//            OrderItem orderItem) throws InvalidPropertiesFormatException;
+    @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping("/add-to-cart")
-    OrderItem addToCart(
+    ResponseEntity<OrderItemDto> addToCart(
             @RequestBody
-            OrderItem orderItem) throws InvalidPropertiesFormatException;
+            OrderItemDto orderItemDto) throws InvalidPropertiesFormatException;
+
 
     //
     @Operation(
