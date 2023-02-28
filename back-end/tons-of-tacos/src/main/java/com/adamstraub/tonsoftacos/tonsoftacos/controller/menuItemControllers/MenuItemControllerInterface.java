@@ -23,12 +23,12 @@ import java.util.Optional;
         servers = {@Server(url="http://localhost:8080/", description = "Local server")})
 public interface MenuItemControllerInterface {
     @Operation(
-            summary = "Return menu item by id.",
+            summary = "Return menu id by id.",
             description = "Return specific menu items by id for use in building a cart and and creating an order",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "A menu-item is returned.",
+                            description = "A menu-id is returned.",
                             content = @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = MenuItem.class))),
                     @ApiResponse(
@@ -37,7 +37,7 @@ public interface MenuItemControllerInterface {
                             content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "404",
-                            description = "No menu-item found according to input.",
+                            description = "No menu-id found according to input.",
                             content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "500",
@@ -47,7 +47,7 @@ public interface MenuItemControllerInterface {
             },
             parameters = {
                     @Parameter(name = "/id", allowEmptyValue = false, required = false,
-                            description = "api/menu-item/id?id={idNumber} returns a menu item by id number."),
+                            description = "api/menu-id/id?id={idNumber} returns a menu id by id number."),
             }
     )
 
@@ -74,7 +74,7 @@ public interface MenuItemControllerInterface {
                             content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "404",
-                            description = "No menu-item found according to input.",
+                            description = "No menu-id found according to input.",
                             content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "500",
@@ -85,7 +85,7 @@ public interface MenuItemControllerInterface {
             parameters = {
                     @Parameter(name = "category", allowEmptyValue = false, required = false,
                             description = "Calling menu items by category can be obtained through " +
-                                    "api/menu-item/category?category= <your desired item category>."),
+                                    "api/menu-id/category?category= <your desired id category>."),
             }
     )
 

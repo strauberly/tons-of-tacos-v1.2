@@ -38,7 +38,7 @@ class UpdateOrderItemQuantityTests {
 
         @Test
         void updateOrderItemQuantityById200(){
-//            Given: a valid order item id
+//            Given: a valid order id id
             int orderItemId = 2;
             int newQuantity = 4;
 
@@ -53,7 +53,7 @@ class UpdateOrderItemQuantityTests {
                     getRestTemplate().exchange(uri, HttpMethod.PATCH, null,
                             new ParameterizedTypeReference<>() {});
 
-//            menu item call to provide data for comparison
+//            menu id call to provide data for comparison
             String parameter = "id";
             String menuItemUri =
                     String.format("%s?%s=%d",
@@ -73,8 +73,8 @@ class UpdateOrderItemQuantityTests {
             System.out.println("Response code is " + updatedOrderItemResponse.getStatusCode() + ".");
             assertThat(updatedOrderItemResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
 
-//            And: order item total is updated appropriately for the new quantity * the item unit price
-            System.out.println("menu item base price: " +
+//            And: order id total is updated appropriately for the new quantity * the id unit price
+            System.out.println("menu id base price: " +
                     Objects.requireNonNull(menuItemResponse.getBody()).getUnitPrice() + " *" + " new " +
                     "quantity: " + newQuantity + " = " + updatedOrderItemResponse.getBody().getTotal());
             System.out.println(menuItemResponse.getBody());
@@ -84,7 +84,7 @@ class UpdateOrderItemQuantityTests {
         }
         @Test
         void failedUpdateOrderItemQuantityById404(){
-//            Given: an invalid order item id
+//            Given: an invalid order id id
             int orderItemId = 62;
             int newQuantity = 4;
 
@@ -105,7 +105,7 @@ class UpdateOrderItemQuantityTests {
         }
         @Test
         void orderItemDeletedForZeroQuantity200(){
-//            Given: a valid order item id and quantity of zero
+//            Given: a valid order id id and quantity of zero
             int orderItemId = 2;
             int newQuantity = 0;
 
@@ -119,7 +119,7 @@ class UpdateOrderItemQuantityTests {
 //            Then: a response status of 200 is returned for deleted
             System.out.println("Response code is " + response.getStatusCode() + ".");
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-//            And: a repeat call produces 404 because item is deleted for having quantity zero and can not be updated
+//            And: a repeat call produces 404 because id is deleted for having quantity zero and can not be updated
             ResponseEntity<OrderItem> response2 =
                     getRestTemplate().exchange(uri, HttpMethod.PATCH, null,
                             new ParameterizedTypeReference<>() {});

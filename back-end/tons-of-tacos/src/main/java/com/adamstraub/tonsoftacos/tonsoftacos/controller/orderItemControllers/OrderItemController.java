@@ -17,27 +17,59 @@ public class OrderItemController implements OrderItemControllerInterface {
     private ModelMapper modelMapper;
 @Autowired
     private OrderItemService orderItemService;
+
     @Override
-    public ResponseEntity<OrderItemDto> addToCart(@RequestBody OrderItemDto orderItemDto) throws InvalidPropertiesFormatException {
+    public OrderItem addToCart(@RequestBody OrderItemDto orderItemDto) throws InvalidPropertiesFormatException {
+//        request in as dto then convert to orderItem then send to service
+
+
         System.out.println(orderItemDto);
         System.out.println("controller");
 
         OrderItem request = modelMapper.map(orderItemDto, OrderItem.class);
+        request.setOrderItemId(0);
         System.out.println(request);
 
-        OrderItem orderItem = orderItemService.addToCart(request);
-        System.out.println(orderItem);
+//        OrderItem orderItem = orderItemService.addToCart(request);
+////        System.out.println(orderItem);
 
-        OrderItemDto response = modelMapper.map(orderItem, OrderItemDto.class);
-        System.out.println(response);
-        ResponseEntity<OrderItemDto> newResponse = new ResponseEntity<OrderItemDto>(response, HttpStatus.CREATED);
-        System.out.println(newResponse);
-        return newResponse;
-//        ResponseEntity<OrderItemDto> newResponse = ResponseEntity<OrderItemDto>(response, HttpStatus.CREATED);
 
-//        return new ResponseEntity<OrderItemDto>(response, HttpStatus.CREATED);
-//        return orderItemService.addToCart(orderItemDto);
+//        OrderItemDto response = modelMapper.map(orderItem, OrderItemDto.class);
+//
+//        System.out.println("response is" + response);
+//
+//        ResponseEntity<OrderItemDto> newResponse = new ResponseEntity<>(response, HttpStatus.CREATED);
+//        System.out.println(newResponse);
+        return orderItemService.addToCart(request);
     }
+
+
+
+
+//    @Override
+//    public ResponseEntity<OrderItemDto> addToCart(@RequestBody OrderItemDto orderItemDto) throws InvalidPropertiesFormatException {
+//        System.out.println(orderItemDto);
+//        System.out.println("controller");
+//
+//        OrderItem request = modelMapper.map(orderItemDto, OrderItem.class);
+//        request.setOrderItemId(0);
+////        System.out.println(request);
+//
+//        OrderItem orderItem = orderItemService.addToCart(request);
+////        System.out.println(orderItem);
+//
+//
+//        OrderItemDto response = modelMapper.map(orderItem, OrderItemDto.class);
+//
+//        System.out.println("response is" + response);
+//
+//        ResponseEntity<OrderItemDto> newResponse = new ResponseEntity<>(response, HttpStatus.CREATED);
+//        System.out.println(newResponse);
+//        return newResponse;
+//    }
+//
+
+
 
 
 //
@@ -52,7 +84,7 @@ public class OrderItemController implements OrderItemControllerInterface {
     public OrderItem updateCart(Integer orderItemId, Integer newQuantity) {
         System.out.println("controller");
         if (newQuantity == 0) {
-            System.out.println("quantity zero item removed");
+            System.out.println("quantity zero id removed");
             return orderItemService.removeCartItem(orderItemId);
         } else {
             return orderItemService.updateCart(orderItemId, newQuantity);

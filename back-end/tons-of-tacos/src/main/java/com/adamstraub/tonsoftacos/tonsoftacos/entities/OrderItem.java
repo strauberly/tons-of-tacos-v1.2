@@ -27,11 +27,12 @@ public class OrderItem implements Serializable {
 
     @ManyToOne()
     @JoinColumn(name = "item_fk")
-    @JsonIgnore
+//    @JsonIgnore
     private MenuItem itemId;
 
 
     @Column(name = "order_uuid")
+    @JsonIgnore
     private String orderUuid;
 
     @Column(name = "quantity")
@@ -44,7 +45,7 @@ public class OrderItem implements Serializable {
     public String toString() {
         return "OrderItem{" +
                 "orderItemId=" + orderItemId +
-                ", itemId=" + itemId +
+                ", id=" + itemId +
                 ", orderUuid='" + orderUuid + '\'' +
                 ", quantity=" + quantity +
                 ", total=" + total +

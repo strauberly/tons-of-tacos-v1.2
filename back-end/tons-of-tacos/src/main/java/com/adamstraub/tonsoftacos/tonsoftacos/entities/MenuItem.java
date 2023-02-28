@@ -2,10 +2,8 @@ package com.adamstraub.tonsoftacos.tonsoftacos.entities;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
-
-import java.util.HashSet;
-import java.util.Set;
 
 
 @Entity
@@ -19,7 +17,9 @@ public class MenuItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "item_pk")
+    @JsonIgnore
     private Integer id;
+
 
     @Column (name = "category")
     private String category;
@@ -32,7 +32,9 @@ public class MenuItem {
 
     @Column (name = "item_size")
     private String itemSize;
+
     @Column(name = "img_url")
+    @JsonIgnore
     private String imgUrl;
 
     @Column(name = "unit_price")
