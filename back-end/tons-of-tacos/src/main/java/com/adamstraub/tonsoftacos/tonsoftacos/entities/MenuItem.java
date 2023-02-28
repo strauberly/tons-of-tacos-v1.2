@@ -3,9 +3,10 @@ package com.adamstraub.tonsoftacos.tonsoftacos.entities;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
-
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Builder
 @Table(name = "menu_item")

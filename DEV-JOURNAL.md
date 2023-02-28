@@ -5,6 +5,9 @@
 -- 28 Feb 2023 --
 
 - initial order item response formatted.
+- test with dto successful and good data for cart successful.
+- test with dto and bad data for add to cart successful.
+- total is now auto generated when an order item is created based on order items base price and the quantity selected.
 
 ---
 

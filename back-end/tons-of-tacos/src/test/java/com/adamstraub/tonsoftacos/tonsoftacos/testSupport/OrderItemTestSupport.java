@@ -2,12 +2,13 @@ package com.adamstraub.tonsoftacos.tonsoftacos.testSupport;
 
 public class OrderItemTestSupport extends BaseResponseTest {
     protected String createValidOrderItemBody(){
-        return "{\n"
-                + " \"id\" : 3,\n"
-                + " \"orderUuid\" : \"45644-65325-46654\",\n"
-                + " \"quantity\" : 2,\n"
-                + " \"total\" : 5.50\n"
-                + "}";
+        return """
+                {
+                 "itemId" : 3,
+                 "orderUuid" : "45644-65325-46654",
+                 "quantity" : 2,
+                 "total" : 5.50
+                }""";
     }
 
     protected String createInvalidOrderItemBody() {
