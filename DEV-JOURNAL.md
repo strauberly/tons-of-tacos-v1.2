@@ -2,6 +2,16 @@
 
 ---
 
+-- 27 Feb 2023 --
+
+- Now using HSQLDB as in memory for testing, way to many issues with H2 being restrictive and not truly modeling database.
+- All tests successfully functioned from returned non linked entities.
+- Established succesful relationship between order items and menu items with jpa.
+  Still lots of work to be done formatting the data.
+- Began Implementaion of dto for order items. New tests to be written as progress made.
+
+---
+
 -- 23 Feb 2023 --
 
 - Successful test that order item is deleted with a 200 status code

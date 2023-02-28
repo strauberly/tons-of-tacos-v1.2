@@ -1,4 +1,5 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.orderItemTests;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.OrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.OrderItemTestSupport;
 import org.junit.jupiter.api.Nested;
@@ -46,8 +47,9 @@ public class CreateOrderItemTest {
             headers.setContentType(MediaType.APPLICATION_JSON);
 
             HttpEntity<String> bodyEntity = new HttpEntity<>(body, headers);
-            ResponseEntity<OrderItem> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
-                    OrderItem.class);
+            ResponseEntity<OrderItemDto> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
+                    OrderItemDto.class);
+            System.out.println(response.getBody());
 //           Then: a response code of 201 is returned and the order item is added to db
             System.out.println("Response code is " + response.getStatusCode() + ".");
             System.out.println("Added an item to the cart with an id of  : " + Objects.requireNonNull(response.getBody()).getOrderUuid());
@@ -71,6 +73,7 @@ public class CreateOrderItemTest {
             HttpEntity<String> bodyEntity = new HttpEntity<>(body, headers);
             ResponseEntity<OrderItem> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
                     OrderItem.class);
+
 
             //Then: a response code of 4xx is returned appropriate to the error
             System.out.println("Response code is " + response.getStatusCode() + ".");

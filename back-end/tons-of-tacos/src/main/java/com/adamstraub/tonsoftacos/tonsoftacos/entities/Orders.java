@@ -34,8 +34,8 @@ public class Orders {
     @Column (name = "order_uuid")
     private String orderUuid;
 //order id is a reference to the reference in the other class that connects to desired column
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "orderId")
-    private Set<OrderItem> orderItems = new HashSet<>();
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "orderId")
+//    private Set<OrderItem> orderItems = new HashSet<>();
 
 //    @ManyToOne
 //    private Customer customer_fk;

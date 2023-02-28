@@ -2,8 +2,12 @@ package com.adamstraub.tonsoftacos.tonsoftacos.entities;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
+
+import java.io.Serializable;
+
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Builder
@@ -12,15 +16,20 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderItem {
+public class OrderItem implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_item_pk")
+    @JsonIgnore
     private Integer orderItemId;
 
-    @Column(name = "item_fk")
-    private Integer itemId;
+
+    @ManyToOne()
+    @JoinColumn(name = "item_fk")
+    @JsonIgnore
+    private MenuItem itemId;
+
 
     @Column(name = "order_uuid")
     private String orderUuid;
@@ -41,7 +50,4 @@ public class OrderItem {
                 ", total=" + total +
                 '}';
     }
-
-    ////        @ManyToOne
-////    MenuItem menuItem;
 }
