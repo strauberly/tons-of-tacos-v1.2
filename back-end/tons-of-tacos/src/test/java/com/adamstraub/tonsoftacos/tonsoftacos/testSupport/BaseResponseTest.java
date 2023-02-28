@@ -16,7 +16,7 @@ public class BaseResponseTest {
     @Getter
     private TestRestTemplate restTemplate;
 
-//============== menu item uris ====================//
+//============== menu id uris ====================//
         protected String getBaseUriForMenuItemByIdQuery(){
             return String.format("http://localhost:%d/api/menu/id", Integer.valueOf(serverPort));
 
@@ -26,7 +26,7 @@ public class BaseResponseTest {
 
     }
 
-//    ============== order item uris ====================//
+//    ============== order id uris ====================//
     protected String getBaseUriForCreateOrderItem(){
         return String.format("http://localhost:%d/api/order/add-to-cart", Integer.valueOf(serverPort));
 

@@ -2,7 +2,6 @@ package com.adamstraub.tonsoftacos.tonsoftacos.service.orderItemServices;
 
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.MenuItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrderItemRepository;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.OrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +27,9 @@ public class OrderItemService implements OrderItemServiceInterface {
         System.out.println("service");
         System.out.println(orderItem);
         if(orderItem.getItemId().getId() > menuItemRepository.count()) {
-            throw new NoSuchElementException("A menu item with that id does not exist.");
+            throw new NoSuchElementException("A menu id with that id does not exist.");
         }if (!orderItem.getItemId().toString().matches(".*\\d.*")) {
-            throw new NumberFormatException("You have entered in invalid menu item id.");
+            throw new NumberFormatException("You have entered in invalid menu id id.");
         }if(!orderItem.getOrderUuid().matches("([0-9\\-]+)")) {
             throw new InvalidPropertiesFormatException("You have entered an invalid cart id.");
         }if(!orderItem.getQuantity().toString().matches(".*\\d.*")) {
@@ -62,7 +61,7 @@ public class OrderItemService implements OrderItemServiceInterface {
         MenuItem menuItem = menuItemRepository.getReferenceById(orderItem.getItemId().getId());
 
         if(orderItem.getItemId() == null){
-            throw new EntityExistsException("That order item does not exist and cannot be updated.");
+            throw new EntityExistsException("That order id does not exist and cannot be updated.");
         }
         if(newQuantity == 0){
             orderItemRepository.save(orderItem);
@@ -81,7 +80,7 @@ public class OrderItemService implements OrderItemServiceInterface {
         System.out.println("service");
         OrderItem orderItem = orderItemRepository.getReferenceById(orderItemId);
         if (orderItem.getItemId() == null) {
-            throw new NoSuchElementException("This order item does not exist.");
+            throw new NoSuchElementException("This order id does not exist.");
         } else {
             orderItemRepository.deleteById(Math.toIntExact(orderItem.getOrderItemId()));
         }

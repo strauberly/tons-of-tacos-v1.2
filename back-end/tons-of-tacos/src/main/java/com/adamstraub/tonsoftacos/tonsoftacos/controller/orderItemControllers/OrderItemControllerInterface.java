@@ -32,7 +32,7 @@ public interface OrderItemControllerInterface {
 
                     @ApiResponse(
                             responseCode = "201",
-                            description = "An order-item is created.",
+                            description = "An order-id is created.",
                             content = @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = OrderItem.class))),
                     @ApiResponse(
@@ -50,9 +50,15 @@ public interface OrderItemControllerInterface {
 //    OrderItem addToCart(
 //            @RequestBody
 //            OrderItem orderItem) throws InvalidPropertiesFormatException;
+//    @ResponseStatus(code = HttpStatus.CREATED)
+//    @PostMapping("/add-to-cart")
+//    ResponseEntity<OrderItemDto> addToCart(
+//            @RequestBody
+//            OrderItemDto orderItemDto) throws InvalidPropertiesFormatException;
+
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping("/add-to-cart")
-    ResponseEntity<OrderItemDto> addToCart(
+    OrderItem addToCart(
             @RequestBody
             OrderItemDto orderItemDto) throws InvalidPropertiesFormatException;
 
@@ -89,9 +95,9 @@ public interface OrderItemControllerInterface {
             String orderUuid);
 
     @Operation(
-            summary = " Updates the quantity of an item in a cart and if quantity equals zero the item is deleted " +
+            summary = " Updates the quantity of an id in a cart and if quantity equals zero the id is deleted " +
                     "from cart.",
-            description = "Updates the cart by removing an item",
+            description = "Updates the cart by removing an id",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
@@ -122,8 +128,8 @@ public interface OrderItemControllerInterface {
 
     //
     @Operation(
-            summary = " Removes a cart item.",
-            description = "Updates the cart by removing an item",
+            summary = " Removes a cart id.",
+            description = "Updates the cart by removing an id",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
@@ -145,7 +151,7 @@ public interface OrderItemControllerInterface {
 
             }
     )
-    @DeleteMapping("/remove-cart-item/{orderItemId}")
+    @DeleteMapping("/remove-cart-id/{orderItemId}")
     void removeCartItem(@PathVariable Integer orderItemId);
 }
 //
