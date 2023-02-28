@@ -1,6 +1,15 @@
 USE tonsOfTacos;
 
 
+-- Sample customers
+INSERT INTO customer ( name, email, phone_number)
+VALUES( 'John Johnson', 'john@johnson.com', '555.555.5552');
+INSERT INTO customer ( name, email, phone_number)
+VALUES('Tim Timson', 'tim@timson.com',  '555.555.5553');
+INSERT INTO customer ( name, email, phone_number)
+VALUES('Bob Bobson', 'bob@bobson.com', '555.555.5551');
+
+
 -- Sample items
 
 -- menu-item taco
@@ -92,6 +101,13 @@ VALUES(2, '654654-4655-555', 4, 4.00);
 INSERT INTO order_item (item_fk, order_uuid, quantity, total)
 VALUES(3, '654654-4655-555', 4, 1.50);
 
+-- Sample orders
+INSERT INTO orders (customer_fk, order_total, order_uuid_fk)
+VALUES(2, 30.55, '654654-465465-555');
+INSERT INTO orders (customer_fk, order_total, order_uuid_fk)
+VALUES(1, 25.55, '654654-4655-555');
+INSERT INTO orders (customer_fk, order_total, order_uuid_fk)
+VALUES(1, 25.55, '654654-4655-555');
 
 -- ========================
 

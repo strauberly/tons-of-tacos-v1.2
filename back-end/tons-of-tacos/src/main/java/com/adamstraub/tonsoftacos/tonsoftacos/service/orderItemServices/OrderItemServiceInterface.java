@@ -2,7 +2,9 @@ package com.adamstraub.tonsoftacos.tonsoftacos.service.orderItemServices;//packa
 //
 //import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 //import com.fasterxml.jackson.core.JsonProcessingException;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.OrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
+import org.springframework.http.HttpEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,10 +14,15 @@ import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 
 public interface OrderItemServiceInterface {
-    OrderItem addToCart(@RequestBody OrderItem orderItem) throws InvalidPropertiesFormatException;
+    @Transactional
+    OrderItem addToCart(OrderItem orderItem) throws InvalidPropertiesFormatException;
+//    @Transactional
+//    OrderItem addToCart(OrderItem orderItem) throws InvalidPropertiesFormatException;
+
     @Transactional(readOnly = true)
     List<OrderItem>findByOrderUuid(String orderUuid);
-//
+
+    @Transactional
     OrderItem updateCart(@PathVariable Integer orderItemId, @RequestBody Integer newQuantity);
 //
     @Transactional
