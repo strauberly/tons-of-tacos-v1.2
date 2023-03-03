@@ -9,6 +9,7 @@ import java.util.List;
 
 @RepositoryRestResource( collectionResourceRel = "order", path = "order")
 public interface OrderItemRepository extends JpaRepository<OrderItem, Integer> {
+
     List<OrderItem> cartUuid(@RequestParam("cartUuid") String cartUuid);
     void deleteByOrderItemId(int referenceById);
 }

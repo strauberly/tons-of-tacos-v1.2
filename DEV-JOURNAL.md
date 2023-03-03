@@ -2,6 +2,15 @@
 
 ---
 
+-- 3 Mar 2023 --
+
+- Remove cart item tests successful.
+- Create order item no longer returns the item added to cart in a response so that selected items remained cloaked. May be overkill or create other issues down the road. If so check there.
+- Console messages created for verification of reaching service, controller and action completed.
+- Order item tests functioning as designed.
+
+---
+
 -- 2 Mar 2023 --
 
 - Successful tests for utilizing dto to return list of order items with 200 and
