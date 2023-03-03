@@ -59,7 +59,6 @@ public class CreateOrderItemTest {
 
         @Test
         void createOrderItemWithDto201Response(){
-
 //            Given: a properly formatted order id body
             String body = createValidOrderItemBody();
             System.out.println(body);
@@ -79,13 +78,12 @@ public class CreateOrderItemTest {
             System.out.println(response.getBody());
 //           Then: a response code of 201 is returned and the order id is added to db
             System.out.println("Response code is " + response.getStatusCode() + ".");
-            System.out.println("Added an id to the cart with an id of  : " + Objects.requireNonNull(response.getBody()).getCartUuid());
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
         }
 
         @Test
         void orderItemBodyHasInvalidParameters() {
-//      Given: an improperly formatted order id body
+//      Given: an improperly formatted cart item body
             String body = createInvalidOrderItemBody();
             System.out.println(body);
 
@@ -100,12 +98,10 @@ public class CreateOrderItemTest {
             HttpEntity<String> bodyEntity = new HttpEntity<>(body, headers);
             ResponseEntity<OrderItem> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
                     OrderItem.class);
-
-
-            //Then: a response code of 4xx is returned appropriate to the error
+            //Then: item is not created
             System.out.println("Response code is " + response.getStatusCode() + ".");
             System.out.println(Objects.requireNonNull(response.getBody()));
-            assertThat(response.getStatusCode().is4xxClientError());
+            assertThat(response.getStatusCode()).isNotEqualTo(HttpStatus.CREATED);
         }
     }
 }

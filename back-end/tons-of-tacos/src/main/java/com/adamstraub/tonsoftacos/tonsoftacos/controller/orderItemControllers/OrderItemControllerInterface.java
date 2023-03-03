@@ -55,7 +55,7 @@ public interface OrderItemControllerInterface {
 //dto
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping("/add-to-cart")
-    OrderItem addToCart(
+    String addToCart(
             @RequestBody
             OrderItemDto orderItemDto) throws InvalidPropertiesFormatException;
 
@@ -165,7 +165,7 @@ public interface OrderItemControllerInterface {
 
             }
     )
-    @DeleteMapping("/remove-cart-id/{orderItemId}")
+    @DeleteMapping("/remove-cart-item/{orderItemId}")
     void removeCartItem(@PathVariable Integer orderItemId);
 }
 //
