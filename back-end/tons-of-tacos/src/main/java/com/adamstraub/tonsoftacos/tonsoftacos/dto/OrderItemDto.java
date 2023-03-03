@@ -4,10 +4,8 @@ import lombok.Data;
 
 @Data
 public class OrderItemDto {
-
-
     private Integer itemId;
-    private String orderUuid;
+    private String cartUuid;
     private Integer quantity;
     private Double total;
 }

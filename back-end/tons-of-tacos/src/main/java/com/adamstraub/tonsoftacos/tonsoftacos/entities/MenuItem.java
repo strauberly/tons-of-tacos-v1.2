@@ -18,9 +18,8 @@ public class MenuItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "item_pk")
-    @JsonIgnore
+//    @JsonIgnore
     private Integer id;
-
 
     @Column (name = "category")
     private String category;

@@ -23,11 +23,10 @@ class UpdateOrderItemQuantityTests {
      @Autowired
     JdbcTemplate jdbcTemplate;
 
-
-
     @Nested
     @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-    @TestPropertySource("classpath:application-test.properties")
+//    @TestPropertySource(locations = "/application.properties")
+    @TestPropertySource("classpath:application.properties")
     @Sql(scripts = {
             "classpath:/test-schema.sql",
             "classpath:/test-data.sql",
@@ -52,14 +51,16 @@ class UpdateOrderItemQuantityTests {
             ResponseEntity<OrderItem> updatedOrderItemResponse =
                     getRestTemplate().exchange(uri, HttpMethod.PATCH, null,
                             new ParameterizedTypeReference<>() {});
-
+            System.out.println(updatedOrderItemResponse.getBody());
 //            menu id call to provide data for comparison
             String parameter = "id";
+            int menuItemId = 2;
             String menuItemUri =
                     String.format("%s?%s=%d",
                             getBaseUriForMenuItemByIdQuery(),
                             parameter,
-                            Objects.requireNonNull(updatedOrderItemResponse.getBody()).getItemId());
+                            Objects.requireNonNull(updatedOrderItemResponse.getBody()).getItemId().getId());
+//                            menuItemId);
             System.out.println(uri);
 
             ResponseEntity<MenuItem> menuItemResponse =
@@ -72,8 +73,8 @@ class UpdateOrderItemQuantityTests {
 //            Then: a response status of 200 is returned
             System.out.println("Response code is " + updatedOrderItemResponse.getStatusCode() + ".");
             assertThat(updatedOrderItemResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-
-//            And: order id total is updated appropriately for the new quantity * the id unit price
+//
+////            And: order id total is updated appropriately for the new quantity * the id unit price
             System.out.println("menu id base price: " +
                     Objects.requireNonNull(menuItemResponse.getBody()).getUnitPrice() + " *" + " new " +
                     "quantity: " + newQuantity + " = " + updatedOrderItemResponse.getBody().getTotal());
@@ -82,6 +83,8 @@ class UpdateOrderItemQuantityTests {
             assertThat(Objects.requireNonNull(updatedOrderItemResponse.getBody()).getTotal() ==
                     menuItemResponse.getBody().getUnitPrice() * newQuantity);
         }
+
+
         @Test
         void failedUpdateOrderItemQuantityById404(){
 //            Given: an invalid order id id
