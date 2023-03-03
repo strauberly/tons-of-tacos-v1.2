@@ -5,7 +5,7 @@ public class OrderItemTestSupport extends BaseResponseTest {
         return """
                 {
                  "itemId" : 3,
-                 "orderUuid" : "45644-65325-46654",
+                 "cartUuid" : "45644-65325-46654",
                  "quantity" : 2,
                  "total" : 5.50
                 }""";
@@ -16,7 +16,7 @@ public class OrderItemTestSupport extends BaseResponseTest {
 
         return "{\n"
                 + " \"id\" : 15,\n"
-                + " \"orderUuid\" : \"45#4f12-65325-46654\",\n"
+                + " \"cartUuid\" : \"45#4f12-65325-46654\",\n"
                 + " \"quantity\" : 2,\n"
                 + " \"total\" : 5.232\n"
                 + "}";

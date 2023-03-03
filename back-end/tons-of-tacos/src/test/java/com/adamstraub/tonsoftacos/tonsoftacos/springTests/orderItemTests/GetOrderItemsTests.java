@@ -1,5 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.orderItemTests;
 
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.GetOrderItemDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.OrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.OrderItemTestSupport;
 import org.junit.jupiter.api.Nested;
@@ -26,7 +28,7 @@ class GetOrderItemsTests{
 
     @Nested
     @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-    @TestPropertySource("classpath:application-test.properties")
+    @TestPropertySource("classpath:application.properties")
     @Sql(scripts = {
             "classpath:/test-schema.sql",
             "classpath:/test-data.sql",
@@ -34,20 +36,45 @@ class GetOrderItemsTests{
             config = @SqlConfig(encoding = "utf-8"))
 
     class doesNotPolluteTheApplicationContextIT extends OrderItemTestSupport {
+//entity
+        //        @Test
+//        void orderItemsReturnedWithValidUuid200() {
+////      Given: a valid uuid
+////            rewrite url for query -> match postman
+//            String validUuid = "654654-4655-555";
+//            String parameter = "cartUuid";
+//
+////      When: a successful connection is made
+//
+//            String uri =
+//                    String.format("%s?%s=%s", getBaseUriForGetOrderItemsByUuid(), parameter, validUuid);
+//            System.out.println(uri);
+//
+//            ResponseEntity<List<OrderItem>> response =
+//                    getRestTemplate().exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
+//                    });
+//
+////      Then: a collection of order items is returned with a matching uuid and status of 200
+//            System.out.println(("Response code is " + response.getStatusCode() + "."));
+//            System.out.println(response.getBody());
+//            assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+//        }
+
+//        uuid
         @Test
-        void orderItemsReturnedWithValidUuid200() {
+        void orderItemsReturnedWithValidUuidDto200() {
 //      Given: a valid uuid
 //            rewrite url for query -> match postman
             String validUuid = "654654-4655-555";
-            String parameter = "orderUuid";
+            String parameter = "cartUuid";
 
 //      When: a successful connection is made
 
             String uri =
-                    String.format("%s?%s=%s", getBaseUriForGetOrderItemsByUuid(), parameter, validUuid);
+                    String.format("%s?%s=%s", getBaseUriForGetCartItemsByUuid(), parameter, validUuid);
             System.out.println(uri);
 
-            ResponseEntity<List<OrderItem>> response =
+            ResponseEntity<List<GetOrderItemDto>> response =
                     getRestTemplate().exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                     });
 
@@ -63,12 +90,12 @@ class GetOrderItemsTests{
 //      Given: a valid uuid
 //            rewrite url for query -> match postman
             String invalidUuid = "6555ffd$-45-555";
-            String parameter = "orderUuid";
+            String parameter = "cartUuid";
 
 //      When: a successful connection is made
 
             String uri =
-                    String.format("%s?%s=%s", getBaseUriForGetOrderItemsByUuid(), parameter, invalidUuid);
+                    String.format("%s?%s=%s", getBaseUriForGetCartItemsByUuid(), parameter, invalidUuid);
             System.out.println(uri);
 
             ResponseEntity<Map<String, Object>> response =

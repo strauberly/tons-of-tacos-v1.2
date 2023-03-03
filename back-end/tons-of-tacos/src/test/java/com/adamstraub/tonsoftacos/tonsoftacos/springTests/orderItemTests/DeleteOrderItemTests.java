@@ -23,7 +23,7 @@ class DeleteOrderItemTests {
 
     @Nested
     @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-    @TestPropertySource("classpath:application-test.properties")
+    @TestPropertySource("classpath:application.properties")
     @Sql(scripts = {
             "classpath:/test-schema.sql",
             "classpath:/test-data.sql",

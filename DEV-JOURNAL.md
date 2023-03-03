@@ -2,6 +2,17 @@
 
 ---
 
+-- 2 Mar 2023 --
+
+- Successful tests for utilizing dto to return list of order items with 200 and
+  if uuid not valid returning 404.
+- Created dto for returning order items with specified parameters, tests successful.
+- Updating cart tests successful.
+- Composite indexes may be the key to what I was originally envisioning for link between order items and order item. Will take much more research and time.
+- The two previously mentioned tables are no longer linked and sql scripts have been altered.
+
+---
+
 -- 28 Feb 2023 --
 
 - initial order item response formatted.

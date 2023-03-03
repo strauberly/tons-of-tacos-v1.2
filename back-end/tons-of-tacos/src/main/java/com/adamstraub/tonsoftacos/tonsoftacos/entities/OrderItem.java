@@ -2,11 +2,8 @@ package com.adamstraub.tonsoftacos.tonsoftacos.entities;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
-
-import java.io.Serializable;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
@@ -21,7 +18,7 @@ public class OrderItem  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_item_pk")
-    @JsonIgnore
+//    @JsonIgnore
     private Integer orderItemId;
 
 
@@ -31,9 +28,9 @@ public class OrderItem  {
     private MenuItem itemId;
 
 
-    @Column(name = "order_uuid")
-    @JsonIgnore
-    private String orderUuid;
+    @Column(name = "cart_uuid")
+//    @JsonIgnore
+    private String cartUuid;
 
     @Column(name = "quantity")
     private Integer quantity;
@@ -46,7 +43,7 @@ public class OrderItem  {
         return "OrderItem{" +
                 "orderItemId=" + orderItemId +
                 ", id=" + itemId +
-                ", orderUuid='" + orderUuid + '\'' +
+                ", cartUuid='" + cartUuid + '\'' +
                 ", quantity=" + quantity +
                 ", total=" + total +
                 '}';

@@ -1,4 +1,5 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.controller.orderItemControllers;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.GetOrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.OrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
@@ -9,7 +10,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.servers.Server;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import java.util.InvalidPropertiesFormatException;
@@ -45,17 +45,14 @@ public interface OrderItemControllerInterface {
                             content = @Content(mediaType = "application/json")),
             }
     )
+//    entity
 //    @ResponseStatus(code = HttpStatus.CREATED)
 //    @PostMapping("/add-to-cart")
 //    OrderItem addToCart(
 //            @RequestBody
 //            OrderItem orderItem) throws InvalidPropertiesFormatException;
-//    @ResponseStatus(code = HttpStatus.CREATED)
-//    @PostMapping("/add-to-cart")
-//    ResponseEntity<OrderItemDto> addToCart(
-//            @RequestBody
-//            OrderItemDto orderItemDto) throws InvalidPropertiesFormatException;
 
+//dto
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping("/add-to-cart")
     OrderItem addToCart(
@@ -88,11 +85,21 @@ public interface OrderItemControllerInterface {
 
             }
     )
-    @GetMapping("/get-cart/{orderUuid}")
+//    entity
+//    @GetMapping("/get-cart/{cartUuid}")
+//    @ResponseStatus(code = HttpStatus.OK)
+//    List<OrderItem> findByOrderUuid(
+//            @RequestParam
+//            String cartUuid);
+
+//
+    @GetMapping("/get-cart/{cartUuid}")
     @ResponseStatus(code = HttpStatus.OK)
-    List<OrderItem> findByOrderUuid(
+    List<GetOrderItemDto> findByCartUuid(
             @RequestParam
-            String orderUuid);
+            String cartUuid);
+
+
 
     @Operation(
             summary = " Updates the quantity of an id in a cart and if quantity equals zero the id is deleted " +
@@ -118,7 +125,14 @@ public interface OrderItemControllerInterface {
                             content = @Content(mediaType = "application/json")),
             }
     )
-
+//entity
+//    @PatchMapping("/update-cart/{orderItemId}/{newQuantity}")
+//    OrderItem updateCart(
+//            @PathVariable
+//            Integer orderItemId,
+//            @PathVariable
+//            Integer newQuantity);
+// dto
     @PatchMapping("/update-cart/{orderItemId}/{newQuantity}")
     OrderItem updateCart(
             @PathVariable

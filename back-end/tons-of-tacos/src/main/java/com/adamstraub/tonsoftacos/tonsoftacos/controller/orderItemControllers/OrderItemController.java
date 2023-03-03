@@ -1,5 +1,6 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.controller.orderItemControllers;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.MenuItemRepository;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.GetOrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.OrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.service.orderItemServices.OrderItemService;
@@ -20,6 +21,15 @@ public class OrderItemController implements OrderItemControllerInterface {
 @Autowired
     private MenuItemRepository menuItemRepository;
 
+//    entity
+//    @Override
+//    public OrderItem addToCart(OrderItem orderItem) throws InvalidPropertiesFormatException {
+//                orderItem.setOrderItemId(0);
+//        orderItem.setTotal(orderItem.getQuantity() * menuItemRepository.getReferenceById(orderItem.getItemId().getId()).getUnitPrice());
+//        return orderItemService.addToCart(orderItem);
+//    }
+
+//    dto
     @Transactional
     @Override
     public OrderItem addToCart(@RequestBody OrderItemDto orderItemDto) throws InvalidPropertiesFormatException {
@@ -27,18 +37,16 @@ public class OrderItemController implements OrderItemControllerInterface {
         System.out.println("controller");
 
         OrderItem request = modelMapper.map(orderItemDto, OrderItem.class);
-        request.setOrderItemId(0);
-        request.setTotal(orderItemDto.getQuantity() * menuItemRepository.getReferenceById(request.getItemId().getId()).getUnitPrice());
-
-
+//        request.setOrderItemId(0);
+//        request.setTotal(orderItemDto.getQuantity() * menuItemRepository.getReferenceById(request.getItemId().getId()).getUnitPrice());
 //        System.out.println(request);
         return orderItemService.addToCart(request);
     }
 
     @Override
-    public List<OrderItem> findByOrderUuid(String orderUuid) {
+    public List<GetOrderItemDto> findByCartUuid(String cartUuid) {
         System.out.println("controller");
-        return orderItemService.findByOrderUuid(orderUuid);
+        return orderItemService.findByCartUuid(cartUuid);
     }
 
 
