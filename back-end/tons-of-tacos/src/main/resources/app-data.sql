@@ -94,19 +94,19 @@ unit_price)
 VALUES('topping', 'a little extra', 'lime', NULL, 'TBD', 1.50);
 
 -- Sample order items
-INSERT INTO order_item (item_fk, order_uuid, quantity, total)
+INSERT INTO order_item (item_fk, cart_uuid, quantity, total)
 VALUES(1, '654654-465465-555', 3, 3.00);
-INSERT INTO order_item (item_fk, order_uuid, quantity, total)
+INSERT INTO order_item (item_fk, cart_uuid, quantity, total)
 VALUES(2, '654654-4655-555', 4, 4.00);
-INSERT INTO order_item (item_fk, order_uuid, quantity, total)
+INSERT INTO order_item (item_fk, cart_uuid, quantity, total)
 VALUES(3, '654654-4655-555', 4, 1.50);
 
 -- Sample orders
-INSERT INTO orders (customer_fk, order_total, order_uuid_fk)
+INSERT INTO orders (customer_fk, order_total, order_uuid)
 VALUES(2, 30.55, '654654-465465-555');
-INSERT INTO orders (customer_fk, order_total, order_uuid_fk)
+INSERT INTO orders (customer_fk, order_total, order_uuid)
 VALUES(1, 25.55, '654654-4655-555');
-INSERT INTO orders (customer_fk, order_total, order_uuid_fk)
+INSERT INTO orders (customer_fk, order_total, order_uuid)
 VALUES(1, 25.55, '654654-4655-555');
 
 -- ========================
@@ -211,20 +211,20 @@ VALUES('topping', 'a little extra', 'lime', NULL, 'TBD', 1.50);
 
 
 Sample order items
-INSERT INTO order_item (item_fk, order_uuid, quantity, total)
+INSERT INTO order_item (item_fk, cart_uuid, quantity, total)
 VALUES(1, '654654-465465-555', 3, 3.00);
-INSERT INTO order_item (item_fk, order_uuid, quantity, total)
+INSERT INTO order_item (item_fk, cart_uuid, quantity, total)
 VALUES(2, '654654-4655-555', 4, 4.00);
-INSERT INTO order_item (item_fk, order_uuid, quantity, total)
+INSERT INTO order_item (item_fk, cart_uuid, quantity, total)
 VALUES(3, '654654-4655-555', 4, 1.50);
 
 Orders
-INSERT INTO orders (customer_fk, order_total, order_uuid_fk)
+INSERT INTO orders (customer_fk, order_total, order_uuid)
 VALUES(2, 30.55, '654654-465465-5555');
-INSERT INTO orders (customer_fk, order_total, order_uuid_fk)
+INSERT INTO orders (customer_fk, order_total, order_uuid)
 VALUES(1, 25.55, '654654-465465-555');
 
-INSERT INTO orders (customer_fk, order_total, order_uuid_fk)
+INSERT INTO orders (customer_fk, order_total, order_uuid)
 VALUES(1, 25.55, '654654-465465-555');
 
 */
