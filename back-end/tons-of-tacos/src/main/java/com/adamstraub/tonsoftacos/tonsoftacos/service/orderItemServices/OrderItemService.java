@@ -49,9 +49,33 @@ public class OrderItemService implements OrderItemServiceInterface {
 //    }
 
     //    dto
+//    @Override
+//    @Transactional
+//    public OrderItem addToCart(@RequestBody OrderItem orderItem) throws InvalidPropertiesFormatException {
+//        orderItem.setOrderItemId(0);
+//        orderItem.setTotal(orderItem.getQuantity() * menuItemRepository.getReferenceById(orderItem.getItemId().getId()).getUnitPrice());
+//        if (orderItem.getItemId().getId() > menuItemRepository.count()) {
+//            throw new NoSuchElementException("A menu item with that id does not exist.");
+//        }
+//        if (!orderItem.getItemId().toString().matches(".*\\d.*")) {
+//            throw new NumberFormatException("You have entered in invalid menu item id.");
+//        }
+//        if (!orderItem.getCartUuid().matches("([0-9\\-]+)")) {
+//            throw new InvalidPropertiesFormatException("You have entered an invalid cart id.");
+//        }
+//        if (!orderItem.getQuantity().toString().matches(".*\\d.*")) {
+//            throw new NumberFormatException("You have entered in invalid quantity.");
+//        }
+//        if (!orderItem.getTotal().equals(orderItem.getTotal().doubleValue())) {
+//            throw new NumberFormatException("You have enter an invalid format for total");
+//        } else
+//            return orderItemRepository.save(orderItem);
+//    }
+
     @Override
     @Transactional
-    public OrderItem addToCart(@RequestBody OrderItem orderItem) throws InvalidPropertiesFormatException {
+    public void addToCart(@RequestBody OrderItem orderItem) throws InvalidPropertiesFormatException {
+        System.out.println("service");
         orderItem.setOrderItemId(0);
         orderItem.setTotal(orderItem.getQuantity() * menuItemRepository.getReferenceById(orderItem.getItemId().getId()).getUnitPrice());
         if (orderItem.getItemId().getId() > menuItemRepository.count()) {
@@ -68,9 +92,12 @@ public class OrderItemService implements OrderItemServiceInterface {
         }
         if (!orderItem.getTotal().equals(orderItem.getTotal().doubleValue())) {
             throw new NumberFormatException("You have enter an invalid format for total");
-        } else
-            return orderItemRepository.save(orderItem);
+        }
+        orderItemRepository.save(orderItem);
     }
+
+
+
 
     @Override
     public List<GetOrderItemDto> findByCartUuid(String cartUuid) {
@@ -141,6 +168,7 @@ public class OrderItemService implements OrderItemServiceInterface {
     public OrderItem removeCartItem(@PathVariable Integer orderItemId) {
         System.out.println("service");
         OrderItem orderItem = orderItemRepository.getReferenceById(orderItemId);
+        System.out.println(orderItem);
         if (orderItem.getItemId() == null) {
             throw new NoSuchElementException("This order id does not exist.");
         } else {
