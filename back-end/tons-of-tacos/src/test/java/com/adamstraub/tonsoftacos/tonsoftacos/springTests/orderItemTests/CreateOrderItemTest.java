@@ -23,7 +23,7 @@ public class CreateOrderItemTest {
 
     @Nested
     @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-    @TestPropertySource("classpath:application.properties")
+    @TestPropertySource("classpath:test-application.properties")
     @Sql(scripts = {
             "classpath:/test-schema.sql",
             "classpath:/test-data.sql",
