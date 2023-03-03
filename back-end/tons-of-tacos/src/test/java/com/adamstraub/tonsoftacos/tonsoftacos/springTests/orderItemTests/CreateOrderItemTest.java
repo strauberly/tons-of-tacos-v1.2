@@ -23,16 +23,42 @@ public class CreateOrderItemTest {
 
     @Nested
     @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-    @TestPropertySource("classpath:application-test.properties")
+    @TestPropertySource("classpath:application.properties")
     @Sql(scripts = {
             "classpath:/test-schema.sql",
             "classpath:/test-data.sql",
     },
             config = @SqlConfig(encoding = "utf-8"))
     class testThatDoesNotPolluteTheApplicationContext extends OrderItemTestSupport {
+//entity
+//        @Test
+//        void createOrderItemWith201Response(){
+//
+////            Given: a properly formatted order id body
+//            String body = createValidOrderItemBody();
+//            System.out.println(body);
+//
+//
+////            When: a successful connection is made
+//            String uri = getBaseUriForCreateOrderItem();
+//            System.out.println(uri);
+//
+//            HttpHeaders headers = new HttpHeaders();
+//            headers.setContentType(MediaType.APPLICATION_JSON);
+//
+//            HttpEntity<String> bodyEntity = new HttpEntity<>(body, headers);
+//            ResponseEntity<OrderItemDto> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
+//                    OrderItemDto.class);
+//            System.out.println(response.getBody());
+////           Then: a response code of 201 is returned and the order id is added to db
+//            System.out.println("Response code is " + response.getStatusCode() + ".");
+//            System.out.println("Added an id to the cart with an id of  : " + Objects.requireNonNull(response.getBody()).getCartUuid());
+//            assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+//        }
+
 
         @Test
-        void createOrderItemWith201Response(){
+        void createOrderItemWithDto201Response(){
 
 //            Given: a properly formatted order id body
             String body = createValidOrderItemBody();
@@ -47,12 +73,13 @@ public class CreateOrderItemTest {
             headers.setContentType(MediaType.APPLICATION_JSON);
 
             HttpEntity<String> bodyEntity = new HttpEntity<>(body, headers);
-            ResponseEntity<OrderItemDto> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
-                    OrderItemDto.class);
+            System.out.println(bodyEntity);
+            ResponseEntity<OrderItem> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
+                    OrderItem.class);
             System.out.println(response.getBody());
 //           Then: a response code of 201 is returned and the order id is added to db
             System.out.println("Response code is " + response.getStatusCode() + ".");
-            System.out.println("Added an id to the cart with an id of  : " + Objects.requireNonNull(response.getBody()).getOrderUuid());
+            System.out.println("Added an id to the cart with an id of  : " + Objects.requireNonNull(response.getBody()).getCartUuid());
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
         }
 

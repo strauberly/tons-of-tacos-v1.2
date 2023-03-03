@@ -1,11 +1,12 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.controller.orderItemControllers;
+import com.adamstraub.tonsoftacos.tonsoftacos.dao.MenuItemRepository;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.GetOrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.OrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.service.orderItemServices.OrderItemService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import java.util.InvalidPropertiesFormatException;
 import java.util.List;
@@ -17,74 +18,43 @@ public class OrderItemController implements OrderItemControllerInterface {
     private ModelMapper modelMapper;
 @Autowired
     private OrderItemService orderItemService;
+@Autowired
+    private MenuItemRepository menuItemRepository;
 
+//    entity
+//    @Override
+//    public OrderItem addToCart(OrderItem orderItem) throws InvalidPropertiesFormatException {
+//                orderItem.setOrderItemId(0);
+//        orderItem.setTotal(orderItem.getQuantity() * menuItemRepository.getReferenceById(orderItem.getItemId().getId()).getUnitPrice());
+//        return orderItemService.addToCart(orderItem);
+//    }
+
+//    dto
+    @Transactional
     @Override
     public OrderItem addToCart(@RequestBody OrderItemDto orderItemDto) throws InvalidPropertiesFormatException {
-//        request in as dto then convert to orderItem then send to service
-
-
-        System.out.println(orderItemDto);
+//        System.out.println(orderItemDto);
         System.out.println("controller");
 
         OrderItem request = modelMapper.map(orderItemDto, OrderItem.class);
-        request.setOrderItemId(0);
-        System.out.println(request);
-
-//        OrderItem orderItem = orderItemService.addToCart(request);
-////        System.out.println(orderItem);
-
-
-//        OrderItemDto response = modelMapper.map(orderItem, OrderItemDto.class);
-//
-//        System.out.println("response is" + response);
-//
-//        ResponseEntity<OrderItemDto> newResponse = new ResponseEntity<>(response, HttpStatus.CREATED);
-//        System.out.println(newResponse);
+//        request.setOrderItemId(0);
+//        request.setTotal(orderItemDto.getQuantity() * menuItemRepository.getReferenceById(request.getItemId().getId()).getUnitPrice());
+//        System.out.println(request);
         return orderItemService.addToCart(request);
     }
 
-
-
-
-//    @Override
-//    public ResponseEntity<OrderItemDto> addToCart(@RequestBody OrderItemDto orderItemDto) throws InvalidPropertiesFormatException {
-//        System.out.println(orderItemDto);
-//        System.out.println("controller");
-//
-//        OrderItem request = modelMapper.map(orderItemDto, OrderItem.class);
-//        request.setOrderItemId(0);
-////        System.out.println(request);
-//
-//        OrderItem orderItem = orderItemService.addToCart(request);
-////        System.out.println(orderItem);
-//
-//
-//        OrderItemDto response = modelMapper.map(orderItem, OrderItemDto.class);
-//
-//        System.out.println("response is" + response);
-//
-//        ResponseEntity<OrderItemDto> newResponse = new ResponseEntity<>(response, HttpStatus.CREATED);
-//        System.out.println(newResponse);
-//        return newResponse;
-//    }
-//
-
-
-
-
-//
-
     @Override
-    public List<OrderItem> findByOrderUuid(String orderUuid) {
+    public List<GetOrderItemDto> findByCartUuid(String cartUuid) {
         System.out.println("controller");
-        return orderItemService.findByOrderUuid(orderUuid);
+        return orderItemService.findByCartUuid(cartUuid);
     }
-//
+
+
     @Override
     public OrderItem updateCart(Integer orderItemId, Integer newQuantity) {
         System.out.println("controller");
         if (newQuantity == 0) {
-            System.out.println("quantity zero id removed");
+            System.out.println("quantity zero, item removed");
             return orderItemService.removeCartItem(orderItemId);
         } else {
             return orderItemService.updateCart(orderItemId, newQuantity);

@@ -32,8 +32,8 @@ public class BaseResponseTest {
 
     }
 
-    protected String getBaseUriForGetOrderItemsByUuid(){
-        return String.format("http://localhost:%d/api/order/get-cart/orderUuid", Integer.valueOf(serverPort));
+    protected String getBaseUriForGetCartItemsByUuid(){
+        return String.format("http://localhost:%d/api/order/get-cart/cartUuid", Integer.valueOf(serverPort));
 
     }
 
