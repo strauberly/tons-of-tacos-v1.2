@@ -12,7 +12,6 @@ import java.util.Optional;
 public
 interface MenuItemRepository extends JpaRepository<MenuItem, Integer>{
 
-//        Optional<MenuItem> findById(@RequestParam("item_pk") Integer id);
         Optional<MenuItem> findById(@RequestParam("item_pk") Integer id);
 
         List<MenuItem> findByCategory(@RequestParam("category")String category);

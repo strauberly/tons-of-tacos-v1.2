@@ -62,23 +62,6 @@ class UpdateOrderItemQuantityTests {
 //                            menuItemId);
             System.out.println(uri);
 
-
-////          update response
-//            ResponseEntity<OrderItem> updatedOrderItemResponse =
-//                    getRestTemplate().exchange(uri, HttpMethod.PATCH, null,
-//                            new ParameterizedTypeReference<>() {});
-//            System.out.println(updatedOrderItemResponse.getBody());
-////            menu id call to provide data for comparison
-//            String parameter = "id";
-//            int menuItemId = 2;
-//            String menuItemUri =
-//                    String.format("%s?%s=%d",
-//                            getBaseUriForMenuItemByIdQuery(),
-//                            parameter,
-//                            Objects.requireNonNull(updatedOrderItemResponse.getBody()).getItemId().getId());
-////                            menuItemId);
-//            System.out.println(uri);
-
             ResponseEntity<MenuItem> menuItemResponse =
                             getRestTemplate().exchange(menuItemUri,
                                     HttpMethod.GET,
@@ -122,6 +105,7 @@ class UpdateOrderItemQuantityTests {
             System.out.println("Response code is " + updatedOrderItemResponse.getStatusCode() + ".");
             assertThat(updatedOrderItemResponse.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
         }
+
         @Test
         void orderItemDeletedForZeroQuantity200(){
 //            Given: a valid order id id and quantity of zero
@@ -132,14 +116,14 @@ class UpdateOrderItemQuantityTests {
             String uri =
                     String.format("%s/%d/%d", getBaseUriForUpdateOrderItem(), orderItemId, newQuantity);
             System.out.println(uri);
-            ResponseEntity<OrderItem> response =
+            ResponseEntity<OrderItemDto> response =
                     getRestTemplate().exchange(uri, HttpMethod.PATCH, null,
                             new ParameterizedTypeReference<>() {});
 //            Then: a response status of 200 is returned for deleted
             System.out.println("Response code is " + response.getStatusCode() + ".");
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 //            And: a repeat call produces 404 because id is deleted for having quantity zero and can not be updated
-            ResponseEntity<OrderItem> response2 =
+            ResponseEntity<OrderItemDto> response2 =
                     getRestTemplate().exchange(uri, HttpMethod.PATCH, null,
                             new ParameterizedTypeReference<>() {});
             System.out.println("Response code is " + response2.getStatusCode() + ".");
