@@ -133,13 +133,18 @@ public interface OrderItemControllerInterface {
 //            @PathVariable
 //            Integer newQuantity);
 // dto
+//    @PatchMapping("/update-cart/{orderItemId}/{newQuantity}")
+//    GetOrderItemDto updateCart(
+//            @PathVariable
+//            Integer orderItemId,
+//            @PathVariable
+//            Integer newQuantity);
     @PatchMapping("/update-cart/{orderItemId}/{newQuantity}")
-    OrderItem updateCart(
+    OrderItemDto updateCart(
             @PathVariable
             Integer orderItemId,
             @PathVariable
             Integer newQuantity);
-
     //
     @Operation(
             summary = " Removes a cart id.",
