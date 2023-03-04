@@ -45,14 +45,7 @@ public interface OrderItemControllerInterface {
                             content = @Content(mediaType = "application/json")),
             }
     )
-//    entity
-//    @ResponseStatus(code = HttpStatus.CREATED)
-//    @PostMapping("/add-to-cart")
-//    OrderItem addToCart(
-//            @RequestBody
-//            OrderItem orderItem) throws InvalidPropertiesFormatException;
 
-//dto
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping("/add-to-cart")
     String addToCart(
@@ -85,14 +78,7 @@ public interface OrderItemControllerInterface {
 
             }
     )
-//    entity
-//    @GetMapping("/get-cart/{cartUuid}")
-//    @ResponseStatus(code = HttpStatus.OK)
-//    List<OrderItem> findByOrderUuid(
-//            @RequestParam
-//            String cartUuid);
 
-//
     @GetMapping("/get-cart/{cartUuid}")
     @ResponseStatus(code = HttpStatus.OK)
     List<GetOrderItemDto> findByCartUuid(
@@ -125,20 +111,7 @@ public interface OrderItemControllerInterface {
                             content = @Content(mediaType = "application/json")),
             }
     )
-//entity
-//    @PatchMapping("/update-cart/{orderItemId}/{newQuantity}")
-//    OrderItem updateCart(
-//            @PathVariable
-//            Integer orderItemId,
-//            @PathVariable
-//            Integer newQuantity);
-// dto
-//    @PatchMapping("/update-cart/{orderItemId}/{newQuantity}")
-//    GetOrderItemDto updateCart(
-//            @PathVariable
-//            Integer orderItemId,
-//            @PathVariable
-//            Integer newQuantity);
+
     @PatchMapping("/update-cart/{orderItemId}/{newQuantity}")
     OrderItemDto updateCart(
             @PathVariable
