@@ -3,16 +3,13 @@ package com.adamstraub.tonsoftacos.tonsoftacos.errorHandler;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import org.hibernate.TypeMismatchException;
 import org.springframework.http.HttpStatus;
-import org.springframework.jndi.TypeMismatchNamingException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.context.request.WebRequest;
 
 import javax.persistence.EntityNotFoundException;
-import javax.validation.ConstraintViolationException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;

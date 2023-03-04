@@ -29,50 +29,6 @@ public class OrderItemService implements OrderItemServiceInterface {
     private OrderItemRepository orderItemRepository;
     @Autowired
     private MenuItemRepository menuItemRepository;
-//entity
-//    @Override
-//    @Transactional
-//    public OrderItem addToCart(OrderItem orderItem) throws InvalidPropertiesFormatException {
-//        System.out.println("service");
-//        System.out.println(orderItem);
-//        if(orderItem.getItemId().getId() > menuItemRepository.count()) {
-//            throw new NoSuchElementException("A menu id with that id does not exist.");
-//        }if (!orderItem.getItemId().toString().matches(".*\\d.*")) {
-//            throw new NumberFormatException("You have entered in invalid menu id id.");
-//        }if(!orderItem.getCartUuid().matches("([0-9\\-]+)")) {
-//            throw new InvalidPropertiesFormatException("You have entered an invalid cart id.");
-//        }if(!orderItem.getQuantity().toString().matches(".*\\d.*")) {
-//            throw new NumberFormatException("You have entered in invalid quantity.");
-//        }if(!orderItem.getTotal().equals(orderItem.getTotal().doubleValue())){
-//            throw new NumberFormatException("You have enter an invalid format for total");
-//        }else
-////            System.out.println(orderItem);
-//        return orderItemRepository.save(orderItem);
-//    }
-
-    //    dto
-//    @Override
-//    @Transactional
-//    public OrderItem addToCart(@RequestBody OrderItem orderItem) throws InvalidPropertiesFormatException {
-//        orderItem.setOrderItemId(0);
-//        orderItem.setTotal(orderItem.getQuantity() * menuItemRepository.getReferenceById(orderItem.getItemId().getId()).getUnitPrice());
-//        if (orderItem.getItemId().getId() > menuItemRepository.count()) {
-//            throw new NoSuchElementException("A menu item with that id does not exist.");
-//        }
-//        if (!orderItem.getItemId().toString().matches(".*\\d.*")) {
-//            throw new NumberFormatException("You have entered in invalid menu item id.");
-//        }
-//        if (!orderItem.getCartUuid().matches("([0-9\\-]+)")) {
-//            throw new InvalidPropertiesFormatException("You have entered an invalid cart id.");
-//        }
-//        if (!orderItem.getQuantity().toString().matches(".*\\d.*")) {
-//            throw new NumberFormatException("You have entered in invalid quantity.");
-//        }
-//        if (!orderItem.getTotal().equals(orderItem.getTotal().doubleValue())) {
-//            throw new NumberFormatException("You have enter an invalid format for total");
-//        } else
-//            return orderItemRepository.save(orderItem);
-//    }
 
     @Override
     @Transactional
@@ -101,9 +57,6 @@ public class OrderItemService implements OrderItemServiceInterface {
         orderItemRepository.save(orderItem);
     }
 
-
-
-
     @Override
     public List<GetOrderItemDto> findByCartUuid(String cartUuid) {
 
@@ -116,36 +69,13 @@ public class OrderItemService implements OrderItemServiceInterface {
         } else {
             for (OrderItem orderItem : orderItems) {
                 orderItemDtos.add(getOrderItemDtoConversion(orderItem));
-//                GetOrderItemDto getOrderItemDto = modelMapper.map(orderItem, GetOrderItemDto.class);
-//                orderItemDtos.add(getOrderItemDto);
             }
         }
         System.out.println("Retrieved a cart.");
 //        System.out.println(orderItemDtos);
         return orderItemDtos;
     }
-//
-//    @Override
-//    @Transactional
-//    public OrderItem updateCart(@PathVariable Integer orderItemId, @PathVariable Integer newQuantity) {
-//        System.out.println("service");
-//        OrderItem orderItem = orderItemRepository.getReferenceById(orderItemId);
-//        MenuItem menuItem = menuItemRepository.getReferenceById(orderItem.getItemId().getId());
-//
-//        if(orderItem.getItemId() == null){
-//            throw new EntityExistsException("That order id does not exist and cannot be updated.");
-//        }
-//        if(newQuantity == 0){
-//            orderItemRepository.save(orderItem);
-//            removeCartItem(orderItemId);
-//        } else {
-//            orderItem.setQuantity(newQuantity);
-//            orderItem.setTotal(orderItem.getQuantity() * menuItem.getUnitPrice());
-//            orderItemRepository.save(orderItem);
-//        }
-//            return orderItem;
-//    }
-//
+
 @Override
 @Transactional
 public OrderItemDto updateCart(@PathVariable Integer orderItemId, @PathVariable Integer newQuantity) {
@@ -169,35 +99,11 @@ public OrderItemDto updateCart(@PathVariable Integer orderItemId, @PathVariable 
     return orderItemDto;
 }
 
-//    @Override
-//    @Transactional
-//    public GetOrderItemDto updateCart(@PathVariable Integer orderItemId, @PathVariable Integer newQuantity) {
-//        System.out.println("service");
-//        OrderItem orderItem = orderItemRepository.getReferenceById(orderItemId);
-//        MenuItem menuItem = menuItemRepository.getReferenceById(orderItem.getItemId().getId());
-//        GetOrderItemDto getOrderItemDto = null;
-//        if (newQuantity == 0) {
-//            orderItemRepository.save(orderItem);
-//            orderItemRepository.deleteByOrderItemId(orderItemId);
-//            System.out.println("Cart updated. Item removed.");
-//        } else {
-//            orderItem.setQuantity(newQuantity);
-//            orderItem.setTotal(orderItem.getQuantity() * menuItem.getUnitPrice());
-//            getOrderItemDto = getOrderItemDtoConversion(orderItem);
-//            orderItemRepository.save(orderItem);
-//        }
-//        System.out.println("Cart item updated.");
-//        System.out.println(getOrderItemDto);
-//        return getOrderItemDto;
-//    }
-
-
     @Override
     @Transactional
     public void removeCartItem(@PathVariable Integer orderItemId) {
         System.out.println("service");
         OrderItem orderItem = orderItemRepository.getReferenceById(orderItemId);
-//        GetOrderItemDto getOrderItemDto = getOrderItemDtoConversion(orderItem);
 //        System.out.println(orderItem);
         if (orderItem.getItemId() == null) {
             throw new NoSuchElementException("This order id does not exist.");
@@ -206,22 +112,6 @@ public OrderItemDto updateCart(@PathVariable Integer orderItemId, @PathVariable 
             orderItemRepository.deleteByOrderItemId(Math.toIntExact(orderItem.getOrderItemId()));
         }
     }
-
-//    @Override
-//    @Transactional
-//    public void removeCartItem(@PathVariable Integer orderItemId) {
-//        System.out.println("service");
-//        OrderItem orderItem = orderItemRepository.getReferenceById(orderItemId);
-////        GetOrderItemDto getOrderItemDto = getOrderItemDtoConversion(orderItem);
-////        System.out.println(orderItem);
-//        if (orderItem.getItemId() == null) {
-//            throw new NoSuchElementException("This order id does not exist.");
-//        } else {
-//            System.out.println("Cart item removed.");
-//            orderItemRepository.deleteByOrderItemId(Math.toIntExact(orderItem.getOrderItemId()));
-//        }
-//        return getOrderItemDtoConversion(orderItem);
-//    }
 
     private GetOrderItemDto getOrderItemDtoConversion(OrderItem orderItem){
         GetOrderItemDto getOrderItemDto = new GetOrderItemDto();

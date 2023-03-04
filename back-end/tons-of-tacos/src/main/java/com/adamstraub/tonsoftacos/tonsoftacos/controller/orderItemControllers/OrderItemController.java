@@ -25,15 +25,6 @@ public class OrderItemController implements OrderItemControllerInterface {
     @Autowired
     private MenuItemRepository menuItemRepository;
 
-//    entity
-//    @Override
-//    public OrderItem addToCart(OrderItem orderItem) throws InvalidPropertiesFormatException {
-//                orderItem.setOrderItemId(0);
-//        orderItem.setTotal(orderItem.getQuantity() * menuItemRepository.getReferenceById(orderItem.getItemId().getId()).getUnitPrice());
-//        return orderItemService.addToCart(orderItem);
-//    }
-
-    //    dto
     @Transactional
     @Override
     public String addToCart(@RequestBody OrderItemDto orderItemDto) throws InvalidPropertiesFormatException {
@@ -57,20 +48,7 @@ public class OrderItemController implements OrderItemControllerInterface {
         System.out.println("controller");
         return orderItemService.updateCart(orderItemId, newQuantity);
     }
-//    @Override
-//    public GetOrderItemDto updateCart(Integer orderItemId, Integer newQuantity) {
-//        System.out.println("controller");
-//        OrderItem orderItem = orderItemRepository.getReferenceById(orderItemId);
-//        if (orderItem.getOrderItemId() == null) {
-//            throw new NoSuchElementException("That order id does not exist and cannot be updated.");
-//        }
-//        if (newQuantity == 0) {
-//            return orderItemService.removeCartItem(orderItemId);
-//        } else {
-//            return orderItemService.updateCart(orderItemId, newQuantity);
-//        }
-//    }
-//
+
     @Override
     public void removeCartItem(Integer orderItemId) {
         System.out.println("controller");
