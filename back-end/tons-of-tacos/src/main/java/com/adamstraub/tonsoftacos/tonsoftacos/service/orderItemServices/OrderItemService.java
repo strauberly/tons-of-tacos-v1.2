@@ -3,6 +3,7 @@ package com.adamstraub.tonsoftacos.tonsoftacos.service.orderItemServices;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.MenuItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrderItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.GetOrderItemDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.OrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import org.modelmapper.ModelMapper;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 import javax.persistence.EntityExistsException;
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.InvalidPropertiesFormatException;
 import java.util.List;
@@ -77,7 +79,9 @@ public class OrderItemService implements OrderItemServiceInterface {
     public void addToCart(@RequestBody OrderItem orderItem) throws InvalidPropertiesFormatException {
         System.out.println("service");
         orderItem.setOrderItemId(0);
-        orderItem.setTotal(orderItem.getQuantity() * menuItemRepository.getReferenceById(orderItem.getItemId().getId()).getUnitPrice());
+        orderItem.setTotal(orderItem.getQuantity() *
+                menuItemRepository.getReferenceById(orderItem.getItemId().getId()).getUnitPrice());
+
         if (orderItem.getItemId().getId() > menuItemRepository.count()) {
             throw new NoSuchElementException("A menu item with that id does not exist.");
         }
@@ -93,6 +97,7 @@ public class OrderItemService implements OrderItemServiceInterface {
         if (!orderItem.getTotal().equals(orderItem.getTotal().doubleValue())) {
             throw new NumberFormatException("You have enter an invalid format for total");
         }
+//        System.out.println(orderItem);
         orderItemRepository.save(orderItem);
     }
 
@@ -110,12 +115,13 @@ public class OrderItemService implements OrderItemServiceInterface {
             throw new NoSuchElementException("No cart exists with that id");
         } else {
             for (OrderItem orderItem : orderItems) {
-                orderItemDtos.add(dtoConversion(orderItem));
+                orderItemDtos.add(getOrderItemDtoConversion(orderItem));
 //                GetOrderItemDto getOrderItemDto = modelMapper.map(orderItem, GetOrderItemDto.class);
 //                orderItemDtos.add(getOrderItemDto);
             }
         }
-        System.out.println(orderItemDtos);
+        System.out.println("Retrieved a cart.");
+//        System.out.println(orderItemDtos);
         return orderItemDtos;
     }
 //
@@ -140,44 +146,84 @@ public class OrderItemService implements OrderItemServiceInterface {
 //            return orderItem;
 //    }
 //
-
-    @Override
-    @Transactional
-    public OrderItem updateCart(@PathVariable Integer orderItemId, @PathVariable Integer newQuantity) {
-        System.out.println("service");
-        OrderItem orderItem = orderItemRepository.getReferenceById(orderItemId);
-        MenuItem menuItem = menuItemRepository.getReferenceById(orderItem.getItemId().getId());
-
-        if (orderItem.getItemId() == null) {
-            throw new EntityExistsException("That order id does not exist and cannot be updated.");
-        }
-        if (newQuantity == 0) {
-            orderItemRepository.save(orderItem);
-            removeCartItem(orderItemId);
-        } else {
-            orderItem.setQuantity(newQuantity);
-            orderItem.setTotal(orderItem.getQuantity() * menuItem.getUnitPrice());
-            orderItemRepository.save(orderItem);
-        }
-        return orderItem;
+@Override
+@Transactional
+public OrderItemDto updateCart(@PathVariable Integer orderItemId, @PathVariable Integer newQuantity) {
+    System.out.println("service");
+    OrderItem orderItem = orderItemRepository.getReferenceById(orderItemId);
+    MenuItem menuItem = menuItemRepository.getReferenceById(orderItem.getItemId().getId());
+    OrderItemDto orderItemDto = null;
+    if (newQuantity == 0) {
+        orderItemRepository.save(orderItem);
+        orderItemRepository.deleteByOrderItemId(orderItemId);
+        orderItemDto = modelMapper.map(orderItem, OrderItemDto.class);
+        System.out.println("Cart updated. Item removed.");
+    } else {
+        orderItem.setQuantity(newQuantity);
+        orderItem.setTotal(orderItem.getQuantity() * menuItem.getUnitPrice());
+        orderItemDto = modelMapper.map(orderItem, OrderItemDto.class);
+        orderItemRepository.save(orderItem);
+        System.out.println("Cart item updated.");
+        System.out.println(orderItemDto);
     }
+    return orderItemDto;
+}
+
+//    @Override
+//    @Transactional
+//    public GetOrderItemDto updateCart(@PathVariable Integer orderItemId, @PathVariable Integer newQuantity) {
+//        System.out.println("service");
+//        OrderItem orderItem = orderItemRepository.getReferenceById(orderItemId);
+//        MenuItem menuItem = menuItemRepository.getReferenceById(orderItem.getItemId().getId());
+//        GetOrderItemDto getOrderItemDto = null;
+//        if (newQuantity == 0) {
+//            orderItemRepository.save(orderItem);
+//            orderItemRepository.deleteByOrderItemId(orderItemId);
+//            System.out.println("Cart updated. Item removed.");
+//        } else {
+//            orderItem.setQuantity(newQuantity);
+//            orderItem.setTotal(orderItem.getQuantity() * menuItem.getUnitPrice());
+//            getOrderItemDto = getOrderItemDtoConversion(orderItem);
+//            orderItemRepository.save(orderItem);
+//        }
+//        System.out.println("Cart item updated.");
+//        System.out.println(getOrderItemDto);
+//        return getOrderItemDto;
+//    }
 
 
     @Override
     @Transactional
-    public OrderItem removeCartItem(@PathVariable Integer orderItemId) {
+    public void removeCartItem(@PathVariable Integer orderItemId) {
         System.out.println("service");
         OrderItem orderItem = orderItemRepository.getReferenceById(orderItemId);
-        System.out.println(orderItem);
+//        GetOrderItemDto getOrderItemDto = getOrderItemDtoConversion(orderItem);
+//        System.out.println(orderItem);
         if (orderItem.getItemId() == null) {
             throw new NoSuchElementException("This order id does not exist.");
         } else {
+            System.out.println("Cart item removed.");
             orderItemRepository.deleteByOrderItemId(Math.toIntExact(orderItem.getOrderItemId()));
         }
-        return orderItem;
     }
 
-    private GetOrderItemDto dtoConversion(OrderItem orderItem){
+//    @Override
+//    @Transactional
+//    public void removeCartItem(@PathVariable Integer orderItemId) {
+//        System.out.println("service");
+//        OrderItem orderItem = orderItemRepository.getReferenceById(orderItemId);
+////        GetOrderItemDto getOrderItemDto = getOrderItemDtoConversion(orderItem);
+////        System.out.println(orderItem);
+//        if (orderItem.getItemId() == null) {
+//            throw new NoSuchElementException("This order id does not exist.");
+//        } else {
+//            System.out.println("Cart item removed.");
+//            orderItemRepository.deleteByOrderItemId(Math.toIntExact(orderItem.getOrderItemId()));
+//        }
+//        return getOrderItemDtoConversion(orderItem);
+//    }
+
+    private GetOrderItemDto getOrderItemDtoConversion(OrderItem orderItem){
         GetOrderItemDto getOrderItemDto = new GetOrderItemDto();
 
         getOrderItemDto.setUnitPrice(orderItem.getItemId().getUnitPrice());
@@ -185,7 +231,6 @@ public class OrderItemService implements OrderItemServiceInterface {
         getOrderItemDto.setTotal(orderItem.getTotal());
         getOrderItemDto.setQuantity(orderItem.getQuantity());
 //        System.out.println(getOrderItemDto);
-
         return getOrderItemDto;
     }
 }

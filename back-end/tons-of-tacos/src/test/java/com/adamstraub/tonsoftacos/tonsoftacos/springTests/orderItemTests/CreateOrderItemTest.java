@@ -75,7 +75,7 @@ public class CreateOrderItemTest {
             System.out.println(bodyEntity);
             ResponseEntity<OrderItem> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
                     OrderItem.class);
-            System.out.println(response.getBody());
+            System.out.println("response: " + response.getBody());
 //           Then: a response code of 201 is returned and the order id is added to db
             System.out.println("Response code is " + response.getStatusCode() + ".");
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
@@ -98,10 +98,12 @@ public class CreateOrderItemTest {
             HttpEntity<String> bodyEntity = new HttpEntity<>(body, headers);
             ResponseEntity<OrderItem> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
                     OrderItem.class);
+            System.out.println(response.getBody());
+            System.out.println(response.getStatusCode());
             //Then: item is not created
             System.out.println("Response code is " + response.getStatusCode() + ".");
             System.out.println(Objects.requireNonNull(response.getBody()));
-            assertThat(response.getStatusCode()).isNotEqualTo(HttpStatus.CREATED);
+            assertThat(response.getStatusCode().is4xxClientError());
         }
     }
 }
