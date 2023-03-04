@@ -34,7 +34,6 @@ public class GlobalErrorHandler {
         return createExceptionMessage(e, HttpStatus.NOT_FOUND, webRequest, LogStatus.MESSAGE_ONLY);
     }
 
-
     @ExceptionHandler(InvalidPropertiesFormatException.class)
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     public Map <String, Object> handleIllegalArgumentException(

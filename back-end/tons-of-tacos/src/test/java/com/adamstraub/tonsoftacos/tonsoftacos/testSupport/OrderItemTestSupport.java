@@ -15,7 +15,7 @@ public class OrderItemTestSupport extends BaseResponseTest {
 //        change these values to determine what fails and passes
 
         return "{\n"
-                + " \"id\" : 15,\n"
+                + " \"itemId\" : 15,\n"
                 + " \"cartUuid\" : \"45#4f12-65325-46654\",\n"
                 + " \"quantity\" : 2,\n"
                 + " \"total\" : 5.232\n"

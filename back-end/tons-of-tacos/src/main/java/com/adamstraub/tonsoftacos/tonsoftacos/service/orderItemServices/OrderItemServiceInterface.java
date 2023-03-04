@@ -4,6 +4,7 @@ import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.OrderItemDto;
 
 
 import java.util.InvalidPropertiesFormatException;
@@ -17,8 +18,8 @@ public interface OrderItemServiceInterface {
     List<GetOrderItemDto> findByCartUuid(String cartUuid);
 
     @Transactional
-    OrderItem updateCart(@PathVariable Integer orderItemId, @RequestBody Integer newQuantity);
+    OrderItemDto updateCart(@PathVariable Integer orderItemId, @RequestBody Integer newQuantity);
 //
     @Transactional
-    OrderItem removeCartItem(@PathVariable Integer orderItemId);
+    void removeCartItem(@PathVariable Integer orderItemId);
 }

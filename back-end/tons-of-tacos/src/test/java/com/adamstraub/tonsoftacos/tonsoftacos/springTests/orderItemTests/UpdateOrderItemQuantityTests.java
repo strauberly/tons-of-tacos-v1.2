@@ -1,4 +1,6 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.orderItemTests;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.GetOrderItemDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.OrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.OrderItemTestSupport;
@@ -25,8 +27,7 @@ class UpdateOrderItemQuantityTests {
 
     @Nested
     @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-//    @TestPropertySource(locations = "/application.properties")
-    @TestPropertySource("classpath:application.properties")
+    @TestPropertySource("classpath:test-application.properties")
     @Sql(scripts = {
             "classpath:/test-schema.sql",
             "classpath:/test-data.sql",
@@ -45,10 +46,8 @@ class UpdateOrderItemQuantityTests {
             String uri =
                     String.format("%s/%d/%d", getBaseUriForUpdateOrderItem(), orderItemId, newQuantity);
             System.out.println(uri);
-
-
-//          update response
-            ResponseEntity<OrderItem> updatedOrderItemResponse =
+            //          update response
+            ResponseEntity<OrderItemDto> updatedOrderItemResponse =
                     getRestTemplate().exchange(uri, HttpMethod.PATCH, null,
                             new ParameterizedTypeReference<>() {});
             System.out.println(updatedOrderItemResponse.getBody());
@@ -59,9 +58,26 @@ class UpdateOrderItemQuantityTests {
                     String.format("%s?%s=%d",
                             getBaseUriForMenuItemByIdQuery(),
                             parameter,
-                            Objects.requireNonNull(updatedOrderItemResponse.getBody()).getItemId().getId());
+                            Objects.requireNonNull(Objects.requireNonNull(updatedOrderItemResponse.getBody()).getItemId()));
 //                            menuItemId);
             System.out.println(uri);
+
+
+////          update response
+//            ResponseEntity<OrderItem> updatedOrderItemResponse =
+//                    getRestTemplate().exchange(uri, HttpMethod.PATCH, null,
+//                            new ParameterizedTypeReference<>() {});
+//            System.out.println(updatedOrderItemResponse.getBody());
+////            menu id call to provide data for comparison
+//            String parameter = "id";
+//            int menuItemId = 2;
+//            String menuItemUri =
+//                    String.format("%s?%s=%d",
+//                            getBaseUriForMenuItemByIdQuery(),
+//                            parameter,
+//                            Objects.requireNonNull(updatedOrderItemResponse.getBody()).getItemId().getId());
+////                            menuItemId);
+//            System.out.println(uri);
 
             ResponseEntity<MenuItem> menuItemResponse =
                             getRestTemplate().exchange(menuItemUri,
