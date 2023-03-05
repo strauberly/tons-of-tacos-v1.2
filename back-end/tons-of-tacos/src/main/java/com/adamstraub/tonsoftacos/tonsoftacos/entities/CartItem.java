@@ -13,23 +13,19 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderItem  {
+public class CartItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_item_pk")
-//    @JsonIgnore
     private Integer orderItemId;
-
 
     @ManyToOne()
     @JoinColumn(name = "item_fk")
-//    @JsonIgnore
     private MenuItem itemId;
 
 
     @Column(name = "cart_uuid")
-//    @JsonIgnore
     private String cartUuid;
 
     @Column(name = "quantity")

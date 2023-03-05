@@ -1,8 +1,6 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.orderItemTests;
 
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.GetOrderItemDto;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.OrderItemDto;
-import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.OrderItemTestSupport;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -22,7 +20,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class GetOrderItemsTests{
+class GetCartItemsTests {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 

@@ -1,6 +1,6 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.orderItemTests;
 
-import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
+import com.adamstraub.tonsoftacos.tonsoftacos.entities.CartItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.OrderItemTestSupport;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ import org.springframework.test.context.jdbc.SqlConfig;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-class DeleteOrderItemTests {
+class DeleteCartItemTests {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
@@ -39,7 +39,7 @@ class DeleteOrderItemTests {
                 String.format("%s/%d", getBaseUriForRemoveOrderItem(), orderItemId);
         System.out.println(uri);
 
-        ResponseEntity<OrderItem> response =
+        ResponseEntity<CartItem> response =
                 getRestTemplate().exchange(uri,
                         HttpMethod.DELETE,
                         null,
@@ -49,7 +49,7 @@ class DeleteOrderItemTests {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
 ////        And: deletion verified by trying to delete again but receiving 404 for order id not found.
-        ResponseEntity<OrderItem> response2 =
+        ResponseEntity<CartItem> response2 =
                 getRestTemplate().exchange(uri,
                         HttpMethod.DELETE,
                         null,
@@ -69,7 +69,7 @@ class DeleteOrderItemTests {
                     String.format("%s/%d", getBaseUriForRemoveOrderItem(), orderItemId);
             System.out.println(uri);
 
-            ResponseEntity<OrderItem> response =
+            ResponseEntity<CartItem> response =
                     getRestTemplate().exchange(uri,
                             HttpMethod.DELETE,
                             null,

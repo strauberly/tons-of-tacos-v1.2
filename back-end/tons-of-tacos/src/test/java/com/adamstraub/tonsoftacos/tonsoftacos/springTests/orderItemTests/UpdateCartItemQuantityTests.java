@@ -1,8 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.orderItemTests;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.GetOrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.OrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
-import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
+import com.adamstraub.tonsoftacos.tonsoftacos.entities.CartItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.OrderItemTestSupport;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -21,7 +20,7 @@ import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class UpdateOrderItemQuantityTests {
+class UpdateCartItemQuantityTests {
      @Autowired
     JdbcTemplate jdbcTemplate;
 
@@ -97,7 +96,7 @@ class UpdateOrderItemQuantityTests {
 
 
 //          update response
-            ResponseEntity<OrderItem> updatedOrderItemResponse =
+            ResponseEntity<CartItem> updatedOrderItemResponse =
                     getRestTemplate().exchange(uri, HttpMethod.PATCH, null,
                             new ParameterizedTypeReference<>() {});
 
