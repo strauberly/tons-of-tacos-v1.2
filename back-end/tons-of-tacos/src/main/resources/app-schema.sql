@@ -37,7 +37,7 @@ PRIMARY KEY (order_item_pk),
 FOREIGN KEY (item_fk) REFERENCES menu_item(item_pk) ON DELETE CASCADE
 );
 
--- CREATE INDEX ORDER_UUID ON order_item(order_uuid);
+-- CREATE INDEX ORDER_UUID ON order_item(cart_uuid);
 
 CREATE TABLE orders(
 order_pk INT unsigned NOT NULL AUTO_INCREMENT,
@@ -48,8 +48,8 @@ order_uuid VARCHAR(255) NOT NULL,
 PRIMARY KEY (order_pk),
 FOREIGN KEY (customer_fk) REFERENCES customer(customer_pk) ON DELETE CASCADE
 -- CONSTRAINT fk_orderItem_orders
--- FOREIGN KEY (order_uuid_fk) 
--- REFERENCES order_item(order_uuid) ON DELETE 
+-- FOREIGN KEY (order_uuid) 
+-- REFERENCES order_item(cart_uuid) ON DELETE 
 -- CASCADE
 );
 

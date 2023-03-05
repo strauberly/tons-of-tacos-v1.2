@@ -2,6 +2,12 @@
 
 ---
 
+-- 5 Mar 2023 --
+
+- Updated order item entity to cart item as it better describes the purpose.
+
+---
+
 -- 3 Mar 2023 --
 
 - Remove cart item tests successful.
