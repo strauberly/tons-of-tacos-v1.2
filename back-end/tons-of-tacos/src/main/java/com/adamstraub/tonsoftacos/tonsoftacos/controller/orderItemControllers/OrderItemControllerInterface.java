@@ -118,7 +118,7 @@ public interface OrderItemControllerInterface {
             Integer orderItemId,
             @PathVariable
             Integer newQuantity);
-    //
+
     @Operation(
             summary = " Removes a cart id.",
             description = "Updates the cart by removing an id",

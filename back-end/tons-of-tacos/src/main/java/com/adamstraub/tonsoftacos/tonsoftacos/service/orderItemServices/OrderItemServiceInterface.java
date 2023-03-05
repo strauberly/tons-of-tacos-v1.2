@@ -19,7 +19,7 @@ public interface OrderItemServiceInterface {
 
     @Transactional
     OrderItemDto updateCart(@PathVariable Integer orderItemId, @RequestBody Integer newQuantity);
-//
+
     @Transactional
     void removeCartItem(@PathVariable Integer orderItemId);
 }
