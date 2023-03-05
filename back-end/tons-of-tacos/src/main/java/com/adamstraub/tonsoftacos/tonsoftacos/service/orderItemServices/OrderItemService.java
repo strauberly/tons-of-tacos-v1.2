@@ -94,10 +94,12 @@ public OrderItemDto updateCart(@PathVariable Integer orderItemId, @PathVariable 
         orderItemDto = modelMapper.map(orderItem, OrderItemDto.class);
         orderItemRepository.save(orderItem);
         System.out.println("Cart item updated.");
-        System.out.println(orderItemDto);
+//        System.out.println(orderItemDto);
     }
+    orderItemDto.setCartUuid("NA");
     return orderItemDto;
 }
+
 
     @Override
     @Transactional
@@ -110,6 +112,7 @@ public OrderItemDto updateCart(@PathVariable Integer orderItemId, @PathVariable 
         } else {
             System.out.println("Cart item removed.");
             orderItemRepository.deleteByOrderItemId(Math.toIntExact(orderItem.getOrderItemId()));
+
         }
     }
 
