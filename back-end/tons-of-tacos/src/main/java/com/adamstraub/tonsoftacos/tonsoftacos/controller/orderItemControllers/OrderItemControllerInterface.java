@@ -1,7 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.controller.orderItemControllers;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.GetOrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.OrderItemDto;
-import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
+import com.adamstraub.tonsoftacos.tonsoftacos.entities.CartItem;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.info.Info;
@@ -34,7 +34,7 @@ public interface OrderItemControllerInterface {
                             responseCode = "201",
                             description = "An order-id is created.",
                             content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = OrderItem.class))),
+                                    schema = @Schema(implementation = CartItem.class))),
                     @ApiResponse(
                             responseCode = "400",
                             description = "Request parameters invalid.",
@@ -62,7 +62,7 @@ public interface OrderItemControllerInterface {
                             responseCode = "200",
                             description = "Order-items are returned.",
                             content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = OrderItem.class))),
+                                    schema = @Schema(implementation = CartItem.class))),
                     @ApiResponse(
                             responseCode = "400",
                             description = "Request parameters invalid.",
@@ -96,7 +96,7 @@ public interface OrderItemControllerInterface {
                             responseCode = "200",
                             description = "Quantity updated.",
                             content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = OrderItem.class))),
+                                    schema = @Schema(implementation = CartItem.class))),
                     @ApiResponse(
                             responseCode = "400",
                             description = "Request parameters invalid.",
@@ -127,7 +127,7 @@ public interface OrderItemControllerInterface {
                             responseCode = "200",
                             description = "Item removed from cart.",
                             content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = OrderItem.class))),
+                                    schema = @Schema(implementation = CartItem.class))),
                     @ApiResponse(
                             responseCode = "400",
                             description = "Request parameters invalid.",

@@ -5,7 +5,7 @@ import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrderItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.GetOrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.OrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
-import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
+import com.adamstraub.tonsoftacos.tonsoftacos.entities.CartItem;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
-import javax.persistence.EntityExistsException;
-import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.InvalidPropertiesFormatException;
 import java.util.List;
@@ -32,43 +30,43 @@ public class OrderItemService implements OrderItemServiceInterface {
 
     @Override
     @Transactional
-    public void addToCart(@RequestBody OrderItem orderItem) throws InvalidPropertiesFormatException {
+    public void addToCart(@RequestBody CartItem cartItem) throws InvalidPropertiesFormatException {
         System.out.println("service");
-        orderItem.setOrderItemId(0);
-        orderItem.setTotal(orderItem.getQuantity() *
-                menuItemRepository.getReferenceById(orderItem.getItemId().getId()).getUnitPrice());
+        cartItem.setOrderItemId(0);
+        cartItem.setTotal(cartItem.getQuantity() *
+                menuItemRepository.getReferenceById(cartItem.getItemId().getId()).getUnitPrice());
 
-        if (orderItem.getItemId().getId() > menuItemRepository.count()) {
+        if (cartItem.getItemId().getId() > menuItemRepository.count()) {
             throw new NoSuchElementException("A menu item with that id does not exist.");
         }
-        if (!orderItem.getItemId().toString().matches(".*\\d.*")) {
+        if (!cartItem.getItemId().toString().matches(".*\\d.*")) {
             throw new NumberFormatException("You have entered in invalid menu item id.");
         }
-        if (!orderItem.getCartUuid().matches("([0-9\\-]+)")) {
+        if (!cartItem.getCartUuid().matches("([0-9\\-]+)")) {
             throw new InvalidPropertiesFormatException("You have entered an invalid cart id.");
         }
-        if (!orderItem.getQuantity().toString().matches(".*\\d.*")) {
+        if (!cartItem.getQuantity().toString().matches(".*\\d.*")) {
             throw new NumberFormatException("You have entered in invalid quantity.");
         }
-        if (!orderItem.getTotal().equals(orderItem.getTotal().doubleValue())) {
+        if (!cartItem.getTotal().equals(cartItem.getTotal().doubleValue())) {
             throw new NumberFormatException("You have enter an invalid format for total");
         }
 //        System.out.println(orderItem);
-        orderItemRepository.save(orderItem);
+        orderItemRepository.save(cartItem);
     }
 
     @Override
     public List<GetOrderItemDto> findByCartUuid(String cartUuid) {
 
         System.out.println("service");
-        List<OrderItem> orderItems = orderItemRepository.cartUuid(cartUuid);
+        List<CartItem> cartItems = orderItemRepository.cartUuid(cartUuid);
 //        System.out.println("orderitems = " + orderItems);
         List<GetOrderItemDto> orderItemDtos = new ArrayList<>();
-        if (orderItems.isEmpty()) {
+        if (cartItems.isEmpty()) {
             throw new NoSuchElementException("No cart exists with that id");
         } else {
-            for (OrderItem orderItem : orderItems) {
-                orderItemDtos.add(getOrderItemDtoConversion(orderItem));
+            for (CartItem cartItem : cartItems) {
+                orderItemDtos.add(getOrderItemDtoConversion(cartItem));
             }
         }
         System.out.println("Retrieved a cart.");
@@ -80,19 +78,19 @@ public class OrderItemService implements OrderItemServiceInterface {
 @Transactional
 public OrderItemDto updateCart(@PathVariable Integer orderItemId, @PathVariable Integer newQuantity) {
     System.out.println("service");
-    OrderItem orderItem = orderItemRepository.getReferenceById(orderItemId);
-    MenuItem menuItem = menuItemRepository.getReferenceById(orderItem.getItemId().getId());
+    CartItem cartItem = orderItemRepository.getReferenceById(orderItemId);
+    MenuItem menuItem = menuItemRepository.getReferenceById(cartItem.getItemId().getId());
     OrderItemDto orderItemDto = null;
     if (newQuantity == 0) {
-        orderItemRepository.save(orderItem);
+        orderItemRepository.save(cartItem);
         orderItemRepository.deleteByOrderItemId(orderItemId);
-        orderItemDto = modelMapper.map(orderItem, OrderItemDto.class);
+        orderItemDto = modelMapper.map(cartItem, OrderItemDto.class);
         System.out.println("Cart updated. Item removed.");
     } else {
-        orderItem.setQuantity(newQuantity);
-        orderItem.setTotal(orderItem.getQuantity() * menuItem.getUnitPrice());
-        orderItemDto = modelMapper.map(orderItem, OrderItemDto.class);
-        orderItemRepository.save(orderItem);
+        cartItem.setQuantity(newQuantity);
+        cartItem.setTotal(cartItem.getQuantity() * menuItem.getUnitPrice());
+        orderItemDto = modelMapper.map(cartItem, OrderItemDto.class);
+        orderItemRepository.save(cartItem);
         System.out.println("Cart item updated.");
 //        System.out.println(orderItemDto);
     }
@@ -105,24 +103,24 @@ public OrderItemDto updateCart(@PathVariable Integer orderItemId, @PathVariable 
     @Transactional
     public void removeCartItem(@PathVariable Integer orderItemId) {
         System.out.println("service");
-        OrderItem orderItem = orderItemRepository.getReferenceById(orderItemId);
+        CartItem cartItem = orderItemRepository.getReferenceById(orderItemId);
 //        System.out.println(orderItem);
-        if (orderItem.getItemId() == null) {
+        if (cartItem.getItemId() == null) {
             throw new NoSuchElementException("This order id does not exist.");
         } else {
             System.out.println("Cart item removed.");
-            orderItemRepository.deleteByOrderItemId(Math.toIntExact(orderItem.getOrderItemId()));
+            orderItemRepository.deleteByOrderItemId(Math.toIntExact(cartItem.getOrderItemId()));
 
         }
     }
 
-    private GetOrderItemDto getOrderItemDtoConversion(OrderItem orderItem){
+    private GetOrderItemDto getOrderItemDtoConversion(CartItem cartItem){
         GetOrderItemDto getOrderItemDto = new GetOrderItemDto();
 
-        getOrderItemDto.setUnitPrice(orderItem.getItemId().getUnitPrice());
-        getOrderItemDto.setItemName(orderItem.getItemId().getItemName());
-        getOrderItemDto.setTotal(orderItem.getTotal());
-        getOrderItemDto.setQuantity(orderItem.getQuantity());
+        getOrderItemDto.setUnitPrice(cartItem.getItemId().getUnitPrice());
+        getOrderItemDto.setItemName(cartItem.getItemId().getItemName());
+        getOrderItemDto.setTotal(cartItem.getTotal());
+        getOrderItemDto.setQuantity(cartItem.getQuantity());
 //        System.out.println(getOrderItemDto);
         return getOrderItemDto;
     }

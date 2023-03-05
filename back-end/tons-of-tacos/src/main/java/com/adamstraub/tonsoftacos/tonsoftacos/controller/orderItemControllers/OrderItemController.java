@@ -3,7 +3,7 @@ import com.adamstraub.tonsoftacos.tonsoftacos.dao.MenuItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrderItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.GetOrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.OrderItemDto;
-import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
+import com.adamstraub.tonsoftacos.tonsoftacos.entities.CartItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.service.orderItemServices.OrderItemService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import java.util.InvalidPropertiesFormatException;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 
 @RestController
@@ -31,7 +30,7 @@ public class OrderItemController implements OrderItemControllerInterface {
 //        System.out.println(orderItemDto);
         System.out.println("controller");
         String verification = "{" + "\"response\" : \"Item added to cart.\"" + "}";
-        OrderItem request = modelMapper.map(orderItemDto, OrderItem.class);
+        CartItem request = modelMapper.map(orderItemDto, CartItem.class);
         orderItemService.addToCart(request);
         System.out.println(verification);
         return verification;
