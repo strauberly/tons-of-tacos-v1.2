@@ -1,7 +1,5 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.entities;
-
 import javax.persistence.*;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
