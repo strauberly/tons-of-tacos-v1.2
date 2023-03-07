@@ -1,8 +1,8 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.cartItemTests;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.OrderItemDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.cartItemsDto.CartItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.CartItem;
-import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.OrderItemTestSupport;
+import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.cartItemsTestsSupport.CartItemTestSupport;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ class UpdateCartItemQuantityTests {
             "classpath:/test-data.sql",
     },
             config = @SqlConfig(encoding = "utf-8"))
-    class testThatDoesNotPolluteTheApplicationContext extends OrderItemTestSupport {
+    class testThatDoesNotPolluteTheApplicationContext extends CartItemTestSupport {
 
 
         @Test
@@ -46,7 +46,7 @@ class UpdateCartItemQuantityTests {
                     String.format("%s/%d/%d", getBaseUriForUpdateOrderItem(), orderItemId, newQuantity);
             System.out.println(uri);
             //          update response
-            ResponseEntity<OrderItemDto> updatedOrderItemResponse =
+            ResponseEntity<CartItemDto> updatedOrderItemResponse =
                     getRestTemplate().exchange(uri, HttpMethod.PATCH, null,
                             new ParameterizedTypeReference<>() {});
             System.out.println(updatedOrderItemResponse.getBody());
@@ -115,14 +115,14 @@ class UpdateCartItemQuantityTests {
             String uri =
                     String.format("%s/%d/%d", getBaseUriForUpdateOrderItem(), orderItemId, newQuantity);
             System.out.println(uri);
-            ResponseEntity<OrderItemDto> response =
+            ResponseEntity<CartItemDto> response =
                     getRestTemplate().exchange(uri, HttpMethod.PATCH, null,
                             new ParameterizedTypeReference<>() {});
 //            Then: a response status of 200 is returned for deleted
             System.out.println("Response code is " + response.getStatusCode() + ".");
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 //            And: a repeat call produces 404 because id is deleted for having quantity zero and can not be updated
-            ResponseEntity<OrderItemDto> response2 =
+            ResponseEntity<CartItemDto> response2 =
                     getRestTemplate().exchange(uri, HttpMethod.PATCH, null,
                             new ParameterizedTypeReference<>() {});
             System.out.println("Response code is " + response2.getStatusCode() + ".");

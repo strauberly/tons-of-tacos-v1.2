@@ -1,7 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.cartItemTests;
 
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.GetOrderItemDto;
-import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.OrderItemTestSupport;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.cartItemsDto.GetCartItemDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.cartItemsTestsSupport.CartItemTestSupport;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,14 +33,14 @@ class GetCartItemsTests {
     },
             config = @SqlConfig(encoding = "utf-8"))
 
-    class doesNotPolluteTheApplicationContextIT extends OrderItemTestSupport {
+    class doesNotPolluteTheApplicationContextIT extends CartItemTestSupport {
 
         @Test
         void orderItemsReturnedWithValidUuidDto200() {
 //      Given: a valid uuid
 //            rewrite url for query -> match postman
             String validUuid = "654654-4655-555";
-            String parameter = "cartUuid";
+            String parameter = "cartUid";
 
 //      When: a successful connection is made
 
@@ -48,7 +48,7 @@ class GetCartItemsTests {
                     String.format("%s?%s=%s", getBaseUriForGetCartItemsByUuid(), parameter, validUuid);
             System.out.println(uri);
 
-            ResponseEntity<List<GetOrderItemDto>> response =
+            ResponseEntity<List<GetCartItemDto>> response =
                     getRestTemplate().exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                     });
 
@@ -64,7 +64,7 @@ class GetCartItemsTests {
 //      Given: a valid uuid
 //            rewrite url for query -> match postman
             String invalidUuid = "6555ffd$-45-555";
-            String parameter = "cartUuid";
+            String parameter = "cartUid";
 
 //      When: a successful connection is made
 

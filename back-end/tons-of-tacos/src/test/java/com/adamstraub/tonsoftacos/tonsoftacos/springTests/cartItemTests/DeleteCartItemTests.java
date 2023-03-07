@@ -1,7 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.cartItemTests;
 
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.CartItem;
-import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.OrderItemTestSupport;
+import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.cartItemsTestsSupport.CartItemTestSupport;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ class DeleteCartItemTests {
             "classpath:/test-data.sql",
     },
             config = @SqlConfig(encoding = "utf-8"))
-    class testThatDoesNotPolluteTheApplicationContext extends OrderItemTestSupport {
+    class testThatDoesNotPolluteTheApplicationContext extends CartItemTestSupport {
     @Test
         void deleteOrderItemById(){
 //        Given: a valid order id
