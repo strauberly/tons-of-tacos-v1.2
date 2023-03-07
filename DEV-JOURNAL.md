@@ -2,6 +2,24 @@
 
 ---
 
+-- 6 Mar 2023 --
+
+- Branch schema changed where I will just stay on a branch for all work pertaining to in lieu of jumping back and forth to tests and end points branch. Please note development there has stopped and is continued on other branches.
+- orders controller interface implemented.
+- orders dto created.
+- created packages and initial files for orders tests
+- first function for endpoint currently operating as intended.
+
+- Initial files for orders created.
+
+-- 5 Mar 2023 --
+
+- Updated order item entity to cart item as it better describes the purpose.
+- Order controller interface implemented with swagger for documentation.
+- Branch schema changed where I will just stay on a branch for all work pertaining to in lieu of jumping back and forth to tests and end points branch. Please note development there has stopped and is continued on other branches.
+
+---
+
 -- 3 Mar 2023 --
 
 - Remove cart item tests successful.

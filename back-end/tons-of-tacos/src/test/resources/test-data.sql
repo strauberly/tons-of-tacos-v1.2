@@ -1,6 +1,3 @@
-
-
-
 -- Sample customers
 INSERT INTO customer ( name, email, phone_number)
 VALUES( 'John Johnson', 'john@johnson.com', '555.555.5552');
@@ -108,4 +105,3 @@ INSERT INTO orders (customer_fk, order_total, order_uuid)
 VALUES(1, 25.55, '654654-4655-555');
 INSERT INTO orders (customer_fk, order_total, order_uuid)
 VALUES(1, 25.55, '654654-4655-555');
-
