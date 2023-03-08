@@ -2,6 +2,15 @@
 
 ---
 
+-- 7 Mar 2023 --
+
+- Checkout endpoint initial implementation successful.
+- Changing cart implementation to be conducted from front end and lighten server load. Not that this app should be undergoing a heavy rush but logic and research seems to suggest this is the way.
+- SQL scripts updated.
+- Refactor implemented.
+- Initial test for getting all orders and their associated values through postman successful.
+- Will get a new erd up soon.
+
 -- 6 Mar 2023 --
 
 - Branch schema changed where I will just stay on a branch for all work pertaining to in lieu of jumping back and forth to tests and end points branch. Please note development there has stopped and is continued on other branches.

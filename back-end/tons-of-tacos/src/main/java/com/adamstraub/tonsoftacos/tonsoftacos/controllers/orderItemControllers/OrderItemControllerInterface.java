@@ -1,7 +1,7 @@
-package com.adamstraub.tonsoftacos.tonsoftacos.controllers.cartItemControllers;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.cartItemsDto.GetCartItemDto;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.cartItemsDto.CartItemDto;
-import com.adamstraub.tonsoftacos.tonsoftacos.entities.CartItem;
+package com.adamstraub.tonsoftacos.tonsoftacos.controllers.orderItemControllers;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.orderItemsDto.GetOrderItemDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.orderItemsDto.OrderItemDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.info.Info;
@@ -21,7 +21,7 @@ import java.util.List;
   value = "api/order")
 @OpenAPIDefinition(info = @Info(title = "services pertaining to cart functions and building an order"),
         servers = {@Server(url="http://localhost:8080", description = "Local server")})
-public interface CartItemControllerInterface {
+public interface OrderItemControllerInterface {
 
 
     @Operation(
@@ -34,7 +34,7 @@ public interface CartItemControllerInterface {
                             responseCode = "201",
                             description = "An order-id is created.",
                             content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = CartItem.class))),
+                                    schema = @Schema(implementation = OrderItem.class))),
                     @ApiResponse(
                             responseCode = "400",
                             description = "Request parameters invalid.",
@@ -50,7 +50,7 @@ public interface CartItemControllerInterface {
     @PostMapping("/add-to-cart")
     String addToCart(
             @RequestBody
-            CartItemDto cartItemDto) throws InvalidPropertiesFormatException;
+            OrderItemDto orderItemDto) throws InvalidPropertiesFormatException;
 
 
     //
@@ -62,7 +62,7 @@ public interface CartItemControllerInterface {
                             responseCode = "200",
                             description = "Order-items are returned.",
                             content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = CartItem.class))),
+                                    schema = @Schema(implementation = OrderItem.class))),
                     @ApiResponse(
                             responseCode = "400",
                             description = "Request parameters invalid.",
@@ -79,9 +79,9 @@ public interface CartItemControllerInterface {
             }
     )
 
-    @GetMapping("/get-cart/{cartUuid}")
+    @GetMapping("/get-cart/{order}")
     @ResponseStatus(code = HttpStatus.OK)
-    List<GetCartItemDto> findByCartUuid(
+    List<GetOrderItemDto> findByCartUuid(
             @RequestParam
             String cartUuid);
 
@@ -96,7 +96,7 @@ public interface CartItemControllerInterface {
                             responseCode = "200",
                             description = "Quantity updated.",
                             content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = CartItem.class))),
+                                    schema = @Schema(implementation = OrderItem.class))),
                     @ApiResponse(
                             responseCode = "400",
                             description = "Request parameters invalid.",
@@ -113,7 +113,7 @@ public interface CartItemControllerInterface {
     )
 
     @PatchMapping("/update-cart/{orderItemId}/{newQuantity}")
-    CartItemDto updateCart(
+    OrderItemDto updateCart(
             @PathVariable
             Integer orderItemId,
             @PathVariable
@@ -127,7 +127,7 @@ public interface CartItemControllerInterface {
                             responseCode = "200",
                             description = "Item removed from cart.",
                             content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = CartItem.class))),
+                                    schema = @Schema(implementation = OrderItem.class))),
                     @ApiResponse(
                             responseCode = "400",
                             description = "Request parameters invalid.",
