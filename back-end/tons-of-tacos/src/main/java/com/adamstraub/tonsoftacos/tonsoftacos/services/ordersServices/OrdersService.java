@@ -13,9 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class OrdersService implements OrdersServiceInterface {
@@ -35,42 +33,12 @@ public class OrdersService implements OrdersServiceInterface {
         ordersRepository.save(order);
     }
 
-//    @Override
-//    @Transactional
-//    public List<Orders> getAllOrders() {
-////        get order and set orderitems
-////        then get order items list and convert to dto list
-////        convert order to order dto and set list of order item dto
-//        System.out.println("service");
-////        Set<OrderItem> ordersItems = new HashSet<>();
-//        //        ordersItems.addAll(orderItemRepository.findAll());
-//        List<GetOrdersDto> getOrderItemDtos = new ArrayList<>();
-//
-//        List<Orders> orders = ordersRepository.findAll();
-//        for (Orders order : orders) {
-//            order.setOrderItems(orderItemRepository.findAll());
-//            System.out.println(orders);
-//            getOrderItemDtos.add(getOrderDtoConverter(order));
-//            System.out.println("orders dto" + getOrderItemDtos);
-//        }
-////        System.out.println(ordersItems);
-////        System.out.println(orderItemRepository.findAll());
-//            System.out.println("orders" + orders);
-//            return orders;
-//
-//    }
-
     @Override
     @Transactional
     public List<GetOrdersDto> getAllOrders() {
-//        get order and set orderitems
-//        then get order items list and convert to dto list
-//        convert order to order dto and set list of order item dto
         System.out.println("service");
-//        Set<OrderItem> ordersItems = new HashSet<>();
-        //        ordersItems.addAll(orderItemRepository.findAll());
+// get orders and convert to dto
         List<GetOrdersDto> getOrderItemDtos = new ArrayList<>();
-
         List<Orders> orders = ordersRepository.findAll();
         for (Orders order : orders) {
             order.setOrderItems(orderItemRepository.findAll());
@@ -78,29 +46,20 @@ public class OrdersService implements OrdersServiceInterface {
             getOrderItemDtos.add(getOrderDtoConverter(order));
             System.out.println("orders dto" + getOrderItemDtos);
         }
-//        System.out.println(ordersItems);
-//        System.out.println(orderItemRepository.findAll());
-        System.out.println("orders" + orders);
-//        return orders;
         return getOrderItemDtos;
 
     }
         private GetOrdersDto getOrderDtoConverter(Orders order) {
             GetOrdersDto getOrdersDto = new GetOrdersDto();
-
             getOrdersDto.setCustomerId(order.getCustomerId());
             getOrdersDto.setOrderTotal(order.getOrderTotal());
             getOrdersDto.setOrderUid(order.getOrderUid());
             getOrdersDto.setCreated(order.getCreated());
-//            getOrdersDto.setOrderItems(order.getOrderItems());
-
+//            convert order items to their dto form and then set dto field
             List<GetOrderItemDto> getOrderItemDtos = new ArrayList<>();
             List<OrderItem> orderItems = order.getOrderItems();
             orderItems.forEach(orderItem -> getOrderItemDtos.add(orderItemService.getOrderItemDtoConversion(orderItem)));
             getOrdersDto.setOrderItems(getOrderItemDtos);
             return getOrdersDto;
         }
-
-
-
 }
