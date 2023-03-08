@@ -117,7 +117,7 @@ public OrderItemDto updateCart(@PathVariable Integer orderItemId, @PathVariable 
         }
     }
 
-    private GetOrderItemDto getOrderItemDtoConversion(OrderItem orderItem){
+    public GetOrderItemDto getOrderItemDtoConversion(OrderItem orderItem){
         GetOrderItemDto getOrderItemDto = new GetOrderItemDto();
 
         getOrderItemDto.setUnitPrice(orderItem.getItemId().getUnitPrice());

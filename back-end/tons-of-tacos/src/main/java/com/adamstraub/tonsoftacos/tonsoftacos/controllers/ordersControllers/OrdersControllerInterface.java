@@ -1,4 +1,5 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.controllers.ordersControllers;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.GetOrdersDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
@@ -73,9 +74,11 @@ public interface OrdersControllerInterface {
                             content = @Content(mediaType = "application/json")),
             }
     )
-    @GetMapping("/get-orders")
-    List<Orders> getAllOrders();
+//    @GetMapping("/get-orders")
+//    List<Orders> getAllOrders();
 
+    @GetMapping("/get-orders")
+    List<GetOrdersDto> getAllOrders();
 
 //    get an order by uid
     @Operation(
