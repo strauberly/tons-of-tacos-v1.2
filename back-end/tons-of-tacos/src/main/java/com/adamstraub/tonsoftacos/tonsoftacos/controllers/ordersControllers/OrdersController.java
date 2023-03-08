@@ -23,11 +23,6 @@ public class OrdersController implements OrdersControllerInterface {
          ordersService.createOrder(order);
     }
 
-//    @Override
-//    public List<Orders> getAllOrders() {
-//        System.out.println("controller");
-//        return ordersService.getAllOrders();
-//    }
 
     @Override
     public List<GetOrdersDto> getAllOrders() {
