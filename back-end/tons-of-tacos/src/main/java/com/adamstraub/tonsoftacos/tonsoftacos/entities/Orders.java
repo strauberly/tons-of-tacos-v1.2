@@ -47,18 +47,15 @@ public class Orders implements Serializable {
 //    private String orderUid;
 
 
-
-
-
     //order id is a reference to the reference in the other class that connects to desired column
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order", fetch = FetchType.LAZY )
-//    @JsonIgnore
-    private List<OrderItem> orderItems = new ArrayList<>();
     @JsonManagedReference
-    public List<OrderItem> getOrderItems() {
-        return orderItems;
-    }
+    private List<OrderItem> orderItems = new ArrayList<>();
+//    @JsonManagedReference
+//    public List<OrderItem> getOrderItems() {
+//        return orderItems;
+//    }
 
     //    @ManyToOne
 //    private Customer customer_fk;
