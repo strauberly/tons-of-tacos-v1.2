@@ -1,5 +1,5 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.dao;
-import com.adamstraub.tonsoftacos.tonsoftacos.entities.CartItem;
+import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
@@ -9,11 +9,11 @@ import java.util.List;
 
 @Repository
 @RepositoryRestResource( collectionResourceRel = "order", path = "order")
-public interface CartItemRepository extends JpaRepository<CartItem, Integer> {
+public interface OrderItemRepository extends JpaRepository<OrderItem, Integer> {
 
 
-    List<CartItem> cartUuid(@RequestParam("cartUuid") String cartUuid);
-    void deleteByOrderItemId(int referenceById);
+    List<OrderItem> order(@RequestParam("order") String order);
+    void deleteByCartItemId(int referenceById);
 
-    CartItem getByItemId(@RequestParam("orderItemId")Integer itemId);
+    OrderItem getByItemId(@RequestParam("orderItemId")Integer itemId);
 }

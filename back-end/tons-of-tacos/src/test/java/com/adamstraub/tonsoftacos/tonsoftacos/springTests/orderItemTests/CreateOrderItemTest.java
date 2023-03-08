@@ -1,5 +1,5 @@
-package com.adamstraub.tonsoftacos.tonsoftacos.springTests.cartItemTests;
-import com.adamstraub.tonsoftacos.tonsoftacos.entities.CartItem;
+package com.adamstraub.tonsoftacos.tonsoftacos.springTests.orderItemTests;
+import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.cartItemsTestsSupport.CartItemTestSupport;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,7 @@ import java.util.Objects;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class CreateCartItemTest {
+public class CreateOrderItemTest {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -46,8 +46,8 @@ public class CreateCartItemTest {
 
             HttpEntity<String> bodyEntity = new HttpEntity<>(body, headers);
             System.out.println(bodyEntity);
-            ResponseEntity<CartItem> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
-                    CartItem.class);
+            ResponseEntity<OrderItem> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
+                    OrderItem.class);
             System.out.println("response: " + response.getBody());
 //           Then: a response code of 201 is returned and the order id is added to db
             System.out.println("Response code is " + response.getStatusCode() + ".");
@@ -69,8 +69,8 @@ public class CreateCartItemTest {
             headers.setContentType(MediaType.APPLICATION_JSON);
 
             HttpEntity<String> bodyEntity = new HttpEntity<>(body, headers);
-            ResponseEntity<CartItem> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
-                    CartItem.class);
+            ResponseEntity<OrderItem> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
+                    OrderItem.class);
             System.out.println(response.getBody());
             System.out.println(response.getStatusCode());
             //Then: item is not created

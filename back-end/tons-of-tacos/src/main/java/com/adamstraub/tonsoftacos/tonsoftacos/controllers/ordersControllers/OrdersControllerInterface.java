@@ -1,5 +1,5 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.controllers.ordersControllers;
-import com.adamstraub.tonsoftacos.tonsoftacos.entities.CartItem;
+import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Set;
 
 @Validated
 @RequestMapping(
@@ -44,7 +45,7 @@ public interface OrdersControllerInterface {
 
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping("/checkout")
-    void createOrder();
+    void createOrder(@RequestBody Orders order);
 
 
 
@@ -72,7 +73,6 @@ public interface OrdersControllerInterface {
                             content = @Content(mediaType = "application/json")),
             }
     )
-
     @GetMapping("/get-orders")
     List<Orders> getAllOrders();
 
@@ -168,7 +168,7 @@ public interface OrdersControllerInterface {
                             responseCode = "200",
                             description = "Order deleted.",
                             content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = CartItem.class))),
+                                    schema = @Schema(implementation = OrderItem.class))),
                     @ApiResponse(
                             responseCode = "400",
                             description = "Request parameters invalid.",
