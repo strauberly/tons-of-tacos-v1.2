@@ -1,7 +1,7 @@
-package com.adamstraub.tonsoftacos.tonsoftacos.springTests.cartItemTests;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.cartItemsDto.CartItemDto;
+package com.adamstraub.tonsoftacos.tonsoftacos.springTests.orderItemTests;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.orderItemsDto.OrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
-import com.adamstraub.tonsoftacos.tonsoftacos.entities.CartItem;
+import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.cartItemsTestsSupport.CartItemTestSupport;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,7 @@ import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class UpdateCartItemQuantityTests {
+class UpdateOrderItemQuantityTests {
      @Autowired
     JdbcTemplate jdbcTemplate;
 
@@ -46,7 +46,7 @@ class UpdateCartItemQuantityTests {
                     String.format("%s/%d/%d", getBaseUriForUpdateOrderItem(), orderItemId, newQuantity);
             System.out.println(uri);
             //          update response
-            ResponseEntity<CartItemDto> updatedOrderItemResponse =
+            ResponseEntity<OrderItemDto> updatedOrderItemResponse =
                     getRestTemplate().exchange(uri, HttpMethod.PATCH, null,
                             new ParameterizedTypeReference<>() {});
             System.out.println(updatedOrderItemResponse.getBody());
@@ -96,7 +96,7 @@ class UpdateCartItemQuantityTests {
 
 
 //          update response
-            ResponseEntity<CartItem> updatedOrderItemResponse =
+            ResponseEntity<OrderItem> updatedOrderItemResponse =
                     getRestTemplate().exchange(uri, HttpMethod.PATCH, null,
                             new ParameterizedTypeReference<>() {});
 
@@ -115,14 +115,14 @@ class UpdateCartItemQuantityTests {
             String uri =
                     String.format("%s/%d/%d", getBaseUriForUpdateOrderItem(), orderItemId, newQuantity);
             System.out.println(uri);
-            ResponseEntity<CartItemDto> response =
+            ResponseEntity<OrderItemDto> response =
                     getRestTemplate().exchange(uri, HttpMethod.PATCH, null,
                             new ParameterizedTypeReference<>() {});
 //            Then: a response status of 200 is returned for deleted
             System.out.println("Response code is " + response.getStatusCode() + ".");
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 //            And: a repeat call produces 404 because id is deleted for having quantity zero and can not be updated
-            ResponseEntity<CartItemDto> response2 =
+            ResponseEntity<OrderItemDto> response2 =
                     getRestTemplate().exchange(uri, HttpMethod.PATCH, null,
                             new ParameterizedTypeReference<>() {});
             System.out.println("Response code is " + response2.getStatusCode() + ".");

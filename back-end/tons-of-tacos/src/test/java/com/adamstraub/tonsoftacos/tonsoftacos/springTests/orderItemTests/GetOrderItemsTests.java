@@ -1,6 +1,6 @@
-package com.adamstraub.tonsoftacos.tonsoftacos.springTests.cartItemTests;
+package com.adamstraub.tonsoftacos.tonsoftacos.springTests.orderItemTests;
 
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.cartItemsDto.GetCartItemDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.orderItemsDto.GetOrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.cartItemsTestsSupport.CartItemTestSupport;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class GetCartItemsTests {
+class GetOrderItemsTests {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -40,7 +40,7 @@ class GetCartItemsTests {
 //      Given: a valid uuid
 //            rewrite url for query -> match postman
             String validUuid = "654654-4655-555";
-            String parameter = "cartUid";
+            String parameter = "orderUid";
 
 //      When: a successful connection is made
 
@@ -48,7 +48,7 @@ class GetCartItemsTests {
                     String.format("%s?%s=%s", getBaseUriForGetCartItemsByUuid(), parameter, validUuid);
             System.out.println(uri);
 
-            ResponseEntity<List<GetCartItemDto>> response =
+            ResponseEntity<List<GetOrderItemDto>> response =
                     getRestTemplate().exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                     });
 
@@ -64,7 +64,7 @@ class GetCartItemsTests {
 //      Given: a valid uuid
 //            rewrite url for query -> match postman
             String invalidUuid = "6555ffd$-45-555";
-            String parameter = "cartUid";
+            String parameter = "orderUid";
 
 //      When: a successful connection is made
 

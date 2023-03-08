@@ -8,14 +8,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Set;
+
 @RestController
 public class OrdersController implements OrdersControllerInterface {
     @Autowired
     private OrdersService ordersService;
 
-    @Transactional
+
     @Override
-    public void createOrder() {
+    public void createOrder(@RequestBody Orders order) {
+        System.out.println("controller");
+         ordersService.createOrder(order);
     }
 
     @Override

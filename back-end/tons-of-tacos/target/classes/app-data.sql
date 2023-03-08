@@ -93,21 +93,22 @@ INSERT INTO menu_item (category, description , item_name, item_size, img_url,
 unit_price)
 VALUES('topping', 'a little extra', 'lime', NULL, 'TBD', 1.50);
 
--- Sample order items
-INSERT INTO order_item (item_fk, cart_uuid, quantity, total)
-VALUES(1, '654654-465465-555', 3, 3.00);
-INSERT INTO order_item (item_fk, cart_uuid, quantity, total)
-VALUES(2, '654654-4655-555', 4, 4.00);
-INSERT INTO order_item (item_fk, cart_uuid, quantity, total)
-VALUES(3, '654654-4655-555', 4, 1.50);
 
 -- Sample orders
-INSERT INTO orders (customer_fk, order_total, order_uuid)
+INSERT INTO orders (customer_fk, order_total, order_uid)
 VALUES(2, 30.55, '654654-465465-555');
-INSERT INTO orders (customer_fk, order_total, order_uuid)
+INSERT INTO orders (customer_fk, order_total, order_uid)
 VALUES(1, 25.55, '654654-4655-555');
-INSERT INTO orders (customer_fk, order_total, order_uuid)
-VALUES(1, 25.55, '654654-4655-555');
+INSERT INTO orders (customer_fk, order_total, order_uid)
+VALUES(1, 10.00, '654654-4657-555');
+
+-- Sample order items
+INSERT INTO order_items (item_fk, quantity, total, order_fk)
+VALUES(1, 3, 3.00, 2);
+INSERT INTO order_items (item_fk, quantity, total, order_fk)
+VALUES(2, 4, 4.00, 2);
+INSERT INTO order_items (item_fk, quantity, total, order_fk)
+VALUES(3, 3, 1.50, 1);
 
 -- ========================
 
