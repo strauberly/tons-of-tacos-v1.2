@@ -4,12 +4,10 @@ import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.GetOrdersDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
 import com.adamstraub.tonsoftacos.tonsoftacos.services.ordersServices.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
-import java.util.Set;
+
 
 @RestController
 public class OrdersController implements OrdersControllerInterface {
@@ -23,14 +21,10 @@ public class OrdersController implements OrdersControllerInterface {
          ordersService.createOrder(order);
     }
 
-//    @Override
-//    public List<Orders> getAllOrders() {
-//        System.out.println("controller");
-//        return ordersService.getAllOrders();
-//    }
 
     @Override
-    public List<GetOrdersDto> getAllOrders() {
+    public List<Orders> getAllOrders() {
+//    public List<GetOrdersDto> getAllOrders() {
         System.out.println("controller");
         return ordersService.getAllOrders();
     }

@@ -7,6 +7,8 @@
 - Setting up dto for order response. Interested to see if this will solve recursion as we will be wanting to work with dto most likely anyways.
 - Dto implemented and relationships currently behaving as expected.
 - Next steps will include implementing tests, and reformatting database to include a column for status with a default value of open, and to be changed manually to closed after customer pays and picks up food by tons of tacos owners. May need to also include field for contact details but they will be encrypted. To be worked on at a later date.
+- test sql scripts updated
+- Initial Test for all orders returned successful.
 
 ---
 

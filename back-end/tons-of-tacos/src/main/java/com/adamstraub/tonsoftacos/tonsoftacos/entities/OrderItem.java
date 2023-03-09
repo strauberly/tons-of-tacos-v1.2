@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
+import java.io.Serializable;
+
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Builder
@@ -13,7 +15,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderItem {
+public class OrderItem implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,18 +27,11 @@ public class OrderItem {
     @JoinColumn(name = "item_fk")
     private MenuItem itemId;
 
-//    @ManyToOne
-//    @JoinColumn(name = "cart_uuid")
-//    private Orders order;
-
     @Column(name = "quantity")
     private Integer quantity;
 
     @Column(name = "total")
     private Double total;
-
-//    @Column(name = "order_pk")
-//    private int orderPk;
 
     @ManyToOne()
     @JoinColumn(name = "order_fk")

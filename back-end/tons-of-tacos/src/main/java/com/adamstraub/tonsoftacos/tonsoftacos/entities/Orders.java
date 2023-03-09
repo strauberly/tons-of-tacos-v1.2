@@ -14,8 +14,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","field handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
+@Builder
 @Table(name = "orders")
 @Getter
 @Setter
@@ -33,42 +34,19 @@ public class Orders implements Serializable {
     @Column (name = "order_total")
     private Double orderTotal;
 
-
-    //has default value
     @Column (name = "created")
     @CreationTimestamp
     private Timestamp created;
 
-
-
     @Column (name = "order_uid")
     private String orderUid;
-//    @Column (name = "order_uuid")
-//    private String orderUid;
 
-
-    //order id is a reference to the reference in the other class that connects to desired column
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order", fetch = FetchType.LAZY )
     @JsonManagedReference
     private List<OrderItem> orderItems = new ArrayList<>();
-//    @JsonManagedReference
-//    public List<OrderItem> getOrderItems() {
-//        return orderItems;
-//    }
 
-    //    @ManyToOne
-//    private Customer customer_fk;
-//
-//public void add(OrderItem item) {
-//    if (item != null) {
-//        if (orderItems == null) {
-//            orderItems = new HashSet<>();
-//        }
-//        orderItems.add(item);
-//        item.setOrder(this);
-//    }
-//}
+
     @Override
     public String toString() {
         return "Orders{" +

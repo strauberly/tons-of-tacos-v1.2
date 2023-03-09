@@ -10,11 +10,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.servers.Server;
 import org.springframework.http.HttpStatus;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import java.util.Set;
+
 
 @Validated
 @RequestMapping(
@@ -50,11 +49,11 @@ public interface OrdersControllerInterface {
 
 
 
-    //    get all orders
+    //    get all orders - successful 09 Mar 2023
     @Operation(
             summary = "All orders returned.",
             description = """
-                  For owner use only at this time.""",
+                  This endpoint will return all orders. For owner use only at this time.""",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
@@ -74,11 +73,10 @@ public interface OrdersControllerInterface {
                             content = @Content(mediaType = "application/json")),
             }
     )
-//    @GetMapping("/get-orders")
-//    List<Orders> getAllOrders();
-
     @GetMapping("/get-orders")
-    List<GetOrdersDto> getAllOrders();
+    List<Orders> getAllOrders();
+//    @GetMapping("/get-orders")
+//    List<GetOrdersDto> getAllOrders();
 
 //    get an order by uid
     @Operation(
