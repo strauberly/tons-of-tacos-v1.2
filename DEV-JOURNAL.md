@@ -2,6 +2,60 @@
 
 ---
 
+-- 9 Mar 2023 --
+
+- Status column added to orders.
+- New erd available.
+- Json syntax for creating order figured.
+- Initial test for creating an order successful.
+- Ready column added to orders.
+- New erd available.
+
+<p align="center">
+  <img src="./back-end/supporting-files/erd-09Mar2023.png"/>
+</p>
+
+-- 8 Mar 2023 --
+
+- Setting up dto for order response. Interested to see if this will solve recursion as we will be wanting to work with dto most likely anyways.
+- Dto implemented and relationships currently behaving as expected.
+- Next steps will include implementing tests, and reformatting database to include a column for status with a default value of open, and to be changed manually to closed after customer pays and picks up food by tons of tacos owners. May need to also include field for contact details but they will be encrypted. To be worked on at a later date.
+- test sql scripts updated
+- Initial Test for all orders returned successful.
+
+---
+
+-- 7 Mar 2023 --
+
+- Checkout endpoint initial implementation successful.
+- Changing cart implementation to be conducted from front end and lighten server load. Not that this app should be undergoing a heavy rush but logic and research seems to suggest this is the way.
+- SQL scripts updated.
+- Refactor implemented.
+- Initial test for getting all orders and their associated values through postman successful.
+- Will get a new erd up soon.
+
+---
+
+-- 6 Mar 2023 --
+
+- Branch schema changed where I will just stay on a branch for all work pertaining to in lieu of jumping back and forth to tests and end points branch. Please note development there has stopped and is continued on other branches.
+- orders controller interface implemented.
+- orders dto created.
+- created packages and initial files for orders tests
+- first function for endpoint currently operating as intended.
+
+- Initial files for orders created.
+
+---
+
+-- 5 Mar 2023 --
+
+- Updated order item entity to cart item as it better describes the purpose.
+- Order controller interface implemented with swagger for documentation.
+- Branch schema changed where I will just stay on a branch for all work pertaining to in lieu of jumping back and forth to tests and end points branch. Please note development there has stopped and is continued on other branches.
+
+---
+
 -- 3 Mar 2023 --
 
 - Remove cart item tests successful.
