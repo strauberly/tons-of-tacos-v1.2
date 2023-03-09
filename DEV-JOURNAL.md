@@ -2,6 +2,19 @@
 
 ---
 
+-- 9 Mar 2023 --
+
+- Status column added to orders.
+- New erd available.
+- Json syntax for creating order figured.
+- Initial test for creating an order successful.
+- Ready column added to orders.
+- New erd available.
+
+<p align="center">
+  <img src="./back-end/supporting-files/erd-09Mar2023.png"/>
+</p>
+
 -- 8 Mar 2023 --
 
 - Setting up dto for order response. Interested to see if this will solve recursion as we will be wanting to work with dto most likely anyways.
