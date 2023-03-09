@@ -1,4 +1,4 @@
-package com.adamstraub.tonsoftacos.tonsoftacos.services.cartItemServices;
+package com.adamstraub.tonsoftacos.tonsoftacos.services.orderItemServices;
 
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.MenuItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrderItemRepository;
@@ -97,7 +97,7 @@ public OrderItemDto updateCart(@PathVariable Integer orderItemId, @PathVariable 
         System.out.println("Cart item updated.");
 //        System.out.println(orderItemDto);
     }
-    orderItemDto.setOrderPk("NA");
+//    orderItemDto.setOrder("NA");
     return orderItemDto;
 }
 

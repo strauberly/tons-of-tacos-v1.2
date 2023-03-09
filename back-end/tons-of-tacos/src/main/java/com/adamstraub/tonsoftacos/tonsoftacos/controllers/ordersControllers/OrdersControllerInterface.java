@@ -49,11 +49,11 @@ public interface OrdersControllerInterface {
 
 
 
-    //    get all orders
+    //    get all orders - successful 09 Mar 2023
     @Operation(
             summary = "All orders returned.",
             description = """
-                  For owner use only at this time.""",
+                  This endpoint will return all orders. For owner use only at this time.""",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
@@ -73,9 +73,10 @@ public interface OrdersControllerInterface {
                             content = @Content(mediaType = "application/json")),
             }
     )
-
     @GetMapping("/get-orders")
-    List<GetOrdersDto> getAllOrders();
+    List<Orders> getAllOrders();
+//    @GetMapping("/get-orders")
+//    List<GetOrdersDto> getAllOrders();
 
 //    get an order by uid
     @Operation(

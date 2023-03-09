@@ -1,4 +1,4 @@
-package com.adamstraub.tonsoftacos.tonsoftacos.services.cartItemServices;
+package com.adamstraub.tonsoftacos.tonsoftacos.services.orderItemServices;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.orderItemsDto.GetOrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import org.springframework.transaction.annotation.Transactional;
