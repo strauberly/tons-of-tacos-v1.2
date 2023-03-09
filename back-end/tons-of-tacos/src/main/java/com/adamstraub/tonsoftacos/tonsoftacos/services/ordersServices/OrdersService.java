@@ -35,8 +35,8 @@ public class OrdersService implements OrdersServiceInterface {
 
     @Override
     @Transactional
-    public List<Orders> getAllOrders() {
-//    public List<GetOrdersDto> getAllOrders() {
+//    public List<Orders> getAllOrders() {
+    public List<GetOrdersDto> getAllOrders() {
 //        get order and set orderitems
 //        then get order items list and convert to dto list
 //        convert order to order dto and set list of order item dto
@@ -55,8 +55,8 @@ public class OrdersService implements OrdersServiceInterface {
 //        System.out.println(ordersItems);
 //        System.out.println(orderItemRepository.findAll());
         System.out.println("orders" + orders);
-        return orders;
-//        return getOrderItemDtos;
+//        return orders;
+        return getOrderItemDtos;
 
     }
         private GetOrdersDto getOrderDtoConverter(Orders order) {

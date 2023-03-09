@@ -11,9 +11,9 @@ public interface OrdersServiceInterface {
     @Transactional
     void createOrder(@RequestBody Orders order);
 
-    @Transactional(readOnly = true)
-    List<Orders> getAllOrders();
-
 //    @Transactional(readOnly = true)
-//    List<GetOrdersDto> getAllOrders();
+//    List<Orders> getAllOrders();
+
+    @Transactional(readOnly = true)
+    List<GetOrdersDto> getAllOrders();
 }
