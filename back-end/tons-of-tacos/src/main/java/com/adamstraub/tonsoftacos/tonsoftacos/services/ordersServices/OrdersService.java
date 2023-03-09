@@ -6,7 +6,7 @@ import com.adamstraub.tonsoftacos.tonsoftacos.dto.orderItemsDto.GetOrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.GetOrdersDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
-import com.adamstraub.tonsoftacos.tonsoftacos.services.cartItemServices.OrderItemService;
+import com.adamstraub.tonsoftacos.tonsoftacos.services.orderItemServices.OrderItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,10 +35,16 @@ public class OrdersService implements OrdersServiceInterface {
 
     @Override
     @Transactional
-    public List<GetOrdersDto> getAllOrders() {
+    public List<Orders> getAllOrders() {
+//    public List<GetOrdersDto> getAllOrders() {
+//        get order and set orderitems
+//        then get order items list and convert to dto list
+//        convert order to order dto and set list of order item dto
         System.out.println("service");
-// get orders and convert to dto
+//        Set<OrderItem> ordersItems = new HashSet<>();
+        //        ordersItems.addAll(orderItemRepository.findAll());
         List<GetOrdersDto> getOrderItemDtos = new ArrayList<>();
+
         List<Orders> orders = ordersRepository.findAll();
         for (Orders order : orders) {
             order.setOrderItems(orderItemRepository.findAll());
@@ -46,20 +52,29 @@ public class OrdersService implements OrdersServiceInterface {
             getOrderItemDtos.add(getOrderDtoConverter(order));
             System.out.println("orders dto" + getOrderItemDtos);
         }
-        return getOrderItemDtos;
+//        System.out.println(ordersItems);
+//        System.out.println(orderItemRepository.findAll());
+        System.out.println("orders" + orders);
+        return orders;
+//        return getOrderItemDtos;
 
     }
         private GetOrdersDto getOrderDtoConverter(Orders order) {
             GetOrdersDto getOrdersDto = new GetOrdersDto();
+
             getOrdersDto.setCustomerId(order.getCustomerId());
             getOrdersDto.setOrderTotal(order.getOrderTotal());
             getOrdersDto.setOrderUid(order.getOrderUid());
             getOrdersDto.setCreated(order.getCreated());
-//            convert order items to their dto form and then set dto field
+//            getOrdersDto.setOrderItems(order.getOrderItems());
+
             List<GetOrderItemDto> getOrderItemDtos = new ArrayList<>();
             List<OrderItem> orderItems = order.getOrderItems();
             orderItems.forEach(orderItem -> getOrderItemDtos.add(orderItemService.getOrderItemDtoConversion(orderItem)));
             getOrdersDto.setOrderItems(getOrderItemDtos);
             return getOrdersDto;
         }
+
+
+
 }

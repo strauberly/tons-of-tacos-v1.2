@@ -50,6 +50,9 @@ public class BaseResponseTest {
     protected  String getBaseUriForGetAllOrders(){
         return String.format("http://localhost:%d/api/orders/get-orders", Integer.valueOf(serverPort));
     }
+    protected  String getBaseUriForCreateOrder(){
+        return String.format("http://localhost:%d/api/orders/checkout", Integer.valueOf(serverPort));
+    }
 
 
 }
