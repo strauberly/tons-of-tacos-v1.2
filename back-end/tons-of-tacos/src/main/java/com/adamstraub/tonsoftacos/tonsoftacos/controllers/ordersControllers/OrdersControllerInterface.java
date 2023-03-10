@@ -73,10 +73,10 @@ public interface OrdersControllerInterface {
                             content = @Content(mediaType = "application/json")),
             }
     )
-    @GetMapping("/get-orders")
-    List<Orders> getAllOrders();
 //    @GetMapping("/get-orders")
-//    List<GetOrdersDto> getAllOrders();
+//    List<Orders> getAllOrders();
+    @GetMapping("/get-orders")
+    List<GetOrdersDto> getAllOrders();
 
 //    get an order by uid
     @Operation(

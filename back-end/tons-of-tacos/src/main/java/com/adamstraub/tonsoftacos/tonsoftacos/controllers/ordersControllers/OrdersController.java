@@ -23,8 +23,8 @@ public class OrdersController implements OrdersControllerInterface {
 
 
     @Override
-    public List<Orders> getAllOrders() {
-//    public List<GetOrdersDto> getAllOrders() {
+//    public List<Orders> getAllOrders() {
+    public List<GetOrdersDto> getAllOrders() {
         System.out.println("controller");
         return ordersService.getAllOrders();
     }

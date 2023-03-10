@@ -9,6 +9,7 @@
 - Json syntax for creating order figured.
 - Initial test for creating an order successful.
 - Ready column added to orders.
+- get orders returned to working off of dto, stills needs to be cleaned.
 - New erd available.
 
 <p align="center">
