@@ -33,13 +33,17 @@ public class Orders implements Serializable {
 
     @Column (name = "order_total")
     private Double orderTotal;
-
+    @Column (name = "order_uid")
+    private String orderUid;
     @Column (name = "created")
     @CreationTimestamp
     private Timestamp created;
 
-    @Column (name = "order_uid")
-    private String orderUid;
+    @Column (name = "ready")
+    private String ready = "no";
+
+    @Column (name = "status")
+    private String status = "open";
 
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order", fetch = FetchType.LAZY )
@@ -52,9 +56,11 @@ public class Orders implements Serializable {
         return "Orders{" +
                 "orderId=" + orderId +
                 ", customerId=" + customerId +
-                ", created=" + created +
                 ", orderTotal=" + orderTotal +
                 ", orderUid='" + orderUid + '\'' +
+                ", created=" + created +
+                ", ready='" + ready + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
 }

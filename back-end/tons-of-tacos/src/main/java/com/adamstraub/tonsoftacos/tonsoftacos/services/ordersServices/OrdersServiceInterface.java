@@ -2,10 +2,10 @@ package com.adamstraub.tonsoftacos.tonsoftacos.services.ordersServices;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.GetOrdersDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
-import java.util.Set;
 
 public interface OrdersServiceInterface {
     @Transactional
@@ -16,4 +16,15 @@ public interface OrdersServiceInterface {
 
     @Transactional(readOnly = true)
     List<GetOrdersDto> getAllOrders();
+
+    @Transactional(readOnly = true)
+    GetOrdersDto getOrderByUid(@PathVariable String orderUid);
+
+    @Transactional(readOnly = true)
+    GetOrdersDto getOrderByCustomer(@PathVariable String customer);
+
+    @Transactional
+    void foodReady(@PathVariable Integer orderId);
+    @Transactional
+    void closeOrder(@PathVariable Integer orderId);
 }

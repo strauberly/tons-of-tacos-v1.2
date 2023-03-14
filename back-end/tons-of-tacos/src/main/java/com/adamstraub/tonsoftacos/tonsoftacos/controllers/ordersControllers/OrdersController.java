@@ -4,6 +4,7 @@ import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.GetOrdersDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
 import com.adamstraub.tonsoftacos.tonsoftacos.services.ordersServices.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
@@ -31,18 +32,34 @@ public class OrdersController implements OrdersControllerInterface {
 
 
     @Override
-    public void getOrderById(Orders order) {
+    public GetOrdersDto getOrderByUid(@PathVariable String orderUid) {
+        System.out.println("controller");
+        return ordersService.getOrderByUid(orderUid);
 
     }
 
     @Override
-    public void getOrderByCustomer(Orders order) {
+    public GetOrdersDto getOrderByCustomer(String customer) {
+        System.out.println("controller");
+        return ordersService.getOrderByCustomer(customer);
 
     }
 
     @Override
     public void updateOrderByUid(Orders order) {
 
+    }
+
+    @Override
+    public void closeOrder(Integer orderId) {
+        System.out.println("controller");
+    ordersService.closeOrder(orderId);
+    }
+
+    @Override
+    public void foodReady(Integer orderId) {
+        System.out.println("controller");
+        ordersService.foodReady(orderId);
     }
 
     @Override

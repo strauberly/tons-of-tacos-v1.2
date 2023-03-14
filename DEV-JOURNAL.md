@@ -2,6 +2,17 @@
 
 ---
 
+-- 13 Mar 2023 --
+
+- Return order by uid implemented.
+- Create order now correctly generates totals.
+- Restructured get-order endpoint to be searchable by uid or customer name.
+- Return order by customer name implemented.
+- Order able to be marked with a time ready.
+- Order status can be marked closed to indicate an order is complete.
+
+---
+
 -- 9 Mar 2023 --
 
 - Status column added to orders.
@@ -15,6 +26,8 @@
 <p align="center">
   <img src="./back-end/supporting-files/erd-09Mar2023.png"/>
 </p>
+
+---
 
 -- 8 Mar 2023 --
 
