@@ -1,5 +1,4 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.services.ordersServices;
-
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.CustomerRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.MenuItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrderItemRepository;
@@ -14,13 +13,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
-
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class OrdersService implements OrdersServiceInterface {
@@ -130,6 +129,61 @@ public class OrdersService implements OrdersServiceInterface {
         System.out.println("Order closed");
     }
 
+    @Override
+    public String todaysSales() {
+        System.out.println("service");
+
+        String formattedSales;
+        LocalDate todaysDate = LocalDate.now();
+        LocalDate dbDate;
+        DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("E dd MMM yyyy");
+        Double salesTotal = 0.00;
+        List<Orders> todaysOrders = new ArrayList<>();
+
+
+        //create jpa query that searches status closed *done
+//        get timestamp java.sql and convert to day only *done
+//        compare todays date do date for completed orders *done
+//        if == add to new list then get those totals and add up * done
+        List<Orders> completedOrders = ordersRepository.findByStatus("closed");
+        for (Orders completedOrder: completedOrders){
+            dbDate = completedOrder.getCreated().toLocalDateTime().toLocalDate();
+            if(todaysDate.format(formattedDate).equals(dbDate.format(formattedDate))){
+                todaysOrders.add(completedOrder);
+            }
+//            for (Orders order:todaysOrders){
+//                salesTotal += order.getOrderTotal();
+//            }
+//            System.out.println(todaysDate.format(formattedDate).equals(dbDate.format(formattedDate)));
+//            System.out.println("string value db time: " + dbDate);
+        }
+//                create jpa query that takes todays date and status closed
+        for (Orders order:todaysOrders){
+            salesTotal += order.getOrderTotal();
+        }
+//        System.out.println(salesTotal);
+//        System.out.println(todaysOrders.size());
+//        String numberOfOrders = String.valueOf(Math.toIntExact(ordersRepository.count()));
+//        Todays date
+        String numberOfOrders = String.valueOf(todaysOrders.size());
+        formattedSales = "For: " + todaysDate.format(formattedDate) + ", Number of sales: " + numberOfOrders + ", " +
+                "Totaling: $" + salesTotal;
+//        System.out.println(completedOrders);
+        return formattedSales;
+    }
+
+    @Override
+    public void deleteOrder(Integer orderId) {
+        System.out.println("service");
+        ordersRepository.deleteById(orderId);
+        System.out.println("Order deleted");
+    }
+
+//    @Override
+//    public void updateOrder(String orderUid) {
+//        System.out.println("service");
+//    }
+
     private GetOrdersDto getOrderDtoConverter(Orders order) {
             GetOrdersDto getOrdersDto = new GetOrdersDto();
 
@@ -145,7 +199,4 @@ public class OrdersService implements OrdersServiceInterface {
             getOrdersDto.setOrderItems(getOrderItemDtos);
             return getOrdersDto;
         }
-
-
-
 }

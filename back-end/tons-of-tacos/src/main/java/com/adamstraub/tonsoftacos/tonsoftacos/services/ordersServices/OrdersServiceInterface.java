@@ -27,4 +27,13 @@ public interface OrdersServiceInterface {
     void foodReady(@PathVariable Integer orderId);
     @Transactional
     void closeOrder(@PathVariable Integer orderId);
+
+    @Transactional
+    String todaysSales();
+
+    @Transactional
+    void deleteOrder(Integer orderId);
+
+//    @Transactional
+//    void updateOrder(@PathVariable String orderUid);
 }

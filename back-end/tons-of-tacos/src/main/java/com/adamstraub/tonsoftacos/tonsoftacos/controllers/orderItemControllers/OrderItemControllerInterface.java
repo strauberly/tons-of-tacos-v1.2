@@ -18,7 +18,7 @@ import java.util.List;
 
 @Validated
 @RequestMapping(
-  value = "api/order")
+  value = "api/orders")
 @OpenAPIDefinition(info = @Info(title = "services pertaining to cart functions and building an order"),
         servers = {@Server(url="http://localhost:8080", description = "Local server")})
 public interface OrderItemControllerInterface {
@@ -47,7 +47,7 @@ public interface OrderItemControllerInterface {
     )
 
     @ResponseStatus(code = HttpStatus.CREATED)
-    @PostMapping("/add-to-cart")
+    @PostMapping("/add-to-order")
     String addToCart(
             @RequestBody
             OrderItemDto orderItemDto) throws InvalidPropertiesFormatException;

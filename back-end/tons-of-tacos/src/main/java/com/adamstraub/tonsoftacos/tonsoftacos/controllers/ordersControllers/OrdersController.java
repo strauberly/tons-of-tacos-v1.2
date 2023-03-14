@@ -46,9 +46,17 @@ public class OrdersController implements OrdersControllerInterface {
     }
 
     @Override
-    public void updateOrderByUid(Orders order) {
-
+    public String todaysSales() {
+        System.out.println("controller");
+        return ordersService.todaysSales();
     }
+
+//    @Override
+//    public void updateOrderByUid(String orderUid) {
+//        System.out.println("controller");
+//        ordersService.updateOrder(orderUid);
+//    }
+
 
     @Override
     public void closeOrder(Integer orderId) {
@@ -63,8 +71,8 @@ public class OrdersController implements OrdersControllerInterface {
     }
 
     @Override
-    public void deleteOrder(Orders order) {
-
+    public void deleteOrder(Integer orderId) {
+        System.out.println("controller");
+        ordersService.deleteOrder(orderId);
     }
-
 }
