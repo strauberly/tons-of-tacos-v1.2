@@ -2,6 +2,13 @@
 
 ---
 
+-- 14 Mar 2023 --
+
+- Implemented sales endpoint which tallies number of completed sales and total for the current day for owners use.
+- Implemented deletion of an order.
+
+---
+
 -- 13 Mar 2023 --
 
 - Return order by uid implemented.
