@@ -49,7 +49,7 @@ public interface OrdersControllerInterface {
 
 
 
-    //    get all orders - successful 09 Mar 2023
+    //    get all orders
     @Operation(
             summary = "All orders returned.",
             description = """
@@ -133,62 +133,63 @@ public interface OrdersControllerInterface {
     @GetMapping("/get-order/customer")
     GetOrdersDto getOrderByCustomer(@RequestParam String customer);
 
-    //    update order by order id
-        @Operation(
-                summary = "An order is updated by uid.",
-                description = """
-                      For owner use only at this time. Main function will be to update order status.""",
-                responses = {
-                        @ApiResponse(
-                                responseCode = "200",
-                                description = "Order is returned.",
-                                content = @Content(mediaType = "application/json")),
-                        @ApiResponse(
-                                responseCode = "400",
-                                description = "Request parameters invalid.",
-                                content = @Content(mediaType = "application/json")),
-                        @ApiResponse(
-                                responseCode = "404",
-                                description = "No orders found.",
-                                content = @Content(mediaType = "application/json")),
-                        @ApiResponse(
-                                responseCode = "500",
-                                description = "An unplanned error occured.",
-                                content = @Content(mediaType = "application/json")),
-                }
-        )
-        @GetMapping("/update-order/{order_uuid}")
-        void updateOrderByUid(@RequestBody Orders order);
+//    //    edit order item.
+//        @Operation(
+//                summary = "Edit an item in the order.",
+//                description = """
+//                      For owner use only at this time. To be used for correcting order errors.""",
+//                responses = {
+//                        @ApiResponse(
+//                                responseCode = "200",
+//                                description = "Order is returned.",
+//                                content = @Content(mediaType = "application/json")),
+//                        @ApiResponse(
+//                                responseCode = "400",
+//                                description = "Request parameters invalid.",
+//                                content = @Content(mediaType = "application/json")),
+//                        @ApiResponse(
+//                                responseCode = "404",
+//                                description = "No orders found.",
+//                                content = @Content(mediaType = "application/json")),
+//                        @ApiResponse(
+//                                responseCode = "500",
+//                                description = "An unplanned error occured.",
+//                                content = @Content(mediaType = "application/json")),
+//                }
+//        )
+//        @PatchMapping("/update-order/{orderUid}/{orderItemId}/{quantity}")
+//        void updateOrderByUid(@PathVariable String orderUid, Integer orderItemId);
 //
 //    // get todays sales
-//    @Operation(
-//            summary = "Deletes an order by id.",
-//            description = "Implemented for ease of use.",
-//            responses = {
-//                    @ApiResponse(
-//                            responseCode = "200",
-//                            description = "Order deleted.",
-//                            content = @Content(mediaType = "application/json",
-//                                    schema = @Schema(implementation = OrderItem.class))),
-//                    @ApiResponse(
-//                            responseCode = "400",
-//                            description = "Request parameters invalid.",
-//                            content = @Content(mediaType = "application/json")),
-//                    @ApiResponse(
-//                            responseCode = "404",
-//                            description = "No order-items found according to input.",
-//                            content = @Content(mediaType = "application/json")),
-//                    @ApiResponse(
-//                            responseCode = "500",
-//                            description = "An unplanned error occured.",
-//                            content = @Content(mediaType = "application/json")),
-//
-//            }
-//    )
-//    @DeleteMapping("/delete-order/{order_uuid}")
-//    void deleteOrder(@PathVariable Orders order);
-//
-//
+    @Operation(
+            summary = "Gets sales for today's closed orders.",
+            description = "Will allow for owner to see what they have brought in through online orders for the day." +
+                    "Future use cases in mind for helping owners to have more in depth sale tracking.",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Order deleted.",
+                            content = @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = OrderItem.class))),
+                    @ApiResponse(
+                            responseCode = "400",
+                            description = "Request parameters invalid.",
+                            content = @Content(mediaType = "application/json")),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "No order-items found according to input.",
+                            content = @Content(mediaType = "application/json")),
+                    @ApiResponse(
+                            responseCode = "500",
+                            description = "An unplanned error occured.",
+                            content = @Content(mediaType = "application/json")),
+
+            }
+    )
+    @GetMapping("/sales")
+    String todaysSales();
+
+
 //    // close order by id
     @Operation(
             summary = "Closes an order by id.",
@@ -274,6 +275,6 @@ public interface OrdersControllerInterface {
 
             }
     )
-    @DeleteMapping("/delete-order/{order_uuid}")
-    void deleteOrder(@PathVariable Orders order);
+    @DeleteMapping("/delete-order/{orderId}")
+    void deleteOrder(@PathVariable Integer orderId);
 }
