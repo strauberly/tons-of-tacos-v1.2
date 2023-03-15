@@ -89,8 +89,8 @@ public class OrdersService implements OrdersServiceInterface {
         Orders order = ordersRepository.findByOrderUid(orderUid);
         GetOrdersDto orderDto = getOrderDtoConverter(order);
 //            convert order to DTO
-        System.out.println(order);
-        System.out.println(orderDto);
+//        System.out.println(order);
+//        System.out.println(orderDto);
 //        return orderdto
         return getOrderDtoConverter(order);
     }
@@ -103,9 +103,10 @@ public class OrdersService implements OrdersServiceInterface {
         Customer customerObj = customerRepository.findByName(customer);
 //        System.out.println(customerObj);
         Orders order = ordersRepository.findByCustomerId(customerObj.getCustomerId());
-        GetOrdersDto orderDto = getOrderDtoConverter(order);
         System.out.println(order);
-        System.out.println(orderDto);
+        GetOrdersDto orderDto = getOrderDtoConverter(order);
+//        System.out.println(order);
+//        System.out.println(orderDto);
         return  getOrderDtoConverter(order);
     }
 
