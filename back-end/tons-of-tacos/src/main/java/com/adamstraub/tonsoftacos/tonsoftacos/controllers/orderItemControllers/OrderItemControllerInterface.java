@@ -18,7 +18,7 @@ import java.util.List;
 
 @Validated
 @RequestMapping(
-  value = "api/orders")
+  value = "api/orders/edit-order")
 @OpenAPIDefinition(info = @Info(title = "services pertaining to cart functions and building an order"),
         servers = {@Server(url="http://localhost:8080", description = "Local server")})
 public interface OrderItemControllerInterface {
@@ -45,46 +45,86 @@ public interface OrderItemControllerInterface {
                             content = @Content(mediaType = "application/json")),
             }
     )
-
-    @ResponseStatus(code = HttpStatus.CREATED)
-    @PostMapping("/add-to-order")
+//define parameters
+//    @ResponseStatus(code = HttpStatus.CREATED)
+    @PatchMapping("/add-to-order/{orderId}/{menuItemId}/{quantity}")
     String addToCart(
-            @RequestBody
-            OrderItemDto orderItemDto) throws InvalidPropertiesFormatException;
+            @PathVariable
+            Integer orderId, @PathVariable Integer menuItemId, @PathVariable Integer quantity) throws InvalidPropertiesFormatException;
+
+//
+//    @ResponseStatus(code = HttpStatus.CREATED)
+//    @PostMapping("/add-to-cart")
+//    String addToCart(
+//            @RequestBody
+//            OrderItemDto orderItemDto) throws InvalidPropertiesFormatException;
 
 
-    //
-    @Operation(
-            summary = " Get all items stored to cart by its id.",
-            description = "Provides functionality for contents of cart to be viewed.",
-            responses = {
-                    @ApiResponse(
-                            responseCode = "200",
-                            description = "Order-items are returned.",
-                            content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = OrderItem.class))),
-                    @ApiResponse(
-                            responseCode = "400",
-                            description = "Request parameters invalid.",
-                            content = @Content(mediaType = "application/json")),
-                    @ApiResponse(
-                            responseCode = "404",
-                            description = "No order-items found according to input.",
-                            content = @Content(mediaType = "application/json")),
-                    @ApiResponse(
-                            responseCode = "500",
-                            description = "An unplanned error occured.",
-                            content = @Content(mediaType = "application/json")),
+//    //
+//    @Operation(
+//            summary = " Get all items stored to cart by its id.",
+//            description = "Provides functionality for contents of cart to be viewed.",
+//            responses = {
+//                    @ApiResponse(
+//                            responseCode = "200",
+//                            description = "Order-items are returned.",
+//                            content = @Content(mediaType = "application/json",
+//                                    schema = @Schema(implementation = OrderItem.class))),
+//                    @ApiResponse(
+//                            responseCode = "400",
+//                            description = "Request parameters invalid.",
+//                            content = @Content(mediaType = "application/json")),
+//                    @ApiResponse(
+//                            responseCode = "404",
+//                            description = "No order-items found according to input.",
+//                            content = @Content(mediaType = "application/json")),
+//                    @ApiResponse(
+//                            responseCode = "500",
+//                            description = "An unplanned error occured.",
+//                            content = @Content(mediaType = "application/json")),
+//
+//            }
+//    )
+//
+//    @GetMapping("/get-cart/{order}")
+//    @ResponseStatus(code = HttpStatus.OK)
+//    List<GetOrderItemDto> findByCartUuid(
+//            @RequestParam
+//            String cartUuid);
 
-            }
-    )
 
-    @GetMapping("/get-cart/{order}")
-    @ResponseStatus(code = HttpStatus.OK)
-    List<GetOrderItemDto> findByCartUuid(
-            @RequestParam
-            String cartUuid);
-
+//
+//    @Operation(
+//            summary = " Updates the quantity of an id in a cart and if quantity equals zero the id is deleted " +
+//                    "from cart.",
+//            description = "Updates the cart by removing an id",
+//            responses = {
+//                    @ApiResponse(
+//                            responseCode = "200",
+//                            description = "Quantity updated.",
+//                            content = @Content(mediaType = "application/json",
+//                                    schema = @Schema(implementation = OrderItem.class))),
+//                    @ApiResponse(
+//                            responseCode = "400",
+//                            description = "Request parameters invalid.",
+//                            content = @Content(mediaType = "application/json")),
+//                    @ApiResponse(
+//                            responseCode = "404",
+//                            description = "No order-items found according to input.",
+//                            content = @Content(mediaType = "application/json")),
+//                    @ApiResponse(
+//                            responseCode = "500",
+//                            description = "An unplanned error occured.",
+//                            content = @Content(mediaType = "application/json")),
+//            }
+//    )
+//
+//    @PatchMapping("/update-cart/{orderItemId}/{newQuantity}")
+//    OrderItemDto updateCart(
+//            @PathVariable
+//            Integer orderItemId,
+//            @PathVariable
+//            Integer newQuantity);
 
 
     @Operation(
@@ -112,40 +152,42 @@ public interface OrderItemControllerInterface {
             }
     )
 
-    @PatchMapping("/update-cart/{orderItemId}/{newQuantity}")
-    OrderItemDto updateCart(
+    @PatchMapping("/change-quantity/{orderId}/{orderItemId}/{newQuantity}")
+    String updateItemQuantity(
+            @PathVariable
+            Integer orderId,
             @PathVariable
             Integer orderItemId,
             @PathVariable
             Integer newQuantity);
 
-    @Operation(
-            summary = " Removes a cart id.",
-            description = "Updates the cart by removing an id",
-            responses = {
-                    @ApiResponse(
-                            responseCode = "200",
-                            description = "Item removed from cart.",
-                            content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = OrderItem.class))),
-                    @ApiResponse(
-                            responseCode = "400",
-                            description = "Request parameters invalid.",
-                            content = @Content(mediaType = "application/json")),
-                    @ApiResponse(
-                            responseCode = "404",
-                            description = "No order-items found according to input.",
-                            content = @Content(mediaType = "application/json")),
-                    @ApiResponse(
-                            responseCode = "500",
-                            description = "An unplanned error occured.",
-                            content = @Content(mediaType = "application/json")),
-
-            }
-    )
-    @DeleteMapping("/remove-cart-item/{orderItemId}")
-    void removeCartItem(@PathVariable Integer orderItemId);
-}
+//    @Operation(
+//            summary = " Removes a cart id.",
+//            description = "Updates the cart by removing an id",
+//            responses = {
+//                    @ApiResponse(
+//                            responseCode = "200",
+//                            description = "Item removed from cart.",
+//                            content = @Content(mediaType = "application/json",
+//                                    schema = @Schema(implementation = OrderItem.class))),
+//                    @ApiResponse(
+//                            responseCode = "400",
+//                            description = "Request parameters invalid.",
+//                            content = @Content(mediaType = "application/json")),
+//                    @ApiResponse(
+//                            responseCode = "404",
+//                            description = "No order-items found according to input.",
+//                            content = @Content(mediaType = "application/json")),
+//                    @ApiResponse(
+//                            responseCode = "500",
+//                            description = "An unplanned error occured.",
+//                            content = @Content(mediaType = "application/json")),
 //
+//            }
+//    )
+//    @DeleteMapping("/remove-cart-item/{orderItemId}")
+//    void removeCartItem(@PathVariable Integer orderItemId);
+}
+
 
 

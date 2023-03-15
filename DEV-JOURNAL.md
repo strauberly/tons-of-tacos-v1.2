@@ -2,6 +2,16 @@
 
 ---
 
+-- 15 Mar 2023 --
+
+- Controllers restructured to share the orders endpoint.
+- Order can be edited to add an order item and order total is adjusted.
+- Order item can be edited to change quantity and order item total and order total is adjusted.
+  - If quantity = 0 the item is removed from order and the order total is adjusted.
+- Functions reduced from order item controller as they are now implemented through orders controller
+
+---
+
 -- 14 Mar 2023 --
 
 - Implemented sales endpoint which tallies number of completed sales and total for the current day for owners use.

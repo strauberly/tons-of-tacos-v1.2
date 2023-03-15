@@ -36,7 +36,7 @@ created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 ready VARCHAR(20) DEFAULT 'no',
 status VARCHAR(20)DEFAULT 'open',
 PRIMARY KEY (order_pk),
-FOREIGN KEY (customer_fk) REFERENCES customer(customer_pk) ON DELETE CASCADE
+FOREIGN KEY (customer_fk) REFERENCES customer(customer_pk)
 );
 
 -- CREATE INDEX CART_UID ON orders(cart_uid);
@@ -48,8 +48,8 @@ quantity INT(2) NOT NULL,
 total DECIMAL(19, 2) DEFAULT 0.00 NOT NULL,
 order_fk INT unsigned NOT NULL,
 PRIMARY KEY (order_item_pk),
-FOREIGN KEY (item_fk) REFERENCES menu_item(item_pk) ON DELETE CASCADE,
-FOREIGN KEY (order_fk) REFERENCES orders(order_pk) ON DELETE CASCADE
+FOREIGN KEY (item_fk) REFERENCES menu_item(item_pk),
+FOREIGN KEY (order_fk) REFERENCES orders(order_pk)
 );
 
 -- CREATE INDEX ORDER_UUID ON order_item(cart_uuid);
