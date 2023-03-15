@@ -28,7 +28,17 @@ public class Customer {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer_fk")
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customerId=" + customerId +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
+    }
+
+    //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer_fk")
 //    private Set<Orders> orders = new HashSet<>();
 //
 //

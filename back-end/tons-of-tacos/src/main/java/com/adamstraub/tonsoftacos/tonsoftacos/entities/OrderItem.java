@@ -22,7 +22,7 @@ public class OrderItem implements Serializable {
 //    rename
     @Column(name = "order_item_pk")
     private Integer cartItemId;
-
+//    @JsonBackReference
     @ManyToOne()
     @JoinColumn(name = "item_fk")
     private MenuItem itemId;

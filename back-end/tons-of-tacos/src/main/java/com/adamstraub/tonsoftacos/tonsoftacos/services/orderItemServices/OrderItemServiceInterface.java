@@ -11,15 +11,19 @@ import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 
 public interface OrderItemServiceInterface {
-    @Transactional
-    void addToCart(OrderItem orderItem) throws InvalidPropertiesFormatException;
+//    @Transactional
+//    void addToCart(OrderItem orderItem) throws InvalidPropertiesFormatException;
 
-    @Transactional(readOnly = true)
-    List<GetOrderItemDto> findByCartUuid(String cartUuid);
+//    @Transactional(readOnly = true)
+//    List<GetOrderItemDto> findByCartUuid(String cartUuid);
 
-    @Transactional
-    OrderItemDto updateCart(@PathVariable Integer orderItemId, @RequestBody Integer newQuantity);
+//    @Transactional
+//    OrderItemDto updateCart(@PathVariable Integer orderItemId, @RequestBody Integer newQuantity);
 
+//    @Transactional
+//    void removeCartItem(@PathVariable Integer orderItemId);
+//    @Transactional
+    void addToOrder(Integer orderId, Integer menuItemId, Integer quantity);
     @Transactional
-    void removeCartItem(@PathVariable Integer orderItemId);
+    String updateOrderItem(Integer orderId, Integer orderItemId, Integer newQuantity);
 }
