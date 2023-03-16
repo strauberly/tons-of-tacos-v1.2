@@ -92,23 +92,24 @@ public class OrdersService implements OrdersServiceInterface {
 //        System.out.println(order);
 //        System.out.println(orderDto);
 //        return orderdto
+        System.out.println(getOrderDtoConverter(order));
         return getOrderDtoConverter(order);
     }
 
-    @Override
-    public GetOrdersDto getOrderByCustomer(String customer) {
-        System.out.println("service");
-        //        get by customer id where customer name = customer
-//        System.out.println(customer);
-        Customer customerObj = customerRepository.findByName(customer);
-//        System.out.println(customerObj);
-        Orders order = ordersRepository.findByCustomerId(customerObj.getCustomerId());
-        System.out.println(order);
-        GetOrdersDto orderDto = getOrderDtoConverter(order);
+//    @Override
+//    public GetOrdersDto getOrderByCustomer(String customer) {
+//        System.out.println("service");
+//        //        get by customer id where customer name = customer
+////        System.out.println(customer);
+//        Customer customerObj = customerRepository.findByName(customer);
+////        System.out.println(customerObj);
+//        Orders order = ordersRepository.findByCustomerId(customerObj.getCustomerId());
 //        System.out.println(order);
-//        System.out.println(orderDto);
-        return  getOrderDtoConverter(order);
-    }
+//        GetOrdersDto orderDto = getOrderDtoConverter(order);
+////        System.out.println(order);
+////        System.out.println(orderDto);
+//        return  getOrderDtoConverter(order);
+//    }
 
     @Override
     public void foodReady(Integer orderId) {

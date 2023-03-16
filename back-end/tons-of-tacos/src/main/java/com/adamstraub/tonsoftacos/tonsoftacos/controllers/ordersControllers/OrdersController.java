@@ -38,12 +38,12 @@ public class OrdersController implements OrdersControllerInterface {
 
     }
 
-    @Override
-    public GetOrdersDto getOrderByCustomer(String customer) {
-        System.out.println("controller");
-        return ordersService.getOrderByCustomer(customer);
-
-    }
+//    @Override
+//    public GetOrdersDto getOrderByCustomer(String customer) {
+//        System.out.println("controller");
+//        return ordersService.getOrderByCustomer(customer);
+//
+//    }
 
     @Override
     public String todaysSales() {

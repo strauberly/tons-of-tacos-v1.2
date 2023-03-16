@@ -2,6 +2,16 @@
 
 ---
 
+-- 16 Mar 2023 --
+
+- Return order by uid for owners implemented.
+- Return open order by customer for owners implemented.
+- Get the days sales migrated to owners endpoint.
+- Mark an order ready migrated to owners endpoint.
+- Ability to delete an order by id migrated to owners endpoint.
+
+---
+
 -- 15 Mar 2023 --
 
 - Controllers restructured to share the orders endpoint.
