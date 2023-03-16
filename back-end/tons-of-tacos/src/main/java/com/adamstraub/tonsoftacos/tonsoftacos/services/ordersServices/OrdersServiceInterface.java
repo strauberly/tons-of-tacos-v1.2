@@ -20,8 +20,8 @@ public interface OrdersServiceInterface {
     @Transactional(readOnly = true)
     GetOrdersDto getOrderByUid(@PathVariable String orderUid);
 
-    @Transactional(readOnly = true)
-    GetOrdersDto getOrderByCustomer(@PathVariable String customer);
+//    @Transactional(readOnly = true)
+//    GetOrdersDto getOrderByCustomer(@PathVariable String customer);
 
     @Transactional
     void foodReady(@PathVariable Integer orderId);

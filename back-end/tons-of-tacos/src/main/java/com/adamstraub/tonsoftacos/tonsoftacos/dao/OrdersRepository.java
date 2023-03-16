@@ -14,6 +14,6 @@ import java.util.List;
 public interface OrdersRepository extends JpaRepository<Orders, Integer> {
 
     Orders findByOrderUid(@RequestParam ("order_uid") String orderUid);
-    Orders findByCustomerId(@RequestParam("customer_fk") Integer customerId);
+    List<Orders> findByCustomerId(@RequestParam("customer_fk") Integer customerId);
     List<Orders> findByStatus( String status);
 }

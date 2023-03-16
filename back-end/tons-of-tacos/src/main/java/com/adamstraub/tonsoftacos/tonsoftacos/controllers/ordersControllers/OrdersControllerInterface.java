@@ -106,32 +106,32 @@ public interface OrdersControllerInterface {
             GetOrdersDto getOrderByUid(@RequestParam String orderUid);
 
 
-    //    get an order by customer name
-    @Operation(
-            summary = "An order is returned by customer name.",
-            description = """
-                  For owner use only at this time.""",
-            responses = {
-                    @ApiResponse(
-                            responseCode = "200",
-                            description = "Order is returned.",
-                            content = @Content(mediaType = "application/json")),
-                    @ApiResponse(
-                            responseCode = "400",
-                            description = "Request parameters invalid.",
-                            content = @Content(mediaType = "application/json")),
-                    @ApiResponse(
-                            responseCode = "404",
-                            description = "No orders found.",
-                            content = @Content(mediaType = "application/json")),
-                    @ApiResponse(
-                            responseCode = "500",
-                            description = "An unplanned error occured.",
-                            content = @Content(mediaType = "application/json")),
-            }
-    )
-    @GetMapping("/get-order/customer")
-    GetOrdersDto getOrderByCustomer(@RequestParam String customer);
+//    //    get an order by customer name
+//    @Operation(
+//            summary = "An order is returned by customer name.",
+//            description = """
+//                  For owner use only at this time.""",
+//            responses = {
+//                    @ApiResponse(
+//                            responseCode = "200",
+//                            description = "Order is returned.",
+//                            content = @Content(mediaType = "application/json")),
+//                    @ApiResponse(
+//                            responseCode = "400",
+//                            description = "Request parameters invalid.",
+//                            content = @Content(mediaType = "application/json")),
+//                    @ApiResponse(
+//                            responseCode = "404",
+//                            description = "No orders found.",
+//                            content = @Content(mediaType = "application/json")),
+//                    @ApiResponse(
+//                            responseCode = "500",
+//                            description = "An unplanned error occured.",
+//                            content = @Content(mediaType = "application/json")),
+//            }
+//    )
+//    @GetMapping("/get-order/customer")
+//    GetOrdersDto getOrderByCustomer(@RequestParam String customer);
 
 //    //    edit order item.
 //        @Operation(
