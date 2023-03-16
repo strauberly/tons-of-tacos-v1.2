@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 import java.util.Optional;
 
-@RepositoryRestResource(collectionResourceRel = "menu", path = "menu")
-public
-interface MenuItemRepository extends JpaRepository<MenuItem, Integer>{
+//@RepositoryRestResource(collectionResourceRel = "menu", path = "menu")
+public interface MenuItemRepository extends JpaRepository<MenuItem, Integer>{
 
         Optional<MenuItem> findById(@RequestParam("item_pk") Integer id);
 

@@ -21,7 +21,7 @@ public class OrderItem implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    rename
     @Column(name = "order_item_pk")
-    private Integer cartItemId;
+    private Integer orderItemId;
 //    @JsonBackReference
     @ManyToOne()
     @JoinColumn(name = "item_fk")
@@ -45,7 +45,7 @@ public class OrderItem implements Serializable {
     @Override
     public String toString() {
         return "OrderItem{" +
-                "orderItemId=" + cartItemId +
+                "orderItemId=" + orderItemId +
                 ", id=" + itemId +
                 ", order='" + order + '\'' +
                 ", quantity=" + quantity +

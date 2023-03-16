@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @Repository
-@RepositoryRestResource( collectionResourceRel = "orders", path = "orders")
+//@RepositoryRestResource( collectionResourceRel = "orders", path = "orders")
 public interface OrdersRepository extends JpaRepository<Orders, Integer> {
 
     Orders findByOrderUid(@RequestParam ("order_uid") String orderUid);

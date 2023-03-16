@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-@RepositoryRestResource(collectionResourceRel = "customer", path = "customer")
+//@RepositoryRestResource(collectionResourceRel = "customer", path = "customer")
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     Customer findByName(@RequestParam("name") String customer);
 }
