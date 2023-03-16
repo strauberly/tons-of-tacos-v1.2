@@ -45,8 +45,8 @@ public class Orders implements Serializable {
     @Column (name = "status")
     private String status = "open";
 
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order", fetch = FetchType.LAZY )
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order", fetch = FetchType.LAZY)
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order", fetch = FetchType.EAGER )
     @JsonManagedReference
     private List<OrderItem> orderItems = new ArrayList<>();
 

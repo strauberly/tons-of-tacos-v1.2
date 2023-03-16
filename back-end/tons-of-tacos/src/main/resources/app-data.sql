@@ -109,6 +109,8 @@ INSERT INTO order_items (item_fk, quantity, total, order_fk)
 VALUES(2, 4, 4.00, 2);
 INSERT INTO order_items (item_fk, quantity, total, order_fk)
 VALUES(3, 3, 1.50, 1);
+INSERT INTO order_items (item_fk, quantity, total, order_fk)
+VALUES(3, 3, 1.50, 3);
 
 -- ========================
 
