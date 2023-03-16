@@ -36,7 +36,7 @@ public class OrderItemService implements OrderItemServiceInterface {
 //    public void addToCart(@RequestBody OrderItem orderItem) throws InvalidPropertiesFormatException {
 //        System.out.println("service");
 ////        System.out.println(cartItem);
-//        orderItem.setCartItemId(0);
+//        orderItem.setOrderItemId(0);
 //        orderItem.setTotal(orderItem.getQuantity() *
 //                menuItemRepository.getReferenceById(orderItem.getItemId().getId()).getUnitPrice());
 //
@@ -144,7 +144,7 @@ public class OrderItemService implements OrderItemServiceInterface {
 //            throw new NoSuchElementException("This order id does not exist.");
 //        } else {
 //            System.out.println("Cart item removed.");
-//            orderItemRepository.deleteByCartItemId(Math.toIntExact(orderItem.getCartItemId()));
+//            orderItemRepository.deleteByCartItemId(Math.toIntExact(orderItem.getOrderItemId()));
 //
 //        }
 //    }

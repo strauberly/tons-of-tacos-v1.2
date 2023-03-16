@@ -9,6 +9,9 @@
 - Order item can be edited to change quantity and order item total and order total is adjusted.
   - If quantity = 0 the item is removed from order and the order total is adjusted.
 - Functions reduced from order item controller as they are now implemented through orders controller
+- Began creating packages for functions specific to owners, ie returning entities instead of DTOs so that they are able to have ease in manipulating data.
+- Created owners controller, service, and dto layers.
+- Implemented owners getting all orders in conjunction with their customized dto.
 
 ---
 
