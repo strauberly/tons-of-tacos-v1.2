@@ -1,5 +1,6 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.controllers.ownersControllers;
 
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetCustomerDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.services.ownersServices.OwnersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,4 +58,12 @@ public class OwnersController implements OwnersControllerInterface{
         System.out.println("controller");
         ownersService.deleteOrder(orderId);
     }
+
+    @Override
+    public List<OwnersGetCustomerDto> getAllCustomers() {
+        System.out.println("controller");
+        return ownersService.getAllCustomers();
+    }
+
+
 }
