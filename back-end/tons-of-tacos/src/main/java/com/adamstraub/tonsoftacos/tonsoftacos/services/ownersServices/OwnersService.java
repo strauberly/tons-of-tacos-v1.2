@@ -6,6 +6,7 @@ import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrderItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrdersRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.orderItemsDto.GetOrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.GetOrdersDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetCustomerDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersOrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Customer;
@@ -38,6 +39,10 @@ public class OwnersService implements OwnersServiceInterface {
 
     @Autowired
     private OrderItemService orderItemService;
+
+
+
+
     @Override
     @Transactional(readOnly = true)
     public List<OwnersGetOrderDto> getAllOrders() {
@@ -185,6 +190,15 @@ public class OwnersService implements OwnersServiceInterface {
         System.out.println("Order deleted");
     }
 
+    @Override
+    public List<OwnersGetCustomerDto> getAllCustomers() {
+        List<Customer> customers = customerRepository.findAll();
+        List<OwnersGetCustomerDto> allCustomersDto = new ArrayList<>();
+        customers.forEach(customer -> allCustomersDto.add(ownersCustomerDtoConvertor(customer)));
+        System.out.println(allCustomersDto);
+        return allCustomersDto;
+    }
+
     private OwnersGetOrderDto ownersGetOrderDtoConverter(Orders order) {
         OwnersGetOrderDto ownersGetOrderDto = new OwnersGetOrderDto();
 //        set the dto
@@ -227,5 +241,30 @@ public class OwnersService implements OwnersServiceInterface {
 //        ownersOrderItemDto.setQuantity(orderItem.getQuantity());
         System.out.println(ownersOrderItemDto);
         return ownersOrderItemDto;
+    }
+
+    private OwnersGetCustomerDto ownersCustomerDtoConvertor(Customer customer){
+        OwnersGetCustomerDto ownersCustomerDto = new OwnersGetCustomerDto();
+        ownersCustomerDto.setCustomerId(customer.getCustomerId());
+        ownersCustomerDto.setName(customer.getName());
+        ownersCustomerDto.setEmail(customer.getEmail());
+
+//       set orders
+        List<Orders> orders = ordersRepository.findByCustomerId(customer.getCustomerId());
+        List<OwnersGetOrderDto> ownersGetOrderDto = new ArrayList<>();
+        orders.forEach(order -> ownersGetOrderDto.add(ownersGetOrderDtoConverter(order)));
+        ownersCustomerDto.setOrders(ownersGetOrderDto);
+//        ownersOrderItemDto.setOrderItemId(orderItem.getOrderItemId());
+//        ownersOrderItemDto.setItemName(orderItem.getItemId().getItemName());
+//        ownersOrderItemDto.setQuantity(orderItem.getQuantity());
+//        ownersOrderItemDto.setTotal(orderItem.getTotal());
+
+
+//        ownersOrderItemDto.setUnitPrice(orderItem.getItemId().getUnitPrice());
+//        ownersOrderItemDto.setItemName(orderItem.getItemId().getItemName());
+//        ownersOrderItemDto.setTotal(orderItem.getTotal());
+//        ownersOrderItemDto.setQuantity(orderItem.getQuantity());
+        System.out.println(ownersCustomerDto);
+        return ownersCustomerDto;
     }
 }

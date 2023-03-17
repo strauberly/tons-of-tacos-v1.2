@@ -1,4 +1,5 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.services.ownersServices;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetCustomerDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,4 +22,6 @@ public interface OwnersServiceInterface {
     void closeOrder(Integer orderId);
     @Transactional
     void deleteOrder(Integer orderId);
+    @Transactional(readOnly = true)
+    List<OwnersGetCustomerDto> getAllCustomers();
 }
