@@ -5,7 +5,9 @@ import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -27,6 +29,11 @@ public class Customer {
 
     @Column(name = "phone_number")
     private String phoneNumber;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @JoinColumn(name="customer_fk")
+    private List<Orders> orders = new ArrayList<>();
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer_fk")
+//    private List<Orders> orders = new ArrayList<>();
 
     @Override
     public String toString() {
@@ -38,8 +45,7 @@ public class Customer {
                 '}';
     }
 
-    //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer_fk")
-//    private Set<Orders> orders = new HashSet<>();
+
 //
 //
 }

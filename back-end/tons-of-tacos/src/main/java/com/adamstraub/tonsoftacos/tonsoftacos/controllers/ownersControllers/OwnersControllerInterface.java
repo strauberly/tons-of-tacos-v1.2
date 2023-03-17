@@ -1,4 +1,5 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.controllers.ownersControllers;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetCustomerDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersOrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
@@ -225,4 +226,32 @@ public interface OwnersControllerInterface {
     )
     @DeleteMapping("/delete-order/{orderId}")
     void deleteOrder(@PathVariable Integer orderId);
+
+    // get all customers
+    @Operation(
+            summary = "All orders returned.",
+            description = """
+                  This endpoint will return all orders. For owner use only at this time.""",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "All orders returned.",
+                            content = @Content(mediaType = "application/json")),
+                    @ApiResponse(
+                            responseCode = "400",
+                            description = "Request parameters invalid.",
+                            content = @Content(mediaType = "application/json")),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "No orders found.",
+                            content = @Content(mediaType = "application/json")),
+                    @ApiResponse(
+                            responseCode = "500",
+                            description = "An unplanned error occured.",
+                            content = @Content(mediaType = "application/json")),
+            }
+    )
+
+    @GetMapping("/get-customers")
+    List<OwnersGetCustomerDto> getAllCustomers();
 }
