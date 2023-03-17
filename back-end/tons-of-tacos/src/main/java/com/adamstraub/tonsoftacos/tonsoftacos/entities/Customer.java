@@ -29,8 +29,8 @@ public class Customer {
 
     @Column(name = "phone_number")
     private String phoneNumber;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    @JoinColumn(name="customer_fk")
+    @OneToMany(mappedBy = "customerId", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+//    @JoinColumn(name="customer_fk")
     private List<Orders> orders = new ArrayList<>();
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer_fk")
 //    private List<Orders> orders = new ArrayList<>();

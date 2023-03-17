@@ -24,4 +24,16 @@ public interface OwnersServiceInterface {
     void deleteOrder(Integer orderId);
     @Transactional(readOnly = true)
     List<OwnersGetCustomerDto> getAllCustomers();
+    @Transactional(readOnly = true)
+    OwnersGetCustomerDto getCustomerByName(String name);
+    @Transactional(readOnly = true)
+    OwnersGetCustomerDto getCustomerById(Integer customerId);
+    @Transactional
+    String updateCustomerName(Integer customerId, String newCustomerName);
+    @Transactional
+    String updateCustomerEmail(Integer customerId, String newCustomerEmail);
+    @Transactional
+    String updateCustomerPhone(Integer customerId, String newCustomerPhone);
+    @Transactional
+    void deleteCustomer(Integer customerId);
 }

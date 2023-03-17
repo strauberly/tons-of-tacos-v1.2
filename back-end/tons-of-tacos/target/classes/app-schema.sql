@@ -9,11 +9,11 @@ DROP TABLE IF EXISTS menu_item;
 DROP TABLE IF EXISTS customer;
 
 CREATE TABLE customer(
-customer_pk INT unsigned NOT NULL AUTO_INCREMENT,
+customer_pk INT unsigned NOT NULL AUTO_INCREMENT ,
 name VARCHAR(40) NOT NULL,
 email VARCHAR(40) NOT NULL,
 phone_number VARCHAR(12) NOT NULL,
-PRIMARY KEY (customer_pk)
+PRIMARY KEY (customer_pk) 
 );
 
 CREATE TABLE menu_item(
@@ -29,14 +29,14 @@ PRIMARY KEY (item_pk)
 
 CREATE TABLE orders(
 order_pk INT unsigned NOT NULL AUTO_INCREMENT,
-customer_fk INT unsigned NOT NULL,
+customer_fk INT unsigned,
 order_total DECIMAL(19, 2) NOT NULL,
 order_uid VARCHAR(255) NOT NULL,
 created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 ready VARCHAR(20) DEFAULT 'no',
 status VARCHAR(20)DEFAULT 'open',
 PRIMARY KEY (order_pk),
-FOREIGN KEY (customer_fk) REFERENCES customer(customer_pk)
+FOREIGN KEY (customer_fk) REFERENCES customer(customer_pk) ON DELETE SET NULL
 );
 
 -- CREATE INDEX CART_UID ON orders(cart_uid);
