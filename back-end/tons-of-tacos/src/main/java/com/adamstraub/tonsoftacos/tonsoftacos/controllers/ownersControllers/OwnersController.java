@@ -65,5 +65,41 @@ public class OwnersController implements OwnersControllerInterface{
         return ownersService.getAllCustomers();
     }
 
+    @Override
+    public OwnersGetCustomerDto getCustomerByName(String name) {
+        System.out.println("controller");
+        return ownersService.getCustomerByName(name);
+    }
+
+    @Override
+    public OwnersGetCustomerDto getCustomerById(Integer customerId) {
+        System.out.println("controller");
+        return ownersService.getCustomerById(customerId);
+    }
+
+    @Override
+    public String updateCustomerName(Integer customerId, String newCustomerName) {
+        System.out.println("controller");
+        return ownersService.updateCustomerName(customerId, newCustomerName);
+    }
+
+    @Override
+    public String updateCustomerEmail(Integer customerId, String newCustomerEmail) {
+        System.out.println("controller");
+        return ownersService.updateCustomerEmail(customerId, newCustomerEmail);
+    }
+
+    @Override
+    public String updateCustomerPhone(Integer customerId, String newCustomerPhone) {
+        System.out.println("controller");
+        return ownersService.updateCustomerPhone(customerId, newCustomerPhone);
+    }
+
+    @Override
+    public void deleteCustomer(Integer customerId) {
+        System.out.println("controller");
+        ownersService.deleteCustomer(customerId);
+    }
+
 
 }
