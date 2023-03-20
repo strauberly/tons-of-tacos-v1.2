@@ -22,57 +22,10 @@ public class OrdersController implements OrdersControllerInterface {
          ordersService.createOrder(order);
     }
 
-
-    @Override
-//    public List<Orders> getAllOrders() {
-    public List<GetOrdersDto> getAllOrders() {
-        System.out.println("controller");
-        return ordersService.getAllOrders();
-    }
-
-
     @Override
     public GetOrdersDto getOrderByUid(@PathVariable String orderUid) {
         System.out.println("controller");
         return ordersService.getOrderByUid(orderUid);
 
-    }
-
-//    @Override
-//    public GetOrdersDto getOrderByCustomer(String customer) {
-//        System.out.println("controller");
-//        return ordersService.getOrderByCustomer(customer);
-//
-//    }
-
-    @Override
-    public String todaysSales() {
-        System.out.println("controller");
-        return ordersService.todaysSales();
-    }
-
-//    @Override
-//    public void updateOrderByUid(String orderUid) {
-//        System.out.println("controller");
-//        ordersService.updateOrder(orderUid);
-//    }
-
-
-    @Override
-    public void closeOrder(Integer orderId) {
-        System.out.println("controller");
-    ordersService.closeOrder(orderId);
-    }
-
-    @Override
-    public void foodReady(Integer orderId) {
-        System.out.println("controller");
-        ordersService.foodReady(orderId);
-    }
-
-    @Override
-    public void deleteOrder(Integer orderId) {
-        System.out.println("controller");
-        ordersService.deleteOrder(orderId);
     }
 }

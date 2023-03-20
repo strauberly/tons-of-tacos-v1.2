@@ -25,7 +25,4 @@ public class MenuItemController implements MenuItemControllerInterface {
         System.out.println("controller");
         return menuItemService.findByCategory(category);
     }
-////    //implments the methods found in the interface
-//
-//
 }

@@ -6,9 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name ="customer")
@@ -30,10 +28,8 @@ public class Customer {
     @Column(name = "phone_number")
     private String phoneNumber;
     @OneToMany(mappedBy = "customerId", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-//    @JoinColumn(name="customer_fk")
     private List<Orders> orders = new ArrayList<>();
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer_fk")
-//    private List<Orders> orders = new ArrayList<>();
+
 
     @Override
     public String toString() {

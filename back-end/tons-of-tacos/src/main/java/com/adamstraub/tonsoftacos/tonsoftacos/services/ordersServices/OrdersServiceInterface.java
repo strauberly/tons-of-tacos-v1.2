@@ -11,29 +11,6 @@ public interface OrdersServiceInterface {
     @Transactional
     void createOrder(@RequestBody Orders order);
 
-//    @Transactional(readOnly = true)
-//    List<Orders> getAllOrders();
-
-    @Transactional(readOnly = true)
-    List<GetOrdersDto> getAllOrders();
-
     @Transactional(readOnly = true)
     GetOrdersDto getOrderByUid(@PathVariable String orderUid);
-
-//    @Transactional(readOnly = true)
-//    GetOrdersDto getOrderByCustomer(@PathVariable String customer);
-
-    @Transactional
-    void foodReady(@PathVariable Integer orderId);
-    @Transactional
-    void closeOrder(@PathVariable Integer orderId);
-
-    @Transactional
-    String todaysSales();
-
-    @Transactional
-    void deleteOrder(Integer orderId);
-
-//    @Transactional
-//    void updateOrder(@PathVariable String orderUid);
 }

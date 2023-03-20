@@ -19,10 +19,9 @@ public class OrderItem implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    rename
+
     @Column(name = "order_item_pk")
     private Integer orderItemId;
-//    @JsonBackReference
     @ManyToOne()
     @JoinColumn(name = "item_fk")
     private MenuItem itemId;
