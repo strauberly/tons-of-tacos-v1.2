@@ -2,6 +2,7 @@
 
 ---
 
+
 -- 20 Mar 2023 --
 
 - get customer dto refactored for the desired use case and function is currently operating as desired.
@@ -13,6 +14,15 @@
 - refactor notes
   → removed unused code and comments app wide due to relocation of functionality between order item, orders and owners
   → relocated order item dto converter to orders service
+=======
+-- 17 Mar 2023 --
+
+- Get customer dto refactored for the desired use case and function is currently operating as desired.
+- Implemeneted returning a customer by customer name.
+- Implemented returning a customer by id.
+- Implemented updating a customers details.
+- Implement customer delete a customer without deleting orders associated to 
+them so that information can still be used for accounting purposes.
 
 ---
 
