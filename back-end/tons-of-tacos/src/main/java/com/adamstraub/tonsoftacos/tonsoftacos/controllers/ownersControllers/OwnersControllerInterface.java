@@ -162,8 +162,8 @@ public interface OwnersControllerInterface {
 
             }
     )
-    @PatchMapping("/food-ready/{orderId}")
-    void foodReady(@PathVariable Integer orderId);
+    @PatchMapping("/order-ready/{orderId}")
+    void orderReady(@PathVariable Integer orderId);
 //
     //    // close order by id
     @Operation(

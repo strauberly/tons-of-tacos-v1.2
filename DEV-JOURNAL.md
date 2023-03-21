@@ -2,6 +2,14 @@
 
 ---
 
+-- 21 Mar 2023 --
+
+- Customer and order saved in same transaction.
+- Customer may place an additional order while past order is still open, eliminating duplicate customer entries.
+- Upon closing last open customer order, customer information removed. Ensures information not in use is not sitting idly waiting to be exploited.
+
+---
+
 -- 20 Mar 2023 --
 
 - Get customer dto refactored for the desired use case and function is currently operating as desired.
