@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 // possibly bust out to different services, 1 pertaining to customers and 1 pertaining to orders
 
@@ -109,7 +110,7 @@ public class OwnersService implements OwnersServiceInterface {
     }
 
     @Override
-    public void foodReady(Integer orderId) {
+    public void orderReady(Integer orderId) {
         System.out.println("service");
         Orders order = ordersRepository.getReferenceById(orderId);
         String timeReady = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
@@ -124,6 +125,21 @@ public class OwnersService implements OwnersServiceInterface {
         String statusUpdate = "closed";
         order.setStatus(statusUpdate);
         System.out.println("Order closed");
+//        check against customer to see if there are other open orders and if not delete customer
+        Customer customer = customerRepository.getReferenceById(order.getCustomerId());
+        List<Orders> customerOrders = customer.getOrders();
+//        System.out.println(customerOrders);
+        List<Orders> openOrders = new ArrayList<>();
+        for (Orders customerOrder : customerOrders) {
+            if (customerOrder.getStatus().equals("open")){
+                openOrders.add(customerOrder);
+//                System.out.println(openOrders);
+            }
+        }
+        if (openOrders.isEmpty()){
+            deleteCustomer(customer.getCustomerId());
+            System.out.println("All customer orders closed, customer information removed.");
+        }
     }
 
     @Override
@@ -190,7 +206,6 @@ public class OwnersService implements OwnersServiceInterface {
     @Override
     public void deleteCustomer(Integer customerId) {
         System.out.println("service");
-
         customerRepository.deleteById(customerId);
         System.out.println("Customer deleted");
     }

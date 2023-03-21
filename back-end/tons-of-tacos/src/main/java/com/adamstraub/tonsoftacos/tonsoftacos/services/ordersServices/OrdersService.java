@@ -1,4 +1,5 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.services.ordersServices;
+import com.adamstraub.tonsoftacos.tonsoftacos.dao.CustomerRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.MenuItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrdersRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.orderItemsDto.GetOrderItemDto;
@@ -21,17 +22,42 @@ public class OrdersService implements OrdersServiceInterface {
     private OrdersRepository ordersRepository;
     @Autowired
     private MenuItemRepository menuItemRepository;
+    @Autowired
+    private CustomerRepository customerRepository;
 
     @Override
     @Transactional
     public void  createOrder(@RequestBody NewOrderDto order){
         System.out.println("service");
-        System.out.println(order);
-        Customer newCustomer = order.getCustomer();
-        System.out.println(newCustomer);
-//        save customer >> get id by name >> set on order
+//        System.out.println(order);
+
+        Double orderTotal = 0.00;
+
         Orders newOrder = order.getOrder();
-        System.out.println(newOrder);
+//        System.out.println(newOrder);
+        List<OrderItem> orderItems = newOrder.getOrderItems();
+        for (OrderItem orderItem : orderItems) {
+            orderItem.setTotal(orderItem.getQuantity() *
+                    menuItemRepository.getReferenceById(orderItem.getItemId().getId()).getUnitPrice());
+            orderTotal += orderItem.getTotal();
+        }
+
+        Customer newCustomer = order.getCustomer();
+//        System.out.println(newCustomer);
+        if (customerRepository.findByName(newCustomer.getName()) != null) {
+            newOrder.setCustomerId(customerRepository.findByName(newCustomer.getName()).getCustomerId());
+        }else{
+            customerRepository.save(newCustomer);
+            newCustomer = customerRepository.findByName(newCustomer.getName());
+//            System.out.println(newCustomer);
+            newOrder.setCustomerId(newCustomer.getCustomerId());
+        }
+        newOrder.setOrderItems(orderItems);
+        newOrder.setOrderTotal(orderTotal);
+        System.out.println("Order created.");
+        ordersRepository.save(newOrder);
+
+
         // see below to calculate new totals and set before saving order
 
 
@@ -84,7 +110,6 @@ public class OrdersService implements OrdersServiceInterface {
         System.out.println(orderUid);
 //            get order
         Orders order = ordersRepository.findByOrderUid(orderUid);
-
         System.out.println(getOrderDtoConverter(order));
         return getOrderDtoConverter(order);
     }
