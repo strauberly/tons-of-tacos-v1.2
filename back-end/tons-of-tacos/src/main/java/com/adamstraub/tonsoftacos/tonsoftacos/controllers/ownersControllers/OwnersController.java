@@ -41,9 +41,9 @@ public class OwnersController implements OwnersControllerInterface{
     }
 
     @Override
-    public void foodReady(Integer orderId) {
+    public void orderReady(Integer orderId) {
         System.out.println("controller");
-        ownersService.foodReady(orderId);
+        ownersService.orderReady(orderId);
     }
 
     @Override

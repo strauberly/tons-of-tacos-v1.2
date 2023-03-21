@@ -21,7 +21,7 @@ public interface OwnersServiceInterface {
     String todaysSales();
 
     @Transactional
-    void foodReady(Integer orderId);
+    void orderReady(Integer orderId);
 
     @Transactional
     void closeOrder(Integer orderId);

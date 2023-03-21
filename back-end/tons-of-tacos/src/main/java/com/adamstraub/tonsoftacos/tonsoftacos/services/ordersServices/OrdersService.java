@@ -1,8 +1,11 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.services.ordersServices;
+import com.adamstraub.tonsoftacos.tonsoftacos.dao.CustomerRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.MenuItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrdersRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.orderItemsDto.GetOrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.GetOrdersDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.NewOrderDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.entities.Customer;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,28 +22,86 @@ public class OrdersService implements OrdersServiceInterface {
     private OrdersRepository ordersRepository;
     @Autowired
     private MenuItemRepository menuItemRepository;
-
+    @Autowired
+    private CustomerRepository customerRepository;
 
     @Override
     @Transactional
-    public void  createOrder(@RequestBody Orders order){
+    public void  createOrder(@RequestBody NewOrderDto order){
         System.out.println("service");
+//        System.out.println(order);
+
         Double orderTotal = 0.00;
 
-//        set totals for each order item
-        List<OrderItem> newPriceForOrderItems = order.getOrderItems();
-        for(OrderItem orderItem : newPriceForOrderItems){
-            orderItem.setTotal(orderItem.getQuantity() * menuItemRepository
-                    .getReferenceById(orderItem.getItemId()
-                            .getId()).getUnitPrice());
-
-//            calculate total for entire order
+        Orders newOrder = order.getOrder();
+//        System.out.println(newOrder);
+        List<OrderItem> orderItems = newOrder.getOrderItems();
+        for (OrderItem orderItem : orderItems) {
+            orderItem.setTotal(orderItem.getQuantity() *
+                    menuItemRepository.getReferenceById(orderItem.getItemId().getId()).getUnitPrice());
             orderTotal += orderItem.getTotal();
         }
-        order.setOrderItems(newPriceForOrderItems);
-        order.setOrderTotal(orderTotal);
-        ordersRepository.save(order);
+
+        Customer newCustomer = order.getCustomer();
+//        System.out.println(newCustomer);
+        if (customerRepository.findByName(newCustomer.getName()) != null) {
+            newOrder.setCustomerId(customerRepository.findByName(newCustomer.getName()).getCustomerId());
+        }else{
+            customerRepository.save(newCustomer);
+            newCustomer = customerRepository.findByName(newCustomer.getName());
+//            System.out.println(newCustomer);
+            newOrder.setCustomerId(newCustomer.getCustomerId());
+        }
+        newOrder.setOrderItems(orderItems);
+        newOrder.setOrderTotal(orderTotal);
+        System.out.println("Order created.");
+        ordersRepository.save(newOrder);
+
+
+        // see below to calculate new totals and set before saving order
+
+
+//        set totals for each order item
+//        List<OrderItem> newPriceForOrderItems = order.getOrderItems();
+//
+//
+//        for(OrderItem orderItem : newPriceForOrderItems){
+//            orderItem.setTotal(orderItem.getQuantity() * menuItemRepository
+//                    .getReferenceById(orderItem.getItemId()
+//                            .getId()).getUnitPrice());
+//
+////            calculate total for entire order
+//            orderTotal += orderItem.getTotal();
+//        }
+//        order.setOrderItems(newPriceForOrderItems);
+//        order.setOrderTotal(orderTotal);
+//        ordersRepository.save(order);
     }
+
+
+
+//    @Override
+//    @Transactional
+//    public void  createOrder(@RequestBody Orders order){
+//        System.out.println("service");
+//        Double orderTotal = 0.00;
+//
+////        set totals for each order item
+//        List<OrderItem> newPriceForOrderItems = order.getOrderItems();
+//
+//
+//        for(OrderItem orderItem : newPriceForOrderItems){
+//            orderItem.setTotal(orderItem.getQuantity() * menuItemRepository
+//                    .getReferenceById(orderItem.getItemId()
+//                            .getId()).getUnitPrice());
+//
+////            calculate total for entire order
+//            orderTotal += orderItem.getTotal();
+//        }
+//        order.setOrderItems(newPriceForOrderItems);
+//        order.setOrderTotal(orderTotal);
+//        ordersRepository.save(order);
+//    }
 
 
     @Override
@@ -49,7 +110,6 @@ public class OrdersService implements OrdersServiceInterface {
         System.out.println(orderUid);
 //            get order
         Orders order = ordersRepository.findByOrderUid(orderUid);
-
         System.out.println(getOrderDtoConverter(order));
         return getOrderDtoConverter(order);
     }
