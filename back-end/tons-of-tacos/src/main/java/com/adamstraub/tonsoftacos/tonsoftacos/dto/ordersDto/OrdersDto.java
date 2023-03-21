@@ -4,7 +4,7 @@ import lombok.Data;
 
 import java.sql.Timestamp;
 @Data
-public class ordersDto {
+public class OrdersDto {
 private Integer orderId;
 private Integer customerId;
 private Timestamp created;

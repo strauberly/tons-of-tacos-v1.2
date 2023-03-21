@@ -1,5 +1,6 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.controllers.ordersControllers;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.GetOrdersDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.NewOrderDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
@@ -41,9 +42,13 @@ public interface OrdersControllerInterface {
             }
     )
 
+//    @ResponseStatus(code = HttpStatus.CREATED)
+//    @PostMapping("/checkout")
+//    void createOrder(@RequestBody Orders order);
+
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping("/checkout")
-    void createOrder(@RequestBody Orders order);
+    void createOrder(@RequestBody NewOrderDto order);
 
 // order by uid
     @Operation(
