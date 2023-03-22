@@ -3,6 +3,7 @@ CREATE DATABASE IF NOT EXISTS tonsOfTacos;
 
 USE tonsOfTacos;
 
+DROP TABLE IF EXISTS owners;
 DROP TABLE IF EXISTS order_item;
 DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS menu_item;
@@ -51,6 +52,17 @@ PRIMARY KEY (order_item_pk),
 FOREIGN KEY (item_fk) REFERENCES menu_item(item_pk),
 FOREIGN KEY (order_fk) REFERENCES orders(order_pk)
 );
+
+
+CREATE TABLE owners(
+owners_pk INT unsigned NOT NULL AUTO_INCREMENT,
+name varchar(20) NOT NULL,
+username varchar(20) NOT NULL,
+psswrd varchar(14) NOT NULL,
+contact varchar(44) NOT NULL,
+PRIMARY KEY (owners_pk)
+);
+
 
 -- CREATE INDEX ORDER_UUID ON order_item(cart_uuid);
 
