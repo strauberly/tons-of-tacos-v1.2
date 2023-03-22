@@ -6,6 +6,9 @@
 - Customer and order saved in same transaction.
 - Customer may place an additional order while past order is still open, eliminating duplicate customer entries.
 - Upon closing last open customer order, customer information removed. Ensures information not in use is not sitting idly waiting to be exploited.
+- Began work on securing owners tools endpoint.
+  - Created owners table and loaded sample data.
+  - Created owner entity and respository.
 
 ---
 =======
