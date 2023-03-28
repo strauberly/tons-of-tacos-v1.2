@@ -1,6 +1,19 @@
 ## This Journal tracks development progress, ideas and thoughts.
 
 ---
+
+-- 27 Mar 2023 --
+
+- Determined means for obfuscating customer details.
+- More time spent researching hashing data for owner auth will work on it more after initial tests successful with restructure.
+- Refactored reflecting structure change and removed unnecessary tests though their frames may be utilized in future contexts.
+- Menu item tests successful
+- Order creation test successful.
+
+---
+
+=======
+
 -- 21 Mar 2023 --
 
 - Customer and order saved in same transaction.
