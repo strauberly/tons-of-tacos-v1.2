@@ -25,7 +25,7 @@ class GetMenuItemsByIdTests {
 
     @Nested
     @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-    @TestPropertySource("classpath:application.properties")
+    @TestPropertySource("classpath:/test-application.properties")
     @Sql(scripts = {
             "classpath:/test-schema.sql",
             "classpath:/test-data.sql",
@@ -90,6 +90,7 @@ class GetMenuItemsByIdTests {
             ResponseEntity<MenuItem> response =
                     getRestTemplate().exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                     });
+            System.out.println(response.getBody().getItemName());
 //            Then: A 404 status code is returned
             System.out.println("Response code is " + response.getStatusCode() + ".");
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);

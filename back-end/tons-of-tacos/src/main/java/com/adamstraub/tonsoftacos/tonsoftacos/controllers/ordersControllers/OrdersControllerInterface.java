@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Validated
 @RequestMapping(
-        value = "api/orders")
+        value = "api/order")
 @OpenAPIDefinition(info = @Info(title = "services pertaining to checkout functions and monitoring orders"),
         servers = {@Server(url="http://localhost:8080", description = "Local server")})
 public interface OrdersControllerInterface {
@@ -42,39 +42,7 @@ public interface OrdersControllerInterface {
             }
     )
 
-//    @ResponseStatus(code = HttpStatus.CREATED)
-//    @PostMapping("/checkout")
-//    void createOrder(@RequestBody Orders order);
-
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping("/checkout")
     void createOrder(@RequestBody NewOrderDto order);
-
-// order by uid
-    @Operation(
-            summary = "An order is returned by uid.",
-            description = """
-                  For owner use only at this time.""",
-            responses = {
-                    @ApiResponse(
-                            responseCode = "200",
-                            description = "Order is returned.",
-                            content = @Content(mediaType = "application/json")),
-                    @ApiResponse(
-                            responseCode = "400",
-                            description = "Request parameters invalid.",
-                            content = @Content(mediaType = "application/json")),
-                    @ApiResponse(
-                            responseCode = "404",
-                            description = "No orders found.",
-                            content = @Content(mediaType = "application/json")),
-                    @ApiResponse(
-                            responseCode = "500",
-                            description = "An unplanned error occured.",
-                            content = @Content(mediaType = "application/json")),
-            }
-    )
-    @GetMapping("/get-order/orderUid")
-            GetOrdersDto getOrderByUid(@RequestParam String orderUid);
-
 }

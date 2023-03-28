@@ -52,7 +52,6 @@ public interface MenuItemControllerInterface {
     )
 
     @GetMapping("/id")
-    @ResponseStatus(code = HttpStatus.OK)
     Optional<Optional<MenuItem>> getById(
             @RequestParam(required = true)
             String id);
@@ -90,7 +89,6 @@ public interface MenuItemControllerInterface {
     )
 
     @GetMapping("/category")
-    @ResponseStatus(code = HttpStatus.OK)
     List<MenuItem> getByCategory(
             @RequestParam(required = true)
             String category);

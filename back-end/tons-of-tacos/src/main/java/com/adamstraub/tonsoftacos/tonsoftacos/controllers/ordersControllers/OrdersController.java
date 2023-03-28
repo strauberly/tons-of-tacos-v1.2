@@ -22,17 +22,4 @@ public class OrdersController implements OrdersControllerInterface {
         ordersService.createOrder(order);
     }
 
-
-//    @Override
-//    public void createOrder(@RequestBody Orders order) {
-//        System.out.println("controller");
-//         ordersService.createOrder(order);
-//    }
-
-    @Override
-    public GetOrdersDto getOrderByUid(@PathVariable String orderUid) {
-        System.out.println("controller");
-        return ordersService.getOrderByUid(orderUid);
-
-    }
 }
