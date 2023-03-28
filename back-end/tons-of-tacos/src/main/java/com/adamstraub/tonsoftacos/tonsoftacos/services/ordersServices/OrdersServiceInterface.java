@@ -11,11 +11,4 @@ import java.util.List;
 public interface OrdersServiceInterface {
     @Transactional
     void createOrder(@RequestBody NewOrderDto order);
-
-
-//    @Transactional
-//    void createOrder(@RequestBody Orders order);
-
-    @Transactional(readOnly = true)
-    GetOrdersDto getOrderByUid(@PathVariable String orderUid);
 }

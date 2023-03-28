@@ -44,10 +44,11 @@ class CreateOrderTests {
                 ResponseEntity<Orders> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
                         Orders.class);
                 System.out.println("response: " + response.getBody());
-//                Then: an order is successfully stored with a 201 response
-                System.out.println("Response code is " + response.getStatusCode() + ".");
-                assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
 
+//                Then: an order is successfully stored with a 201 response
+                assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+                System.out.println("Response code is " + response.getStatusCode() + ".");
             }
         }
+//        test for invalid
     }

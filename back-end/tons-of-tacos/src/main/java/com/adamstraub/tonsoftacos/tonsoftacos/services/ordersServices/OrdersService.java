@@ -56,62 +56,6 @@ public class OrdersService implements OrdersServiceInterface {
         newOrder.setOrderTotal(orderTotal);
         System.out.println("Order created.");
         ordersRepository.save(newOrder);
-
-
-        // see below to calculate new totals and set before saving order
-
-
-//        set totals for each order item
-//        List<OrderItem> newPriceForOrderItems = order.getOrderItems();
-//
-//
-//        for(OrderItem orderItem : newPriceForOrderItems){
-//            orderItem.setTotal(orderItem.getQuantity() * menuItemRepository
-//                    .getReferenceById(orderItem.getItemId()
-//                            .getId()).getUnitPrice());
-//
-////            calculate total for entire order
-//            orderTotal += orderItem.getTotal();
-//        }
-//        order.setOrderItems(newPriceForOrderItems);
-//        order.setOrderTotal(orderTotal);
-//        ordersRepository.save(order);
-    }
-
-
-
-//    @Override
-//    @Transactional
-//    public void  createOrder(@RequestBody Orders order){
-//        System.out.println("service");
-//        Double orderTotal = 0.00;
-//
-////        set totals for each order item
-//        List<OrderItem> newPriceForOrderItems = order.getOrderItems();
-//
-//
-//        for(OrderItem orderItem : newPriceForOrderItems){
-//            orderItem.setTotal(orderItem.getQuantity() * menuItemRepository
-//                    .getReferenceById(orderItem.getItemId()
-//                            .getId()).getUnitPrice());
-//
-////            calculate total for entire order
-//            orderTotal += orderItem.getTotal();
-//        }
-//        order.setOrderItems(newPriceForOrderItems);
-//        order.setOrderTotal(orderTotal);
-//        ordersRepository.save(order);
-//    }
-
-
-    @Override
-    public GetOrdersDto getOrderByUid(String orderUid) {
-        System.out.println("service");
-        System.out.println(orderUid);
-//            get order
-        Orders order = ordersRepository.findByOrderUid(orderUid);
-        System.out.println(getOrderDtoConverter(order));
-        return getOrderDtoConverter(order);
     }
 
 

@@ -10,7 +10,7 @@ import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersOrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Customer;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
-import com.adamstraub.tonsoftacos.tonsoftacos.services.orderItemServices.OrderItemService;
+//import com.adamstraub.tonsoftacos.tonsoftacos.services.orderItemServices.OrderItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,8 +36,8 @@ public class OwnersService implements OwnersServiceInterface {
     @Autowired
     private MenuItemRepository menuItemRepository;
 
-    @Autowired
-    private OrderItemService orderItemService;
+//    @Autowired
+//    private OrderItemService orderItemService;
 
 
     @Override
@@ -98,7 +98,7 @@ public class OwnersService implements OwnersServiceInterface {
                 todaysOrders.add(completedOrder);
             }
         }
-//                create jpa query that takes todays date and status closed
+//                create jpa query that takes today's date and status closed
         for (Orders order:todaysOrders){
             salesTotal += order.getOrderTotal();
         }

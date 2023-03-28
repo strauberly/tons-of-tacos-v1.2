@@ -26,32 +26,10 @@ public class BaseResponseTest {
 
     }
 
-//    ============== order id uris ====================//
-    protected String getBaseUriForCreateOrderItem(){
-        return String.format("http://localhost:%d/api/order/add-to-cart", Integer.valueOf(serverPort));
-
-    }
-
-    protected String getBaseUriForGetCartItemsByUuid(){
-        return String.format("http://localhost:%d/api/order/get-cart/cartUuid", Integer.valueOf(serverPort));
-
-    }
-
-    protected  String getBaseUriForUpdateOrderItem(){
-            return String.format("http://localhost:%d/api/order/update-cart", Integer.valueOf(serverPort));
-    }
-
-    protected  String getBaseUriForRemoveOrderItem(){
-        return String.format("http://localhost:%d/api/order/remove-cart-item", Integer.valueOf(serverPort));
-    }
-
     //    ============== orders uris ====================//
 
-    protected  String getBaseUriForGetAllOrders(){
-        return String.format("http://localhost:%d/api/orders/get-orders", Integer.valueOf(serverPort));
-    }
     protected  String getBaseUriForCreateOrder(){
-        return String.format("http://localhost:%d/api/orders/checkout", Integer.valueOf(serverPort));
+        return String.format("http://localhost:%d/api/order/checkout", Integer.valueOf(serverPort));
     }
 
 
