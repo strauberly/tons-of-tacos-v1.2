@@ -20,7 +20,7 @@ import java.util.List;
 @Validated
 @RequestMapping(
         value = "api/owners-tools")
-@OpenAPIDefinition(info = @Info(title = "services pertaining to checkout functions and monitoring orders"),
+@OpenAPIDefinition(info = @Info(title = "services pertaining to functions reserved for the owners of tons of tacos."),
         servers = {@Server(url="http://localhost:8080", description = "Local server")})
 public interface OwnersControllerInterface {
     // for all if data returned it shows id for ease of selection
@@ -135,34 +135,7 @@ public interface OwnersControllerInterface {
    List <OwnersGetOrderDto> getOrderByCustomer(@RequestParam String customer);
 //
 //
-//    // get todays sales
-    @Operation(
-            summary = "Gets sales for today's closed orders.",
-            description = "Will allow for owner to see what they have brought in through online orders for the day." +
-                    "Future use cases in mind for helping owners to have more in depth sale tracking.",
-            responses = {
-                    @ApiResponse(
-                            responseCode = "200",
-                            description = "Order deleted.",
-                            content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = OrderItem.class))),
-                    @ApiResponse(
-                            responseCode = "400",
-                            description = "Request parameters invalid.",
-                            content = @Content(mediaType = "application/json")),
-                    @ApiResponse(
-                            responseCode = "404",
-                            description = "No order-items found according to input.",
-                            content = @Content(mediaType = "application/json")),
-                    @ApiResponse(
-                            responseCode = "500",
-                            description = "An unplanned error occured.",
-                            content = @Content(mediaType = "application/json")),
 
-            }
-    )
-    @GetMapping("/sales")
-    String todaysSales();
 //
 //    // mark food ready by id
     @Operation(
@@ -249,6 +222,98 @@ public interface OwnersControllerInterface {
     @DeleteMapping("/delete-order/{orderId}")
     void deleteOrder(@PathVariable Integer orderId);
 
+//    add menu item to order
+    @Operation(
+            summary = "Item added to cart is transferred to database.",
+            description = "Having the items recorded will allow for persistence and allow for future features such as" +
+                    "inventory tracking, trend tracking and sales analysis.",
+            responses = {
+
+                    @ApiResponse(
+                            responseCode = "201",
+                            description = "An order-id is created.",
+                            content = @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = OrderItem.class))),
+                    @ApiResponse(
+                            responseCode = "400",
+                            description = "Request parameters invalid.",
+                            content = @Content(mediaType = "application/json")),
+                    @ApiResponse(
+                            responseCode = "500",
+                            description = "An unplanned error occured.",
+                            content = @Content(mediaType = "application/json")),
+            }
+    )
+    @PatchMapping("/add-to-order/{orderId}/{menuItemId}/{quantity}")
+    void addToOrder(
+            @PathVariable
+            Integer orderId, @PathVariable Integer menuItemId, @PathVariable Integer quantity);
+
+//    edit order item
+    @Operation(
+            summary = " Updates the quantity of an item in an order and if quantity equals zero the item is removed " +
+                    "from order.",
+            description = "Updates the cart by removing an id",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Quantity updated.",
+                            content = @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = OrderItem.class))),
+                    @ApiResponse(
+                            responseCode = "400",
+                            description = "Request parameters invalid.",
+                            content = @Content(mediaType = "application/json")),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "No order-items found according to input.",
+                            content = @Content(mediaType = "application/json")),
+                    @ApiResponse(
+                            responseCode = "500",
+                            description = "An unplanned error occured.",
+                            content = @Content(mediaType = "application/json")),
+            }
+    )
+
+    @PatchMapping("/update-order-item/{orderId}/{orderItemId}/{newQuantity}")
+    void updateOrderItem(
+            @PathVariable
+            Integer orderId,
+            @PathVariable
+            Integer orderItemId,
+            @PathVariable
+            Integer newQuantity);
+
+    //    // get todays sales
+    @Operation(
+            summary = "Gets sales for today's closed orders.",
+            description = "Will allow for owner to see what they have brought in through online orders for the day." +
+                    "Future use cases in mind for helping owners to have more in depth sale tracking.",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Order deleted.",
+                            content = @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = OrderItem.class))),
+                    @ApiResponse(
+                            responseCode = "400",
+                            description = "Request parameters invalid.",
+                            content = @Content(mediaType = "application/json")),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "No order-items found according to input.",
+                            content = @Content(mediaType = "application/json")),
+                    @ApiResponse(
+                            responseCode = "500",
+                            description = "An unplanned error occured.",
+                            content = @Content(mediaType = "application/json")),
+
+            }
+    )
+    @GetMapping("/sales")
+    String todaysSales();
+
+
     // get all customers
     @Operation(
             summary = "All orders returned.",
@@ -273,7 +338,6 @@ public interface OwnersControllerInterface {
                             content = @Content(mediaType = "application/json")),
             }
     )
-
     @GetMapping("/get-customers")
     List<OwnersGetCustomerDto> getAllCustomers();
 

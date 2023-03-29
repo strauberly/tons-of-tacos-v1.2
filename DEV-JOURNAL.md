@@ -2,6 +2,21 @@
 
 ---
 
+-- 29 Mar 2023 --
+
+- Successful test for getting an order by id.
+- Successful test for deleting an order by id.
+- Functionality for owner to add a menu item to an order implemented.
+- Functionality for owner to edit an item on an order implemented.
+- Successful test for editing an item on an order.
+- Successful test for adding an item to an order.
+- Successful test for returning days sales and verifying the equal a summed total of orders
+  marked closed in the db.
+
+### Initial tests for owners functions pertaining to orders in place!
+
+---
+
 -- 28 Mar 2023 --
 
 - Added verification clause to order created test by immediately retrieving the created order from db.
