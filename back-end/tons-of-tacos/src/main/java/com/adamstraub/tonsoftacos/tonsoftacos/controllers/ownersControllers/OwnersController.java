@@ -23,13 +23,19 @@ public class OwnersController implements OwnersControllerInterface{
     }
 
     @Override
+    public OwnersGetOrderDto getOrderById(Integer orderId) {
+        System.out.println("controller");
+        return ownersService.getOrderById(orderId);
+    }
+
+    @Override
     public OwnersGetOrderDto getOrderByUid(@PathVariable String orderUid) {
         System.out.println("controller");
         return ownersService.getOrderByUid(orderUid);
     }
 //
     @Override
-    public OwnersGetOrderDto getOrderByCustomer(String customer) {
+    public List<OwnersGetOrderDto> getOrderByCustomer(String customer) {
         System.out.println("controller");
         return ownersService.getOpenOrderByCustomer(customer);
     }

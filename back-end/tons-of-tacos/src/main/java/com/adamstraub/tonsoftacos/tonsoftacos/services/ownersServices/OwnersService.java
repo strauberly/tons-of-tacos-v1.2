@@ -1,5 +1,4 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.services.ownersServices;
-
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.CustomerRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.MenuItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrderItemRepository;
@@ -10,7 +9,6 @@ import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersOrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Customer;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
-//import com.adamstraub.tonsoftacos.tonsoftacos.services.orderItemServices.OrderItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.stream.Collectors;
+
 
 // possibly bust out to different services, 1 pertaining to customers and 1 pertaining to orders
 
@@ -36,48 +34,53 @@ public class OwnersService implements OwnersServiceInterface {
     @Autowired
     private MenuItemRepository menuItemRepository;
 
-//    @Autowired
-//    private OrderItemService orderItemService;
-
-
+//  Successful test written 28 Mar 2023
     @Override
     @Transactional(readOnly = true)
     public List<OwnersGetOrderDto> getAllOrders() {
         System.out.println("service");
         List<OwnersGetOrderDto> getOrderItemDtos = new ArrayList<>();
         List<Orders> orders = ordersRepository.findAll();
-
         for (Orders order : orders) {
-            System.out.println(orders);
+//            System.out.println(orders);
             getOrderItemDtos.add(ownersGetOrderDtoConverter(order));
-            System.out.println("orders dto" + getOrderItemDtos);
+//            System.out.println("orders dto" + getOrderItemDtos);
         }
-        System.out.println("orders" + orders);
+//        System.out.println("orders" + orders);
         return getOrderItemDtos;
     }
 
     @Override
+    public OwnersGetOrderDto getOrderById(Integer orderId) {
+        System.out.println("service");
+        OwnersGetOrderDto order = ownersGetOrderDtoConverter(ordersRepository.getReferenceById(orderId));
+     return order;
+    }
+
+    //  Successful test written 28 Mar 2023
+    @Override
     public OwnersGetOrderDto getOrderByUid(String orderUid) {
         System.out.println("service");
-        System.out.println(orderUid);
+//        System.out.println(orderUid);
         Orders order = ordersRepository.findByOrderUid(orderUid);
-        System.out.println(order);
+//        System.out.println(order);
         return ownersGetOrderDtoConverter(order);
     }
 
+    //  Successful test written 28 Mar 2023
     @Override
-    public OwnersGetOrderDto getOpenOrderByCustomer(String customer) {
+    public List<OwnersGetOrderDto> getOpenOrderByCustomer(String customer) {
         System.out.println("service");
         Customer customerObj = customerRepository.findByName(customer);
         List<Orders> orders = ordersRepository.findByCustomerId(customerObj.getCustomerId());
-        Orders openOrder = null;
+        List<OwnersGetOrderDto> openOrders = new ArrayList<>();
         for (Orders order: orders)
             if (order.getStatus().equals("closed")) {
                 throw new NoSuchElementException("No open orders for customer found.");
             }else{
-                openOrder = order;
+            openOrders.add(ownersGetOrderDtoConverter(order));
             }
-        return ownersGetOrderDtoConverter(openOrder);
+        return openOrders;
     }
 
     @Override
@@ -108,7 +111,7 @@ public class OwnersService implements OwnersServiceInterface {
                 "Totaling: $" + salesTotal;
         return formattedSales;
     }
-
+    //  Successful test written 28 Mar 2023
     @Override
     public void orderReady(Integer orderId) {
         System.out.println("service");
@@ -117,7 +120,7 @@ public class OwnersService implements OwnersServiceInterface {
         order.setReady(timeReady);
         System.out.println("Order up!");
     }
-
+    //  Successful test written 28 Mar 2023
     @Override
     public void closeOrder(Integer orderId) {
         System.out.println("service");
@@ -210,13 +213,17 @@ public class OwnersService implements OwnersServiceInterface {
         System.out.println("Customer deleted");
     }
 
+
+
     private OwnersGetOrderDto ownersGetOrderDtoConverter(Orders order) {
         OwnersGetOrderDto ownersGetOrderDto = new OwnersGetOrderDto();
 //        set the dto
         ownersGetOrderDto.setOrderId(order.getOrderId());
-        ownersGetOrderDto.setName(customerRepository.getReferenceById(order.getCustomerId()).getName());
-        ownersGetOrderDto.setEmail(customerRepository.getReferenceById(order.getCustomerId()).getEmail());
-        ownersGetOrderDto.setPhone(customerRepository.getReferenceById(order.getCustomerId()).getPhoneNumber());
+        if (order.getCustomerId() != null) {
+            ownersGetOrderDto.setName(customerRepository.getReferenceById(order.getCustomerId()).getName());
+            ownersGetOrderDto.setEmail(customerRepository.getReferenceById(order.getCustomerId()).getEmail());
+            ownersGetOrderDto.setPhone(customerRepository.getReferenceById(order.getCustomerId()).getPhoneNumber());
+        }
         ownersGetOrderDto.setOrderUid(order.getOrderUid());
 
 
@@ -231,7 +238,7 @@ public class OwnersService implements OwnersServiceInterface {
         ownersGetOrderDto.setCreated(order.getCreated());
         ownersGetOrderDto.setReady(order.getReady());
         ownersGetOrderDto.setStatus(order.getStatus());
-        System.out.println(ownersGetOrderDto);
+//        System.out.println(ownersGetOrderDto);
         return ownersGetOrderDto;
     }
 
@@ -243,7 +250,7 @@ public class OwnersService implements OwnersServiceInterface {
         ownersOrderItemDto.setQuantity(orderItem.getQuantity());
         ownersOrderItemDto.setTotal(orderItem.getTotal());
 
-        System.out.println(ownersOrderItemDto);
+//        System.out.println(ownersOrderItemDto);
         return ownersOrderItemDto;
     }
     private OwnersGetCustomerDto ownersCustomerDtoConvertor(Customer customer){

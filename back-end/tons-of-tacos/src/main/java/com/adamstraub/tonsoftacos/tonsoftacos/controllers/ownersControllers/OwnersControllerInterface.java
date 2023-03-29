@@ -52,6 +52,33 @@ public interface OwnersControllerInterface {
     @GetMapping("/get-orders")
     List<OwnersGetOrderDto> getAllOrders();
 
+    //    get an order by order id
+    @Operation(
+            summary = "An order is returned by id.",
+            description = """
+                  For owner use only at this time.""",
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Order is returned.",
+                            content = @Content(mediaType = "application/json")),
+                    @ApiResponse(
+                            responseCode = "400",
+                            description = "Request parameters invalid.",
+                            content = @Content(mediaType = "application/json")),
+                    @ApiResponse(
+                            responseCode = "404",
+                            description = "No orders found.",
+                            content = @Content(mediaType = "application/json")),
+                    @ApiResponse(
+                            responseCode = "500",
+                            description = "An unplanned error occured.",
+                            content = @Content(mediaType = "application/json")),
+            }
+    )
+    @GetMapping("/get-order/orderId")
+    OwnersGetOrderDto getOrderById(@RequestParam Integer orderId);
+
     //    get an order by uid
     @Operation(
             summary = "An order is returned by uid.",
@@ -105,7 +132,7 @@ public interface OwnersControllerInterface {
             }
     )
     @GetMapping("/get-order/customer")
-   OwnersGetOrderDto getOrderByCustomer(@RequestParam String customer);
+   List <OwnersGetOrderDto> getOrderByCustomer(@RequestParam String customer);
 //
 //
 //    // get todays sales
@@ -409,7 +436,7 @@ OwnersGetCustomerDto getCustomerById(@RequestParam Integer customerId);
     // delete customer by id
     @Operation(
             summary = "Deletes a customer by id.",
-            description = "Implemented for ease of use.",
+            description = "In case of order made but never claimed",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
