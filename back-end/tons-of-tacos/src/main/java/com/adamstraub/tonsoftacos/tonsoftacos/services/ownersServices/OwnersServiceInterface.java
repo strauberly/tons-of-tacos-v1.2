@@ -15,7 +15,7 @@ public interface OwnersServiceInterface {
     OwnersGetOrderDto getOrderByUid(@PathVariable String orderUid);
 
     @Transactional
-    OwnersGetOrderDto getOpenOrderByCustomer(String customer);
+    List<OwnersGetOrderDto> getOpenOrderByCustomer(String customer);
 
     @Transactional
     String todaysSales();
@@ -49,4 +49,6 @@ public interface OwnersServiceInterface {
 
     @Transactional
     void deleteCustomer(Integer customerId);
+    @Transactional
+    OwnersGetOrderDto getOrderById(Integer orderId);
 }

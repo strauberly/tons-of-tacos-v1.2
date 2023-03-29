@@ -37,10 +37,8 @@ created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 ready VARCHAR(20) DEFAULT 'no',
 status VARCHAR(20)DEFAULT 'open',
 PRIMARY KEY (order_pk),
-FOREIGN KEY (customer_fk) REFERENCES customer(customer_pk) ON DELETE SET NULL
+FOREIGN KEY (customer_fk) REFERENCES customer(customer_pk)ON DELETE SET NULL
 );
-
--- CREATE INDEX CART_UID ON orders(cart_uid);
 
 CREATE TABLE order_items(
 order_item_pk INT unsigned NOT NULL AUTO_INCREMENT,
@@ -52,7 +50,6 @@ PRIMARY KEY (order_item_pk),
 FOREIGN KEY (item_fk) REFERENCES menu_item(item_pk),
 FOREIGN KEY (order_fk) REFERENCES orders(order_pk)
 );
-
 
 CREATE TABLE owners(
 owners_pk INT unsigned NOT NULL AUTO_INCREMENT,

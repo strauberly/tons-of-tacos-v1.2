@@ -2,6 +2,20 @@
 
 ---
 
+-- 28 Mar 2023 --
+
+- Added verification clause to order created test by immediately retrieving the created order from db.
+- Successful test for owners to retrieve an order by order uid.
+- Successful test for owners to get all orders.
+- Successful test for retrieving open orders by customer name.
+- Successful test for marking an order ready.
+- Successful test for marking an or order closed.
+- Test case for marking an order closed exposed a bug where orders were unable to be called after being marked closed.
+  As customer id field was null the requirements were unfilled for creating the necessary dto. This was fixed by setting a default null value for the
+  fields of interest. If the incoming order has null for a customer id then there is no point in setting the fields and the requirements of the dto are satisfied.
+
+---
+
 -- 27 Mar 2023 --
 
 - Determined means for obfuscating customer details.
@@ -24,8 +38,8 @@
   - Created owner entity and respository.
 
 ---
-=======
 
+=======
 
 -- 20 Mar 2023 --
 
@@ -40,20 +54,20 @@
   - Removed unused code and comments app wide due to relocation of functionality between order item, orders and owners.
   - Relocated order item dto converter to orders service.
 
-- Began combining order and customer dto into a new order dto that more closely reflects what the order object will consist of.
-=======
+- # Began combining order and customer dto into a new order dto that more closely reflects what the order object will consist of.
 - refactor notes
   → removed unused code and comments app wide due to relocation of functionality between order item, orders and owners
   → relocated order item dto converter to orders service
-=======
--- 17 Mar 2023 --
+  =======
+  -- 17 Mar 2023 --
 
 - Get customer dto refactored for the desired use case and function is currently operating as desired.
 - Implemeneted returning a customer by customer name.
 - Implemented returning a customer by id.
 - Implemented updating a customers details.
-- Implement customer delete a customer without deleting orders associated to 
-them so that information can still be used for accounting purposes.
+- Implement customer delete a customer without deleting orders associated to
+  them so that information can still be used for accounting purposes.
+
 ---
 
 -- 16 Mar 2023 --

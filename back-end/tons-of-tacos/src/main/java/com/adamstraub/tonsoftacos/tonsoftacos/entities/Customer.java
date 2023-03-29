@@ -34,7 +34,9 @@ public class Customer {
 
     @Column(name = "phone_number")
     private String phoneNumber;
+
     @OneToMany(mappedBy = "customerId", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+//    @OneToMany(mappedBy = "customerId", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<Orders> orders = new ArrayList<>();
 
 
@@ -47,8 +49,4 @@ public class Customer {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
-
-
-//
-//
 }
