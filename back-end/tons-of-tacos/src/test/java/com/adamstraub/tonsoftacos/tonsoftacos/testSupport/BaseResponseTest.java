@@ -16,7 +16,7 @@ public class BaseResponseTest {
     @Getter
     private TestRestTemplate restTemplate;
 
-//============== menu id uris ====================//
+//============== menu uris ====================//
         protected String getBaseUriForMenuItemByIdQuery(){
             return String.format("http://localhost:%d/api/menu/id", Integer.valueOf(serverPort));
 
@@ -32,5 +32,32 @@ public class BaseResponseTest {
         return String.format("http://localhost:%d/api/order/checkout", Integer.valueOf(serverPort));
     }
 
+    //    ============== owners-tools uris ====================//
 
+    protected  String getBaseUriForGetAllOrders(){
+        return String.format("http://localhost:%d/api/owners-tools/get-orders", Integer.valueOf(serverPort));
+    }
+
+    protected  String getBaseUriForGetOrderByUid(){
+        return String.format("http://localhost:%d/api/owners-tools/get-order/orderUid",
+                Integer.valueOf(serverPort));
+    }
+
+    protected  String getBaseUriForGetOrderById(){
+        return String.format("http://localhost:%d/api/owners-tools/get-order/orderId",
+                Integer.valueOf(serverPort));
+    }
+
+
+    protected  String getBaseUriForGetOrderByCustomer(){
+        return String.format("http://localhost:%d/api/owners-tools/get-order/customer", Integer.valueOf(serverPort));
+    }
+
+    protected  String getBaseUriForOrderReady(){
+        return String.format("http://localhost:%d/api/owners-tools/order-ready", Integer.valueOf(serverPort));
+    }
+
+    protected  String getBaseUriForCloseOrder(){
+        return String.format("http://localhost:%d/api/owners-tools/close-order", Integer.valueOf(serverPort));
+    }
 }

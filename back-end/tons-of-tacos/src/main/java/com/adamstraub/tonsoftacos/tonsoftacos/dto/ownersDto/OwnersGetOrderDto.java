@@ -8,9 +8,9 @@ import java.util.List;
 @Data
 public class OwnersGetOrderDto {
     private Integer orderId;
-    private String name;
-    private String email;
-    private String phone;
+    private String name = null;
+    private String email = null;
+    private String phone = null;
     private String orderUid;
     private List<OwnersOrderItemDto> orderItems;
     private Double orderTotal;
