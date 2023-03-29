@@ -11,6 +11,9 @@ public interface OwnersServiceInterface {
     @Transactional(readOnly = true)
     List<OwnersGetOrderDto> getAllOrders();
 
+    @Transactional
+    OwnersGetOrderDto getOrderById(Integer orderId);
+
     @Transactional(readOnly = true)
     OwnersGetOrderDto getOrderByUid(@PathVariable String orderUid);
 
@@ -28,6 +31,11 @@ public interface OwnersServiceInterface {
 
     @Transactional
     void deleteOrder(Integer orderId);
+
+    @Transactional
+    void addToOrder(Integer orderId, Integer menuItemId, Integer quantity);
+    @Transactional
+    void updateOrderItem(Integer orderId, Integer orderItemId, Integer newQuantity);
 
     @Transactional(readOnly = true)
     List<OwnersGetCustomerDto> getAllCustomers();
@@ -49,6 +57,6 @@ public interface OwnersServiceInterface {
 
     @Transactional
     void deleteCustomer(Integer customerId);
-    @Transactional
-    OwnersGetOrderDto getOrderById(Integer orderId);
+
+
 }

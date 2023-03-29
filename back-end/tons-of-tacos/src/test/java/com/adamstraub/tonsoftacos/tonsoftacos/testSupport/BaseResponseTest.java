@@ -4,6 +4,7 @@ import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.web.bind.annotation.PatchMapping;
 
 
 public class BaseResponseTest {
@@ -60,4 +61,21 @@ public class BaseResponseTest {
     protected  String getBaseUriForCloseOrder(){
         return String.format("http://localhost:%d/api/owners-tools/close-order", Integer.valueOf(serverPort));
     }
+
+    protected  String getBaseUriForDeleteOrder(){
+        return String.format("http://localhost:%d/api/owners-tools/delete-order", Integer.valueOf(serverPort));
+    }
+
+    protected  String getBaseUriForEditOrderItem(){
+        return String.format("http://localhost:%d/api/owners-tools/update-order-item", Integer.valueOf(serverPort));
+    }
+
+    protected  String getBaseUriForAddOrderItem(){
+        return String.format("http://localhost:%d/api/owners-tools/add-to-order", Integer.valueOf(serverPort));
+    }
+
+    protected  String getBaseUriForSales(){
+        return String.format("http://localhost:%d/api/owners-tools/sales", Integer.valueOf(serverPort));
+    }
+
 }

@@ -50,12 +50,14 @@ public class OwnersService implements OwnersServiceInterface {
         return getOrderItemDtos;
     }
 
+    //  Successful test written 29 Mar 2023
     @Override
     public OwnersGetOrderDto getOrderById(Integer orderId) {
         System.out.println("service");
         OwnersGetOrderDto order = ownersGetOrderDtoConverter(ordersRepository.getReferenceById(orderId));
      return order;
     }
+
 
     //  Successful test written 28 Mar 2023
     @Override
@@ -82,7 +84,7 @@ public class OwnersService implements OwnersServiceInterface {
             }
         return openOrders;
     }
-
+    //  Successful test written 29 Mar 2023
     @Override
     public String todaysSales() {
         System.out.println("service");
@@ -145,11 +147,66 @@ public class OwnersService implements OwnersServiceInterface {
         }
     }
 
+    //  Successful test written 29 Mar 2023
     @Override
     public void deleteOrder(Integer orderId) {
         System.out.println("service");
         ordersRepository.deleteById(orderId);
         System.out.println("Order deleted");
+    }
+
+    //  Successful test written 29 Mar 2023
+    @Override
+    public void addToOrder(Integer orderId, Integer menuItemId, Integer quantity) {
+        System.out.println("service");
+//        System.out.println(ordersRepository.getReferenceById(orderId));
+//        System.out.println("order id: " + orderId);
+//        System.out.println("menu item id: " + menuItemId);
+//        System.out.println("quantity: " + quantity);
+        OrderItem orderItem = OrderItem.builder()
+                .itemId(menuItemRepository.getReferenceById(menuItemId))
+                .quantity(quantity)
+                .order(ordersRepository.getReferenceById(orderId)).build();
+        orderItem.setTotal(menuItemRepository.getReferenceById(menuItemId).getUnitPrice() *
+                orderItem.getQuantity());
+
+//        System.out.println(orderItem);
+        orderItemRepository.save(orderItem);
+//
+//        update order total
+        Orders order  = ordersRepository.getReferenceById(orderId);
+        order.setOrderTotal(order.getOrderTotal() + (menuItemRepository.getReferenceById(menuItemId).getUnitPrice() *
+                quantity));
+        ordersRepository.save(order);
+//        System.out.println(order);
+        System.out.println("Item added to order");
+    }
+
+    //  Successful test written 29 Mar 2023
+    @Override
+    public void updateOrderItem(Integer orderId, Integer orderItemId, Integer newQuantity) {
+        System.out.println("service");
+
+        OrderItem orderItem = orderItemRepository.getReferenceById(orderItemId);
+//        System.out.println(orderItem);
+        Orders order = ordersRepository.getReferenceById(orderId);
+//        System.out.println(order);
+        String response;
+        if(newQuantity == 0){
+            order.setOrderTotal(order.getOrderTotal() - orderItem.getTotal());
+            orderItemRepository.deleteById(orderItemId);
+            response = "Item quantity updated, item removed, cart updated.";
+        }else{
+            orderItem.setQuantity(newQuantity);
+            orderItem.setTotal(menuItemRepository.getReferenceById(orderItem.getItemId().getId()).getUnitPrice() *
+                    orderItem.getQuantity());
+            order.setOrderTotal(order.getOrderTotal() + orderItem.getTotal());
+            orderItemRepository.save(orderItem);
+            response = "Item quantity updated, cart updated.";
+        }
+//        System.out.println(order);
+        ordersRepository.save(order);
+        System.out.println(response);
     }
 
     @Override

@@ -66,6 +66,18 @@ public class OwnersController implements OwnersControllerInterface{
     }
 
     @Override
+    public void addToOrder(Integer orderId, Integer menuItemId, Integer quantity) {
+        System.out.println("controller");
+      ownersService.addToOrder(orderId, menuItemId, quantity);
+    }
+
+    @Override
+    public void updateOrderItem(Integer orderId, Integer orderItemId, Integer newQuantity) {
+        System.out.println("controller");
+        ownersService.updateOrderItem(orderId, orderItemId, newQuantity);
+    }
+
+    @Override
     public List<OwnersGetCustomerDto> getAllCustomers() {
         System.out.println("controller");
         return ownersService.getAllCustomers();
