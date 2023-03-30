@@ -30,7 +30,7 @@ public class OrderClosedTests {
             "classpath:/test-data.sql",
     },
             config = @SqlConfig(encoding = "utf-8"))
-    class testThatDoesNotPolluteTheApplicationContext extends OwnersToolsTestsSupport {
+    class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSupport {
         @Test
         void orderMarkedClosedWith200() {
 //            Given: a valid order id
@@ -47,7 +47,7 @@ public class OrderClosedTests {
             assertThat(response.getStatusCode().equals(HttpStatus.OK));
             System.out.println("Response code is " + response.getStatusCode() + ".");
 
-            //            And: when the order is called the status is indeed closed
+            //            And: when the order is called the closed is indeed closed
             String parameter = "orderId";
             String getOrderUri =
                     String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter, orderId);

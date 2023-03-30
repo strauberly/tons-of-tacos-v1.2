@@ -35,7 +35,7 @@ public class GetTodaysSalesTests {
             "classpath:/test-data.sql",
     },
             config = @SqlConfig(encoding = "utf-8"))
-    class testThatDoesNotPolluteTheApplicationContext extends OwnersToolsTestsSupport {
+    class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSupport {
         @Autowired
         OrdersRepository ordersRepository;
         @Test
@@ -69,7 +69,7 @@ public class GetTodaysSalesTests {
             List<Orders> orders = ordersRepository.findAll();
             List<Orders> closedOrders = new ArrayList<>();
             for (Orders order: orders){
-                if (order.getStatus().equals("closed")){
+                if (!order.getClosed().equals("no")){
                     closedOrders.add(order);
                 }
             }

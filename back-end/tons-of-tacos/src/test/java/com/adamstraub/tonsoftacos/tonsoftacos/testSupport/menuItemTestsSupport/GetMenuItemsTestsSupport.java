@@ -1,10 +1,10 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.testSupport.menuItemTestsSupport;
 
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
-import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.BaseResponseTest;
+import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.TestUris;
 
 
-public class GetMenuItemsTestsSupport extends BaseResponseTest {
+public class GetMenuItemsTestsSupport extends TestUris {
 
     protected MenuItem sample() {
 

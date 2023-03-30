@@ -32,7 +32,7 @@ public class GetOrderByCustomerTests {
             "classpath:/test-data.sql",
     },
             config = @SqlConfig(encoding = "utf-8"))
-    class testThatDoesNotPolluteTheApplicationContext extends OwnersToolsTestsSupport {
+    class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSupport {
         @Test
         void orderReturnedByCustomerName200() {
 //            Given: a customer that has already placed an order

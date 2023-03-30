@@ -37,7 +37,7 @@ class GetMenuItemsByCategoryTests {
                 "classpath:/test-data.sql",
         },
                 config = @SqlConfig(encoding = "utf-8"))
-        class testThatDoesNotPolluteTheApplicationContext extends GetMenuItemsTestsSupport {
+        class testThatDoesNotPolluteTheApplicationContextUris extends GetMenuItemsTestsSupport {
 
         @Test
         void menuItemsAreReturnedByCategoryWith200() {
@@ -54,7 +54,7 @@ class GetMenuItemsByCategoryTests {
             ResponseEntity<List<MenuItem>> response =
                     getRestTemplate().exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                     });
-//            Then: a 200 status code is returned
+//            Then: a 200 closed code is returned
             System.out.println(("Response code is " + response.getStatusCode() + "."));
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 //

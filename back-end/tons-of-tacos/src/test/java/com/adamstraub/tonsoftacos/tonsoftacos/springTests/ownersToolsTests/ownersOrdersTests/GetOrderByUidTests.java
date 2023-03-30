@@ -32,23 +32,24 @@ public class GetOrderByUidTests {
             "classpath:/test-data.sql",
     },
             config = @SqlConfig(encoding = "utf-8"))
-    class testThatDoesNotPolluteTheApplicationContext extends OwnersToolsTestsSupport {
+    class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSupport {
         @Test
         void validOrderIsReturnedByUidWith200() {
 //            Given: a valid uid
             String parameter = "orderUid";
             String testOrderUid = "654654-4655-555";
 //            When: a connection is made
-            String getOrderUri =
+            String uri =
                     String.format("%s?%s=%s", getBaseUriForGetOrderByUid(), parameter, testOrderUid );
-            System.out.println(getOrderUri);
+            System.out.println(uri);
             System.out.println("Order returned from db: ");
-            ResponseEntity<OwnersGetOrderDto> orderUidResponse =
-                    getRestTemplate().exchange(getOrderUri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
+            ResponseEntity<OwnersGetOrderDto> response =
+                    getRestTemplate().exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                     });
 //            Then: an order is returned with a uid matching the test uid and a 200 response code
-            System.out.println(orderUidResponse.getBody());
-            assertThat(Objects.requireNonNull(orderUidResponse.getBody()).getOrderUid().equals(testOrderUid));
+            System.out.println("Response code is " + response.getStatusCode() + ".");
+            System.out.println(response.getBody());
+            assertThat(Objects.requireNonNull(response.getBody()).getOrderUid().equals(testOrderUid));
         }
     }
 }
