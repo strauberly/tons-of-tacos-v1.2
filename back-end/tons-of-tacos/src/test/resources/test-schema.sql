@@ -30,7 +30,7 @@ order_total DECIMAL(19, 2) NOT NULL,
 order_uid VARCHAR(255) NOT NULL,
 created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 ready VARCHAR(20) DEFAULT 'no',
-status VARCHAR(20)DEFAULT 'open',
+closed VARCHAR(20)DEFAULT 'no',
 PRIMARY KEY (order_pk),
 FOREIGN KEY (customer_fk) REFERENCES customer(customer_pk) ON DELETE SET NULL
 );

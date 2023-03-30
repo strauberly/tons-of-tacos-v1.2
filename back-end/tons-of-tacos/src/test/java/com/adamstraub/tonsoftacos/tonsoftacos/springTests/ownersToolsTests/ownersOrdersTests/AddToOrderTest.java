@@ -32,7 +32,7 @@ public class AddToOrderTest {
             "classpath:/test-data.sql",
     },
             config = @SqlConfig(encoding = "utf-8"))
-    class testThatDoesNotPolluteTheApplicationContext extends OwnersToolsTestsSupport {
+    class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSupport {
         //        Given: a valid order, menu item, quantity
         @Test
         void addItemToOrder200() {

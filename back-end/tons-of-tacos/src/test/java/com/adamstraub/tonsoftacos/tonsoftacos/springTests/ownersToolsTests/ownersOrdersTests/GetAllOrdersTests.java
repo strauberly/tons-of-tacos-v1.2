@@ -33,7 +33,7 @@ private JdbcTemplate jdbcTemplate;
         "classpath:/test-data.sql",
 },
         config = @SqlConfig(encoding = "utf-8"))
-class testThatDoesNotPolluteTheApplicationContext extends OwnersToolsTestsSupport {
+class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSupport {
     @Test
             void allOrdersReturned200() {
 //  Given: a successful connection
@@ -43,7 +43,7 @@ class testThatDoesNotPolluteTheApplicationContext extends OwnersToolsTestsSuppor
         ResponseEntity<List<OwnersGetOrderDto>> response =
                 getRestTemplate().exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                 });
-//  Then: a collection of orders is returned with a status of 200
+//  Then: a collection of orders is returned with a closed of 200
         System.out.println(("Response code is " + response.getStatusCode() + "."));
         System.out.println(response.getBody());
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);

@@ -31,9 +31,9 @@ public class GetOrderByIdTests {
             "classpath:/test-data.sql",
     },
             config = @SqlConfig(encoding = "utf-8"))
-    class testThatDoesNotPolluteTheApplicationContext extends OwnersToolsTestsSupport {
+    class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSupport {
         @Test
-        void orderMarkedReadyWith200() {
+        void getOrderById200() {
 //            Given: a valid order id
             int orderId = 1;
 //            When: a connection is made

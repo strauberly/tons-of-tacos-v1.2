@@ -32,7 +32,7 @@ public class DeleteOrderTests {
             "classpath:/test-data.sql",
     },
             config = @SqlConfig(encoding = "utf-8"))
-    class testThatDoesNotPolluteTheApplicationContext extends OwnersToolsTestsSupport {
+    class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSupport {
         @Test
         void orderDeleted200() {
 //        Given: given a valid order id

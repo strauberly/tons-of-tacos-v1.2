@@ -32,7 +32,7 @@ public class OrderReadyTests {
                 "classpath:/test-data.sql",
         },
                 config = @SqlConfig(encoding = "utf-8"))
-        class testThatDoesNotPolluteTheApplicationContext extends OwnersToolsTestsSupport {
+        class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSupport {
             @Test
             void orderMarkedReadyWith200() {
 //            Given: a valid order id

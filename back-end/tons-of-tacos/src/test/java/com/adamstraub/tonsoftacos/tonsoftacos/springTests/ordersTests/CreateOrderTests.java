@@ -31,7 +31,7 @@ class CreateOrderTests {
                 "classpath:/test-data.sql",
         },
                 config = @SqlConfig(encoding = "utf-8"))
-        class testThatDoesNotPolluteTheApplicationContext extends OrdersTestsSupport {
+        class testThatDoesNotPolluteTheApplicationContextUris extends OrdersTestsSupport {
             @Test
             void orderCreated201() {
 //                Given: a valid order
