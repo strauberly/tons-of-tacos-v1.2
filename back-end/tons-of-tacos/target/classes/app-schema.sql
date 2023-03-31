@@ -55,8 +55,9 @@ CREATE TABLE owners(
 owners_pk INT unsigned NOT NULL AUTO_INCREMENT,
 name varchar(20) NOT NULL,
 username varchar(20) NOT NULL,
-psswrd varchar(14) NOT NULL,
+psswrd varchar(68) NOT NULL,
 contact varchar(44) NOT NULL,
+role varchar(12) NOT NULL,
 PRIMARY KEY (owners_pk)
 );
 

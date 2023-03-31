@@ -1,12 +1,9 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.entities;
-
-import javax.persistence.*;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;

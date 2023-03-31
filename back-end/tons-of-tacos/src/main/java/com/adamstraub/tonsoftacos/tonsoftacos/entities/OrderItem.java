@@ -1,8 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.entities;
-import javax.persistence.*;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
