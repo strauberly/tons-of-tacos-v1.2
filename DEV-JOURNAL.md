@@ -2,6 +2,30 @@
 
 ---
 
+-- 30 Mar 2023 --
+
+- Broke out owners-tools controllers and services to owners-tools/orders and owners-tools/customers.
+- Further testing demonstrated an error in calculating daily sales.
+  - Refactored DB from status column to closed column in order to replicate function of ready column. ie(default no and then when changed logs time).
+  - Refactored method in orders repository to find order by closed.
+  - Refactored close order method in OwnersOrdersService and daily sales method.
+  - Updated logic of daily sales to reflect changes.
+    - Test successful.
+- Base test uris updated for owner functions relating to customers.
+- Customer test classes created.
+- Successful test for deleting a customer from db.
+- Successful test for getting all customers.
+- Successful test for get customer by id.
+- Successful test for update customer name.
+- Successful test for update customer email.
+- Successful test for update customer email.
+
+- Discovered assertThat() not necessarily allowing tests to fail. Dove into the Assertions class for solutions and appear to have rectified the past issue.
+
+### Initial tests for owners functions pertaining to customers in place!
+
+---
+
 -- 29 Mar 2023 --
 
 - Successful test for getting an order by id.
@@ -69,11 +93,14 @@
   - Removed unused code and comments app wide due to relocation of functionality between order item, orders and owners.
   - Relocated order item dto converter to orders service.
 
-- # Began combining order and customer dto into a new order dto that more closely reflects what the order object will consist of.
+- Began combining order and customer dto into a new order dto that more closely reflects what the order object will consist of.
+
 - refactor notes
   → removed unused code and comments app wide due to relocation of functionality between order item, orders and owners
   → relocated order item dto converter to orders service
+
   =======
+
   -- 17 Mar 2023 --
 
 - Get customer dto refactored for the desired use case and function is currently operating as desired.

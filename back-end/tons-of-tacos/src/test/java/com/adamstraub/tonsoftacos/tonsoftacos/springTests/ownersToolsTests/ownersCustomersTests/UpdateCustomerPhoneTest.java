@@ -37,7 +37,7 @@ public class UpdateCustomerPhoneTest {
 
             @Test
             void updateCustomerPhone200() {
-//            Given: a valid order, order item, and new quantity.
+//            Given: a valid customer id.
                 int customerId = 1;
                 String newCustomerPhone = "555.555.5155";
                 String parameter = "customerId";
@@ -46,7 +46,7 @@ public class UpdateCustomerPhoneTest {
                 String getCustomerUri =
                         String.format("%s?%s=%d", getBaseUriForGetCustomerById(),parameter, customerId);
                 System.out.println(getCustomerUri);
-//            call order item before alteration
+//            call customer before alteration
                 ResponseEntity<OwnersGetCustomerDto> getCustomerResponse =
                         getRestTemplate().exchange(getCustomerUri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                         });
@@ -64,9 +64,8 @@ public class UpdateCustomerPhoneTest {
                 //            Then: a response of 200 returned
                 Assertions.assertEquals(response.getStatusCode(), HttpStatus.OK);
                 System.out.println(response.getStatusCode());
-//            And: when the order called the order item quantity, total, and order total should not be the same as
-//            before
-//            call order item after alteration
+//            And: when the customer is called the phone number should not be the same.
+//            call customer after alteration
                 String getCustomerUri2 =
                         String.format("%s?%s=%d", getBaseUriForGetCustomerById(), parameter, customerId);
                 System.out.println(getCustomerUri2);
