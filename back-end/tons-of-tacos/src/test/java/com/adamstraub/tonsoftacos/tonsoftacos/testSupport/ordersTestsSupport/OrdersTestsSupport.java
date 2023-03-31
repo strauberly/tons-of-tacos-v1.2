@@ -1,7 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ordersTestsSupport;
-import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.BaseResponseTest;
+import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.TestUris;
 
-public class OrdersTestsSupport extends BaseResponseTest {
+public class OrdersTestsSupport extends TestUris {
     protected String validOrderBody(){
         return "{\n"
                 + "  \"customer\": {\n"

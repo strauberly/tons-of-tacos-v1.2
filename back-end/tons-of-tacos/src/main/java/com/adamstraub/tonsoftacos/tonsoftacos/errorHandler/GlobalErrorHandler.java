@@ -68,7 +68,7 @@ public class GlobalErrorHandler {
                 ((ServletWebRequest)webRequest).getRequest().getRequestURI());
     }
     error.put("message", e.toString());
-    error.put("status code", status.value());
+    error.put("closed code", status.value());
     error.put("timestamp", timestamp);
     error.put("reason", status.getReasonPhrase());
     return error;

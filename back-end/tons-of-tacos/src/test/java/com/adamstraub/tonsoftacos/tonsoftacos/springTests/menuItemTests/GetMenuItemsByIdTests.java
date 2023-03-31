@@ -31,7 +31,7 @@ class GetMenuItemsByIdTests {
             "classpath:/test-data.sql",
             },
             config = @SqlConfig(encoding = "utf-8"))
-    class testThatDoesNotPolluteTheApplicationContext extends GetMenuItemsTestsSupport {
+    class testThatDoesNotPolluteTheApplicationContextUris extends GetMenuItemsTestsSupport {
         @Test
          void validMenuItemIsReturnedByIdWith200() {
             System.out.println(getBaseUriForMenuItemByIdQuery());
@@ -48,7 +48,7 @@ class GetMenuItemsByIdTests {
             ResponseEntity<MenuItem> response =
                     getRestTemplate().exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                     });
-//            Then: A 200 status code is returned
+//            Then: A 200 closed code is returned
             System.out.println("Response code is " + response.getStatusCode() + ".");
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
             //            And: it matches the expected outcome
@@ -72,7 +72,7 @@ class GetMenuItemsByIdTests {
             ResponseEntity<MenuItem> response =
                     getRestTemplate().exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                     });
-//            Then: A 400 status code is returned
+//            Then: A 400 closed code is returned
             System.out.println("Response code is " + response.getStatusCode() + ".");
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
         }
@@ -91,7 +91,7 @@ class GetMenuItemsByIdTests {
                     getRestTemplate().exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                     });
             System.out.println(response.getBody().getItemName());
-//            Then: A 404 status code is returned
+//            Then: A 404 closed code is returned
             System.out.println("Response code is " + response.getStatusCode() + ".");
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
         }
