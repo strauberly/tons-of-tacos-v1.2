@@ -2,6 +2,22 @@
 
 ---
 
+-- 31 Mar 2023 --
+
+- Application updated to Spring 3.0.01 in order to implement spring 6 and the latest features of spring security.
+- After studying multiple tutorials online and learning what changed I am pleased to have an in initial implementation up and running.
+- DB updated to include a user roles column for our owners table.
+- Owners passwords were encrypted and fed into the tables on execution of sql script.
+- Created security config in config package.
+- Implemented beans for user detail service, filter chain, password encoder, authentication provider.
+- Touched up owner entity and implemented user details in order to remove the need for an additional class.
+- Created Owner repository and method for finding owner by username.
+- Created the user details service in a new package under services package.
+- End-points successfully tested in browser after logging in.
+- Repo will be updated after more work and potentially sensitive information in the code secured.
+
+---
+
 -- 30 Mar 2023 --
 
 - Broke out owners-tools controllers and services to owners-tools/orders and owners-tools/customers.
