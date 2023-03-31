@@ -25,17 +25,17 @@ class GetMenuItemsByIdTests {
 
     @Nested
     @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-    @TestPropertySource("classpath:application.properties")
+    @TestPropertySource("classpath:/test-application.properties")
     @Sql(scripts = {
             "classpath:/test-schema.sql",
             "classpath:/test-data.sql",
             },
             config = @SqlConfig(encoding = "utf-8"))
-    class testThatDoesNotPolluteTheApplicationContext extends GetMenuItemsTestsSupport {
+    class testThatDoesNotPolluteTheApplicationContextUris extends GetMenuItemsTestsSupport {
         @Test
          void validMenuItemIsReturnedByIdWith200() {
             System.out.println(getBaseUriForMenuItemByIdQuery());
-//        Given: a valid menu id id
+//        Given: a valid menu id
             int itemId = 1;
 
 
@@ -48,13 +48,13 @@ class GetMenuItemsByIdTests {
             ResponseEntity<MenuItem> response =
                     getRestTemplate().exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                     });
-//            Then: A 200 status code is returned
+//            Then: A 200 closed code is returned
             System.out.println("Response code is " + response.getStatusCode() + ".");
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
             //            And: it matches the expected outcome
             String actual = String.valueOf(Objects.requireNonNull(response.getBody()).getId());
             String expected = String.valueOf(sample().getId());
-            System.out.println("Actual id id returned is " + actual + ", and expected id id is " + expected + ".");
+            System.out.println("Actual id returned is " + actual + ", and expected id is " + expected + ".");
             assertThat(actual).isEqualTo(expected);
         }
 
@@ -72,7 +72,7 @@ class GetMenuItemsByIdTests {
             ResponseEntity<MenuItem> response =
                     getRestTemplate().exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                     });
-//            Then: A 400 status code is returned
+//            Then: A 400 closed code is returned
             System.out.println("Response code is " + response.getStatusCode() + ".");
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
         }
@@ -90,7 +90,8 @@ class GetMenuItemsByIdTests {
             ResponseEntity<MenuItem> response =
                     getRestTemplate().exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                     });
-//            Then: A 404 status code is returned
+            System.out.println(response.getBody().getItemName());
+//            Then: A 404 closed code is returned
             System.out.println("Response code is " + response.getStatusCode() + ".");
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
         }

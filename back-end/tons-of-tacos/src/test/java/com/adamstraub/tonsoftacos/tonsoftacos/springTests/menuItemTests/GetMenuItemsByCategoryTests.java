@@ -31,13 +31,13 @@ class GetMenuItemsByCategoryTests {
 
         @Nested
         @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-        @TestPropertySource("classpath:application.properties")
+        @TestPropertySource("classpath:/test-application.properties")
         @Sql(scripts = {
                 "classpath:/test-schema.sql",
                 "classpath:/test-data.sql",
         },
                 config = @SqlConfig(encoding = "utf-8"))
-        class testThatDoesNotPolluteTheApplicationContext extends GetMenuItemsTestsSupport {
+        class testThatDoesNotPolluteTheApplicationContextUris extends GetMenuItemsTestsSupport {
 
         @Test
         void menuItemsAreReturnedByCategoryWith200() {
@@ -54,7 +54,7 @@ class GetMenuItemsByCategoryTests {
             ResponseEntity<List<MenuItem>> response =
                     getRestTemplate().exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                     });
-//            Then: a 200 status code is returned
+//            Then: a 200 closed code is returned
             System.out.println(("Response code is " + response.getStatusCode() + "."));
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 //
@@ -72,7 +72,7 @@ class GetMenuItemsByCategoryTests {
                 String parameter = "category";
                 String uri =
                 String.format("%s?%s=%s", getBaseUriForMenuItemByCategoryQuery(), parameter, badInput);
-//          When: aconnection is made
+//          When: a connection is made
 //                needed map as we hit the error handler which is looking for a map
                 ResponseEntity<Map<String, Object>> response =
                         getRestTemplate().exchange(uri, HttpMethod.GET, null,

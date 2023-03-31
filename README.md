@@ -66,7 +66,7 @@
   &nbsp;
 
 - Create front-end with a focus on ease of use, and reflective of owners open, kind, and hard working nature. It should emulate stopping by to have lunch with friends who have their lives together and help make their friends lives a little easier.
-- Additionally the owners would like to provide their tech saavy and loyal customers with a command line application. It would allow them to quickly create an order from their workstation and just come down to the parking lot, pay, pick up their order, and get back to work quickly.
+- Additionally the owners would like to provide their tech savvy and loyal customers with a command line application. It would allow them to quickly create an order from their workstation and just come down to the parking lot, pay, pick up their order, and get back to work quickly.
 
 [Table of Contents](#table-of-contents)
 
@@ -90,15 +90,15 @@
 
 Back-End
 
-- draw.io
 - KWrite
 - MySql Workbench
-- MySql v8.0
-- SpringBoot
+- MySql
+- Spring
 - Java 17
 - Lombok
 - Junit
 - Swagger
+- Bash
 
 [Table of Contents](#table-of-contents)
 

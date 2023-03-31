@@ -1,3 +1,4 @@
+
 -- Sample customers
 INSERT INTO customer ( name, email, phone_number)
 VALUES( 'John Johnson', 'john@johnson.com', '555.555.5552');
@@ -106,3 +107,11 @@ INSERT INTO order_items (item_fk, quantity, total, order_fk)
 VALUES(2, 4, 4.00, 2);
 INSERT INTO order_items (item_fk, quantity, total, order_fk)
 VALUES(3, 3, 1.50, 1);
+INSERT INTO order_items (item_fk, quantity, total, order_fk)
+VALUES(3, 3, 1.50, 3);
+
+-- Sample owners
+INSERT INTO owners (name, username, psswrd, contact)
+VALUES('Jim Castillo', 'jcast22', 'tacoocat', 'jim@tonsoftacos.com');
+INSERT INTO owners (name, username, psswrd, contact)
+VALUES('Jenny Castillo', 'jcast33', 'ocattaco', 'jenny@tonsoftacos.com');

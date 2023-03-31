@@ -2,6 +2,157 @@
 
 ---
 
+-- 30 Mar 2023 --
+
+- Broke out owners-tools controllers and services to owners-tools/orders and owners-tools/customers.
+- Further testing demonstrated an error in calculating daily sales.
+  - Refactored DB from status column to closed column in order to replicate function of ready column. ie(default no and then when changed logs time).
+  - Refactored method in orders repository to find order by closed.
+  - Refactored close order method in OwnersOrdersService and daily sales method.
+  - Updated logic of daily sales to reflect changes.
+    - Test successful.
+- Base test uris updated for owner functions relating to customers.
+- Customer test classes created.
+- Successful test for deleting a customer from db.
+- Successful test for getting all customers.
+- Successful test for get customer by id.
+- Successful test for update customer name.
+- Successful test for update customer email.
+- Successful test for update customer email.
+
+- Discovered assertThat() not necessarily allowing tests to fail. Dove into the Assertions class for solutions and appear to have rectified the past issue.
+
+### Initial tests for owners functions pertaining to customers in place!
+
+---
+
+-- 29 Mar 2023 --
+
+- Successful test for getting an order by id.
+- Successful test for deleting an order by id.
+- Functionality for owner to add a menu item to an order implemented.
+- Functionality for owner to edit an item on an order implemented.
+- Successful test for editing an item on an order.
+- Successful test for adding an item to an order.
+- Successful test for returning days sales and verifying the equal a summed total of orders
+  marked closed in the db.
+
+### Initial tests for owners functions pertaining to orders in place!
+
+---
+
+-- 28 Mar 2023 --
+
+- Added verification clause to order created test by immediately retrieving the created order from db.
+- Successful test for owners to retrieve an order by order uid.
+- Successful test for owners to get all orders.
+- Successful test for retrieving open orders by customer name.
+- Successful test for marking an order ready.
+- Successful test for marking an or order closed.
+- Test case for marking an order closed exposed a bug where orders were unable to be called after being marked closed.
+  As customer id field was null the requirements were unfilled for creating the necessary dto. This was fixed by setting a default null value for the
+  fields of interest. If the incoming order has null for a customer id then there is no point in setting the fields and the requirements of the dto are satisfied.
+
+---
+
+-- 27 Mar 2023 --
+
+- Determined means for obfuscating customer details.
+- More time spent researching hashing data for owner auth will work on it more after initial tests successful with restructure.
+- Refactored reflecting structure change and removed unnecessary tests though their frames may be utilized in future contexts.
+- Menu item tests successful
+- Order creation test successful.
+
+---
+
+=======
+
+-- 21 Mar 2023 --
+
+- Customer and order saved in same transaction.
+- Customer may place an additional order while past order is still open, eliminating duplicate customer entries.
+- Upon closing last open customer order, customer information removed. Ensures information not in use is not sitting idly waiting to be exploited.
+- Began work on securing owners tools endpoint.
+  - Created owners table and loaded sample data.
+  - Created owner entity and respository.
+
+---
+
+=======
+
+-- 20 Mar 2023 --
+
+- Get customer dto refactored for the desired use case and function is currently operating as desired.
+- Implemeneted returning a customer by customer name.
+- Implemented returning a customer by id.
+- Implemented updating a customers details.
+- Implement customer delete a customer without deleting orders associated to them so that information can still be used for accounting purposes.
+
+- Refactor notes:
+
+  - Removed unused code and comments app wide due to relocation of functionality between order item, orders and owners.
+  - Relocated order item dto converter to orders service.
+
+- Began combining order and customer dto into a new order dto that more closely reflects what the order object will consist of.
+
+- refactor notes
+  → removed unused code and comments app wide due to relocation of functionality between order item, orders and owners
+  → relocated order item dto converter to orders service
+
+  =======
+
+  -- 17 Mar 2023 --
+
+- Get customer dto refactored for the desired use case and function is currently operating as desired.
+- Implemeneted returning a customer by customer name.
+- Implemented returning a customer by id.
+- Implemented updating a customers details.
+- Implement customer delete a customer without deleting orders associated to
+  them so that information can still be used for accounting purposes.
+
+---
+
+-- 16 Mar 2023 --
+
+- Return order by uid for owners implemented.
+- Return open order by customer for owners implemented.
+- Get the days sales migrated to owners endpoint.
+- Mark an order ready migrated to owners endpoint.
+- Ability to delete an order by id migrated to owners endpoint.
+
+---
+
+-- 15 Mar 2023 --
+
+- Controllers restructured to share the orders endpoint.
+- Order can be edited to add an order item and order total is adjusted.
+- Order item can be edited to change quantity and order item total and order total is adjusted.
+  - If quantity = 0 the item is removed from order and the order total is adjusted.
+- Functions reduced from order item controller as they are now implemented through orders controller
+- Began creating packages for functions specific to owners, ie returning entities instead of DTOs so that they are able to have ease in manipulating data.
+- Created owners controller, service, and dto layers.
+- Implemented owners getting all orders in conjunction with their customized dto.
+
+---
+
+-- 14 Mar 2023 --
+
+- Implemented sales endpoint which tallies number of completed sales and total for the current day for owners use.
+- Implemented deletion of an order.
+
+---
+
+-- 13 Mar 2023 --
+
+- Return order by uid implemented.
+- Create order now correctly generates totals.
+- Restructured get-order endpoint to be searchable by uid or customer name.
+- Return order by customer name implemented.
+- Order able to be marked with a time ready.
+- Order status can be marked closed to indicate an order is complete.
+
+---
+
 -- 9 Mar 2023 --
 
 - Status column added to orders.
@@ -9,11 +160,14 @@
 - Json syntax for creating order figured.
 - Initial test for creating an order successful.
 - Ready column added to orders.
+- get orders returned to working off of dto, stills needs to be cleaned.
 - New erd available.
 
 <p align="center">
   <img src="./back-end/supporting-files/erd-09Mar2023.png"/>
 </p>
+
+---
 
 -- 8 Mar 2023 --
 

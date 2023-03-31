@@ -10,9 +10,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
@@ -33,16 +32,19 @@ public class Orders implements Serializable {
 
     @Column (name = "order_total")
     private Double orderTotal;
-
+    @Column (name = "order_uid")
+    private String orderUid;
     @Column (name = "created")
     @CreationTimestamp
     private Timestamp created;
 
-    @Column (name = "order_uid")
-    private String orderUid;
+    @Column (name = "ready")
+    private String ready = "no";
 
+    @Column (name = "closed")
+    private String closed = "open";
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order", fetch = FetchType.LAZY )
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order", fetch = FetchType.LAZY)
     @JsonManagedReference
     private List<OrderItem> orderItems = new ArrayList<>();
 
@@ -52,9 +54,11 @@ public class Orders implements Serializable {
         return "Orders{" +
                 "orderId=" + orderId +
                 ", customerId=" + customerId +
-                ", created=" + created +
                 ", orderTotal=" + orderTotal +
                 ", orderUid='" + orderUid + '\'' +
+                ", created=" + created +
+                ", ready='" + ready + '\'' +
+                ", closed='" + closed + '\'' +
                 '}';
     }
 }

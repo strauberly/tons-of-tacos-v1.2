@@ -1,80 +1,85 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.services.ordersServices;
-
-import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrderItemRepository;
+import com.adamstraub.tonsoftacos.tonsoftacos.dao.CustomerRepository;
+import com.adamstraub.tonsoftacos.tonsoftacos.dao.MenuItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrdersRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.orderItemsDto.GetOrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.GetOrdersDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.NewOrderDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.entities.Customer;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
-import com.adamstraub.tonsoftacos.tonsoftacos.services.orderItemServices.OrderItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
-
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Service
 public class OrdersService implements OrdersServiceInterface {
     @Autowired
     private OrdersRepository ordersRepository;
     @Autowired
-    private OrderItemRepository orderItemRepository;
-
+    private MenuItemRepository menuItemRepository;
     @Autowired
-    private OrderItemService orderItemService;
+    private CustomerRepository customerRepository;
 
     @Override
     @Transactional
-    public void  createOrder(@RequestBody Orders order){
+    public void  createOrder(@RequestBody NewOrderDto order){
         System.out.println("service");
-        System.out.println(order);
-        ordersRepository.save(order);
-    }
+//        System.out.println(order);
 
-    @Override
-    @Transactional
-    public List<Orders> getAllOrders() {
-//    public List<GetOrdersDto> getAllOrders() {
-//        get order and set orderitems
-//        then get order items list and convert to dto list
-//        convert order to order dto and set list of order item dto
-        System.out.println("service");
-//        Set<OrderItem> ordersItems = new HashSet<>();
-        //        ordersItems.addAll(orderItemRepository.findAll());
-        List<GetOrdersDto> getOrderItemDtos = new ArrayList<>();
+        Double orderTotal = 0.00;
 
-        List<Orders> orders = ordersRepository.findAll();
-        for (Orders order : orders) {
-            order.setOrderItems(orderItemRepository.findAll());
-            System.out.println(orders);
-            getOrderItemDtos.add(getOrderDtoConverter(order));
-            System.out.println("orders dto" + getOrderItemDtos);
+        Orders newOrder = order.getOrder();
+//        System.out.println(newOrder);
+        List<OrderItem> orderItems = newOrder.getOrderItems();
+        for (OrderItem orderItem : orderItems) {
+            orderItem.setTotal(orderItem.getQuantity() *
+                    menuItemRepository.getReferenceById(orderItem.getItemId().getId()).getUnitPrice());
+            orderTotal += orderItem.getTotal();
         }
-//        System.out.println(ordersItems);
-//        System.out.println(orderItemRepository.findAll());
-        System.out.println("orders" + orders);
-        return orders;
-//        return getOrderItemDtos;
 
+        Customer newCustomer = order.getCustomer();
+//        System.out.println(newCustomer);
+        if (customerRepository.findByName(newCustomer.getName()) != null) {
+            newOrder.setCustomerId(customerRepository.findByName(newCustomer.getName()).getCustomerId());
+        }else{
+            customerRepository.save(newCustomer);
+            newCustomer = customerRepository.findByName(newCustomer.getName());
+//            System.out.println(newCustomer);
+            newOrder.setCustomerId(newCustomer.getCustomerId());
+        }
+        newOrder.setOrderItems(orderItems);
+        newOrder.setOrderTotal(orderTotal);
+        System.out.println("Order created.");
+        ordersRepository.save(newOrder);
     }
-        private GetOrdersDto getOrderDtoConverter(Orders order) {
+
+
+    private GetOrdersDto getOrderDtoConverter(Orders order) {
             GetOrdersDto getOrdersDto = new GetOrdersDto();
 
             getOrdersDto.setCustomerId(order.getCustomerId());
             getOrdersDto.setOrderTotal(order.getOrderTotal());
             getOrdersDto.setOrderUid(order.getOrderUid());
             getOrdersDto.setCreated(order.getCreated());
-//            getOrdersDto.setOrderItems(order.getOrderItems());
 
             List<GetOrderItemDto> getOrderItemDtos = new ArrayList<>();
             List<OrderItem> orderItems = order.getOrderItems();
-            orderItems.forEach(orderItem -> getOrderItemDtos.add(orderItemService.getOrderItemDtoConversion(orderItem)));
+            orderItems.forEach(orderItem -> getOrderItemDtos.add(getOrderItemDtoConversion(orderItem)));
             getOrdersDto.setOrderItems(getOrderItemDtos);
             return getOrdersDto;
         }
 
-
-
+    private GetOrderItemDto getOrderItemDtoConversion(OrderItem orderItem){
+        GetOrderItemDto getOrderItemDto = new GetOrderItemDto();
+        getOrderItemDto.setUnitPrice(orderItem.getItemId().getUnitPrice());
+        getOrderItemDto.setItemName(orderItem.getItemId().getItemName());
+        getOrderItemDto.setTotal(orderItem.getTotal());
+        getOrderItemDto.setQuantity(orderItem.getQuantity());
+        return getOrderItemDto;
+    }
 }

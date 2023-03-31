@@ -3,17 +3,18 @@ CREATE DATABASE IF NOT EXISTS tonsOfTacos;
 
 USE tonsOfTacos;
 
+DROP TABLE IF EXISTS owners;
 DROP TABLE IF EXISTS order_item;
 DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS menu_item;
 DROP TABLE IF EXISTS customer;
 
 CREATE TABLE customer(
-customer_pk INT unsigned NOT NULL AUTO_INCREMENT,
+customer_pk INT unsigned NOT NULL AUTO_INCREMENT ,
 name VARCHAR(40) NOT NULL,
 email VARCHAR(40) NOT NULL,
 phone_number VARCHAR(12) NOT NULL,
-PRIMARY KEY (customer_pk)
+PRIMARY KEY (customer_pk) 
 );
 
 CREATE TABLE menu_item(
@@ -29,17 +30,15 @@ PRIMARY KEY (item_pk)
 
 CREATE TABLE orders(
 order_pk INT unsigned NOT NULL AUTO_INCREMENT,
-customer_fk INT unsigned NOT NULL,
+customer_fk INT unsigned,
 order_total DECIMAL(19, 2) NOT NULL,
 order_uid VARCHAR(255) NOT NULL,
 created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-ready VARCHAR(10) DEFAULT 'no',
-status VARCHAR(10)DEFAULT 'open',
+ready VARCHAR(20) DEFAULT 'no',
+closed VARCHAR(20)DEFAULT 'no',
 PRIMARY KEY (order_pk),
-FOREIGN KEY (customer_fk) REFERENCES customer(customer_pk) ON DELETE CASCADE
+FOREIGN KEY (customer_fk) REFERENCES customer(customer_pk)ON DELETE SET NULL
 );
-
--- CREATE INDEX CART_UID ON orders(cart_uid);
 
 CREATE TABLE order_items(
 order_item_pk INT unsigned NOT NULL AUTO_INCREMENT,
@@ -48,9 +47,19 @@ quantity INT(2) NOT NULL,
 total DECIMAL(19, 2) DEFAULT 0.00 NOT NULL,
 order_fk INT unsigned NOT NULL,
 PRIMARY KEY (order_item_pk),
-FOREIGN KEY (item_fk) REFERENCES menu_item(item_pk) ON DELETE CASCADE,
-FOREIGN KEY (order_fk) REFERENCES orders(order_pk) ON DELETE CASCADE
+FOREIGN KEY (item_fk) REFERENCES menu_item(item_pk),
+FOREIGN KEY (order_fk) REFERENCES orders(order_pk)
 );
+
+CREATE TABLE owners(
+owners_pk INT unsigned NOT NULL AUTO_INCREMENT,
+name varchar(20) NOT NULL,
+username varchar(20) NOT NULL,
+psswrd varchar(14) NOT NULL,
+contact varchar(44) NOT NULL,
+PRIMARY KEY (owners_pk)
+);
+
 
 -- CREATE INDEX ORDER_UUID ON order_item(cart_uuid);
 

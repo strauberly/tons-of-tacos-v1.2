@@ -1,44 +1,39 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ordersTestsSupport;
-import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.BaseResponseTest;
+import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.TestUris;
 
-public class OrdersTestsSupport extends BaseResponseTest {
+public class OrdersTestsSupport extends TestUris {
     protected String validOrderBody(){
         return "{\n"
-                + "  \"customerId\":\"3\",\n"
-                + "  \"orderTotal\":\"62.45\",\n"
-                + "  \"orderUid\":\"32219-5465-654\",\n"
+                + "  \"customer\": {\n"
+                + "  \"name\":\"billy billson\",\n"
+                + "  \"email\":\"billy@bolly.com\",\n"
+                + "  \"phoneNumber\":\"555.555.5959\"\n"
+                +  "},\n"
+                + "  \"order\": {\n"
+                + "   \"orderUid\":\"223-44-444\", \n"
                 + "  \"orderItems\": [\n"
                 + "{\n"
                 + "\"itemId\":{\n"
                 + "  \"id\":\"2\"\n"
                 + "},\n"
-                + "  \"quantity\":\"2\",\n"
-                + "  \"total\":\"6.00\" \n"
+                + "  \"quantity\":\"2\"\n"
+                + "},\n"
+
+                + "{\n"
+                + "\"itemId\":{\n"
+                + "  \"id\":\"12\"\n"
+                + "},\n"
+                + "  \"quantity\":\"1\"\n"
+                + "},\n"
+
+                + "{\n"
+                + "\"itemId\":{\n"
+                + "  \"id\":\"3\"\n"
+                + "},\n"
+                + "  \"quantity\":\"3\"\n"
                 + "}\n"
                 + "]\n"
-                + "}";
-
-//        {
-//            "customerId": 3,
-//                "orderTotal" : 22.50,
-//                "orderUid" : "222-4344-444",
-//                "orderItems": [
-//            {
-//                "itemId": {
-//                "id": 1
-//            },
-//                "quantity": 3,
-//                    "total": 3.0
-//            },
-//            {
-//                "itemId": {
-//                "id": 2
-//            },
-//                "quantity": 8,
-//                    "total": 45.00
-//            }
-//    ]
-//        }
-
+                + "}\n"
+        + "}";
     }
 }
