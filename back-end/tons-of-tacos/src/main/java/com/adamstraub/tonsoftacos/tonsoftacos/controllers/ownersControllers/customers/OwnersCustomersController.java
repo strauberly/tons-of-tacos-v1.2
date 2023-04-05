@@ -2,6 +2,7 @@ package com.adamstraub.tonsoftacos.tonsoftacos.controllers.ownersControllers.cus
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetCustomerDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.services.ownersServices.customers.OwnersCustomersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class OwnersCustomersController implements OwnersCustomersControllerInter
         System.out.println("controller");
         return ownersCustomersService.getCustomerByName(name);
     }
-
+//@Transactional
     @Override
     public OwnersGetCustomerDto getCustomerById(Integer customerId) {
         System.out.println("controller");

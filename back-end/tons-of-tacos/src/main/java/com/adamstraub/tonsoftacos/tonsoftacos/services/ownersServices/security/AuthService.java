@@ -12,6 +12,7 @@ import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -19,52 +20,57 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.security.Key;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 
 //possibly need to annotate as component
 @Service
 @RequiredArgsConstructor
 public class AuthService implements AuthServiceInterface {
-    @Autowired
+
     private final OwnerRepository ownerRepository;
-    @Autowired
+
     private final JwtService jwtService;
-    @Autowired
+
     private final AuthenticationManager authenticationManager;
-
-    @Override
-    public AuthenticationResponse ownerLogin(AuthenticationRequest request) {
-        System.out.println("service");
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getUsername(),
-                        request.getPsswrd()
-
-                )
-        );
-        var user = ownerRepository.findByUsername(request.getUsername())
-                .orElseThrow();
-        var jwtToken = jwtService.generateToken(user);
-        return AuthenticationResponse.builder()
-                .token(jwtToken)
-                .build();
-    }
+// amigos code
+//    @Override
+//    public AuthenticationResponse ownerLogin( AuthenticationRequest request) {
+//        System.out.println("owner login service");
+//        authenticationManager.authenticate(
+//                new UsernamePasswordAuthenticationToken(
+//                        request.getUsername(),
+//                        request.getPsswrd()
+//
+//                )
+//        );
+//        var user = ownerRepository.findByUsername(request.getUsername())
+//                .orElseThrow();
+//        var jwtToken = jwtService.generateToken(user);
+//        return AuthenticationResponse.builder()
+//                .token(jwtToken)
+//                .build();
+//    }
 //    @Value("${key}")
 //    private String SECRET;
-//    @Override
-//    public String ownerLogin(AuthenticationRequest request) {
-//        System.out.println("service");
-//        Authentication authentication = authenticationManager
-//                .authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(),
-//                        request.getPsswrd()));
-//        if (authentication.isAuthenticated()) {
-//        return jwtService.generateToken(request.getUsername());
-//    }else {
-//            throw new UsernameNotFoundException("invalid user request");
-//        }
+        @Override
+    public String ownerLogin(OwnerAuthDto ownerAuthDto) {
+        System.out.println("service");
+        Authentication authentication = authenticationManager
+                .authenticate(new UsernamePasswordAuthenticationToken(ownerAuthDto.getUsername(),
+                        ownerAuthDto.getPsswrd()));
+        if (authentication.isAuthenticated()) {
+        return jwtService.generateToken(ownerAuthDto.getUsername());
+    }else {
+            throw new UsernameNotFoundException("invalid user request");
+        }
     }
 //
-//    //create token
+////    //create token
+//    amigos
 //    private Key getSignKey(){
 //        byte[] keyBytes = Decoders.BASE64.decode(SECRET);
 //        return Keys.hmacShaKeyFor(keyBytes);
@@ -117,4 +123,4 @@ public class AuthService implements AuthServiceInterface {
 ////        return (username.equals(userDetails.getUsername())&& !isTokenExpired(token));
 //        return (username.equals(userDetails.getUsername()));
 //    }
-//}
+}

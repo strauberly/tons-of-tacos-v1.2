@@ -12,13 +12,16 @@ import java.util.List;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
-//@Data
+@Data
 @Table(name ="owners")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Owner implements UserDetails {
+// amigos code implements userdetails where other writes own
+//public class Owner implements UserDetails {
+
+public class Owner{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,48 +40,49 @@ public class Owner implements UserDetails {
     @Column(name = "contact")
     private String contact;
 
-//    @Column
-//    private String role;
-
     @Column
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    private String role;
+
+//    amigo
+//    @Column
+//    @Enumerated(EnumType.STRING)
+//    private Role role;
 
 
 
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(role.name()));
-    }
-
-
-    @Override
-    public String getPassword() {
-        return psswrd;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
-// min 30ish may need to be separate class
-    public enum Role {
-    ADMIN
-    }
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        return List.of(new SimpleGrantedAuthority(role.name()));
+//    }
+//
+//
+//    @Override
+//    public String getPassword() {
+//        return psswrd;
+//    }
+//
+//    @Override
+//    public boolean isAccountNonExpired() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isAccountNonLocked() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isCredentialsNonExpired() {
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean isEnabled() {
+//        return true;
+//    }
+//// min 30ish may need to be separate class
+//    public enum Role {
+//    ADMIN
+//    }
 }
