@@ -2,6 +2,30 @@
 
 ---
 
+-- 4 Apr 2023 --
+
+- Jwtauth filter in place for validation by user name and date.
+- Refactored -> past implementation generated token but would token was not accepted. Possibly due to time lited in postman vs. the amount of time before expiration.
+- Current state creates toke. It is apparently accepted with a 200 but further testing is required still as we are no longer receive the expected objects back in postman accessing the secured endpoint.
+- Returning a 200 for the token passing the filter but request not continuing on past to the endpoint. Next will include feedback for each step and comparing passing nothing and passing everything.
+
+---
+
+-- 3 Apr 2023 --
+
+- Implemented jwt dependencies.
+- Created controller and controller interface for login.
+- Created ownerAuthDto.
+- Created JWT Service and Jwt Service interface.
+- Document where security config came from.
+- Chain of actions so far
+  - Hit controller and call service >> call generate token and pass username >> gen token calls create token >> create token sets the sign key, issues at, expires at, subject and claims.
+- Currently returning a token through postman if creds correct.
+- Have removed form login as we were mostly just receiving 302s for the spring redirect when hitting our endpoint for the login form.
+- Currently receiving 403s though browser and postman.
+
+---
+
 -- 31 Mar 2023 --
 
 - Application updated to Spring 3.0.01 in order to implement spring 6 and the latest features of spring security.

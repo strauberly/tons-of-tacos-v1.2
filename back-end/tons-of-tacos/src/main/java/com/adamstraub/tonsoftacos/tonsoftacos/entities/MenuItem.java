@@ -1,9 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.entities;
-
-import javax.persistence.*;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
 import lombok.*;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
