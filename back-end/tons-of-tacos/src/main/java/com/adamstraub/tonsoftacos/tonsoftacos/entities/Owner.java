@@ -5,6 +5,8 @@ import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -35,9 +37,14 @@ public class Owner implements UserDetails {
     @Column(name = "contact")
     private String contact;
 
+//    @Column
+//    private String role;
+
     @Column
     @Enumerated(EnumType.STRING)
     private Role role;
+
+
 
 
     @Override
@@ -70,8 +77,8 @@ public class Owner implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
-
-    private enum Role {
+// min 30ish may need to be separate class
+    public enum Role {
     ADMIN
     }
 }
