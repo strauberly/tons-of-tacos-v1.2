@@ -3,6 +3,7 @@ package com.adamstraub.tonsoftacos.tonsoftacos.controllers.ownersControllers.ord
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.services.ownersServices.orders.OwnersOrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ public class OwnersOrdersController implements OwnersOrdersControllerInterface {
 
     @Autowired
     private OwnersOrdersService ownersOrdersService;
+//    List<ResponseEntity<OwnersGetOrderDto>>
 
     @Override
     @Transactional
@@ -20,6 +22,13 @@ public class OwnersOrdersController implements OwnersOrdersControllerInterface {
         System.out.println("controller");
         return ownersOrdersService.getAllOrders();
     }
+
+//    @Override
+//    @Transactional
+//    public List<OwnersGetOrderDto> getAllOrders() {
+//        System.out.println("controller");
+//        return ownersOrdersService.getAllOrders();
+//    }
 
     @Override
     public OwnersGetOrderDto getOrderById(Integer orderId) {
@@ -48,6 +57,7 @@ public class OwnersOrdersController implements OwnersOrdersControllerInterface {
     @Override
     public void closeOrder(Integer orderId) {
         System.out.println("controller");
+        System.out.println(orderId);
         ownersOrdersService.closeOrder(orderId);
     }
 

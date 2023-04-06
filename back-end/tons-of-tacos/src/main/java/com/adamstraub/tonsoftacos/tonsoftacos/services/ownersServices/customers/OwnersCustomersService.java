@@ -53,7 +53,7 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
         Customer customer = customerRepository.findByName(name);
         return ownersCustomerDtoConvertor(customer);
     }
-
+//@Transactional
     @Override
     public OwnersGetCustomerDto getCustomerById(Integer customerId) {
         System.out.println("service");

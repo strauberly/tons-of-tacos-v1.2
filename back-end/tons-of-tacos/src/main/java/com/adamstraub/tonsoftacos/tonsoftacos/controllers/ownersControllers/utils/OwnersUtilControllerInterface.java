@@ -2,6 +2,7 @@ package com.adamstraub.tonsoftacos.tonsoftacos.controllers.ownersControllers.uti
 
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.security.AuthenticationRequest;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.security.AuthenticationResponse;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.security.OwnerAuthDto;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.info.Info;
@@ -45,11 +46,11 @@ public interface OwnersUtilControllerInterface {
             }
     )
 
-//    @PostMapping("/login")
-//    String ownerLogin(@RequestBody OwnerAuthDto authDto);
+    @PostMapping("/login")
+    String ownerLogin(@RequestBody OwnerAuthDto authDto);
 
-        @PostMapping("/login")
-    AuthenticationResponse ownerLogin(@RequestBody AuthenticationRequest request);
-
-
+//        @PostMapping("/login")
+//    AuthenticationResponse ownerLogin(@RequestBody AuthenticationRequest request);
+//
+//
 }

@@ -2,6 +2,11 @@
 
 ---
 
+-- 5 Apr 2023 --
+
+- Corrected circular dependencies.
+- Application is correctly locking off desired endpoints and granting access if a valid jwt accompanies the request in the header and is only created if entered credentials for the owners match in the database.
+
 -- 4 Apr 2023 --
 
 - Jwtauth filter in place for validation by user name and date.
