@@ -11,7 +11,7 @@ public interface OwnersCustomersServiceInterface {
     @Transactional(readOnly = true)
     List<OwnersGetCustomerDto> getAllCustomers();
 
-    @Transactional(readOnly = true)
+//    @Transactional(readOnly = true)
     OwnersGetCustomerDto getCustomerByName(String name);
 
     @Transactional(readOnly = true)

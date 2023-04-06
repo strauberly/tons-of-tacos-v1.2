@@ -76,6 +76,7 @@ public interface OwnersOrdersControllerInterface {
                             content = @Content(mediaType = "application/json")),
             }
     )
+    @Transactional
     @GetMapping("/get-order/orderId")
     OwnersGetOrderDto getOrderById(@RequestParam Integer orderId);
 
@@ -103,6 +104,7 @@ public interface OwnersOrdersControllerInterface {
                             content = @Content(mediaType = "application/json")),
             }
     )
+    @Transactional
     @GetMapping("/get-order/orderUid")
     OwnersGetOrderDto getOrderByUid(@RequestParam String orderUid);
 
@@ -131,6 +133,7 @@ public interface OwnersOrdersControllerInterface {
                             content = @Content(mediaType = "application/json")),
             }
     )
+    @Transactional
     @GetMapping("/get-order/customer")
    List <OwnersGetOrderDto> getOrderByCustomer(@RequestParam String customer);
 //
@@ -162,6 +165,7 @@ public interface OwnersOrdersControllerInterface {
 
             }
     )
+    @Transactional
     @PatchMapping("/order-ready/{orderId}")
     void orderReady(@PathVariable Integer orderId);
 //
@@ -190,6 +194,7 @@ public interface OwnersOrdersControllerInterface {
 
             }
     )
+    @Transactional
     @PatchMapping("/close-order/{orderId}")
     void closeOrder(@PathVariable Integer orderId);
 
@@ -219,6 +224,7 @@ public interface OwnersOrdersControllerInterface {
 
             }
     )
+    @Transactional
     @DeleteMapping("/delete-order/{orderId}")
     void deleteOrder(@PathVariable Integer orderId);
 
@@ -244,6 +250,7 @@ public interface OwnersOrdersControllerInterface {
                             content = @Content(mediaType = "application/json")),
             }
     )
+    @Transactional
     @PatchMapping("/add-to-order/{orderId}/{menuItemId}/{quantity}")
     void addToOrder(
             @PathVariable
@@ -274,7 +281,7 @@ public interface OwnersOrdersControllerInterface {
                             content = @Content(mediaType = "application/json")),
             }
     )
-
+    @Transactional
     @PatchMapping("/update-order-item/{orderId}/{orderItemId}/{newQuantity}")
     void updateOrderItem(
             @PathVariable
@@ -310,6 +317,7 @@ public interface OwnersOrdersControllerInterface {
 
             }
     )
+    @Transactional
     @GetMapping("/sales")
     String todaysSales();
 

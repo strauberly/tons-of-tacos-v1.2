@@ -51,7 +51,9 @@ public interface OwnersCustomersControllerInterface {
                             content = @Content(mediaType = "application/json")),
             }
     )
+    @Transactional
     @GetMapping("/get-customers")
+//    @PreAuthorize("hasAuthority('ADMIN')")
     List<OwnersGetCustomerDto> getAllCustomers();
     //  get a customer by customer name
     @Operation(
@@ -77,6 +79,7 @@ public interface OwnersCustomersControllerInterface {
                             content = @Content(mediaType = "application/json")),
             }
     )
+    @Transactional
     @GetMapping("/get-customer/name")
     OwnersGetCustomerDto getCustomerByName(@RequestParam String name);
 
@@ -104,6 +107,7 @@ public interface OwnersCustomersControllerInterface {
                         content = @Content(mediaType = "application/json")),
         }
 )
+@Transactional
 @GetMapping("/get-customer/customerId")
 OwnersGetCustomerDto getCustomerById(@RequestParam Integer customerId);
 
@@ -132,7 +136,7 @@ OwnersGetCustomerDto getCustomerById(@RequestParam Integer customerId);
                             content = @Content(mediaType = "application/json")),
             }
     )
-
+    @Transactional
     @PatchMapping("/edit-customer-name/{customerId}/{newCustomerName}")
     String updateCustomerName(
             @PathVariable
@@ -165,7 +169,7 @@ OwnersGetCustomerDto getCustomerById(@RequestParam Integer customerId);
                             content = @Content(mediaType = "application/json")),
             }
     )
-
+    @Transactional
     @PatchMapping("/edit-customer-email/{customerId}/{newCustomerEmail}")
     String updateCustomerEmail(
             @PathVariable
@@ -199,7 +203,7 @@ OwnersGetCustomerDto getCustomerById(@RequestParam Integer customerId);
                             content = @Content(mediaType = "application/json")),
             }
     )
-
+    @Transactional
     @PatchMapping("/edit-customer-phone/{customerId}/{newCustomerPhone}")
     String updateCustomerPhone(
             @PathVariable
@@ -232,7 +236,7 @@ OwnersGetCustomerDto getCustomerById(@RequestParam Integer customerId);
 
             }
     )
-
+    @Transactional
     @DeleteMapping("/delete-customer/{customerId}")
     void deleteCustomer(@PathVariable Integer customerId);
 }

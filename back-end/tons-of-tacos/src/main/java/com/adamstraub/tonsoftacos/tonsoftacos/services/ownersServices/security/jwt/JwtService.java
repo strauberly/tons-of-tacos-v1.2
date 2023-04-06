@@ -24,38 +24,38 @@ public class JwtService {
         return Keys.hmacShaKeyFor(keyBytes);
     }
 // here we use user details where before we used username and assumed we passed the authdto
-    private String createToken(Map<String, Object> extraClaims, UserDetails userDetails){
-        return Jwts.builder()
-                .setClaims(extraClaims)
-                .setSubject(userDetails.getUsername())
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis()+ (((1000 * 60) * 60) * 16)))
-                .signWith(getSignKey(), SignatureAlgorithm.HS256)
-                .compact();
-//        System.out.println(token);
-//        return token;
-    }
-
-//    private String createToken(Map<String, Object> claims, String username){
-//        String token = Jwts.builder()
-//                .setClaims(claims)
-//                .setSubject(username)
+//    private String createToken(Map<String, Object> extraClaims, UserDetails userDetails){
+//        return Jwts.builder()
+//                .setClaims(extraClaims)
+//                .setSubject(userDetails.getUsername())
 //                .setIssuedAt(new Date(System.currentTimeMillis()))
 //                .setExpiration(new Date(System.currentTimeMillis()+ (((1000 * 60) * 60) * 16)))
-//                .signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
-//        System.out.println(token);
-//        return token;
+//                .signWith(getSignKey(), SignatureAlgorithm.HS256)
+//                .compact();
+////        System.out.println(token);
+////        return token;
 //    }
 
-    public String generateToken(UserDetails userDetails){
-        return createToken(new HashMap<>(), userDetails);
+    private String createToken(Map<String, Object> claims, String username){
+        String token = Jwts.builder()
+                .setClaims(claims)
+                .setSubject(username)
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis()+ (((1000 * 60) * 60) * 16)))
+                .signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
+        System.out.println(token);
+        return token;
     }
 
-
-//    public String generateToken(String username){
-//        Map<String, Object> claims = new HashMap<>();
-//        return createToken(claims, username);
+//    public String generateToken(UserDetails userDetails){
+//        return createToken(new HashMap<>(), userDetails);
 //    }
+
+
+    public String generateToken(String username){
+        Map<String, Object> claims = new HashMap<>();
+        return createToken(claims, username);
+    }
 
 //    validate token
 

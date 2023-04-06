@@ -52,6 +52,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
     //  Successful test written 29 Mar 2023
     @Override
     public OwnersGetOrderDto getOrderById(Integer orderId) {
+        System.out.println(orderId);
         System.out.println("service");
         return ownersGetOrderDtoConverter(ordersRepository.getReferenceById(orderId));
     }
@@ -95,6 +96,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
     //  Successful test written 28 Mar 2023
     @Override
     public void closeOrder(Integer orderId) {
+        System.out.println(orderId);
         System.out.println("service");
         Orders order = ordersRepository.getReferenceById(orderId);
         String timeClosed = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
