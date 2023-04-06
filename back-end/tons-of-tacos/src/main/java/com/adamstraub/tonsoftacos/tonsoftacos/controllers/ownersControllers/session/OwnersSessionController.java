@@ -1,16 +1,13 @@
-package com.adamstraub.tonsoftacos.tonsoftacos.controllers.ownersControllers.utils;
+package com.adamstraub.tonsoftacos.tonsoftacos.controllers.ownersControllers.session;
 
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.security.AuthenticationRequest;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.security.AuthenticationResponse;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.security.OwnerAuthDto;
-import com.adamstraub.tonsoftacos.tonsoftacos.services.ownersServices.security.AuthService;
+import com.adamstraub.tonsoftacos.tonsoftacos.services.security.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class OwnersUtilController implements OwnersUtilControllerInterface {
+public class OwnersSessionController implements OwnersSessionControllerInterface {
 
     private AuthenticationManager authenticationManager;
     @Autowired

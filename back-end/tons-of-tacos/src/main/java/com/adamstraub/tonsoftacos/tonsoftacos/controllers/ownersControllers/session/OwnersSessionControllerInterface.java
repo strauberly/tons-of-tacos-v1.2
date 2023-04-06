@@ -1,7 +1,5 @@
-package com.adamstraub.tonsoftacos.tonsoftacos.controllers.ownersControllers.utils;
+package com.adamstraub.tonsoftacos.tonsoftacos.controllers.ownersControllers.session;
 
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.security.AuthenticationRequest;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.security.AuthenticationResponse;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.security.OwnerAuthDto;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
@@ -20,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 )
 @OpenAPIDefinition(info = @Info(title = "Owners login."),
         servers = {@Server(url="http://localhost:8080", description = "Local server")})
-public interface OwnersUtilControllerInterface {
+public interface OwnersSessionControllerInterface {
     @Operation(
             summary = "Login an owner.",
             description = """
@@ -48,9 +46,6 @@ public interface OwnersUtilControllerInterface {
 
     @PostMapping("/login")
     String ownerLogin(@RequestBody OwnerAuthDto authDto);
-
-//        @PostMapping("/login")
-//    AuthenticationResponse ownerLogin(@RequestBody AuthenticationRequest request);
 //
 //
 }
