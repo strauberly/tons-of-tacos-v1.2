@@ -19,9 +19,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 // amigos code implements userdetails where other writes own
-//public class Owner implements UserDetails {
+public class Owner implements UserDetails {
 
-public class Owner{
+//public class Owner{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,49 +40,48 @@ public class Owner{
     @Column(name = "contact")
     private String contact;
 
-    @Column
-    private String role;
+//    @Column
+//    private String role;
 
 //    amigo
-//    @Column
-//    @Enumerated(EnumType.STRING)
-//    private Role role;
+    @Column
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
+    }
 
 
-//    @Override
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//        return List.of(new SimpleGrantedAuthority(role.name()));
-//    }
-//
-//
-//    @Override
-//    public String getPassword() {
-//        return psswrd;
-//    }
-//
-//    @Override
-//    public boolean isAccountNonExpired() {
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean isAccountNonLocked() {
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean isCredentialsNonExpired() {
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean isEnabled() {
-//        return true;
-//    }
-//// min 30ish may need to be separate class
-//    public enum Role {
-//    ADMIN
-//    }
+    @Override
+    public String getPassword() {
+        return psswrd;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    // may need to be separate class
+    public enum Role {
+    ADMIN
+    }
 }
