@@ -113,4 +113,10 @@ public class TestUris {
         return String.format("http://localhost:%d/api/owners-tools/customers/delete-customer",
                 Integer.valueOf(serverPort));
     }
+
+    //============== owners-tools auth uris ====================//
+    protected  String getBaseUriForOwnersLogin(){
+        return String.format("http://localhost:%d/api/owners-tools/login",
+                Integer.valueOf(serverPort));
+    }
 }
