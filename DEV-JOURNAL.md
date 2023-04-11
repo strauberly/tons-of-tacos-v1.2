@@ -2,6 +2,17 @@
 
 ---
 
+-- 10 Apr 2023 --
+
+- Test db updated.
+- Began writing unit tests for successful owner login function.
+- Base Uri implemented.
+- Test body created.
+- Test asserts correct status code for successful call to login endpoint
+  - Currently working through logic for verifying that an appropriate jwt is returned.
+
+---
+
 -- 6 Apr 2023 --
 
 - Refactored files pertaining to security.
