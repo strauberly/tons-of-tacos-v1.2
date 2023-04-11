@@ -46,12 +46,14 @@ class CreateOrderTests {
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
 
+
                 HttpEntity<String> bodyEntity = new HttpEntity<>(body, headers);
                 ResponseEntity<Orders> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
                         Orders.class);
-                System.out.println("response: " + response.getBody());
+
 
 //                Then: an order is successfully stored with a 201 response
+                System.out.println("response: " + response.getBody());
                 assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
                 System.out.println("Response code is " + response.getStatusCode() + ".");
 
