@@ -8,13 +8,15 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.security.Key;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
-@Component
+@Service
 public class JwtService {
 
     //create token
@@ -23,15 +25,17 @@ public class JwtService {
 
     private Key getSignKey(){
         byte[] keyBytes = Decoders.BASE64.decode(SECRET);
+//        System.out.println(Arrays.toString(keyBytes));
+//        System.out.println(Keys.hmacShaKeyFor(keyBytes));
         return Keys.hmacShaKeyFor(keyBytes);
     }
-
-    private String buildToken(Map<String, Object> claims, String username){
+    private String buildToken(String username){
+//    private String buildToken(Map<String, Object> claims, String username){
         String token = Jwts.builder()
-                .setClaims(claims)
+//                .setClaims(claims)
                 .setSubject(username)
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis()+ (((1000 * 60) * 60) * 16)))
+                .setIssuedAt(new Date(System.currentTimeMillis() * 1000))
+                .setExpiration(new Date((System.currentTimeMillis() * 1000) + (1000000L * 60 * 60 * 16)))
                 .signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
         System.out.println(token);
         return token;
@@ -39,8 +43,8 @@ public class JwtService {
 
 
     public String generateToken(String username){
-        Map<String, Object> claims = new HashMap<>();
-        return buildToken(claims, username);
+//        Map<String, Object> claims = new HashMap<>();
+        return buildToken(username);
     }
 
 //    validate token
