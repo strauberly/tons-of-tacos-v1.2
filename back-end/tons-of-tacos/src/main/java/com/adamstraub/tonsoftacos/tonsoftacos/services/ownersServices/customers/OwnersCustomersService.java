@@ -98,44 +98,7 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
         System.out.println("Customer deleted");
     }
 
-//    private OwnersGetOrderDto ownersGetOrderDtoConverter(Orders order) {
-//        OwnersGetOrderDto ownersGetOrderDto = new OwnersGetOrderDto();
-////        set the dto
-//        ownersGetOrderDto.setOrderId(order.getOrderId());
-//        if (order.getCustomerId() != null) {
-//            ownersGetOrderDto.setName(customerRepository.getReferenceById(order.getCustomerId()).getName());
-//            ownersGetOrderDto.setEmail(customerRepository.getReferenceById(order.getCustomerId()).getEmail());
-//            ownersGetOrderDto.setPhone(customerRepository.getReferenceById(order.getCustomerId()).getPhoneNumber());
-//        }
-//        ownersGetOrderDto.setOrderUid(order.getOrderUid());
 //
-//
-////        set the get order items dto
-//        List<OwnersOrderItemDto> ownersOrderItemDtos = new ArrayList<>();
-//        List<OrderItem> orderItems = order.getOrderItems();
-//
-//        orderItems.forEach(orderItem -> ownersOrderItemDtos.add(ownersOrderItemDtoConvertor(orderItem)));
-//        ownersGetOrderDto.setOrderItems(ownersOrderItemDtos);
-////
-//        ownersGetOrderDto.setOrderTotal(order.getOrderTotal());
-//        ownersGetOrderDto.setCreated(order.getCreated());
-//        ownersGetOrderDto.setReady(order.getReady());
-//        ownersGetOrderDto.setClosed(order.getClosed());
-////        System.out.println(ownersGetOrderDto);
-//        return ownersGetOrderDto;
-//    }
-//
-//    private OwnersOrderItemDto ownersOrderItemDtoConvertor(OrderItem orderItem){
-//        OwnersOrderItemDto ownersOrderItemDto = new OwnersOrderItemDto();
-//
-//        ownersOrderItemDto.setOrderItemId(orderItem.getOrderItemId());
-//        ownersOrderItemDto.setItemName(orderItem.getItemId().getItemName());
-//        ownersOrderItemDto.setQuantity(orderItem.getQuantity());
-//        ownersOrderItemDto.setTotal(orderItem.getTotal());
-//
-////        System.out.println(ownersOrderItemDto);
-//        return ownersOrderItemDto;
-//    }
     private OwnersGetCustomerDto ownersCustomerDtoConvertor(Customer customer){
         OwnersGetCustomerDto ownersCustomerDto = new OwnersGetCustomerDto();
 
@@ -149,7 +112,6 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
         List<Integer> orderIds = new ArrayList<>();
         orders.forEach(order -> orderIds.add(order.getOrderId()));
         ownersCustomerDto.setOrderIds(orderIds);
-        System.out.println(ownersCustomerDto);
         return ownersCustomerDto;
     }
 }

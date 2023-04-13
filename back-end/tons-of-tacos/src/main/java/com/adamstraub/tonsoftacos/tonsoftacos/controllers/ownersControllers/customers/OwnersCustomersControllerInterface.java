@@ -137,7 +137,7 @@ OwnersGetCustomerDto getCustomerById(@RequestParam Integer customerId);
             }
     )
     @Transactional
-    @PatchMapping("/edit-customer-name/{customerId}/{newCustomerName}")
+    @PutMapping("/edit-customer-name/{customerId}/{newCustomerName}")
     String updateCustomerName(
             @PathVariable
             Integer customerId,
@@ -170,7 +170,7 @@ OwnersGetCustomerDto getCustomerById(@RequestParam Integer customerId);
             }
     )
     @Transactional
-    @PatchMapping("/edit-customer-email/{customerId}/{newCustomerEmail}")
+    @PutMapping("/edit-customer-email/{customerId}/{newCustomerEmail}")
     String updateCustomerEmail(
             @PathVariable
             Integer customerId,
@@ -204,7 +204,7 @@ OwnersGetCustomerDto getCustomerById(@RequestParam Integer customerId);
             }
     )
     @Transactional
-    @PatchMapping("/edit-customer-phone/{customerId}/{newCustomerPhone}")
+    @PutMapping("/edit-customer-phone/{customerId}/{newCustomerPhone}")
     String updateCustomerPhone(
             @PathVariable
             Integer customerId,
