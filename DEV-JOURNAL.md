@@ -2,6 +2,13 @@
 
 ---
 
+-- 13 Apr 2023 --
+
+- All patch methods updated to put. Spring, Java, Modern Http... ><
+- Orders tests successful carrying out protected functions for owners.
+
+---
+
 -- 12 Apr 2023 --
 
 - Created successful test for generating token and that it is valid.

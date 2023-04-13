@@ -1,8 +1,5 @@
-package com.adamstraub.tonsoftacos.tonsoftacos.springTests.ownersToolsTests.ownersCustomersTests.readyTests;
-
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetCustomerDto;
+package com.adamstraub.tonsoftacos.tonsoftacos.springTests.ownersToolsTests.ownersOrdersTests.readyTests;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
-import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ownersToolsSupport.OwnersToolsTestsSupport;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
@@ -16,9 +13,11 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 
+import java.util.Objects;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class DeleteCustomerByIdTest {
+public class OrderClosedTests {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -32,9 +31,11 @@ public class DeleteCustomerByIdTest {
             config = @SqlConfig(encoding = "utf-8"))
     class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSupport {
         @Test
-        void customerDeleted200() {
-            //        Given: given a valid customer id and auth header
-//            get valid token
+        void orderMarkedClosedWith200() {
+//            Given: a valid order id with valid auth header
+            int orderId = 1;
+
+            //            get valid token
             String token = validToken();
             Assertions.assertNotNull(token);
 
@@ -43,37 +44,30 @@ public class DeleteCustomerByIdTest {
             authHeader.setContentType(MediaType.APPLICATION_JSON);
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
-
-            int customerId = 1;
-
-
-            //        When: a connection is made
-            String uri2=
-                    String.format("%s/%d", getBaseUriForDeleteCustomer(), customerId);
-            System.out.println(uri2);
-
+//            When: a connection is made
+            String uri =
+                    String.format("%s/%d", getBaseUriForCloseOrder(), orderId);
+            System.out.println(uri);
 
             ResponseEntity<OwnersGetOrderDto> response =
-                    getRestTemplate().exchange(uri2, HttpMethod.DELETE, headerEntity, new ParameterizedTypeReference<>() {
+                    getRestTemplate().exchange(uri, HttpMethod.PUT, headerEntity, new ParameterizedTypeReference<>() {
                     });
-//
-//        Then: the customer is removed from the database with a 200 response
-             Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
+//            Then: order is marked closed and response code is 200
+            Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
             System.out.println("Response code is " + response.getStatusCode() + ".");
 
-//             verify customer deleted
-
-//        And: an attempt to call the order deleted will give a 404
-            String parameter = "customerId";
-            String getCustomerUri =
-                    String.format("%s?%s=%d", getBaseUriForGetCustomerById(), parameter, customerId);
-            System.out.println(getCustomerUri);
-            ResponseEntity<OwnersGetCustomerDto> getCustomerResponse =
-                    getRestTemplate().exchange
-            (getCustomerUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {});
-            Assertions.assertEquals(HttpStatus.NOT_FOUND, getCustomerResponse.getStatusCode());
-            System.out.println("Response code is " + getCustomerResponse.getStatusCode() + ".");
-            System.out.println("Customer has been deleted and can not be found.");
+            //            And: when the order is called the closed is indeed closed
+            String parameter = "orderId";
+            String getOrderUri =
+                    String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter, orderId);
+            System.out.println(getOrderUri);
+            ResponseEntity<OwnersGetOrderDto> getOrderResponse =
+                    getRestTemplate().exchange(getOrderUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
+                    });
+            System.out.println(getOrderResponse.getBody());
+            Assertions.assertNotEquals("no", Objects.requireNonNull(getOrderResponse.getBody()).getStatus());
+            System.out.println("Response code is " + getOrderResponse.getStatusCode() + ".");
+            System.out.println("Order is closed : " + Objects.requireNonNull(getOrderResponse.getBody()).getStatus());
         }
     }
 }
