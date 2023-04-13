@@ -1,14 +1,4 @@
 DROP ALL OBJECTS;
---DROP TABLE IF EXISTS orders;
---DROP TABLE IF EXISTS order_item;
---DROP TABLE IF EXISTS menu_item;
---DROP TABLE IF EXISTS owners;
---
-----DROP TABLE IF EXISTS owners;
-----DROP TABLE IF EXISTS order_item;
-----DROP TABLE IF EXISTS orders;
-----DROP TABLE IF EXISTS menu_item;
-----DROP TABLE IF EXISTS customer;
 
 CREATE TABLE customer(
 customer_pk INT unsigned NOT NULL AUTO_INCREMENT ,

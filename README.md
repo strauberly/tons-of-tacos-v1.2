@@ -27,7 +27,7 @@
 
 &nbsp;
 
-## Tons of Tacos is a fictional mom and pop style food truck company. This is a project designed for them and their customers.
+## Tons of Tacos is a fictional mom and pop style food truck company. This is a project designed for them and their customers in order to expedite the ordering process and increase sales.
 
 &nbsp;
 
@@ -75,12 +75,29 @@
 ### II. Rough Phase Outline
 
 - 1.2.1 - Return data dynamically from a database: Initially completed 31-Jan-2023
-- 1.2.2 - Use data to create an order with customer provided data: In progress.
-- 1.2.4 - Incorporation of a notification system(email-and or sms) for when order ready.
-- 1.2.3 - Generate a receipt of customer order through email.
-- 1.2.4 - Incorporation of online payment systems with receipt
-- 1.2.5 - Build GUI (this may come after 1.2.2) \*\*\*
-- 1.2.6 - Ability for Customers to view past orders and order again.
+
+- 1.2.2 - Use data to create an order with customer provided data: Initially completed 14-Feb-2023
+
+- 1.2.3 - Create tests for desired functionality of retrieving menu items and creating orders: initially completed 28-Feb-2023
+
+- 1.2.4 - Implement functionality for owners of tons tacos to retrieve and alter data pertaining to orders and customers: initially completed 12-Mar-2023
+
+- 1.2.5 - Create tests for owners functions: initially completed 25-Mar-2023
+
+- 1.2.6 - Secure owners functions with spring security 6 and json web tokens: initially completed 6-Apr-2023
+
+- 1.2.7 - Tests rewritten for owners functions integrating security measures: in progress.
+
+===
+
+Future phases:
+
+- Incorporation of a notification system for when order ready.
+- Incorporation of online payment systems with receipt.
+- Build web GUI for customers.
+- Build UI for owners.
+- Ability for Customers to view past orders and order again.
+- Ability to see food truck's location for the day and planned location for tomorrow.
 
 [Table of Contents](#table-of-contents)
 
@@ -90,14 +107,16 @@
 
 Back-End
 
-- KWrite
 - MySql Workbench
-- MySql
-- Spring
+- MySql 8
+- Spring 3.0
+- Spring Security 6.0
+- BCrypt
 - Java 17
 - Lombok
-- Junit
+- Junit 5
 - Swagger
+- KWrite
 - Bash
 
 [Table of Contents](#table-of-contents)

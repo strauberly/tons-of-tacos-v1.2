@@ -1,8 +1,6 @@
-package com.adamstraub.tonsoftacos.tonsoftacos.springTests.ownersToolsTests.ownersCustomersTests.readyTests;
+package com.adamstraub.tonsoftacos.tonsoftacos.springTests.ownersToolsTests.ownersOrdersTests.readyTests;
 
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetCustomerDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
-import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ownersToolsSupport.OwnersToolsTestsSupport;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
@@ -16,9 +14,11 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 
+import java.util.Objects;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class DeleteCustomerByIdTest {
+public class GetOrderByIdTests {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -32,8 +32,9 @@ public class DeleteCustomerByIdTest {
             config = @SqlConfig(encoding = "utf-8"))
     class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSupport {
         @Test
-        void customerDeleted200() {
-            //        Given: given a valid customer id and auth header
+        void getOrderById200() {
+//            Given: a valid order id and auth header
+
 //            get valid token
             String token = validToken();
             Assertions.assertNotNull(token);
@@ -44,36 +45,23 @@ public class DeleteCustomerByIdTest {
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
-            int customerId = 1;
+            int orderId = 1;
 
-
-            //        When: a connection is made
-            String uri2=
-                    String.format("%s/%d", getBaseUriForDeleteCustomer(), customerId);
-            System.out.println(uri2);
-
+//            When: a connection is made
+            String parameter = "orderId";
+            String uri =
+                    String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter, orderId);
+            System.out.println(uri);
 
             ResponseEntity<OwnersGetOrderDto> response =
-                    getRestTemplate().exchange(uri2, HttpMethod.DELETE, headerEntity, new ParameterizedTypeReference<>() {
+                    getRestTemplate().exchange(uri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
                     });
-//
-//        Then: the customer is removed from the database with a 200 response
-             Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
+//            Then: an order is retrieved with a matching id
+            System.out.println(response.getBody());
+            Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
             System.out.println("Response code is " + response.getStatusCode() + ".");
-
-//             verify customer deleted
-
-//        And: an attempt to call the order deleted will give a 404
-            String parameter = "customerId";
-            String getCustomerUri =
-                    String.format("%s?%s=%d", getBaseUriForGetCustomerById(), parameter, customerId);
-            System.out.println(getCustomerUri);
-            ResponseEntity<OwnersGetCustomerDto> getCustomerResponse =
-                    getRestTemplate().exchange
-            (getCustomerUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {});
-            Assertions.assertEquals(HttpStatus.NOT_FOUND, getCustomerResponse.getStatusCode());
-            System.out.println("Response code is " + getCustomerResponse.getStatusCode() + ".");
-            System.out.println("Customer has been deleted and can not be found.");
+            Assertions.assertEquals(orderId, Objects.requireNonNull(response.getBody()).getOrderId());
+            System.out.println("Order id queried is order with id returned.");
         }
     }
 }
