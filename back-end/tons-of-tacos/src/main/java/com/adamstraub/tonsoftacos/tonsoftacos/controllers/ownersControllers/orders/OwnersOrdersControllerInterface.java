@@ -166,7 +166,7 @@ public interface OwnersOrdersControllerInterface {
             }
     )
     @Transactional
-    @PatchMapping("/order-ready/{orderId}")
+    @PutMapping("/order-ready/{orderId}")
     void orderReady(@PathVariable Integer orderId);
 //
     //    // close order by id
@@ -195,7 +195,7 @@ public interface OwnersOrdersControllerInterface {
             }
     )
     @Transactional
-    @PatchMapping("/close-order/{orderId}")
+    @PutMapping("/close-order/{orderId}")
     void closeOrder(@PathVariable Integer orderId);
 
 //
@@ -251,7 +251,7 @@ public interface OwnersOrdersControllerInterface {
             }
     )
     @Transactional
-    @PatchMapping("/add-to-order/{orderId}/{menuItemId}/{quantity}")
+    @PutMapping("/add-to-order/{orderId}/{menuItemId}/{quantity}")
     void addToOrder(
             @PathVariable
             Integer orderId, @PathVariable Integer menuItemId, @PathVariable Integer quantity);
@@ -282,7 +282,7 @@ public interface OwnersOrdersControllerInterface {
             }
     )
     @Transactional
-    @PatchMapping("/update-order-item/{orderId}/{orderItemId}/{newQuantity}")
+    @PutMapping("/update-order-item/{orderId}/{orderItemId}/{newQuantity}")
     void updateOrderItem(
             @PathVariable
             Integer orderId,

@@ -2,6 +2,21 @@
 
 ---
 
+-- 13 Apr 2023 --
+
+- All patch methods updated to put. Spring, Java, Modern Http... ><
+- Orders tests successful carrying out protected functions for owners.
+
+---
+
+-- 12 Apr 2023 --
+
+- Created successful test for generating token and that it is valid.
+- Research on JWt(JWS) continues and brings much to contemplate.
+- Jwt now integrated now integrated into unit tests for owners tools customers functions. Successful test cases positive.
+
+---
+
 -- 10 Apr 2023 --
 
 - Test db updated.

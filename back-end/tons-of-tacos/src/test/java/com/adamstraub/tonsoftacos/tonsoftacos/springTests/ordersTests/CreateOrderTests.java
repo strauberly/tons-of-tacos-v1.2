@@ -4,6 +4,8 @@ import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ordersTestsSupport.OrdersTestsSupport;
+import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ownersToolsSupport.OwnersToolsTestsSupport;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +36,18 @@ class CreateOrderTests {
         class testThatDoesNotPolluteTheApplicationContextUris extends OrdersTestsSupport {
             @Test
             void orderCreated201() {
-//                Given: a valid order
+//                Given: a valid order and authheader
+
+                //            get valid token
+                String token = validToken();
+                Assertions.assertNotNull(token);
+
+//           build authheader
+                HttpHeaders authHeader = new HttpHeaders();
+                authHeader.setContentType(MediaType.APPLICATION_JSON);
+                authHeader.setBearerAuth(token);
+                HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
+
                 String body = validOrderBody();
                 System.out.println(body);
 
@@ -53,7 +66,6 @@ class CreateOrderTests {
 
 
 //                Then: an order is successfully stored with a 201 response
-                System.out.println("response: " + response.getBody());
                 assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
                 System.out.println("Response code is " + response.getStatusCode() + ".");
 
@@ -63,12 +75,11 @@ class CreateOrderTests {
                 String getOrderUri =
                         String.format("%s?%s=%s", getBaseUriForGetOrderByUid(), parameter, testOrderUid );
                 System.out.println(getOrderUri);
-                System.out.println("Order returned from db: ");
                 ResponseEntity<OwnersGetOrderDto> orderUidResponse =
-                        getRestTemplate().exchange(getOrderUri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
+                        getRestTemplate().exchange(getOrderUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
                         });
                 System.out.println(orderUidResponse.getBody());
-                assertThat(Objects.requireNonNull(orderUidResponse.getBody()).getOrderUid().equals(testOrderUid));
+                Assertions.assertEquals(testOrderUid, Objects.requireNonNull(orderUidResponse.getBody()).getOrderUid());
             }
         }
 //        test for invalid
