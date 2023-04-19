@@ -9,10 +9,19 @@ public class OwnersToolsTestsSupport extends TestUris {
 
 
     protected String validCredentials(){
+
         return """
                {
                "username": "jcast22",
                "psswrd": "tacoocat"
+               }""";
+    }
+
+    protected String encryptedCredentials(){
+        return """
+               {
+               "username":"m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5",
+               "psswrd":"tacoocat"
                }""";
     }
     protected String validToken(){
