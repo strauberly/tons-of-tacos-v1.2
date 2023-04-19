@@ -2,6 +2,17 @@
 
 ---
 
+-- 18 Apr 2023 --
+
+- basic implementation of encryption and decryption created
+- Discovered char being generated causes issue with json string
+- Research into random int generation with exclusions
+- Random char method updated to compare generated random with a list of excluded
+- Test for jwt creation with encryption successful
+- Majority of program expected to be broken until full integration.
+
+---
+
 -- 17 Apr 2023 --
 
 - Encryption research.
