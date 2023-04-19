@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.ArrayList;
@@ -22,6 +23,35 @@ public class JwtService {
     //create token
     @Value("${key}")
     private String SECRET;
+
+    @Value("${BEGIN_KEY}")
+    private int BEGIN_KEY;
+    @Value("${END_KEY}")
+    private int END_KEY;
+
+    @Value("${charmin}")
+    private int charmin;
+
+    @Value("${charmax}")
+    private int charmax;
+
+    @Value("${submin}")
+    private int submin;
+
+    @Value("${submax}")
+    private int submax;
+
+    @Value("${ex1}")
+    private int ex1;
+    @Value("${ex2}")
+    private int ex2;
+    @Value("${ex3}")
+    private int ex3;
+
+    @Value("${CHARSET}")
+    private String CHARSET;
+
+
 
     private Key getSignKey(){
         byte[] keyBytes = Decoders.BASE64.decode(SECRET);
@@ -61,10 +91,7 @@ public class JwtService {
         return claimsResolver.apply(claims);
     }
     public String extractUsername(String token){
-        System.out.println(extractClaim(token, Claims::getSubject));
-//        System.out.println(decrypt(extractClaim(token, Claims::getSubject)));
         return extractClaim(token, Claims::getSubject);
-//    return decrypt(extractClaim(token, Claims::getSubject));
     }
 
     public Date extractExpiration(String token){
@@ -76,8 +103,7 @@ public class JwtService {
     }
 
 //    possibly condense into one
-    public boolean isTokenValid(String token, UserDetails userDetails) {
-//        final String username = extractUsername(token);
+    public boolean isTokenValid(String token, UserDetails userDetails){
         final String username = decrypt(extractUsername(token));
         return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
     }
@@ -86,125 +112,83 @@ public class JwtService {
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername()));
     }
-//
-//    //    encrypt
-//    private String encrypt(String string) {
-////        string = "george castillo";
-////        System.out.println(string);
-////        convert string to byte array
-////        >> convert byte array to int array and increase the value of each element by three
-//        System.out.println(string);
-//
-//        byte[] codeBytes = string.getBytes(StandardCharsets.UTF_8);
-//        List<Integer> rolledCodeBytes = new ArrayList<>();
-//        int codeByteValue;
-//        System.out.println(Arrays.toString(codeBytes));
-//        for (byte codeByte : codeBytes) {
-//            codeByteValue = codeByte;
-//            codeByteValue += 3;
-//            rolledCodeBytes.add(codeByteValue);
-////          new collection with altered char values
-//        }
-//        System.out.println("rolled bytes: " + rolledCodeBytes);
-//        List<Character> chars = new ArrayList<>();
-////        String encodedString = new String(rolledCodeBytes, StandardCharsets.UTF_8);
-//        for (int integer : rolledCodeBytes) {
-//            chars.add((char) integer);
-//        }
-////       convert chars to string
-//        System.out.println("updated chars: " + chars);
-//        StringBuilder rolledCharBuilder = new StringBuilder(chars.size());
-//        for (Character ch : chars) {
-//            rolledCharBuilder.append(ch);
-//        }
-//        System.out.println("rolled charbuilder: " + rolledCharBuilder);
-////      for each element insert three new random chars
-//        for (int i = 0; i < chars.size(); i++) {
-//            chars.add(i, randomChar());
-//            i++;
-//            chars.add(i, randomChar());
-//            i++;
-//            chars.add(i, randomChar());
-//            i++;
-//        }
-//        chars.add(randomChar());
-//        chars.add(randomChar());
-//        chars.add(randomChar());
-//        System.out.println(Arrays.toString(chars.toArray()));
-////        -----------------------------------
-//        StringBuilder encryptionBuilder = new StringBuilder(chars.size());
-//        for (Character ch : chars) {
-//            encryptionBuilder.append(ch);
-//        }
-//        System.out.println("encrypted string: " + encryptionBuilder);
-//        return encryptionBuilder.toString();
-//    }
-//
-    //    decrypt
-    public String decrypt(String  encodedString) {
-//        String encodedString = encrypt(string);
-//        System.out.println(string);
-//    public String decrypt(String  string) {
-//        String encodedString = encrypt(string);
-////        System.out.println(string);
-//        System.out.println(encodedString);
-        String decodedStart = String.valueOf(encodedString.charAt(3));
-        String decodedEnd = String.valueOf(encodedString.charAt(encodedString.length() - 4));
+
+//  encrypt
+    protected String encrypt(String string){
+        System.out.println(string);
+
+        byte[] codeBytes = string.getBytes(StandardCharsets.UTF_8);
+        List<Integer> rolledCodeBytes = new ArrayList<>();
+        int codeByteValue;
+        System.out.println(Arrays.toString(codeBytes));
+        for (byte codeByte : codeBytes) {
+            codeByteValue = codeByte;
+            codeByteValue += BEGIN_KEY;
+            rolledCodeBytes.add(codeByteValue);
+        }
+//      new collection with altered char values
+        List<Character> chars = new ArrayList<>();
+        for (int integer : rolledCodeBytes) {
+            chars.add((char) integer);
+        }
+//      convert chars to string
+        StringBuilder rolledCharBuilder = new StringBuilder(chars.size());
+        for (Character ch : chars) {
+            rolledCharBuilder.append(ch);
+        }
+//      for each element insert three new random chars
+        for (int i = 0; i < chars.size(); i++) {
+            chars.add(i, randomChar());
+            i++;
+            chars.add(i, randomChar());
+            i++;
+            chars.add(i, randomChar());
+            i++;
+        }
+        chars.add(randomChar());
+        chars.add(randomChar());
+        chars.add(randomChar());
+//        -----------------------------------
+        StringBuilder encryptionBuilder = new StringBuilder(chars.size());
+        for (Character ch : chars) {
+            encryptionBuilder.append(ch);
+        }
+        return encryptionBuilder.toString();
+    }
+
+//    decrypt
+    public String decrypt(String  encodedString)  {
+        String decodedStart = String.valueOf(encodedString.charAt(BEGIN_KEY));
+        String decodedEnd = String.valueOf(encodedString.charAt(encodedString.length() - END_KEY));
         String wholeDecoded = "";
         StringBuilder decoded = new StringBuilder();
-        for (int i = 3; i < encodedString.length(); i = i + 4) {
+        for (int i = BEGIN_KEY; i < encodedString.length(); i = i + END_KEY) {
             decoded.append(encodedString.charAt(i));
         }
-        decoded = new StringBuilder(decoded.substring(1, decoded.toString().length() - 1));
+        decoded = new StringBuilder(decoded.substring(submin, decoded.toString().length() - submax));
         wholeDecoded = wholeDecoded.concat(decodedStart + decoded + decodedEnd);
-//        System.out.println(decodedStart);
-//        System.out.println(decodedEnd);
-//        System.out.println(decoded);
-//        System.out.println(wholeDecoded);
         byte[] decodedBytes = wholeDecoded.getBytes(StandardCharsets.UTF_8);
         int decodeByteValue;
         List<Character> decodedChars = new ArrayList<>();
         StringBuilder decrypt = new StringBuilder(0);
         for (byte codeByte : decodedBytes) {
             decodeByteValue = codeByte;
-            decodeByteValue -= 3;
+            decodeByteValue -= BEGIN_KEY;
             decodedChars.add((char) decodeByteValue);
-
-//            System.out.println(decodedChars);
-
-//            for (Character ch : decodedChars) {
-//                decrypt.append(ch);
-//            }
         }
         for (Character ch : decodedChars) {
             decrypt.append(ch);
         }
-//        System.out.println(decrypt);
         return decrypt.toString();
     }
 
     private char randomChar() {
-//        int min = 33, max = 126;
-//        int random = min + (int) (Math.random() * ((max - min)) + 1);
-////            System.out.println(random);
-//        return (char) random;
-        int min = 33, max = 126;
+        int min = charmin, max = charmax;
         int random = min + (int) (Math.random() * ((max - min)) + 1);
-        int[] excluded = {34, 92, 39};
-//        boolean isExcludedValue = false;
+        int[] excluded = {ex1, ex2, ex3};
         char choice = 0;
         for (int ex : excluded) {
             choice = random == ex ? randomChar() : (char) random;
-//            if (random == ex) {
-//                isExcludedValue = true;
-//            }
-
-//            isExcludedValue = true ? choice == randomChar() : choice == (char) random;
-//        if(isExcludedValue){
-//            return randomChar();
-//        }
-//        System.out.println(random);
-//        return (char) random;
         }
         return choice;
     }

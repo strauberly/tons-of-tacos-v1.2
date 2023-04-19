@@ -34,7 +34,7 @@ public class AddToOrderTest {
         void addItemToOrder200() {
 //      Given: a valid orderId, valid menuItemId and  authheader.
 //            get valid token
-            String token = validToken();
+            String token = encryptedToken();
             Assertions.assertNotNull(token);
 
 //           build authheader

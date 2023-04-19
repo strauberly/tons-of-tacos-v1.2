@@ -35,7 +35,8 @@ public class UpdateCustomerEmailTest {
             @Test
             void updateCustomerEmail200() {
                 //            get valid token
-                String token = validToken();
+//                String token = validToken();
+                String token = encryptedToken();
                 Assertions.assertNotNull(token);
 //            -----------------------------------------------------------------------------
 //            Given: a valid query, auth header and an email.

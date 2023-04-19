@@ -38,7 +38,8 @@ public class GetOrderByUidTests {
 //            Given: a valid uid and authheader
 
             //            get valid token
-            String token = validToken();
+//            String token = validToken();
+            String token = encryptedToken();
             Assertions.assertNotNull(token);
 
 //           build authheader
