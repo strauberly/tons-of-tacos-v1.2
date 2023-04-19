@@ -36,7 +36,8 @@ public class GetCustomerByNameTest {
             @Test
             void getCustomerByName200() {
                 //            get valid token
-                String token = validToken();
+//                String token = validToken();
+                String token = encryptedToken();
                 Assertions.assertNotNull(token);
 //            -----------------------------------------------------------------------------
 //            Given: a valid uid and valid auth header

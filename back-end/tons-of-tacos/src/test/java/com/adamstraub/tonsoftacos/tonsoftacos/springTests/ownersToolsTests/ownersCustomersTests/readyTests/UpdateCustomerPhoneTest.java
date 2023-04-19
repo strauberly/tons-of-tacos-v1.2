@@ -36,7 +36,8 @@ public class UpdateCustomerPhoneTest {
             @Test
             void updateCustomerPhone200() {
                 //            get valid token
-                String token = validToken();
+//                String token = validToken();
+                String token = encryptedToken();
                 Assertions.assertNotNull(token);
 //            -----------------------------------------------------------------------------
 

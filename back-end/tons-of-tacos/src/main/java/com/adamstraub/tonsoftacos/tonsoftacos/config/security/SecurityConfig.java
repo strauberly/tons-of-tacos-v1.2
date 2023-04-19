@@ -32,7 +32,7 @@ public class SecurityConfig {
                 http.csrf().disable()
 //                whitelisted
                 .authorizeHttpRequests()
-                .requestMatchers("/api/menu/**", "/api/order/checkout", "/api/owners-tools/login").permitAll()
+                .requestMatchers("/api/menu/**", "/api/order/**", "/api/owners-tools/login").permitAll()
               .and()
 //               restricted
                 .authorizeHttpRequests().requestMatchers("/api/owners-tools/**")

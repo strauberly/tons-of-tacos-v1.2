@@ -2,9 +2,15 @@
 
 ---
 
+-- 19 Apr 2023 --
+
+- Tests functioning as desired after encryption implementation for both username and password. This would indicate a means for protection from MITM. Algorithm can always be improved.
+- Encryption algorithm keys moved offsite.
+- Development code cleaned and saved offsite to my files for proof of work if requested but so that old algorithm views are not sitting waiting to be picked up.
+
 -- 18 Apr 2023 --
 
-- basic implementation of encryption and decryption created
+- Basic implementation of encryption and decryption created
 - Discovered char being generated causes issue with json string
 - Research into random int generation with exclusions
 - Random char method updated to compare generated random with a list of excluded

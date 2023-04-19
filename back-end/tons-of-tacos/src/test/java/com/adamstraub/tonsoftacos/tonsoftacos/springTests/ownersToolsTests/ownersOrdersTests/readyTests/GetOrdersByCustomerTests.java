@@ -34,7 +34,8 @@ public class GetOrdersByCustomerTests {
 //            Given: a customer that has already placed an order and a valid auth header
 
             //            get valid token
-            String token = validToken();
+//            String token = validToken();
+            String token = encryptedToken();
             org.junit.jupiter.api.Assertions.assertNotNull(token);
 
 //           build authheader

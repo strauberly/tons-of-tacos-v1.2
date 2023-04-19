@@ -35,7 +35,8 @@ public class UpdateCustomerNameTest {
             @Test
             void updateCustomerName200() {
                 //            get valid token
-                String token = validToken();
+//                String token = validToken();
+                String token = encryptedToken();
                 Assertions.assertNotNull(token);
 //            -----------------------------------------------------------------------------
 //            Given: a customerId, new name and valid auth header.

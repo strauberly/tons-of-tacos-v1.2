@@ -36,7 +36,8 @@ public class OrderClosedTests {
             int orderId = 1;
 
             //            get valid token
-            String token = validToken();
+//            String token = validToken();
+            String token = encryptedToken();
             Assertions.assertNotNull(token);
 
 //           build authheader

@@ -37,7 +37,8 @@ public class DeleteOrderTests {
 //        Given: given a valid order id and auth header.
 
             //            get valid token
-            String token = validToken();
+//            String token = validToken();
+            String token = encryptedToken();
             Assertions.assertNotNull(token);
 
 //           build authheader

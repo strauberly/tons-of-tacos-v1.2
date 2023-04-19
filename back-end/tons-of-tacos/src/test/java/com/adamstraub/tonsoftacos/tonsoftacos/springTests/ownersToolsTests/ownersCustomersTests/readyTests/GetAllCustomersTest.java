@@ -36,7 +36,8 @@ public class GetAllCustomersTest {
             @Test
             void allCustomersReturned200() {
                 //            get valid token
-                String token = validToken();
+//                String token = validToken();
+                String token = encryptedToken();
                 Assertions.assertNotNull(token);
 //            -----------------------------------------------------------------------------
 

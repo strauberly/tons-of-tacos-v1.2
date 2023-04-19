@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.io.UnsupportedEncodingException;
+
 @Validated
 @RequestMapping(
         value = "api/owners-tools"
@@ -45,7 +47,7 @@ public interface OwnersSessionControllerInterface {
     )
 
     @PostMapping("/login")
-    String ownerLogin(@RequestBody OwnerAuthDto authDto);
+    String ownerLogin(@RequestBody OwnerAuthDto authDto) throws UnsupportedEncodingException;
 //
 //
 }

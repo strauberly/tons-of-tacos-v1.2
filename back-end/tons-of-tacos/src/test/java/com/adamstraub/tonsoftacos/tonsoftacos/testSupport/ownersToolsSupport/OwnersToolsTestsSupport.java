@@ -21,11 +21,25 @@ public class OwnersToolsTestsSupport extends TestUris {
         return """
                {
                "username":"m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5",
-               "psswrd":"tacoocat"
+               "psswrd":"?aNwlfCd7glf(E&r)lLr}W?fT#Ld?aFw_ic"
                }""";
     }
     protected String validToken(){
         String body = validCredentials();
+        System.out.println(body);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<String> tokenEntity = new HttpEntity<>(body, headers);
+
+        String uri = getBaseUriForOwnersLogin();
+        ResponseEntity<String> response = getRestTemplate().exchange(uri, HttpMethod.POST, tokenEntity,
+                String.class);
+        return response.getBody();
+    }
+
+    protected String encryptedToken(){
+        String body = encryptedCredentials();
         System.out.println(body);
 
         HttpHeaders headers = new HttpHeaders();
