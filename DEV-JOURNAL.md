@@ -2,6 +2,13 @@
 
 ---
 
+-- 17 Apr 2023 --
+
+- Encryption research.
+- Basic operable functionality written out in separate file.
+
+---
+
 -- 13 Apr 2023 --
 
 - All patch methods updated to put. Spring, Java, Modern Http... ><
