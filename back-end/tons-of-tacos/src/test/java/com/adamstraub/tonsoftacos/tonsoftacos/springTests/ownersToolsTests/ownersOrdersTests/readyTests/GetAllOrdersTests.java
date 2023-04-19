@@ -37,7 +37,8 @@ class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSu
             void allOrdersReturned200() {
 //  Given: a successful connection and auth header
         //            get valid token
-        String token = validToken();
+//        String token = validToken();
+        String token = encryptedToken();
         Assertions.assertNotNull(token);
 
 //           build auth header

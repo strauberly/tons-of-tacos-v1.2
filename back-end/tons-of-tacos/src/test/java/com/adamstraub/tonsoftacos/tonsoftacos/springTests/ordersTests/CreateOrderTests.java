@@ -38,8 +38,9 @@ class CreateOrderTests {
             void orderCreated201() {
 //                Given: a valid order and authheader
 
-                //            get valid token
-                String token = validToken();
+                // get valid token for authheader
+//                String token = validToken();
+                String token = encryptedToken();
                 Assertions.assertNotNull(token);
 
 //           build authheader
@@ -58,7 +59,6 @@ class CreateOrderTests {
 
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
-
 
                 HttpEntity<String> bodyEntity = new HttpEntity<>(body, headers);
                 ResponseEntity<Orders> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,

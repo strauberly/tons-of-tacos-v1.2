@@ -69,8 +69,8 @@ public class LoginTest implements JwtSignatureValidator {
         @Autowired
         UserDetailsService userDetailsService;
 
-        @Value("${key}")
-        private String SECRET;
+//        @Value("${key}")
+//        private String SECRET;
 
 //        code altered for encryption 18 Apr 2023 and test no longer valid
 //        @Test

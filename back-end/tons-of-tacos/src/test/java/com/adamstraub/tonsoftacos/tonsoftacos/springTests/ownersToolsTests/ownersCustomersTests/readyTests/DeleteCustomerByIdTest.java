@@ -35,7 +35,8 @@ public class DeleteCustomerByIdTest {
         void customerDeleted200() {
             //        Given: given a valid customer id and auth header
 //            get valid token
-            String token = validToken();
+//            String token = validToken();
+            String token = encryptedToken();
             Assertions.assertNotNull(token);
 
 //           build authheader

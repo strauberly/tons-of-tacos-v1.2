@@ -42,7 +42,8 @@ public class GetTodaysSalesTests {
 
 //            Given: one or more orders have been closed marking a sale and a valid authheader
             //            get valid token
-            String token = validToken();
+//            String token = validToken();
+            String token = encryptedToken();
             Assertions.assertNotNull(token);
 
 //           build authheader

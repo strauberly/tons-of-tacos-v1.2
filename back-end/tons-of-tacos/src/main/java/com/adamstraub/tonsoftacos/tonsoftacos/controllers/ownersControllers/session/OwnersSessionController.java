@@ -1,17 +1,19 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.controllers.ownersControllers.session;
 
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.security.OwnerAuthDto;
-import com.adamstraub.tonsoftacos.tonsoftacos.services.security.AuthService;
+import com.adamstraub.tonsoftacos.tonsoftacos.services.security.SessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.io.UnsupportedEncodingException;
 
 @RestController
 public class OwnersSessionController implements OwnersSessionControllerInterface {
 
     private AuthenticationManager authenticationManager;
     @Autowired
-    AuthService authService;
+    SessionService sessionService;
 //    @Override
 //    public AuthenticationResponse ownerLogin(@RequestBody AuthenticationRequest request) {
 //        System.out.println("controller");
@@ -32,8 +34,8 @@ public class OwnersSessionController implements OwnersSessionControllerInterface
 //    }
 
     @Override
-    public String ownerLogin(OwnerAuthDto authDto) {
+    public String ownerLogin(OwnerAuthDto authDto) throws UnsupportedEncodingException {
         System.out.println("controller");
-        return authService.ownerLogin(authDto);
+        return sessionService.ownerLogin(authDto);
     }
 }

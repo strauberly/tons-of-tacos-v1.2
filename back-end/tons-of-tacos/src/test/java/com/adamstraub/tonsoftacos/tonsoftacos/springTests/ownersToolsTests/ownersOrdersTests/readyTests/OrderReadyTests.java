@@ -36,7 +36,8 @@ public class OrderReadyTests {
             void orderMarkedReadyWith200() {
 //            Given: a valid order id and valid authheader
                 //            get valid token
-                String token = validToken();
+//                String token = validToken();
+                String token = encryptedToken();
                 Assertions.assertNotNull(token);
 
 //           build authheader
