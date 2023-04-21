@@ -2,11 +2,20 @@
 
 ---
 
+-- 20 Apr 2023 --
+
+- Beginning implementation of generating a random uid for an order on checkout.
+- Trying for a smaller number so easy to read and repeat to customer or owner.
+
+---
+
 -- 19 Apr 2023 --
 
 - Tests functioning as desired after encryption implementation for both username and password. This would indicate a means for protection from MITM. Algorithm can always be improved.
 - Encryption algorithm keys moved offsite.
 - Development code cleaned and saved offsite to my files for proof of work if requested but so that old algorithm views are not sitting waiting to be picked up.
+
+---
 
 -- 18 Apr 2023 --
 
