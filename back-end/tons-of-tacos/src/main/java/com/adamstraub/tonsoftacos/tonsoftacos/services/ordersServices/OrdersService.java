@@ -50,7 +50,6 @@ public class OrdersService implements OrdersServiceInterface {
         for (OrderItem orderItem : orderItems) {
             orderItem.setTotal(orderItem.getQuantity() *
                     menuItemRepository.getReferenceById(orderItem.getItemId().getId()).getUnitPrice());
-            System.out.println(orderItem.getTotal());
             orderTotal += orderItem.getTotal();
         }
 
@@ -79,15 +78,12 @@ public class OrdersService implements OrdersServiceInterface {
         customerDto.setOrderTotal(newOrder.getOrderTotal());
 
         orderItems = orderConfirmation.getOrderItems();
-        List<GetOrderItemDto> itemConfirmationDtos = new ArrayList<>();
         for (OrderItem orderItem : orderItems){
 //            orderItemDtos.add(orderItemDtoConvertor(orderItem));
-            itemConfirmationDtos.add(orderItemDtoConvertor(orderItem));
+            orderItemDtos.add(orderItemDtoConvertor(orderItem));
         }
-        System.out.println("item dto confirmation: " + itemConfirmationDtos);
-
-//        customerDto.setOrderItems(orderItemDtos);
-//        System.out.println(customerDto);
+        customerDto.setOrderItems(orderItemDtos);
+        System.out.println("customer dto: " + customerDto);
         return customerDto;
     }
     private GetOrderItemDto orderItemDtoConvertor(OrderItem orderItem){
