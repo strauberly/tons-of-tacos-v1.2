@@ -184,7 +184,7 @@ public class JwtService {
 
     private char randomChar() {
         int min = charmin, max = charmax;
-        int random = min + (int) (Math.random() * ((max - min)) + 1);
+        int random = (int) (Math.random() * ((max - min)) + min);
         int[] excluded = {ex1, ex2, ex3};
         char choice = 0;
         for (int ex : excluded) {
