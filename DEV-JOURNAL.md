@@ -1,5 +1,13 @@
 ## This Journal tracks development progress, ideas and thoughts.
 
+--- 21 Apr 2023 --
+
+- Appear to have rectified algorithm for random Uid generated on order creation
+- Create order gives us a return order dto for order confirmation.
+- Test successful however dtos were not being set correctly for response message but now are.
+- Test is satisfactory.
+- Order generates uid correctly on order creation.
+
 ---
 
 -- 19 Apr 2023 --
