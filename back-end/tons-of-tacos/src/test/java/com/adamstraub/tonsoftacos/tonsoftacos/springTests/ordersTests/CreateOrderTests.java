@@ -1,10 +1,12 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.ordersTests;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.GetOrdersDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.ReturnOrderToCustomerDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ordersTestsSupport.OrdersTestsSupport;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ownersToolsSupport.OwnersToolsTestsSupport;
+import org.apache.http.entity.mime.content.StringBody;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -49,7 +51,8 @@ class CreateOrderTests {
                 authHeader.setBearerAuth(token);
                 HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
-                String body = validOrderBody();
+                String body = genUidBody();
+//                String body = validOrderBody();
                 System.out.println(body);
 
 
@@ -61,9 +64,10 @@ class CreateOrderTests {
                 headers.setContentType(MediaType.APPLICATION_JSON);
 
                 HttpEntity<String> bodyEntity = new HttpEntity<>(body, headers);
-                ResponseEntity<Orders> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
-                        Orders.class);
-
+                ResponseEntity<ReturnOrderToCustomerDto> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
+                        ReturnOrderToCustomerDto.class);
+                System.out.println("response body: " + response.getBody());
+//                System.out.println(Objects.requireNonNull(response.getBody()).getOrderUid());
 
 //                Then: an order is successfully stored with a 201 response
                 assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
@@ -71,7 +75,7 @@ class CreateOrderTests {
 
 //                And: The order is successfully retrieved by the test Uid as verification
                 String parameter = "orderUid";
-                String testOrderUid = "223-44-444";
+                String testOrderUid = Objects.requireNonNull(response.getBody()).getOrderUuid();
                 String getOrderUri =
                         String.format("%s?%s=%s", getBaseUriForGetOrderByUid(), parameter, testOrderUid );
                 System.out.println(getOrderUri);
@@ -79,6 +83,7 @@ class CreateOrderTests {
                         getRestTemplate().exchange(getOrderUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
                         });
                 System.out.println(orderUidResponse.getBody());
+                System.out.println("Response code is " + orderUidResponse.getStatusCode() + ".");
                 Assertions.assertEquals(testOrderUid, Objects.requireNonNull(orderUidResponse.getBody()).getOrderUid());
             }
         }

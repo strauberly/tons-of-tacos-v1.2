@@ -1,8 +1,12 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ordersTestsSupport;
+import com.adamstraub.tonsoftacos.tonsoftacos.services.ordersServices.OrdersService;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.TestUris;
+import com.mysql.cj.x.protobuf.MysqlxCrud;
 import org.springframework.http.*;
 
 public class OrdersTestsSupport extends TestUris {
+    OrdersService ordersService;
+
     protected String validOrderBody() {
         return """
                 {
@@ -39,6 +43,41 @@ public class OrdersTestsSupport extends TestUris {
                 """;
     }
 
+
+protected String genUidBody() {
+    return """
+                {
+                    "customer": {
+                        "name": "billy billson",
+                        "email": "billy@bolly.com",
+                        "phoneNumber": "555.555.5959"
+                    },
+                    "order": {
+                        "orderItems": [
+                            {
+                                "itemId": {
+                                    "id": 2
+                                },
+                                "quantity": 2
+                            },
+                            {
+                                "itemId": {
+                                    "id": 12
+                                },
+                                "quantity": 1
+                            },
+                            {
+                                "itemId": {
+                                    "id": 3
+                                },
+                                "quantity": 3
+                            }
+                        ]
+                    }
+                }
+                        
+                """;
+}
         protected String validCredentials(){
             return """
                {
