@@ -1,5 +1,14 @@
 ## This Journal tracks development progress, ideas and thoughts.
 
+---
+
+-- 26 Apr 2023 --
+
+- Development has slowed dramatically due to returning to old job in order to pay bills while trying to change careers.
+- Working at trying to create a more detailed form of feed back for front end development when an exception is encountered.
+
+---
+
 --- 21 Apr 2023 --
 
 - Appear to have rectified algorithm for random Uid generated on order creation
