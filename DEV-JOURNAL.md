@@ -2,6 +2,12 @@
 
 ---
 
+-- 27 Apr 2023 --
+
+- Quite possibly found my solution through simple creation of a body field returned in create message field. The actual error itself will be logged through the creation of a log method called in the error handler.
+
+---
+
 -- 26 Apr 2023 --
 
 - Development has slowed dramatically due to returning to old job in order to pay bills while trying to change careers.
