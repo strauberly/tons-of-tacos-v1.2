@@ -15,13 +15,17 @@ public class MenuItemService implements MenuItemServiceInterface {
     @Transactional(readOnly = true)
     @Override
     public Optional<Optional<MenuItem>> findById(String id) {
+        System.out.println("service");
+        String message = null;
         Optional<MenuItem> menuItem = menuItemRepository.findById(Integer.parseInt(id));
-        if(!id.matches(".*\\d.*")){
-            throw new NumberFormatException("You have entered invalid data.");
+
+        if(!id.matches("\\d+")){
+            throw new NumberFormatException("You have entered invalid data. Try using just a number.");
+//            throw new NumberFormatException();
         } else if (menuItem.isEmpty()) {
-           throw new NoSuchElementException("You have chosen a menu id that does not exist.");
+           throw new NoSuchElementException("You have chosen a menu item that does not exist. Try using an id less than " + menuItemRepository.findAll().size() + ".");
        }else
-       return Optional.of(menuItem);
+        return Optional.of(menuItem);
     }
 
 
@@ -30,7 +34,7 @@ public class MenuItemService implements MenuItemServiceInterface {
     public List<MenuItem> findByCategory(String category) {
             List<MenuItem> menuItems = menuItemRepository.findByCategory(category);
             if (menuItems.isEmpty()){
-                throw new NoSuchElementException("You have chosen a category that does not exist.");
+                throw new NoSuchElementException("You have chosen a category that does not exist. Please check your spelling and consult the docs.");
         }
         return menuItemRepository.findByCategory(category);
     }
