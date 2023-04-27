@@ -24,29 +24,31 @@ public class GlobalErrorHandler {
     }
 // updated
 //-------------- reworked
-//@ExceptionHandler(NumberFormatException.class)
-//@ResponseStatus(code = HttpStatus.BAD_REQUEST)
-//public ResponseEntity<Object> handleNumberFormatException(NumberFormatException e, WebRequest webRequest){
-//    String body = "error sir";
-//    return (e, body, new HttpHeaders(), HttpStatus.BAD_REQUEST, webRequest);
-//}
-
-
 
     @ExceptionHandler(NumberFormatException.class)
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     public Map <String, Object> handleNumberFormatException(
             NumberFormatException e, WebRequest webRequest){
-        String body = "error, sir";
+        String body = "Check input format, consult the docs if need be. Try just a number.";
         return createExceptionMessage(e, HttpStatus.BAD_REQUEST, webRequest, body);
     }
 
+
+
 //    ---------------- Being reworked
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    @ResponseStatus(code = HttpStatus.NOT_FOUND)
+    public Map <String, Object> handleEntityNotFoundException(
+            EntityNotFoundException e, WebRequest webRequest) {
+        return createExceptionMessage(e, HttpStatus.NOT_FOUND, webRequest, LogStatus.MESSAGE_ONLY);
+    }
+
 
 //
 //    @ExceptionHandler(EntityNotFoundException.class)
 //    @ResponseStatus(code = HttpStatus.NOT_FOUND)
-//    public Map <String, Object> handleEntityNotFoundfException(
+//    public Map <String, Object> handleEntityNotFoundException(
 //            EntityNotFoundException e, WebRequest webRequest) {
 //        return createExceptionMessage(e, HttpStatus.NOT_FOUND, webRequest, LogStatus.MESSAGE_ONLY);
 //    }
@@ -79,7 +81,8 @@ public class GlobalErrorHandler {
 //    }
 
 //-------------- rework
-// this is helpful for backend but could be more helpful to front end
+// alter this to not just create the message but also log the error
+// create method to log the error to an internal file
     private Map<String,Object> createExceptionMessage(Exception e, HttpStatus status, WebRequest webRequest, String body) {
 
     Map <String, Object> error = new HashMap<>();
@@ -90,10 +93,25 @@ public class GlobalErrorHandler {
                 ((ServletWebRequest)webRequest).getRequest().getRequestURI());
     }
     error.put("message", body);
-//    error.put("message", e.getMessage());
     error.put("status code", status.value());
     error.put("timestamp", timestamp);
     error.put("reason", status.getReasonPhrase());
     return error;
     }
+//private ResponseEntity<Object> createExceptionMessage(Exception e, HttpStatus status, WebRequest webRequest, String body) {
+//
+//    Map <String, Object> error = new HashMap<>();
+//    String timestamp = ZonedDateTime.now().format(DateTimeFormatter.RFC_1123_DATE_TIME);
+//
+//    if(webRequest instanceof ServletWebRequest){
+//        error.put("uri",
+//                ((ServletWebRequest)webRequest).getRequest().getRequestURI());
+//    }
+//    error.put("message", body);
+////    error.put("message", e.getMessage());
+//    error.put("status code", status.value());
+//    error.put("timestamp", timestamp);
+//    error.put("reason", status.getReasonPhrase());
+//    return error;
+//}
 }
