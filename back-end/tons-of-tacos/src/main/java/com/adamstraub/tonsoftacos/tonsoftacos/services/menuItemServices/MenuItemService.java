@@ -1,6 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.services.menuItemServices;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.MenuItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +24,7 @@ public class MenuItemService implements MenuItemServiceInterface {
             throw new NumberFormatException("You have entered invalid data. Try using just a number.");
 //            throw new NumberFormatException();
         } else if (menuItem.isEmpty()) {
-           throw new NoSuchElementException("You have chosen a menu item that does not exist. Try using an id less than " + menuItemRepository.findAll().size() + ".");
+           throw new EntityNotFoundException("You have chosen a menu item that does not exist. Try using an id less than " + menuItemRepository.findAll().size() + ".");
        }else
         return Optional.of(menuItem);
     }

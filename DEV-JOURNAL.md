@@ -5,6 +5,8 @@
 -- 27 Apr 2023 --
 
 - Quite possibly found my solution through simple creation of a body field returned in create message field. The actual error itself will be logged through the creation of a log method called in the error handler.
+- Error handler updated for number format exception and entity not found exception.
+- Menu item test successful for positive and negative use test cases.
 
 ---
 
