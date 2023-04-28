@@ -1,6 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.menuItemTests;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.menuItemTestsSupport.GetMenuItemsTestsSupport;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -56,6 +59,7 @@ class GetMenuItemsByIdTests {
             String expected = String.valueOf(sample().getId());
             System.out.println("Actual id returned is " + actual + ", and expected id is " + expected + ".");
             assertThat(actual).isEqualTo(expected);
+            System.out.println(response.getBody());
         }
 
 
@@ -69,12 +73,22 @@ class GetMenuItemsByIdTests {
                     String.format("%s?%s=%s", getBaseUriForMenuItemByIdQuery(), parameter, badInput);
             System.out.println(uri);
 //      When: Connection is made
-            ResponseEntity<MenuItem> response =
+            ResponseEntity<Map<String,Object>> response =
+//            ResponseEntity<MenuItem> response =
                     getRestTemplate().exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                     });
 //            Then: A 400 closed code is returned
             System.out.println("Response code is " + response.getStatusCode() + ".");
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+            System.out.println(response.getBody());
+//            And: the response contains the following
+            Map<String, Object> error = response.getBody();
+            assert error != null;
+            assertThat(error.containsValue(response.getStatusCode()));
+            assertThat(error.containsValue("api/menu/id"));
+            assertThat(error.containsKey("message"));
+            assertThat(error.containsValue("timestamp"));
+
         }
 
         @Test
@@ -87,13 +101,22 @@ class GetMenuItemsByIdTests {
                     String.format("%s?%s=%d", getBaseUriForMenuItemByIdQuery(), parameter, itemId);
             System.out.println(uri);
 //      When: Connection is made
-            ResponseEntity<MenuItem> response =
+//            ResponseEntity<MenuItem> response =
+            ResponseEntity<Map<String, Object>> response =
                     getRestTemplate().exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                     });
-            System.out.println(response.getBody().getItemName());
 //            Then: A 404 closed code is returned
             System.out.println("Response code is " + response.getStatusCode() + ".");
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+            System.out.println(response.getBody());
+//            And: the error message contains
+            Map<String, Object> error = response.getBody();
+            assert error != null;
+            assertThat(error.containsValue(response.getStatusCode()));
+            assertThat(error.containsValue("api/menu/id"));
+            assertThat(error.containsKey("message"));
+            assertThat(error.containsValue("timestamp"));
+
         }
     }
 }

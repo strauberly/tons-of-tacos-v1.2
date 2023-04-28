@@ -1,5 +1,6 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.errorHandler;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.Data;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -32,26 +33,18 @@ public class GlobalErrorHandler {
         String body = "Check input format, consult the docs if need be. Try just a number.";
         return createExceptionMessage(e, HttpStatus.BAD_REQUEST, webRequest, body);
     }
-
-
-
-//    ---------------- Being reworked
-
     @ExceptionHandler(EntityNotFoundException.class)
     @ResponseStatus(code = HttpStatus.NOT_FOUND)
     public Map <String, Object> handleEntityNotFoundException(
             EntityNotFoundException e, WebRequest webRequest) {
-        return createExceptionMessage(e, HttpStatus.NOT_FOUND, webRequest, LogStatus.MESSAGE_ONLY);
+        String body = "You have chosen something that does not exist. Consult the docs and double check your input.";
+        return createExceptionMessage(e, HttpStatus.NOT_FOUND, webRequest, body);
     }
 
 
-//
-//    @ExceptionHandler(EntityNotFoundException.class)
-//    @ResponseStatus(code = HttpStatus.NOT_FOUND)
-//    public Map <String, Object> handleEntityNotFoundException(
-//            EntityNotFoundException e, WebRequest webRequest) {
-//        return createExceptionMessage(e, HttpStatus.NOT_FOUND, webRequest, LogStatus.MESSAGE_ONLY);
-//    }
+//    ---------------- Being reworked
+
+
 //
 //    @ExceptionHandler(InvalidPropertiesFormatException.class)
 //    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
