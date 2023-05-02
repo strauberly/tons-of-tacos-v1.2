@@ -75,7 +75,6 @@ protected String genUidBody() {
                         ]
                     }
                 }
-                        
                 """;
 }
         protected String validCredentials(){
