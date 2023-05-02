@@ -2,6 +2,11 @@
 
 ---
 
+-- 1 May 2023 --
+
+- Validation in place for returning a menu item by id, or menu items by category. Tests updated for positive and negative use cases.
+- Initialization of laying out validation for creating an order. Most likely evaluating that each field for customer is not null and of valid type, as well as ensuring order is not nut and the total is reflective of the cost of each item in the order.
+
 -- 27 Apr 2023 --
 
 - Quite possibly found my solution through simple creation of a body field returned in create message field. The actual error itself will be logged through the creation of a log method called in the error handler.

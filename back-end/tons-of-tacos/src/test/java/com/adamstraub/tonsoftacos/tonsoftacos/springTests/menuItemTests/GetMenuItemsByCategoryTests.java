@@ -1,6 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.menuItemTests;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.menuItemTestsSupport.GetMenuItemsTestsSupport;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-
-
+import java.util.function.BooleanSupplier;
 
 
 class GetMenuItemsByCategoryTests {
@@ -54,20 +54,21 @@ class GetMenuItemsByCategoryTests {
             ResponseEntity<List<MenuItem>> response =
                     getRestTemplate().exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                     });
-//            Then: a 200 closed code is returned
+//            Then: a 200 ok code is returned
             System.out.println(("Response code is " + response.getStatusCode() + "."));
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 //
 //           And: returned items category = category entered for query
             LinkedList<MenuItem> returnedCategoryItems = new LinkedList<>(Objects.requireNonNull(response.getBody()));
-            assertThat(returnedCategoryItems.get(0).getCategory().equals(categoryName));
+//            assertThat(returnedCategoryItems.get(0).getCategory().equals(categoryName));
+            Assertions.assertEquals(returnedCategoryItems.get(0).getCategory(), categoryName);
             System.out.println("Returned category = " + returnedCategoryItems.get(0).getCategory() + ". Queried " +
                     "category = " + categoryName);
         }
 
             @Test
-            void badCategoryEntryReturns400(){
-//        Given: a category that does not exist
+            void badCategoryEntryReturns404(){
+//          Given: a category that does not exist
                 String badInput = "!#%$^";
                 String parameter = "category";
                 String uri =
@@ -79,8 +80,19 @@ class GetMenuItemsByCategoryTests {
                                 new ParameterizedTypeReference<>() {
                         });
                 System.out.println(uri);
-                assertThat(response.getStatusCode().equals(HttpStatus.NOT_FOUND));
+//          Then: a 404 not found status code is returned
+                Assertions.assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
                 System.out.println(("Response code is " + response.getStatusCode() + "."));
-            }
+                System.out.println(response.getBody());
+//          And: the error message contains
+                Map<String, Object> error = response.getBody();
+                assert error != null;
+                System.out.println(error.get("status code").toString().substring(0,3));
+                System.out.println(HttpStatus.NOT_FOUND.toString().substring(0,3));
+                Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.NOT_FOUND.toString().substring(0,3));
+                Assertions.assertTrue(error.containsValue("/api/menu/category"));
+                Assertions.assertTrue(error.containsKey("message"));
+                Assertions.assertTrue(error.containsKey("timestamp"));
+        }
     }
 }

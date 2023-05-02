@@ -33,9 +33,10 @@ public class MenuItemService implements MenuItemServiceInterface {
     @Transactional(readOnly = true)
     @Override
     public List<MenuItem> findByCategory(String category) {
+        System.out.println("service");
             List<MenuItem> menuItems = menuItemRepository.findByCategory(category);
             if (menuItems.isEmpty()){
-                throw new NoSuchElementException("You have chosen a category that does not exist. Please check your spelling and consult the docs.");
+                throw new EntityNotFoundException("You have chosen a category that does not exist. Please check your spelling, formatting, and consult the docs.");
         }
         return menuItemRepository.findByCategory(category);
     }

@@ -65,14 +65,6 @@ public class GlobalErrorHandler {
 //            NoSuchElementException e, WebRequest webRequest){
 //        return createExceptionMessage(e, HttpStatus.NOT_FOUND, webRequest, LogStatus.MESSAGE_ONLY);
 //    }
-//-------------- reworked
-//    @ExceptionHandler(NumberFormatException.class)
-//    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
-//    public Map <String, Object> handleNumberFormatException(
-//            NumberFormatException e, WebRequest webRequest){
-//        return createExceptionMessage(e, HttpStatus.BAD_REQUEST, webRequest, LogStatus.MESSAGE_ONLY);
-//    }
-
 //-------------- rework
 // alter this to not just create the message but also log the error
 // create method to log the error to an internal file

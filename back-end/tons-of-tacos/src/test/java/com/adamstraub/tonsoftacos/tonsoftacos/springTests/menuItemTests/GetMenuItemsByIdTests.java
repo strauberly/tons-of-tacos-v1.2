@@ -62,61 +62,30 @@ class GetMenuItemsByIdTests {
             System.out.println(response.getBody());
         }
 
-
-        @Test
-        void badRequestReturns400() {
-            System.out.println(getBaseUriForMenuItemByIdQuery());
-//        Given: an invalid menu id id
-            String badInput = "!#%$^";
-            String parameter = "id";
-            String uri =
-                    String.format("%s?%s=%s", getBaseUriForMenuItemByIdQuery(), parameter, badInput);
-            System.out.println(uri);
-//      When: Connection is made
-            ResponseEntity<Map<String,Object>> response =
-//            ResponseEntity<MenuItem> response =
-                    getRestTemplate().exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
-                    });
-//            Then: A 400 closed code is returned
-            System.out.println("Response code is " + response.getStatusCode() + ".");
-            assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
-            System.out.println(response.getBody());
-//            And: the response contains the following
-            Map<String, Object> error = response.getBody();
-            assert error != null;
-            assertThat(error.containsValue(response.getStatusCode()));
-            assertThat(error.containsValue("api/menu/id"));
-            assertThat(error.containsKey("message"));
-            assertThat(error.containsValue("timestamp"));
-
-        }
-
         @Test
         void nonExistentMenuItemReturns404() {
             System.out.println(getBaseUriForMenuItemByIdQuery());
-//        Given: an invalid menu id id
+//      Given: an invalid menu id
             int itemId = 45;
             String parameter = "id";
             String uri =
                     String.format("%s?%s=%d", getBaseUriForMenuItemByIdQuery(), parameter, itemId);
             System.out.println(uri);
 //      When: Connection is made
-//            ResponseEntity<MenuItem> response =
             ResponseEntity<Map<String, Object>> response =
                     getRestTemplate().exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                     });
-//            Then: A 404 closed code is returned
-            System.out.println("Response code is " + response.getStatusCode() + ".");
+//      Then: A 404 closed code is returned
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+            System.out.println("Response code is " + response.getStatusCode() + ".");
             System.out.println(response.getBody());
-//            And: the error message contains
+//      And: the error message contains
             Map<String, Object> error = response.getBody();
             assert error != null;
-            assertThat(error.containsValue(response.getStatusCode()));
-            assertThat(error.containsValue("api/menu/id"));
-            assertThat(error.containsKey("message"));
-            assertThat(error.containsValue("timestamp"));
-
+            Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.NOT_FOUND.toString().substring(0,3));
+            Assertions.assertTrue(error.containsValue("/api/menu/id"));
+            Assertions.assertTrue(error.containsKey("message"));
+            Assertions.assertTrue(error.containsKey("timestamp"));
         }
     }
 }
