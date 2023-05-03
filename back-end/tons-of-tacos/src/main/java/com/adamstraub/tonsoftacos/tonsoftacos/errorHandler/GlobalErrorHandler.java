@@ -49,8 +49,7 @@ public class GlobalErrorHandler {
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     public Map <String, Object> handleIllegalArgumentException(
             IllegalArgumentException e, WebRequest webRequest){
-        String body = "The data you have submitted does not match the required format. Double check for null entries, " +
-                "misspellings and correct formatting. Consult the documentation.";
+        String body = "The data you have submitted does not match the required format. Consult the documentation for examples.";
         return createExceptionMessage(e, HttpStatus.BAD_REQUEST, webRequest, body);
     }
 

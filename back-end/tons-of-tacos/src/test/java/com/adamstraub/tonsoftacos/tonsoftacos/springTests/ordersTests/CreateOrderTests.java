@@ -1,12 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.ordersTests;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.GetOrdersDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.ReturnOrderToCustomerDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
-import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
-import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ordersTestsSupport.OrdersTestsSupport;
-import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ownersToolsSupport.OwnersToolsTestsSupport;
-import org.apache.http.entity.mime.content.StringBody;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -92,9 +87,8 @@ class CreateOrderTests {
 
         @Test
         void invalidOrder400() {
-//        Given: an invalid order(ie incomplete. missing fields etc) but valid auth header
-            // get valid token for authheader
-//                String token = validToken();
+//        Given: an invalid order(ie incomplete. missing fields, bad formatting etc) but valid auth header
+//          get valid token for authheader
             String token = encryptedToken();
             Assertions.assertNotNull(token);
 
@@ -103,13 +97,13 @@ class CreateOrderTests {
             authHeader.setContentType(MediaType.APPLICATION_JSON);
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
-
-            String body = invalidBody();
+//          invalid order
+            String body = invalidOrderBody();
 //                String body = validOrderBody();
             System.out.println(body);
 
 
-//                When: a successful connection is made
+//        When: a successful connection is made
             String uri = getBaseUriForCreateOrder();
             System.out.println(uri);
 
@@ -119,12 +113,12 @@ class CreateOrderTests {
             HttpEntity<String> bodyEntity = new HttpEntity<>(body, headers);
             ResponseEntity<Map<String, Object>> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity, new ParameterizedTypeReference<>() {
             });
-//        Then: a 400 bad request is returned
+//        Then: a 400 bad request is returned as validation takes place in service
             System.out.println("Response code is " + response.getStatusCode() + ".");
             System.out.println("response body: " + response.getBody());
             Assertions.assertSame(response.getStatusCode(), HttpStatus.BAD_REQUEST);
 
-//    And: the error message contains
+//        And: the error message contains
             Map<String, Object> error = response.getBody();
             assert error != null;
             Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.BAD_REQUEST.toString().substring(0,3));
