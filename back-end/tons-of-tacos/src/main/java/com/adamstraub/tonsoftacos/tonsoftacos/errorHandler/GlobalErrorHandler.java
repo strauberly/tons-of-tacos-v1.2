@@ -10,10 +10,14 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.zip.DataFormatException;
+
 @Data
 @RestControllerAdvice
 public class GlobalErrorHandler {
@@ -37,13 +41,30 @@ public class GlobalErrorHandler {
     @ResponseStatus(code = HttpStatus.NOT_FOUND)
     public Map <String, Object> handleEntityNotFoundException(
             EntityNotFoundException e, WebRequest webRequest) {
-        String body = "You have chosen something that does not exist. Consult the docs and double check your input.";
+        String body = "You have chosen something that does not exist. Consult the documentation and double check your input.";
         return createExceptionMessage(e, HttpStatus.NOT_FOUND, webRequest, body);
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
+    public Map <String, Object> handleIllegalArgumentException(
+            IllegalArgumentException e, WebRequest webRequest){
+        String body = "The data you have submitted does not match the required format. Double check for null entries, " +
+                "misspellings and correct formatting. Consult the documentation.";
+        return createExceptionMessage(e, HttpStatus.BAD_REQUEST, webRequest, body);
+    }
+
+//    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+//    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
+//    public Map <String, Object> handleIllegalArgumentException(
+//            MethodArgumentTypeMismatchException e, WebRequest webRequest){
+//        String body = "The data you have submitted does not match the required format. Double check for null entries," +
+//                "misspellings and correct formatting. Consult the documentation.";
+//        return createExceptionMessage(e, HttpStatus.BAD_REQUEST, webRequest, body);
+//    }
+
 
 //    ---------------- Being reworked
-
 
 //
 //    @ExceptionHandler(InvalidPropertiesFormatException.class)

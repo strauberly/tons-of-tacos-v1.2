@@ -6,5 +6,5 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 public interface OrdersServiceInterface {
     @Transactional
-    ReturnOrderToCustomerDto createOrder(@RequestBody NewOrderDto order);
+    ReturnOrderToCustomerDto createOrder(@RequestBody NewOrderDto order) throws Exception;
 }

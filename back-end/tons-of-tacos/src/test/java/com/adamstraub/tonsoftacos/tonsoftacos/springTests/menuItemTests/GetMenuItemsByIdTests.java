@@ -75,9 +75,9 @@ class GetMenuItemsByIdTests {
             ResponseEntity<Map<String, Object>> response =
                     getRestTemplate().exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                     });
-//      Then: A 404 closed code is returned
+//      Then: A 404 is returned
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
-            System.out.println("Response code is " + response.getStatusCode() + ".");
+
             System.out.println(response.getBody());
 //      And: the error message contains
             Map<String, Object> error = response.getBody();
