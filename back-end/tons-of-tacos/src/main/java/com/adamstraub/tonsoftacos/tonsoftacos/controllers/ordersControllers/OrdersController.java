@@ -15,7 +15,11 @@ public class OrdersController implements OrdersControllerInterface {
 
     @Override
     public ReturnOrderToCustomerDto createOrder(@RequestBody NewOrderDto order) {
-        System.out.println("controller");
-        return ordersService.createOrder(order);
+//        if (order.getCustomer().getName().matches("[a-z]|[A-Z]")) {
+            System.out.println("controller");
+            return ordersService.createOrder(order);
+//        } else {
+//            throw new IllegalArgumentException("fucker");
+//        }
     }
 }

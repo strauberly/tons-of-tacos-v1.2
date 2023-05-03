@@ -43,5 +43,5 @@ public interface OrdersControllerInterface {
 
     @ResponseStatus(code = HttpStatus.CREATED)
     @PostMapping("/checkout")
-    ReturnOrderToCustomerDto createOrder(@RequestBody NewOrderDto order);
+    ReturnOrderToCustomerDto createOrder(@RequestBody NewOrderDto order) throws Exception;
 }
