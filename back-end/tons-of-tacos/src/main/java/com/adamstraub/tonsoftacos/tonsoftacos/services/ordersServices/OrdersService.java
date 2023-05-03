@@ -12,6 +12,7 @@ import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
 import org.apache.commons.lang3.ArrayUtils;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -23,6 +24,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 
 @Service
@@ -62,7 +64,6 @@ public class OrdersService implements OrdersServiceInterface {
 
 //        System.out.println(genOrderUid());
         Double orderTotal = 0.00;
-
         ReturnOrderToCustomerDto customerDto = new ReturnOrderToCustomerDto();
         GetOrderItemDto orderitem = new GetOrderItemDto();
         Orders newOrder = order.getOrder();
@@ -70,8 +71,18 @@ public class OrdersService implements OrdersServiceInterface {
 //        System.out.println(newOrder);
         List<OrderItem> orderItems = newOrder.getOrderItems();
         List<GetOrderItemDto> orderItemDtos = new ArrayList<>();
+        byte[] nameChars = order.getCustomer().getName().getBytes(StandardCharsets.UTF_8);
+        int spaces = 0;
+        System.out.println("name chars: " + Arrays.toString(nameChars));
+        for (Byte namechar:nameChars){
+            if (Objects.equals(namechar, Byte.valueOf("32"))){
+                spaces += 1;
+            }
+        }
+        System.out.println(spaces);
         try {
-            if (!order.getCustomer().getName().matches("^\\p{L}+[\\p{L}\\p{Pd}\\p{Zs}']*\\p{L}+$|^\\p{L}+$")) {
+            if (!order.getCustomer().getName().matches("^\\p{L}+[\\p{L}\\p{Pd}\\p{Zs}']*\\p{L}+$|^\\p{L}+$") ||
+                    spaces != 1) {
                 throw new IllegalArgumentException("Customer name incorrectly formatted.");
 //            }
 //        }catch(IllegalArgumentException e) {
@@ -117,7 +128,6 @@ public class OrdersService implements OrdersServiceInterface {
 //            return customerDto;
 //            if (!order.getCustomer().getName().matches("[a-z]|[A-Z]]")) new IllegalArgumentException("fuckere");
             }
-//            throw new IllegalArgumentException("fukinup");
             }catch(IllegalArgumentException e) {
             System.out.println(e);
             throw new IllegalArgumentException();
@@ -240,5 +250,21 @@ public class OrdersService implements OrdersServiceInterface {
 //        System.out.println((char)random);
 //            return (char)random;
 //    }
+
+    private boolean validateCustomerName(String customerName){
+
+    }
+
+    private boolean validateCustomerPhone(String customerPhone){
+
+    }
+
+    private boolean validateCustomerEmail(String customerEmail){
+
+    }
+
+    private boolean validateOrder(Orders order){
+//
+    }
 
 }

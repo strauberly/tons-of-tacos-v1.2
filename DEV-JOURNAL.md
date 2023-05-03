@@ -2,6 +2,23 @@
 
 ---
 
+-- 3 May 2023 --
+
+- Valid order test updated as well as orders service incorporating validation for a customer name.
+- Research lead to regex solution from user Nick Sikrier on stack overflow https://dev.library.kiwix.org/content/stackoverflow_en_nopic_2021-08/questions/15805555/java-regex-to-validate-full-name-allow-only-spaces-and-letters.
+
+  - solution as  ^\\p{L}+[\p{L}\p{Pd}\p{Zs}']\\\*\p{L}+\$|^\p{L}+$
+
+- ^\p{L}+ &nbsp; - &nbsp; It should start with 1 or more letters.
+- [\p{Pd}\p{Zs}'\p{L}]\* &nbsp; - &nbsp; It can have letters, space character (including invisible), dash or hyphen characters and ' in any order 0 or more times.
+- \p{L}+$ &nbsp; - &nbsp; It should finish with 1 or more letters.
+- |^\p{L}+$ - Or it just should contain 1 or more letters (It is done to support single letter names).
+- My addition and incorporation simply adds converting our received customer name from the order, converting to a byte array and counting how many spaces. So if the name format doesnt match regexor has too many or not enough spaces it will not be valid. Nick's above regex allows any letter in any language and may be overkill for our little local food truck, but though it might be nice to have the option. To be evaluated if issues arise.
+- The idea being that front end should receive customer first and last name trimmed and then concat with a single whitespace in between. Will be noted in the documentation.
+- Added skeleton methods to order service to hold validation means for an order in order to help increase readability.
+
+---
+
 -- 2 May 2023 --
 
 - Created test for negative use case of creating and verifying validation is operating as desired.
