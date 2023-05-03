@@ -1,7 +1,6 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ordersTestsSupport;
 import com.adamstraub.tonsoftacos.tonsoftacos.services.ordersServices.OrdersService;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.TestUris;
-import com.mysql.cj.x.protobuf.MysqlxCrud;
 import org.springframework.http.*;
 
 public class OrdersTestsSupport extends TestUris {
@@ -80,11 +79,11 @@ public class OrdersTestsSupport extends TestUris {
 
     }
 
-    protected String invalidBody() {
+    protected String invalidOrderBody() {
         return """
                 {
                     "customer": {
-                        "name": "sdfj sdlfdsk",
+                        "name": "     ",
                         "email": "billy@bolly.com",
                         "phoneNumber": "555.555.5959"
                     },
