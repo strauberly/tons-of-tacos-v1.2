@@ -281,7 +281,7 @@ public class OrdersService implements OrdersServiceInterface {
     private void validateCustomerPhone(String customerPhone){
         byte [] phoneDigits = customerPhone.getBytes(StandardCharsets.UTF_8);
         System.out.println("Phone digits: " + Arrays.toString(phoneDigits));
-        if (phoneDigits.toString().substring(0).equals('(')){
+        if (customerPhone.substring(0).equals("(")){
             System.out.println(customerPhone.substring(0));
 
         }
