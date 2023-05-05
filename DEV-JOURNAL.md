@@ -2,6 +2,13 @@
 
 ---
 
+-- 4 May 2023 --
+
+- validateCustomerName method implemented and functioning as intended.
+- validateCustomerPhoneNumber method implemented and functioning as intended.
+
+---
+
 -- 3 May 2023 --
 
 - Valid order test updated as well as orders service incorporating validation for a customer name.
@@ -17,7 +24,6 @@
 - My addition and incorporation simply adds converting our received customer name from the order, converting to a byte array and counting how many spaces. So if the name format doesnt match regex or has too many or not enough spaces it will not be valid. Nick's above regex allows any letter in any language and may be overkill for our little local food truck, but thought it might be nice to have the option. To be evaluated if issues arise.
 - The idea being that front end should receive customer first and last name trimmed and then concat with a single whitespace in between. Will be noted in the documentation.
 - Added skeleton methods to order service to hold validation means for an order in order to help increase readability.
-- validateCustomerName method implemented and functioning as intended.
 
 ---
 

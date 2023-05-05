@@ -73,9 +73,11 @@ public class OrdersService implements OrdersServiceInterface {
         List<GetOrderItemDto> orderItemDtos = new ArrayList<>();
 
 //        validation methods
-//        validateCustomerName(order.getCustomer().getName());
+        validateCustomerName(order.getCustomer().getName());
+        System.out.println("customer name valid: " + customerNameValid);
         validateCustomerPhone(order.getCustomer().getPhoneNumber());
         System.out.println("customer name valid: " + customerNameValid);
+        validateCustomerPhone(order.getCustomer().getPhoneNumber());
         System.out.println((int) order.getCustomer().getName().charAt(0));
 //        byte[] nameChars = order.getCustomer().getName().getBytes(StandardCharsets.UTF_8);
 //        int spaces = 0;
@@ -89,7 +91,7 @@ public class OrdersService implements OrdersServiceInterface {
 
 //        throw error if field invalid
         try {
-            if(!customerNameValid){
+            if(!customerNameValid||!customerPhoneNumberValid){
 
 //            if (!order.getCustomer().getName().matches("^\\p{L}+[\\p{L}\\p{Pd}\\p{Zs}']*\\p{L}+$|^\\p{L}+$") ||
 //                    spaces != 1) {
@@ -281,18 +283,14 @@ public class OrdersService implements OrdersServiceInterface {
     private void validateCustomerPhone(String customerPhone){
         byte [] phoneDigits = customerPhone.getBytes(StandardCharsets.UTF_8);
         System.out.println("Phone digits: " + Arrays.toString(phoneDigits));
-        if (phoneDigits.toString().substring(0).equals('(')){
-            System.out.println(customerPhone.substring(0));
+        if (customerPhone.matches("[0-9-]*")
+                && customerPhone.charAt(3) == (byte) 45
+                && customerPhone.charAt(7) == 45
+                && customerPhone.length()==12){
 
+            customerPhoneNumberValid = true;
+            System.out.println("phone format matching.");
         }
-
-//        check if index 0 == ( && index 4 ==)
-//        check if 1-3 == d
-//        check if 5 == space
-//        check if 6-8 == d
-//        check if 9 == -
-//        check if 10-13 == d
-
     }
 //
 //    private boolean validateCustomerEmail(String customerEmail){
