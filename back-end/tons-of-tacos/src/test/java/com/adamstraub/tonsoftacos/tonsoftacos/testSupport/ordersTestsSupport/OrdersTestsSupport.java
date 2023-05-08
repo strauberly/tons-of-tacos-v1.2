@@ -84,7 +84,7 @@ public class OrdersTestsSupport extends TestUris {
                 {
                     "customer": {
                         "name": "bob smith",
-                        "email": "billy@bolly.com",
+                        "email": " billy@bolly.io",
                         "phoneNumber": "555-555-5999"
                     },
                     "order": {

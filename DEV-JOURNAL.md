@@ -2,6 +2,12 @@
 
 ---
 
+-- May 2023 --
+
+customer email validation in place.
+
+---
+
 -- 4 May 2023 --
 
 - validateCustomerName method implemented and functioning as intended.
