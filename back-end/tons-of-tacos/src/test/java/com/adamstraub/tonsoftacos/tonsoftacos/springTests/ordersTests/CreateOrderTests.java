@@ -34,6 +34,7 @@ class CreateOrderTests {
     class testThatDoesNotPolluteTheApplicationContextUris extends OrdersTestsSupport {
         @Test
         void orderCreated201() {
+//            re-organize
 //                Given: a valid order and authheader
 
             // get valid token for authheader
@@ -71,7 +72,7 @@ class CreateOrderTests {
 
 //                And: The order is successfully retrieved by the test Uid as verification
             String parameter = "orderUid";
-            String testOrderUid = Objects.requireNonNull(response.getBody()).getOrderUuid();
+            String testOrderUid = Objects.requireNonNull(response.getBody()).getOrderUid();
             String getOrderUri =
                     String.format("%s?%s=%s", getBaseUriForGetOrderByUid(), parameter, testOrderUid);
             System.out.println(getOrderUri);
@@ -98,7 +99,7 @@ class CreateOrderTests {
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 //          invalid order
-            String body = invalidOrderBody();
+            String body = invalidOrder();
 //                String body = validOrderBody();
             System.out.println(body);
 

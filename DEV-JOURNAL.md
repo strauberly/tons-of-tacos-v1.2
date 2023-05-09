@@ -2,6 +2,13 @@
 
 ---
 
+-- 9 May 2023 --
+
+- Order validation refactored for a clean up and integration test for negative test case operating as expected.
+- Re organization of positive test case to be evaluated.
+
+---
+
 -- 8 May 2023 --
 
 - customer email validation in place.
