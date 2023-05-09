@@ -2,21 +2,17 @@ package com.adamstraub.tonsoftacos.tonsoftacos.errorHandler;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.Data;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.zip.DataFormatException;
 
 @Data
 @RestControllerAdvice
@@ -35,14 +31,14 @@ public class GlobalErrorHandler {
     public Map <String, Object> handleNumberFormatException(
             NumberFormatException e, WebRequest webRequest){
         String body = "Check input format, consult the docs if need be. Try just a number.";
-        return createExceptionMessage(e, HttpStatus.BAD_REQUEST, webRequest, body);
+        return createExceptionMessage(e.getMessage(), HttpStatus.BAD_REQUEST, webRequest);
     }
     @ExceptionHandler(EntityNotFoundException.class)
     @ResponseStatus(code = HttpStatus.NOT_FOUND)
     public Map <String, Object> handleEntityNotFoundException(
             EntityNotFoundException e, WebRequest webRequest) {
         String body = "You have chosen something that does not exist. Consult the documentation and double check your input.";
-        return createExceptionMessage(e, HttpStatus.NOT_FOUND, webRequest, body);
+        return createExceptionMessage(e.getMessage(), HttpStatus.NOT_FOUND, webRequest);
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
@@ -50,7 +46,7 @@ public class GlobalErrorHandler {
     public Map <String, Object> handleIllegalArgumentException(
             IllegalArgumentException e, WebRequest webRequest){
         String body = "The data you have submitted does not match the required format. Consult the documentation for examples.";
-        return createExceptionMessage(e, HttpStatus.BAD_REQUEST, webRequest, body);
+        return createExceptionMessage(e.getLocalizedMessage(), HttpStatus.BAD_REQUEST, webRequest);
     }
 
 //    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
@@ -88,7 +84,7 @@ public class GlobalErrorHandler {
 //-------------- rework
 // alter this to not just create the message but also log the error
 // create method to log the error to an internal file
-    private Map<String,Object> createExceptionMessage(Exception e, HttpStatus status, WebRequest webRequest, String body) {
+    private Map<String,Object> createExceptionMessage(String e, HttpStatus status, WebRequest webRequest) {
 
     Map <String, Object> error = new HashMap<>();
     String timestamp = ZonedDateTime.now().format(DateTimeFormatter.RFC_1123_DATE_TIME);
@@ -97,10 +93,12 @@ public class GlobalErrorHandler {
         error.put("uri",
                 ((ServletWebRequest)webRequest).getRequest().getRequestURI());
     }
-    error.put("message", body);
+//    error.put("message", body);
+        error.put("message", e);
     error.put("status code", status.value());
     error.put("timestamp", timestamp);
     error.put("reason", status.getReasonPhrase());
+//    error.put("hwut haeppen", e);
     return error;
     }
 //private ResponseEntity<Object> createExceptionMessage(Exception e, HttpStatus status, WebRequest webRequest, String body) {

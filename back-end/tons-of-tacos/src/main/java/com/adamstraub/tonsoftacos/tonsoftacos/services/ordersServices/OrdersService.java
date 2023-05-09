@@ -37,6 +37,7 @@ public class OrdersService implements OrdersServiceInterface {
 
     private boolean customerNameValid = false;
     private boolean customerPhoneNumberValid = false;
+    private boolean customerEmailValid = false;
 
     @Override
     @Transactional
@@ -72,13 +73,21 @@ public class OrdersService implements OrdersServiceInterface {
         List<OrderItem> orderItems = newOrder.getOrderItems();
         List<GetOrderItemDto> orderItemDtos = new ArrayList<>();
 
+        System.out.println("validation check");
 //        validation methods
+        System.out.println("customer name: " + order.getCustomer().getName());
         validateCustomerName(order.getCustomer().getName());
         System.out.println("customer name valid: " + customerNameValid);
+
+        System.out.println("customer phone: " + order.getCustomer().getPhoneNumber());
         validateCustomerPhone(order.getCustomer().getPhoneNumber());
-        System.out.println("customer name valid: " + customerNameValid);
-        validateCustomerPhone(order.getCustomer().getPhoneNumber());
-        System.out.println((int) order.getCustomer().getName().charAt(0));
+        System.out.println("customer phone valid: " + customerPhoneNumberValid);
+
+        System.out.println("customer email: " + order.getCustomer().getEmail());
+        validateCustomerEmail(order.getCustomer().getEmail());
+        System.out.println("customer email valid: " + customerEmailValid);
+//        validateCustomerPhone(order.getCustomer().getPhoneNumber());
+//        System.out.println((int) order.getCustomer().getName().charAt(0));
 //        byte[] nameChars = order.getCustomer().getName().getBytes(StandardCharsets.UTF_8);
 //        int spaces = 0;
 //        System.out.println("name chars: " + Arrays.toString(nameChars));
@@ -90,16 +99,40 @@ public class OrdersService implements OrdersServiceInterface {
 //        System.out.println(spaces);
 
 //        throw error if field invalid
-        try {
-            if(!customerNameValid||!customerPhoneNumberValid){
+//        try {
+//            if (!customerNameValid || !customerPhoneNumberValid || !customerEmailValid) {
 
+            if (!customerNameValid) {
 //            if (!order.getCustomer().getName().matches("^\\p{L}+[\\p{L}\\p{Pd}\\p{Zs}']*\\p{L}+$|^\\p{L}+$") ||
 //                    spaces != 1) {
                 throw new IllegalArgumentException("Customer name incorrectly formatted.");
+
 //            }
 //        }catch(IllegalArgumentException e) {
 //            System.out.println(e);
-        }else{
+            }
+            if(!customerPhoneNumberValid) {
+                throw new IllegalArgumentException("Customer phone number incorrectly formatted.");
+            }
+            if (!customerEmailValid){
+                throw new IllegalArgumentException("Customer e-mail incorrectly formatted.");
+            }
+//        }catch (IllegalArgumentException e) {
+//            System.out.println(e);
+//            throw new IllegalArgumentException();
+//        }
+//        try {
+            if (!(order.getOrder().getOrderItems().size() > 0)) {
+            throw new IllegalArgumentException("An order must contain at least 1 menu item and can not be null.");
+            }
+//        }catch (IllegalArgumentException e) {
+//            System.out.println(e);
+//            throw new IllegalArgumentException("order busted");
+//        }
+
+
+
+//            else{
 //                for (OrderItem orderItem : orderItems) {
 //                    orderItem.setTotal(orderItem.getQuantity() *
 //                            menuItemRepository.getReferenceById(orderItem.getItemId().getId()).getUnitPrice());
@@ -141,11 +174,11 @@ public class OrdersService implements OrdersServiceInterface {
             System.out.println("customer dto: " + customerDto);
 //            return customerDto;
 //            if (!order.getCustomer().getName().matches("[a-z]|[A-Z]]")) new IllegalArgumentException("fuckere");
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println(e);
-            throw new IllegalArgumentException();
-        }
+//            }
+//        } catch (IllegalArgumentException e) {
+//            System.out.println(e);
+//            throw new IllegalArgumentException();
+//        }
         return customerDto;
     }
 
@@ -266,39 +299,35 @@ public class OrdersService implements OrdersServiceInterface {
 
     private void validateCustomerName(String customerName) {
         byte[] nameChars = customerName.getBytes(StandardCharsets.UTF_8);
-        System.out.println("nameChars: " + Arrays.toString(nameChars));
+//        System.out.println("nameChars: " + Arrays.toString(nameChars));
         int spaces = 0;
         for (Byte namechar : nameChars) {
             if (Objects.equals(namechar, (byte) 32)) {
                 spaces += 1;
             }
         }
+//        possibly alter for just ^[a-zA-Z]$+ [a-zA-Z]+
         if (customerName.matches("^\\p{L}+[\\p{L}\\p{Pd}\\p{Zs}']*\\p{L}+$|^\\p{L}+$") &&
                     spaces == 1) {
-                System.out.println("spaces: " + spaces);
+//                System.out.println("spaces: " + spaces);
                 customerNameValid = true;
         }
     }
 
     private void validateCustomerPhone(String customerPhone){
         byte [] phoneDigits = customerPhone.getBytes(StandardCharsets.UTF_8);
-        System.out.println("Phone digits: " + Arrays.toString(phoneDigits));
+//        System.out.println("Phone digits: " + Arrays.toString(phoneDigits));
         if (customerPhone.matches("[0-9-]*")
                 && customerPhone.charAt(3) == (byte) 45
                 && customerPhone.charAt(7) == 45
                 && customerPhone.length()==12){
 
             customerPhoneNumberValid = true;
-            System.out.println("phone format matching.");
+//            System.out.println("phone format matching.");
         }
     }
-//
-//    private boolean validateCustomerEmail(String customerEmail){
-//
-//    }
-//
-//    private boolean validateOrder(Orders order){
-////
-//    }
+    private void validateCustomerEmail(String customerEmail){
+        if (customerEmail.matches("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,}")) customerEmailValid = true;
+    }
 
 }

@@ -79,12 +79,28 @@ public class OrdersTestsSupport extends TestUris {
 
     }
 
+
+//    protected String invalidOrderBody() {
+//        return """
+//                {
+//                    "customer": {
+//                        "name": "bob smith",
+//                        "email": "billy@bolly.io",
+//                        "phoneNumber": "555-555-5999"
+//                    },
+//                    "order": {
+//                    }
+//                }
+//                """;
+//    }
+
+
     protected String invalidOrderBody() {
         return """
                 {
                     "customer": {
                         "name": "bob smith",
-                        "email": "billy@bolly.com",
+                        "email": "billy@bolly.i",
                         "phoneNumber": "555-555-5999"
                     },
                     "order": {

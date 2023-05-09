@@ -2,6 +2,13 @@
 
 ---
 
+-- 8 May 2023 --
+
+- customer email validation in place.
+- test correctly returns 400 bad request if customer name, phone number or email invalid.
+
+---
+
 -- 4 May 2023 --
 
 - validateCustomerName method implemented and functioning as intended.
@@ -19,10 +26,10 @@
     - ^\p{L}+ &nbsp; - &nbsp; It should start with 1 or more letters.
     - [\p{Pd}\p{Zs}'\p{L}]\* &nbsp; - &nbsp; It can have letters, space character (including invisible), dash or hyphen characters and ' in any order 0 or more times.
     - \p{L}+$ &nbsp; - &nbsp; It should finish with 1 or more letters.
-    - |^\p{L}+$ - Or it just should contain 1 or more letters (It is done to support single letter names).
+    - |^\p{L}+$ &nbsp; - &nbsp; Or it just should contain 1 or more letters (It is done to support single letter names).
 
 - My addition and incorporation simply adds converting our received customer name from the order, converting to a byte array and counting how many spaces. So if the name format doesnt match regex or has too many or not enough spaces it will not be valid. Nick's above regex allows any letter in any language and may be overkill for our little local food truck, but thought it might be nice to have the option. To be evaluated if issues arise.
-- The idea being that front end should receive customer first and last name trimmed and then concat with a single whitespace in between. Will be noted in the documentation.
+- The idea being that front end should receive customer first and last name trimmed and then concat with a single space in between. Will be noted in the documentation.
 - Added skeleton methods to order service to hold validation means for an order in order to help increase readability.
 
 ---
