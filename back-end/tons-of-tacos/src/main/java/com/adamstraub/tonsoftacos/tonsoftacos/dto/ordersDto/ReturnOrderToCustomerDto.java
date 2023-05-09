@@ -8,7 +8,7 @@ import java.util.List;
 @Data
 public class ReturnOrderToCustomerDto {
     private String customerName;
-    private String orderUuid;
+    private String orderUid;
     private List<GetOrderItemDto> orderItems;
     private Double orderTotal;
 

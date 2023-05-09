@@ -95,12 +95,12 @@ public class OrdersTestsSupport extends TestUris {
 //    }
 
 
-    protected String invalidOrderBody() {
+    protected String invalidOrder() {
         return """
                 {
                     "customer": {
-                        "name": "bob smith",
-                        "email": "billy@bolly.i",
+                        "name": "bobsmith",
+                        "email": "billy@bolly.io",
                         "phoneNumber": "555-555-5999"
                     },
                     "order": {
