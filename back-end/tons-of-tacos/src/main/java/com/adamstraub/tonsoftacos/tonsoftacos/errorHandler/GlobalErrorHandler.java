@@ -23,66 +23,32 @@ public class GlobalErrorHandler {
     private enum LogStatus{
         STACK_TRACE, MESSAGE_ONLY
     }
-// updated
-//-------------- reworked
 
     @ExceptionHandler(NumberFormatException.class)
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     public Map <String, Object> handleNumberFormatException(
             NumberFormatException e, WebRequest webRequest){
-        String body = "Check input format, consult the docs if need be. Try just a number.";
-        return createExceptionMessage(e.getMessage(), HttpStatus.BAD_REQUEST, webRequest);
+        return createExceptionMessage(e.getLocalizedMessage(), HttpStatus.BAD_REQUEST, webRequest);
     }
     @ExceptionHandler(EntityNotFoundException.class)
     @ResponseStatus(code = HttpStatus.NOT_FOUND)
     public Map <String, Object> handleEntityNotFoundException(
             EntityNotFoundException e, WebRequest webRequest) {
-        String body = "You have chosen something that does not exist. Consult the documentation and double check your input.";
-        return createExceptionMessage(e.getMessage(), HttpStatus.NOT_FOUND, webRequest);
+        return createExceptionMessage(e.getLocalizedMessage(), HttpStatus.NOT_FOUND, webRequest);
     }
 
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     public Map <String, Object> handleIllegalArgumentException(
             IllegalArgumentException e, WebRequest webRequest){
-        String body = "The data you have submitted does not match the required format. Consult the documentation for examples.";
         return createExceptionMessage(e.getLocalizedMessage(), HttpStatus.BAD_REQUEST, webRequest);
     }
-
-//    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-//    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
-//    public Map <String, Object> handleIllegalArgumentException(
-//            MethodArgumentTypeMismatchException e, WebRequest webRequest){
-//        String body = "The data you have submitted does not match the required format. Double check for null entries," +
-//                "misspellings and correct formatting. Consult the documentation.";
-//        return createExceptionMessage(e, HttpStatus.BAD_REQUEST, webRequest, body);
-//    }
 
 
 //    ---------------- Being reworked
 
-//
-//    @ExceptionHandler(InvalidPropertiesFormatException.class)
-//    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
-//    public Map <String, Object> handleIllegalArgumentException(
-//            InvalidPropertiesFormatException e, WebRequest webRequest){
-//        return createExceptionMessage(e, HttpStatus.BAD_REQUEST, webRequest, LogStatus.MESSAGE_ONLY);
-//    }
-//    @ExceptionHandler(TypeMismatchException.class)
-//    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
-//    public Map <String, Object> handleTypeMismatchException(
-//            TypeMismatchException e, WebRequest webRequest){
-//        return createExceptionMessage(e, HttpStatus.BAD_REQUEST, webRequest, LogStatus.MESSAGE_ONLY);
-//    }
-//
-//    @ExceptionHandler(NoSuchElementException.class)
-//    @ResponseStatus(code = HttpStatus.NOT_FOUND)
-//    public Map <String, Object> handleNoSuchElementException(
-//            NoSuchElementException e, WebRequest webRequest){
-//        return createExceptionMessage(e, HttpStatus.NOT_FOUND, webRequest, LogStatus.MESSAGE_ONLY);
-//    }
-//-------------- rework
-// alter this to not just create the message but also log the error
+
+// alter to not just create the message but also log the error
 // create method to log the error to an internal file
     private Map<String,Object> createExceptionMessage(String e, HttpStatus status, WebRequest webRequest) {
 
@@ -93,28 +59,10 @@ public class GlobalErrorHandler {
         error.put("uri",
                 ((ServletWebRequest)webRequest).getRequest().getRequestURI());
     }
-//    error.put("message", body);
-        error.put("message", e);
+    error.put("message", e);
     error.put("status code", status.value());
     error.put("timestamp", timestamp);
     error.put("reason", status.getReasonPhrase());
-//    error.put("hwut haeppen", e);
     return error;
     }
-//private ResponseEntity<Object> createExceptionMessage(Exception e, HttpStatus status, WebRequest webRequest, String body) {
-//
-//    Map <String, Object> error = new HashMap<>();
-//    String timestamp = ZonedDateTime.now().format(DateTimeFormatter.RFC_1123_DATE_TIME);
-//
-//    if(webRequest instanceof ServletWebRequest){
-//        error.put("uri",
-//                ((ServletWebRequest)webRequest).getRequest().getRequestURI());
-//    }
-//    error.put("message", body);
-////    error.put("message", e.getMessage());
-//    error.put("status code", status.value());
-//    error.put("timestamp", timestamp);
-//    error.put("reason", status.getReasonPhrase());
-//    return error;
-//}
 }
