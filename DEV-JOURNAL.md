@@ -5,7 +5,8 @@
 -- 9 May 2023 --
 
 - Order validation refactored for a clean up and integration test for negative test case operating as expected.
-- Re organization of positive test case to be evaluated.
+- Valid order test refactored for updated validation and is successful.
+- Cleaned up code and comments in auth service, order creation test, and jwt service.
 
 ---
 

@@ -37,8 +37,7 @@ class CreateOrderTests {
 //            re-organize
 //                Given: a valid order and authheader
 
-            // get valid token for authheader
-//                String token = validToken();
+            // get valid token for authheader to search for the newly created order
             String token = encryptedToken();
             Assertions.assertNotNull(token);
 
@@ -49,8 +48,7 @@ class CreateOrderTests {
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
             String body = genUidBody();
-//                String body = validOrderBody();
-            System.out.println(body);
+            System.out.println("valid order body: " + body);
 
 
 //                When: a successful connection is made
@@ -84,8 +82,7 @@ class CreateOrderTests {
             Assertions.assertEquals(testOrderUid, Objects.requireNonNull(orderUidResponse.getBody()).getOrderUid());
         }
 
-//        test for invalid
-
+//        test for bad data
         @Test
         void invalidOrder400() {
 //        Given: an invalid order(ie incomplete. missing fields, bad formatting etc) but valid auth header
@@ -101,7 +98,7 @@ class CreateOrderTests {
 //          invalid order
             String body = invalidOrder();
 //                String body = validOrderBody();
-            System.out.println(body);
+            System.out.println("invalid order body: " + body);
 
 
 //        When: a successful connection is made
@@ -126,8 +123,6 @@ class CreateOrderTests {
             Assertions.assertTrue(error.containsValue("/api/order/checkout"));
             Assertions.assertTrue(error.containsKey("message"));
             Assertions.assertTrue(error.containsKey("timestamp"));
-
-
         }
     }
 }

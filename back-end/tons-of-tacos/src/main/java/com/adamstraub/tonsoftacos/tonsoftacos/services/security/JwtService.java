@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.ArrayList;
@@ -55,15 +54,13 @@ public class JwtService {
 
     private Key getSignKey(){
         byte[] keyBytes = Decoders.BASE64.decode(SECRET);
-//        System.out.println(Arrays.toString(keyBytes));
         return Keys.hmacShaKeyFor(keyBytes);
     }
     private String buildToken(String username){
-//    private String buildToken(Map<String, Object> claims, String username){
         String token = Jwts.builder()
-//                .setClaims(claims)
                 .setSubject(username)
                 .setIssuedAt(new Date(System.currentTimeMillis() * 1000))
+//                16 hours, reflective of our owners work day - to be altered to facilitate mitigation of token capture
                 .setExpiration(new Date((System.currentTimeMillis() * 1000) + (1000000L * 60 * 60 * 16)))
                 .signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
         System.out.println(token);
@@ -72,7 +69,6 @@ public class JwtService {
 
 
     public String generateToken(String username){
-//        Map<String, Object> claims = new HashMap<>();
         return buildToken(username);
     }
 
@@ -108,12 +104,14 @@ public class JwtService {
         return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
     }
 
-    public Boolean validateToken(String token, UserDetails userDetails){
+    public void validateToken(String token, UserDetails userDetails){
         final String username = extractUsername(token);
-        return (username.equals(userDetails.getUsername()));
+        userDetails.getUsername();
     }
 
-//  encrypt
+//  encrypt - used during development as a means to encrypt credentials
+//  before storing them and facilitating decryption means
+
     protected String encrypt(String string){
         System.out.println(string);
 
