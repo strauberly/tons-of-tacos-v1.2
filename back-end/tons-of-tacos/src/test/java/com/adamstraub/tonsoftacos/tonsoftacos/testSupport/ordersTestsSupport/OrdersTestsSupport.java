@@ -49,7 +49,7 @@ public class OrdersTestsSupport extends TestUris {
                     "customer": {
                         "name": "billy billson",
                         "email": "billy@bolly.com",
-                        "phoneNumber": "555.555.5959"
+                        "phoneNumber": "555-555-5959"
                     },
                     "order": {
                         "orderItems": [
@@ -163,7 +163,6 @@ public class OrdersTestsSupport extends TestUris {
 
     protected String encryptedToken(){
         String body = encryptedCredentials();
-        System.out.println(body);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
