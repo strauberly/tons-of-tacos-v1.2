@@ -125,7 +125,6 @@ class CreateOrderTests {
             Assertions.assertTrue(error.containsValue("/api/order/checkout"));
             Assertions.assertTrue(error.containsKey("message"));
             Assertions.assertTrue(error.containsKey("timestamp"));
-//            check these and make sure all present
         }
     }
 }
