@@ -3,12 +3,7 @@ package com.adamstraub.tonsoftacos.tonsoftacos.springTests.ownersToolsTests.auth
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
 import com.adamstraub.tonsoftacos.tonsoftacos.services.security.JwtService;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ownersToolsSupport.OwnersToolsTestsSupport;
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTVerifier;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.interfaces.DecodedJWT;
-import io.jsonwebtoken.*;
-import io.jsonwebtoken.impl.crypto.DefaultJwtSignatureValidator;
+
 import io.jsonwebtoken.impl.crypto.JwtSignatureValidator;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -69,46 +64,8 @@ public class LoginTest implements JwtSignatureValidator {
         @Autowired
         UserDetailsService userDetailsService;
 
-//        @Value("${key}")
-//        private String SECRET;
-
-//        code altered for encryption 18 Apr 2023 and test no longer valid
-//        @Test
-//        void userCredentialsValidAndReturnValidWebToken200() throws Exception {
-//
-////                Given: a valid combination of owner username and password
-//            String body = validCredentials();
-//            System.out.println(body);
-//
-////                When: connecting to the login endpoint
-//            HttpHeaders headers = new HttpHeaders();
-//            headers.setContentType(MediaType.APPLICATION_JSON);
-//            String uri = getBaseUriForOwnersLogin();
-//            HttpEntity<String> bodyEntity = new HttpEntity<>(body, headers);
-//            ResponseEntity<String> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
-//                    String.class);
-//
-////                Then: a response status code of 200 is received
-//            System.out.println(("Response code is " + response.getStatusCode() + "."));
-//            Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
-//
-////                And: a valid web token is generated and returned
-//
-////            split the token, get the subject from payload
-//            String[] tokenSegments = Objects.requireNonNull(response.getBody()).split("\\.");
-//            Base64.Decoder decoder = Base64.getUrlDecoder();
-//            String payload = new String(decoder.decode(tokenSegments[1]));
-//            String sub = payload.substring(8, 15);
-////            String sub = payload.substring(8, 15);
-////            validate username and check if token is past expiration
-//            UserDetails userDetails = userDetailsService.loadUserByUsername(sub);
-//            Assertions.assertTrue(jwtService.isTokenValid(response.getBody(), userDetails));
-//            System.out.println("token valid: " + jwtService.isTokenValid(response.getBody(), userDetails));
-//
-//        }
-
         @Test
-        void encryptedUserCredentialsValidAndReturnValidWebToken200() throws Exception {
+        void encryptedUserCredentialsValidAndReturnValidWebToken200(){
 
 //                Given: a valid combination of owner username and password
             String body = encryptedCredentials();
@@ -123,8 +80,8 @@ public class LoginTest implements JwtSignatureValidator {
                     String.class);
 
 //                Then: a response status code of 200 is received
-            System.out.println(("Response code is " + response.getStatusCode() + "."));
             Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
+            System.out.println(("Response code is " + response.getStatusCode() + "."));
 
 //                And: a valid web token is generated and returned
 
@@ -132,24 +89,22 @@ public class LoginTest implements JwtSignatureValidator {
             String[] tokenSegments = Objects.requireNonNull(response.getBody()).split("\\.");
             Base64.Decoder decoder = Base64.getUrlDecoder();
             String payload = new String(decoder.decode(tokenSegments[1]));
-            System.out.println("sub value: " + payload);
-            System.out.println("extract user: " + jwtService.extractUsername(response.getBody()));
-            System.out.println(jwtService.decrypt(jwtService.extractUsername(response.getBody())));
-//            byte[] subBytes = payload.getBytes(StandardCharsets.UTF_8);
-//            int decodedSubByte;
-//            List<Character> decodedSubBytes = new ArrayList<>();
-//            System.out.println(Arrays.toString(subBytes));
-//            for (Byte subByte: subBytes){
-//                decodedSubByte = subByte;
-//                decodedSubByte -= 3;
-//                decodedSubBytes.add((char) decodedSubByte);
-//            }
-//            System.out.println(decodedSubBytes);
-//            String sub = payload.substring(8, 15);
-//            validate username and check if token is past expiration
+            System.out.println("payload value: " + payload);
+            System.out.println("extract sub: " + jwtService.extractUsername(response.getBody()));
+            System.out.println("decrypted user: " + jwtService.decrypt(jwtService.extractUsername(response.getBody())));
             UserDetails userDetails = userDetailsService.loadUserByUsername(jwtService.decrypt(jwtService.extractUsername(response.getBody())));
             Assertions.assertTrue(jwtService.isTokenValid(response.getBody(), userDetails));
+            System.out.println(userDetails);
+            System.out.println(response.getBody());
             System.out.println("token valid: " + jwtService.isTokenValid(response.getBody(), userDetails));
+        }
+
+        @Test
+        void userCredentialsInvalidAndReturns(){
+//            Given: bad password or user login details
+//            When:  connection is made to login endpoint
+//            Then:  an error of "" is returned
+//            And:   message ==
 
         }
     }
