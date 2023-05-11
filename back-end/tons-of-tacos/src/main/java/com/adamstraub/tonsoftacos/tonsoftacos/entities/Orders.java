@@ -38,8 +38,8 @@ public class Orders implements Serializable {
     @Column (name = "ready")
     private String ready = "no";
 
-    @Column (name = "closed")
-    private String closed = "open";
+    @Column (name = "status")
+    private String status = "open";
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "order", fetch = FetchType.LAZY)
     @JsonManagedReference
@@ -55,7 +55,7 @@ public class Orders implements Serializable {
                 ", orderUid='" + orderUid + '\'' +
                 ", created=" + created +
                 ", ready='" + ready + '\'' +
-                ", closed='" + closed + '\'' +
+                ", closed='" + status + '\'' +
                 '}';
     }
 }

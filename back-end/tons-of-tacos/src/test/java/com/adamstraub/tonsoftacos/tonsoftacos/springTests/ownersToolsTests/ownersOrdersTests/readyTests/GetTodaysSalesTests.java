@@ -79,7 +79,7 @@ public class GetTodaysSalesTests {
             List<Orders> orders = ordersRepository.findAll();
             List<Orders> closedOrders = new ArrayList<>();
             for (Orders order: orders){
-                if (!order.getClosed().equals("no")){
+                if (!order.getStatus().equals("no")){
                     closedOrders.add(order);
                 }
             }

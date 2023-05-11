@@ -67,7 +67,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
         List<Orders> orders = ordersRepository.findByCustomerId(customerObj.getCustomerId());
         List<OwnersGetOrderDto> openOrders = new ArrayList<>();
         for (Orders order: orders)
-            if (order.getClosed().equals("closed")) {
+            if (order.getStatus().equals("closed")) {
                 throw new NoSuchElementException("No open orders for customer found.");
             }else{
             openOrders.add(ownersGetOrderDtoConverter(order));
@@ -90,7 +90,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
         System.out.println("service");
         Orders order = ordersRepository.getReferenceById(orderId);
         String timeClosed = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
-        order.setClosed(timeClosed);
+        order.setStatus("closed: " + timeClosed);
         System.out.println("Order closed");
 //        check against customer to see if there are other open orders and if not delete customer
         Customer customer = customerRepository.getReferenceById(order.getCustomerId());
@@ -98,7 +98,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
 //        System.out.println(customerOrders);
         List<Orders> openOrders = new ArrayList<>();
         for (Orders customerOrder : customerOrders) {
-            if (customerOrder.getClosed().equals("open")){
+            if (customerOrder.getStatus().equals("open")){
                 openOrders.add(customerOrder);
 //                System.out.println(openOrders);
             }
@@ -216,7 +216,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
         ownersGetOrderDto.setOrderTotal(order.getOrderTotal());
         ownersGetOrderDto.setCreated(order.getCreated());
         ownersGetOrderDto.setReady(order.getReady());
-        ownersGetOrderDto.setStatus(order.getClosed());
+        ownersGetOrderDto.setStatus(order.getStatus());
 //        System.out.println(ownersGetOrderDto);
         return ownersGetOrderDto;
     }
