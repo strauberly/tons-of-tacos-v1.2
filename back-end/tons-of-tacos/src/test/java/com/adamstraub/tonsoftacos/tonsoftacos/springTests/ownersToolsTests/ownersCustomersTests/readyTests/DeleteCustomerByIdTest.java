@@ -32,7 +32,7 @@ public class DeleteCustomerByIdTest {
             config = @SqlConfig(encoding = "utf-8"))
     class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSupport {
         @Test
-        void customerDeleted200() {
+        void customerDeleted() {
             //        Given: given a valid customer id and auth header
 //            get valid token
 //            String token = validToken();

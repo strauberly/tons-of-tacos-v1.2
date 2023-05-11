@@ -81,8 +81,9 @@ class CreateOrderTests {
             Assertions.assertEquals(testOrderUid, Objects.requireNonNull(orderUidResponse.getBody()).getOrderUid());
             System.out.println(orderUidResponse.getBody());
             System.out.println("Response code is " + orderUidResponse.getStatusCode() + ".");
-            System.out.println("New order was found.");
+            System.out.println("New order was found verifying proper functionality.");
         }
+
 
 //        test for bad data
         @Test
@@ -125,7 +126,6 @@ class CreateOrderTests {
             Assertions.assertTrue(error.containsValue("/api/order/checkout"));
             Assertions.assertTrue(error.containsKey("message"));
             Assertions.assertTrue(error.containsKey("timestamp"));
-//            check these and make sure all present
         }
     }
 }

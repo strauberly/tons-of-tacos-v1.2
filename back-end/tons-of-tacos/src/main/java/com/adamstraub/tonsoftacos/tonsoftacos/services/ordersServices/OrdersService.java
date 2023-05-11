@@ -37,7 +37,6 @@ public class OrdersService implements OrdersServiceInterface {
     private boolean customerNameValid = false;
     private boolean customerPhoneNumberValid = false;
     private boolean customerEmailValid = false;
-    private boolean orderBodyValid = false;
 
     @Override
     @Transactional
@@ -109,6 +108,14 @@ public class OrdersService implements OrdersServiceInterface {
         newOrder.setOrderUid(genOrderUid());
         ordersRepository.save(newOrder);
         System.out.println("Order created.");
+
+//        reset valid flags
+
+        customerNameValid = false;
+        customerPhoneNumberValid = false;
+        customerEmailValid = false;
+//        boolean orderBodyValid = false;
+
 
 //create an order confirmation
             orderConfirmation = ordersRepository.findByOrderUid(newOrder.getOrderUid());
