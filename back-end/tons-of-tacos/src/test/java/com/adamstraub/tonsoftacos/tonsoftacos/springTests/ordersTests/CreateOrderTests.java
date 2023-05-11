@@ -48,6 +48,7 @@ class CreateOrderTests {
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
             String body = genUidBody();
+            System.out.println("valid token generated in order to search for newly created order.");
             System.out.println("valid order body: " + body);
 
 
@@ -81,7 +82,7 @@ class CreateOrderTests {
             Assertions.assertEquals(testOrderUid, Objects.requireNonNull(orderUidResponse.getBody()).getOrderUid());
             System.out.println(orderUidResponse.getBody());
             System.out.println("Response code is " + orderUidResponse.getStatusCode() + ".");
-            System.out.println("New order was found verifying proper functionality.");
+            System.out.println("Newly created order was found which verifies proper functionality.");
         }
 
 
@@ -99,7 +100,7 @@ class CreateOrderTests {
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 //          invalid order
-            String body = invalidOrder();
+            String body = improperlyFormattedOrder();
 //                String body = validOrderBody();
             System.out.println("invalid order body: " + body);
 
@@ -126,6 +127,7 @@ class CreateOrderTests {
             Assertions.assertTrue(error.containsValue("/api/order/checkout"));
             Assertions.assertTrue(error.containsKey("message"));
             Assertions.assertTrue(error.containsKey("timestamp"));
+            System.out.println("Successfully tested for bad use case.");
         }
     }
 }
