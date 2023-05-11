@@ -2,6 +2,14 @@
 
 ---
 
+-- 10 May 2023 --
+
+- Updated createOrder() to reset validation flags after an order is saved.
+- Updated database and entity to use status instead of closed as a data column for an order. Should make data more digestible. By default status is set as "open" and when order is closed will now read "Closed : + timestamp".
+- Create order tests reformat completed at the moment.
+
+---
+
 -- 9 May 2023 --
 
 - Order validation refactored for a clean up and integration test for negative test case operating as expected.
