@@ -1,12 +1,13 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ownersToolsSupport;
 
+import com.adamstraub.tonsoftacos.tonsoftacos.services.security.JwtService;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.TestUris;
 import org.springframework.http.*;
 
 public class OwnersToolsTestsSupport extends TestUris {
 //    holders for test bodies and auth tokens
 
-
+    JwtService jwtService = new JwtService();
 
     protected String validCredentials(){
 
@@ -24,6 +25,34 @@ public class OwnersToolsTestsSupport extends TestUris {
                "psswrd":"?aNwlfCd7glf(E&r)lLr}W?fT#Ld?aFw_ic"
                }""";
     }
+
+//    protected String badUsername(){
+//        return """
+//                {
+//                "username": "tony",
+//                "psswrd": "?aNwlfCd7glf(E&r)lLr}W?fT#Ld?aFw_ic"
+//                }
+//                """;
+//    }
+
+    protected String badUsername(){
+        String badUsername = jwtService.encrypt("tony");
+        return
+                "{ username:" + badUsername + "\n" +
+                "psswrd : ?aNwlfCd7glf(E&r)lLr}W?fT " +
+                "}";
+    }
+
+    protected String badPassword(){
+        return """
+                {
+                "username": "m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5",
+                "psswrd": "bigTony22"
+                }
+                """;
+    }
+
+
     protected String validToken(){
         String body = validCredentials();
         System.out.println(body);

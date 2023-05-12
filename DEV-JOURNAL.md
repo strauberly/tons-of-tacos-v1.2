@@ -2,6 +2,12 @@
 
 ---
 
+-- 11 May 2023 --
+
+- Began laying out negative test case for login endpoint.
+
+---
+
 -- 10 May 2023 --
 
 - Updated createOrder() to reset validation flags after an order is saved.
