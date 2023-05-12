@@ -38,10 +38,9 @@ public class OwnersToolsTestsSupport extends TestUris {
     protected String badUsername(){
         String badUsername = jwtService.encrypt("tony");
         return
-                "{ "username:" +
-                psswrd":"?aNwlfCd7glf(E&r)lLr}W?fT;
-
-    }
+                "{ username:" + badUsername + "\n" +
+                "psswrd : ?aNwlfCd7glf(E&r)lLr}W?fT " +
+                "}";
     }
 
     protected String badPassword(){
