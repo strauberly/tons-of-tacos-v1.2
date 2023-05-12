@@ -80,7 +80,7 @@ public class OrdersTestsSupport extends TestUris {
     }
 
 
-    protected String invalidOrderBody() {
+    protected String noOrderBody() {
         return """
                 {
                     "customer": {
@@ -95,7 +95,7 @@ public class OrdersTestsSupport extends TestUris {
     }
 
 
-    protected String invalidOrder() {
+    protected String improperlyFormattedOrder() {
         return """
                 {
                     "customer": {
