@@ -2,6 +2,12 @@
 
 ---
 
+-- 15 May 2023 --
+
+- Continuing with bad login and validation tests.
+
+---
+
 -- 11 May 2023 --
 
 - Began laying out negative test case for login endpoint.

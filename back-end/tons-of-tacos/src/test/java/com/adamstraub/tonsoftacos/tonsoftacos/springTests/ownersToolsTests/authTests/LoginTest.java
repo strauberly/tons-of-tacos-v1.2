@@ -51,12 +51,14 @@ public class LoginTest implements JwtSignatureValidator {
     @Nested
     @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
     @TestPropertySource("classpath:test-application.properties")
+
     @Sql(scripts = {
             "classpath:/test-schema.sql",
             "classpath:/test-data.sql",
     },
             config = @SqlConfig(encoding = "utf-8"))
     class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSupport {
+
 
         @Autowired
         JwtService jwtService;
@@ -112,7 +114,8 @@ public class LoginTest implements JwtSignatureValidator {
         void invalidLoginCredentialsReturns(){
 
 //            Given: a bad password or username
-                String badUserNameBody = jwtService.encrypt(badUsername());
+//                String badUserNameBody = jwtService.encrypt(badUsername());
+            String badUserNameBody = badUsername();
             System.out.println("bad username body: "+ badUserNameBody);
             String badPasswordBody = badPassword();
             System.out.println("bad password body: " + badPasswordBody);
@@ -120,7 +123,7 @@ public class LoginTest implements JwtSignatureValidator {
             HttpHeaders header = new HttpHeaders();
             header.setContentType(MediaType.APPLICATION_JSON);
             String uri = getBaseUriForOwnersLogin();
-//            Then: status code of "" is retuned
+//            Then: status code of "" is returned
 //            And: an error message of "" is returned
 
 

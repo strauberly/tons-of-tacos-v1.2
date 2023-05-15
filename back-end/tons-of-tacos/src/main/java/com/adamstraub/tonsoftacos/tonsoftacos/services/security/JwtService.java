@@ -16,6 +16,8 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.function.Function;
+
+
 @Service
 public class JwtService {
 
@@ -49,8 +51,6 @@ public class JwtService {
 
     @Value("${CHARSET}")
     private String CHARSET;
-
-
 
     private Key getSignKey(){
         byte[] keyBytes = Decoders.BASE64.decode(SECRET);
@@ -120,13 +120,16 @@ public class JwtService {
         byte[] codeBytes = string.getBytes(StandardCharsets.UTF_8);
         List<Integer> rolledCodeBytes = new ArrayList<>();
         int codeByteValue;
-        System.out.println("code bytes" + Arrays.toString(codeBytes));
+        System.out.println("begin key: " + BEGIN_KEY);
+        System.out.println("code bytes " + Arrays.toString(codeBytes));
         for (byte codeByte : codeBytes) {
             codeByteValue = codeByte;
+//            System.out.println(codeByteValue += BEGIN_KEY);
+//            System.out.println("key " + BEGIN_KEY);
             codeByteValue += BEGIN_KEY;
             rolledCodeBytes.add(codeByteValue);
         }
-        System.out.println(rolledCodeBytes);
+        System.out.println("rolled code bytes: " + rolledCodeBytes);
 //      new collection with altered char values
         List<Character> chars = new ArrayList<>();
         for (int integer : rolledCodeBytes) {
