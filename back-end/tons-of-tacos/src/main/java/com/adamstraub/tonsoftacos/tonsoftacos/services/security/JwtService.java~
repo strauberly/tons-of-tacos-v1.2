@@ -126,7 +126,6 @@ public class JwtService {
             codeByteValue += BEGIN_KEY;
             rolledCodeBytes.add(codeByteValue);
         }
-        System.out.println(rolledCodeBytes);
 //      new collection with altered char values
         List<Character> chars = new ArrayList<>();
         for (int integer : rolledCodeBytes) {

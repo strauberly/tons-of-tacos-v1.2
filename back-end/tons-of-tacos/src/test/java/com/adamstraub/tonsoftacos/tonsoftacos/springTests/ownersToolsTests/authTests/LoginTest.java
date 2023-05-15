@@ -64,6 +64,7 @@ public class LoginTest implements JwtSignatureValidator {
         @Autowired
         UserDetailsService userDetailsService;
 
+
         @Test
         void encryptedUserCredentialsValidAndReturnValidWebToken200(){
 
@@ -89,9 +90,15 @@ public class LoginTest implements JwtSignatureValidator {
             String[] tokenSegments = Objects.requireNonNull(response.getBody()).split("\\.");
             Base64.Decoder decoder = Base64.getUrlDecoder();
             String payload = new String(decoder.decode(tokenSegments[1]));
+
+            System.out.println("sub value: " + payload);
+            System.out.println("extract user: " + jwtService.extractUsername(response.getBody()));
+            System.out.println(jwtService.decrypt(jwtService.extractUsername(response.getBody())));
+
             System.out.println("payload value: " + payload);
             System.out.println("extract sub: " + jwtService.extractUsername(response.getBody()));
             System.out.println("decrypted user: " + jwtService.decrypt(jwtService.extractUsername(response.getBody())));
+
             UserDetails userDetails = userDetailsService.loadUserByUsername(jwtService.decrypt(jwtService.extractUsername(response.getBody())));
             Assertions.assertTrue(jwtService.isTokenValid(response.getBody(), userDetails));
             System.out.println(userDetails);
@@ -99,12 +106,23 @@ public class LoginTest implements JwtSignatureValidator {
             System.out.println("token valid: " + jwtService.isTokenValid(response.getBody(), userDetails));
         }
 
+
+
         @Test
-        void userCredentialsInvalidAndReturns(){
-//            Given: bad password or user login details
-//            When:  connection is made to login endpoint
-//            Then:  an error of "" is returned
-//            And:   message ==
+        void invalidLoginCredentialsReturns(){
+
+//            Given: a bad password or username
+                String badUserNameBody = jwtService.encrypt(badUsername());
+            System.out.println("bad username body: "+ badUserNameBody);
+            String badPasswordBody = badPassword();
+            System.out.println("bad password body: " + badPasswordBody);
+//            When: connection to login endpoint is made
+            HttpHeaders header = new HttpHeaders();
+            header.setContentType(MediaType.APPLICATION_JSON);
+            String uri = getBaseUriForOwnersLogin();
+//            Then: status code of "" is retuned
+//            And: an error message of "" is returned
+
 
         }
     }
