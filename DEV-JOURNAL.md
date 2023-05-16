@@ -2,6 +2,12 @@
 
 ---
 
+-- 16 May 2023 --
+
+- Invalid credentials test is accurately looking for whatever response code is determined. Currently application throws a 403 if login fails and desired effect is a 401 for a bad login and then a 403 if a user was to say try and access a function with a bad jwt. Will attempt try catch at auth service for resolution.
+
+---
+
 -- 15 May 2023 --
 
 - Continuing with bad login and validation tests.
