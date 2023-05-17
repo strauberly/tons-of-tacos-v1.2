@@ -10,6 +10,8 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 
 //service pertains to authentication functions(login, logout, session timeout etc.)
 @Service
@@ -20,7 +22,7 @@ public class AuthService implements AuthServiceInterface {
     @Autowired
     private final AuthenticationManager authenticationManager;
 
-    @Override
+//    @Override
 //    public String ownerLogin(OwnerAuthDto ownerAuthDto){
 //        System.out.println("auth service");
 //        Authentication authentication = authenticationManager
@@ -34,13 +36,11 @@ public class AuthService implements AuthServiceInterface {
 //    }
     public String ownerLogin(OwnerAuthDto ownerAuthDto) {
         System.out.println("auth service");
-//        try {
             Authentication authentication = authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(jwtService.decrypt(ownerAuthDto.getUsername()),
                             jwtService.decrypt(ownerAuthDto.getPsswrd())));
-//        }catch (BadCredentialsException e){
             if (!authentication.isAuthenticated()) {
-                throw new BadCredentialsException("ah hell");
+                throw new BadCredentialsException("Bad credentials.");
             }else
                 return jwtService.generateToken(ownerAuthDto.getUsername());
     }

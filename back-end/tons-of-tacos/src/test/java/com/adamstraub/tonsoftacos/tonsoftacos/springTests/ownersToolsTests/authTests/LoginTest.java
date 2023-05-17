@@ -107,40 +107,39 @@ public class LoginTest implements JwtSignatureValidator {
             System.out.println(userDetails);
             System.out.println(response.getBody());
             System.out.println("token valid: " + jwtService.isTokenValid(response.getBody(), userDetails));
+            System.out.println("Test for successful use case complete.");
         }
 
 
 
         @Test
-        void invalidUsernameCredentialsReturns403(){
-
-//            Given: a bad password or username
-//                String badUserNameBody = jwtService.encrypt(badUsername());
+        void invalidUsernameCredentialsReturns401(){
+//            Given: a bad username
             String badUserNameBody = badUsername();
             System.out.println("bad username body: "+ badUserNameBody);
-            String badPasswordBody = badPassword();
-            System.out.println("bad password body: " + badPasswordBody);
+
 //            When: connection to login endpoint is made
             HttpHeaders header = new HttpHeaders();
             header.setContentType(MediaType.APPLICATION_JSON);
             String uri = getBaseUriForOwnersLogin();
 
             HttpEntity<String> httpEntity = new HttpEntity<>(badUserNameBody, header);
-//            ResponseEntity<String> response = getRestTemplate().exchange(uri, HttpMethod.POST, httpEntity, String.class);
-
-//            ResponseEntity<Map<String, Object>> response = getRestTemplate().exchange(uri, HttpMethod.POST, httpEntity, new ParameterizedTypeReference<>() {
-//            });
-            ResponseEntity<String> response = getRestTemplate().exchange(uri, HttpMethod.POST, httpEntity, new ParameterizedTypeReference<>() {
+            ResponseEntity<Map<String, Object>> response = getRestTemplate().exchange(uri, HttpMethod.POST, httpEntity, new ParameterizedTypeReference<>() {
             });
-//            Then: status code of "" is returned
-            System.out.println(response.getStatusCode());
+
+//            Then: status code of 401 is returned
             Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
             System.out.println(("Response code is " + response.getStatusCode() + "."));
-//            And: an error message of "" is returned
-            System.out.println(response.getBody());
-           String error = response.getBody();
-            System.out.println(error);
 
+//            And: the error message contains
+            Map<String, Object> error = response.getBody();
+            System.out.println(error);
+            assert error != null;
+            Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.UNAUTHORIZED.toString().substring(0,3));
+            Assertions.assertTrue(error.containsValue("/api/owners-tools/login"));
+            Assertions.assertTrue(error.containsKey("message"));
+            Assertions.assertTrue(error.containsKey("timestamp"));
+            System.out.println("Test for unsuccessful use case complete.");
 
         }
     }
