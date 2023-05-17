@@ -143,6 +143,25 @@ public class LoginTest implements JwtSignatureValidator {
 
 
         }
+
+        @Test
+        void invalidPasswordReturns401(){
+//           Given: a body with an invalid password
+                String badPasswordBody = badPassword();
+            System.out.println(badPasswordBody);
+//           When: a successful connection is made to the login endpoint
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            String uri = getBaseUriForOwnersLogin();
+            HttpEntity<String> httpEntity = new HttpEntity<>(badPasswordBody, headers);
+            ResponseEntity<String> response = getRestTemplate().exchange(uri, HttpMethod.POST, httpEntity, new ParameterizedTypeReference<>() {
+            });
+
+//           Then: a status code of 401 UNAUTHORIZED is returned
+//           And: the error contains
+
+
+        }
     }
 }
 
