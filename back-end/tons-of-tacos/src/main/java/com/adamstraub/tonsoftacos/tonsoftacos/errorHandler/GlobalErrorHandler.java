@@ -3,6 +3,8 @@ package com.adamstraub.tonsoftacos.tonsoftacos.errorHandler;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -42,6 +44,21 @@ public class GlobalErrorHandler {
     public Map <String, Object> handleIllegalArgumentException(
             IllegalArgumentException e, WebRequest webRequest){
         return createExceptionMessage(e.getLocalizedMessage(), HttpStatus.BAD_REQUEST, webRequest);
+    }
+
+    @ExceptionHandler(UsernameNotFoundException.class)
+    @ResponseStatus(code = HttpStatus.FORBIDDEN)
+    public Map<String, Object> handleUsernameNotFoundException(
+            UsernameNotFoundException e, WebRequest webRequest){
+        return  createExceptionMessage(e.getLocalizedMessage(), HttpStatus.FORBIDDEN, webRequest);
+    }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
+    public Map<String, Object> handleBadCredentialsException(
+            BadCredentialsException e, WebRequest webRequest
+    ){
+        return createExceptionMessage(e.getLocalizedMessage(), HttpStatus.UNAUTHORIZED, webRequest);
     }
 
 

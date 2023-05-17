@@ -42,6 +42,9 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         }
         if (username != null && SecurityContextHolder.getContext().getAuthentication()==null){
             UserDetails userDetails = userDetailsService().loadUserByUsername(jwtService.decrypt(username));
+            if (userDetails == null){
+                throw new UsernameNotFoundException("Invalid user");
+            }
             //           UserDetails userDetails = userDetailsService().loadUserByUsername(username);
             jwtService.validateToken(token, userDetails);
             UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null
@@ -56,7 +59,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     @Bean
     UserDetailsService userDetailsService(){
         return username -> ownerRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User Not Found"));
+                .orElseThrow(() -> new UsernameNotFoundException("Username invalid."));
     }
 }
 
