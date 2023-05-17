@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -111,7 +112,7 @@ public class LoginTest implements JwtSignatureValidator {
 
 
         @Test
-        void invalidLoginCredentialsReturns(){
+        void invalidUsernameCredentialsReturns403(){
 
 //            Given: a bad password or username
 //                String badUserNameBody = jwtService.encrypt(badUsername());
@@ -123,8 +124,22 @@ public class LoginTest implements JwtSignatureValidator {
             HttpHeaders header = new HttpHeaders();
             header.setContentType(MediaType.APPLICATION_JSON);
             String uri = getBaseUriForOwnersLogin();
+
+            HttpEntity<String> httpEntity = new HttpEntity<>(badUserNameBody, header);
+//            ResponseEntity<String> response = getRestTemplate().exchange(uri, HttpMethod.POST, httpEntity, String.class);
+
+//            ResponseEntity<Map<String, Object>> response = getRestTemplate().exchange(uri, HttpMethod.POST, httpEntity, new ParameterizedTypeReference<>() {
+//            });
+            ResponseEntity<String> response = getRestTemplate().exchange(uri, HttpMethod.POST, httpEntity, new ParameterizedTypeReference<>() {
+            });
 //            Then: status code of "" is returned
+            System.out.println(response.getStatusCode());
+            Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
+            System.out.println(("Response code is " + response.getStatusCode() + "."));
 //            And: an error message of "" is returned
+            System.out.println(response.getBody());
+           String error = response.getBody();
+            System.out.println(error);
 
 
         }

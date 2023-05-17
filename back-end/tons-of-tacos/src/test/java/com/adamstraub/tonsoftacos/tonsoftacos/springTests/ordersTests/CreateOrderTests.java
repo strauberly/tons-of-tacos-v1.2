@@ -116,10 +116,9 @@ class CreateOrderTests {
             ResponseEntity<Map<String, Object>> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity, new ParameterizedTypeReference<>() {
             });
 //        Then: a 400 bad request is returned as validation takes place in service
+            Assertions.assertSame(response.getStatusCode(), HttpStatus.BAD_REQUEST);
             System.out.println("Response code is " + response.getStatusCode() + ".");
             System.out.println("response body: " + response.getBody());
-            Assertions.assertSame(response.getStatusCode(), HttpStatus.BAD_REQUEST);
-
 //        And: the error message contains
             Map<String, Object> error = response.getBody();
             assert error != null;
