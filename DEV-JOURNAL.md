@@ -2,6 +2,19 @@
 
 ---
 
+-- 17 May 2023 --
+
+- Test case for an unsuccessful login attempt with a bad username returning a 401 successful and in place. Seems to be a spring bug with a fair bit of history. Solution came from research and after attempting multiple possibilities. The following dependency resolved the issue.
+
+      	<groupId>org.apache.httpcomponents.client5</groupId>
+      	<artifactId>httpclient5</artifactId>
+      	<version>5.2.1</version>
+      	<scope>test</scope>
+
+- Nest step will be replicating test for a correct username but bad password.
+
+---
+
 -- 16 May 2023 --
 
 - Invalid credentials test is accurately looking for whatever response code is determined. Currently application throws a 403 if login fails and desired effect is a 401 for a bad login and then a 403 if a user was to say try and access a function with a bad jwt. Will attempt try catch at auth service for resolution.

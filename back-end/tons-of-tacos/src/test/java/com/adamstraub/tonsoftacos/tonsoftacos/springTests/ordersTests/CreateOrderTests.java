@@ -126,7 +126,7 @@ class CreateOrderTests {
             Assertions.assertTrue(error.containsValue("/api/order/checkout"));
             Assertions.assertTrue(error.containsKey("message"));
             Assertions.assertTrue(error.containsKey("timestamp"));
-            System.out.println("Successfully tested for bad use case.");
+            System.out.println("Test for unsuccessful use case complete.");
         }
     }
 }
