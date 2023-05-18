@@ -115,13 +115,13 @@ public class JwtService {
     public String encrypt(String string){
 //        rework
 
-        System.out.println(string);
+        System.out.println("value to be encrypted: " + string);
 
         byte[] codeBytes = string.getBytes(StandardCharsets.UTF_8);
         List<Integer> rolledCodeBytes = new ArrayList<>();
         int codeByteValue;
-        System.out.println("begin key: " + BEGIN_KEY);
-        System.out.println("code bytes " + Arrays.toString(codeBytes));
+//        System.out.println("begin key: " + BEGIN_KEY);
+//        System.out.println("code bytes " + Arrays.toString(codeBytes));
         for (byte codeByte : codeBytes) {
             codeByteValue = codeByte;
 //            System.out.println(codeByteValue += BEGIN_KEY);
@@ -129,19 +129,19 @@ public class JwtService {
             codeByteValue += BEGIN_KEY;
             rolledCodeBytes.add(codeByteValue);
         }
-        System.out.println("rolled code bytes: " + rolledCodeBytes);
+//        System.out.println("rolled code bytes: " + rolledCodeBytes);
 //      new collection with altered char values
         List<Character> chars = new ArrayList<>();
         for (int integer : rolledCodeBytes) {
             chars.add((char) integer);
         }
 //      convert chars to string
-        StringBuilder rolledCharBuilder = new StringBuilder(chars.size());
-        for (Character ch : chars) {
-            rolledCharBuilder.append(ch);
-        }
-        System.out.println("chars: " + chars);
-        System.out.println("rolled charbuilder: " + rolledCharBuilder);
+//        StringBuilder rolledCharBuilder = new StringBuilder(chars.size());
+//        for (Character ch : chars) {
+//            rolledCharBuilder.append(ch);
+//        }
+//        System.out.println("chars: " + chars);
+//        System.out.println("rolled charbuilder: " + rolledCharBuilder);
 //      for each element insert three new random chars
         for (int i = 0; i < chars.size(); i++) {
             chars.add(i, randomChar());
@@ -159,7 +159,7 @@ public class JwtService {
         for (Character ch : chars) {
             encryptionBuilder.append(ch);
         }
-        System.out.println(encryptionBuilder);
+        System.out.println("value encrypted: " + encryptionBuilder);
         return encryptionBuilder.toString();
     }
 
