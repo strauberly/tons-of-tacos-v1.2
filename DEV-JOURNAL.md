@@ -2,6 +2,14 @@
 
 ---
 
+-- 18 May 2023 --
+
+- Began laying out procedures for tests concerning owner functions.
+- Also need to take a look at when tests are run in succession there is a repeating pattern of 1 fail and two pass, 2 fail and one pass, and all pass. This behavior appears to mostly originate in the bad password test. My hunch is that something is related to the random chars created for encryption.
+  - Will look into excluding specific chars. Will start with (", ^, <, >).
+
+---
+
 -- 17 May 2023 --
 
 - Test case for an unsuccessful login attempt with a bad username returning a 401 successful and in place. Seems to be a spring bug with a fair bit of history. Solution came from research and after attempting multiple possibilities. The following dependency resolved the issue.
@@ -12,6 +20,7 @@
       	<scope>test</scope>
 
 - Nest step will be replicating test for a correct username but bad password.
+- Bad password test successfully tests for 401 and error message contains the appropriate fields.
 
 ---
 
