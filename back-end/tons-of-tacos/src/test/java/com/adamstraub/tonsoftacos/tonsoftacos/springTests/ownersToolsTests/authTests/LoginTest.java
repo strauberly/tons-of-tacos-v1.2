@@ -119,11 +119,11 @@ public class LoginTest implements JwtSignatureValidator {
             System.out.println("bad username body: "+ badUserNameBody);
 
 //            When: connection to login endpoint is made
-            HttpHeaders header = new HttpHeaders();
-            header.setContentType(MediaType.APPLICATION_JSON);
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
             String uri = getBaseUriForOwnersLogin();
 
-            HttpEntity<String> httpEntity = new HttpEntity<>(badUserNameBody, header);
+            HttpEntity<String> httpEntity = new HttpEntity<>(badUserNameBody, headers);
             ResponseEntity<Map<String, Object>> response = getRestTemplate().exchange(uri, HttpMethod.POST, httpEntity, new ParameterizedTypeReference<>() {
             });
 
