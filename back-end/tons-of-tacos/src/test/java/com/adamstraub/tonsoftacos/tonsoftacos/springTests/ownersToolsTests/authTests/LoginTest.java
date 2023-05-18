@@ -139,7 +139,7 @@ public class LoginTest implements JwtSignatureValidator {
             Assertions.assertTrue(error.containsValue("/api/owners-tools/login"));
             Assertions.assertTrue(error.containsKey("message"));
             Assertions.assertTrue(error.containsKey("timestamp"));
-            System.out.println("Test for unsuccessful use case complete.");
+            System.out.println("Test for unsuccessful use case with bad username complete.");
 
         }
 
@@ -147,18 +147,27 @@ public class LoginTest implements JwtSignatureValidator {
         void invalidPasswordReturns401(){
 //           Given: a body with an invalid password
                 String badPasswordBody = badPassword();
-            System.out.println(badPasswordBody);
+            System.out.println("Bad password body: " + badPasswordBody);
 //           When: a successful connection is made to the login endpoint
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             String uri = getBaseUriForOwnersLogin();
             HttpEntity<String> httpEntity = new HttpEntity<>(badPasswordBody, headers);
-            ResponseEntity<String> response = getRestTemplate().exchange(uri, HttpMethod.POST, httpEntity, new ParameterizedTypeReference<>() {
+            ResponseEntity<Map<String,Object>> response = getRestTemplate().exchange(uri, HttpMethod.POST, httpEntity, new ParameterizedTypeReference<>() {
             });
 
 //           Then: a status code of 401 UNAUTHORIZED is returned
+            Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
+            System.out.println(("Response code is " + response.getStatusCode() + "."));
 //           And: the error contains
-
+            Map<String, Object> error = response.getBody();
+            System.out.println(error);
+            assert error != null;
+            Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.UNAUTHORIZED.toString().substring(0,3));
+            Assertions.assertTrue(error.containsValue("/api/owners-tools/login"));
+            Assertions.assertTrue(error.containsKey("message"));
+            Assertions.assertTrue(error.containsKey("timestamp"));
+            System.out.println("Test for unsuccessful use case with bad password complete.");
 
         }
     }
