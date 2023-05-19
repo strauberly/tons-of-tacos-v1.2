@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
+import java.security.SignatureException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -99,8 +100,11 @@ public class JwtService {
     }
 
 //    possibly condense into one
-    public boolean isTokenValid(String token, UserDetails userDetails){
+    public boolean isTokenValid(String token, UserDetails userDetails) throws SignatureException {
         final String username = decrypt(extractUsername(token));
+        if (!username.equals(userDetails.getUsername()) && isTokenExpired(token)){
+            throw new SignatureException("token no good");
+        }
         return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
     }
 

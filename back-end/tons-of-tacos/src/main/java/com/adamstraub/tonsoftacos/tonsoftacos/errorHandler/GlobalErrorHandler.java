@@ -1,5 +1,6 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.errorHandler;
 
+import io.jsonwebtoken.security.SignatureException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
@@ -50,6 +51,13 @@ public class GlobalErrorHandler {
     @ResponseStatus(code = HttpStatus.FORBIDDEN)
     public Map<String, Object> handleUsernameNotFoundException(
             UsernameNotFoundException e, WebRequest webRequest){
+        return  createExceptionMessage(e.getLocalizedMessage(), HttpStatus.FORBIDDEN, webRequest);
+    }
+
+    @ExceptionHandler(io.jsonwebtoken.security.SignatureException.class)
+    @ResponseStatus(code = HttpStatus.FORBIDDEN)
+    public Map<String, Object> handleSignatureException(
+            SignatureException e, WebRequest webRequest){
         return  createExceptionMessage(e.getLocalizedMessage(), HttpStatus.FORBIDDEN, webRequest);
     }
 

@@ -7,7 +7,6 @@ import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ownersToolsSupport.Own
 import io.jsonwebtoken.impl.crypto.JwtSignatureValidator;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import io.jsonwebtoken.security.SignatureException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -30,6 +29,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.NoSuchAlgorithmException;
+import java.security.SignatureException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.logging.Level;
@@ -69,7 +69,7 @@ public class LoginTest implements JwtSignatureValidator {
 
 
         @Test
-        void encryptedUserCredentialsValidAndReturnValidWebToken200(){
+        void encryptedUserCredentialsValidAndReturnValidWebToken200() throws SignatureException {
 
 //                Given: a valid combination of owner username and password
             String body = encryptedCredentials();
@@ -140,7 +140,6 @@ public class LoginTest implements JwtSignatureValidator {
             Assertions.assertTrue(error.containsKey("message"));
             Assertions.assertTrue(error.containsKey("timestamp"));
             System.out.println("Test for unsuccessful use case with bad username complete.");
-
         }
 
         @Test
@@ -168,7 +167,6 @@ public class LoginTest implements JwtSignatureValidator {
             Assertions.assertTrue(error.containsKey("message"));
             Assertions.assertTrue(error.containsKey("timestamp"));
             System.out.println("Test for unsuccessful use case with bad password complete.");
-
         }
     }
 }

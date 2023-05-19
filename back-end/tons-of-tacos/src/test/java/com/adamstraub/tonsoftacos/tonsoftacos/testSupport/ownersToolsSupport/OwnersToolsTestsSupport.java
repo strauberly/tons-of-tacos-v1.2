@@ -82,4 +82,10 @@ public class OwnersToolsTestsSupport extends TestUris {
                 String.class);
         return response.getBody();
     }
+
+    protected String expiredToken(){
+        return "eyJhbGciOiJIUzI1NiJ9." +
+                "eyJzdWIiOiJtKUttN3l7ZjB-bmQkLGh2TkxPdzAuRjVGbFA1dT81IiwiaWF0IjoxNjg0NDM4MjYzNjMwLCJleHAiOjE2ODQ0OTU0NjM2MzB9." +
+                "3oHdhB80HEcGNPBvCxBYN9u5mEMA0mf8oD85An-PgiE";
+    }
 }
