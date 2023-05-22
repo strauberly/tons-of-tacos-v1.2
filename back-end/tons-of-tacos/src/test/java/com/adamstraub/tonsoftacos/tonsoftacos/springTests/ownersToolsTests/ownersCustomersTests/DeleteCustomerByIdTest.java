@@ -2,7 +2,6 @@ package com.adamstraub.tonsoftacos.tonsoftacos.springTests.ownersToolsTests.owne
 
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetCustomerDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
-import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ownersToolsSupport.OwnersToolsTestsSupport;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
@@ -49,18 +48,18 @@ public class DeleteCustomerByIdTest {
             authHeader.setContentType(MediaType.APPLICATION_JSON);
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
-
+            System.out.println(headerEntity);
             int customerId = 1;
 
 
             //        When: a connection is made
-            String uri2=
+            String uri=
                     String.format("%s/%d", getBaseUriForDeleteCustomer(), customerId);
-            System.out.println(uri2);
+            System.out.println(uri);
 
 
             ResponseEntity<OwnersGetOrderDto> response =
-                    getRestTemplate().exchange(uri2, HttpMethod.DELETE, headerEntity, new ParameterizedTypeReference<>() {
+                    getRestTemplate().exchange(uri, HttpMethod.DELETE, headerEntity, new ParameterizedTypeReference<>() {
                     });
 //
 //        Then: the customer is removed from the database with a 200 response
@@ -80,6 +79,38 @@ public class DeleteCustomerByIdTest {
             Assertions.assertEquals(HttpStatus.NOT_FOUND, getCustomerResponse.getStatusCode());
             System.out.println("Response code is " + getCustomerResponse.getStatusCode() + ".");
             System.out.println("Customer has been deleted and can not be found.");
+        }
+        @Test
+        void operationIncompleteBadToken403() {
+//            Given: an invalid bearer auth token
+            String token = expiredToken();
+            Assertions.assertNotNull(token);
+            System.out.println(token);
+
+//           build authheader
+            HttpHeaders authHeader = new HttpHeaders();
+            authHeader.setContentType(MediaType.APPLICATION_JSON);
+            authHeader.setBearerAuth(token);
+            HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
+            System.out.println(headerEntity);
+            int customerId = 1;
+
+
+            //        When: a connection is made
+            String uri=
+                    String.format("%s/%d", getBaseUriForDeleteCustomer(), customerId);
+            System.out.println(uri);
+
+
+            ResponseEntity<OwnersGetOrderDto> response =
+                    getRestTemplate().exchange(uri, HttpMethod.DELETE, headerEntity, new ParameterizedTypeReference<>() {
+                    });
+            System.out.println(response.getStatusCode());
+            System.out.println(response.getBody());
+//
+
+
+
         }
     }
 }
