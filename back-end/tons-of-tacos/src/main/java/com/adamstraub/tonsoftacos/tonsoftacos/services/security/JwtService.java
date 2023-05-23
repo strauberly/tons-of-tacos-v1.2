@@ -58,6 +58,7 @@ public class JwtService {
         return Keys.hmacShaKeyFor(keyBytes);
     }
     private String buildToken(String username){
+
         String token = Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date(System.currentTimeMillis() * 1000))
@@ -65,6 +66,11 @@ public class JwtService {
                 .setExpiration(new Date((System.currentTimeMillis() * 1000) + (1000000L * 60 * 60 * 16)))
                 .signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
         System.out.println(token);
+        try {
+            return token;
+        }catch (io.jsonwebtoken.security.SignatureException exception){
+            System.out.println(exception.getLocalizedMessage());
+        }
         return token;
     }
 
@@ -76,6 +82,16 @@ public class JwtService {
 //    validate token
 
     private Claims extractAllClaims(String token){
+//        try{
+//            Jwts
+//                    .parserBuilder()
+//                    .setSigningKey(getSignKey())
+//                    .build()
+//                    .parseClaimsJws(token)
+//                    .getBody();
+//        }catch (io.jsonwebtoken.security.SignatureException e){
+//            throw new io.jsonwebtoken.security.SignatureException("whups");
+//        }
         return Jwts
                 .parserBuilder()
                 .setSigningKey(getSignKey())
@@ -107,6 +123,11 @@ public class JwtService {
         }
         return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
     }
+
+//    public void validateToken(String token, UserDetails userDetails){
+//        final String username = extractUsername(token);
+//        userDetails.getUsername();
+//    }
 
     public void validateToken(String token, UserDetails userDetails){
         final String username = extractUsername(token);
