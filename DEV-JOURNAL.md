@@ -2,6 +2,12 @@
 
 ---
 
+-- 22 May 2023 --
+
+- While working through validating tokens it has been discovered that signature exceptions are being thrown but not handled. Research has lead me to the auth filter. I will be focused on this for a bit trying to achieve desired results. So I am currently advising to consider the auth filter a mess until further notice while tearing it apart and putting it back together. ^\_^.
+
+---
+
 -- 18 May 2023 --
 
 - Began laying out procedures for tests concerning owner functions.

@@ -69,7 +69,7 @@ public class LoginTest implements JwtSignatureValidator {
 
 
         @Test
-        void encryptedUserCredentialsValidAndReturnValidWebToken200() throws SignatureException {
+        void credentialsValidAndReturnValidWebToken200() throws SignatureException {
 
 //                Given: a valid combination of owner username and password
             String body = encryptedCredentials();
@@ -113,7 +113,7 @@ public class LoginTest implements JwtSignatureValidator {
 
 
         @Test
-        void invalidUsernameCredentialsReturns401(){
+        void invalidUsernameReturns401(){
 //            Given: a bad username
             String badUserNameBody = badUsername();
             System.out.println("bad username body: "+ badUserNameBody);

@@ -81,7 +81,7 @@ public class DeleteCustomerByIdTest {
             System.out.println("Customer has been deleted and can not be found.");
         }
         @Test
-        void operationIncompleteBadToken403() {
+        void operationForbiddenBadToken403() {
 //            Given: an invalid bearer auth token
             String token = expiredToken();
             Assertions.assertNotNull(token);
