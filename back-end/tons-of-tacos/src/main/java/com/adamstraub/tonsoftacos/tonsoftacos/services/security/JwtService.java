@@ -1,6 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.services.security;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
@@ -58,19 +59,21 @@ public class JwtService {
         return Keys.hmacShaKeyFor(keyBytes);
     }
     private String buildToken(String username){
-
+//        set time variable instead of creating new
         String token = Jwts.builder()
                 .setSubject(username)
-                .setIssuedAt(new Date(System.currentTimeMillis() * 1000))
+                .setIssuedAt(new Date(System.currentTimeMillis()))
 //                16 hours, reflective of our owners work day - to be altered to facilitate mitigation of token capture
-                .setExpiration(new Date((System.currentTimeMillis() * 1000) + (1000000L * 60 * 60 * 16)))
+                .setExpiration(new Date(System.currentTimeMillis() + (1000 * 60 * 60) * 16))
                 .signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
         System.out.println(token);
-        try {
-            return token;
-        }catch (io.jsonwebtoken.security.SignatureException exception){
-            System.out.println(exception.getLocalizedMessage());
-        }
+        System.out.println("token issued: " + new Date(System.currentTimeMillis()));
+        System.out.println("token expires: " + new Date(System.currentTimeMillis() + (1000 * 60 * 60) * 16));
+//        try {
+//            return token;
+//        }catch (io.jsonwebtoken.security.SignatureException exception){
+//            System.out.println(exception.getLocalizedMessage());
+//        }
         return token;
     }
 
@@ -82,23 +85,19 @@ public class JwtService {
 //    validate token
 
     private Claims extractAllClaims(String token){
-//        try{
-//            Jwts
-//                    .parserBuilder()
-//                    .setSigningKey(getSignKey())
-//                    .build()
-//                    .parseClaimsJws(token)
-//                    .getBody();
-//        }catch (io.jsonwebtoken.security.SignatureException e){
-//            throw new io.jsonwebtoken.security.SignatureException("whups");
-//        }
-        return Jwts
-                .parserBuilder()
-                .setSigningKey(getSignKey())
-                .build()
-                .parseClaimsJws(token)
-                .getBody();
+//        try {
+            return
+                    Jwts
+                            .parserBuilder()
+                            .setSigningKey(getSignKey())
+                            .build()
+                            .parseClaimsJws(token)
+                            .getBody();
+//        } catch (JwtException e) {
+//            throw new JwtException("whups");
+//       }
     }
+
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver){
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
@@ -110,17 +109,19 @@ public class JwtService {
     public Date extractExpiration(String token){
         return extractClaim(token, Claims::getExpiration);
     }
-
+    public Date extractIssuedAt(String token){
+        return extractClaim(token, Claims::getIssuedAt);
+    }
     private Boolean isTokenExpired(String token){
         return extractExpiration(token).before(new Date());
     }
 
 //    possibly condense into one
-    public boolean isTokenValid(String token, UserDetails userDetails) throws SignatureException {
+    public boolean isTokenValid(String token, UserDetails userDetails) {
         final String username = decrypt(extractUsername(token));
-        if (!username.equals(userDetails.getUsername()) && isTokenExpired(token)){
-            throw new SignatureException("token no good");
-        }
+//        if (!username.equals(userDetails.getUsername()) && isTokenExpired(token)){
+//            throw new SignatureException("token no good");
+//        }
         return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
     }
 
