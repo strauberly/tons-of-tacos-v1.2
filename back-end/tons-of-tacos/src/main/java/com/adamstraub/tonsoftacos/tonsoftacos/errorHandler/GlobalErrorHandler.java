@@ -1,5 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.errorHandler;
 
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.security.SignatureException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.Data;
@@ -54,10 +56,17 @@ public class GlobalErrorHandler {
         return  createExceptionMessage(e.getLocalizedMessage(), HttpStatus.FORBIDDEN, webRequest);
     }
 
-    @ExceptionHandler(io.jsonwebtoken.security.SignatureException.class)
+    @ExceptionHandler(SignatureException.class)
     @ResponseStatus(code = HttpStatus.FORBIDDEN)
     public Map<String, Object> handleSignatureException(
             SignatureException e, WebRequest webRequest){
+        return  createExceptionMessage(e.getLocalizedMessage(), HttpStatus.FORBIDDEN, webRequest);
+    }
+
+    @ExceptionHandler(JwtException.class)
+    @ResponseStatus(code = HttpStatus.FORBIDDEN)
+    public Map<String, Object> handleJwtException(
+            JwtException e, WebRequest webRequest){
         return  createExceptionMessage(e.getLocalizedMessage(), HttpStatus.FORBIDDEN, webRequest);
     }
 

@@ -26,23 +26,29 @@ public class SecurityConfig {
     private final UserDetailsService userDetailsService;
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         System.out.println("filter chain");
-        return
-                http.csrf().disable()
+        try {
+            return
+                    http.csrf().disable()
 //                whitelisted
-                .authorizeHttpRequests()
-                .requestMatchers("/api/menu/**", "/api/order/**", "/api/owners-tools/login").permitAll()
-              .and()
+                            .authorizeHttpRequests()
+                            .requestMatchers("/api/menu/**", "/api/order/**", "/api/owners-tools/login").permitAll()
+                            .and()
 //               restricted
-                .authorizeHttpRequests().requestMatchers("/api/owners-tools/**")
-                .authenticated().and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .authenticationProvider(authenticationProvider())
-                .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
-                .build();
+                            .authorizeHttpRequests().requestMatchers("/api/owners-tools/**")
+                            .authenticated().and()
+                            .sessionManagement()
+                            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                            .and()
+                            .exceptionHandling()
+                            .and()
+                            .authenticationProvider(authenticationProvider())
+                            .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
+                            .build();
+        }catch (Exception e) {
+            throw new Exception("hi from filter");
+        }
     }
 
     @Bean

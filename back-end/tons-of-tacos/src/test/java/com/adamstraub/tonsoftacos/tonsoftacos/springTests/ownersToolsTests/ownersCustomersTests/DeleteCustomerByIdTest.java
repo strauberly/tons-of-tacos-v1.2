@@ -15,6 +15,9 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 
+import java.util.Map;
+import java.util.Objects;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class DeleteCustomerByIdTest {
@@ -102,7 +105,7 @@ public class DeleteCustomerByIdTest {
             System.out.println(uri);
 
 
-            ResponseEntity<OwnersGetOrderDto> response =
+            ResponseEntity<Map<String, Object>> response =
                     getRestTemplate().exchange(uri, HttpMethod.DELETE, headerEntity, new ParameterizedTypeReference<>() {
                     });
             System.out.println(response.getStatusCode());

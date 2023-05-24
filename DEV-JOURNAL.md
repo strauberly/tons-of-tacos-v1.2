@@ -2,6 +2,12 @@
 
 ---
 
+-- 23 May 2023 --
+
+- Narrowing down relationship between jwt auth filter and extract all claims method. Specifically parseClaimsJws needs more understanding. Application is currently correctly throwing an expired jwt exception for our test data and returning a 403 but our exception is not currently being appropriately handled and returning useful information to the front end.
+
+---
+
 -- 22 May 2023 --
 
 - While working through validating tokens it has been discovered that signature exceptions are being thrown but not handled. Research has lead me to the auth filter. I will be focused on this for a bit trying to achieve desired results. So I am currently advising to consider the auth filter a mess until further notice while tearing it apart and putting it back together. ^\_^.
