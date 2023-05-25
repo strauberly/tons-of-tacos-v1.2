@@ -2,6 +2,14 @@
 
 ---
 
+-- 24 May 2023 --
+
+- Research indicate jwt exceptions are coming from filter which is why the global error handler established is so far unable to pick up and handle the exception. Have been looking over other developers solutions and believe I may have located a jumping off point for a solution.
+
+https://stackoverflow.com/questions/34595605/how-to-manage-exceptions-thrown-in-filters-in-spring
+
+---
+
 -- 23 May 2023 --
 
 - Narrowing down relationship between jwt auth filter and extract all claims method. Specifically parseClaimsJws needs more understanding. Application is currently correctly throwing an expired jwt exception for our test data and returning a 403 but our exception is not currently being appropriately handled and returning useful information to the front end.
