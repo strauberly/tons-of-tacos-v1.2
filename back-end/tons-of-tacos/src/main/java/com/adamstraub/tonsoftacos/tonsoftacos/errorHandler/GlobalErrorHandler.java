@@ -1,7 +1,9 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.errorHandler;
 
 import com.auth0.jwt.exceptions.JWTVerificationException;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;
+import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.security.SignatureException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.Data;
@@ -21,7 +23,7 @@ import java.util.Map;
 
 @Data
 @RestControllerAdvice
-public class GlobalErrorHandler {
+public class GlobalErrorHandler{
 
     private String message;
 
@@ -68,6 +70,20 @@ public class GlobalErrorHandler {
     public Map<String, Object> handleJwtException(
             JwtException e, WebRequest webRequest){
         return  createExceptionMessage(e.getLocalizedMessage(), HttpStatus.FORBIDDEN, webRequest);
+    }
+
+    @ExceptionHandler(MalformedJwtException.class)
+    @ResponseStatus(code = HttpStatus.FORBIDDEN)
+    public Map<String, Object> handleMalformedJwtException(
+            MalformedJwtException e, WebRequest webRequest){
+        return  createExceptionMessage(e.getLocalizedMessage(), HttpStatus.FORBIDDEN, webRequest);
+    }
+
+    @ExceptionHandler(ExpiredJwtException.class)
+    @ResponseStatus(code = HttpStatus.FORBIDDEN)
+    public Map<String, Object> handleExpiredJwtException(
+            ExpiredJwtException e, WebRequest webRequest){
+        return  createExceptionMessage(e.getMessage(), HttpStatus.FORBIDDEN, webRequest);
     }
 
     @ExceptionHandler(BadCredentialsException.class)

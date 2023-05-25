@@ -28,7 +28,6 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         System.out.println("filter chain");
-        try {
             return
                     http.csrf().disable()
 //                whitelisted
@@ -41,14 +40,9 @@ public class SecurityConfig {
                             .sessionManagement()
                             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                             .and()
-                            .exceptionHandling()
-                            .and()
                             .authenticationProvider(authenticationProvider())
                             .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
                             .build();
-        }catch (Exception e) {
-            throw new Exception("hi from filter");
-        }
     }
 
     @Bean

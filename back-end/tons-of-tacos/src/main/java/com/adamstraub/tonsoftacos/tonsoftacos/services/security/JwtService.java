@@ -1,9 +1,6 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.services.security;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.JwtException;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
@@ -85,7 +82,7 @@ public class JwtService {
 //    validate token
 
     private Claims extractAllClaims(String token){
-//        try {
+        try {
             return
                     Jwts
                             .parserBuilder()
@@ -93,9 +90,11 @@ public class JwtService {
                             .build()
                             .parseClaimsJws(token)
                             .getBody();
-//        } catch (JwtException e) {
-//            throw new JwtException("whups");
-//       }
+        } catch (ExpiredJwtException e) {
+//            System.out.println(e.getLocalizedMessage());
+//            throw new JwtException("bad jwt");
+            return e.getClaims();
+        }
     }
 
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver){
