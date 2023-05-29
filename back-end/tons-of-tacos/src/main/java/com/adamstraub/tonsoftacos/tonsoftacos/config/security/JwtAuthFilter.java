@@ -78,8 +78,11 @@ try {
 //                filterChain.doFilter(request, response);
             }
         filterChain.doFilter(request, response);
-        }catch (Exception e){
+        }catch (JwtException e){
             System.out.println(e.getLocalizedMessage());
+            response.setContentType("application/json");
+            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+            response.getOutputStream().println("{ \"error\": \"Expired token\" }");
 //            throw new ExpiredJwtException(e.getHeader(), e.getClaims(), "expired" );
 //    ResponseWrapper responseWrapper = new ResponseWrapper().fail().msg(e.getMessage());
         }

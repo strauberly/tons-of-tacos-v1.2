@@ -2,6 +2,14 @@
 
 ---
 
+-- 29 May 2023 --
+
+- Exception was being handled though not correctly. New efforts have demonstrated a more desirable result. Error code is correctly returned as well as the ability to manipulate the response into a useable message. This is not yet the full desired effect of having the exception picked up and handled by the global error handler. Morning research has brought me the following resource for further research.
+
+https://github.com/erickrodrigs/musicflux/commit/c247e7f9212560c5f3e19c5b8667d7e97e22309f
+
+---
+
 -- 24 May 2023 --
 
 - Research indicate jwt exceptions are coming from filter which is why the global error handler established is so far unable to pick up and handle the exception. Have been looking over other developers solutions and believe I may have located a jumping off point for a solution.

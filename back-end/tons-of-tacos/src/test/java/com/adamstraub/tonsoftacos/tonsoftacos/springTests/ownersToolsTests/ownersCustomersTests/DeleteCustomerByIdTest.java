@@ -110,6 +110,7 @@ public class DeleteCustomerByIdTest {
                     });
             System.out.println(response.getStatusCode());
             System.out.println(response.getBody());
+            System.out.println(response);
 //
 
 
