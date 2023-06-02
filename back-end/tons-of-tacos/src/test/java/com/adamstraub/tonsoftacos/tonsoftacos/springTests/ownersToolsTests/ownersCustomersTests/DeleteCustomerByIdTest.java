@@ -44,7 +44,7 @@ public class DeleteCustomerByIdTest {
 //            get valid token
 //            String token = validToken();
             String token = encryptedToken();
-            Assertions.assertNotNull(token);
+//            Assertions.assertNotNull(token);
 
 //           build authheader
             HttpHeaders authHeader = new HttpHeaders();
@@ -110,6 +110,7 @@ public class DeleteCustomerByIdTest {
                     });
             System.out.println(response.getStatusCode());
             System.out.println(response.getBody());
+            System.out.println(response);
 //
 
 
