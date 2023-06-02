@@ -25,13 +25,18 @@ public class SecurityConfig {
 
     private final UserDetailsService userDetailsService;
 
+    private final UserAuthenticationEntryPoint userAuthenticationEntryPoint;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         System.out.println("filter chain");
             return
                     http
-                            .csrf().disable()
+                            .exceptionHandling().authenticationEntryPoint(userAuthenticationEntryPoint)
+                            .and()
                             .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
+                            .csrf().disable()
+
 //                whitelisted
                             .authorizeHttpRequests()
                             .requestMatchers("/api/menu/**", "/api/order/**", "/api/owners-tools/login").permitAll()

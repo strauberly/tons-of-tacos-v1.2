@@ -14,6 +14,8 @@ import java.io.IOException;
 @Component
 public class UserAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
+//    In AuthenticationEntryPoint, use Jackson to prepare the error response JSON and return.
+
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     @Override
