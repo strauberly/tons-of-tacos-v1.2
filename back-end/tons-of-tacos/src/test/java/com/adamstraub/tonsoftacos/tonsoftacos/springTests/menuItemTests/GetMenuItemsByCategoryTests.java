@@ -84,6 +84,7 @@ class GetMenuItemsByCategoryTests {
                 Assertions.assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
                 System.out.println(("Response code is " + response.getStatusCode() + "."));
                 System.out.println(response.getBody());
+                System.out.println(response);
 //          And: the error message contains
                 Map<String, Object> error = response.getBody();
                 assert error != null;

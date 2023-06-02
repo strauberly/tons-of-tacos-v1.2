@@ -2,6 +2,16 @@
 
 ---
 
+-- 2 Jun 2023 --
+
+- Bit stumped on getting global error handler to pick up exceptions related to jwt validation. Have submitted a question on stack trace to see if I can get more info from development community et al.
+
+- Next attempts to include experimenting with catching the exception in a service layer, mostly out of curiosity.
+- Continuing on current trajectory of customer exception for each jwt use case(seems inefficient in theory but seems to be best chance so far)
+- As well, will re-attempt authentication entry point implementation and creating a returnable error response.
+
+---
+
 -- 29 May 2023 --
 
 - Exception was being handled though not correctly. New efforts have demonstrated a more desirable result. Error code is correctly returned as well as the ability to manipulate the response into a useable message. This is not yet the full desired effect of having the exception picked up and handled by the global error handler. Morning research has brought me the following resource for further research.

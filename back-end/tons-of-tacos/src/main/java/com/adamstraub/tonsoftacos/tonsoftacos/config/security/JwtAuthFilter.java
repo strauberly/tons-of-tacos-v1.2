@@ -45,7 +45,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
 
 
-//try {
+try {
             String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
             String token = null;
             String username = null;
@@ -64,10 +64,10 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                 System.out.println("issued at = " + issuedAt);
             }
 
-//        assert expiration != null;
-//        if (!issuedAt.before(expiration)){
-//            throw new JwtException("invalid date") ;
-//        }
+        assert expiration != null;
+        if (!issuedAt.before(expiration)){
+            throw new JwtException("invalid date") ;
+        }
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 System.out.println("encypted username: " + username);
                 System.out.println("decrypted : " + jwtService.decrypt(username));
@@ -86,15 +86,16 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 //                filterChain.doFilter(request, response);
             }
 //        filterChain.doFilter(request, response);
-//        }catch (ExpiredJwtException e){
-//            System.out.println(e.getLocalizedMessage());
-//            response.setContentType("application/json");
-//            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-//            response.getOutputStream().println("{ \"error\": \"token issued after expiration\" }");
-//    response.getOutputStream().println(e.getLocalizedMessage());
+        }catch (ExpiredJwtException e){
+            System.out.println(e.getLocalizedMessage());
+            response.setContentType("application/json");
+            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+            response.getOutputStream().println("{ \"error\": \"token issued after expiration\" }");
+//    response.getOutputStream().println("{error:" +  e.getMessage()  + "}");
+    response.getOutputStream().println(e.getLocalizedMessage());
 //            throw new ExpiredJwtException(e.getHeader(), e.getClaims(), "expired" );
 //    ResponseWrapper responseWrapper = new ResponseWrapper().fail().msg(e.getMessage());
-//        }
+        }
         filterChain.doFilter(request, response);
     }
 //            throws ServletException, IOException {
