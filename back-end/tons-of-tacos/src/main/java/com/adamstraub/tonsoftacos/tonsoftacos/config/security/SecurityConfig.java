@@ -29,7 +29,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         System.out.println("filter chain");
             return
-                    http.csrf().disable()
+                    http
+                            .csrf().disable()
+                            .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
 //                whitelisted
                             .authorizeHttpRequests()
                             .requestMatchers("/api/menu/**", "/api/order/**", "/api/owners-tools/login").permitAll()
@@ -41,7 +43,7 @@ public class SecurityConfig {
                             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                             .and()
                             .authenticationProvider(authenticationProvider())
-                            .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
+//                            .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
                             .build();
     }
 
