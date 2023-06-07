@@ -1,6 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.config.security;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OwnerRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,7 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
-
+@Autowired
     private final JwtAuthFilter authFilter;
 
     private final UserDetailsService userDetailsService;
@@ -32,9 +33,10 @@ public class SecurityConfig {
         System.out.println("filter chain");
             return
                     http
+                            .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
                             .exceptionHandling().authenticationEntryPoint(userAuthenticationEntryPoint)
                             .and()
-                            .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
+//                            .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
                             .csrf().disable()
 
 //                whitelisted

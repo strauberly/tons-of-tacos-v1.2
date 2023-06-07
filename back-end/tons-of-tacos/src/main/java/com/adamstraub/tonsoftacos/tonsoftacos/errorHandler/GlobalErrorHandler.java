@@ -113,9 +113,9 @@ public class GlobalErrorHandler{
                 ((ServletWebRequest)webRequest).getRequest().getRequestURI());
     }
     error.put("message", e);
-    error.put("status code", status.value());
+    error.put("status code", status.toString());
     error.put("timestamp", timestamp);
-    error.put("reason", status.getReasonPhrase());
+//    error.put("reason", status.toString());
     return error;
     }
 }

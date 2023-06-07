@@ -2,6 +2,14 @@
 
 ---
 
+-- 6 Jun 2023 --
+
+Finally broke through. Moved auth filter in security config to the top of the stack, implemented suggestions from Nicolas Francisco Corvi and additional documentation to incorporate a Handler Exception Resolver, and also added a lombok config file in order to make it work.
+
+Excited for this step and looking forward to the next.
+
+---
+
 -- 2 Jun 2023 --
 
 - Bit stumped on getting global error handler to pick up exceptions related to jwt validation. Have submitted a question on stack trace to see if I can get more info from development community et al.
