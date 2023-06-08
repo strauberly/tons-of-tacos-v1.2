@@ -98,8 +98,9 @@ try {
             }
 //        filterChain.doFilter(request, response);
 //        }catch (ExpiredJwtException e){
-}catch (Exception e){
+}catch (JwtException e){
     resolver.resolveException(request, response, null, e);
+//    throw new JwtException(e.toString());
 //            System.out.println(e.getLocalizedMessage());
 //            response.setContentType("application/json");
 //            response.setStatus(HttpServletResponse.SC_FORBIDDEN);

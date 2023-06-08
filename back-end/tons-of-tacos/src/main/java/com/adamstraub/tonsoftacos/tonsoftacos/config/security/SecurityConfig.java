@@ -33,9 +33,9 @@ public class SecurityConfig {
         System.out.println("filter chain");
             return
                     http
-                            .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
-                            .exceptionHandling().authenticationEntryPoint(userAuthenticationEntryPoint)
-                            .and()
+//                            .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
+//                            .exceptionHandling().authenticationEntryPoint(userAuthenticationEntryPoint)
+//                            .and()
 //                            .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
                             .csrf().disable()
 
@@ -50,7 +50,7 @@ public class SecurityConfig {
                             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                             .and()
                             .authenticationProvider(authenticationProvider())
-//                            .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
+                            .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
                             .build();
     }
 

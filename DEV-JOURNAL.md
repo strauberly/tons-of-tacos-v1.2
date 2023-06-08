@@ -2,6 +2,12 @@
 
 ---
 
+-- 7 Jun 2023 --
+
+Still experimenting with where I want to catch certain errors and what makes most sense but completed test for an expired jwt. Next test will be for a jwt that isnt yet expired but the expiration is before the issued at.
+
+---
+
 -- 6 Jun 2023 --
 
 Finally broke through. Moved auth filter in security config to the top of the stack, implemented suggestions from Nicolas Francisco Corvi and additional documentation to incorporate a Handler Exception Resolver, and also added a lombok config file in order to make it work.
