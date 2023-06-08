@@ -82,25 +82,25 @@ public class JwtService {
 //    validate token
 
     private Claims extractAllClaims(String token){
-//        try {
-//            return
-//                    Jwts
-//                            .parserBuilder()
-//                            .setSigningKey(getSignKey())
-//                            .build()
-//                            .parseClaimsJws(token)
-//                            .getBody();
-//        } catch (ExpiredJwtException e) {
-//            System.out.println(e.getLocalizedMessage());
-//            throw new JwtException("bad jwt");
-//        }
-        return
-                Jwts
-                        .parserBuilder()
-                        .setSigningKey(getSignKey())
-                        .build()
-                        .parseClaimsJws(token)
-                        .getBody();
+        try {
+            return
+                    Jwts
+                            .parserBuilder()
+                            .setSigningKey(getSignKey())
+                            .build()
+                            .parseClaimsJws(token)
+                            .getBody();
+        } catch (ExpiredJwtException e) {
+            System.out.println(e.getLocalizedMessage());
+            throw new JwtException("Expired token");
+        }
+//        return
+//                Jwts
+//                        .parserBuilder()
+//                        .setSigningKey(getSignKey())
+//                        .build()
+//                        .parseClaimsJws(token)
+//                        .getBody();
     }
 
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver){
