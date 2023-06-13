@@ -36,6 +36,7 @@ public class AuthService implements AuthServiceInterface {
 //    }
     public String ownerLogin(OwnerAuthDto ownerAuthDto) {
         System.out.println("auth service");
+        System.out.println(ownerAuthDto);
             Authentication authentication = authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(jwtService.decrypt(ownerAuthDto.getUsername()),
                             jwtService.decrypt(ownerAuthDto.getPsswrd())));

@@ -112,7 +112,7 @@ public class DeleteCustomerByIdTest {
         //          Then: a 403 FORBIDDEN response is returned
             Assertions.assertSame(response.getStatusCode(), HttpStatus.FORBIDDEN);
             System.out.println("Response code is " + response.getStatusCode() + ".");
-            System.out.println("response body: " + response.getBody());
+            System.out.println("Response body: " + response.getBody());
         //        And: the error message contains
             Map<String, Object> error = response.getBody();
             assert error != null;
