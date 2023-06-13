@@ -2,6 +2,26 @@
 
 ---
 
+-- 12 Jun 2023 --
+
+Something odd has taken place. Application and all tests were functioning as desired but something changed recently causing bearer token to not be generated so need to go back and and start at the root before further progress can be made towards testing for proper exception handling of bad jwts.
+
+- Research reveals one version of auth filter allows for successful token creation but not allowing for successful error handling, the other version allows for error handling but not successful token creation.
+
+- Removal of :
+
+        assert expiration != null;
+
+        if (!issuedAt.before(expiration)){
+            throw new JwtException("invalid date") ;
+        }
+
+Appears to have rectified the issue.
+
+- I believe the next endeavors will include cloning aspects of the jwt class in for our other test cases.
+
+---
+
 -- 7 Jun 2023 --
 
 Still experimenting with where I want to catch certain errors and what makes most sense but completed test for an expired jwt. Next test will be for a jwt that isnt yet expired but the expiration is before the issued at.

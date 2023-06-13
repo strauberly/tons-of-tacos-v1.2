@@ -16,16 +16,6 @@ public class TonsOfTacosApplication {
 		return new ModelMapper();
 	}
 
-//	@Bean
-//	HandlerExceptionResolver handlerExceptionResolver() {
-//		return new HandlerExceptionResolver() {
-//			@Override
-//			public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) {
-//				return null;
-//			}
-//		};
-//
-//	}
 	public static void main (String[]args){
 		SpringApplication.run(TonsOfTacosApplication.class, args);
 	}

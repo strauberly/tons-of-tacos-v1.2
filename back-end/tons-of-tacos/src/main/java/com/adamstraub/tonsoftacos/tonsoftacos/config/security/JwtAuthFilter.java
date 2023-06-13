@@ -24,7 +24,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.servlet.HandlerExceptionResolver;
-import org.springframework.web.servlet.handler.HandlerExceptionResolverComposite;
+
 
 import java.io.IOException;
 import java.util.Date;
@@ -52,8 +52,16 @@ private final HandlerExceptionResolver resolver;
                                     @NotNull FilterChain filterChain)
             throws ServletException, IOException {
 
+//        try {
+//            filterChain.doFilter(request, response);
+//        } catch (Exception e) {
+////            log.error("Spring Security Filter Chain Exception:", e);
+//            resolver.resolveException(request, response, null, e);
+//        }
+//
 
 try {
+    System.out.println("request" + request);
     String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
     String token = null;
     String username = null;
@@ -63,7 +71,7 @@ try {
 //        System.out.println(authHeader);
     if (authHeader != null && authHeader.startsWith("Bearer ")) {
         token = authHeader.substring(7);
-//            System.out.println("token = " + token);
+            System.out.println("token = " + token);
         username = jwtService.extractUsername(token);
 //            System.out.println("username = " + username);
         expiration = jwtService.extractExpiration(token);
@@ -71,14 +79,14 @@ try {
         issuedAt = jwtService.extractIssuedAt(token);
         System.out.println("issued at = " + issuedAt);
     }
-//}catch(Exception e){
-//    resolver.resolveException(request, response, null, e);
-//}
-
-        assert expiration != null;
-        if (!issuedAt.before(expiration)){
-            throw new JwtException("invalid date") ;
-        }
+////}catch(Exception e){
+////    resolver.resolveException(request, response, null, e);
+////}
+//
+//        assert expiration != null;
+//        if (!issuedAt.before(expiration)){
+//            throw new JwtException("invalid date") ;
+//        }
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 System.out.println("encypted username: " + username);
                 System.out.println("decrypted : " + jwtService.decrypt(username));
@@ -94,12 +102,13 @@ try {
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authToken);
                 System.out.println("jwt filter");
-                filterChain.doFilter(request, response);
+//                filterChain.doFilter(request, response);
             }
-//        filterChain.doFilter(request, response);
+        filterChain.doFilter(request, response);
 //        }catch (ExpiredJwtException e){
-}catch (JwtException e){
+}catch (Exception e){
     resolver.resolveException(request, response, null, e);
+//    filterChain.doFilter(request, response);
 //    throw new JwtException(e.toString());
 //            System.out.println(e.getLocalizedMessage());
 //            response.setContentType("application/json");
@@ -111,8 +120,11 @@ try {
 //    ResponseWrapper responseWrapper = new ResponseWrapper().fail().msg(e.getMessage());
         }
 //        filterChain.doFilter(request, response);
-    }
-//            throws ServletException, IOException {
+//    }
+//
+//
+//
+//
 //        String authHeader = request.getHeader("Authorization");
 //        String token = null;
 //        String username = null;
@@ -138,7 +150,7 @@ try {
 //            System.out.println("jwt filter");
 //        }
 //        filterChain.doFilter(request, response);
-//    }
+    }
 
     @Bean
     UserDetailsService userDetailsService(){
