@@ -2,6 +2,14 @@
 
 ---
 
+-- 13 Jun 2023 --
+
+- Began laying new jwt validation tests.
+- Confirmed that if token expiration is before issued at jwt expiration exception thrown. Same as other test case where date is fixed as expired.
+- Next will test where username or signature are invalid.
+
+---
+
 -- 12 Jun 2023 --
 
 Something odd has taken place. Application and all tests were functioning as desired but something changed recently causing bearer token to not be generated so need to go back and and start at the root before further progress can be made towards testing for proper exception handling of bad jwts.

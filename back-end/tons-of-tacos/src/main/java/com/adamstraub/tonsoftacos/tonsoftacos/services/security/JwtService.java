@@ -90,7 +90,7 @@ public class JwtService {
                             .build()
                             .parseClaimsJws(token)
                             .getBody();
-        } catch (ExpiredJwtException e) {
+        } catch (Exception e) {
             System.out.println(e.getLocalizedMessage());
             throw new JwtException("Expired token");
         }
