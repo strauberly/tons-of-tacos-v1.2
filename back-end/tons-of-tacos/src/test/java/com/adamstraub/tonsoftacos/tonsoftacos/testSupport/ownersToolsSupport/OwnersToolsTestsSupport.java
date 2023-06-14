@@ -104,8 +104,8 @@ public class OwnersToolsTestsSupport extends TestUris {
 //                "3oHdhB80HEcGNPBvCxBYN9u5mEMA0mf8oD85An-PgiE";
     }
 
-    protected String badToken(String username){
-        return buildBadTokenTime(username);
+    protected String badTokenTime(){
+        return buildBadTokenTime("m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5");
     }
 
 //    public String generateToken(String username){
@@ -117,12 +117,12 @@ public class OwnersToolsTestsSupport extends TestUris {
         String token = Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-//                testing what happens is expired time is before issued time
+//                testing what happens if expired time is before issued time
                 .setExpiration(new Date(System.currentTimeMillis() - (1000 * 60 * 60)))
                 .signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
         System.out.println(token);
         System.out.println("token issued: " + new Date(System.currentTimeMillis()));
-        System.out.println("token expires: " + new Date(System.currentTimeMillis() + (1000 * 60 * 60) * 16));
+        System.out.println("token expires: " + new Date(System.currentTimeMillis() - (1000 * 60 * 60)));
 //        try {
 //            return token;
 //        }catch (io.jsonwebtoken.security.SignatureException exception){

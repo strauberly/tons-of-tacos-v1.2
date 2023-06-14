@@ -1,6 +1,5 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.ownersToolsTests.authTests;
 
-import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ordersTestsSupport.OrdersTestsSupport;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ownersToolsSupport.OwnersToolsTestsSupport;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
@@ -37,7 +36,7 @@ public class BadJwtTests {
 
 
     @Test
-    void operationForbiddenExpiredToken403() {
+    void expiredToken403() {
 //            Given: an expired token but valid auth header
         String token = expiredToken();
         Assertions.assertNotNull(token);
@@ -52,7 +51,7 @@ public class BadJwtTests {
         int customerId = 1;
 
 
-        //        When: a successful connection is made
+        //        When: a successful connection is made to an endpoint requiring auth
         String uri=
                 String.format("%s/%d", getBaseUriForDeleteCustomer(), customerId);
         System.out.println(uri);
@@ -74,8 +73,34 @@ public class BadJwtTests {
         Assertions.assertTrue(error.containsKey("message"));
         Assertions.assertTrue(error.containsKey("timestamp"));
         System.out.println("Test complete and expired jwt exception is caught and handled.");
+    }
+
+    @Test
+        void invalidTimeRelationship(){
+//        Given: a jwt with an expiration before an issued time but valid auth header
+        String badTimeFormatToken = badToken();
+        System.out.println(badTimeFormatToken);
+
+        //           build authheader
+        HttpHeaders authHeader = new HttpHeaders();
+        authHeader.setContentType(MediaType.APPLICATION_JSON);
+        authHeader.setBearerAuth(badTimeFormatToken);
+        HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
+        System.out.println(headerEntity);
+        int customerId = 1;
+
+//        When: a successful connection is made to an endpoint requiring auth
+        String uri=
+                String.format("%s/%d", getBaseUriForDeleteCustomer(), customerId);
+        System.out.println(uri);
 
 
+        ResponseEntity<Map<String, Object>> response =
+                getRestTemplate().exchange(uri, HttpMethod.DELETE, headerEntity, new ParameterizedTypeReference<>() {
+                });
+        System.out.println(response.getBody());
+//        Then:
+//        And:
     }
 }
 }
