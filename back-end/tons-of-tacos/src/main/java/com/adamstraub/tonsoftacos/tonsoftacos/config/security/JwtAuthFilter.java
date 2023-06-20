@@ -87,16 +87,19 @@ try {
 //        if (!issuedAt.before(expiration)){
 //            throw new JwtException("invalid date") ;
 //        }
+//    System.out.println(username);
+
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-                System.out.println("encypted username: " + username);
-                System.out.println("decrypted : " + jwtService.decrypt(username));
+//                System.out.println("encypted username: " + username);
+//                System.out.println("decrypted : " + jwtService.decrypt(username));
                 UserDetails userDetails = userDetailsService().loadUserByUsername(jwtService.decrypt(username));
-                if (userDetails == null) {
-                    throw new UsernameNotFoundException("Invalid user");
-                }
+//                if (userDetails == null) {
+//                    throw new UsernameNotFoundException("Invalid user");
+//                }
                 System.out.println("token valid: " + jwtService.isTokenValid(token, userDetails));
                 //           UserDetails userDetails = userDetailsService().loadUserByUsername(username);
-                jwtService.validateToken(token, userDetails);
+//                jwtService.validateToken(token, userDetails);
+                jwtService.isTokenValid(token, userDetails);
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null
                         , userDetails.getAuthorities());
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));

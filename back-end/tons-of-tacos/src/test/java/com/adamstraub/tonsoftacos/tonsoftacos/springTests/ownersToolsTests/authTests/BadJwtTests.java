@@ -76,15 +76,19 @@ public class BadJwtTests {
     }
 
     @Test
-        void invalidTimeRelationship(){
+        void invalidSubject403(){
 //        Given: a jwt with an expiration before an issued time but valid auth header
-        String badTimeFormatToken = badToken();
-        System.out.println(badTimeFormatToken);
+        String badToken = badToken();
+        System.out.println(badToken);
+//
+//        String goodToken = goodToken();
+//        System.out.println(goodToken);
 
         //           build authheader
         HttpHeaders authHeader = new HttpHeaders();
         authHeader.setContentType(MediaType.APPLICATION_JSON);
-        authHeader.setBearerAuth(badTimeFormatToken);
+//        authHeader.setBearerAuth(goodToken);
+        authHeader.setBearerAuth(badToken);
         HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
         System.out.println(headerEntity);
         int customerId = 1;
@@ -99,8 +103,20 @@ public class BadJwtTests {
                 getRestTemplate().exchange(uri, HttpMethod.DELETE, headerEntity, new ParameterizedTypeReference<>() {
                 });
         System.out.println(response.getBody());
-//        Then:
-//        And:
+        System.out.println(response);
+//        Then: a 403 FORBIDDEN is returned
+        Assertions.assertEquals(response.getStatusCode(), HttpStatus.FORBIDDEN);
+        System.out.println("Response code is " + response.getStatusCode() + ".");
+        System.out.println("response body: " + response.getBody());
+
+//        And: the exception message contains
+        Map<String, Object> error = response.getBody();
+        assert error != null;
+        Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.FORBIDDEN.toString().substring(0,3));
+        Assertions.assertTrue(error.containsValue("/api/owners-tools/customers/delete-customer/1"));
+        Assertions.assertTrue(error.containsKey("message"));
+        Assertions.assertTrue(error.containsKey("timestamp"));
+        System.out.println("Test complete and invalid token is caught and handled.");
     }
 }
 }

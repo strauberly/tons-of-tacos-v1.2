@@ -43,10 +43,10 @@ public class GetCustomerByIdTest {
 //            Given: a valid customer id and auth header
                 int customerId = 1;
 
-                HttpHeaders headers2 = new HttpHeaders();
-                headers2.setContentType(MediaType.APPLICATION_JSON);
-                headers2.setBearerAuth(token);
-                HttpEntity<String> headersEntity = new HttpEntity<>(headers2);
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_JSON);
+                headers.setBearerAuth(token);
+                HttpEntity<String> headersEntity = new HttpEntity<>(headers);
 //            When: a connection is made
                 String parameter = "customerId";
                 String uri =
@@ -58,11 +58,43 @@ public class GetCustomerByIdTest {
                         });
 //            Then: a customer is retrieved with a matching id
                 System.out.println("Response code is " + response.getStatusCode() + ".");
-                Assertions.assertEquals(HttpStatus.OK,response.getStatusCode());
+                Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
                 Assertions.assertEquals(customerId, Objects.requireNonNull(response.getBody()).getCustomerId());
+                System.out.println(response.getBody());
                 System.out.println("Id of customer retrieved matches id queried.");
             }
+//          throw exception for not found request
+            @Test
+            void getInvalidCustomerById404() {
+                //            get valid token
+//                String token = validToken();
+                String token = encryptedToken();
+                Assertions.assertNotNull(token);
+//            -----------------------------------------------------------------------------
+//            Given: an invalid customer id and auth header
+                int customerId = 85;
+
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_JSON);
+                headers.setBearerAuth(token);
+                HttpEntity<String> headersEntity = new HttpEntity<>(headers);
+//            When: a connection is made
+                String parameter = "customerId";
+                String uri =
+                        String.format("%s?%s=%d", getBaseUriForGetCustomerById(), parameter, customerId);
+                System.out.println(uri);
+
+                ResponseEntity<OwnersGetCustomerDto> response =
+                        getRestTemplate().exchange(uri, HttpMethod.GET, headersEntity, new ParameterizedTypeReference<>() {
+                        });
+//            Then: a customer is retrieved with a matching id
+                System.out.println("Response code is " + response.getStatusCode() + ".");
+                Assertions.assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+                Assertions.assertNull(Objects.requireNonNull(response.getBody()).getCustomerId());
+                System.out.println(response.getBody());
+                System.out.println("Invalid customer id returns 404.");
+            }
         }
-    }
+}
 
 
