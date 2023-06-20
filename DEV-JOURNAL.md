@@ -2,6 +2,13 @@
 
 ---
 
+-- 19 Jun 2023 --
+
+- Completed test for request sent with jwt containing invalid subject.
+- Next phase will include verifying that all tests have a negative test case with expected exceptions thrown starting with delete customer by id.
+
+---
+
 -- 13 Jun 2023 --
 
 - Began laying new jwt validation tests.

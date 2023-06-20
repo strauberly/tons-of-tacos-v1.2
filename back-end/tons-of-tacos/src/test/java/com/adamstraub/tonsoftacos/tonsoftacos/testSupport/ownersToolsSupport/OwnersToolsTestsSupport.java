@@ -104,25 +104,48 @@ public class OwnersToolsTestsSupport extends TestUris {
 //                "3oHdhB80HEcGNPBvCxBYN9u5mEMA0mf8oD85An-PgiE";
     }
 
-    protected String badTokenTime(){
-        return buildBadTokenTime("m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5");
+    protected String badToken(){
+        return buildBadToken();
+    }
+
+    protected String goodToken(){
+        return buildGoodToken();
     }
 
 //    public String generateToken(String username){
 //        return buildToken(username);
 //    }
 
-    private String buildBadTokenTime(String username){
+    private String buildBadToken(){
 //        set time variable instead of creating new
         String token = Jwts.builder()
-                .setSubject(username)
+                .setSubject("jerry")
                 .setIssuedAt(new Date(System.currentTimeMillis()))
 //                testing what happens if expired time is before issued time
-                .setExpiration(new Date(System.currentTimeMillis() - (1000 * 60 * 60)))
+                .setExpiration(new Date(System.currentTimeMillis() + (1000 * 60 * 60)))
                 .signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
-        System.out.println(token);
+        System.out.println("token: " + token);
         System.out.println("token issued: " + new Date(System.currentTimeMillis()));
-        System.out.println("token expires: " + new Date(System.currentTimeMillis() - (1000 * 60 * 60)));
+        System.out.println("token expires: " + new Date(System.currentTimeMillis() + (1000 * 60 * 60)));
+//        try {
+//            return token;
+//        }catch (io.jsonwebtoken.security.SignatureException exception){
+//            System.out.println(exception.getLocalizedMessage());
+//        }
+        return token;
+    }
+
+    private String buildGoodToken(){
+//        set time variable instead of creating new
+        String token = Jwts.builder()
+                .setSubject("m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5")
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+//                testing what happens if expired time is before issued time
+                .setExpiration(new Date(System.currentTimeMillis() + (1000 * 60 * 60)))
+                .signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
+        System.out.println("token: " + token);
+        System.out.println("token issued: " + new Date(System.currentTimeMillis()));
+        System.out.println("token expires: " + new Date(System.currentTimeMillis() + (1000 * 60 * 60)));
 //        try {
 //            return token;
 //        }catch (io.jsonwebtoken.security.SignatureException exception){

@@ -26,7 +26,7 @@ public class SecurityConfig {
 
     private final UserDetailsService userDetailsService;
 
-    private final UserAuthenticationEntryPoint userAuthenticationEntryPoint;
+//    private final UserAuthenticationEntryPoint userAuthenticationEntryPoint;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {

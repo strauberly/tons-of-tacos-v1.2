@@ -44,10 +44,10 @@ public class GetCustomerByNameTest {
                 String parameter = "name";
                 String customerName = "Tim Timson";
 
-                HttpHeaders headers2 = new HttpHeaders();
-                headers2.setContentType(MediaType.APPLICATION_JSON);
-                headers2.setBearerAuth(token);
-                HttpEntity<String> headersEntity = new HttpEntity<>(headers2);
+                HttpHeaders headers = new HttpHeaders();
+                headers.setContentType(MediaType.APPLICATION_JSON);
+                headers.setBearerAuth(token);
+                HttpEntity<String> headersEntity = new HttpEntity<>(headers);
 //            When: a connection is made
                 String uri=
                         String.format("%s?%s=%s", getBaseUriForGetCustomerByName(), parameter, customerName );

@@ -92,7 +92,7 @@ public class JwtService {
                             .getBody();
         } catch (Exception e) {
             System.out.println(e.getLocalizedMessage());
-            throw new JwtException("Expired token");
+            throw new JwtException(e.getLocalizedMessage());
         }
 //        return
 //                Jwts
@@ -196,6 +196,10 @@ public class JwtService {
 
 //    decrypt
     public String decrypt(String  encodedString)  {
+        System.out.println("encoded: " + encodedString);
+        if (encodedString.length() < 21 ){
+            throw new JwtException("Invalid token");
+        }
         String decodedStart = String.valueOf(encodedString.charAt(BEGIN_KEY));
         String decodedEnd = String.valueOf(encodedString.charAt(encodedString.length() - END_KEY));
         String wholeDecoded = "";
@@ -205,6 +209,7 @@ public class JwtService {
         }
         decoded = new StringBuilder(decoded.substring(submin, decoded.toString().length() - submax));
         wholeDecoded = wholeDecoded.concat(decodedStart + decoded + decodedEnd);
+        System.out.println("decoded: " + wholeDecoded);
         byte[] decodedBytes = wholeDecoded.getBytes(StandardCharsets.UTF_8);
         int decodeByteValue;
         List<Character> decodedChars = new ArrayList<>();
@@ -217,6 +222,7 @@ public class JwtService {
         for (Character ch : decodedChars) {
             decrypt.append(ch);
         }
+        System.out.println("decrypted: " + decrypt);
         return decrypt.toString();
     }
 
