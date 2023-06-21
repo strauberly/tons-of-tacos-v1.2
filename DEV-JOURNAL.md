@@ -2,6 +2,13 @@
 
 ---
 
+-- 20 Jun 2023 --
+
+- Implemented new test for bad test case for delete customer by id.
+- Implemented changes to get all customers for a more thorough test.
+
+---
+
 -- 19 Jun 2023 --
 
 - Completed test for request sent with jwt containing invalid subject.
