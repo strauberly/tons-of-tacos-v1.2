@@ -84,46 +84,50 @@ public class DeleteCustomerByIdTest {
             System.out.println("Response code is " + getCustomerResponse.getStatusCode() + ".");
             System.out.println("Customer has been deleted and can not be found.");
         }
-//        @Test
-//        void operationForbiddenExpiredToken403() {
-////            Given: an expired token but valid auth header
-//            String token = expiredToken();
-//            Assertions.assertNotNull(token);
-//            System.out.println(token);
-//
-////           build authheader
-//            HttpHeaders authHeader = new HttpHeaders();
-//            authHeader.setContentType(MediaType.APPLICATION_JSON);
-//            authHeader.setBearerAuth(token);
-//            HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
-//            System.out.println(headerEntity);
-//            int customerId = 1;
-//
-//
-//            //        When: a successful connection is made
-//            String uri=
-//                    String.format("%s/%d", getBaseUriForDeleteCustomer(), customerId);
-//            System.out.println(uri);
-//
-//
-//            ResponseEntity<Map<String, Object>> response =
-//                    getRestTemplate().exchange(uri, HttpMethod.DELETE, headerEntity, new ParameterizedTypeReference<>() {
-//                    });
-//
-//        //          Then: a 403 FORBIDDEN response is returned
-//            Assertions.assertSame(response.getStatusCode(), HttpStatus.FORBIDDEN);
-//            System.out.println("Response code is " + response.getStatusCode() + ".");
-//            System.out.println("Response body: " + response.getBody());
-//        //        And: the error message contains
-//            Map<String, Object> error = response.getBody();
-//            assert error != null;
-//            Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.FORBIDDEN.toString().substring(0,3));
-//            Assertions.assertTrue(error.containsValue("/api/owners-tools/customers/delete-customer/1"));
-//            Assertions.assertTrue(error.containsKey("message"));
-//            Assertions.assertTrue(error.containsKey("timestamp"));
-//            System.out.println("Test complete and expired jwt exception is caught and handled.");
-//
-//
-//        }
+
+        @Test
+        void invalidCustomerId404() {
+//            Given: a valid auth header and invalid customer id
+            int customerId = 85;
+            String token = encryptedToken();
+            Assertions.assertNotNull(token);
+            System.out.println(token);
+
+//           build authheader
+            HttpHeaders authHeader = new HttpHeaders();
+            authHeader.setContentType(MediaType.APPLICATION_JSON);
+            authHeader.setBearerAuth(token);
+            HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
+            System.out.println(headerEntity);
+
+
+
+            //        When: a successful connection is made
+            String uri=
+                    String.format("%s/%d", getBaseUriForDeleteCustomer(), customerId);
+            System.out.println(uri);
+
+
+            ResponseEntity<Map<String, Object>> response =
+                    getRestTemplate().exchange(uri, HttpMethod.DELETE, headerEntity, new ParameterizedTypeReference<>() {
+                    });
+
+            System.out.println(response.getBody());
+
+        //          Then: a 404 NOT FOUND response is returned
+            Assertions.assertSame(HttpStatus.NOT_FOUND, response.getStatusCode());
+            System.out.println("Response code is " + response.getStatusCode() + ".");
+            System.out.println("Response body: " + response.getBody());
+        //        And: the error message contains
+            Map<String, Object> error = response.getBody();
+            assert error != null;
+            Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.NOT_FOUND.toString().substring(0,3));
+            Assertions.assertTrue(error.containsValue("/api/owners-tools/customers/delete-customer/85"));
+            Assertions.assertTrue(error.containsKey("message"));
+            Assertions.assertTrue(error.containsKey("timestamp"));
+            System.out.println("Negative test case complete for delete customer by id.");
+
+
+        }
     }
 }

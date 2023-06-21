@@ -10,6 +10,7 @@ import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersOrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Customer;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,10 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 
 // possibly bust out to different services, 1 pertaining to customers and 1 pertaining to orders
@@ -36,15 +34,24 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
     @Autowired
     private MenuItemRepository menuItemRepository;
 
-
+//implement try catch ie(try and catch rest client exception or just exception throw new exception)
     @Override
     public List<OwnersGetCustomerDto> getAllCustomers() {
         System.out.println("service");
-        List<Customer> customers = customerRepository.findAll();
-        List<OwnersGetCustomerDto> allCustomersDto = new ArrayList<>();
-        customers.forEach(customer -> allCustomersDto.add(ownersCustomerDtoConvertor(customer)));
-        System.out.println(allCustomersDto);
-        return allCustomersDto;
+        try {
+            List<Customer> customers = customerRepository.findAll();
+//        if (customers.size() == 0){
+//            throw new EntityNotFoundException("No customers found. Verify database integrity.");
+//        }else {
+            List<OwnersGetCustomerDto> allCustomersDto = new ArrayList<>();
+            customers.forEach(customer -> allCustomersDto.add(ownersCustomerDtoConvertor(customer)));
+            System.out.println(allCustomersDto);
+
+            return allCustomersDto;
+        } catch (Exception e){
+            System.out.println(e.getLocalizedMessage());
+            throw new EntityNotFoundException("No customers found.");
+        }
     }
 
     @Override
@@ -94,8 +101,13 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
     @Override
     public void deleteCustomer(Integer customerId) {
         System.out.println("service");
+        Optional<Customer> customer = customerRepository.findById(customerId);
+        if (customer.isEmpty()){
+            throw new EntityNotFoundException("Customer does not exist. Double check the id.");
+        }else {
         customerRepository.deleteById(customerId);
         System.out.println("Customer deleted");
+        }
     }
 
 //
