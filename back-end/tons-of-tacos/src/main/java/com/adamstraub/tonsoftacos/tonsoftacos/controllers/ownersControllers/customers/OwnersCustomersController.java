@@ -1,6 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.controllers.ownersControllers.customers;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetCustomerDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.services.ownersServices.customers.OwnersCustomersService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,10 +21,21 @@ public class OwnersCustomersController implements OwnersCustomersControllerInter
         return ownersCustomersService.getAllCustomers();
     }
 
+//    @Override
+//    public OwnersGetCustomerDto getCustomerByName(String name) {
+//        System.out.println("controller");
+//        return ownersCustomersService.getCustomerByName(name);
+//    }
+
     @Override
-    public OwnersGetCustomerDto getCustomerByName(String name) {
+    public OwnersGetCustomerDto getCustomerByName(String name) throws Exception {
         System.out.println("controller");
-        return ownersCustomersService.getCustomerByName(name);
+
+        //        if (customer.getCustomerId() == null){
+//            throw new EntityNotFoundException("no customer");
+//        }else {
+            return ownersCustomersService.getCustomerByName(name);
+//        }
     }
 //@Transactional
     @Override

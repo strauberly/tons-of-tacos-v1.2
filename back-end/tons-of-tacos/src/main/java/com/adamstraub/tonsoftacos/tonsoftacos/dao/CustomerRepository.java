@@ -12,5 +12,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     Customer findByName(@RequestParam("name") String customer);
 
-    @NotNull Customer getById(@RequestParam("id") @NotNull Integer customer);
+    Customer getById(@RequestParam("id")  Integer customer);
 }
