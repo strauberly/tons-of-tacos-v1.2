@@ -82,6 +82,7 @@ public class DeleteCustomerByIdTest {
             (getCustomerUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {});
             Assertions.assertEquals(HttpStatus.NOT_FOUND, getCustomerResponse.getStatusCode());
             System.out.println("Response code is " + getCustomerResponse.getStatusCode() + ".");
+            System.out.println(response.getBody());
             System.out.println("Customer has been deleted and can not be found.");
         }
 

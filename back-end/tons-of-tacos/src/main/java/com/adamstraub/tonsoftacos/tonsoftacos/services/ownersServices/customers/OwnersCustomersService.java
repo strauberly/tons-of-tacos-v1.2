@@ -5,26 +5,19 @@ import com.adamstraub.tonsoftacos.tonsoftacos.dao.MenuItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrderItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrdersRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetCustomerDto;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersOrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Customer;
-import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
-
-
-// possibly bust out to different services, 1 pertaining to customers and 1 pertaining to orders
 
 @Service
 public class OwnersCustomersService implements OwnersCustomersServiceInterface {
+
     @Autowired
     private OrdersRepository ordersRepository;
     @Autowired
@@ -38,54 +31,148 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
     @Override
     public List<OwnersGetCustomerDto> getAllCustomers() {
         System.out.println("service");
-        try {
+//        try {
             List<Customer> customers = customerRepository.findAll();
-//        if (customers.size() == 0){
-//            throw new EntityNotFoundException("No customers found. Verify database integrity.");
-//        }else {
+        if (customers.size() == 0){
+            throw new EntityNotFoundException("No customers found. Verify database integrity.");
+        }else {
             List<OwnersGetCustomerDto> allCustomersDto = new ArrayList<>();
             customers.forEach(customer -> allCustomersDto.add(ownersCustomerDtoConvertor(customer)));
             System.out.println(allCustomersDto);
 
             return allCustomersDto;
-        } catch (Exception e){
-            System.out.println(e.getLocalizedMessage());
-            throw new EntityNotFoundException("No customers found.");
+//        } catch (Exception e){
+//            System.out.println(e.getLocalizedMessage());
+//            throw new EntityNotFoundException("No customers found.");
         }
     }
 
     @Override
     public OwnersGetCustomerDto getCustomerByName(String name) {
         System.out.println("service");
-        Customer customer = customerRepository.findByName(name);
-        return ownersCustomerDtoConvertor(customer);
+        try {
+            Customer customer = customerRepository.findByName(name);
+            return ownersCustomerDtoConvertor(customer);
+//        System.out.println("customer dto: " + customerDto);
+//            if (customerDto.getCustomerName() != null){
+//                return customerDto;
+//            }   else
+//                throw new EntityNotFoundException("no such customer");
+//            if (customer.getCustomerId() == null) {
+//                throw new EntityNotFoundException("no such customer.");
+//            } else
+
+
+        }catch (Exception e){
+//            System.out.println(e.getMessage());
+            throw new EntityNotFoundException("No customer found by that name. Please check your spelling" +
+                    " and formatting.");
+        }
     }
-//@Transactional
+
+//    @Override
+//    public OwnersGetCustomerDto getCustomerByName(String name) {
+//        System.out.println("service");
+//        try {
+//            Customer customer = customerRepository.findByName(name);
+//            if (customer.getCustomerId() == null ){
+//                throw new Exception("no such customer.");
+//            }
+//            return ownersCustomerDtoConvertor(customer);
+//        }catch (Exception e){
+//            System.out.println(e.getMessage());
+//            throw new EntityNotFoundException("no such customer");
+//        }
+//    }
+
+    @Transactional(readOnly = true)
     @Override
     public OwnersGetCustomerDto getCustomerById(Integer customerId) {
+
         System.out.println("service");
+    try{
+
         Customer customer = customerRepository.getById(customerId);
-        return ownersCustomerDtoConvertor(customer);
+//            if (customer.getCustomerId() == null){
+//
+//            }else{
+                return ownersCustomerDtoConvertor(customer);
+        }catch (Exception e) {
+//            System.out.println(e.getMessage());
+            throw new EntityNotFoundException("Customer with that id not found.");
+        }
     }
 
     @Override
     public String updateCustomerName(Integer customerId, String newCustomerName) {
         System.out.println("service");
-        Customer customer = customerRepository.getById(customerId);
+// if customer name same as old, if name doesnt contain at least one space, if either name less than 2 or
+// greater than 14 or contains chars-1-0 and then well go ahead and cap whatever is put in
+        Customer customer;
+//        byte[] nameChars = newCustomerName.getBytes(StandardCharsets.UTF_8);
+//        int spaces = 0;
+//        boolean customerNameValid = true;
+        try{
+             customer = customerRepository.getById(customerId);
+        } catch (Exception e){
+            throw new EntityNotFoundException("No customer with that id found.");
+        }
+//            Customer customer = new Customer();
+            byte[] nameChars = newCustomerName.getBytes(StandardCharsets.UTF_8);
+            int spaces = 0;
+            boolean customerNameValid = true;
         String oldName = customer.getName();
-        customer.setName(newCustomerName);
-        customerRepository.save(customer);
+//        if (customer.getCustomerId() == null){
+//            throw new EntityNotFoundException("No customer by that id found.");
+        if (oldName.equals(newCustomerName)) {
+            throw new IllegalArgumentException("New customer name can not be same as previous name.");
+        }
+        for (Byte namechar : nameChars) {
+            if (Objects.equals(namechar, (byte) 32)) {
+                spaces += 1;
+            }
+        }
+//        possibly alter for just ^[a-zA-Z]$+ [a-zA-Z]+. currently accepting letters from any language.
+        if (!newCustomerName.matches("^\\p{L}+[\\p{L}\\p{Pd}\\p{Zs}']*\\p{L}+$|^\\p{L}+$") ||
+                !(spaces == 1)) {
+            customerNameValid = false;
+            System.out.println(customerNameValid);
+            throw new IllegalArgumentException("Customer name incorrectly formatted. Please consult the documentation.");
+        }
+        if (customerNameValid) {
+            customer.setName(newCustomerName);
+            customerRepository.save(customer);
+        }
         return "Previous customer name: " + oldName + ", Updated customer name: " + customer.getName();
     }
 
     @Override
     public String updateCustomerEmail(Integer customerId, String newCustomerEmail) {
-        System.out.println("service");
-        Customer customer = customerRepository.getById(customerId);
-        String oldEmail = customer.getEmail();
-        customer.setEmail(newCustomerEmail);
-        customerRepository.save(customer);
+        System.out.println("update email service");
+        Customer customer = new Customer();
+        try{
+            customer = customerRepository.getById(customerId);
+        } catch (Exception e) {
+            throw new EntityNotFoundException("No customer with that id found.");
+        }
+            String oldEmail = customer.getEmail();
+            boolean newCustomerEmailValid = true;
+        if (oldEmail.equals(newCustomerEmail)) {
+            throw new IllegalArgumentException("New customer email can not be same as previous.");
+        }
+        if (!newCustomerEmail.matches("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,}")) {
+//            newCustomerEmailValid = false;
+            throw new IllegalArgumentException("Email does not match formatting requirements, please consult the docs.");
+        }
+        if (newCustomerEmailValid) {
+            customer.setEmail(newCustomerEmail);
+            customerRepository.save(customer);
+        }
         return "Previous customer email: " + oldEmail + ", Updated customer email: " + customer.getEmail();
+//        return "Previous customer email: " + ", Updated customer email: ";
+//        } catch (Exception e){
+//            throw new EntityNotFoundException("No customer with that id found.");
+//        }
     }
 
     @Override

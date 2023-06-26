@@ -12,7 +12,8 @@ public interface OwnersCustomersServiceInterface {
     List<OwnersGetCustomerDto> getAllCustomers();
 
 //    @Transactional(readOnly = true)
-    OwnersGetCustomerDto getCustomerByName(String name);
+//    OwnersGetCustomerDto getCustomerByName(String name);
+OwnersGetCustomerDto getCustomerByName(String name) throws Exception;
 
     @Transactional(readOnly = true)
     OwnersGetCustomerDto getCustomerById(Integer customerId);

@@ -2,6 +2,14 @@
 
 ---
 
+-- 26 Jun 2023 --
+
+- Implemented new tests for bad test cases for all owner functions relating to customers except update email and phone.
+- Something bizarre with trying to call the repository to verify a customer id. Like it didn't close the connection properly.
+- Will investigate further.
+
+---
+
 -- 20 Jun 2023 --
 
 - Implemented new test for bad test case for delete customer by id.

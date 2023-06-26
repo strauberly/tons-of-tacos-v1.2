@@ -16,6 +16,7 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -62,7 +63,8 @@ public class GetAllCustomersTest {
                 System.out.println("All customers found: " + (numberOfCustomers == response.getBody().get(response.getBody().size() - 1).getCustomerId()));
                 System.out.println("Successful test case complete.");
             }
-
+// must comment out sections of test db before this test in order for it to operate as intended.
+// Therefore, recommend recreating this test with Mockito.
     @Test
     void noCustomersReturned404() {
 //  Given: a valid auth header
@@ -77,7 +79,9 @@ public class GetAllCustomersTest {
 // When: successful connection is made to the end point and no customers are found
         String uri =
                 String.format("%s", getBaseUriForGetAllCustomers());
-        ResponseEntity<List<OwnersGetCustomerDto>> response =
+        ResponseEntity<Map<String, Object>> response =
+//        ResponseEntity<List<Map<String, Object>>> response =
+        //        ResponseEntity<List<OwnersGetCustomerDto>> response =
                 getRestTemplate().exchange(uri, HttpMethod.GET, headersEntity,
                         new ParameterizedTypeReference<>() {});
         System.out.println(response.getStatusCode());

@@ -34,7 +34,7 @@ public class SecurityConfig {
         return
 
                 http
-                        .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
+//                        .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
                         .csrf().disable()
 //                whitelisted
                         .authorizeHttpRequests()
@@ -47,7 +47,7 @@ public class SecurityConfig {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                         .and()
                         .authenticationProvider(authenticationProvider())
-//                        .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
+                        .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
                         .build();
 
 //

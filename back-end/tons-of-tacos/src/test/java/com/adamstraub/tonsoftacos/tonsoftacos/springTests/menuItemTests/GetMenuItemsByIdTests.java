@@ -77,8 +77,7 @@ class GetMenuItemsByIdTests {
                     });
 //      Then: A 404 is returned
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
-
-            System.out.println(response.getBody());
+            System.out.println("Response code is " + response.getStatusCode() + ".");
 //      And: the error message contains
             Map<String, Object> error = response.getBody();
             assert error != null;

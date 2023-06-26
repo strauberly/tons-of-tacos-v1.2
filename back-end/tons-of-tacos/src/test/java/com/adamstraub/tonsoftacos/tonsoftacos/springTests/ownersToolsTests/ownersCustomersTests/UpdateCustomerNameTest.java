@@ -13,6 +13,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
+
+import java.util.Map;
 import java.util.Objects;
 
 
@@ -88,6 +90,91 @@ public class UpdateCustomerNameTest {
                 System.out.println(Objects.requireNonNull(getCustomerResponse2.getBody()).getName());
                 Assertions.assertNotEquals(getCustomerResponse.getBody().getName(),
                         getCustomerResponse2.getBody().getName());
+            }
+
+
+            @Test
+            void customerNameNotUpdatedInvalidName400() {
+                //            get valid token
+//                String token = validToken();
+                String token = encryptedToken();
+                Assertions.assertNotNull(token);
+//            -----------------------------------------------------------------------------
+//            Given: a valid customerId, invalid name and valid auth header.
+                int customerId = 1;
+                String newCustomerName = "dsfk jh!@#";
+                String parameter = "customerId";
+
+                HttpHeaders authHeader = new HttpHeaders();
+                authHeader.setContentType(MediaType.APPLICATION_JSON);
+                authHeader.setBearerAuth(token);
+                HttpEntity<String> headersEntity = new HttpEntity<>(authHeader);
+
+//            When: a successful connection is made
+                String uri =
+                        String.format("%s/%d/%s",  getBaseUriForUpdateName(), customerId, newCustomerName);
+                System.out.println(uri);
+//
+                ResponseEntity<Map<String, Object>> response =
+                        getRestTemplate().exchange(uri, HttpMethod.PUT, headersEntity,
+                                new ParameterizedTypeReference<>() {});
+
+//            Then: a response of 400 returned
+                Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+                System.out.println("Response code is " + response.getStatusCode() + ".");
+                System.out.println(response.getBody());
+                System.out.println(response.getBody().get("uri").toString());
+
+//        And: the error message contains
+                Map<String, Object> error = response.getBody();
+                assert error != null;
+                Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.BAD_REQUEST.toString().substring(0,3));
+                Assertions.assertTrue(error.containsValue("/api/owners-tools/customers/edit-customer-name/1/dsfk%20jh!@"));
+                Assertions.assertTrue(error.containsKey("message"));
+                Assertions.assertTrue(error.containsKey("timestamp"));
+                System.out.println("Negative test case complete for changing the name of an existing customer.");
+            }
+
+            @Test
+            void customerNameNotUpdatedNoSuchCustomer404() {
+                //            get valid token
+//                String token = validToken();
+                String token = encryptedToken();
+                Assertions.assertNotNull(token);
+//            -----------------------------------------------------------------------------
+//            Given: an invalid customerId, valid name and valid auth header.
+                int customerId = 54;
+                String newCustomerName = "Gary Garrison";
+                String parameter = "customerId";
+
+                HttpHeaders authHeader = new HttpHeaders();
+                authHeader.setContentType(MediaType.APPLICATION_JSON);
+                authHeader.setBearerAuth(token);
+                HttpEntity<String> headersEntity = new HttpEntity<>(authHeader);
+
+//            When: a successful connection is made
+                String uri =
+                        String.format("%s/%d/%s",  getBaseUriForUpdateName(), customerId, newCustomerName);
+                System.out.println(uri);
+//
+                ResponseEntity<Map<String, Object>> response =
+                        getRestTemplate().exchange(uri, HttpMethod.PUT, headersEntity,
+                                new ParameterizedTypeReference<>() {});
+
+//            Then: a response of 400 returned
+                Assertions.assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+                System.out.println("Response code is " + response.getStatusCode() + ".");
+                System.out.println(response.getBody());
+                System.out.println(response.getBody().get("uri").toString());
+
+//        And: the error message contains
+                Map<String, Object> error = response.getBody();
+                assert error != null;
+                Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.NOT_FOUND.toString().substring(0,3));
+                Assertions.assertTrue(error.containsValue("/api/owners-tools/customers/edit-customer-name/54/Gary%20Garrison"));
+                Assertions.assertTrue(error.containsKey("message"));
+                Assertions.assertTrue(error.containsKey("timestamp"));
+                System.out.println("Negative test case complete for changing the name of an existing customer.");
             }
         }
     }

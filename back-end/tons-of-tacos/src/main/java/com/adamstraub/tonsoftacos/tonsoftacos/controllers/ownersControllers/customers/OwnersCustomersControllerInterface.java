@@ -81,7 +81,7 @@ public interface OwnersCustomersControllerInterface {
     )
     @Transactional
     @GetMapping("/get-customer/name")
-    OwnersGetCustomerDto getCustomerByName(@RequestParam String name);
+    OwnersGetCustomerDto getCustomerByName(@RequestParam String name) throws Exception;
 
 //    get customer by id
 @Operation(
