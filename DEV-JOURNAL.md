@@ -2,6 +2,16 @@
 
 ---
 
+-- 27 Jun 2023 --
+
+- Previously mentioned bug appears to be just that. Tried printing caught exception from repository and then commented it out and then new exception properly thrown and picked up. Seems a tad bizarre.
+- Completed negative test cases for updating customer email.
+- Completed negative test cases for updating customer phone number.
+- Bug now appears to be as a result of needing to be instantiated (ie in the call to print customer) before the exception is thrown.
+- Tests for owners functions pertaining to customers completed including validation.
+
+---
+
 -- 26 Jun 2023 --
 
 - Implemented new tests for bad test cases for all owner functions relating to customers except update email and phone.
