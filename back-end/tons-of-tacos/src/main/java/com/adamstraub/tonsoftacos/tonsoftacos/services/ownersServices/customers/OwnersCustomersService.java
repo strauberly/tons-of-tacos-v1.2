@@ -8,13 +8,16 @@ import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetCustomerDto
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Customer;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.nio.charset.StandardCharsets;
 import java.util.*;
-
+@Data
 @Service
 public class OwnersCustomersService implements OwnersCustomersServiceInterface {
 
@@ -149,9 +152,10 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
     @Override
     public String updateCustomerEmail(Integer customerId, String newCustomerEmail) {
         System.out.println("update email service");
-        Customer customer = new Customer();
+        Customer customer;
         try{
             customer = customerRepository.getById(customerId);
+        System.out.println("customer: " + customer);
         } catch (Exception e) {
             throw new EntityNotFoundException("No customer with that id found.");
         }
@@ -164,10 +168,15 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
 //            newCustomerEmailValid = false;
             throw new IllegalArgumentException("Email does not match formatting requirements, please consult the docs.");
         }
-        if (newCustomerEmailValid) {
-            customer.setEmail(newCustomerEmail);
-            customerRepository.save(customer);
-        }
+//        try {
+            if (newCustomerEmailValid) {
+                customer.setEmail(newCustomerEmail);
+                customerRepository.save(customer);
+            }
+//        }catch (Exception e){
+//            System.out.println(e.getLocalizedMessage());
+//            throw new EntityNotFoundException("huh");
+//        }
         return "Previous customer email: " + oldEmail + ", Updated customer email: " + customer.getEmail();
 //        return "Previous customer email: " + ", Updated customer email: ";
 //        } catch (Exception e){
@@ -177,11 +186,23 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
 
     @Override
     public String updateCustomerPhone(Integer customerId, String newCustomerPhone) {
-        System.out.println("service");
-        Customer customer = customerRepository.getById(customerId);
+        System.out.println("update phone service");
+            Customer customer;
+        try{
+            customer = customerRepository.getById(customerId);
+            System.out.println("customer: " + customer);
+        } catch (Exception e){
+            throw new EntityNotFoundException("No customer with that id found.");
+        }
         String oldCustomerPhone = customer.getPhoneNumber();
-        customer.setPhoneNumber(newCustomerPhone);
-        customerRepository.save(customer);
+        boolean newCustomerPhoneNumberValid = newCustomerPhone.matches("[0-9-]*")
+                && newCustomerPhone.charAt(3) == (byte) 45
+                && newCustomerPhone.charAt(7) == 45
+                && newCustomerPhone.length() == 12;
+        if (newCustomerPhoneNumberValid){
+            customer.setPhoneNumber(newCustomerPhone);
+            customerRepository.save(customer);
+        }
         return "Previous customer phone number: " + oldCustomerPhone + ", Updated customer phone number: " + customer.getPhoneNumber();
     }
 

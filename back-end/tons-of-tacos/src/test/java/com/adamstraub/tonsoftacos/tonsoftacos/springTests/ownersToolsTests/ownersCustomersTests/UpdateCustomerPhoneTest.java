@@ -15,6 +15,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 
+import java.util.Map;
 import java.util.Objects;
 
 public class UpdateCustomerPhoneTest {
@@ -90,6 +91,52 @@ public class UpdateCustomerPhoneTest {
                 System.out.println(Objects.requireNonNull(getCustomerResponse2.getBody()).getPhone());
                 Assertions.assertNotEquals(getCustomerResponse.getBody().getPhone(),
                         getCustomerResponse2.getBody().getPhone());
+
+            }
+
+            @Test
+            void customerPhoneNotUpdatedNoSuchCustomer404() {
+                //            get valid token
+//                String token = validToken();
+                String token = encryptedToken();
+                Assertions.assertNotNull(token);
+//            -----------------------------------------------------------------------------
+
+//            Given: an invalid customer id, valid phone number and valid auth header
+                int customerId = 14;
+                String newCustomerPhone = "555.555.5156";
+                String parameter = "customerId";
+//             get order before alteration
+
+                HttpHeaders authHeader = new HttpHeaders();
+                authHeader.setContentType(MediaType.APPLICATION_JSON);
+                authHeader.setBearerAuth(token);
+                HttpEntity<String> headersEntity = new HttpEntity<>(authHeader);
+
+//            When: a successful connection is made
+                String uri =
+                        String.format("%s/%d/%s",  getBaseUriForUpdatePhone(), customerId, newCustomerPhone);
+                System.out.println(uri);
+//
+                ResponseEntity<Map<String, Object>> response =
+                        getRestTemplate().exchange(uri, HttpMethod.PUT, headersEntity,
+                                new ParameterizedTypeReference<>() {});
+
+//            Then: a response of 404 returned
+                Assertions.assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+                System.out.println("Response code is " + response.getStatusCode() + ".");
+                System.out.println(response.getBody());
+                System.out.println(response.getBody().get("uri").toString());
+
+//            And: the error message contains
+                Map<String, Object> error = response.getBody();
+                assert error != null;
+                Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.NOT_FOUND.toString().substring(0,3));
+                Assertions.assertTrue(error.containsValue("/api/owners-tools/customers/edit-customer-phone/14/555.555.5156"));
+                Assertions.assertTrue(error.containsKey("message"));
+                Assertions.assertTrue(error.containsKey("timestamp"));
+                System.out.println("Negative test case complete for changing the name of an existing customer.");
+
 
             }
         }

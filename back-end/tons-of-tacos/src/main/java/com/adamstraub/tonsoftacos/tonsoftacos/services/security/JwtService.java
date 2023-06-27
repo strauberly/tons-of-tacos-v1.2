@@ -4,6 +4,7 @@ import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -198,7 +199,7 @@ public class JwtService {
     public String decrypt(String  encodedString)  {
         System.out.println("encoded: " + encodedString);
         if (encodedString.length() < 21 ){
-            throw new JwtException("Invalid token");
+            throw new BadCredentialsException("Invalid username or password.");
         }
         String decodedStart = String.valueOf(encodedString.charAt(BEGIN_KEY));
         String decodedEnd = String.valueOf(encodedString.charAt(encodedString.length() - END_KEY));

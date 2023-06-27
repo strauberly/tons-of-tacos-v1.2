@@ -161,7 +161,7 @@ public class UpdateCustomerNameTest {
                         getRestTemplate().exchange(uri, HttpMethod.PUT, headersEntity,
                                 new ParameterizedTypeReference<>() {});
 
-//            Then: a response of 400 returned
+//            Then: a response of 404 returned
                 Assertions.assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
                 System.out.println("Response code is " + response.getStatusCode() + ".");
                 System.out.println(response.getBody());
