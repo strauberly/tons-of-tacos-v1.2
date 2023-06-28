@@ -6,18 +6,17 @@ import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrdersRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersOrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Customer;
+import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 @Service
 public class OwnersOrdersService implements OwnersOrdersServiceInterface {
@@ -119,6 +118,22 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
     @Override
     public void addToOrder(Integer orderId, Integer menuItemId, Integer quantity) {
         System.out.println("service");
+        Optional<MenuItem> menuItem;
+        Optional<Orders> orderToUpdate;
+        try{
+            menuItem = Optional.of(menuItemRepository.getReferenceById(menuItemId));
+            System.out.println(menuItem);
+        }catch (Exception e){
+            throw new EntityNotFoundException("Menu item can not be added to order. Verify menu item id.");
+        }
+        try{
+            orderToUpdate = Optional.of(ordersRepository.getReferenceById(orderId));
+            System.out.println(orderToUpdate);
+        }catch (Exception e){
+            throw new EntityNotFoundException("Menu item can not be added to order. Verify order id.");
+        }
+
+
         OrderItem orderItem = OrderItem.builder()
                 .itemId(menuItemRepository.getReferenceById(menuItemId))
                 .quantity(quantity)
