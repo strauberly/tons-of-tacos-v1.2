@@ -2,6 +2,12 @@
 
 ---
 
+-- 28 Jun 2023 --
+
+- Completed validation for adding an item to an order, handling an exception and tests for negative use case.
+
+---
+
 -- 27 Jun 2023 --
 
 - Previously mentioned bug appears to be just that. Tried printing caught exception from repository and then commented it out and then new exception properly thrown and picked up. Seems a tad bizarre.
