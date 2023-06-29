@@ -5,6 +5,8 @@
 -- 28 Jun 2023 --
 
 - Completed validation for adding an item to an order, handling an exception and tests for negative use case.
+- Completed validation for deleting an order, handling an exception and tests for negative use case.
+- Began validation for editing an order item. Still need test for changing quantity to zero and being removed from the order.
 
 ---
 
