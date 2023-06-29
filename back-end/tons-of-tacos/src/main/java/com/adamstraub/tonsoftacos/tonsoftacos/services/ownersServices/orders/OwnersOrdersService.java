@@ -11,8 +11,11 @@ import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.HttpClientErrorException;
+
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -111,6 +114,12 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
     @Override
     public void deleteOrder(Integer orderId) {
         System.out.println("service");
+        try {
+            Orders order = ordersRepository.getReferenceById(orderId);
+            System.out.println(order);
+        }catch (Exception e){
+            throw new EntityNotFoundException("Can not delete order. Verify order id.");
+        }
         ordersRepository.deleteById(orderId);
         System.out.println("Order deleted");
     }
@@ -155,18 +164,39 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
 
 
     @Override
-    public void updateOrderItem(Integer orderId, Integer orderItemId, Integer newQuantity) {
+    public String updateOrderItemQuantity(Integer orderId, Integer orderItemId, Integer newQuantity) {
         System.out.println("service");
-
-        OrderItem orderItem = orderItemRepository.getReferenceById(orderItemId);
-//        System.out.println(orderItem);
-        Orders order = ordersRepository.getReferenceById(orderId);
-//        System.out.println(order);
+        OrderItem orderItem;
+        Orders order;
         String response;
+        System.out.println("new quantity: " + newQuantity);
+        try {
+            orderItem = orderItemRepository.getReferenceById(orderItemId);
+            System.out.println(orderItem);
+        }catch (Exception e) {
+            throw new EntityNotFoundException("Order item not updated. Verify order item id.");
+        }
+
+        try {
+            order = ordersRepository.getReferenceById(orderId);
+            System.out.println(order);
+        }catch (Exception e) {
+            throw new EntityNotFoundException("Order item not updated. Verify order id.");
+        }
+
+        orderItem = orderItemRepository.getReferenceById(orderItemId);
+        order = ordersRepository.getReferenceById(orderId);
+
+        if (newQuantity > 10){
+            System.out.println("quantity more than 10");
+            throw new IllegalArgumentException("We were unable to process your request. " +
+                    "Please contact us when trying to order more than 10 of any given item.");
+        }
+
         if(newQuantity == 0){
             order.setOrderTotal(order.getOrderTotal() - orderItem.getTotal());
             orderItemRepository.deleteById(orderItemId);
-            response = "Item quantity updated, item removed, cart updated.";
+             response = "Item quantity updated, item removed, cart updated.";
         }else{
             orderItem.setQuantity(newQuantity);
             orderItem.setTotal(menuItemRepository.getReferenceById(orderItem.getItemId().getId()).getUnitPrice() *
@@ -178,6 +208,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
 //        System.out.println(order);
         ordersRepository.save(order);
         System.out.println(response);
+        return response;
     }
 
 

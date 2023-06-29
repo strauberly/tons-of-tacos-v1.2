@@ -14,6 +14,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 
+import java.util.Map;
 import java.util.Objects;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -35,7 +36,6 @@ public class DeleteOrderTests {
         @Test
         void orderDeleted200() {
 //        Given: given a valid order id and auth header.
-
             //            get valid token
 //            String token = validToken();
             String token = encryptedToken();
@@ -72,6 +72,48 @@ public class DeleteOrderTests {
             System.out.println("Response code is " + getOrderResponse.getStatusCode() + ".");
             System.out.println("Order has been deleted and can not be found.");
             Assertions.assertEquals(HttpStatus.NOT_FOUND, getOrderResponse.getStatusCode());
+        }
+
+        @Test
+        void orderToBeDeletedInvalid404() {
+//        Given: given an invalid order id and valid auth header.
+            //            get valid token
+//            String token = validToken();
+            String token = encryptedToken();
+            Assertions.assertNotNull(token);
+
+//           build authheader
+            HttpHeaders authHeader = new HttpHeaders();
+            authHeader.setContentType(MediaType.APPLICATION_JSON);
+            authHeader.setBearerAuth(token);
+            HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
+
+            int orderId = 78;
+
+            //        When: a successful connection is made
+            String uri =
+                    String.format("%s/%d", getBaseUriForDeleteOrder(), orderId);
+            System.out.println(uri);
+
+            ResponseEntity<Map<String, Object>> response =
+                    getRestTemplate().exchange(uri, HttpMethod.DELETE, headerEntity, new ParameterizedTypeReference<>() {
+                    });
+
+//
+//        Then:  response will return 404
+            Assertions.assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+            System.out.println("Response code is " + response.getStatusCode() + ".");
+            System.out.println("Response body: " + response.getBody());
+
+//        And: the error message contains
+            Map<String, Object> error = response.getBody();
+            assert error != null;
+            Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.NOT_FOUND.toString().substring(0,3));
+            Assertions.assertTrue(error.containsValue("/api/owners-tools/orders/delete-order/78"));
+            Assertions.assertTrue(error.containsKey("message"));
+            Assertions.assertTrue(error.containsKey("timestamp"));
+            System.out.println("Negative test case complete for attempt to add item to invalid order.");
+
         }
     }
 }

@@ -142,7 +142,7 @@ public class AddToOrderTest {
 
         @Test
         void orderToBeAddedToInvalid404() {
-//      Given: a valid orderId, invalid menuItemId and  valid authheader.
+//      Given: an invalid orderId, valid menuItemId and  valid authheader.
 //            get valid token
             String token = encryptedToken();
             Assertions.assertNotNull(token);
