@@ -14,6 +14,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 
+import java.util.Map;
 import java.util.Objects;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -69,6 +70,36 @@ public class OrderReadyTests {
                 Assertions.assertNotEquals("no", Objects.requireNonNull(getOrderResponse.getBody()).getReady());
                 System.out.println("Order ready as of: " + Objects.requireNonNull(getOrderResponse.getBody()).getReady());
 
+            }
+
+            @Test
+            void orderNotFound404() {
+//            Given: an invalid order id and valid authheader
+                //            get valid token
+//                String token = validToken();
+                String token = encryptedToken();
+                Assertions.assertNotNull(token);
+
+//           build authheader
+                HttpHeaders authHeader = new HttpHeaders();
+                authHeader.setContentType(MediaType.APPLICATION_JSON);
+                authHeader.setBearerAuth(token);
+                HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
+
+                int orderId = 88;
+//            When: a connection is made
+                String uri =
+                        String.format("%s/%d", getBaseUriForOrderReady(), orderId);
+                System.out.println(uri);
+
+                ResponseEntity<Map<String, Object>> response =
+                        getRestTemplate().exchange(uri, HttpMethod.PUT, headerEntity, new ParameterizedTypeReference<>() {
+                        });
+//           Then: a 404 response is returned if no orders found
+                org.assertj.core.api.Assertions.assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+                System.out.println(("Response code is " + response.getStatusCode() + "."));
+                System.out.println("Response body: " + response.getBody());
+                System.out.println("Negative test case complete for order status not changed if id invalid.");
             }
         }
 }

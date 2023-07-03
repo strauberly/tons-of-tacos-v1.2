@@ -21,6 +21,7 @@ public class OrderItem implements Serializable {
 
     @Column(name = "order_item_pk")
     private Integer orderItemId;
+
     @ManyToOne()
     @JoinColumn(name = "item_fk")
     private MenuItem itemId;

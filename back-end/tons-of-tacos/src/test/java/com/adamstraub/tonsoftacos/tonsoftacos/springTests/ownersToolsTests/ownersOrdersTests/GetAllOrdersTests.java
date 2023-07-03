@@ -17,6 +17,8 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 import java.util.List;
+import java.util.Map;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -59,6 +61,31 @@ class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSu
 
     }
 
+    @Test
+    void noOrdersReturned404() {
+//  Given: a successful connection, auth header, and test data is commented out
+        //            get valid token
+//        String token = validToken();
+        String token = encryptedToken();
+        Assertions.assertNotNull(token);
+
+//           build auth header
+        HttpHeaders authHeader = new HttpHeaders();
+        authHeader.setContentType(MediaType.APPLICATION_JSON);
+        authHeader.setBearerAuth(token);
+        HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
+//        When:  a successful connection made
+        String uri =
+                String.format("%s", getBaseUriForGetAllOrders());
+        ResponseEntity<Map<String, Object>> response =
+                getRestTemplate().exchange(uri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
+                });
+//  Then: a 404 response is returned if no orders found
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+        System.out.println(("Response code is " + response.getStatusCode() + "."));
+        System.out.println("Response body: " + response.getBody());
+        System.out.println("Negative test case complete for no orders returned.");
+    }
 
 
 

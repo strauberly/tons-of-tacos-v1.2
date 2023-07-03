@@ -1,5 +1,4 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.controllers.ownersControllers.orders;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetCustomerDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
@@ -135,7 +134,7 @@ public interface OwnersOrdersControllerInterface {
     )
     @Transactional
     @GetMapping("/get-order/customer")
-   List <OwnersGetOrderDto> getOrderByCustomer(@RequestParam String customer);
+   List <OwnersGetOrderDto> getOpenOrderByCustomer(@RequestParam String customer);
 //
 //
 
@@ -167,7 +166,7 @@ public interface OwnersOrdersControllerInterface {
     )
     @Transactional
     @PutMapping("/order-ready/{orderId}")
-    void orderReady(@PathVariable Integer orderId);
+    String orderReady(@PathVariable Integer orderId);
 //
     //    // close order by id
     @Operation(
@@ -281,9 +280,9 @@ public interface OwnersOrdersControllerInterface {
                             content = @Content(mediaType = "application/json")),
             }
     )
-    @Transactional
+//    @Transactional
     @PutMapping("/update-order-item/{orderId}/{orderItemId}/{newQuantity}")
-    void updateOrderItem(
+    String updateOrderItemQuantity(
             @PathVariable
             Integer orderId,
             @PathVariable

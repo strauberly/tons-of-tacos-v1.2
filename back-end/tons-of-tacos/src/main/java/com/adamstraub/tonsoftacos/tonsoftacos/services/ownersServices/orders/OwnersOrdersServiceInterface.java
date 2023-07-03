@@ -20,7 +20,7 @@ public interface OwnersOrdersServiceInterface {
     List<OwnersGetOrderDto> getOpenOrderByCustomer(String customer);
 
     @Transactional
-    void orderReady(Integer orderId);
+    String orderReady(Integer orderId);
 
     @Transactional
     void closeOrder(Integer orderId);
@@ -30,7 +30,7 @@ public interface OwnersOrdersServiceInterface {
 
     @Transactional
     void addToOrder(Integer orderId, Integer menuItemId, Integer quantity);
-    @Transactional
+//    @Transactional
     String updateOrderItemQuantity(Integer orderId, Integer orderItemId, Integer newQuantity);
 
     @Transactional

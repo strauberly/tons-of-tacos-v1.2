@@ -11,10 +11,8 @@ import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.HttpClientErrorException;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -38,69 +36,114 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
         System.out.println("service");
         List<OwnersGetOrderDto> orderItemDtos = new ArrayList<>();
         List<Orders> orders = ordersRepository.findAll();
+                if (orders.size() == 0){
+            throw new EntityNotFoundException("No orders found. Verify data integrity.");
+        }else {
+
         for (Orders order : orders) {
 //            System.out.println(orders);
             orderItemDtos.add(ownersGetOrderDtoConverter(order));
 //            System.out.println("orders dto" + orderItemDtos);
         }
-//        System.out.println("orders" + orders);
-        return orderItemDtos;
+            return orderItemDtos;
+        }
     }
 
     @Override
     public OwnersGetOrderDto getOrderById(Integer orderId) {
         System.out.println("service");
-        return ownersGetOrderDtoConverter(ordersRepository.getReferenceById(orderId));
-    }
+        try {
+            return ownersGetOrderDtoConverter(ordersRepository.getReferenceById(orderId));
+        }catch (Exception e){
+            throw new EntityNotFoundException("Order with that id does not exist. Please verify id and try again.");
+        }
+        }
 
     @Override
     public OwnersGetOrderDto getOrderByUid(String orderUid) {
         System.out.println("service");
 //        System.out.println(orderUid);
         Orders order = ordersRepository.findByOrderUid(orderUid);
+        if (order == null){
+            throw new EntityNotFoundException("No order found with that UID. Please verify and try again.");
+        }else {
 //        System.out.println(order);
-        return ownersGetOrderDtoConverter(order);
+            return ownersGetOrderDtoConverter(order);
+        }
     }
 
     @Override
     public List<OwnersGetOrderDto> getOpenOrderByCustomer(String customer) {
         System.out.println("service");
-        Customer customerObj = customerRepository.findByName(customer);
-        List<Orders> orders = ordersRepository.findByCustomerId(customerObj.getCustomerId());
+        Customer customerObj;
+        List<Orders> orders;
+        try {
+            customerObj = customerRepository.findByName(customer);
+        }catch (Exception e){
+            throw new EntityNotFoundException("Customer not found.");
+        }
+
+        try {
+            orders = ordersRepository.findByCustomerId(customerObj.getCustomerId());
+        } catch (Exception e){
+            throw new EntityNotFoundException("No orders for customer found.");
+        }
+
         List<OwnersGetOrderDto> openOrders = new ArrayList<>();
         for (Orders order: orders)
-            if (order.getStatus().equals("closed")) {
-                throw new NoSuchElementException("No open orders for customer found.");
-            }else{
+            if (order.getClosed().equals("open")) {
             openOrders.add(ownersGetOrderDtoConverter(order));
             }
-        return openOrders;
+        if (openOrders.size() > 0) {
+            return openOrders;
+        }else{
+            throw new EntityNotFoundException("No open orders for customer found");
+        }
     }
 
     @Override
-    public void orderReady(Integer orderId) {
+    public String orderReady(Integer orderId) {
         System.out.println("service");
-        Orders order = ordersRepository.getReferenceById(orderId);
+        Orders order;
+        String response;
+        try {
+             order = ordersRepository.getReferenceById(orderId);
+            System.out.println(order);
+        }catch (Exception e){
+            throw new EntityNotFoundException("Order does not exist. Please verify order id and try again.");
+        }
         String timeReady = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
         order.setReady(timeReady);
         System.out.println("Order up!");
+        return response = "Order up!";
     }
 
     @Override
     public void closeOrder(Integer orderId) {
-        System.out.println(orderId);
+//        System.out.println(orderId);
         System.out.println("service");
-        Orders order = ordersRepository.getReferenceById(orderId);
+        Orders order;
+        try {
+            order = ordersRepository.getReferenceById(orderId);
+//            System.out.println(order);
+        }catch (Exception e){
+            throw new EntityNotFoundException("Order does not exist. Please verify order id and try again.");
+        }
+
+        if (order.getReady().equals("no")){
+            throw new IllegalArgumentException("Order can not be closed if order is not ready.");
+        }
+//        Orders order = ordersRepository.getReferenceById(orderId);
         String timeClosed = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
-        order.setStatus("closed: " + timeClosed);
-        System.out.println("Order closed");
+        order.setClosed(timeClosed);
+//        System.out.println("Order closed");
 //        check against customer to see if there are other open orders and if not delete customer
         Customer customer = customerRepository.getReferenceById(order.getCustomerId());
         List<Orders> customerOrders = customer.getOrders();
 //        System.out.println(customerOrders);
         List<Orders> openOrders = new ArrayList<>();
         for (Orders customerOrder : customerOrders) {
-            if (customerOrder.getStatus().equals("open")){
+            if (customerOrder.getClosed().equals("open")){
                 openOrders.add(customerOrder);
 //                System.out.println(openOrders);
             }
@@ -162,52 +205,91 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
         System.out.println("Item added to order");
     }
 
-
+    @Transactional
     @Override
     public String updateOrderItemQuantity(Integer orderId, Integer orderItemId, Integer newQuantity) {
         System.out.println("service");
-        OrderItem orderItem;
-        Orders order;
+//        try{
+//            OrderItem orderItem = orderItemRepository.getByOrderItemId(orderItemId);
+//            System.out.println(orderItem);
+//        } catch (Exception e){
+//            throw new EntityNotFoundException("umm");
+//        }
+        Orders order = ordersRepository.getById(orderId);
+        if (order == null){
+            throw new EntityNotFoundException("Order item not updated. Verify order exists.");
+        }
+        OrderItem orderItem = orderItemRepository.getByOrderItemId(orderItemId);
+        if (orderItem == null){
+            throw new EntityNotFoundException("Order item not updated. Verify order item is part of order.");
+        }
+
+
+//        Orders order;
         String response;
         System.out.println("new quantity: " + newQuantity);
-        try {
-            orderItem = orderItemRepository.getReferenceById(orderItemId);
-            System.out.println(orderItem);
-        }catch (Exception e) {
-            throw new EntityNotFoundException("Order item not updated. Verify order item id.");
-        }
+//        try {
+//            orderItem = orderItemRepository.getReferenceById(orderItemId);
+//            System.out.println(orderItem);
+//        }catch (Exception e) {
+//            throw new EntityNotFoundException("Order item not updated. Verify order item id.");
+//        }
+//  checkout @transactional and clearing data, possibly chad
+//        try {
+////            order = ordersRepository.getById(orderId);
+//            System.out.println(order);
+//        }catch (Exception e) {
+//            throw new EntityNotFoundException("Order item not updated. Verify order id.");
+//        }
 
-        try {
-            order = ordersRepository.getReferenceById(orderId);
-            System.out.println(order);
-        }catch (Exception e) {
-            throw new EntityNotFoundException("Order item not updated. Verify order id.");
-        }
+//        orderItem = orderItemRepository.getReferenceById(orderItemId);
+//        order = ordersRepository.getReferenceById(orderId);
+            if (newQuantity > 10) {
+                System.out.println("quantity more than 10");
+                throw new IllegalArgumentException("We were unable to process your request. " +
+                        "Please contact us when trying to order more than 10 of any given item.");
+            }
 
-        orderItem = orderItemRepository.getReferenceById(orderItemId);
-        order = ordersRepository.getReferenceById(orderId);
-
-        if (newQuantity > 10){
-            System.out.println("quantity more than 10");
-            throw new IllegalArgumentException("We were unable to process your request. " +
-                    "Please contact us when trying to order more than 10 of any given item.");
-        }
 
         if(newQuantity == 0){
+//            try {
+//            orderItem = orderItemRepository.getByOrderItemId(orderItemId);
+//            try {
+//                orderItem = orderItemRepository.getByOrderItemId(orderItemId);
+//            } catch (Exception e){
+//                throw new EntityNotFoundException("umm");
+//            }
+                System.out.println("order item: " + orderItem);
+                System.out.println("old order: " + order.getOrderItems());
+//                order.setOrderTotal(order.getOrderTotal() - orderItem.getTotal());
+                orderItemRepository.delete(orderItem);
             order.setOrderTotal(order.getOrderTotal() - orderItem.getTotal());
-            orderItemRepository.deleteById(orderItemId);
-             response = "Item quantity updated, item removed, cart updated.";
-        }else{
+
+//            orderItem = orderItemRepository.getByOrderItemId(orderItem.getOrderItemId());
+//            ordersRepository.save(order);
+//            System.out.println("order item" + orderItemRepository.getByOrderItemId(orderItem.getOrderItemId()));
+//            List<OrderItem> updatedOrder = order.getOrderItems();
+//            order.setOrderItems(updatedOrder);
+                System.out.println("new order: " + order.getOrderItems());
+                response = "Item quantity updated, item removed, cart updated.";
+//            } catch (Exception e) {
+//                throw new EntityNotFoundException("ummm");
+//            }
+            }else{
             orderItem.setQuantity(newQuantity);
             orderItem.setTotal(menuItemRepository.getReferenceById(orderItem.getItemId().getId()).getUnitPrice() *
                     orderItem.getQuantity());
+            System.out.println("old total: " + ordersRepository.getReferenceById(orderId).getOrderTotal());
             order.setOrderTotal(order.getOrderTotal() + orderItem.getTotal());
             orderItemRepository.save(orderItem);
+            ordersRepository.save(order);
+            System.out.println("new total: " + ordersRepository.getReferenceById(orderId).getOrderTotal());
             response = "Item quantity updated, cart updated.";
         }
 //        System.out.println(order);
-        ordersRepository.save(order);
+//        ordersRepository.save(order);
         System.out.println(response);
+//        order = null;
         return response;
     }
 
@@ -262,7 +344,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
         ownersGetOrderDto.setOrderTotal(order.getOrderTotal());
         ownersGetOrderDto.setCreated(order.getCreated());
         ownersGetOrderDto.setReady(order.getReady());
-        ownersGetOrderDto.setStatus(order.getStatus());
+        ownersGetOrderDto.setClosed(order.getClosed());
 //        System.out.println(ownersGetOrderDto);
         return ownersGetOrderDto;
     }

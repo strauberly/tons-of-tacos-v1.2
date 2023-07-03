@@ -15,6 +15,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 
+import java.util.Map;
 import java.util.Objects;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -63,6 +64,38 @@ public class GetOrderByUidTests {
             System.out.println("Response code is " + response.getStatusCode() + ".");
             System.out.println(response.getBody());
             System.out.println("Queried uuid: " +testOrderUid+ " =  Uid of order returned: " + response.getBody().getOrderUid());
+        }
+
+        @Test
+        void invalidUidReturns404() {
+//            Given: an invalid uid and valid authheader
+
+            //            get valid token
+//            String token = validToken();
+            String token = encryptedToken();
+            Assertions.assertNotNull(token);
+
+//           build authheader
+            HttpHeaders authHeader = new HttpHeaders();
+            authHeader.setContentType(MediaType.APPLICATION_JSON);
+            authHeader.setBearerAuth(token);
+            HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
+
+            String parameter = "orderUid";
+            String testOrderUid = "asd45s";
+//            When: a connection is made
+            String uri =
+                    String.format("%s?%s=%s", getBaseUriForGetOrderByUid(), parameter, testOrderUid );
+            System.out.println(uri);
+
+            ResponseEntity<Map<String, Object>> response =
+                    getRestTemplate().exchange(uri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
+                    });
+//            Then: a 404 response is returned
+            Assertions.assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+            System.out.println("Response code is " + response.getStatusCode() + ".");
+            System.out.println(response.getBody());
+            System.out.println("Negative test case complete for no order returned with invalid uid.");
         }
     }
 }
