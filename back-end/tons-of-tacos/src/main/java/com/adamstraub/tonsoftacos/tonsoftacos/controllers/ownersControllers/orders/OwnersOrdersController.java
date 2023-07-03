@@ -54,10 +54,10 @@ public class OwnersOrdersController implements OwnersOrdersControllerInterface {
     }
 
     @Override
-    public void closeOrder(Integer orderId) {
+    public String closeOrder(Integer orderId) {
         System.out.println("controller");
 //        System.out.println(orderId);
-        ownersOrdersService.closeOrder(orderId);
+       return ownersOrdersService.closeOrder(orderId);
     }
 
 

@@ -117,5 +117,70 @@ public class OrderClosedTests {
             System.out.println("Order closed as of : " + Objects.requireNonNull(getOrderResponse.getBody()).getClosed());
             System.out.println("Successful test case for deleting an order complete.");
         }
+
+        @Test
+        void orderDoesNotExist404() {
+//            Given: an invalid order id with valid auth header
+            int orderId = 66;
+
+            //            get valid token
+//            String token = validToken();
+            String token = encryptedToken();
+            Assertions.assertNotNull(token);
+
+//           build authheader
+            HttpHeaders authHeader = new HttpHeaders();
+            authHeader.setContentType(MediaType.APPLICATION_JSON);
+            authHeader.setBearerAuth(token);
+            HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
+
+
+//            When: a connection is made to close order
+            String uri =
+                    String.format("%s/%d", getBaseUriForCloseOrder(), orderId);
+            System.out.println(uri);
+
+            ResponseEntity<Map<String, Object>> response =
+                    getRestTemplate().exchange(uri, HttpMethod.PUT, headerEntity, new ParameterizedTypeReference<>() {
+                    });
+//            Then: a 404 not found is returned
+            Assertions.assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+            System.out.println("Response code is " + response.getStatusCode() + ".");
+            System.out.println(response.getBody());
+            System.out.println("Negative test case complete for try to close order with invalid order id.");
+        }
+
+        @Test
+        void orderNotReadyBeforeClosing400() {
+//            Given: a valid order id with valid auth header but has not been marked ready
+            int orderId = 1;
+
+            //            get valid token
+//            String token = validToken();
+            String token = encryptedToken();
+            Assertions.assertNotNull(token);
+
+//           build authheader
+            HttpHeaders authHeader = new HttpHeaders();
+            authHeader.setContentType(MediaType.APPLICATION_JSON);
+            authHeader.setBearerAuth(token);
+            HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
+
+//            When: a connection is made to close order
+            String uri =
+                    String.format("%s/%d", getBaseUriForCloseOrder(), orderId);
+            System.out.println(uri);
+
+            ResponseEntity<Map<String, Object>> response =
+                    getRestTemplate().exchange(uri, HttpMethod.PUT, headerEntity, new ParameterizedTypeReference<>() {
+                    });
+//            Then: a 400 response is returned
+            Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+            System.out.println("Response code is " + response.getStatusCode() + ".");
+            System.out.println(response.getBody());
+            System.out.println("Negative test case complete for order not closed if order is not ready.");
+//
+
+        }
     }
 }

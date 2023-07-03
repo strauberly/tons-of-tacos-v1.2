@@ -2,6 +2,11 @@
 
 ---
 
+-- 3 Jul 2023 --
+
+- Negative test case for attempt to close an order with an invalid order id complete.
+- Negative test case for attempt to close an order before the order has been marked ready complete.
+
 -- 2 Jul 2023 --
 
 - Negative test cases for editing an order item quantity complete.

@@ -119,13 +119,14 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
     }
 
     @Override
-    public void closeOrder(Integer orderId) {
+    public String closeOrder(Integer orderId) {
 //        System.out.println(orderId);
         System.out.println("service");
         Orders order;
+        String response;
         try {
             order = ordersRepository.getReferenceById(orderId);
-//            System.out.println(order);
+            System.out.println(order);
         }catch (Exception e){
             throw new EntityNotFoundException("Order does not exist. Please verify order id and try again.");
         }
@@ -150,8 +151,9 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
         }
         if (openOrders.isEmpty()){
             customerRepository.deleteById(customer.getCustomerId());
-            System.out.println("All customer orders closed, customer information removed.");
+//            System.out.println("All customer orders closed, customer information removed.");
         }
+        return "All customer orders closed, customer information removed.";
     }
 
     @Override
