@@ -195,7 +195,7 @@ public interface OwnersOrdersControllerInterface {
     )
     @Transactional
     @PutMapping("/close-order/{orderId}")
-    void closeOrder(@PathVariable Integer orderId);
+    String closeOrder(@PathVariable Integer orderId);
 
 //
 // delete order by id

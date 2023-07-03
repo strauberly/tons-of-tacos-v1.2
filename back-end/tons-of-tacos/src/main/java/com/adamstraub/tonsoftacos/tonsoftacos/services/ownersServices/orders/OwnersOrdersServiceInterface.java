@@ -23,7 +23,7 @@ public interface OwnersOrdersServiceInterface {
     String orderReady(Integer orderId);
 
     @Transactional
-    void closeOrder(Integer orderId);
+    String closeOrder(Integer orderId);
 
     @Transactional
     void deleteOrder(Integer orderId);
