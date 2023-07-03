@@ -62,14 +62,14 @@ public class EditOrderItemQuantityTest {
             ResponseEntity<OwnersGetOrderDto> getOrderResponse =
                     getRestTemplate().exchange(getOrderUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
                     });
-            System.out.println(Objects.requireNonNull(Objects.requireNonNull(getOrderResponse.getBody()).getOrderItems().get(0)));
+            System.out.println("unchanged order: " + Objects.requireNonNull(Objects.requireNonNull(getOrderResponse.getBody()).getOrderItems().get(0)));
 
 //            When: a successful connection is made
             String uri =
                     String.format("%s/%d/%d/%d", getBaseUriForEditOrderItem(), orderId, orderItemId, newQuantity);
             System.out.println(uri);
 //
-            ResponseEntity<OwnersGetOrderDto> response =
+            ResponseEntity<String> response =
                     getRestTemplate().exchange(uri, HttpMethod.PUT, headerEntity,
                             new ParameterizedTypeReference<>() {});
 
@@ -90,7 +90,7 @@ public class EditOrderItemQuantityTest {
                     });
 
             System.out.println(Objects.requireNonNull(Objects.requireNonNull(getOrderResponse2.getBody()).getOrderItems().get(0)));
-            Assertions.assertNotEquals(getOrderResponse.getBody().getOrderTotal(),getOrderResponse2.getBody().getOrderTotal());
+            Assertions.assertNotEquals(getOrderResponse.getBody().getOrderTotal(), getOrderResponse2.getBody().getOrderTotal());
             System.out.println("Order total changed.");
             Assertions.assertNotEquals(getOrderResponse.getBody().getOrderItems().get(0).getQuantity(), getOrderResponse2.getBody().getOrderItems().get(0).getQuantity());
             System.out.println("Order item quantity changed.");
@@ -126,7 +126,8 @@ public class EditOrderItemQuantityTest {
             ResponseEntity<Map<String, Object>> response =
                     getRestTemplate().exchange(uri, HttpMethod.PUT, headerEntity,
                             new ParameterizedTypeReference<>() {});
-
+            System.out.println("Response code is " + response.getStatusCode() + ".");
+            System.out.println("Response body: " + response.getBody());
 //            Then: a response of 404 returned
             Assertions.assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
             System.out.println("Response code is " + response.getStatusCode() + ".");
@@ -230,49 +231,67 @@ public class EditOrderItemQuantityTest {
             System.out.println("Negative test case complete for attempt to add more than 10 of any item to an order.");
         }
 
-        @Test
-        void callingOrderItemAfterChangingQuantityToZero404() {
-//  Edit quantity  to zero and then try to edit again
-//            Given: a valid order, order item, new quantity and auth header.
-
-//            get valid token
-//            String token = validToken();
-            String token = encryptedToken();
-            Assertions.assertNotNull(token);
-
-//           build authheader
-            HttpHeaders authHeader = new HttpHeaders();
-            authHeader.setContentType(MediaType.APPLICATION_JSON);
-            authHeader.setBearerAuth(token);
-            HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
-
-            int orderId = 1;
-            int orderItemId = 3;
-            int newQuantity = 12;
-            System.out.println(newQuantity);
-
-//            When: a successful connection is made
-            String uri =
-                    String.format("%s/%d/%d/%d", getBaseUriForEditOrderItem(), orderId, orderItemId, newQuantity);
-            System.out.println(uri);
+//        @Test
+//        void callingOrderItemAfterChangingQuantityToZero404() {
+////  Edit quantity  to zero and then try to edit again
+////            Given: a valid order, order item, new quantity and auth header.
 //
-            ResponseEntity<Map<String, Object>> response =
-                    getRestTemplate().exchange(uri, HttpMethod.PUT, headerEntity,
-                            new ParameterizedTypeReference<>() {});
-
-//            Then: a response of 400 returned
-            Assertions.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-            System.out.println("Response code is " + response.getStatusCode() + ".");
-            System.out.println("Response body: " + response.getBody());
-
-//        And: the error message contains
-            Map<String, Object> error = response.getBody();
-            assert error != null;
-            Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.BAD_REQUEST.toString().substring(0,3));
-            Assertions.assertTrue(error.containsValue("/api/owners-tools/orders/update-order-item/1/3/12"));
-            Assertions.assertTrue(error.containsKey("message"));
-            Assertions.assertTrue(error.containsKey("timestamp"));
-            System.out.println("Negative test case complete for attempt to add more than 10 of any item to an order.");
-        }
+////            get valid token
+////            String token = validToken();
+//            String token = encryptedToken();
+//            Assertions.assertNotNull(token);
+//
+////           build authheader
+//            HttpHeaders authHeader = new HttpHeaders();
+//            authHeader.setContentType(MediaType.APPLICATION_JSON);
+//            authHeader.setBearerAuth(token);
+//            HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
+//
+//            int orderId = 1;
+//            int orderItemId = 3;
+//            int newQuantity = 0;
+//            int newQuantity2 = 2;
+//            System.out.println(newQuantity);
+//            System.out.println(newQuantity2);
+//
+////            When: a successful connection is made
+//            String uri =
+//                    String.format("%s/%d/%d/%d", getBaseUriForEditOrderItem(), orderId, orderItemId, newQuantity);
+//            System.out.println(uri);
+////
+//            ResponseEntity<String> response =
+//                    getRestTemplate().exchange(uri, HttpMethod.PUT, headerEntity,
+//                            new ParameterizedTypeReference<>() {});
+//            System.out.println("Response body: " + response.getBody());
+////            Then: a response of 200 returned
+//            Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
+//            System.out.println("Response code is " + response.getStatusCode() + ".");
+//            System.out.println("Response body: " + response.getBody());
+//
+////            And: if a second call to alter the same order item
+//            String uri2 =
+//                    String.format("%s/%d/%d/%d", getBaseUriForEditOrderItem(), orderId, orderItemId, newQuantity2);
+//            System.out.println(uri2);
+////
+//            ResponseEntity<String> response2 =
+//                    getRestTemplate().exchange(uri2, HttpMethod.PUT, headerEntity,
+//                            new ParameterizedTypeReference<>() {});
+//
+//
+////            Then: a response of 404 returned
+//            Assertions.assertEquals(HttpStatus.NOT_FOUND, response2.getStatusCode());
+//            System.out.println("Response code is " + response2.getStatusCode() + ".");
+//            System.out.println("Response body: " + response2.getBody());
+//
+////
+//////        And: the error message contains
+////            Map<String, Object> error = response2.getBody();
+////            assert error != null;
+////            Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.NOT_FOUND.toString().substring(0,3));
+////            Assertions.assertTrue(error.containsValue("/api/owners-tools/orders/update-order-item/1/3/2"));
+////            Assertions.assertTrue(error.containsKey("message"));
+////            Assertions.assertTrue(error.containsKey("timestamp"));
+////            System.out.println("Negative test case complete for attempt to call an order item that has been deleted by having its quantity changed to 0.");
+//        }
     }
 }

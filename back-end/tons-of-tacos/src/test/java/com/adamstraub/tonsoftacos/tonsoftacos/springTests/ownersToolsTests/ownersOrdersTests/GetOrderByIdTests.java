@@ -14,6 +14,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 
+import java.util.Map;
 import java.util.Objects;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -63,6 +64,38 @@ public class GetOrderByIdTests {
             System.out.println("Response code is " + response.getStatusCode() + ".");
             Assertions.assertEquals(orderId, Objects.requireNonNull(response.getBody()).getOrderId());
             System.out.println("Order id queried is order with id returned.");
+        }
+        @Test
+        void noOrderForProvidedId404() {
+//            Given: an ivalid order id and valid auth header
+
+//            get valid token
+//            String token = validToken();
+            String token = encryptedToken();
+            Assertions.assertNotNull(token);
+
+//           build authheader
+            HttpHeaders authHeader = new HttpHeaders();
+            authHeader.setContentType(MediaType.APPLICATION_JSON);
+            authHeader.setBearerAuth(token);
+            HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
+
+            int invalidOrderId = 88;
+
+//            When: a connection is made
+            String parameter = "orderId";
+            String uri =
+                    String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter, invalidOrderId);
+            System.out.println(uri);
+
+            ResponseEntity<Map<String, Object>> response =
+                    getRestTemplate().exchange(uri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
+                    });
+//            Then: a 404 status is returned
+            Assertions.assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+            System.out.println("Response code is " + response.getStatusCode() + ".");
+            System.out.println(response.getBody());
+            System.out.println("Negative test case complete for no orders returned.");
         }
     }
 }

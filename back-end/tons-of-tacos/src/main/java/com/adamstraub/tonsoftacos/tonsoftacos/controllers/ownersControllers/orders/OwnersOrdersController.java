@@ -42,21 +42,21 @@ public class OwnersOrdersController implements OwnersOrdersControllerInterface {
     }
 
     @Override
-    public List<OwnersGetOrderDto> getOrderByCustomer(String customer) {
+    public List<OwnersGetOrderDto> getOpenOrderByCustomer(String customer) {
         System.out.println("controller");
         return ownersOrdersService.getOpenOrderByCustomer(customer);
     }
 
     @Override
-    public void orderReady(Integer orderId) {
+    public String orderReady(Integer orderId) {
         System.out.println("controller");
-        ownersOrdersService.orderReady(orderId);
+        return ownersOrdersService.orderReady(orderId);
     }
 
     @Override
     public void closeOrder(Integer orderId) {
         System.out.println("controller");
-        System.out.println(orderId);
+//        System.out.println(orderId);
         ownersOrdersService.closeOrder(orderId);
     }
 
@@ -72,11 +72,11 @@ public class OwnersOrdersController implements OwnersOrdersControllerInterface {
         System.out.println("controller");
       ownersOrdersService.addToOrder(orderId, menuItemId, quantity);
     }
-
+//@Transactional
     @Override
-    public void updateOrderItem(Integer orderId, Integer orderItemId, Integer newQuantity) {
+    public String updateOrderItemQuantity(Integer orderId, Integer orderItemId, Integer newQuantity) {
         System.out.println("controller");
-        ownersOrdersService.updateOrderItemQuantity(orderId, orderItemId, newQuantity);
+       return ownersOrdersService.updateOrderItemQuantity(orderId, orderItemId, newQuantity);
     }
 
     @Override

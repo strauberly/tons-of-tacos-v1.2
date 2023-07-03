@@ -16,5 +16,5 @@ public class OwnersGetOrderDto {
     private Double orderTotal;
     private Timestamp created;
     private String ready;
-    private String status;
+    private String closed;
 }

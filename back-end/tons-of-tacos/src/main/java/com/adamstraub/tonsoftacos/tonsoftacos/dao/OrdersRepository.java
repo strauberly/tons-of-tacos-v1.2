@@ -20,7 +20,7 @@ public interface OrdersRepository extends JpaRepository<Orders, Integer> {
         List<Orders> orders = findAll();
         System.out.println(orders);
         for (Orders order: orders){
-            if (!order.getStatus().equals("no")){
+            if (!order.getClosed().equals("no")){
                 closedOrders.add(order);
             }
         }

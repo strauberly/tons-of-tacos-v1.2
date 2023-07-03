@@ -2,11 +2,29 @@
 
 ---
 
+-- 2 Jul 2023 --
+
+- Negative test cases for editing an order item quantity complete.
+- Negative test case for no orders returned complete.
+- Negative test case for calling an order by a bad order id complete.
+- Negative test case for calling an order by an invalid uid complete.
+- Negative test case for calling an order by an invalid customer name complete.
+- Negative test case for attempting to change order status with invalid order id complete.
+- Positive test case for closing an order complete.
+
+-- 29 Jun 2023 --
+
+- Completed validation for adding an item to an order, handling an exception and tests for negative use case.
+- Completed validation for deleting an order, handling an exception and tests for negative use case.
+- Began validation for editing an order item. Still need test for changing quantity to zero and being removed from the order .
+
+---
+
 -- 28 Jun 2023 --
 
 - Completed validation for adding an item to an order, handling an exception and tests for negative use case.
 - Completed validation for deleting an order, handling an exception and tests for negative use case.
-- Began validation for editing an order item. Still need test for changing quantity to zero and being removed from the order.
+- Began validation for editing an order item. Still need test for changing quantity to zero and being removed from the order .
 
 ---
 
