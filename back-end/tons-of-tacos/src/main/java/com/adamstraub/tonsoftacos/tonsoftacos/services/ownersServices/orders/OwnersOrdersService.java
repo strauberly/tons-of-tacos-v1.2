@@ -102,7 +102,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
     }
 
     @Override
-    public String orderReady(Integer orderId) {
+    public OwnersGetOrderDto orderReady(Integer orderId) {
         System.out.println("service");
         Orders order;
         String response;
@@ -115,11 +115,11 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
         String timeReady = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
         order.setReady(timeReady);
         System.out.println("Order up!");
-        return response = "Order up!";
+        return ownersGetOrderDtoConverter(order);
     }
 
     @Override
-    public String closeOrder(Integer orderId) {
+    public OwnersGetOrderDto closeOrder(Integer orderId) {
 //        System.out.println(orderId);
         System.out.println("service");
         Orders order;
@@ -153,7 +153,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
             customerRepository.deleteById(customer.getCustomerId());
 //            System.out.println("All customer orders closed, customer information removed.");
         }
-        return "All customer orders closed, customer information removed.";
+        return ownersGetOrderDtoConverter(order);
     }
 
     @Override

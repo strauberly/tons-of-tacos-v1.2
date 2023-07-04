@@ -48,13 +48,13 @@ public class OwnersOrdersController implements OwnersOrdersControllerInterface {
     }
 
     @Override
-    public String orderReady(Integer orderId) {
+    public OwnersGetOrderDto orderReady(Integer orderId) {
         System.out.println("controller");
         return ownersOrdersService.orderReady(orderId);
     }
 
     @Override
-    public String closeOrder(Integer orderId) {
+    public OwnersGetOrderDto closeOrder(Integer orderId) {
         System.out.println("controller");
 //        System.out.println(orderId);
        return ownersOrdersService.closeOrder(orderId);

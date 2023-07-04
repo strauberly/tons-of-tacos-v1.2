@@ -53,7 +53,7 @@ public class OrderClosedTests {
                     String.format("%s/%d", getBaseUriForOrderReady(), orderId);
             System.out.println(statusUri);
 
-            ResponseEntity<String> statusResponse =
+            ResponseEntity<OwnersGetOrderDto> statusResponse =
                     getRestTemplate().exchange(statusUri, HttpMethod.PUT, headerEntity, new ParameterizedTypeReference<>() {
                     });
 
@@ -96,7 +96,7 @@ public class OrderClosedTests {
                     String.format("%s/%d", getBaseUriForCloseOrder(), orderId);
             System.out.println(uri);
 
-            ResponseEntity<OwnersGetOrderDto> response =
+            ResponseEntity<String> response =
                     getRestTemplate().exchange(uri, HttpMethod.PUT, headerEntity2, new ParameterizedTypeReference<>() {
                     });
 //            Then: order is marked closed and response code is 200
@@ -115,7 +115,7 @@ public class OrderClosedTests {
             Assertions.assertNotEquals("no", Objects.requireNonNull(getOrderResponse.getBody()).getReady());
             System.out.println("Response code is " + getOrderResponse.getStatusCode() + ".");
             System.out.println("Order closed as of : " + Objects.requireNonNull(getOrderResponse.getBody()).getClosed());
-            System.out.println("Successful test case for deleting an order complete.");
+            System.out.println("Successful test case for closing an order complete.");
         }
 
         @Test
