@@ -2,10 +2,21 @@
 
 ---
 
+-- 4 Jul 2023 --
+
+- mark order ready and mark order closed refactored to return order dto.
+- Moving onto daily sales. Dto to be created, returned and verified. Test will include marking two orders ready and closed in order to test calculations.
+
+### To all that remains of freedom and liberty.
+
+---
+
 -- 3 Jul 2023 --
 
 - Negative test case for attempt to close an order with an invalid order id complete.
 - Negative test case for attempt to close an order before the order has been marked ready complete.
+
+---
 
 -- 2 Jul 2023 --
 
@@ -16,6 +27,8 @@
 - Negative test case for calling an order by an invalid customer name complete.
 - Negative test case for attempting to change order status with invalid order id complete.
 - Positive test case for closing an order complete.
+
+---
 
 -- 29 Jun 2023 --
 

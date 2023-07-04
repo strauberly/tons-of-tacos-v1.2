@@ -20,10 +20,10 @@ public interface OwnersOrdersServiceInterface {
     List<OwnersGetOrderDto> getOpenOrderByCustomer(String customer);
 
     @Transactional
-    String orderReady(Integer orderId);
+    OwnersGetOrderDto orderReady(Integer orderId);
 
     @Transactional
-    String closeOrder(Integer orderId);
+    OwnersGetOrderDto closeOrder(Integer orderId);
 
     @Transactional
     void deleteOrder(Integer orderId);

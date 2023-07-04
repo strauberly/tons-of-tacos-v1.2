@@ -166,7 +166,7 @@ public interface OwnersOrdersControllerInterface {
     )
     @Transactional
     @PutMapping("/order-ready/{orderId}")
-    String orderReady(@PathVariable Integer orderId);
+    OwnersGetOrderDto orderReady(@PathVariable Integer orderId);
 //
     //    // close order by id
     @Operation(
@@ -195,7 +195,7 @@ public interface OwnersOrdersControllerInterface {
     )
     @Transactional
     @PutMapping("/close-order/{orderId}")
-    String closeOrder(@PathVariable Integer orderId);
+    OwnersGetOrderDto closeOrder(@PathVariable Integer orderId);
 
 //
 // delete order by id

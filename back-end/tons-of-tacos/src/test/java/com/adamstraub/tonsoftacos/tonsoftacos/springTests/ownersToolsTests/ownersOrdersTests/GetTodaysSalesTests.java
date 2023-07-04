@@ -18,6 +18,7 @@ import org.springframework.test.context.jdbc.SqlConfig;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -52,23 +53,40 @@ public class GetTodaysSalesTests {
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
-//            close order
-            int orderId = 2;
+//            mark order ready
+            int orderId = 1;
+            String uri =
+                    String.format("%s/%d", getBaseUriForOrderReady(), orderId);
+            System.out.println(uri);
+
+            ResponseEntity<OwnersGetOrderDto> orderReadyResponse =
+                    getRestTemplate().exchange(uri, HttpMethod.PUT, headerEntity, new ParameterizedTypeReference<>() {
+                    });
+
+            System.out.println(orderReadyResponse.getStatusCode());
+            System.out.println(orderReadyResponse.getBody());
+            System.out.println("Order ready: " + (!ordersRepository.getById(orderId).getReady().equals("no")));
+
+//            mark order closed
             String closeOrderUri =
                     String.format("%s/%d", getBaseUriForCloseOrder(), orderId);
             System.out.println(closeOrderUri);
 
-            ResponseEntity<OwnersGetOrderDto> closeOrderResponse =
+            ResponseEntity<OwnersGetOrderDto> orderClosedResponse =
                     getRestTemplate().exchange(closeOrderUri, HttpMethod.PUT, headerEntity, new ParameterizedTypeReference<>() {
                     });
+            System.out.println(orderClosedResponse.getStatusCode());
+            System.out.println(orderClosedResponse.getBody());
+            System.out.println( "Order closed: " + !ordersRepository.getById(orderId).getClosed().equals("no"));
+
 
 //            When:  a successful connection made
-            String uri =
+            String salesUri =
                     String.format("%s", getBaseUriForSales());
-            System.out.println(uri);
+            System.out.println(salesUri);
 
             ResponseEntity<String> response =
-                    getRestTemplate().exchange(uri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
+                    getRestTemplate().exchange(salesUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
                     });
 //            Then:  response code will be 200
             Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
