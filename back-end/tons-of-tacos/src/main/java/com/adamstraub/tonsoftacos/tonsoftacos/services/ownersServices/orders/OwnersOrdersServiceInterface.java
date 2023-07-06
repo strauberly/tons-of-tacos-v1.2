@@ -1,4 +1,5 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.services.ownersServices.orders;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersDailySalesDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,6 +35,6 @@ public interface OwnersOrdersServiceInterface {
     String updateOrderItemQuantity(Integer orderId, Integer orderItemId, Integer newQuantity);
 
     @Transactional
-    String todaysSales();
+    OwnersDailySalesDto todaysSales();
 
 }

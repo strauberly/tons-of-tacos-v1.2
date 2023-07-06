@@ -3,6 +3,7 @@ import com.adamstraub.tonsoftacos.tonsoftacos.dao.CustomerRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.MenuItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrderItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrdersRepository;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersDailySalesDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersOrderItemDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Customer;
@@ -91,7 +92,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
 
         List<OwnersGetOrderDto> openOrders = new ArrayList<>();
         for (Orders order: orders)
-            if (order.getClosed().equals("open")) {
+            if (order.getClosed().equals("no")) {
             openOrders.add(ownersGetOrderDtoConverter(order));
             }
         if (openOrders.size() > 0) {
@@ -100,7 +101,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
             throw new EntityNotFoundException("No open orders for customer found");
         }
     }
-
+@Transactional
     @Override
     public OwnersGetOrderDto orderReady(Integer orderId) {
         System.out.println("service");
@@ -117,7 +118,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
         System.out.println("Order up!");
         return ownersGetOrderDtoConverter(order);
     }
-
+@Transactional
     @Override
     public OwnersGetOrderDto closeOrder(Integer orderId) {
 //        System.out.println(orderId);
@@ -295,17 +296,19 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
         return response;
     }
 
-
+// MARK ALL AS PRIVATE
+//    Ensure date time formatter is retuning
     @Override
-    public String todaysSales() {
+    public OwnersDailySalesDto todaysSales() {
         System.out.println("service");
-
+        OwnersDailySalesDto salesToday = new OwnersDailySalesDto();
         String formattedSales;
         LocalDate todaysDate = LocalDate.now();
         LocalDate dbDate;
         DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("E dd MMM yyyy");
         Double salesTotal = 0.00;
         List<Orders> todaysOrders = new ArrayList<>();
+
 
         List<Orders> completedOrders = ordersRepository.findByClosed();
         for (Orders completedOrder: completedOrders){
@@ -314,15 +317,20 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
                 todaysOrders.add(completedOrder);
             }
         }
+        System.out.println("todays orders:" + todaysOrders);
 //                create jpa query that takes today's date and closed closed
         for (Orders order:todaysOrders){
             salesTotal += order.getOrderTotal();
         }
+        int numberOfOrders = todaysOrders.size();
+        salesToday.setDate(todaysDate);
+        salesToday.setNumberOfSales(todaysOrders.size());
+        salesToday.setTotal(salesTotal);
 
-        String numberOfOrders = String.valueOf(todaysOrders.size());
         formattedSales = "For: " + todaysDate.format(formattedDate) + ", Number of sales: " + numberOfOrders + ", " +
                 "Totaling: $" + salesTotal;
-        return formattedSales;
+        System.out.println(formattedSales);
+        return salesToday;
     }
 
     private OwnersGetOrderDto ownersGetOrderDtoConverter(Orders order) {

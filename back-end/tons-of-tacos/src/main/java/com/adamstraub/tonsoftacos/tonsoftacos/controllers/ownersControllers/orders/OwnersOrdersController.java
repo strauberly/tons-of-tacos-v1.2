@@ -1,5 +1,6 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.controllers.ownersControllers.orders;
 
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersDailySalesDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.services.ownersServices.orders.OwnersOrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,7 +81,7 @@ public class OwnersOrdersController implements OwnersOrdersControllerInterface {
     }
 
     @Override
-    public String todaysSales() {
+    public OwnersDailySalesDto todaysSales() {
         System.out.println("controller");
         return ownersOrdersService.todaysSales();
     }
