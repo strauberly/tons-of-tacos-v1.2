@@ -24,7 +24,7 @@ public interface OrdersRepository extends JpaRepository<Orders, Integer> {
                 closedOrders.add(order);
             }
         }
-        System.out.println(closedOrders);
+        System.out.println("closed orders" + closedOrders);
         return closedOrders;
     }
 

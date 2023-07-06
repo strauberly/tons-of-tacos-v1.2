@@ -2,6 +2,12 @@
 
 ---
 
+-- 5 Jul 2023 --
+
+- Test for daily sales through postman reveals logic errors. Needs to be evaluated further.
+- Need to edit response successful deletion of an order. Currently returning void.
+-
+
 -- 4 Jul 2023 --
 
 - mark order ready and mark order closed refactored to return order dto.

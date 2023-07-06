@@ -1,4 +1,5 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.controllers.ownersControllers.orders;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersDailySalesDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
@@ -318,6 +319,6 @@ public interface OwnersOrdersControllerInterface {
     )
     @Transactional
     @GetMapping("/sales")
-    String todaysSales();
+    OwnersDailySalesDto todaysSales();
 
 }

@@ -1,6 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.ownersToolsTests.ownersOrdersTests;
 
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrdersRepository;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersDailySalesDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ownersToolsSupport.OwnersToolsTestsSupport;
@@ -18,6 +19,7 @@ import org.springframework.test.context.jdbc.SqlConfig;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -53,31 +55,63 @@ public class GetTodaysSalesTests {
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
-//            mark order ready
-            int orderId = 1;
-            String uri =
-                    String.format("%s/%d", getBaseUriForOrderReady(), orderId);
-            System.out.println(uri);
+            int orderIdOne = 1;
+            int orderIdTwo = 2;
 
-            ResponseEntity<OwnersGetOrderDto> orderReadyResponse =
-                    getRestTemplate().exchange(uri, HttpMethod.PUT, headerEntity, new ParameterizedTypeReference<>() {
+//            mark order one ready
+
+            String orderOneReadyUri =
+                    String.format("%s/%d", getBaseUriForOrderReady(), orderIdOne);
+            System.out.println(orderOneReadyUri);
+
+            ResponseEntity<OwnersGetOrderDto> orderOneReadyResponse =
+                    getRestTemplate().exchange(orderOneReadyUri, HttpMethod.PUT, headerEntity, new ParameterizedTypeReference<>() {
                     });
 
-            System.out.println(orderReadyResponse.getStatusCode());
-            System.out.println(orderReadyResponse.getBody());
-            System.out.println("Order ready: " + (!ordersRepository.getById(orderId).getReady().equals("no")));
+            System.out.println(orderOneReadyResponse.getStatusCode());
+            System.out.println(orderOneReadyResponse.getBody());
+            System.out.println("Order one ready: " + (!ordersRepository.getById(orderIdOne).getReady().equals("no")));
 
-//            mark order closed
-            String closeOrderUri =
-                    String.format("%s/%d", getBaseUriForCloseOrder(), orderId);
-            System.out.println(closeOrderUri);
+//            mark order one closed
+            String closeOrderOneUri =
+                    String.format("%s/%d", getBaseUriForCloseOrder(), orderIdOne);
+            System.out.println(closeOrderOneUri);
 
-            ResponseEntity<OwnersGetOrderDto> orderClosedResponse =
-                    getRestTemplate().exchange(closeOrderUri, HttpMethod.PUT, headerEntity, new ParameterizedTypeReference<>() {
+            ResponseEntity<OwnersGetOrderDto> orderOneClosedResponse =
+                    getRestTemplate().exchange(closeOrderOneUri, HttpMethod.PUT, headerEntity, new ParameterizedTypeReference<>() {
                     });
-            System.out.println(orderClosedResponse.getStatusCode());
-            System.out.println(orderClosedResponse.getBody());
-            System.out.println( "Order closed: " + !ordersRepository.getById(orderId).getClosed().equals("no"));
+            System.out.println(orderOneClosedResponse.getStatusCode());
+            System.out.println(orderOneClosedResponse.getBody());
+            System.out.println( "Order one closed: " + !ordersRepository.getById(orderIdOne).getClosed().equals("no"));
+
+            //            mark order two ready
+
+            String orderTwoReadyUri =
+                    String.format("%s/%d", getBaseUriForOrderReady(), orderIdTwo);
+            System.out.println(orderOneReadyUri);
+
+            ResponseEntity<OwnersGetOrderDto> orderTwoReadyResponse =
+                    getRestTemplate().exchange(orderTwoReadyUri, HttpMethod.PUT, headerEntity, new ParameterizedTypeReference<>() {
+                    });
+
+            System.out.println(orderTwoReadyResponse.getStatusCode());
+            System.out.println(orderTwoReadyResponse.getBody());
+            System.out.println("Order two ready: " + (!ordersRepository.getById(orderIdOne).getReady().equals("no")));
+
+
+            //            mark order two closed
+            String closeOrderTwoUri =
+                    String.format("%s/%d", getBaseUriForCloseOrder(), orderIdTwo);
+            System.out.println(closeOrderTwoUri);
+
+            ResponseEntity<OwnersGetOrderDto> orderTwoClosedResponse =
+                    getRestTemplate().exchange(closeOrderTwoUri, HttpMethod.PUT, headerEntity, new ParameterizedTypeReference<>() {
+                    });
+            System.out.println(orderTwoClosedResponse.getStatusCode());
+            System.out.println(orderTwoClosedResponse.getBody());
+            System.out.println( "Order two closed: " + !ordersRepository.getById(orderIdOne).getClosed().equals("no"));
+
+
 
 
 //            When:  a successful connection made
@@ -85,24 +119,29 @@ public class GetTodaysSalesTests {
                     String.format("%s", getBaseUriForSales());
             System.out.println(salesUri);
 
-            ResponseEntity<String> response =
+            ResponseEntity<Map<String, Object>> response =
                     getRestTemplate().exchange(salesUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
                     });
 //            Then:  response code will be 200
             Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
             System.out.println("Response code is " + response.getStatusCode() + ".");
             System.out.println(response.getBody());
-//            And:   console print out should match sum totals of orders closed
-            AtomicReference<Double> summedClosedOrderTotals = new AtomicReference<>(0.00);
-            List<Orders> orders = ordersRepository.findAll();
-            List<Orders> closedOrders = new ArrayList<>();
-            for (Orders order: orders){
-                if (!order.getClosed().equals("no")){
-                    closedOrders.add(order);
-                }
-            }
-            closedOrders.forEach(closedOrder -> summedClosedOrderTotals.updateAndGet(v -> v + closedOrder.getOrderTotal()));
-            System.out.println("Summed total for orders marked closed = " + summedClosedOrderTotals);
+
+//            And: the sum of the orders totals will equal the daily sales total
+            Assertions.assertEquals(Objects.requireNonNull(orderOneReadyResponse.getBody()).getOrderTotal() + Objects.requireNonNull(orderTwoReadyResponse.getBody()).getOrderTotal(), Objects.requireNonNull(response.getBody()).get("total"));
+            System.out.println("Total of order 1 and order 2 equals daily sales total: " + (orderOneReadyResponse.getBody().getOrderTotal() + orderTwoReadyResponse.getBody().getOrderTotal() == (double) response.getBody().get("total")));
+            System.out.println("Successful test case for daily sales complete.");
+////            And:   console print out should match sum totals of orders closed
+//            AtomicReference<Double> summedClosedOrderTotals = new AtomicReference<>(0.00);
+//            List<Orders> orders = ordersRepository.findAll();
+//            List<Orders> closedOrders = new ArrayList<>();
+//            for (Orders order: orders){
+//                if (!order.getClosed().equals("no")){
+//                    closedOrders.add(order);
+//                }
+//            }
+//            closedOrders.forEach(closedOrder -> summedClosedOrderTotals.updateAndGet(v -> v + closedOrder.getOrderTotal()));
+//            System.out.println("Summed total for orders marked closed = " + summedClosedOrderTotals);
         }
     }
 
