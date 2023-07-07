@@ -62,7 +62,7 @@ public class UpdateCustomerPhoneTest {
                 ResponseEntity<OwnersGetCustomerDto> getCustomerResponse =
                         getRestTemplate().exchange(getCustomerUri, HttpMethod.GET, headersEntity, new ParameterizedTypeReference<>() {
                         });
-                System.out.println(Objects.requireNonNull(getCustomerResponse.getBody()).getPhone());
+                System.out.println("Old phone: " + Objects.requireNonNull(getCustomerResponse.getBody()).getPhone());
 
 //            When: a successful connection is made
                 String uri =
@@ -88,7 +88,7 @@ public class UpdateCustomerPhoneTest {
                         getRestTemplate().exchange(getCustomerUri2, HttpMethod.GET, headersEntity,
                                 new ParameterizedTypeReference<>() {
                                 });
-                System.out.println(Objects.requireNonNull(getCustomerResponse2.getBody()).getPhone());
+                System.out.println("New phone: " + Objects.requireNonNull(getCustomerResponse2.getBody()).getPhone());
                 Assertions.assertNotEquals(getCustomerResponse.getBody().getPhone(),
                         getCustomerResponse2.getBody().getPhone());
 

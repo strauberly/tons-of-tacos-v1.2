@@ -63,7 +63,7 @@ class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSu
 
     @Test
     void noOrdersReturned404() {
-//  Given: a successful connection, auth header, and test data is commented out
+//  Given: a successful connection, auth header, and test data is commented out from test database
         //            get valid token
 //        String token = validToken();
         String token = encryptedToken();
@@ -80,6 +80,7 @@ class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSu
         ResponseEntity<Map<String, Object>> response =
                 getRestTemplate().exchange(uri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
                 });
+        System.out.println("Response body: " + response.getBody());
 //  Then: a 404 response is returned if no orders found
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
         System.out.println(("Response code is " + response.getStatusCode() + "."));

@@ -27,7 +27,7 @@ public interface OwnersOrdersServiceInterface {
     OwnersGetOrderDto closeOrder(Integer orderId);
 
     @Transactional
-    void deleteOrder(Integer orderId);
+    String deleteOrder(Integer orderId);
 
     @Transactional
     void addToOrder(Integer orderId, Integer menuItemId, Integer quantity);

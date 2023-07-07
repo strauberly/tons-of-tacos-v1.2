@@ -156,9 +156,9 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
         }
         return ownersGetOrderDtoConverter(order);
     }
-
+@Transactional
     @Override
-    public void deleteOrder(Integer orderId) {
+    public String deleteOrder(Integer orderId) {
         System.out.println("service");
         try {
             Orders order = ordersRepository.getReferenceById(orderId);
@@ -168,6 +168,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
         }
         ordersRepository.deleteById(orderId);
         System.out.println("Order deleted");
+        return "Order deleted.";
     }
 
     @Override
@@ -298,6 +299,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
 
 // MARK ALL AS PRIVATE
 //    Ensure date time formatter is retuning
+    @Transactional
     @Override
     public OwnersDailySalesDto todaysSales() {
         System.out.println("service");

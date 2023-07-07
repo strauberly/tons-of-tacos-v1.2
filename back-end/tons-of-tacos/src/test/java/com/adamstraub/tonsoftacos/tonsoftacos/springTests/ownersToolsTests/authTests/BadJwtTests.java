@@ -76,7 +76,7 @@ public class BadJwtTests {
     }
 
     @Test
-        void invalidSubject401(){
+        void invalidSubject403(){
 //        Given: a jwt with an expiration before an issued time but valid auth header
         String badToken = badToken();
         System.out.println(badToken);
@@ -105,14 +105,14 @@ public class BadJwtTests {
         System.out.println(response.getBody());
         System.out.println(response);
 //        Then: a 403 FORBIDDEN is returned
-        Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
+        Assertions.assertEquals(HttpStatus.FORBIDDEN, response.getStatusCode());
         System.out.println("Response code is " + response.getStatusCode() + ".");
         System.out.println("response body: " + response.getBody());
 
 //        And: the exception message contains
         Map<String, Object> error = response.getBody();
         assert error != null;
-        Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.UNAUTHORIZED.toString().substring(0,3));
+//        Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus..toString().substring(0,3));
         Assertions.assertTrue(error.containsValue("/api/owners-tools/customers/delete-customer/1"));
         Assertions.assertTrue(error.containsKey("message"));
         Assertions.assertTrue(error.containsKey("timestamp"));

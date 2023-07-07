@@ -64,7 +64,7 @@ public class GetAllCustomersTest {
                 System.out.println("Successful test case complete.");
             }
 // must comment out sections of test db before this test in order for it to operate as intended.
-// Therefore, recommend recreating this test with Mockito.
+// Try this test with Mockito.
     @Test
     void noCustomersReturned404() {
 //  Given: a valid auth header

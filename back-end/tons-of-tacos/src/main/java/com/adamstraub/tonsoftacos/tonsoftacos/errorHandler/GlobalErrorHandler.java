@@ -55,10 +55,10 @@ public class GlobalErrorHandler  {
     }
 
     @ExceptionHandler(UsernameNotFoundException.class)
-    @ResponseStatus(code = HttpStatus.FORBIDDEN)
+    @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
     public Map<String, Object> handleUsernameNotFoundException(
             UsernameNotFoundException e, WebRequest webRequest){
-        return  createExceptionMessage(e.getLocalizedMessage(), HttpStatus.FORBIDDEN, webRequest);
+        return  createExceptionMessage(e.getLocalizedMessage(), HttpStatus.UNAUTHORIZED, webRequest);
     }
 
     @ExceptionHandler(SignatureException.class)
@@ -90,11 +90,11 @@ public class GlobalErrorHandler  {
     }
 
     @ExceptionHandler(BadCredentialsException.class)
-    @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
+    @ResponseStatus(code = HttpStatus.FORBIDDEN)
     public Map<String, Object> handleBadCredentialsException(
             BadCredentialsException e, WebRequest webRequest
     ){
-        return createExceptionMessage(e.getLocalizedMessage(), HttpStatus.UNAUTHORIZED, webRequest);
+        return createExceptionMessage(e.getLocalizedMessage(), HttpStatus.FORBIDDEN, webRequest);
     }
 
 

@@ -63,9 +63,9 @@ public class OwnersOrdersController implements OwnersOrdersControllerInterface {
 
 
     @Override
-    public void deleteOrder(Integer orderId) {
+    public String deleteOrder(Integer orderId) {
         System.out.println("controller");
-        ownersOrdersService.deleteOrder(orderId);
+        return ownersOrdersService.deleteOrder(orderId);
     }
 
     @Override
