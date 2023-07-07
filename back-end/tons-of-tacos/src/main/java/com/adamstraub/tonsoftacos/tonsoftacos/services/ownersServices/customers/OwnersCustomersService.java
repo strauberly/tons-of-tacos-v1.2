@@ -183,11 +183,12 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
 //            throw new EntityNotFoundException("No customer with that id found.");
 //        }
     }
-
+    @Transactional
     @Override
     public String updateCustomerPhone(Integer customerId, String newCustomerPhone) {
         System.out.println("update phone service");
             Customer customer;
+        boolean newCustomerPhoneNumberValid = false;
         try{
             customer = customerRepository.getById(customerId);
             System.out.println("customer: " + customer);
@@ -195,13 +196,28 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
             throw new EntityNotFoundException("No customer with that id found.");
         }
         String oldCustomerPhone = customer.getPhoneNumber();
-        boolean newCustomerPhoneNumberValid = newCustomerPhone.matches("[0-9-]*")
-                && newCustomerPhone.charAt(3) == (byte) 45
-                && newCustomerPhone.charAt(7) == 45
-                && newCustomerPhone.length() == 12;
+        if (newCustomerPhone.matches("[0-9.]*")
+                && newCustomerPhone.charAt(3) == (char) 46
+                && newCustomerPhone.charAt(7) == (char) 46
+                && newCustomerPhone.length() == 12){
+            newCustomerPhoneNumberValid = true;
+        }
+
+//         = newCustomerPhone.matches("[0-9-]*")
+//                && newCustomerPhone.charAt(3) == (char) 46
+//                && newCustomerPhone.charAt(7) == (char) 46
+//                && newCustomerPhone.length() == 12;
+        System.out.println("new number valid: " + newCustomerPhoneNumberValid);
+        System.out.println(newCustomerPhone.charAt(3) == (char) 46);
+        System.out.println(newCustomerPhone.charAt(7) == (char) 46);
+        System.out.println(newCustomerPhone.length() == 12);
+        System.out.println(newCustomerPhone.matches("[0-9.]*"));
+        System.out.println(newCustomerPhone.charAt(3));
+        System.out.println((char) 46);
         if (newCustomerPhoneNumberValid){
             customer.setPhoneNumber(newCustomerPhone);
             customerRepository.save(customer);
+            System.out.println(customerRepository.getReferenceById(customerId));
         }
         return "Previous customer phone number: " + oldCustomerPhone + ", Updated customer phone number: " + customer.getPhoneNumber();
     }

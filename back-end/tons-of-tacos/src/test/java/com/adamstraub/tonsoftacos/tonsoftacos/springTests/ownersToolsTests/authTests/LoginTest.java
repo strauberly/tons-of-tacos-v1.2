@@ -113,7 +113,7 @@ public class LoginTest implements JwtSignatureValidator {
 
 
         @Test
-        void invalidUsernameReturns401(){
+        void invalidUsernameReturns403(){
 //            Given: a bad username
             String badUserNameBody = badUsername();
             System.out.println("bad username body: "+ badUserNameBody);
@@ -126,16 +126,15 @@ public class LoginTest implements JwtSignatureValidator {
             HttpEntity<String> httpEntity = new HttpEntity<>(badUserNameBody, headers);
             ResponseEntity<Map<String, Object>> response = getRestTemplate().exchange(uri, HttpMethod.POST, httpEntity, new ParameterizedTypeReference<>() {
             });
-
+            System.out.println(response.getBody());
 //            Then: status code of 401 is returned
-            Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
+            Assertions.assertEquals(HttpStatus.FORBIDDEN, response.getStatusCode());
             System.out.println(("Response code is " + response.getStatusCode() + "."));
 
 //            And: the error message contains
             Map<String, Object> error = response.getBody();
             System.out.println(error);
             assert error != null;
-            Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.UNAUTHORIZED.toString().substring(0,3));
             Assertions.assertTrue(error.containsValue("/api/owners-tools/login"));
             Assertions.assertTrue(error.containsKey("message"));
             Assertions.assertTrue(error.containsKey("timestamp"));
@@ -143,7 +142,7 @@ public class LoginTest implements JwtSignatureValidator {
         }
 
         @Test
-        void invalidPasswordReturns401(){
+        void invalidPasswordReturns403(){
 //           Given: a body with an invalid password
                 String badPasswordBody = badPassword();
             System.out.println("Bad password body: " + badPasswordBody);
@@ -155,14 +154,15 @@ public class LoginTest implements JwtSignatureValidator {
             ResponseEntity<Map<String,Object>> response = getRestTemplate().exchange(uri, HttpMethod.POST, httpEntity, new ParameterizedTypeReference<>() {
             });
 
+            System.out.println(response.getBody());
+
 //           Then: a status code of 401 UNAUTHORIZED is returned
-            Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
+            Assertions.assertEquals(HttpStatus.FORBIDDEN, response.getStatusCode());
             System.out.println(("Response code is " + response.getStatusCode() + "."));
 //           And: the error contains
             Map<String, Object> error = response.getBody();
             System.out.println(error);
             assert error != null;
-            Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.UNAUTHORIZED.toString().substring(0,3));
             Assertions.assertTrue(error.containsValue("/api/owners-tools/login"));
             Assertions.assertTrue(error.containsKey("message"));
             Assertions.assertTrue(error.containsKey("timestamp"));

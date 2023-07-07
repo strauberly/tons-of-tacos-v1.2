@@ -54,12 +54,13 @@ public class DeleteOrderTests {
                     String.format("%s/%d", getBaseUriForDeleteOrder(), orderId);
             System.out.println(uri);
 
-            ResponseEntity<OwnersGetOrderDto> response =
+            ResponseEntity<String> response =
                     getRestTemplate().exchange(uri, HttpMethod.DELETE, headerEntity, new ParameterizedTypeReference<>() {
                     });
 //
 //        Then: the order is removed from the database with a 200 response
             System.out.println("Response code is " + response.getStatusCode() + ".");
+            System.out.println("Response body:  " + response.getBody());
             Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
 //        And: an attempt to call the order deleted will give a 404 response
             String parameter = "orderId";

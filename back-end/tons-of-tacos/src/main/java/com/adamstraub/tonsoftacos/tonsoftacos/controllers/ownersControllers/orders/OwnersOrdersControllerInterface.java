@@ -226,7 +226,7 @@ public interface OwnersOrdersControllerInterface {
     )
     @Transactional
     @DeleteMapping("/delete-order/{orderId}")
-    void deleteOrder(@PathVariable Integer orderId);
+    String deleteOrder(@PathVariable Integer orderId);
 
 //    add menu item to order
     @Operation(
