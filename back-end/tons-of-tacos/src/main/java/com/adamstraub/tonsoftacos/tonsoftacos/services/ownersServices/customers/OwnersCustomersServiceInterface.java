@@ -29,6 +29,6 @@ OwnersGetCustomerDto getCustomerByName(String name) throws Exception;
 
     // Successful test written 30 Mar 2023
     @Transactional
-    void deleteCustomer(Integer customerId);
+    String deleteCustomer(Integer customerId);
 
 }

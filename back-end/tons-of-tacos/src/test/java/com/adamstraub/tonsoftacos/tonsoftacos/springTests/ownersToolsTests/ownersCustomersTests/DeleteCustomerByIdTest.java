@@ -61,7 +61,7 @@ public class DeleteCustomerByIdTest {
             System.out.println(uri);
 
 
-            ResponseEntity<OwnersGetOrderDto> response =
+            ResponseEntity<String> response =
                     getRestTemplate().exchange(uri, HttpMethod.DELETE, headerEntity, new ParameterizedTypeReference<>() {
                     });
 //

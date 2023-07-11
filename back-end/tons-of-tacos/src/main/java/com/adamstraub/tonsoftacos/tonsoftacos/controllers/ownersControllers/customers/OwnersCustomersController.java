@@ -63,9 +63,9 @@ public class OwnersCustomersController implements OwnersCustomersControllerInter
     }
 
     @Override
-    public void deleteCustomer(Integer customerId) {
+    public String deleteCustomer(Integer customerId) {
         System.out.println("controller");
-        ownersCustomersService.deleteCustomer(customerId);
+        return ownersCustomersService.deleteCustomer(customerId);
     }
 
 }

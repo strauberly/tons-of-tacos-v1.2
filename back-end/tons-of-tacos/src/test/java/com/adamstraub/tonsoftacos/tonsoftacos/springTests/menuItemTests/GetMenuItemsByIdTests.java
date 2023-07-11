@@ -1,4 +1,5 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.menuItemTests;
+import com.adamstraub.tonsoftacos.tonsoftacos.dao.MenuItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.menuItemTestsSupport.GetMenuItemsTestsSupport;
 import org.junit.jupiter.api.Assertions;
@@ -25,6 +26,8 @@ class GetMenuItemsByIdTests {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+    @Autowired
+    MenuItemRepository menuItemRepository;
 
     @Nested
     @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -75,10 +78,12 @@ class GetMenuItemsByIdTests {
             ResponseEntity<Map<String, Object>> response =
                     getRestTemplate().exchange(uri, HttpMethod.GET, null, new ParameterizedTypeReference<>() {
                     });
+            System.out.println(response.getBody());
 //      Then: A 404 is returned
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
             System.out.println("Response code is " + response.getStatusCode() + ".");
-//      And: the error message contains
+
+            //      And: the error message contains
             Map<String, Object> error = response.getBody();
             assert error != null;
             Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.NOT_FOUND.toString().substring(0,3));

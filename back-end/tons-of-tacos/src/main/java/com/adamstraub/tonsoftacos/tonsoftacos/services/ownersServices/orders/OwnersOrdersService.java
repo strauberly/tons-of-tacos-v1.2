@@ -172,7 +172,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
     }
 
     @Override
-    public void addToOrder(Integer orderId, Integer menuItemId, Integer quantity) {
+    public String addToOrder(Integer orderId, Integer menuItemId, Integer quantity) {
         System.out.println("service");
         Optional<MenuItem> menuItem;
         Optional<Orders> orderToUpdate;
@@ -207,6 +207,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
         ordersRepository.save(order);
 //        System.out.println(order);
         System.out.println("Item added to order");
+        return "Item added to order. " + menuItem.get().getItemName() + " x " + quantity;
     }
 
     @Transactional

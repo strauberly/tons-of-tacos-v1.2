@@ -55,10 +55,10 @@ public class GlobalErrorHandler  {
     }
 
     @ExceptionHandler(UsernameNotFoundException.class)
-    @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
+    @ResponseStatus(code = HttpStatus.FORBIDDEN)
     public Map<String, Object> handleUsernameNotFoundException(
             UsernameNotFoundException e, WebRequest webRequest){
-        return  createExceptionMessage(e.getLocalizedMessage(), HttpStatus.UNAUTHORIZED, webRequest);
+        return  createExceptionMessage(e.getLocalizedMessage(), HttpStatus.FORBIDDEN, webRequest);
     }
 
     @ExceptionHandler(SignatureException.class)

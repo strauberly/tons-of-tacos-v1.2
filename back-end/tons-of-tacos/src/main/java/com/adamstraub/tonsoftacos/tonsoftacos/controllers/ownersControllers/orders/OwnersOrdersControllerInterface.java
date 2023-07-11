@@ -252,7 +252,7 @@ public interface OwnersOrdersControllerInterface {
     )
     @Transactional
     @PutMapping("/add-to-order/{orderId}/{menuItemId}/{quantity}")
-    void addToOrder(
+    String addToOrder(
             @PathVariable
             Integer orderId, @PathVariable Integer menuItemId, @PathVariable Integer quantity);
 

@@ -186,9 +186,10 @@ public class OrdersService implements OrdersServiceInterface {
 
     private void validateCustomerPhone(String customerPhone){
         byte [] phoneDigits = customerPhone.getBytes(StandardCharsets.UTF_8);
-        if (customerPhone.matches("[0-9-]*")
-                && customerPhone.charAt(3) == (byte) 45
-                && customerPhone.charAt(7) == 45
+        System.out.println((char) 46);
+        if (customerPhone.matches("[0-9.]*")
+                && customerPhone.charAt(3) == (char) 46
+                && customerPhone.charAt(7) == (char) 46
                 && customerPhone.length()==12){
             customerPhoneNumberValid = true;
         }
