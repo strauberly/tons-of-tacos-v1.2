@@ -3,6 +3,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
@@ -12,11 +14,14 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class MenuItem {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "item_pk")
 //    @JsonIgnore
+    @NotFound(action=NotFoundAction.IGNORE)
     private Integer id;
 
     @Column (name = "category")

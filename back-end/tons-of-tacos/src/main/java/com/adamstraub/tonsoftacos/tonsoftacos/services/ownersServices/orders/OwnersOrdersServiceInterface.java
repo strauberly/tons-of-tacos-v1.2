@@ -30,7 +30,7 @@ public interface OwnersOrdersServiceInterface {
     String deleteOrder(Integer orderId);
 
     @Transactional
-    void addToOrder(Integer orderId, Integer menuItemId, Integer quantity);
+    String addToOrder(Integer orderId, Integer menuItemId, Integer quantity);
 //    @Transactional
     String updateOrderItemQuantity(Integer orderId, Integer orderItemId, Integer newQuantity);
 

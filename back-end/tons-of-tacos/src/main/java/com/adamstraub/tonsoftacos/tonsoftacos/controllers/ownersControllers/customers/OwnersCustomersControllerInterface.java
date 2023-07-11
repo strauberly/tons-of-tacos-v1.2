@@ -238,5 +238,5 @@ OwnersGetCustomerDto getCustomerById(@RequestParam Integer customerId);
     )
     @Transactional
     @DeleteMapping("/delete-customer/{customerId}")
-    void deleteCustomer(@PathVariable Integer customerId);
+    String deleteCustomer(@PathVariable Integer customerId);
 }

@@ -14,12 +14,18 @@ public class MenuItemController implements MenuItemControllerInterface {
     @Autowired
     private MenuItemService menuItemService;
 
+//    @Override
+//    public Optional<Optional<MenuItem>> getById(int id) {
+//        System.out.println("controller");
+//        return menuItemService.findById(id);
+//    }
+//
+
     @Override
-    public Optional<Optional<MenuItem>> getById(String id) {
+    public MenuItem getById(Integer id) {
         System.out.println("controller");
         return menuItemService.findById(id);
     }
-//
     @Override
     public List<MenuItem> getByCategory(String category) {
         System.out.println("controller");

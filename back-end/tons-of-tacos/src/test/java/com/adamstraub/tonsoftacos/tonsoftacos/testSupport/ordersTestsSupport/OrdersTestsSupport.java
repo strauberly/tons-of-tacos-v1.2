@@ -49,7 +49,7 @@ public class OrdersTestsSupport extends TestUris {
                     "customer": {
                         "name": "billy billson",
                         "email": "billy@bolly.com",
-                        "phoneNumber": "555-555-5959"
+                        "phoneNumber": "555.555.5959"
                     },
                     "order": {
                         "orderItems": [

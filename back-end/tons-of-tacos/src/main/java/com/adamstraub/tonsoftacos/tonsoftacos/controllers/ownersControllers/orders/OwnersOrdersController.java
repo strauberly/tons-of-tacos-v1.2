@@ -69,9 +69,9 @@ public class OwnersOrdersController implements OwnersOrdersControllerInterface {
     }
 
     @Override
-    public void addToOrder(Integer orderId, Integer menuItemId, Integer quantity) {
+    public String addToOrder(Integer orderId, Integer menuItemId, Integer quantity) {
         System.out.println("controller");
-      ownersOrdersService.addToOrder(orderId, menuItemId, quantity);
+      return ownersOrdersService.addToOrder(orderId, menuItemId, quantity);
     }
 //@Transactional
     @Override

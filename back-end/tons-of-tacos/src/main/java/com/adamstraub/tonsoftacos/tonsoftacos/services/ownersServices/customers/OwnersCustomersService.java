@@ -223,7 +223,7 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
     }
 
     @Override
-    public void deleteCustomer(Integer customerId) {
+    public String deleteCustomer(Integer customerId) {
         System.out.println("service");
         Optional<Customer> customer = customerRepository.findById(customerId);
         if (customer.isEmpty()){
@@ -231,6 +231,7 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
         }else {
         customerRepository.deleteById(customerId);
         System.out.println("Customer deleted");
+        return "Customer details removed.";
         }
     }
 

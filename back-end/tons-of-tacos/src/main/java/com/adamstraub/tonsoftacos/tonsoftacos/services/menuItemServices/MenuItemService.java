@@ -13,20 +13,27 @@ import java.util.Optional;
 public class MenuItemService implements MenuItemServiceInterface {
     @Autowired
     private MenuItemRepository menuItemRepository;
-    @Transactional(readOnly = true)
+    @Transactional
     @Override
-    public Optional<Optional<MenuItem>> findById(String id) {
+    public MenuItem findById(Integer id) {
         System.out.println("service");
         String message = null;
-        Optional<MenuItem> menuItem = menuItemRepository.findById(Integer.parseInt(id));
+        MenuItem menuItem;
 
-        if(!id.matches("\\d+")){
-            throw new NumberFormatException("You have entered invalid data. Try using just a number.");
-//            throw new NumberFormatException();
-        } else if (menuItem.isEmpty()) {
-           throw new EntityNotFoundException("You have chosen a menu item that does not exist. Try using an id less than " + menuItemRepository.findAll().size() + ".");
-       }else
-        return Optional.of(menuItem);
+        try{
+            menuItem = menuItemRepository.findById(id).orElseThrow();
+        }catch (Exception e){
+//            System.out.println(e.getMessage());
+            throw new EntityNotFoundException("You have chosen a menu item that does not exist.");
+        }
+
+//        if(!id.matches("\\d+")){
+//            throw new IllegalArgumentException("You have entered invalid data. Try using just a number.");
+////            throw new NumberFormatException();
+//        } else if (menuItem.isEmpty()) {
+//           throw new EntityNotFoundException("You have chosen a menu item that does not exist. Try using an id less than " + menuItemRepository.findAll().size() + ".");
+//       }else
+        return menuItem;
     }
 
 

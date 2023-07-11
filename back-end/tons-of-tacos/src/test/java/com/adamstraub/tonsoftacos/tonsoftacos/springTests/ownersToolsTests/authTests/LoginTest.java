@@ -156,13 +156,13 @@ public class LoginTest implements JwtSignatureValidator {
 
             System.out.println(response.getBody());
 
-//           Then: a status code of 401 UNAUTHORIZED is returned
+//           Then: a status code of 403 UNAUTHORIZED is returned
             Assertions.assertEquals(HttpStatus.FORBIDDEN, response.getStatusCode());
             System.out.println(("Response code is " + response.getStatusCode() + "."));
 //           And: the error contains
             Map<String, Object> error = response.getBody();
             System.out.println(error);
-            assert error != null;
+//            assert error != null;
             Assertions.assertTrue(error.containsValue("/api/owners-tools/login"));
             Assertions.assertTrue(error.containsKey("message"));
             Assertions.assertTrue(error.containsKey("timestamp"));

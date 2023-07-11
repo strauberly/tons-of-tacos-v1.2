@@ -2,6 +2,13 @@
 
 ---
 
+-- 11 Jul 2023 --
+
+- Encountered oddities while running test cases through postman in exception handling for un-found menu item entities. These have been resolved.
+- Junit tests performing as expected for exception handling.
+- Application test run through postman successful.
+- Commencing clean up and refactor.
+
 -- 6 Jul 2023 --
 
 - Currently all 44 tests for input and output validation operating as expected for all current customer and owner functions. Whew!

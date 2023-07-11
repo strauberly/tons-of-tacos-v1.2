@@ -67,12 +67,13 @@ public class AddToOrderTest {
                     String.format("%s/%d/%d/%d", getBaseUriForAddOrderItem(), orderId, menuItemId, quantity);
             System.out.println(uri);
 
-            ResponseEntity<OwnersGetOrderDto> response =
+            ResponseEntity<String> response =
                     getRestTemplate().exchange(uri, HttpMethod.PUT, headerEntity,
                             new ParameterizedTypeReference<>() {});
 //        Then:  response will return 200
             Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
             System.out.println(response.getStatusCode());
+            System.out.println(response.getBody());
 
 //        And:   number of items in the order will have increased
             String getOrderUri2 =
