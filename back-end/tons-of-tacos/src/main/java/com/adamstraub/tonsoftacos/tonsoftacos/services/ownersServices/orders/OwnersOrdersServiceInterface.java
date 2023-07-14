@@ -1,6 +1,6 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.services.ownersServices.orders;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersDailySalesDto;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.DailySales;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.BusinessReturnedOrder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -9,22 +9,22 @@ import java.util.List;
 public interface OwnersOrdersServiceInterface {
 
     @Transactional(readOnly = true)
-    List<OwnersGetOrderDto> getAllOrders();
+    List<BusinessReturnedOrder> getAllOrders();
 
     @Transactional
-    OwnersGetOrderDto getOrderById(Integer orderId);
+    BusinessReturnedOrder getOrderById(Integer orderId);
 
     @Transactional(readOnly = true)
-    OwnersGetOrderDto getOrderByUid(@PathVariable String orderUid);
+    BusinessReturnedOrder getOrderByUid(@PathVariable String orderUid);
 
     @Transactional
-    List<OwnersGetOrderDto> getOpenOrderByCustomer(String customer);
+    List<BusinessReturnedOrder> getOpenOrderByCustomer(String customer);
 
     @Transactional
-    OwnersGetOrderDto orderReady(Integer orderId);
+    BusinessReturnedOrder orderReady(Integer orderId);
 
     @Transactional
-    OwnersGetOrderDto closeOrder(Integer orderId);
+    BusinessReturnedOrder closeOrder(Integer orderId);
 
     @Transactional
     String deleteOrder(Integer orderId);
@@ -35,6 +35,6 @@ public interface OwnersOrdersServiceInterface {
     String updateOrderItemQuantity(Integer orderId, Integer orderItemId, Integer newQuantity);
 
     @Transactional
-    OwnersDailySalesDto todaysSales();
+    DailySales todaysSales();
 
 }

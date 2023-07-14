@@ -1,10 +1,10 @@
-package com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto;
+package com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto;
 
 import lombok.Data;
 import java.util.List;
 
 @Data
-public class OwnersGetCustomerDto {
+public class BusinessReturnedCustomer {
     private Integer customerId;
     private String name;
     private String email;

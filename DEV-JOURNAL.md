@@ -2,6 +2,15 @@
 
 ---
 
+-- 14 Jul 2023 --
+
+- refactor of config folder executed and tested, still need annotation
+- refactor of controllers folder executed and tested, still need annotation
+- refactor of dao folder executed and tested
+- refactor of dtos with new names executed and tested
+
+---
+
 -- 11 Jul 2023 --
 
 - Encountered oddities while running test cases through postman in exception handling for un-found menu item entities. These have been resolved.
@@ -9,15 +18,21 @@
 - Application test run through postman successful.
 - Commencing clean up and refactor.
 
+---
+
 -- 6 Jul 2023 --
 
 - Currently all 44 tests for input and output validation operating as expected for all current customer and owner functions. Whew!
 - Next will be quick run through with postman to verify user experience followed by a refactor and clean up.
 
+---
+
 -- 5 Jul 2023 --
 
 - Test for daily sales through postman reveals logic errors. Needs to be evaluated further.
 - Need to edit response successful deletion of an order. Currently returning void.
+
+---
 
 -- 4 Jul 2023 --
 

@@ -1,4 +1,4 @@
-package com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.security;
+package com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.security;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,6 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class OwnerAuthDto {
     private String username;
-
     private String psswrd;
 }

@@ -1,13 +1,12 @@
-package com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto;
+package com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto;
 
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 
 @Data
-public class OwnersDailySalesDto {
+public class DailySales {
     private LocalDate date;
     private int numberOfSales;
     private double total;

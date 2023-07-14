@@ -1,6 +1,6 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.controllers.ownersControllers.orders;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersDailySalesDto;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.DailySales;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.BusinessReturnedOrder;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
@@ -23,8 +23,8 @@ import java.util.List;
 @OpenAPIDefinition(info = @Info(title = "services pertaining to functions reserved for the owners of tons of tacos."),
         servers = {@Server(url="http://localhost:8080", description = "Local server")})
 public interface OwnersOrdersControllerInterface {
-    // for all if data returned it shows id for ease of selection
-    //    get all orders
+
+//    get all orders
     @Operation(
             summary = "All orders returned.",
             description = """
@@ -50,9 +50,9 @@ public interface OwnersOrdersControllerInterface {
     )
     @Transactional
     @GetMapping("/get-orders")
-    List<OwnersGetOrderDto> getAllOrders();
+    List<BusinessReturnedOrder> getAllOrders();
 
-    //    get an order by order id
+//    get an order by order id
     @Operation(
             summary = "An order is returned by id.",
             description = """
@@ -78,9 +78,9 @@ public interface OwnersOrdersControllerInterface {
     )
     @Transactional
     @GetMapping("/get-order/orderId")
-    OwnersGetOrderDto getOrderById(@RequestParam Integer orderId);
+    BusinessReturnedOrder getOrderById(@RequestParam Integer orderId);
 
-    //    get an order by uid
+//    get an order by uid
     @Operation(
             summary = "An order is returned by uid.",
             description = """
@@ -106,10 +106,9 @@ public interface OwnersOrdersControllerInterface {
     )
     @Transactional
     @GetMapping("/get-order/orderUid")
-    OwnersGetOrderDto getOrderByUid(@RequestParam String orderUid);
+    BusinessReturnedOrder getOrderByUid(@RequestParam String orderUid);
 
-//
-//    //    get an order by customer name
+//    get an order by customer name
     @Operation(
             summary = "An order is returned by customer name.",
             description = """
@@ -135,12 +134,9 @@ public interface OwnersOrdersControllerInterface {
     )
     @Transactional
     @GetMapping("/get-order/customer")
-   List <OwnersGetOrderDto> getOpenOrderByCustomer(@RequestParam String customer);
-//
-//
+   List <BusinessReturnedOrder> getOpenOrderByCustomer(@RequestParam String customer);
 
-//
-//    // mark food ready by id
+// mark food ready by id
     @Operation(
             summary = "Marks an order as having food ready for pick up.",
             description = "Implemented for ease of use.",
@@ -167,9 +163,9 @@ public interface OwnersOrdersControllerInterface {
     )
     @Transactional
     @PutMapping("/order-ready/{orderId}")
-    OwnersGetOrderDto orderReady(@PathVariable Integer orderId);
-//
-    //    // close order by id
+    BusinessReturnedOrder orderReady(@PathVariable Integer orderId);
+
+
     @Operation(
             summary = "Closes an order by id.",
             description = "Allows for marking an order as closed once food has been picked up and payment received.",
@@ -196,9 +192,9 @@ public interface OwnersOrdersControllerInterface {
     )
     @Transactional
     @PutMapping("/close-order/{orderId}")
-    OwnersGetOrderDto closeOrder(@PathVariable Integer orderId);
+    BusinessReturnedOrder closeOrder(@PathVariable Integer orderId);
 
-//
+
 // delete order by id
     @Operation(
             summary = "Deletes an order by id.",
@@ -281,7 +277,6 @@ public interface OwnersOrdersControllerInterface {
                             content = @Content(mediaType = "application/json")),
             }
     )
-//    @Transactional
     @PutMapping("/update-order-item/{orderId}/{orderItemId}/{newQuantity}")
     String updateOrderItemQuantity(
             @PathVariable
@@ -291,7 +286,7 @@ public interface OwnersOrdersControllerInterface {
             @PathVariable
             Integer newQuantity);
 
-    //    // get todays sales
+// get todays sales
     @Operation(
             summary = "Gets sales for today's closed orders.",
             description = "Will allow for owner to see what they have brought in through online orders for the day." +
@@ -317,8 +312,7 @@ public interface OwnersOrdersControllerInterface {
 
             }
     )
-    @Transactional
     @GetMapping("/sales")
-    OwnersDailySalesDto todaysSales();
+    DailySales todaysSales();
 
 }

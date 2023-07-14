@@ -1,4 +1,4 @@
-package com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.security;
+package com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.security;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,5 +1,5 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.ownersToolsTests.ownersOrdersTests;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.BusinessReturnedOrder;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ownersToolsSupport.OwnersToolsTestsSupport;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
@@ -53,7 +53,7 @@ public class OrderClosedTests {
                     String.format("%s/%d", getBaseUriForOrderReady(), orderId);
             System.out.println(statusUri);
 
-            ResponseEntity<OwnersGetOrderDto> statusResponse =
+            ResponseEntity<BusinessReturnedOrder> statusResponse =
                     getRestTemplate().exchange(statusUri, HttpMethod.PUT, headerEntity, new ParameterizedTypeReference<>() {
                     });
 
@@ -81,7 +81,7 @@ public class OrderClosedTests {
             
             System.out.println(verificationUri);
 
-            ResponseEntity<OwnersGetOrderDto> verificationResponse =
+            ResponseEntity<BusinessReturnedOrder> verificationResponse =
                     getRestTemplate().exchange(verificationUri, HttpMethod.GET, headerEntity2, new ParameterizedTypeReference<>() {
                     });
 //            System.out.println(verificationResponse);
@@ -108,7 +108,7 @@ public class OrderClosedTests {
             String getOrderUri =
                     String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter2, orderId);
             System.out.println(getOrderUri);
-            ResponseEntity<OwnersGetOrderDto> getOrderResponse =
+            ResponseEntity<BusinessReturnedOrder> getOrderResponse =
                     getRestTemplate().exchange(getOrderUri, HttpMethod.GET, headerEntity2, new ParameterizedTypeReference<>() {
                     });
             System.out.println(getOrderResponse.getBody());

@@ -1,6 +1,6 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.ownersToolsTests.ownersOrdersTests;
 
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.BusinessReturnedOrder;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ownersToolsSupport.OwnersToolsTestsSupport;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
@@ -59,7 +59,7 @@ public class EditOrderItemQuantityTest {
                     String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter, orderId);
             System.out.println(getOrderUri);
 //            call order item before alteration
-            ResponseEntity<OwnersGetOrderDto> getOrderResponse =
+            ResponseEntity<BusinessReturnedOrder> getOrderResponse =
                     getRestTemplate().exchange(getOrderUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
                     });
             System.out.println("unchanged order: " + Objects.requireNonNull(Objects.requireNonNull(getOrderResponse.getBody()).getOrderItems().get(0)));
@@ -85,7 +85,7 @@ public class EditOrderItemQuantityTest {
                     String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter, orderId);
             System.out.println(getOrderUri2);
 
-            ResponseEntity<OwnersGetOrderDto> getOrderResponse2 =
+            ResponseEntity<BusinessReturnedOrder> getOrderResponse2 =
                     getRestTemplate().exchange(getOrderUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
                     });
 

@@ -1,7 +1,6 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.controllers.ownersControllers.customers;
 
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetCustomerDto;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.BusinessReturnedCustomer;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
@@ -10,7 +9,6 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.servers.Server;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -53,8 +51,7 @@ public interface OwnersCustomersControllerInterface {
     )
     @Transactional
     @GetMapping("/get-customers")
-//    @PreAuthorize("hasAuthority('ADMIN')")
-    List<OwnersGetCustomerDto> getAllCustomers();
+    List<BusinessReturnedCustomer> getAllCustomers();
     //  get a customer by customer name
     @Operation(
             summary = "A customer is returned by customer name.",
@@ -81,7 +78,7 @@ public interface OwnersCustomersControllerInterface {
     )
     @Transactional
     @GetMapping("/get-customer/name")
-    OwnersGetCustomerDto getCustomerByName(@RequestParam String name) throws Exception;
+    BusinessReturnedCustomer getCustomerByName(@RequestParam String name) throws Exception;
 
 //    get customer by id
 @Operation(
@@ -109,7 +106,7 @@ public interface OwnersCustomersControllerInterface {
 )
 @Transactional
 @GetMapping("/get-customer/customerId")
-OwnersGetCustomerDto getCustomerById(@RequestParam Integer customerId);
+BusinessReturnedCustomer getCustomerById(@RequestParam Integer customerId);
 
 
 //edit customer name

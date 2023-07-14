@@ -3,9 +3,9 @@ import com.adamstraub.tonsoftacos.tonsoftacos.dao.CustomerRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.MenuItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrderItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrdersRepository;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.orderItemsDto.GetOrderItemDto;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.NewOrderDto;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.ReturnOrderToCustomerDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.orderItemsDto.ReturnedOrderItem;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.NewOrder;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.OrderReturnedToCustomer;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Customer;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
@@ -40,16 +40,16 @@ public class OrdersService implements OrdersServiceInterface {
 
     @Override
     @Transactional
-    public ReturnOrderToCustomerDto createOrder(@RequestBody @NotNull NewOrderDto order) {
+    public OrderReturnedToCustomer createOrder(@RequestBody @NotNull NewOrder order) {
         System.out.println("service");
         System.out.println("new order received: " + order);
 
         Double orderTotal = 0.00;
-        ReturnOrderToCustomerDto customerCopyDto = new ReturnOrderToCustomerDto();
+        OrderReturnedToCustomer customerCopyDto = new OrderReturnedToCustomer();
         Orders newOrder = order.getOrder();
         Orders orderConfirmation;
         List<OrderItem> orderItems = newOrder.getOrderItems();
-        List<GetOrderItemDto> orderItemDtos = new ArrayList<>();
+        List<ReturnedOrderItem> orderItemDtos = new ArrayList<>();
 
 //        order validation
         System.out.println("validation check");
@@ -132,8 +132,8 @@ public class OrdersService implements OrdersServiceInterface {
     }
 
 
-    private GetOrderItemDto orderItemDtoConvertor(OrderItem orderItem) {
-        GetOrderItemDto orderItemDto = new GetOrderItemDto();
+    private ReturnedOrderItem orderItemDtoConvertor(OrderItem orderItem) {
+        ReturnedOrderItem orderItemDto = new ReturnedOrderItem();
 
         orderItemDto.setItemName(menuItemRepository.getReferenceById(orderItem.getItemId().getId()).getItemName());
         orderItemDto.setQuantity(orderItem.getQuantity());

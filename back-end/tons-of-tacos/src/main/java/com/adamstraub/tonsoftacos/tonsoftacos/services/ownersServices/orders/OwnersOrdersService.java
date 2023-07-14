@@ -3,9 +3,9 @@ import com.adamstraub.tonsoftacos.tonsoftacos.dao.CustomerRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.MenuItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrderItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrdersRepository;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersDailySalesDto;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersOrderItemDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.DailySales;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.BusinessReturnedOrder;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.BusinessOrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Customer;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
@@ -33,9 +33,9 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
 
     @Override
     @Transactional(readOnly = true)
-    public List<OwnersGetOrderDto> getAllOrders() {
+    public List<BusinessReturnedOrder> getAllOrders() {
         System.out.println("service");
-        List<OwnersGetOrderDto> orderItemDtos = new ArrayList<>();
+        List<BusinessReturnedOrder> orderItemDtos = new ArrayList<>();
         List<Orders> orders = ordersRepository.findAll();
                 if (orders.size() == 0){
             throw new EntityNotFoundException("No orders found. Verify data integrity.");
@@ -51,7 +51,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
     }
 
     @Override
-    public OwnersGetOrderDto getOrderById(Integer orderId) {
+    public BusinessReturnedOrder getOrderById(Integer orderId) {
         System.out.println("service");
         try {
             return ownersGetOrderDtoConverter(ordersRepository.getReferenceById(orderId));
@@ -61,7 +61,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
         }
 
     @Override
-    public OwnersGetOrderDto getOrderByUid(String orderUid) {
+    public BusinessReturnedOrder getOrderByUid(String orderUid) {
         System.out.println("service");
 //        System.out.println(orderUid);
         Orders order = ordersRepository.findByOrderUid(orderUid);
@@ -74,7 +74,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
     }
 
     @Override
-    public List<OwnersGetOrderDto> getOpenOrderByCustomer(String customer) {
+    public List<BusinessReturnedOrder> getOpenOrderByCustomer(String customer) {
         System.out.println("service");
         Customer customerObj;
         List<Orders> orders;
@@ -90,7 +90,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
             throw new EntityNotFoundException("No orders for customer found.");
         }
 
-        List<OwnersGetOrderDto> openOrders = new ArrayList<>();
+        List<BusinessReturnedOrder> openOrders = new ArrayList<>();
         for (Orders order: orders)
             if (order.getClosed().equals("no")) {
             openOrders.add(ownersGetOrderDtoConverter(order));
@@ -103,7 +103,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
     }
 @Transactional
     @Override
-    public OwnersGetOrderDto orderReady(Integer orderId) {
+    public BusinessReturnedOrder orderReady(Integer orderId) {
         System.out.println("service");
         Orders order;
         String response;
@@ -120,7 +120,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
     }
 @Transactional
     @Override
-    public OwnersGetOrderDto closeOrder(Integer orderId) {
+    public BusinessReturnedOrder closeOrder(Integer orderId) {
 //        System.out.println(orderId);
         System.out.println("service");
         Orders order;
@@ -302,9 +302,9 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
 //    Ensure date time formatter is retuning
     @Transactional
     @Override
-    public OwnersDailySalesDto todaysSales() {
+    public DailySales todaysSales() {
         System.out.println("service");
-        OwnersDailySalesDto salesToday = new OwnersDailySalesDto();
+        DailySales salesToday = new DailySales();
         String formattedSales;
         LocalDate todaysDate = LocalDate.now();
         LocalDate dbDate;
@@ -336,40 +336,40 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
         return salesToday;
     }
 
-    private OwnersGetOrderDto ownersGetOrderDtoConverter(Orders order) {
-        OwnersGetOrderDto ownersGetOrderDto = new OwnersGetOrderDto();
+    private BusinessReturnedOrder ownersGetOrderDtoConverter(Orders order) {
+        BusinessReturnedOrder businessReturnedOrder = new BusinessReturnedOrder();
 //        set the dto
-        ownersGetOrderDto.setOrderId(order.getOrderId());
+        businessReturnedOrder.setOrderId(order.getOrderId());
         if (order.getCustomerId() != null) {
-            ownersGetOrderDto.setName(customerRepository.getReferenceById(order.getCustomerId()).getName());
-            ownersGetOrderDto.setEmail(customerRepository.getReferenceById(order.getCustomerId()).getEmail());
-            ownersGetOrderDto.setPhone(customerRepository.getReferenceById(order.getCustomerId()).getPhoneNumber());
+            businessReturnedOrder.setName(customerRepository.getReferenceById(order.getCustomerId()).getName());
+            businessReturnedOrder.setEmail(customerRepository.getReferenceById(order.getCustomerId()).getEmail());
+            businessReturnedOrder.setPhone(customerRepository.getReferenceById(order.getCustomerId()).getPhoneNumber());
         }
-        ownersGetOrderDto.setOrderUid(order.getOrderUid());
+        businessReturnedOrder.setOrderUid(order.getOrderUid());
 
 //        set the get order items dto
-        List<OwnersOrderItemDto> ownersOrderItemDtos = new ArrayList<>();
+        List<BusinessOrderItem> businessOrderItems = new ArrayList<>();
         List<OrderItem> orderItems = order.getOrderItems();
 
-        orderItems.forEach(orderItem -> ownersOrderItemDtos.add(ownersOrderItemDtoConvertor(orderItem)));
+        orderItems.forEach(orderItem -> businessOrderItems.add(ownersOrderItemDtoConvertor(orderItem)));
 
-        ownersGetOrderDto.setOrderItems(ownersOrderItemDtos);
-        ownersGetOrderDto.setOrderTotal(order.getOrderTotal());
-        ownersGetOrderDto.setCreated(order.getCreated());
-        ownersGetOrderDto.setReady(order.getReady());
-        ownersGetOrderDto.setClosed(order.getClosed());
+        businessReturnedOrder.setOrderItems(businessOrderItems);
+        businessReturnedOrder.setOrderTotal(order.getOrderTotal());
+        businessReturnedOrder.setCreated(order.getCreated());
+        businessReturnedOrder.setReady(order.getReady());
+        businessReturnedOrder.setClosed(order.getClosed());
 //        System.out.println(ownersGetOrderDto);
-        return ownersGetOrderDto;
+        return businessReturnedOrder;
     }
 
-    private OwnersOrderItemDto ownersOrderItemDtoConvertor(OrderItem orderItem){
-        OwnersOrderItemDto ownersOrderItemDto = new OwnersOrderItemDto();
+    private BusinessOrderItem ownersOrderItemDtoConvertor(OrderItem orderItem){
+        BusinessOrderItem businessOrderItem = new BusinessOrderItem();
 
-        ownersOrderItemDto.setOrderItemId(orderItem.getOrderItemId());
-        ownersOrderItemDto.setItemName(orderItem.getItemId().getItemName());
-        ownersOrderItemDto.setQuantity(orderItem.getQuantity());
-        ownersOrderItemDto.setTotal(orderItem.getTotal());
+        businessOrderItem.setOrderItemId(orderItem.getOrderItemId());
+        businessOrderItem.setItemName(orderItem.getItemId().getItemName());
+        businessOrderItem.setQuantity(orderItem.getQuantity());
+        businessOrderItem.setTotal(orderItem.getTotal());
 //        System.out.println(ownersOrderItemDto);
-        return ownersOrderItemDto;
+        return businessOrderItem;
     }
 }
