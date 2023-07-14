@@ -24,21 +24,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
-//        HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.PATCH, HttpMethod.POST, HttpMethod.DELETE};
-//        HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.PATCH, HttpMethod.DELETE};
-//        HttpMethod[] theUnsupportedActions = {HttpMethod.DELETE};
-
-//        config.getExposureConfiguration()
-//                .forDomainType(MenuItem.class)
-//                .withItemExposure((metadata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
-//                .withCollectionExposure((metadata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
-//
-//        config.getExposureConfiguration()
-//                .forDomainType(OrderItem.class)
-//                .withItemExposure((metadata, httpMethods) -> httpMethods.disable(theUnsupportedActions))
-//                .withCollectionExposure((metadata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
-
-//        internal helper
+//        internal helper ids could be hidden if data called through another manner
         exposeIds(config);
 // turn off default action of exposing repository through the initial endpoint
         config.disableDefaultExposure();

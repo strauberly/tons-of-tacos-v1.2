@@ -1,22 +1,20 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.services.ownersServices.customers;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetCustomerDto;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.BusinessReturnedCustomer;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
 public interface OwnersCustomersServiceInterface {
 
     @Transactional(readOnly = true)
-    List<OwnersGetCustomerDto> getAllCustomers();
+    List<BusinessReturnedCustomer> getAllCustomers();
 
 //    @Transactional(readOnly = true)
 //    OwnersGetCustomerDto getCustomerByName(String name);
-OwnersGetCustomerDto getCustomerByName(String name) throws Exception;
+BusinessReturnedCustomer getCustomerByName(String name) throws Exception;
 
     @Transactional(readOnly = true)
-    OwnersGetCustomerDto getCustomerById(Integer customerId);
+    BusinessReturnedCustomer getCustomerById(Integer customerId);
 
     @Transactional
     String updateCustomerName(Integer customerId, String newCustomerName);

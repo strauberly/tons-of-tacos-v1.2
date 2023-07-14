@@ -1,6 +1,6 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.ordersTests;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.ReturnOrderToCustomerDto;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetOrderDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.OrderReturnedToCustomer;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.BusinessReturnedOrder;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ordersTestsSupport.OrdersTestsSupport;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
@@ -60,8 +60,8 @@ class CreateOrderTests {
             headers.setContentType(MediaType.APPLICATION_JSON);
 
             HttpEntity<String> bodyEntity = new HttpEntity<>(body, headers);
-            ResponseEntity<ReturnOrderToCustomerDto> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
-                    ReturnOrderToCustomerDto.class);
+            ResponseEntity<OrderReturnedToCustomer> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
+                    OrderReturnedToCustomer.class);
             System.out.println("response body: " + response.getBody());
 //                System.out.println(Objects.requireNonNull(response.getBody()).getOrderUid());
 
@@ -75,7 +75,7 @@ class CreateOrderTests {
             String getOrderUri =
                     String.format("%s?%s=%s", getBaseUriForGetOrderByUid(), parameter, testOrderUid);
             System.out.println(getOrderUri);
-            ResponseEntity<OwnersGetOrderDto> orderUidResponse =
+            ResponseEntity<BusinessReturnedOrder> orderUidResponse =
                     getRestTemplate().exchange(getOrderUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
                     });
 

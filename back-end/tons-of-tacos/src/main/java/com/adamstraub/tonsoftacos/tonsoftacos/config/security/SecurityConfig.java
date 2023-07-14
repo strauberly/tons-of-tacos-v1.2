@@ -26,7 +26,7 @@ public class SecurityConfig {
 
     private final UserDetailsService userDetailsService;
 
-//    private final UserAuthenticationEntryPoint userAuthenticationEntryPoint;
+
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -34,7 +34,6 @@ public class SecurityConfig {
         return
 
                 http
-//                        .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
                         .csrf().disable()
 //                whitelisted
                         .authorizeHttpRequests()
@@ -49,37 +48,6 @@ public class SecurityConfig {
                         .authenticationProvider(authenticationProvider())
                         .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
                         .build();
-
-//
-//
-
-//            return
-//                http
-//                        .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
-//                        .exceptionHandling().authenticationEntryPoint(userAuthenticationEntryPoint)
-//                        .and()
-////                            .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
-//                        .csrf().disable()
-////                    http
-//////                            .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
-//////                            .exceptionHandling().authenticationEntryPoint(userAuthenticationEntryPoint)
-//////                            .and()
-//////                            .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
-////                            .csrf().disable()
-//
-////                whitelisted
-//                            .authorizeHttpRequests()
-//                            .requestMatchers("/api/menu/**", "/api/order/**", "/api/owners-tools/login").permitAll()
-//                            .and()
-////               restricted
-//                            .authorizeHttpRequests().requestMatchers("/api/owners-tools/**")
-//                            .authenticated().and()
-//                            .sessionManagement()
-//                            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-//                            .and()
-//                            .authenticationProvider(authenticationProvider())
-////                            .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
-//                            .build();
     }
 
     @Bean

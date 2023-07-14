@@ -4,16 +4,14 @@ import com.adamstraub.tonsoftacos.tonsoftacos.dao.CustomerRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.MenuItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrderItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrdersRepository;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.OwnersGetCustomerDto;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.BusinessReturnedCustomer;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Customer;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -32,14 +30,14 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
 
 //implement try catch ie(try and catch rest client exception or just exception throw new exception)
     @Override
-    public List<OwnersGetCustomerDto> getAllCustomers() {
+    public List<BusinessReturnedCustomer> getAllCustomers() {
         System.out.println("service");
 //        try {
             List<Customer> customers = customerRepository.findAll();
         if (customers.size() == 0){
             throw new EntityNotFoundException("No customers found. Verify database integrity.");
         }else {
-            List<OwnersGetCustomerDto> allCustomersDto = new ArrayList<>();
+            List<BusinessReturnedCustomer> allCustomersDto = new ArrayList<>();
             customers.forEach(customer -> allCustomersDto.add(ownersCustomerDtoConvertor(customer)));
             System.out.println(allCustomersDto);
 
@@ -51,7 +49,7 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
     }
 
     @Override
-    public OwnersGetCustomerDto getCustomerByName(String name) {
+    public BusinessReturnedCustomer getCustomerByName(String name) {
         System.out.println("service");
         try {
             Customer customer = customerRepository.findByName(name);
@@ -90,7 +88,7 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
 
     @Transactional(readOnly = true)
     @Override
-    public OwnersGetCustomerDto getCustomerById(Integer customerId) {
+    public BusinessReturnedCustomer getCustomerById(Integer customerId) {
 
         System.out.println("service");
     try{
@@ -236,8 +234,8 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
     }
 
 //
-    private OwnersGetCustomerDto ownersCustomerDtoConvertor(Customer customer){
-        OwnersGetCustomerDto ownersCustomerDto = new OwnersGetCustomerDto();
+    private BusinessReturnedCustomer ownersCustomerDtoConvertor(Customer customer){
+        BusinessReturnedCustomer ownersCustomerDto = new BusinessReturnedCustomer();
 
         ownersCustomerDto.setCustomerId(customer.getCustomerId());
         ownersCustomerDto.setName(customer.getName());

@@ -1,4 +1,4 @@
-package com.adamstraub.tonsoftacos.tonsoftacos.dto.ownersDto.security;
+package com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.security;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,6 +11,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AuthenticationRequest {
     private String username;
-//    maybe not private
     private String psswrd;
 }
