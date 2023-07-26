@@ -29,8 +29,10 @@ public class Orders implements Serializable {
 
     @Column (name = "order_total")
     private Double orderTotal;
+
     @Column (name = "order_uid")
     private String orderUid;
+
     @Column (name = "created")
     @CreationTimestamp
     private Timestamp created;

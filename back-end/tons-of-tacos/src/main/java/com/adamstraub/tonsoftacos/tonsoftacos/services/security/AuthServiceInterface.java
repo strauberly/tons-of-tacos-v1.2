@@ -7,6 +7,5 @@ import java.io.UnsupportedEncodingException;
 
 public interface AuthServiceInterface {
 
-    @Transactional
     String ownerLogin(OwnerAuthDto ownerAuthDto) throws UnsupportedEncodingException;
 }

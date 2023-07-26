@@ -28,11 +28,11 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
     @Autowired
     private MenuItemRepository menuItemRepository;
 
-//implement try catch ie(try and catch rest client exception or just exception throw new exception)
+
     @Override
     public List<BusinessReturnedCustomer> getAllCustomers() {
         System.out.println("service");
-//        try {
+
             List<Customer> customers = customerRepository.findAll();
         if (customers.size() == 0){
             throw new EntityNotFoundException("No customers found. Verify database integrity.");
@@ -42,9 +42,6 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
             System.out.println(allCustomersDto);
 
             return allCustomersDto;
-//        } catch (Exception e){
-//            System.out.println(e.getLocalizedMessage());
-//            throw new EntityNotFoundException("No customers found.");
         }
     }
 
@@ -54,37 +51,12 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
         try {
             Customer customer = customerRepository.findByName(name);
             return ownersCustomerDtoConvertor(customer);
-//        System.out.println("customer dto: " + customerDto);
-//            if (customerDto.getCustomerName() != null){
-//                return customerDto;
-//            }   else
-//                throw new EntityNotFoundException("no such customer");
-//            if (customer.getCustomerId() == null) {
-//                throw new EntityNotFoundException("no such customer.");
-//            } else
-
-
         }catch (Exception e){
-//            System.out.println(e.getMessage());
             throw new EntityNotFoundException("No customer found by that name. Please check your spelling" +
                     " and formatting.");
         }
     }
 
-//    @Override
-//    public OwnersGetCustomerDto getCustomerByName(String name) {
-//        System.out.println("service");
-//        try {
-//            Customer customer = customerRepository.findByName(name);
-//            if (customer.getCustomerId() == null ){
-//                throw new Exception("no such customer.");
-//            }
-//            return ownersCustomerDtoConvertor(customer);
-//        }catch (Exception e){
-//            System.out.println(e.getMessage());
-//            throw new EntityNotFoundException("no such customer");
-//        }
-//    }
 
     @Transactional(readOnly = true)
     @Override
@@ -92,14 +64,10 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
 
         System.out.println("service");
     try{
-
         Customer customer = customerRepository.getById(customerId);
-//            if (customer.getCustomerId() == null){
-//
-//            }else{
+
                 return ownersCustomerDtoConvertor(customer);
         }catch (Exception e) {
-//            System.out.println(e.getMessage());
             throw new EntityNotFoundException("Customer with that id not found.");
         }
     }
@@ -107,24 +75,17 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
     @Override
     public String updateCustomerName(Integer customerId, String newCustomerName) {
         System.out.println("service");
-// if customer name same as old, if name doesnt contain at least one space, if either name less than 2 or
-// greater than 14 or contains chars-1-0 and then well go ahead and cap whatever is put in
         Customer customer;
-//        byte[] nameChars = newCustomerName.getBytes(StandardCharsets.UTF_8);
-//        int spaces = 0;
-//        boolean customerNameValid = true;
         try{
              customer = customerRepository.getById(customerId);
         } catch (Exception e){
             throw new EntityNotFoundException("No customer with that id found.");
         }
-//            Customer customer = new Customer();
             byte[] nameChars = newCustomerName.getBytes(StandardCharsets.UTF_8);
             int spaces = 0;
             boolean customerNameValid = true;
         String oldName = customer.getName();
-//        if (customer.getCustomerId() == null){
-//            throw new EntityNotFoundException("No customer by that id found.");
+
         if (oldName.equals(newCustomerName)) {
             throw new IllegalArgumentException("New customer name can not be same as previous name.");
         }
@@ -163,23 +124,13 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
             throw new IllegalArgumentException("New customer email can not be same as previous.");
         }
         if (!newCustomerEmail.matches("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,}")) {
-//            newCustomerEmailValid = false;
             throw new IllegalArgumentException("Email does not match formatting requirements, please consult the docs.");
         }
-//        try {
             if (newCustomerEmailValid) {
                 customer.setEmail(newCustomerEmail);
                 customerRepository.save(customer);
             }
-//        }catch (Exception e){
-//            System.out.println(e.getLocalizedMessage());
-//            throw new EntityNotFoundException("huh");
-//        }
         return "Previous customer email: " + oldEmail + ", Updated customer email: " + customer.getEmail();
-//        return "Previous customer email: " + ", Updated customer email: ";
-//        } catch (Exception e){
-//            throw new EntityNotFoundException("No customer with that id found.");
-//        }
     }
     @Transactional
     @Override
@@ -201,10 +152,6 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
             newCustomerPhoneNumberValid = true;
         }
 
-//         = newCustomerPhone.matches("[0-9-]*")
-//                && newCustomerPhone.charAt(3) == (char) 46
-//                && newCustomerPhone.charAt(7) == (char) 46
-//                && newCustomerPhone.length() == 12;
         System.out.println("new number valid: " + newCustomerPhoneNumberValid);
         System.out.println(newCustomerPhone.charAt(3) == (char) 46);
         System.out.println(newCustomerPhone.charAt(7) == (char) 46);
@@ -233,16 +180,14 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
         }
     }
 
-//
+
     private BusinessReturnedCustomer ownersCustomerDtoConvertor(Customer customer){
         BusinessReturnedCustomer ownersCustomerDto = new BusinessReturnedCustomer();
-
         ownersCustomerDto.setCustomerId(customer.getCustomerId());
         ownersCustomerDto.setName(customer.getName());
         ownersCustomerDto.setEmail(customer.getEmail());
         ownersCustomerDto.setPhone(customer.getPhoneNumber());
 
-//       set orders
         List<Orders> orders = ordersRepository.findByCustomerId(customer.getCustomerId());
         List<Integer> orderIds = new ArrayList<>();
         orders.forEach(order -> orderIds.add(order.getOrderId()));

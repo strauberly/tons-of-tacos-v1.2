@@ -11,10 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 @SpringBootApplication
 public class TonsOfTacosApplication {
-	@Bean
-	public ModelMapper modelMapper() {
-		return new ModelMapper();
-	}
 
 	public static void main (String[]args){
 		SpringApplication.run(TonsOfTacosApplication.class, args);
