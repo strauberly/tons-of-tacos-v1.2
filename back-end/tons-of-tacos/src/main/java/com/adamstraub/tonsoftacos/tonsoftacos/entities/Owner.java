@@ -18,10 +18,9 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-// amigos code implements userdetails where other writes own
+
 public class Owner implements UserDetails {
 
-//public class Owner{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

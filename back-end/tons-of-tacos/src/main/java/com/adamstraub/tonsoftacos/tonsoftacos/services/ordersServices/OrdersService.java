@@ -26,7 +26,6 @@ import java.util.Objects;
 public class OrdersService implements OrdersServiceInterface {
     @Autowired
     private OrdersRepository ordersRepository;
-
     @Autowired
     private OrderItemRepository orderItemRepository;
     @Autowired
@@ -42,7 +41,7 @@ public class OrdersService implements OrdersServiceInterface {
     @Transactional
     public OrderReturnedToCustomer createOrder(@RequestBody @NotNull NewOrder order) {
         System.out.println("service");
-        System.out.println("new order received: " + order);
+
 
         Double orderTotal = 0.00;
         OrderReturnedToCustomer customerCopyDto = new OrderReturnedToCustomer();
@@ -52,18 +51,11 @@ public class OrdersService implements OrdersServiceInterface {
         List<ReturnedOrderItem> orderItemDtos = new ArrayList<>();
 
 //        order validation
-        System.out.println("validation check");
-        System.out.println("customer name: " + order.getCustomer().getName());
         validateCustomerName(order.getCustomer().getName());
-        System.out.println("customer name valid: " + customerNameValid);
 
-        System.out.println("customer phone: " + order.getCustomer().getPhoneNumber());
         validateCustomerPhone(order.getCustomer().getPhoneNumber());
-        System.out.println("customer phone valid: " + customerPhoneNumberValid);
 
-        System.out.println("customer email: " + order.getCustomer().getEmail());
         validateCustomerEmail(order.getCustomer().getEmail());
-        System.out.println("customer email valid: " + customerEmailValid);
 
 
             if (!customerNameValid) {
@@ -78,9 +70,9 @@ public class OrdersService implements OrdersServiceInterface {
             if (!(order.getOrder().getOrderItems().size() > 0)) {
             throw new IllegalArgumentException("An order must contain at least 1 menu item and must not be null. Please consult the documentation.");
             }
-
-            Customer newCustomer = order.getCustomer();
 //                if customer already exists, use existing customer id else create new customer
+
+        Customer newCustomer = order.getCustomer();
             if (customerRepository.findByName(newCustomer.getName()) != null &&
                     Objects.equals
                             (customerRepository.findByName(newCustomer.getName()).getEmail(),
@@ -110,12 +102,9 @@ public class OrdersService implements OrdersServiceInterface {
         System.out.println("Order created.");
 
 //        reset valid flags
-
         customerNameValid = false;
         customerPhoneNumberValid = false;
         customerEmailValid = false;
-//        boolean orderBodyValid = false;
-
 
 //create an order confirmation
             orderConfirmation = ordersRepository.findByOrderUid(newOrder.getOrderUid());
@@ -144,7 +133,7 @@ public class OrdersService implements OrdersServiceInterface {
     }
 
     private String genOrderUid() {
-        // desired example result: 11A32
+        // desired result example: 11A32
         String orderUid = null;
         StringBuilder orderUidBuilder = new StringBuilder(5);
         for (int i = 0; i < 5; i++) {

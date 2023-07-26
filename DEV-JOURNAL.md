@@ -2,6 +2,12 @@
 
 ---
 
+-- 24 Jul 2023 --
+
+- refactor of ownersServices customers and orders complete and tested.
+
+---
+
 -- 14 Jul 2023 --
 
 - refactor of config folder executed and tested, still need annotation

@@ -98,7 +98,7 @@ public class GlobalErrorHandler  {
     }
 
 
-
+// need exception handler for 500
 
 
 
@@ -119,7 +119,6 @@ public class GlobalErrorHandler  {
     error.put("message", e);
     error.put("status code", status.toString());
     error.put("timestamp", timestamp);
-//    error.put("reason", status.toString());
     return error;
     }
 }

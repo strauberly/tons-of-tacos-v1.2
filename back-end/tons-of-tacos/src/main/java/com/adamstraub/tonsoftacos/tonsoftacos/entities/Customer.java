@@ -33,9 +33,7 @@ public class Customer {
     private String phoneNumber;
 
     @OneToMany(mappedBy = "customerId", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-//    @OneToMany(mappedBy = "customerId", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<Orders> orders = new ArrayList<>();
-
 
     @Override
     public String toString() {

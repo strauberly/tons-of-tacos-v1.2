@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.function.Function;
 
+//implement exception handling
 
 @Service
 public class JwtService {
@@ -67,11 +68,6 @@ public class JwtService {
         System.out.println(token);
         System.out.println("token issued: " + new Date(System.currentTimeMillis()));
         System.out.println("token expires: " + new Date(System.currentTimeMillis() + (1000 * 60 * 60) * 16));
-//        try {
-//            return token;
-//        }catch (io.jsonwebtoken.security.SignatureException exception){
-//            System.out.println(exception.getLocalizedMessage());
-//        }
         return token;
     }
 
@@ -81,7 +77,6 @@ public class JwtService {
     }
 
 //    validate token
-
     private Claims extractAllClaims(String token){
         try {
             return
@@ -95,13 +90,6 @@ public class JwtService {
             System.out.println(e.getLocalizedMessage());
             throw new JwtException(e.getLocalizedMessage());
         }
-//        return
-//                Jwts
-//                        .parserBuilder()
-//                        .setSigningKey(getSignKey())
-//                        .build()
-//                        .parseClaimsJws(token)
-//                        .getBody();
     }
 
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver){
@@ -123,57 +111,34 @@ public class JwtService {
     }
 
 //    possibly condense into one
+//    exception handling needed for this method
     public boolean isTokenValid(String token, UserDetails userDetails) {
         final String username = decrypt(extractUsername(token));
-//        if (!username.equals(userDetails.getUsername()) && isTokenExpired(token)){
-//            throw new SignatureException("token no good");
-//        }
         return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
     }
 
-//    public void validateToken(String token, UserDetails userDetails){
-//        final String username = extractUsername(token);
-//        userDetails.getUsername();
-//    }
 
-    public void validateToken(String token, UserDetails userDetails){
-        final String username = extractUsername(token);
-        userDetails.getUsername();
-    }
-
-//  encrypt - used during development as a means to encrypt credentials
+//  encrypt - helper method used during development as a means to encrypt credentials
 //  before storing them and facilitating decryption means
 
     public String encrypt(String string){
-//        rework
 
         System.out.println("value to be encrypted: " + string);
 
         byte[] codeBytes = string.getBytes(StandardCharsets.UTF_8);
         List<Integer> rolledCodeBytes = new ArrayList<>();
         int codeByteValue;
-//        System.out.println("begin key: " + BEGIN_KEY);
-//        System.out.println("code bytes " + Arrays.toString(codeBytes));
         for (byte codeByte : codeBytes) {
             codeByteValue = codeByte;
-//            System.out.println(codeByteValue += BEGIN_KEY);
-//            System.out.println("key " + BEGIN_KEY);
             codeByteValue += BEGIN_KEY;
             rolledCodeBytes.add(codeByteValue);
         }
-//        System.out.println("rolled code bytes: " + rolledCodeBytes);
+
 //      new collection with altered char values
         List<Character> chars = new ArrayList<>();
         for (int integer : rolledCodeBytes) {
             chars.add((char) integer);
         }
-//      convert chars to string
-//        StringBuilder rolledCharBuilder = new StringBuilder(chars.size());
-//        for (Character ch : chars) {
-//            rolledCharBuilder.append(ch);
-//        }
-//        System.out.println("chars: " + chars);
-//        System.out.println("rolled charbuilder: " + rolledCharBuilder);
 //      for each element insert three new random chars
         for (int i = 0; i < chars.size(); i++) {
             chars.add(i, randomChar());
@@ -196,7 +161,7 @@ public class JwtService {
     }
 
 //    decrypt
-    public String decrypt(String  encodedString)  {
+public String decrypt(String encodedString)  {
         System.out.println("encoded: " + encodedString);
         if (encodedString.length() < 21 ){
             throw new BadCredentialsException("Invalid username or password.");

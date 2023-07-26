@@ -18,18 +18,6 @@ public class AuthService implements AuthServiceInterface {
     @Autowired
     private final AuthenticationManager authenticationManager;
 
-//    @Override
-//    public String ownerLogin(OwnerAuthDto ownerAuthDto){
-//        System.out.println("auth service");
-//        Authentication authentication = authenticationManager
-//                .authenticate(new UsernamePasswordAuthenticationToken(jwtService.decrypt(ownerAuthDto.getUsername()),
-//                        jwtService.decrypt(ownerAuthDto.getPsswrd())));
-//        if (authentication.isAuthenticated()) {
-//        return jwtService.generateToken(ownerAuthDto.getUsername());
-//    }else {
-//            throw new UsernameNotFoundException("Invalid username.");
-//        }
-//    }
     public String ownerLogin(OwnerAuthDto ownerAuthDto) {
         System.out.println("auth service");
         System.out.println(ownerAuthDto);
@@ -41,30 +29,4 @@ public class AuthService implements AuthServiceInterface {
             }else
                 return jwtService.generateToken(ownerAuthDto.getUsername());
     }
-
-            //    public String ownerLogin(OwnerAuthDto ownerAuthDto){
-//        System.out.println("auth service");
-//        Authentication authentication = authenticationManager
-//                .authenticate(new UsernamePasswordAuthenticationToken(jwtService.decrypt(ownerAuthDto.getUsername()),
-//                        jwtService.decrypt(ownerAuthDto.getPsswrd())));
-//        if (authentication.isAuthenticated()) {
-//        return jwtService.generateToken(ownerAuthDto.getUsername());
-//    }else {
-//            throw new UsernameNotFoundException("Invalid username.");
-//        }
-//    }
-
-//        public String ownerLogin(OwnerAuthDto ownerAuthDto){
-//            System.out.println("auth service");
-////            attempt try catch
-//            Authentication authentication = authenticationManager
-//                    .authenticate(new UsernamePasswordAuthenticationToken(jwtService.decrypt(ownerAuthDto.getUsername()),
-//                            jwtService.decrypt(ownerAuthDto.getPsswrd())));
-//            if (!authentication.isAuthenticated()) {
-//                throw new BadCredentialsException("Bad credentials.");
-//            }else {
-//                return jwtService.generateToken(ownerAuthDto.getUsername());
-//            }
-//        }
-// future implementations: refresh and logout
 }
