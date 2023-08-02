@@ -14,7 +14,7 @@ public interface OwnersOrdersServiceInterface {
     BusinessReturnedOrder getOrderById(Integer orderId);
 
 
-    BusinessReturnedOrder getOrderByUid(@PathVariable String orderUid);
+    BusinessReturnedOrder getOrderByUid(String orderUid);
 
 
     List<BusinessReturnedOrder> getOpenOrderByCustomer(String customer);

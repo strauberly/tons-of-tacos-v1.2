@@ -20,7 +20,7 @@ public class OwnersToolsTestsSupport extends TestUris {
     private String SECRET;
 
     @Autowired
-    JwtService jwtService = new JwtService();
+    private JwtService jwtService = new JwtService();
 
     protected String validCredentials(){
 
@@ -119,7 +119,7 @@ public class OwnersToolsTestsSupport extends TestUris {
     private String buildBadToken(){
 //        set time variable instead of creating new
         String token = Jwts.builder()
-                .setSubject("jerry")
+                .setSubject(jwtService.encrypt("jerry"))
                 .setIssuedAt(new Date(System.currentTimeMillis()))
 //                testing what happens if expired time is before issued time
                 .setExpiration(new Date(System.currentTimeMillis() + (1000 * 60 * 60)))

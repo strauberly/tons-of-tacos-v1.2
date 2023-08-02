@@ -1,8 +1,6 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.config.security;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OwnerRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.services.security.JwtService;
-import io.jsonwebtoken.JwtException;
-import jakarta.annotation.Resource;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,7 +11,6 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,8 +21,6 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.servlet.HandlerExceptionResolver;
-
-
 import java.io.IOException;
 import java.util.Date;
 
@@ -66,6 +61,9 @@ try {
 
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 UserDetails userDetails = userDetailsService().loadUserByUsername(jwtService.decrypt(username));
+                System.out.println("user details: " + userDetails);
+//                in is token valid validate length token invalid
+//
                 System.out.println("token valid: " + jwtService.isTokenValid(token, userDetails));
                 jwtService.isTokenValid(token, userDetails);
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null
@@ -83,7 +81,7 @@ try {
     @Bean
     UserDetailsService userDetailsService(){
         return username -> ownerRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Username invalid."));
+                .orElseThrow(() -> new UsernameNotFoundException("User unauthorized."));
     }
 }
 

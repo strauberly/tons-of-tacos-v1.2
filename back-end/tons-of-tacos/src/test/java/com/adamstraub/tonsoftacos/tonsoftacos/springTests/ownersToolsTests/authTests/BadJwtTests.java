@@ -76,8 +76,8 @@ public class BadJwtTests {
     }
 
     @Test
-        void invalidSubject403(){
-//        Given: a jwt with an expiration before an issued time but valid auth header
+        void invalidSubject401(){
+//        Given: a jwt with an invalid subject
         String badToken = badToken();
         System.out.println(badToken);
 //
@@ -105,7 +105,7 @@ public class BadJwtTests {
         System.out.println(response.getBody());
         System.out.println(response);
 //        Then: a 403 FORBIDDEN is returned
-        Assertions.assertEquals(HttpStatus.FORBIDDEN, response.getStatusCode());
+        Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
         System.out.println("Response code is " + response.getStatusCode() + ".");
         System.out.println("response body: " + response.getBody());
 
