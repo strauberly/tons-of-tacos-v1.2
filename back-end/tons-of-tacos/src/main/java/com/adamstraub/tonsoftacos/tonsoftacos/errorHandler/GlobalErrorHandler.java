@@ -8,6 +8,7 @@ import io.jsonwebtoken.security.SignatureException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.apache.tomcat.websocket.AuthenticationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -55,10 +56,10 @@ public class GlobalErrorHandler  {
     }
 
     @ExceptionHandler(UsernameNotFoundException.class)
-    @ResponseStatus(code = HttpStatus.FORBIDDEN)
+    @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
     public Map<String, Object> handleUsernameNotFoundException(
             UsernameNotFoundException e, WebRequest webRequest){
-        return  createExceptionMessage(e.getLocalizedMessage(), HttpStatus.FORBIDDEN, webRequest);
+        return  createExceptionMessage(e.getLocalizedMessage(), HttpStatus.UNAUTHORIZED, webRequest);
     }
 
     @ExceptionHandler(SignatureException.class)
@@ -66,6 +67,13 @@ public class GlobalErrorHandler  {
     public Map<String, Object> handleSignatureException(
             SignatureException e, WebRequest webRequest){
         return  createExceptionMessage(e.getLocalizedMessage(), HttpStatus.FORBIDDEN, webRequest);
+    }
+
+    @ExceptionHandler(AuthenticationException.class)
+    @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
+    public Map<String, Object> handleJwtException(
+            AuthenticationException e, WebRequest webRequest){
+        return  createExceptionMessage(e.getLocalizedMessage(), HttpStatus.UNAUTHORIZED, webRequest);
     }
 
     @ExceptionHandler(JwtException.class)
@@ -88,13 +96,13 @@ public class GlobalErrorHandler  {
             ExpiredJwtException e, WebRequest webRequest){
         return  createExceptionMessage(e.getMessage(), HttpStatus.FORBIDDEN, webRequest);
     }
-
+// start here
     @ExceptionHandler(BadCredentialsException.class)
-    @ResponseStatus(code = HttpStatus.FORBIDDEN)
+    @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
     public Map<String, Object> handleBadCredentialsException(
             BadCredentialsException e, WebRequest webRequest
     ){
-        return createExceptionMessage(e.getLocalizedMessage(), HttpStatus.FORBIDDEN, webRequest);
+        return createExceptionMessage(e.getLocalizedMessage(), HttpStatus.UNAUTHORIZED, webRequest);
     }
 
 

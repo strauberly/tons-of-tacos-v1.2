@@ -22,8 +22,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfig {
 @Autowired
-    private final JwtAuthFilter authFilter;
-
+    private final JwtAuthFilter jwtAuthFilter;
+@Autowired
     private final UserDetailsService userDetailsService;
 
 
@@ -34,6 +34,7 @@ public class SecurityConfig {
         return
 
                 http
+//                        .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                         .csrf().disable()
 //                whitelisted
                         .authorizeHttpRequests()
@@ -46,7 +47,7 @@ public class SecurityConfig {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                         .and()
                         .authenticationProvider(authenticationProvider())
-                        .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)
+                        .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                         .build();
     }
 

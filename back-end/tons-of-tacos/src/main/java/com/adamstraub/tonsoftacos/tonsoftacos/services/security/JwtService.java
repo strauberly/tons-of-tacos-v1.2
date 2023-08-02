@@ -3,6 +3,7 @@ package com.adamstraub.tonsoftacos.tonsoftacos.services.security;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,6 +22,7 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
+
 
     //create token
     @Value("${key}")
@@ -58,16 +60,15 @@ public class JwtService {
         return Keys.hmacShaKeyFor(keyBytes);
     }
     private String buildToken(String username){
-//        set time variable instead of creating new
         String token = Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-//                16 hours, reflective of our owners work day - to be altered to facilitate mitigation of token capture
+//                16 hours, reflective of our owners work day - to be altered to facilitate mitigation of token theft
                 .setExpiration(new Date(System.currentTimeMillis() + (1000 * 60 * 60) * 16))
                 .signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
-        System.out.println(token);
-        System.out.println("token issued: " + new Date(System.currentTimeMillis()));
-        System.out.println("token expires: " + new Date(System.currentTimeMillis() + (1000 * 60 * 60) * 16));
+//        System.out.println(token);
+//        System.out.println("token issued: " + new Date(System.currentTimeMillis()));
+//        System.out.println("token expires: " + new Date(System.currentTimeMillis() + (1000 * 60 * 60) * 16));
         return token;
     }
 
@@ -87,7 +88,7 @@ public class JwtService {
                             .parseClaimsJws(token)
                             .getBody();
         } catch (Exception e) {
-            System.out.println(e.getLocalizedMessage());
+//            System.out.println(e.getLocalizedMessage());
             throw new JwtException(e.getLocalizedMessage());
         }
     }
@@ -123,7 +124,7 @@ public class JwtService {
 
     public String encrypt(String string){
 
-        System.out.println("value to be encrypted: " + string);
+//        System.out.println("value to be encrypted: " + string);
 
         byte[] codeBytes = string.getBytes(StandardCharsets.UTF_8);
         List<Integer> rolledCodeBytes = new ArrayList<>();
@@ -156,16 +157,15 @@ public class JwtService {
         for (Character ch : chars) {
             encryptionBuilder.append(ch);
         }
-        System.out.println("value encrypted: " + encryptionBuilder);
+//        System.out.println("value encrypted: " + encryptionBuilder);
         return encryptionBuilder.toString();
     }
 
 //    decrypt
+//    serving multipurpose and needs a way to differentiate between decrypting for login and validating signature
 public String decrypt(String encodedString)  {
         System.out.println("encoded: " + encodedString);
-        if (encodedString.length() < 21 ){
-            throw new BadCredentialsException("Invalid username or password.");
-        }
+
         String decodedStart = String.valueOf(encodedString.charAt(BEGIN_KEY));
         String decodedEnd = String.valueOf(encodedString.charAt(encodedString.length() - END_KEY));
         String wholeDecoded = "";
@@ -188,7 +188,7 @@ public String decrypt(String encodedString)  {
         for (Character ch : decodedChars) {
             decrypt.append(ch);
         }
-        System.out.println("decrypted: " + decrypt);
+//        System.out.println("decrypted: " + decrypt);
         return decrypt.toString();
     }
 

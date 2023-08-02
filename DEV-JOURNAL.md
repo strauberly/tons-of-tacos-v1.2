@@ -2,7 +2,21 @@
 
 ---
 
--- 24 Jul 2023 --
+-- 1 Aug 2023 --
+
+- Refactored for 401 responses for bad login attempt or trying to send request with fabricated payload.
+- Removed a validation check that was hindering auth filter.
+- Next steps will include a refactor of security files to remove redundant comments or theoretical code.
+
+---
+
+-- 26 Jul 2023 --
+
+- customer to be refactored to include a uid.
+- exception handler to ensure bad credentials throw a 401 and expired or bad tokens throw 403.
+- ***
+
+  -- 24 Jul 2023 --
 
 - refactor of ownersServices customers and orders complete and tested.
 
