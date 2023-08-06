@@ -4,7 +4,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class BusinessReturnedCustomer {
+public class CustomerReturnedToOwner {
     private Integer customerId;
     private String name;
     private String email;

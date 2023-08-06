@@ -1,6 +1,6 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.ownersToolsTests.ownersOrdersTests;
 
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.BusinessReturnedOrder;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.OrderReturnedToOwner;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ownersToolsSupport.OwnersToolsTestsSupport;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
@@ -55,7 +55,7 @@ public class GetOrderByUidTests {
                     String.format("%s?%s=%s", getBaseUriForGetOrderByUid(), parameter, testOrderUid );
             System.out.println(uri);
             System.out.println("Order returned from db: ");
-            ResponseEntity<BusinessReturnedOrder> response =
+            ResponseEntity<OrderReturnedToOwner> response =
                     getRestTemplate().exchange(uri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
                     });
 //            Then: an order is returned with a uid matching the test uid and a 200 response code

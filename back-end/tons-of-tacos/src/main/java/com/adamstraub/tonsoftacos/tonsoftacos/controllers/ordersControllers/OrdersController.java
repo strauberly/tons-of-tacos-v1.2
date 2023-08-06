@@ -1,7 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.controllers.ordersControllers;
 
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.NewOrder;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.OrderReturnedToCustomer;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.NewOrder;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.customerDto.ordersDto.OrderReturnedToCustomer;
 import com.adamstraub.tonsoftacos.tonsoftacos.services.ordersServices.OrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -1,6 +1,6 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.ordersTests;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.OrderReturnedToCustomer;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.BusinessReturnedOrder;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.customerDto.ordersDto.OrderReturnedToCustomer;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.OrderReturnedToOwner;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ordersTestsSupport.OrdersTestsSupport;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
@@ -75,7 +75,7 @@ class CreateOrderTests {
             String getOrderUri =
                     String.format("%s?%s=%s", getBaseUriForGetOrderByUid(), parameter, testOrderUid);
             System.out.println(getOrderUri);
-            ResponseEntity<BusinessReturnedOrder> orderUidResponse =
+            ResponseEntity<OrderReturnedToOwner> orderUidResponse =
                     getRestTemplate().exchange(getOrderUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
                     });
 

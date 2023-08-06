@@ -2,6 +2,13 @@
 
 ---
 
+-- 6 Aug 2023 --
+
+- Refactor for security, exception handling, applicable tests and dtos in good place.
+- Beginning implementation of logging exceptions with logback.
+
+---
+
 -- 1 Aug 2023 --
 
 - Refactored for 401 responses for bad login attempt or trying to send request with fabricated payload.

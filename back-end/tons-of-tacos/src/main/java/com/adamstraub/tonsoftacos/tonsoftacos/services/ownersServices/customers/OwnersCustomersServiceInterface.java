@@ -1,16 +1,15 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.services.ownersServices.customers;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.BusinessReturnedCustomer;
-import org.springframework.transaction.annotation.Transactional;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.CustomerReturnedToOwner;
 
 import java.util.List;
 
 public interface OwnersCustomersServiceInterface {
 
-    List<BusinessReturnedCustomer> getAllCustomers();
+    List<CustomerReturnedToOwner> getAllCustomers();
 
-    BusinessReturnedCustomer getCustomerByName(String name) throws Exception;
+    CustomerReturnedToOwner getCustomerByName(String name) throws Exception;
 
-    BusinessReturnedCustomer getCustomerById(Integer customerId);
+    CustomerReturnedToOwner getCustomerById(Integer customerId);
 
     String updateCustomerName(Integer customerId, String newCustomerName);
 

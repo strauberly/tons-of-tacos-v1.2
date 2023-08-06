@@ -9,6 +9,8 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.apache.tomcat.websocket.AuthenticationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -31,9 +33,11 @@ public class GlobalErrorHandler  {
 
     private String message;
 
-    private enum LogStatus{
-        STACK_TRACE, MESSAGE_ONLY
-    }
+//    Logger logger = LoggerFactory.getLogger(GlobalErrorHandler.class);
+//
+////    private enum LogStatus{
+////        STACK_TRACE, MESSAGE_ONLY
+////    }
 
     @ExceptionHandler(NumberFormatException.class)
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)

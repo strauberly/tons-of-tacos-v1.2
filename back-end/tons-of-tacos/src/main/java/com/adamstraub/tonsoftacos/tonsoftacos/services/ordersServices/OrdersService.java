@@ -3,9 +3,9 @@ import com.adamstraub.tonsoftacos.tonsoftacos.dao.CustomerRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.MenuItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrderItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrdersRepository;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.orderItemsDto.ReturnedOrderItem;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.NewOrder;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.ordersDto.OrderReturnedToCustomer;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.customerDto.orderItemsDto.OrderItemReturnedToCustomer;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.NewOrder;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.customerDto.ordersDto.OrderReturnedToCustomer;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Customer;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
@@ -48,7 +48,7 @@ public class OrdersService implements OrdersServiceInterface {
         Orders newOrder = order.getOrder();
         Orders orderConfirmation;
         List<OrderItem> orderItems = newOrder.getOrderItems();
-        List<ReturnedOrderItem> orderItemDtos = new ArrayList<>();
+        List<OrderItemReturnedToCustomer> orderItemDtos = new ArrayList<>();
 
 //        order validation
         validateCustomerName(order.getCustomer().getName());
@@ -121,8 +121,8 @@ public class OrdersService implements OrdersServiceInterface {
     }
 
 
-    private ReturnedOrderItem orderItemDtoConvertor(OrderItem orderItem) {
-        ReturnedOrderItem orderItemDto = new ReturnedOrderItem();
+    private OrderItemReturnedToCustomer orderItemDtoConvertor(OrderItem orderItem) {
+        OrderItemReturnedToCustomer orderItemDto = new OrderItemReturnedToCustomer();
 
         orderItemDto.setItemName(menuItemRepository.getReferenceById(orderItem.getItemId().getId()).getItemName());
         orderItemDto.setQuantity(orderItem.getQuantity());

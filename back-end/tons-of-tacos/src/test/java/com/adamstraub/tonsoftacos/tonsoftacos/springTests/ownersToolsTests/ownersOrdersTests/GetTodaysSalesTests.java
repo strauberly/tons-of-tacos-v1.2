@@ -1,7 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.ownersToolsTests.ownersOrdersTests;
 
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrdersRepository;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.BusinessReturnedOrder;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.OrderReturnedToOwner;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ownersToolsSupport.OwnersToolsTestsSupport;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
@@ -59,7 +59,7 @@ public class GetTodaysSalesTests {
                     String.format("%s/%d", getBaseUriForOrderReady(), orderIdOne);
             System.out.println(orderOneReadyUri);
 
-            ResponseEntity<BusinessReturnedOrder> orderOneReadyResponse =
+            ResponseEntity<OrderReturnedToOwner> orderOneReadyResponse =
                     getRestTemplate().exchange(orderOneReadyUri, HttpMethod.PUT, headerEntity, new ParameterizedTypeReference<>() {
                     });
 
@@ -72,7 +72,7 @@ public class GetTodaysSalesTests {
                     String.format("%s/%d", getBaseUriForCloseOrder(), orderIdOne);
             System.out.println(closeOrderOneUri);
 
-            ResponseEntity<BusinessReturnedOrder> orderOneClosedResponse =
+            ResponseEntity<OrderReturnedToOwner> orderOneClosedResponse =
                     getRestTemplate().exchange(closeOrderOneUri, HttpMethod.PUT, headerEntity, new ParameterizedTypeReference<>() {
                     });
             System.out.println(orderOneClosedResponse.getStatusCode());
@@ -85,7 +85,7 @@ public class GetTodaysSalesTests {
                     String.format("%s/%d", getBaseUriForOrderReady(), orderIdTwo);
             System.out.println(orderOneReadyUri);
 
-            ResponseEntity<BusinessReturnedOrder> orderTwoReadyResponse =
+            ResponseEntity<OrderReturnedToOwner> orderTwoReadyResponse =
                     getRestTemplate().exchange(orderTwoReadyUri, HttpMethod.PUT, headerEntity, new ParameterizedTypeReference<>() {
                     });
 
@@ -99,7 +99,7 @@ public class GetTodaysSalesTests {
                     String.format("%s/%d", getBaseUriForCloseOrder(), orderIdTwo);
             System.out.println(closeOrderTwoUri);
 
-            ResponseEntity<BusinessReturnedOrder> orderTwoClosedResponse =
+            ResponseEntity<OrderReturnedToOwner> orderTwoClosedResponse =
                     getRestTemplate().exchange(closeOrderTwoUri, HttpMethod.PUT, headerEntity, new ParameterizedTypeReference<>() {
                     });
             System.out.println(orderTwoClosedResponse.getStatusCode());
