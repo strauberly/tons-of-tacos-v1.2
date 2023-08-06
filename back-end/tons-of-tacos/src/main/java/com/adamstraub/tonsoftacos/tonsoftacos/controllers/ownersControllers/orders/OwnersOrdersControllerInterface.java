@@ -1,6 +1,6 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.controllers.ownersControllers.orders;
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.DailySales;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.BusinessReturnedOrder;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.OrderReturnedToOwner;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
@@ -50,7 +50,7 @@ public interface OwnersOrdersControllerInterface {
     )
     @Transactional
     @GetMapping("/get-orders")
-    List<BusinessReturnedOrder> getAllOrders();
+    List<OrderReturnedToOwner> getAllOrders();
 
 //    get an order by order id
     @Operation(
@@ -78,7 +78,7 @@ public interface OwnersOrdersControllerInterface {
     )
     @Transactional
     @GetMapping("/get-order/orderId")
-    BusinessReturnedOrder getOrderById(@RequestParam Integer orderId);
+    OrderReturnedToOwner getOrderById(@RequestParam Integer orderId);
 
 //    get an order by uid
     @Operation(
@@ -106,7 +106,7 @@ public interface OwnersOrdersControllerInterface {
     )
     @Transactional
     @GetMapping("/get-order/orderUid")
-    BusinessReturnedOrder getOrderByUid(@RequestParam String orderUid);
+    OrderReturnedToOwner getOrderByUid(@RequestParam String orderUid);
 
 //    get an order by customer name
     @Operation(
@@ -134,7 +134,7 @@ public interface OwnersOrdersControllerInterface {
     )
     @Transactional
     @GetMapping("/get-order/customer")
-   List <BusinessReturnedOrder> getOpenOrderByCustomer(@RequestParam String customer);
+   List <OrderReturnedToOwner> getOpenOrderByCustomer(@RequestParam String customer);
 
 // mark food ready by id
     @Operation(
@@ -163,7 +163,7 @@ public interface OwnersOrdersControllerInterface {
     )
     @Transactional
     @PutMapping("/order-ready/{orderId}")
-    BusinessReturnedOrder orderReady(@PathVariable Integer orderId);
+    OrderReturnedToOwner orderReady(@PathVariable Integer orderId);
 
 
     @Operation(
@@ -192,7 +192,7 @@ public interface OwnersOrdersControllerInterface {
     )
     @Transactional
     @PutMapping("/close-order/{orderId}")
-    BusinessReturnedOrder closeOrder(@PathVariable Integer orderId);
+    OrderReturnedToOwner closeOrder(@PathVariable Integer orderId);
 
 
 // delete order by id

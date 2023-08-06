@@ -1,7 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.ownersToolsTests.ownersOrdersTests;
 
 //import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.cartItemsTestsSupport.CartItemTestSupport;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.BusinessReturnedOrder;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.OrderReturnedToOwner;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ownersToolsSupport.OwnersToolsTestsSupport;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
@@ -49,7 +49,7 @@ class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSu
 //        When:  a successful connection made
         String uri =
                 String.format("%s", getBaseUriForGetAllOrders());
-        ResponseEntity<List<BusinessReturnedOrder>> response =
+        ResponseEntity<List<OrderReturnedToOwner>> response =
                 getRestTemplate().exchange(uri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
                 });
 //  Then: a collection of the orders is returned with a response of 200

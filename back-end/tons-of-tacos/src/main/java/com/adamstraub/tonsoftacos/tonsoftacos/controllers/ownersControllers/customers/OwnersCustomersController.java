@@ -1,5 +1,5 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.controllers.ownersControllers.customers;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.BusinessReturnedCustomer;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.CustomerReturnedToOwner;
 import com.adamstraub.tonsoftacos.tonsoftacos.services.ownersServices.customers.OwnersCustomersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,19 +14,19 @@ public class OwnersCustomersController implements OwnersCustomersControllerInter
 
 
     @Override
-    public List<BusinessReturnedCustomer> getAllCustomers() {
+    public List<CustomerReturnedToOwner> getAllCustomers() {
         System.out.println("controller");
         return ownersCustomersService.getAllCustomers();
     }
 
     @Override
-    public BusinessReturnedCustomer getCustomerByName(String name) throws Exception {
+    public CustomerReturnedToOwner getCustomerByName(String name) throws Exception {
         System.out.println("controller");
             return ownersCustomersService.getCustomerByName(name);
     }
 
     @Override
-    public BusinessReturnedCustomer getCustomerById(Integer customerId) {
+    public CustomerReturnedToOwner getCustomerById(Integer customerId) {
         System.out.println("controller");
         return ownersCustomersService.getCustomerById(customerId);
     }

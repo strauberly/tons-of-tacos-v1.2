@@ -23,8 +23,9 @@ import java.util.function.Function;
 @Service
 public class JwtService {
 
-
     //create token
+
+//    make these all caps and dash between
     @Value("${key}")
     private String SECRET;
 
@@ -88,8 +89,7 @@ public class JwtService {
                             .parseClaimsJws(token)
                             .getBody();
         } catch (Exception e) {
-//            System.out.println(e.getLocalizedMessage());
-            throw new JwtException(e.getLocalizedMessage());
+            throw new JwtException("Session expired.");
         }
     }
 
@@ -108,7 +108,7 @@ public class JwtService {
         return extractClaim(token, Claims::getIssuedAt);
     }
     private Boolean isTokenExpired(String token){
-        return extractExpiration(token).before(new Date());
+            return extractExpiration(token).before(new Date());
     }
 
 //    possibly condense into one
@@ -162,9 +162,8 @@ public class JwtService {
     }
 
 //    decrypt
-//    serving multipurpose and needs a way to differentiate between decrypting for login and validating signature
 public String decrypt(String encodedString)  {
-        System.out.println("encoded: " + encodedString);
+//        System.out.println("encoded: " + encodedString);
 
         String decodedStart = String.valueOf(encodedString.charAt(BEGIN_KEY));
         String decodedEnd = String.valueOf(encodedString.charAt(encodedString.length() - END_KEY));
@@ -175,7 +174,7 @@ public String decrypt(String encodedString)  {
         }
         decoded = new StringBuilder(decoded.substring(submin, decoded.toString().length() - submax));
         wholeDecoded = wholeDecoded.concat(decodedStart + decoded + decodedEnd);
-        System.out.println("decoded: " + wholeDecoded);
+//        System.out.println("decoded: " + wholeDecoded);
         byte[] decodedBytes = wholeDecoded.getBytes(StandardCharsets.UTF_8);
         int decodeByteValue;
         List<Character> decodedChars = new ArrayList<>();

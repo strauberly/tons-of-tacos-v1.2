@@ -32,9 +32,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         System.out.println("filter chain");
         return
-
                 http
-//                        .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                         .csrf().disable()
 //                whitelisted
                         .authorizeHttpRequests()

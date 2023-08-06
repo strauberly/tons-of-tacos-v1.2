@@ -4,7 +4,7 @@ import com.adamstraub.tonsoftacos.tonsoftacos.dao.CustomerRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.MenuItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrderItemRepository;
 import com.adamstraub.tonsoftacos.tonsoftacos.dao.OrdersRepository;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.BusinessReturnedCustomer;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.CustomerReturnedToOwner;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Customer;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
 import jakarta.persistence.EntityNotFoundException;
@@ -30,14 +30,14 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
 
 
     @Override
-    public List<BusinessReturnedCustomer> getAllCustomers() {
+    public List<CustomerReturnedToOwner> getAllCustomers() {
         System.out.println("service");
 
             List<Customer> customers = customerRepository.findAll();
         if (customers.size() == 0){
             throw new EntityNotFoundException("No customers found. Verify database integrity.");
         }else {
-            List<BusinessReturnedCustomer> allCustomersDto = new ArrayList<>();
+            List<CustomerReturnedToOwner> allCustomersDto = new ArrayList<>();
             customers.forEach(customer -> allCustomersDto.add(ownersCustomerDtoConvertor(customer)));
             System.out.println(allCustomersDto);
 
@@ -46,7 +46,7 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
     }
 
     @Override
-    public BusinessReturnedCustomer getCustomerByName(String name) {
+    public CustomerReturnedToOwner getCustomerByName(String name) {
         System.out.println("service");
         try {
             Customer customer = customerRepository.findByName(name);
@@ -60,7 +60,7 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
 
     @Transactional(readOnly = true)
     @Override
-    public BusinessReturnedCustomer getCustomerById(Integer customerId) {
+    public CustomerReturnedToOwner getCustomerById(Integer customerId) {
 
         System.out.println("service");
     try{
@@ -181,8 +181,9 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
     }
 
 
-    private BusinessReturnedCustomer ownersCustomerDtoConvertor(Customer customer){
-        BusinessReturnedCustomer ownersCustomerDto = new BusinessReturnedCustomer();
+    private CustomerReturnedToOwner ownersCustomerDtoConvertor(Customer customer){
+        CustomerReturnedToOwner ownersCustomerDto = new CustomerReturnedToOwner();
+//        ownersCustomerDto.setCustomerId(customer.getCustomerId());
         ownersCustomerDto.setCustomerId(customer.getCustomerId());
         ownersCustomerDto.setName(customer.getName());
         ownersCustomerDto.setEmail(customer.getEmail());

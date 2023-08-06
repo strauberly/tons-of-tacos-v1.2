@@ -1,6 +1,6 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.controllers.ownersControllers.customers;
 
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.BusinessReturnedCustomer;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.CustomerReturnedToOwner;
 import com.adamstraub.tonsoftacos.tonsoftacos.entities.OrderItem;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
@@ -51,7 +51,7 @@ public interface OwnersCustomersControllerInterface {
     )
     @Transactional
     @GetMapping("/get-customers")
-    List<BusinessReturnedCustomer> getAllCustomers();
+    List<CustomerReturnedToOwner> getAllCustomers();
     //  get a customer by customer name
     @Operation(
             summary = "A customer is returned by customer name.",
@@ -78,7 +78,7 @@ public interface OwnersCustomersControllerInterface {
     )
     @Transactional
     @GetMapping("/get-customer/name")
-    BusinessReturnedCustomer getCustomerByName(@RequestParam String name) throws Exception;
+    CustomerReturnedToOwner getCustomerByName(@RequestParam String name) throws Exception;
 
 //    get customer by id
 @Operation(
@@ -106,7 +106,7 @@ public interface OwnersCustomersControllerInterface {
 )
 @Transactional
 @GetMapping("/get-customer/customerId")
-BusinessReturnedCustomer getCustomerById(@RequestParam Integer customerId);
+CustomerReturnedToOwner getCustomerById(@RequestParam Integer customerId);
 
 
 //edit customer name

@@ -1,7 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.controllers.ownersControllers.orders;
 
 import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.DailySales;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.BusinessReturnedOrder;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.OrderReturnedToOwner;
 import com.adamstraub.tonsoftacos.tonsoftacos.services.ownersServices.orders.OwnersOrdersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,37 +15,37 @@ public class OwnersOrdersController implements OwnersOrdersControllerInterface {
     private OwnersOrdersService ownersOrdersService;
 
     @Override
-    public List<BusinessReturnedOrder> getAllOrders() {
+    public List<OrderReturnedToOwner> getAllOrders() {
         System.out.println("controller");
         return ownersOrdersService.getAllOrders();
     }
 
     @Override
-    public BusinessReturnedOrder getOrderById(Integer orderId) {
+    public OrderReturnedToOwner getOrderById(Integer orderId) {
         System.out.println("controller");
         return ownersOrdersService.getOrderById(orderId);
     }
 
     @Override
-    public BusinessReturnedOrder getOrderByUid(@PathVariable String orderUid) {
+    public OrderReturnedToOwner getOrderByUid(@PathVariable String orderUid) {
         System.out.println("controller");
         return ownersOrdersService.getOrderByUid(orderUid);
     }
 
     @Override
-    public List<BusinessReturnedOrder> getOpenOrderByCustomer(String customer) {
+    public List<OrderReturnedToOwner> getOpenOrderByCustomer(String customer) {
         System.out.println("controller");
         return ownersOrdersService.getOpenOrderByCustomer(customer);
     }
 
     @Override
-    public BusinessReturnedOrder orderReady(Integer orderId) {
+    public OrderReturnedToOwner orderReady(Integer orderId) {
         System.out.println("controller");
         return ownersOrdersService.orderReady(orderId);
     }
 
     @Override
-    public BusinessReturnedOrder closeOrder(Integer orderId) {
+    public OrderReturnedToOwner closeOrder(Integer orderId) {
         System.out.println("controller");
 //        System.out.println(orderId);
        return ownersOrdersService.closeOrder(orderId);

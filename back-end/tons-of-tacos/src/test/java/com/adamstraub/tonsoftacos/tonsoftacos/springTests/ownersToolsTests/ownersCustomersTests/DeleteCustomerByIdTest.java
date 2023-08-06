@@ -1,6 +1,6 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.ownersToolsTests.ownersCustomersTests;
 
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.BusinessReturnedCustomer;
+import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.CustomerReturnedToOwner;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ownersToolsSupport.OwnersToolsTestsSupport;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
@@ -75,7 +75,7 @@ public class DeleteCustomerByIdTest {
             String getCustomerUri =
                     String.format("%s?%s=%d", getBaseUriForGetCustomerById(), parameter, customerId);
             System.out.println(getCustomerUri);
-            ResponseEntity<BusinessReturnedCustomer> getCustomerResponse =
+            ResponseEntity<CustomerReturnedToOwner> getCustomerResponse =
                     getRestTemplate().exchange
             (getCustomerUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {});
             Assertions.assertEquals(HttpStatus.NOT_FOUND, getCustomerResponse.getStatusCode());

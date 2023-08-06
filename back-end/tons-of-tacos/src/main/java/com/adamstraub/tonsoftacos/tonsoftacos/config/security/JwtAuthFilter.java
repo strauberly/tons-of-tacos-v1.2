@@ -8,6 +8,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -30,19 +32,24 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
     private final OwnerRepository ownerRepository;
+
 @Autowired
 @Qualifier("handlerExceptionResolver")
+
 @NonNull
 private final HandlerExceptionResolver resolver;
+
+//Logger logger = LoggerFactory.getLogger(JwtAuthFilter.class);
+
 
 
     @Override
     protected void doFilterInternal(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response,
                                     @NotNull FilterChain filterChain)
             throws ServletException, IOException {
-
+        System.out.println("jwt filter");
 try {
-    System.out.println("request" + request);
+//    System.out.println("request" + request);
     String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
     String token = null;
     String username = null;
@@ -51,18 +58,17 @@ try {
 
     if (authHeader != null && authHeader.startsWith("Bearer ")) {
         token = authHeader.substring(7);
-            System.out.println("token = " + token);
+//            System.out.println("token = " + token);
         username = jwtService.extractUsername(token);
         expiration = jwtService.extractExpiration(token);
-        System.out.println("expiration = " + expiration);
+//        System.out.println("expiration = " + expiration);
         issuedAt = jwtService.extractIssuedAt(token);
-        System.out.println("issued at = " + issuedAt);
+//        System.out.println("issued at = " + issuedAt);
     }
 
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 UserDetails userDetails = userDetailsService().loadUserByUsername(jwtService.decrypt(username));
-                System.out.println("user details: " + userDetails);
-//                in is token valid validate length token invalid
+//                System.out.println("user details: " + userDetails);
 //
                 System.out.println("token valid: " + jwtService.isTokenValid(token, userDetails));
                 jwtService.isTokenValid(token, userDetails);
@@ -70,10 +76,10 @@ try {
                         , userDetails.getAuthorities());
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authToken);
-                System.out.println("jwt filter");
             }
         filterChain.doFilter(request, response);
 }catch (Exception e){
+//    logger.error(e.getLocalizedMessage());
     resolver.resolveException(request, response, null, e);
         }
     }
