@@ -24,12 +24,18 @@ public class AuthService implements AuthServiceInterface {
     public String ownerLogin(OwnerAuthDto ownerAuthDto) {
         System.out.println("auth service");
 //        System.out.println(ownerAuthDto);
+        try {
             Authentication authentication = authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(jwtService.decrypt(ownerAuthDto.getUsername()),
                             jwtService.decrypt(ownerAuthDto.getPsswrd())));
-            if (!authentication.isAuthenticated()) {
-                throw new BadCredentialsException("Bad credentials.");
-            }else
+//            if (!authentication.isAuthenticated()) {
+//                throw new BadCredentialsException("Bad credentials." + jwtService.decrypt(ownerAuthDto.getUsername()) + " " +  jwtService.decrypt(ownerAuthDto.getPsswrd()));
+        }catch (Exception e) {
+//            throw new BadCredentialsException("Bad credentials. " + "username: " + jwtService.decrypt(ownerAuthDto.getUsername()) + " " + "password: " + jwtService.decrypt(ownerAuthDto.getPsswrd()));
+            throw new BadCredentialsException("Bad credentials. " + "username: " + ownerAuthDto.getUsername() + " " + "password: " + ownerAuthDto.getPsswrd());
+
+        }
+//        }else
                 return jwtService.generateToken(ownerAuthDto.getUsername());
     }
 }

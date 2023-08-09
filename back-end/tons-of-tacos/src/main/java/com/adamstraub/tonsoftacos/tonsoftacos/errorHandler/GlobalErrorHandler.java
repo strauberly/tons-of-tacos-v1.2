@@ -33,7 +33,7 @@ public class GlobalErrorHandler  {
 
     private String message;
 
-//    Logger logger = LoggerFactory.getLogger(GlobalErrorHandler.class);
+    Logger logger = LoggerFactory.getLogger(GlobalErrorHandler.class);
 //
 ////    private enum LogStatus{
 ////        STACK_TRACE, MESSAGE_ONLY
@@ -49,6 +49,7 @@ public class GlobalErrorHandler  {
     @ResponseStatus(code = HttpStatus.NOT_FOUND)
     public Map <String, Object> handleEntityNotFoundException(
             EntityNotFoundException e, WebRequest webRequest) {
+        logger.error(String.valueOf(e), webRequest);
         return createExceptionMessage(e.getLocalizedMessage(), HttpStatus.NOT_FOUND, webRequest);
     }
 
@@ -63,6 +64,7 @@ public class GlobalErrorHandler  {
     @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
     public Map<String, Object> handleUsernameNotFoundException(
             UsernameNotFoundException e, WebRequest webRequest){
+        logger.error(String.valueOf(e), webRequest);
         return  createExceptionMessage(e.getLocalizedMessage(), HttpStatus.UNAUTHORIZED, webRequest);
     }
 
@@ -77,6 +79,7 @@ public class GlobalErrorHandler  {
     @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
     public Map<String, Object> handleJwtException(
             AuthenticationException e, WebRequest webRequest){
+
         return  createExceptionMessage(e.getLocalizedMessage(), HttpStatus.UNAUTHORIZED, webRequest);
     }
 
@@ -106,6 +109,7 @@ public class GlobalErrorHandler  {
     public Map<String, Object> handleBadCredentialsException(
             BadCredentialsException e, WebRequest webRequest
     ){
+        logger.debug(createExceptionMessage(e.getLocalizedMessage(), HttpStatus.UNAUTHORIZED, webRequest).toString());
         return createExceptionMessage(e.getLocalizedMessage(), HttpStatus.UNAUTHORIZED, webRequest);
     }
 

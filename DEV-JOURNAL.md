@@ -2,6 +2,12 @@
 
 ---
 
+-- 8 Aug 2023 --
+
+- Implemented a basic logger for exceptions of interest. Refinement in progress.
+
+---
+
 -- 6 Aug 2023 --
 
 - Refactor for security, exception handling, applicable tests and dtos in good place.
