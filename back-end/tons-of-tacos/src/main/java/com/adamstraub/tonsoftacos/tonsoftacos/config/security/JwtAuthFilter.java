@@ -39,7 +39,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 @NonNull
 private final HandlerExceptionResolver resolver;
 
-//Logger logger = LoggerFactory.getLogger(JwtAuthFilter.class);
+Logger logger = LoggerFactory.getLogger(JwtAuthFilter.class);
 
 
 
@@ -48,23 +48,24 @@ private final HandlerExceptionResolver resolver;
                                     @NotNull FilterChain filterChain)
             throws ServletException, IOException {
         System.out.println("jwt filter");
-try {
+        String username = null;
+        try {
 //    System.out.println("request" + request);
-    String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
-    String token = null;
-    String username = null;
-    Date expiration = null;
-    Date issuedAt = null;
+            String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
+            String token = null;
+            username = null;
+            Date expiration = null;
+            Date issuedAt = null;
 
-    if (authHeader != null && authHeader.startsWith("Bearer ")) {
-        token = authHeader.substring(7);
+            if (authHeader != null && authHeader.startsWith("Bearer ")) {
+                token = authHeader.substring(7);
 //            System.out.println("token = " + token);
-        username = jwtService.extractUsername(token);
-        expiration = jwtService.extractExpiration(token);
+                username = jwtService.extractUsername(token);
+                expiration = jwtService.extractExpiration(token);
 //        System.out.println("expiration = " + expiration);
-        issuedAt = jwtService.extractIssuedAt(token);
+                issuedAt = jwtService.extractIssuedAt(token);
 //        System.out.println("issued at = " + issuedAt);
-    }
+            }
 
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 UserDetails userDetails = userDetailsService().loadUserByUsername(jwtService.decrypt(username));
@@ -77,10 +78,10 @@ try {
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
-        filterChain.doFilter(request, response);
-}catch (Exception e){
-//    logger.error(e.getLocalizedMessage());
-    resolver.resolveException(request, response, null, e);
+            filterChain.doFilter(request, response);
+        } catch (Exception e) {
+            logger.error(e.toString(), jwtService.decrypt(username));
+            resolver.resolveException(request, response, null, e);
         }
     }
 
