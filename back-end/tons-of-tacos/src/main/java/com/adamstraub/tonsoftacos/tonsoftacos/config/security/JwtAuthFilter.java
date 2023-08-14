@@ -80,6 +80,7 @@ Logger logger = LoggerFactory.getLogger(JwtAuthFilter.class);
             }
             filterChain.doFilter(request, response);
         } catch (Exception e) {
+            assert username != null;
             logger.error(e.toString(), jwtService.decrypt(username));
             resolver.resolveException(request, response, null, e);
         }

@@ -6,7 +6,7 @@
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>
-                %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} -
+                %n %boldBlue(%d{yyyy-MM-dd HH:mm:ss}) [%thread] %-5level %logger{36} -
                 %msg%n
             </Pattern>
         </layout>
@@ -17,7 +17,7 @@
         <file>${DEV_HOME}/debug.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>
-                %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} -
+                %n %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} -
                 %msg%n
             </Pattern>
         </encoder>
@@ -39,7 +39,7 @@
         <file>${DEV_HOME}/error.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>
-                %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} -
+                %n %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} -
                 %msg%n
             </Pattern>
         </encoder>
@@ -57,8 +57,7 @@
     </appender>
 
     <!-- Send logs to both console and file audit -->
-    <logger name="com.adamstraub.tonsoftacos.tonsoftacos" level="debug"
-            additivity="false">
+    <logger name="com.adamstraub.tonsoftacos.tonsoftacos" level="debug">
         <appender-ref ref="FILE-AUDIT" />
         <appender-ref ref="STDOUT" />
     </logger>

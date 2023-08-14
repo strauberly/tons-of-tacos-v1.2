@@ -17,6 +17,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
@@ -103,7 +104,7 @@ public class GlobalErrorHandler  {
             ExpiredJwtException e, WebRequest webRequest){
         return  createExceptionMessage(e.getMessage(), HttpStatus.FORBIDDEN, webRequest);
     }
-// start here
+
     @ExceptionHandler(BadCredentialsException.class)
     @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
     public Map<String, Object> handleBadCredentialsException(
@@ -114,7 +115,14 @@ public class GlobalErrorHandler  {
     }
 
 
-// need exception handler for 500
+    @ExceptionHandler(RuntimeException.class)
+    @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
+    public Map<String, Object> runtimeException(
+            HttpServerErrorException.InternalServerError e, WebRequest webRequest
+    ){
+        logger.error(createExceptionMessage(e.getLocalizedMessage(), HttpStatus.INTERNAL_SERVER_ERROR, webRequest).toString());
+        return createExceptionMessage(e.getLocalizedMessage(), HttpStatus.INTERNAL_SERVER_ERROR, webRequest);
+    }
 
 
 
