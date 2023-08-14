@@ -1,0 +1,687 @@
+2023-08-10 05:00:46 [main] ERROR o.s.b.w.e.tomcat.TomcatStarter -
+                
+Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthFilter' defined in file [/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes/com/adamstraub/tonsoftacos/tonsoftacos/config/security/JwtAuthFilter.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'handlerExceptionResolver' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+2023-08-10 05:00:46 [main] ERROR o.s.boot.SpringApplication -
+                
+Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:164)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:578)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291)
+	at com.adamstraub.tonsoftacos.tonsoftacos.TonsOfTacosApplication.main(TonsOfTacosApplication.java:16)
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:142)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:104)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:486)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:210)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:183)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:161)
+	... 8 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtAuthFilter' defined in file [/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes/com/adamstraub/tonsoftacos/tonsoftacos/config/security/JwtAuthFilter.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'handlerExceptionResolver' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:245)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1344)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:208)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:171)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:166)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:151)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:86)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:261)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:235)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5144)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1393)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1383)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:886)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1393)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1383)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:252)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:430)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:926)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:485)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:123)
+	... 13 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'handlerExceptionResolver' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:645)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1324)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1161)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:885)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:789)
+	... 54 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:171)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	... 68 common frames omitted
+Caused by: java.lang.IllegalStateException: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+	at org.springframework.web.method.annotation.ExceptionHandlerMethodResolver.addExceptionMapping(ExceptionHandlerMethodResolver.java:114)
+	at org.springframework.web.method.annotation.ExceptionHandlerMethodResolver.<init>(ExceptionHandlerMethodResolver.java:78)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.initExceptionHandlerAdviceCache(ExceptionHandlerExceptionResolver.java:276)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.afterPropertiesSet(ExceptionHandlerExceptionResolver.java:243)
+	at org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport.addDefaultHandlerExceptionResolvers(WebMvcConfigurationSupport.java:1063)
+	at org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport.handlerExceptionResolver(WebMvcConfigurationSupport.java:1005)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:139)
+	... 69 common frames omitted
+2023-08-10 05:03:55 [main] ERROR o.s.b.w.e.tomcat.TomcatStarter -
+                
+Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthFilter' defined in file [/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes/com/adamstraub/tonsoftacos/tonsoftacos/config/security/JwtAuthFilter.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'handlerExceptionResolver' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+2023-08-10 05:03:55 [main] ERROR o.s.boot.SpringApplication -
+                
+Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:164)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:578)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291)
+	at com.adamstraub.tonsoftacos.tonsoftacos.TonsOfTacosApplication.main(TonsOfTacosApplication.java:16)
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:142)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:104)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:486)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:210)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:183)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:161)
+	... 8 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtAuthFilter' defined in file [/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes/com/adamstraub/tonsoftacos/tonsoftacos/config/security/JwtAuthFilter.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'handlerExceptionResolver' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:245)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1344)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:208)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:171)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:166)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:151)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:86)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:261)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:235)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5144)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1393)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1383)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:886)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1393)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1383)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:252)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:430)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:926)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:485)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:123)
+	... 13 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'handlerExceptionResolver' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:645)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1324)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1161)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:885)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:789)
+	... 54 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:171)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	... 68 common frames omitted
+Caused by: java.lang.IllegalStateException: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+	at org.springframework.web.method.annotation.ExceptionHandlerMethodResolver.addExceptionMapping(ExceptionHandlerMethodResolver.java:114)
+	at org.springframework.web.method.annotation.ExceptionHandlerMethodResolver.<init>(ExceptionHandlerMethodResolver.java:78)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.initExceptionHandlerAdviceCache(ExceptionHandlerExceptionResolver.java:276)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.afterPropertiesSet(ExceptionHandlerExceptionResolver.java:243)
+	at org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport.addDefaultHandlerExceptionResolvers(WebMvcConfigurationSupport.java:1063)
+	at org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport.handlerExceptionResolver(WebMvcConfigurationSupport.java:1005)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:139)
+	... 69 common frames omitted
+2023-08-10 05:05:33 [main] ERROR o.s.b.w.e.tomcat.TomcatStarter -
+                
+Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthFilter' defined in file [/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes/com/adamstraub/tonsoftacos/tonsoftacos/config/security/JwtAuthFilter.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'handlerExceptionResolver' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+2023-08-10 05:05:33 [main] ERROR o.s.boot.SpringApplication -
+                
+Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:164)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:578)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291)
+	at com.adamstraub.tonsoftacos.tonsoftacos.TonsOfTacosApplication.main(TonsOfTacosApplication.java:16)
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:142)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:104)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:486)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:210)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:183)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:161)
+	... 8 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtAuthFilter' defined in file [/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes/com/adamstraub/tonsoftacos/tonsoftacos/config/security/JwtAuthFilter.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'handlerExceptionResolver' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:245)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1344)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:208)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:171)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:166)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:151)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:86)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:261)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:235)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5144)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1393)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1383)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:886)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1393)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1383)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:252)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:430)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:926)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:485)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:123)
+	... 13 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'handlerExceptionResolver' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:645)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1324)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1161)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:885)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:789)
+	... 54 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:171)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	... 68 common frames omitted
+Caused by: java.lang.IllegalStateException: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+	at org.springframework.web.method.annotation.ExceptionHandlerMethodResolver.addExceptionMapping(ExceptionHandlerMethodResolver.java:114)
+	at org.springframework.web.method.annotation.ExceptionHandlerMethodResolver.<init>(ExceptionHandlerMethodResolver.java:78)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.initExceptionHandlerAdviceCache(ExceptionHandlerExceptionResolver.java:276)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.afterPropertiesSet(ExceptionHandlerExceptionResolver.java:243)
+	at org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport.addDefaultHandlerExceptionResolvers(WebMvcConfigurationSupport.java:1063)
+	at org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport.handlerExceptionResolver(WebMvcConfigurationSupport.java:1005)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:139)
+	... 69 common frames omitted
+2023-08-10 05:12:57 [main] ERROR o.s.b.w.e.tomcat.TomcatStarter -
+                
+Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthFilter' defined in file [/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes/com/adamstraub/tonsoftacos/tonsoftacos/config/security/JwtAuthFilter.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'handlerExceptionResolver' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+2023-08-10 05:12:57 [main] ERROR o.s.boot.SpringApplication -
+                
+Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:164)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:578)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291)
+	at com.adamstraub.tonsoftacos.tonsoftacos.TonsOfTacosApplication.main(TonsOfTacosApplication.java:16)
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:142)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:104)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:486)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:210)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:183)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:161)
+	... 8 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtAuthFilter' defined in file [/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes/com/adamstraub/tonsoftacos/tonsoftacos/config/security/JwtAuthFilter.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'handlerExceptionResolver' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:245)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1344)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:208)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:171)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:166)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:151)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:86)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:261)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:235)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5144)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1393)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1383)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:886)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1393)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1383)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:252)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:430)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:926)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:485)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:123)
+	... 13 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'handlerExceptionResolver' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:645)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1324)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1161)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:885)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:789)
+	... 54 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:171)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	... 68 common frames omitted
+Caused by: java.lang.IllegalStateException: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+	at org.springframework.web.method.annotation.ExceptionHandlerMethodResolver.addExceptionMapping(ExceptionHandlerMethodResolver.java:114)
+	at org.springframework.web.method.annotation.ExceptionHandlerMethodResolver.<init>(ExceptionHandlerMethodResolver.java:78)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.initExceptionHandlerAdviceCache(ExceptionHandlerExceptionResolver.java:276)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.afterPropertiesSet(ExceptionHandlerExceptionResolver.java:243)
+	at org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport.addDefaultHandlerExceptionResolvers(WebMvcConfigurationSupport.java:1063)
+	at org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport.handlerExceptionResolver(WebMvcConfigurationSupport.java:1005)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:139)
+	... 69 common frames omitted
+2023-08-10 05:14:57 [main] ERROR o.s.b.w.e.tomcat.TomcatStarter -
+                
+Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthFilter' defined in file [/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes/com/adamstraub/tonsoftacos/tonsoftacos/config/security/JwtAuthFilter.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'handlerExceptionResolver' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+2023-08-10 05:14:57 [main] ERROR o.s.boot.SpringApplication -
+                
+Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:164)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:578)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291)
+	at com.adamstraub.tonsoftacos.tonsoftacos.TonsOfTacosApplication.main(TonsOfTacosApplication.java:16)
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:142)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:104)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:486)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:210)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:183)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:161)
+	... 8 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtAuthFilter' defined in file [/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes/com/adamstraub/tonsoftacos/tonsoftacos/config/security/JwtAuthFilter.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'handlerExceptionResolver' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:245)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1344)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:208)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:171)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:166)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:151)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:86)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:261)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:235)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5144)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1393)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1383)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:886)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1393)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1383)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:252)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:430)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:926)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:485)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:123)
+	... 13 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'handlerExceptionResolver' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:645)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1324)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1161)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:885)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:789)
+	... 54 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:171)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	... 68 common frames omitted
+Caused by: java.lang.IllegalStateException: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+	at org.springframework.web.method.annotation.ExceptionHandlerMethodResolver.addExceptionMapping(ExceptionHandlerMethodResolver.java:114)
+	at org.springframework.web.method.annotation.ExceptionHandlerMethodResolver.<init>(ExceptionHandlerMethodResolver.java:78)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.initExceptionHandlerAdviceCache(ExceptionHandlerExceptionResolver.java:276)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.afterPropertiesSet(ExceptionHandlerExceptionResolver.java:243)
+	at org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport.addDefaultHandlerExceptionResolvers(WebMvcConfigurationSupport.java:1063)
+	at org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport.handlerExceptionResolver(WebMvcConfigurationSupport.java:1005)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:139)
+	... 69 common frames omitted
+2023-08-10 05:17:43 [main] ERROR o.s.b.w.e.tomcat.TomcatStarter -
+                
+Error starting Tomcat context. Exception: org.springframework.beans.factory.UnsatisfiedDependencyException. Message: Error creating bean with name 'jwtAuthFilter' defined in file [/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes/com/adamstraub/tonsoftacos/tonsoftacos/config/security/JwtAuthFilter.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'handlerExceptionResolver' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+2023-08-10 05:17:44 [main] ERROR o.s.boot.SpringApplication -
+                
+Application run failed
+org.springframework.context.ApplicationContextException: Unable to start web server
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:164)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:578)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:432)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1302)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1291)
+	at com.adamstraub.tonsoftacos.tonsoftacos.TonsOfTacosApplication.main(TonsOfTacosApplication.java:16)
+Caused by: org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:142)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:104)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:486)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:210)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:183)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:161)
+	... 8 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'jwtAuthFilter' defined in file [/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes/com/adamstraub/tonsoftacos/tonsoftacos/config/security/JwtAuthFilter.class]: Unsatisfied dependency expressed through constructor parameter 2: Error creating bean with name 'handlerExceptionResolver' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:245)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1344)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1188)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:208)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:171)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAsRegistrationBean(ServletContextInitializerBeans.java:166)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addAdaptableBeans(ServletContextInitializerBeans.java:151)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:86)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:261)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:235)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:52)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5144)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1393)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1383)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:886)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1393)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1383)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:145)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:916)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:252)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:430)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:926)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:485)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:123)
+	... 13 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'handlerExceptionResolver' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:657)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:645)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1324)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1161)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:326)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:324)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1405)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1325)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:885)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:789)
+	... 54 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.servlet.HandlerExceptionResolver]: Factory method 'handlerExceptionResolver' threw exception with message: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:171)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	... 68 common frames omitted
+Caused by: java.lang.IllegalStateException: Ambiguous @ExceptionHandler method mapped for [class org.springframework.security.authentication.BadCredentialsException]: {public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.web.client.HttpServerErrorException$InternalServerError,org.springframework.web.context.request.WebRequest), public java.util.Map com.adamstraub.tonsoftacos.tonsoftacos.errorHandler.GlobalErrorHandler.handleBadCredentialsException(org.springframework.security.authentication.BadCredentialsException,org.springframework.web.context.request.WebRequest)}
+	at org.springframework.web.method.annotation.ExceptionHandlerMethodResolver.addExceptionMapping(ExceptionHandlerMethodResolver.java:114)
+	at org.springframework.web.method.annotation.ExceptionHandlerMethodResolver.<init>(ExceptionHandlerMethodResolver.java:78)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.initExceptionHandlerAdviceCache(ExceptionHandlerExceptionResolver.java:276)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.afterPropertiesSet(ExceptionHandlerExceptionResolver.java:243)
+	at org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport.addDefaultHandlerExceptionResolvers(WebMvcConfigurationSupport.java:1063)
+	at org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport.handlerExceptionResolver(WebMvcConfigurationSupport.java:1005)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:139)
+	... 69 common frames omitted
+
+ [1;34m2023-08-10 05:45:07[0;39m [main] INFO  c.a.t.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.1 with PID 13874 (/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+
+ [1;34m2023-08-10 05:45:07[0;39m [main] DEBUG c.a.t.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+
+ [1;34m2023-08-10 05:45:07[0;39m [main] INFO  c.a.t.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+
+ [1;34m2023-08-10 05:45:11[0;39m [main] DEBUG c.a.t.t.c.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+
+ [1;34m2023-08-10 05:45:12[0;39m [main] INFO  c.a.t.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.878 seconds (process running for 5.322)
+
+ [1;34m2023-08-10 05:45:17[0;39m [http-nio-8080-exec-1] DEBUG c.a.t.t.e.GlobalErrorHandler -
+                {status code=401 UNAUTHORIZED, message=Bad credentials. username: tomtomtomtom password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Thu, 10 Aug 2023 05:45:17 -0700}
+
+ [1;34m2023-08-10 05:45:20[0;39m [http-nio-8080-exec-3] DEBUG c.a.t.t.e.GlobalErrorHandler -
+                {status code=401 UNAUTHORIZED, message=Bad credentials. username: tomtomtomtom password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Thu, 10 Aug 2023 05:45:20 -0700}
+
+ [1;34m2023-08-10 05:47:40[0;39m [main] INFO  c.a.t.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.1 with PID 14335 (/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+
+ [1;34m2023-08-10 05:47:40[0;39m [main] DEBUG c.a.t.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+
+ [1;34m2023-08-10 05:47:40[0;39m [main] INFO  c.a.t.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+
+ [1;34m2023-08-10 05:47:43[0;39m [main] DEBUG c.a.t.t.c.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+
+ [1;34m2023-08-10 05:47:44[0;39m [main] INFO  c.a.t.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.904 seconds (process running for 5.316)
+
+ [1;34m2023-08-10 05:47:47[0;39m [http-nio-8080-exec-2] DEBUG c.a.t.t.e.GlobalErrorHandler -
+                {status code=401 UNAUTHORIZED, message=Bad credentials. username: tomtomtomtom password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Thu, 10 Aug 2023 05:47:47 -0700}
+
+ [1;34m2023-08-10 05:48:03[0;39m [main] INFO  c.a.t.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.1 with PID 14566 (/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+
+ [1;34m2023-08-10 05:48:03[0;39m [main] DEBUG c.a.t.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+
+ [1;34m2023-08-10 05:48:03[0;39m [main] INFO  c.a.t.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+
+ [1;34m2023-08-10 05:48:07[0;39m [main] DEBUG c.a.t.t.c.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+
+ [1;34m2023-08-10 05:48:08[0;39m [main] INFO  c.a.t.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.655 seconds (process running for 5.104)
+
+ [1;34m2023-08-10 05:48:19[0;39m [http-nio-8080-exec-1] DEBUG c.a.t.t.e.GlobalErrorHandler -
+                {status code=401 UNAUTHORIZED, message=Bad credentials. username: tomtomtomtom password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Thu, 10 Aug 2023 05:48:19 -0700}
+
+ 2023-08-10 05:50:15 [main] INFO  c.a.t.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.1 with PID 14810 (/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+
+ 2023-08-10 05:50:15 [main] DEBUG c.a.t.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+
+ 2023-08-10 05:50:15 [main] INFO  c.a.t.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+
+ 2023-08-10 05:50:18 [main] DEBUG c.a.t.t.c.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+
+ 2023-08-10 05:50:19 [main] INFO  c.a.t.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.617 seconds (process running for 5.076)
+
+ 2023-08-10 05:51:02 [http-nio-8080-exec-3] DEBUG c.a.t.t.e.GlobalErrorHandler -
+                {status code=401 UNAUTHORIZED, message=Bad credentials. username: tomtomtomtom password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Thu, 10 Aug 2023 05:51:02 -0700}
