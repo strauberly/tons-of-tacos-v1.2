@@ -1,6 +1,5 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.testSupport.menuItemTestsSupport;
-
-import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
+import com.adamstraub.tonsoftacos.entities.MenuItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.TestUris;
 
 

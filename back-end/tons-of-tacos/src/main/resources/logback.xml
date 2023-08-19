@@ -3,7 +3,7 @@
 
     <property name="DEV_HOME" value="logs" />
 
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>
                 %n %boldBlue(%d{yyyy-MM-dd HH:mm:ss}) [%thread] %-5level %logger{36} -
@@ -12,12 +12,15 @@
         </layout>
     </appender>
 
-    <appender name="FILE-AUDIT"
+    <appender name="Debug"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${DEV_HOME}/debug.log</file>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>TRACE</level>
+        </filter>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>
-                %n %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} -
+                %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} -
                 %msg%n
             </Pattern>
         </encoder>
@@ -28,18 +31,24 @@
             </fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy
                     class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>10MB</maxFileSize>
+                <maxFileSize>10KB</maxFileSize>
+                <maxHistory>30</maxHistory>
+                <totalSizeCap>50KB</totalSizeCap>
             </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
-
     </appender>
 
-    <appender name="FILE-ERROR"
+<!--system error-->
+
+    <appender name="Error"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${DEV_HOME}/error.log</file>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>
-                %n %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} -
+                %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} -
                 %msg%n
             </Pattern>
         </encoder>
@@ -50,20 +59,21 @@
             </fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy
                     class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>10MB</maxFileSize>
+                <maxFileSize>10KB</maxFileSize>
+                <maxHistory>30</maxHistory>
+                <totalSizeCap>50KB</totalSizeCap>
             </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
-
     </appender>
 
-    <!-- Send logs to both console and file audit -->
-    <logger name="com.adamstraub.tonsoftacos.tonsoftacos" level="debug">
-        <appender-ref ref="FILE-AUDIT" />
-        <appender-ref ref="STDOUT" />
+    <!-- Send logs to both console and logger -->
+    <logger name="com.adamstraub.tonsoftacos" level="trace" additivity="false" >
+        <appender-ref ref="Debug" />
+        <appender-ref ref="Error" />
     </logger>
 
     <root level="error">
-        <appender-ref ref="FILE-ERROR" />
+        <appender-ref ref="Error" />
     </root>
 
 </configuration>

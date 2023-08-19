@@ -1,7 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.ownersToolsTests.ownersCustomersTests;
 
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.CustomerReturnedToOwner;
-import com.adamstraub.tonsoftacos.tonsoftacos.dto.businessDto.OrderReturnedToOwner;
+import com.adamstraub.tonsoftacos.dto.businessDto.CustomerReturnedToOwner;
+import com.adamstraub.tonsoftacos.dto.businessDto.OrderReturnedToOwner;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ownersToolsSupport.OwnersToolsTestsSupport;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;

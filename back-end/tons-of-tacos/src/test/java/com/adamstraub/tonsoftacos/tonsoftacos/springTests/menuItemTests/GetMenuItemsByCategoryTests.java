@@ -1,5 +1,5 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.menuItemTests;
-import com.adamstraub.tonsoftacos.tonsoftacos.entities.MenuItem;
+import com.adamstraub.tonsoftacos.entities.MenuItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.menuItemTestsSupport.GetMenuItemsTestsSupport;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
