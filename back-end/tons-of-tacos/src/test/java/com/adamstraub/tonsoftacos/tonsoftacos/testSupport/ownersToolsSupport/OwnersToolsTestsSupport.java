@@ -1,6 +1,6 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ownersToolsSupport;
 
-import com.adamstraub.tonsoftacos.tonsoftacos.services.security.JwtService;
+import com.adamstraub.tonsoftacos.services.security.JwtService;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.TestUris;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -92,16 +92,11 @@ public class OwnersToolsTestsSupport extends TestUris {
         return response.getBody();
     }
 
+
     protected String expiredToken(){
         return "eyJhbGciOiJIUzI1NiJ9" +
                 ".eyJzdWIiOiJtKUttN3l7ZjB-bmQkLGh2TkxPdzAuRjVGbFA1dT81IiwiaWF0IjoxNjg0ODk1ODI1LCJleHAiOjE2ODQ3NTM0MjV9" +
                 ".cpfDr8dIxCv0VexVf99g5gbeQfTlSerEP9X8X3c_qas";
-//        return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9" +
-//                ".eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ" +
-//                ".qUfd37-470RrDYEmL3g-lck93sng_gSagGjsfSnfqJM";
-//        return "eyJhbGciOiJIUzI1NiJ9." +
-//                "eyJzdWIiOiJtKUttN3l7ZjB-bmQkLGh2TkxPdzAuRjVGbFA1dT81IiwiaWF0IjoxNjg0NDM4MjYzNjMwLCJleHAiOjE2ODQ0OTU0NjM2MzB9." +
-//                "3oHdhB80HEcGNPBvCxBYN9u5mEMA0mf8oD85An-PgiE";
     }
 
     protected String badToken(){

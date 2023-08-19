@@ -1,7 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.ownersToolsTests.authTests;
 
-import com.adamstraub.tonsoftacos.tonsoftacos.entities.Orders;
-import com.adamstraub.tonsoftacos.tonsoftacos.services.security.JwtService;
+import com.adamstraub.tonsoftacos.entities.Orders;
+import com.adamstraub.tonsoftacos.services.security.JwtService;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ownersToolsSupport.OwnersToolsTestsSupport;
 
 import io.jsonwebtoken.impl.crypto.JwtSignatureValidator;
@@ -156,7 +156,7 @@ public class LoginTest implements JwtSignatureValidator {
 
             System.out.println(response.getBody());
 
-//           Then: a status code of 403 UNAUTHORIZED is returned
+//           Then: a status code of 401 UNAUTHORIZED is returned
             Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
             System.out.println(("Response code is " + response.getStatusCode() + "."));
 //           And: the error contains

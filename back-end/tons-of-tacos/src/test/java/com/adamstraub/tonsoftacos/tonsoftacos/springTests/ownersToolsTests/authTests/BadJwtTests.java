@@ -67,7 +67,7 @@ public class BadJwtTests {
         System.out.println("response body: " + response.getBody());
         //        And: the error message contains
         Map<String, Object> error = response.getBody();
-//        assert error != null;
+        assert error != null;
         Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.FORBIDDEN.toString().substring(0,3));
         Assertions.assertTrue(error.containsValue("/api/owners-tools/customers/delete-customer/1"));
         Assertions.assertTrue(error.containsKey("message"));

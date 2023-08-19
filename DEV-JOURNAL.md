@@ -2,6 +2,13 @@
 
 ---
 
+-- 18 Aug 2023 --
+
+- Logger set up and operating and currently operating as desired. Notes made for potential future implementations.
+  - Appender for debug and one for errors.
+
+---
+
 -- 8 Aug 2023 --
 
 - Implemented a basic logger for exceptions of interest. Refinement in progress.
