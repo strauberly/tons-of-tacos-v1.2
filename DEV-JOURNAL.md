@@ -2,10 +2,19 @@
 
 ---
 
+-- 21 Aug 2023 --
+
+- Application updated for open api 3.0.
+- Began updating docs.
+- Updated documentation for menu endpoints.
+
+---
+
 -- 18 Aug 2023 --
 
 - Logger set up and operating and currently operating as desired. Notes made for potential future implementations.
   - Appender for debug and one for errors.
+- Issues updated and resolved in github.
 
 ---
 

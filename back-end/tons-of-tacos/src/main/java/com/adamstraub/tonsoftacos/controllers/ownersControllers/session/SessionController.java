@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-public class AuthController implements AuthControllerInterface {
+public class SessionController implements SessionControllerInterface {
 
 
     @Autowired

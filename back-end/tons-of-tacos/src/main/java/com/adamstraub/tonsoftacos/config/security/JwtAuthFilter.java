@@ -39,22 +39,11 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 @NonNull
 private final HandlerExceptionResolver resolver;
 
-Logger logger = LoggerFactory.getLogger(JwtAuthFilter.class);
-
-
-
     @Override
     protected void doFilterInternal(@NotNull HttpServletRequest request, @NotNull HttpServletResponse response,
                                     @NotNull FilterChain filterChain)
             throws ServletException, IOException {
         System.out.println("jwt filter");
-//        String username = null;
-//        String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
-//        String token = null;
-//         String username = null;
-//        Date expiration = null;
-//        Date issuedAt = null;
-
         try {
 //            System.out.println("request: " + request);
             String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
@@ -65,13 +54,13 @@ Logger logger = LoggerFactory.getLogger(JwtAuthFilter.class);
 
             if (authHeader != null && authHeader.startsWith("Bearer ")) {
                 token = authHeader.substring(7);
-                System.out.println("token = " + token);
+//                System.out.println("token = " + token);
                 username = jwtService.extractUsername(token);
-                System.out.println("username = " + username);
+//                System.out.println("username = " + username);
                 expiration = jwtService.extractExpiration(token);
-                System.out.println("expiration = " + expiration);
+//                System.out.println("expiration = " + expiration);
                 issuedAt = jwtService.extractIssuedAt(token);
-                System.out.println("issued at = " + issuedAt);
+//                System.out.println("issued at = " + issuedAt);
             }
 
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
@@ -87,8 +76,6 @@ Logger logger = LoggerFactory.getLogger(JwtAuthFilter.class);
             }
             filterChain.doFilter(request, response);
         } catch (Exception e) {
-//            assert username != null;
-//            logger.error(e.toString(), jwtService.decrypt(username));
             resolver.resolveException(request, response, null, e);
         }
     }

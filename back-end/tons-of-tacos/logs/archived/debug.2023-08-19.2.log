@@ -1,0 +1,26 @@
+2023-08-19 09:46:31 [http-nio-auto-2-exec-3] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=400 BAD_REQUEST, message=Order can not be closed if order is not ready., uri=/api/owners-tools/orders/close-order/1, timestamp=Sat, 19 Aug 2023 09:46:31 -0700}
+2023-08-19 09:46:31 [http-nio-auto-2-exec-1] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=Order does not exist. Please verify order id and try again., uri=/api/owners-tools/orders/close-order/66, timestamp=Sat, 19 Aug 2023 09:46:31 -0700}
+2023-08-19 09:46:31 [http-nio-auto-2-exec-9] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=Order does not exist. Please verify order id and try again., uri=/api/owners-tools/orders/order-ready/88, timestamp=Sat, 19 Aug 2023 09:46:31 -0700}
+2023-08-19 09:46:32 [http-nio-auto-1-exec-9] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=400 BAD_REQUEST, message=Customer name incorrectly formatted. Please consult the documentation., uri=/api/order/checkout, timestamp=Sat, 19 Aug 2023 09:46:32 -0700}
+2023-08-19 09:46:32 [http-nio-auto-1-exec-1] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=401 UNAUTHORIZED, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: KNmeiKslkrJj)JUWM`=r9mrqt*e|(2u5;>A5l$n, uri=/api/owners-tools/login, timestamp=Sat, 19 Aug 2023 09:46:32 -0700}
+2023-08-19 09:46:32 [http-nio-auto-1-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=401 UNAUTHORIZED, message=Bad credentials. username: nyNwY<rrJ66qVoG|k$o password: ?aNwlfCd7glf(E&r)lLr}W?fT, uri=/api/owners-tools/login, timestamp=Sat, 19 Aug 2023 09:46:32 -0700}
+2023-08-19 09:46:32 [http-nio-auto-2-exec-4] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No customer with that id found., uri=/api/owners-tools/customers/edit-customer-email/13/larry@larbo.com, timestamp=Sat, 19 Aug 2023 09:46:32 -0700}
+2023-08-19 09:46:32 [http-nio-auto-2-exec-10] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=400 BAD_REQUEST, message=Email does not match formatting requirements, please consult the docs., uri=/api/owners-tools/customers/edit-customer-email/1/larrylarbo.com, timestamp=Sat, 19 Aug 2023 09:46:32 -0700}
+2023-08-19 09:49:41 [main] INFO  c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting GetAllOrdersTests.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.1 with PID 37450 (started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-08-19 09:49:41 [main] DEBUG c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-08-19 09:49:41 [main] INFO  c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-08-19 09:49:46 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-08-19 09:49:48 [main] INFO  c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Started GetAllOrdersTests.testThatDoesNotPolluteTheApplicationContextUris in 6.461 seconds (process running for 7.669)

@@ -75,6 +75,8 @@ class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSu
 //        When:  a successful connection made
         String uri =
                 String.format("%s", getBaseUriForGetAllOrders());
+//        ResponseEntity<String> response =
+//                use mockito to to mock a null response body
         ResponseEntity<Map<String, Object>> response =
                 getRestTemplate().exchange(uri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
                 });
@@ -85,8 +87,5 @@ class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSu
         System.out.println("Response body: " + response.getBody());
         System.out.println("Negative test case complete for no orders returned.");
     }
-
-
-
 }
 }

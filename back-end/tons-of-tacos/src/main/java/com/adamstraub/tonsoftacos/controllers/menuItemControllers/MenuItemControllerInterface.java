@@ -17,18 +17,17 @@ import java.util.List;
 
 @Validated
 @RequestMapping("api/menu")
-@OpenAPIDefinition(info = @Info(title = "Services for Tons of Tacos."),
+@OpenAPIDefinition(info = @Info(title = "Services for Tons of Tacos pertaining to the menu for customers."),
         servers = {@Server(url="http://localhost:8080/", description = "Local server")})
 public interface MenuItemControllerInterface {
     @Operation(
-            summary = "Return menu id by id.",
-            description = "Return specific menu items by id for use in building a cart and and creating an order",
+            summary = "Return menu item by id.",
+            description = "For use by customers to view individual items and create an order.",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "A menu-id is returned.",
-                            content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = MenuItem.class))),
+                            description = "A menu-item is returned.",
+                            content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "400",
                             description = "Request parameters invalid.",
@@ -44,8 +43,8 @@ public interface MenuItemControllerInterface {
 
             },
             parameters = {
-                    @Parameter(name = "/id", allowEmptyValue = false, required = false,
-                            description = "api/menu-id/id?id={idNumber} returns a menu id by id number."),
+                    @Parameter(name = "id", allowEmptyValue = false, required = false,
+                            description = "api/menu/id?id={a valid id number}. Returns a menu item by id number."),
             }
     )
 
@@ -57,20 +56,19 @@ public interface MenuItemControllerInterface {
 
     @Operation(
             summary = "Return menu items by category.",
-            description = "Return specific menu items by category for use in building a cart and and creating an order",
+            description = "For use by customers to view menu items by category and create an order.",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
                             description = "Menu items returned by category.",
-                            content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = MenuItem.class))),
+                            content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "400",
                             description = "Request parameters invalid.",
                             content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "404",
-                            description = "No menu-id found according to input.",
+                            description = "No menu-items found according to input.",
                             content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "500",
@@ -80,8 +78,9 @@ public interface MenuItemControllerInterface {
             },
             parameters = {
                     @Parameter(name = "category", allowEmptyValue = false, required = false,
-                            description = "Calling menu items by category can be obtained through " +
-                                    "api/menu-id/category?category= <your desired id category>."),
+                            description = "api/menu/category?category= {your desired menu item category ie. side}"
+                            + " Returns menu items by the category side."
+                            + " Current options include taco, side, drink, and topping."),
             }
     )
 
