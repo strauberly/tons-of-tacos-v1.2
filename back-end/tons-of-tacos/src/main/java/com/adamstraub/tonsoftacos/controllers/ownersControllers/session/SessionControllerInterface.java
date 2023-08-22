@@ -20,7 +20,7 @@ import java.io.UnsupportedEncodingException;
 )
 @OpenAPIDefinition(info = @Info(title = "Owners login."),
         servers = {@Server(url="http://localhost:8080", description = "Local server")})
-public interface AuthControllerInterface {
+public interface SessionControllerInterface {
     @Operation(
             summary = "Login an owner.",
             description = """

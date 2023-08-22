@@ -36,7 +36,11 @@ public class SecurityConfig {
                         .csrf().disable()
 //                whitelisted
                         .authorizeHttpRequests()
-                        .requestMatchers("/api/menu/**", "/api/order/**", "/api/owners-tools/login").permitAll()
+                        .requestMatchers("/api/menu/**", "/api/order/**", "/api/owners-tools/login",   "/api/v1/auth/**",
+                                "/v3/api-docs/**",
+                                "/v3/api-docs.yaml",
+                                "/swagger-ui/**",
+                                "/swagger-ui.html").permitAll()
                         .and()
 //               restricted
                         .authorizeHttpRequests().requestMatchers("/api/owners-tools/**")

@@ -111,16 +111,18 @@ public class JwtService {
             return extractExpiration(token).before(new Date());
     }
 
-//    possibly condense into one
-//    exception handling needed for this method
     public boolean isTokenValid(String token, UserDetails userDetails) {
         final String username = decrypt(extractUsername(token));
-        return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
-    }
+        try {
+            return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);
+        } catch (Exception e){
+            throw new JwtException("Invalid token.");
+        }
+        }
 
 
 //  encrypt - helper method used during development as a means to encrypt credentials
-//  before storing them and facilitating decryption means
+//  before storing them and facilitating decryption means. Algorithm will be implemented from the front end.
 
     public String encrypt(String string){
 
