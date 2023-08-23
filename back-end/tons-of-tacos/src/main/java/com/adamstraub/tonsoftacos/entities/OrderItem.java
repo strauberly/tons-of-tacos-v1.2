@@ -24,7 +24,7 @@ public class OrderItem implements Serializable {
 
     @ManyToOne()
     @JoinColumn(name = "item_fk")
-    private MenuItem itemId;
+    private MenuItem item;
 
     @Column(name = "quantity")
     private Integer quantity;
@@ -45,7 +45,7 @@ public class OrderItem implements Serializable {
     public String toString() {
         return "OrderItem{" +
                 "orderItemId=" + orderItemId +
-                ", id=" + itemId +
+                ", id=" + item +
                 ", order='" + order + '\'' +
                 ", quantity=" + quantity +
                 ", total=" + total +

@@ -29,11 +29,11 @@ public interface OwnersCustomersControllerInterface {
     @Operation(
             summary = "All customers returned.",
             description = """
-                  This endpoint will return all orders. For owner use only at this time.""",
+                    For owner use only with proper auth.""",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "All orders returned.",
+                            description = "All customers returned.",
                             content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "400",
@@ -41,7 +41,7 @@ public interface OwnersCustomersControllerInterface {
                             content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "404",
-                            description = "No orders found.",
+                            description = "No customers found.",
                             content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "500",
@@ -52,15 +52,16 @@ public interface OwnersCustomersControllerInterface {
     @Transactional
     @GetMapping("/get-customers")
     List<CustomerReturnedToOwner> getAllCustomers();
+
     //  get a customer by customer name
     @Operation(
             summary = "A customer is returned by customer name.",
             description = """
-                  For owner use only at this time.""",
+                  For owner use only with proper auth.""",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Order is returned.",
+                            description = "Customer is returned.",
                             content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "400",
@@ -68,7 +69,7 @@ public interface OwnersCustomersControllerInterface {
                             content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "404",
-                            description = "No orders found.",
+                            description = "No customer found.",
                             content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "500",
@@ -84,11 +85,11 @@ public interface OwnersCustomersControllerInterface {
 @Operation(
         summary = "A customer is returned by id.",
         description = """
-                  For owner use only at this time.""",
+                  For owner use only with proper auth.""",
         responses = {
                 @ApiResponse(
                         responseCode = "200",
-                        description = "Order is returned.",
+                        description = "Customer is returned.",
                         content = @Content(mediaType = "application/json")),
                 @ApiResponse(
                         responseCode = "400",
@@ -96,7 +97,7 @@ public interface OwnersCustomersControllerInterface {
                         content = @Content(mediaType = "application/json")),
                 @ApiResponse(
                         responseCode = "404",
-                        description = "No orders found.",
+                        description = "No customers found.",
                         content = @Content(mediaType = "application/json")),
                 @ApiResponse(
                         responseCode = "500",
@@ -111,12 +112,12 @@ CustomerReturnedToOwner getCustomerById(@RequestParam Integer customerId);
 
 //edit customer name
     @Operation(
-            summary = "updates a customer name.",
-            description = "Updates customer.",
+            summary = "Updates a customer name.",
+            description = "For owner use only with proper auth.",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Quantity updated.",
+                            description = "Customer name updated.",
                             content = @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = OrderItem.class))),
                     @ApiResponse(
@@ -125,7 +126,7 @@ CustomerReturnedToOwner getCustomerById(@RequestParam Integer customerId);
                             content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "404",
-                            description = "No order-items found according to input.",
+                            description = "No customer found for given parameter.",
                             content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "500",
@@ -144,12 +145,12 @@ CustomerReturnedToOwner getCustomerById(@RequestParam Integer customerId);
 
 //edit customer email
     @Operation(
-            summary = "updates a customer email.",
-            description = "Updates customer.",
+            summary = "Updates a customer's email.",
+            description = "For owner use only with proper auth.",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Quantity updated.",
+                            description = "Customer email updated.",
                             content = @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = OrderItem.class))),
                     @ApiResponse(
@@ -158,7 +159,7 @@ CustomerReturnedToOwner getCustomerById(@RequestParam Integer customerId);
                             content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "404",
-                            description = "No order-items found according to input.",
+                            description = "No customer found according to parameter.",
                             content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "500",
@@ -176,14 +177,14 @@ CustomerReturnedToOwner getCustomerById(@RequestParam Integer customerId);
 
 
 
-    //edit customer phone
+    //edit customer phone number
     @Operation(
-            summary = "updates a customer phone.",
-            description = "Updates customer.",
+            summary = "Updates a customer's phone number.",
+            description = "For owner use only with proper auth.",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Quantity updated.",
+                            description = "Customer phone number updated.",
                             content = @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = OrderItem.class))),
                     @ApiResponse(
@@ -192,7 +193,7 @@ CustomerReturnedToOwner getCustomerById(@RequestParam Integer customerId);
                             content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "404",
-                            description = "No order-items found according to input.",
+                            description = "No customer found according to parameter.",
                             content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "500",
@@ -211,11 +212,11 @@ CustomerReturnedToOwner getCustomerById(@RequestParam Integer customerId);
     // delete customer by id
     @Operation(
             summary = "Deletes a customer by id.",
-            description = "In case of order made but never claimed",
+            description = "For owner use only with proper auth.",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Order deleted.",
+                            description = "Customer deleted.",
                             content = @Content(mediaType = "application/json",
                                     schema = @Schema(implementation = OrderItem.class))),
                     @ApiResponse(
@@ -224,7 +225,7 @@ CustomerReturnedToOwner getCustomerById(@RequestParam Integer customerId);
                             content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "404",
-                            description = "No order-items found according to input.",
+                            description = "No customer found according to parameter.",
                             content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "500",
