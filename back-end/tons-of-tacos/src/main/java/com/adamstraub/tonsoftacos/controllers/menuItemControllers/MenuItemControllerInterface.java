@@ -17,7 +17,7 @@ import java.util.List;
 
 @Validated
 @RequestMapping("api/menu")
-@OpenAPIDefinition(info = @Info(title = "Services for Tons of Tacos pertaining to the menu for customers."),
+@OpenAPIDefinition(info = @Info(title = "Services pertaining to menu items for customers."),
         servers = {@Server(url="http://localhost:8080/", description = "Local server")})
 public interface MenuItemControllerInterface {
     @Operation(
@@ -68,7 +68,7 @@ public interface MenuItemControllerInterface {
                             content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "404",
-                            description = "No menu-items found according to input.",
+                            description = "No menu-items found according to input. Check formatting",
                             content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "500",
@@ -78,9 +78,10 @@ public interface MenuItemControllerInterface {
             },
             parameters = {
                     @Parameter(name = "category", allowEmptyValue = false, required = false,
-                            description = "api/menu/category?category= {your desired menu item category ie. side}"
-                            + " Returns menu items by the category side."
-                            + " Current options include taco, side, drink, and topping."),
+                            description = """
+                            api/menu/category?category= {your desired menu item category ie. side}
+                            Returns menu items by the category side.
+                            Current options include taco, side, drink, and topping."""),
             }
     )
 

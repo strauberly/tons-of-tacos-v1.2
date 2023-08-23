@@ -190,7 +190,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
 
 
         OrderItem orderItem = OrderItem.builder()
-                .itemId(menuItemRepository.getReferenceById(menuItemId))
+                .item(menuItemRepository.getReferenceById(menuItemId))
                 .quantity(quantity)
                 .order(ordersRepository.getReferenceById(orderId)).build();
         orderItem.setTotal(menuItemRepository.getReferenceById(menuItemId).getUnitPrice() *
@@ -235,7 +235,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
                 response = "Item quantity updated, item removed, cart updated.";
             }else{
             orderItem.setQuantity(newQuantity);
-            orderItem.setTotal(menuItemRepository.getReferenceById(orderItem.getItemId().getId()).getUnitPrice() *
+            orderItem.setTotal(menuItemRepository.getReferenceById(orderItem.getItem().getId()).getUnitPrice() *
                     orderItem.getQuantity());
             System.out.println("old total: " + ordersRepository.getReferenceById(orderId).getOrderTotal());
             order.setOrderTotal(order.getOrderTotal() + orderItem.getTotal());
@@ -315,7 +315,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
         OrderItemReturnedToOwner orderItemReturnedToOwner = new OrderItemReturnedToOwner();
 
         orderItemReturnedToOwner.setOrderItemId(orderItem.getOrderItemId());
-        orderItemReturnedToOwner.setItemName(orderItem.getItemId().getItemName());
+        orderItemReturnedToOwner.setItemName(orderItem.getItem().getItemName());
         orderItemReturnedToOwner.setQuantity(orderItem.getQuantity());
         orderItemReturnedToOwner.setTotal(orderItem.getTotal());
         return orderItemReturnedToOwner;

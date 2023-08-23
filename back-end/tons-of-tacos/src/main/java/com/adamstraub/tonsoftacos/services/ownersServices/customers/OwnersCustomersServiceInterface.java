@@ -3,6 +3,7 @@ import com.adamstraub.tonsoftacos.dto.businessDto.CustomerReturnedToOwner;
 
 import java.util.List;
 
+
 public interface OwnersCustomersServiceInterface {
 
     List<CustomerReturnedToOwner> getAllCustomers();

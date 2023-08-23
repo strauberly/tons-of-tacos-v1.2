@@ -91,7 +91,7 @@ public class OrdersService implements OrdersServiceInterface {
 
             for (OrderItem orderItem : orderItems) {
             orderItem.setTotal(orderItem.getQuantity() *
-                    menuItemRepository.getReferenceById(orderItem.getItemId().getId()).getUnitPrice());
+                    menuItemRepository.getReferenceById(orderItem.getItem().getId()).getUnitPrice());
             orderTotal += orderItem.getTotal();
         }
             newOrder.setOrderTotal(orderTotal);
@@ -124,10 +124,10 @@ public class OrdersService implements OrdersServiceInterface {
     private OrderItemReturnedToCustomer orderItemDtoConvertor(OrderItem orderItem) {
         OrderItemReturnedToCustomer orderItemDto = new OrderItemReturnedToCustomer();
 
-        orderItemDto.setItemName(menuItemRepository.getReferenceById(orderItem.getItemId().getId()).getItemName());
+        orderItemDto.setItemName(menuItemRepository.getReferenceById(orderItem.getItem().getId()).getItemName());
         orderItemDto.setQuantity(orderItem.getQuantity());
         orderItemDto.setTotal(orderItem.getTotal());
-        orderItemDto.setUnitPrice(menuItemRepository.getReferenceById(orderItem.getItemId().getId()).getUnitPrice());
+        orderItemDto.setUnitPrice(menuItemRepository.getReferenceById(orderItem.getItem().getId()).getUnitPrice());
 
         return orderItemDto;
     }

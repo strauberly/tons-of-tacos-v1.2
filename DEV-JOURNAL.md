@@ -2,6 +2,13 @@
 
 ---
 
+-- 22 Aug 2023 --
+
+- Updated documentation for orders endpoints.
+- Updated documentation for owner tools pertaining to customers.
+
+---
+
 -- 21 Aug 2023 --
 
 - Application updated for open api 3.0.

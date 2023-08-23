@@ -18,19 +18,19 @@ public class OrdersTestsSupport extends TestUris {
                         "orderUid": "223-44-444",
                         "orderItems": [
                             {
-                                "itemId": {
+                                "item": {
                                     "id": 2
                                 },
                                 "quantity": 2
                             },
                             {
-                                "itemId": {
+                                "item": {
                                     "id": 12
                                 },
                                 "quantity": 1
                             },
                             {
-                                "itemId": {
+                                "item": {
                                     "id": 3
                                 },
                                 "quantity": 3
@@ -44,6 +44,7 @@ public class OrdersTestsSupport extends TestUris {
 
 
     protected String genUidBody() {
+
         return """
                 {
                     "customer": {
@@ -54,19 +55,19 @@ public class OrdersTestsSupport extends TestUris {
                     "order": {
                         "orderItems": [
                             {
-                                "itemId": {
+                                "item": {
                                     "id": 2
                                 },
                                 "quantity": 2
                             },
                             {
-                                "itemId": {
+                                "item": {
                                     "id": 12
                                 },
                                 "quantity": 1
                             },
                             {
-                                "itemId": {
+                                "item": {
                                     "id": 3
                                 },
                                 "quantity": 3
@@ -75,7 +76,6 @@ public class OrdersTestsSupport extends TestUris {
                     }
                 }
                 """;
-
 
     }
 
