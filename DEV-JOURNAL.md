@@ -2,6 +2,19 @@
 
 ---
 
+-- 29 Aug 2023 --
+
+- Updating docs with examples of successful request responses.
+
+---
+
+-- 23 Aug 2023 --
+
+- Updated documentation for owner tools pertaining to orders.
+- Updated documentation for owner login.
+
+---
+
 -- 22 Aug 2023 --
 
 - Updated documentation for orders endpoints.

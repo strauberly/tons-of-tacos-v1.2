@@ -18,13 +18,13 @@ public interface OrdersRepository extends JpaRepository<Orders, Integer> {
     default List<Orders> findByClosed(){
         List<Orders> closedOrders = new ArrayList<>();
         List<Orders> orders = findAll();
-        System.out.println(orders);
+//        System.out.println(orders);
         for (Orders order: orders){
             if (!order.getClosed().equals("no")){
                 closedOrders.add(order);
             }
         }
-        System.out.println("closed orders" + closedOrders);
+//        System.out.println("closed orders" + closedOrders);
         return closedOrders;
     }
 
