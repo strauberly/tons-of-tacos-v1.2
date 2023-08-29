@@ -21,7 +21,7 @@ import java.util.List;
 @Validated
 @RequestMapping(
         value = "api/owners-tools/customers")
-@OpenAPIDefinition(info = @Info(title = "services pertaining to functions reserved for the owners of tons of tacos."),
+@OpenAPIDefinition(info = @Info(title = "Services pertaining to functions reserved for the owners of tons of tacos."),
         servers = {@Server(url="http://localhost:8080", description = "Local server")})
 public interface OwnersCustomersControllerInterface {
 
@@ -112,7 +112,7 @@ CustomerReturnedToOwner getCustomerById(@RequestParam Integer customerId);
 
 //edit customer name
     @Operation(
-            summary = "Updates a customer name.",
+            summary = "Updates a customer's name.",
             description = "For owner use only with proper auth.",
             responses = {
                     @ApiResponse(

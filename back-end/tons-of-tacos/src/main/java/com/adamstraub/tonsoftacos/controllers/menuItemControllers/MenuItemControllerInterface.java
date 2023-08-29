@@ -17,7 +17,7 @@ import java.util.List;
 
 @Validated
 @RequestMapping("api/menu")
-@OpenAPIDefinition(info = @Info(title = "Services pertaining to menu items for customers."),
+@OpenAPIDefinition(info = @Info(title = "End point documentation for the Tons of Tacos food truck application."),
         servers = {@Server(url="http://localhost:8080/", description = "Local server")})
 public interface MenuItemControllerInterface {
     @Operation(

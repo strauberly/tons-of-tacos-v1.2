@@ -25,7 +25,7 @@ public interface SessionControllerInterface {
             summary = "Login an owner.",
             description = """
                   This endpoint will allows an owner to login and create a jwt token that will grant access to their
-                  other endpoint tools.""",
+                  endpoint tools.""",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
@@ -48,6 +48,4 @@ public interface SessionControllerInterface {
 
     @PostMapping("/login")
     String ownerLogin(@RequestBody OwnerAuthDto authDto) throws UnsupportedEncodingException;
-//
-//
 }

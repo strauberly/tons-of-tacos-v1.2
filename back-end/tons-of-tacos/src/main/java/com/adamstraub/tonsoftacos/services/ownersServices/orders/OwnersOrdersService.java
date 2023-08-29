@@ -37,22 +37,11 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
         System.out.println("service");
         List<OrderReturnedToOwner> orderItemDtos = new ArrayList<>();
         List<Orders> orders = ordersRepository.findAll();
-//                if (orders.isEmpty()){
-//            throw new EntityNotFoundException("No orders found. Verify data integrity.");
-//        }else {
-//        for (Orders order : orders) {
-//            orderItemDtos.add(ownersGetOrderDtoConverter(order));
-//        }
-//            return orderItemDtos;
-////        }
         try{
-
             for (Orders order : orders) {
             orderItemDtos.add(ownersGetOrderDtoConverter(order));
         }
             return orderItemDtos;
-//        }
-
         } catch (Exception e){
             throw new EntityNotFoundException("No orders found. Verify data integrity.");
         }
@@ -177,13 +166,13 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
         Optional<Orders> orderToUpdate;
         try{
             menuItem = Optional.of(menuItemRepository.getReferenceById(menuItemId));
-            System.out.println(menuItem);
+//            System.out.println(menuItem);
         }catch (Exception e){
             throw new EntityNotFoundException("Menu item can not be added to order. Verify menu item id.");
         }
         try{
             orderToUpdate = Optional.of(ordersRepository.getReferenceById(orderId));
-            System.out.println(orderToUpdate);
+//            System.out.println(orderToUpdate);
         }catch (Exception e){
             throw new EntityNotFoundException("Menu item can not be added to order. Verify order id.");
         }
@@ -202,8 +191,8 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
         order.setOrderTotal(order.getOrderTotal() + (menuItemRepository.getReferenceById(menuItemId).getUnitPrice() *
                 quantity));
         ordersRepository.save(order);
-        System.out.println("Item added to order");
-        return "Item added to order. " + menuItem.get().getItemName() + " x " + quantity;
+//        System.out.println("Item added to order");
+        return  menuItem.get().getItemName() + " x " + quantity + " added to order.";
     }
 
     @Transactional
@@ -219,32 +208,32 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
             throw new EntityNotFoundException("Order item not updated. Verify order item is part of order.");
         }
         String response;
-        System.out.println("new quantity: " + newQuantity);
+//        System.out.println("new quantity: " + newQuantity);
             if (newQuantity > 10) {
-                System.out.println("quantity more than 10");
+//                System.out.println("quantity more than 10");
                 throw new IllegalArgumentException("We were unable to process your request. " +
                         "Please contact us when trying to order more than 10 of any given item.");
             }
         if(newQuantity == 0){
-                System.out.println("order item: " + orderItem);
-                System.out.println("old order: " + order.getOrderItems());
+//                System.out.println("order item: " + orderItem);
+//                System.out.println("old order: " + order.getOrderItems());
                 orderItemRepository.delete(orderItem);
             order.setOrderTotal(order.getOrderTotal() - orderItem.getTotal());
 
-                System.out.println("new order: " + order.getOrderItems());
+//                System.out.println("new order: " + order.getOrderItems());
                 response = "Item quantity updated, item removed, cart updated.";
             }else{
             orderItem.setQuantity(newQuantity);
             orderItem.setTotal(menuItemRepository.getReferenceById(orderItem.getItem().getId()).getUnitPrice() *
                     orderItem.getQuantity());
-            System.out.println("old total: " + ordersRepository.getReferenceById(orderId).getOrderTotal());
+//            System.out.println("old total: " + ordersRepository.getReferenceById(orderId).getOrderTotal());
             order.setOrderTotal(order.getOrderTotal() + orderItem.getTotal());
             orderItemRepository.save(orderItem);
             ordersRepository.save(order);
-            System.out.println("new total: " + ordersRepository.getReferenceById(orderId).getOrderTotal());
+//            System.out.println("new total: " + ordersRepository.getReferenceById(orderId).getOrderTotal());
             response = "Item quantity updated, cart updated.";
         }
-        System.out.println(response);
+//        System.out.println(response);
         return response;
     }
 
@@ -258,7 +247,8 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
         String formattedSales;
         LocalDate todaysDate = LocalDate.now();
         LocalDate dbDate;
-        DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("E dd MMM yyyy");
+//        DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("E dd MMM yyyy");
+        DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("dd MMM yyyy");
         Double salesTotal = 0.00;
         List<Orders> todaysOrders = new ArrayList<>();
 
@@ -270,7 +260,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
                 todaysOrders.add(completedOrder);
             }
         }
-        System.out.println("todays orders:" + todaysOrders);
+//        System.out.println("todays orders:" + todaysOrders);
 //                create jpa query that takes today's date and is closed
         for (Orders order:todaysOrders){
             salesTotal += order.getOrderTotal();
