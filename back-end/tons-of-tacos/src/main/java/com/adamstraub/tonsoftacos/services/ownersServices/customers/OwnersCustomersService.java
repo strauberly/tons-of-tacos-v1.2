@@ -29,6 +29,7 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
     private MenuItemRepository menuItemRepository;
 
 
+
     @Override
     public List<CustomerReturnedToOwner> getAllCustomers() {
         System.out.println("service");
@@ -105,16 +106,16 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
             customer.setName(newCustomerName);
             customerRepository.save(customer);
         }
-        return "Previous customer name: " + oldName + ", Updated customer name: " + customer.getName();
+        return "Previous customer name: " + oldName + ", updated to: " + customer.getName() + ".";
     }
 
     @Override
     public String updateCustomerEmail(Integer customerId, String newCustomerEmail) {
-        System.out.println("update email service");
+        System.out.println("service");
         Customer customer;
         try{
             customer = customerRepository.getById(customerId);
-        System.out.println("customer: " + customer);
+//        System.out.println("customer: " + customer);
         } catch (Exception e) {
             throw new EntityNotFoundException("No customer with that id found.");
         }
@@ -130,17 +131,17 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
                 customer.setEmail(newCustomerEmail);
                 customerRepository.save(customer);
             }
-        return "Previous customer email: " + oldEmail + ", Updated customer email: " + customer.getEmail();
+        return "Previous customer email: " + oldEmail + ", updated to: " + customer.getEmail() + ".";
     }
     @Transactional
     @Override
     public String updateCustomerPhone(Integer customerId, String newCustomerPhone) {
-        System.out.println("update phone service");
+        System.out.println("service");
             Customer customer;
         boolean newCustomerPhoneNumberValid = false;
         try{
             customer = customerRepository.getById(customerId);
-            System.out.println("customer: " + customer);
+//            System.out.println("customer: " + customer);
         } catch (Exception e){
             throw new EntityNotFoundException("No customer with that id found.");
         }
@@ -152,19 +153,19 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
             newCustomerPhoneNumberValid = true;
         }
 
-        System.out.println("new number valid: " + newCustomerPhoneNumberValid);
-        System.out.println(newCustomerPhone.charAt(3) == (char) 46);
-        System.out.println(newCustomerPhone.charAt(7) == (char) 46);
-        System.out.println(newCustomerPhone.length() == 12);
-        System.out.println(newCustomerPhone.matches("[0-9.]*"));
-        System.out.println(newCustomerPhone.charAt(3));
-        System.out.println((char) 46);
+//        System.out.println("new number valid: " + newCustomerPhoneNumberValid);
+//        System.out.println(newCustomerPhone.charAt(3) == (char) 46);
+//        System.out.println(newCustomerPhone.charAt(7) == (char) 46);
+//        System.out.println(newCustomerPhone.length() == 12);
+//        System.out.println(newCustomerPhone.matches("[0-9.]*"));
+//        System.out.println(newCustomerPhone.charAt(3));
+//        System.out.println((char) 46);
         if (newCustomerPhoneNumberValid){
             customer.setPhoneNumber(newCustomerPhone);
             customerRepository.save(customer);
-            System.out.println(customerRepository.getReferenceById(customerId));
+//            System.out.println(customerRepository.getReferenceById(customerId));
         }
-        return "Previous customer phone number: " + oldCustomerPhone + ", Updated customer phone number: " + customer.getPhoneNumber();
+        return "Previous customer phone number: " + oldCustomerPhone + ", updated to: " + customer.getPhoneNumber() + ".";
     }
 
     @Override
@@ -176,7 +177,7 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
         }else {
         customerRepository.deleteById(customerId);
         System.out.println("Customer deleted");
-        return "Customer details removed.";
+        return customer.get().getName() + " removed from application records.";
         }
     }
 

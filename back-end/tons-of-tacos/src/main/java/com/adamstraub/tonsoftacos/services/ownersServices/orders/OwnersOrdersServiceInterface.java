@@ -9,9 +9,6 @@ public interface OwnersOrdersServiceInterface {
     List<OrderReturnedToOwner> getAllOrders();
 
 
-    OrderReturnedToOwner getOrderById(Integer orderId);
-
-
     OrderReturnedToOwner getOrderByUid(String orderUid);
 
 
@@ -19,6 +16,7 @@ public interface OwnersOrdersServiceInterface {
 
 
     OrderReturnedToOwner orderReady(Integer orderId);
+//OrderReturnedToOwner orderReady(String orderId);
 
 
     OrderReturnedToOwner closeOrder(Integer orderId);

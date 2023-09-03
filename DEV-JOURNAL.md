@@ -2,9 +2,16 @@
 
 ---
 
+-- 02 Sep 2023 --
+
+- All owner endpoint documentation updated with examples of successful requests and responses.
+
+---
+
 -- 29 Aug 2023 --
 
 - Updating docs with examples of successful request responses.
+- Updated calling an order to include the uid in lieu of id.
 
 ---
 

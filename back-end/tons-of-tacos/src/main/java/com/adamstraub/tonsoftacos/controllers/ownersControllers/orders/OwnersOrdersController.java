@@ -20,11 +20,6 @@ public class OwnersOrdersController implements OwnersOrdersControllerInterface {
         return ownersOrdersService.getAllOrders();
     }
 
-    @Override
-    public OrderReturnedToOwner getOrderById(Integer orderId) {
-        System.out.println("controller");
-        return ownersOrdersService.getOrderById(orderId);
-    }
 
     @Override
     public OrderReturnedToOwner getOrderByUid(@PathVariable String orderUid) {
@@ -40,7 +35,9 @@ public class OwnersOrdersController implements OwnersOrdersControllerInterface {
 
     @Override
     public OrderReturnedToOwner orderReady(Integer orderId) {
+//    public OrderReturnedToOwner orderReady(String orderUid) {
         System.out.println("controller");
+//        return ownersOrdersService.orderReady(orderUid);
         return ownersOrdersService.orderReady(orderId);
     }
 

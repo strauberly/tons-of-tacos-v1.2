@@ -29,7 +29,40 @@ public interface OwnersCustomersControllerInterface {
     @Operation(
             summary = "All customers returned.",
             description = """
-                    For owner use only with proper auth.""",
+                    Will  return an array of customer objects with fields for customer name, phone number,  email, and open orders. For owner use only with proper auth.
+                    """
+            + "\n" + "Example response: "
+                    + "\n" +  "\n" +
+                    """
+                            [
+                                {
+                                    "customerId": 1,
+                                    "name": "John Johnson",
+                                    "email": "john@johnson.com",
+                                    "phone": "555.555.5552",
+                                    "orderIds": [
+                                        2,
+                                        3
+                                    ]
+                                },
+                                {
+                                    "customerId": 2,
+                                    "name": "Tim Timson",
+                                    "email": "tim@timson.com",
+                                    "phone": "555.555.5553",
+                                    "orderIds": [
+                                        1
+                                    ]
+                                },
+                                {
+                                    "customerId": 3,
+                                    "name": "Bob Bobson",
+                                    "email": "bob@bobson.com",
+                                    "phone": "555.555.5551",
+                                    "orderIds": []
+                                }
+                            ]
+                            """,
             responses = {
                     @ApiResponse(
                             responseCode = "200",
@@ -57,7 +90,26 @@ public interface OwnersCustomersControllerInterface {
     @Operation(
             summary = "A customer is returned by customer name.",
             description = """
-                  For owner use only with proper auth.""",
+                 A customers name is provided and if valid, will return a customer object. For owner use only with proper auth.
+                 """
+                    + "\n" + "Example query: "
+                    + "\n" +  "\n" +
+                    "localhost:8080/api/owners-tools/customers/get-customer/name?name=John Johnson"
+                    + "\n" +
+            "\n" + "Example response: "
+                    + "\n" +  "\n" +
+                    """
+                            {
+                                "customerId": 1,
+                                "name": "John Johnson",
+                                "email": "john@johnson.com",
+                                "phone": "555.555.5552",
+                                "orderIds": [
+                                    2,
+                                    3
+                                ]
+                            }
+                            """,
             responses = {
                     @ApiResponse(
                             responseCode = "200",
@@ -78,163 +130,204 @@ public interface OwnersCustomersControllerInterface {
             }
     )
     @Transactional
-    @GetMapping("/get-customer/name")
+    @GetMapping("/get-customer/name?name={name}")
     CustomerReturnedToOwner getCustomerByName(@RequestParam String name) throws Exception;
 
 //    get customer by id
 @Operation(
         summary = "A customer is returned by id.",
         description = """
-                  For owner use only with proper auth.""",
-        responses = {
-                @ApiResponse(
-                        responseCode = "200",
-                        description = "Customer is returned.",
-                        content = @Content(mediaType = "application/json")),
-                @ApiResponse(
-                        responseCode = "400",
-                        description = "Request parameters invalid.",
-                        content = @Content(mediaType = "application/json")),
-                @ApiResponse(
-                        responseCode = "404",
-                        description = "No customers found.",
-                        content = @Content(mediaType = "application/json")),
-                @ApiResponse(
-                        responseCode = "500",
-                        description = "An unplanned error occured.",
-                        content = @Content(mediaType = "application/json")),
+
+        A customers id is provided and if valid, will return a customer object. For owner use only with proper auth.
+        """
+           + "\n" + "Example query: "
+           + "\n" +  "\n" +
+           "localhost:8080/api/owners-tools/customers/get-customer/customerId?customerId=1"
+           + "\n" +
+   "\n" + "Example response: "
+           + "\n" +  "\n" +
+           """
+        {
+        "customerId": 1,
+        "name": "John Johnson",
+        "email": "john@johnson.com",
+        "phone": "555.555.5552",
+        "orderIds": [
+        2,
+        3
+        ]
         }
+        """,
+responses = {
+@ApiResponse(
+    responseCode = "200",
+    description = "Customer is returned.",
+    content = @Content(mediaType = "application/json")),
+@ApiResponse(
+    responseCode = "400",
+    description = "Request parameters invalid.",
+    content = @Content(mediaType = "application/json")),
+@ApiResponse(
+    responseCode = "404",
+    description = "No customers found.",
+    content = @Content(mediaType = "application/json")),
+@ApiResponse(
+    responseCode = "500",
+    description = "An unplanned error occured.",
+    content = @Content(mediaType = "application/json")),
+}
 )
 @Transactional
-@GetMapping("/get-customer/customerId")
+@GetMapping("/get-customer/customerId?customerId={id}")
 CustomerReturnedToOwner getCustomerById(@RequestParam Integer customerId);
 
 
 //edit customer name
-    @Operation(
-            summary = "Updates a customer's name.",
-            description = "For owner use only with proper auth.",
-            responses = {
-                    @ApiResponse(
-                            responseCode = "200",
-                            description = "Customer name updated.",
-                            content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = OrderItem.class))),
-                    @ApiResponse(
-                            responseCode = "400",
-                            description = "Request parameters invalid.",
-                            content = @Content(mediaType = "application/json")),
-                    @ApiResponse(
-                            responseCode = "404",
-                            description = "No customer found for given parameter.",
-                            content = @Content(mediaType = "application/json")),
-                    @ApiResponse(
-                            responseCode = "500",
-                            description = "An unplanned error occured.",
-                            content = @Content(mediaType = "application/json")),
-            }
-    )
-    @Transactional
-    @PutMapping("/edit-customer-name/{customerId}/{newCustomerName}")
-    String updateCustomerName(
-            @PathVariable
-            Integer customerId,
-            @PathVariable
-            String newCustomerName);
+@Operation(
+summary = "Updates a customer's name.",
+description = """
+        Accepts the id of the customer to be updated as a parameter along with the new name for the customer.
+         Returned response is a message as a string that the customers name has been updated.
+        For owner use only with proper auth."""
+        + "\n" + "\n" + "Example response: " + "\n" +  "\n" +
+        "Previous customer name: Bob Bobson, updated to: Gus Gusson.",
+responses = {
+@ApiResponse(
+        responseCode = "200",
+        description = "Customer name updated.",
+        content = @Content(mediaType = "application/json",
+                schema = @Schema(implementation = OrderItem.class))),
+@ApiResponse(
+        responseCode = "400",
+        description = "Request parameters invalid.",
+        content = @Content(mediaType = "application/json")),
+@ApiResponse(
+        responseCode = "404",
+        description = "No customer found for given parameter.",
+        content = @Content(mediaType = "application/json")),
+@ApiResponse(
+        responseCode = "500",
+        description = "An unplanned error occured.",
+        content = @Content(mediaType = "application/json")),
+}
+)
+@Transactional
+@PutMapping("/edit-customer-name/{customerId}/{newCustomerName}")
+String updateCustomerName(
+@PathVariable
+Integer customerId,
+@PathVariable
+String newCustomerName);
 
 
 //edit customer email
-    @Operation(
-            summary = "Updates a customer's email.",
-            description = "For owner use only with proper auth.",
-            responses = {
-                    @ApiResponse(
-                            responseCode = "200",
-                            description = "Customer email updated.",
-                            content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = OrderItem.class))),
-                    @ApiResponse(
-                            responseCode = "400",
-                            description = "Request parameters invalid.",
-                            content = @Content(mediaType = "application/json")),
-                    @ApiResponse(
-                            responseCode = "404",
-                            description = "No customer found according to parameter.",
-                            content = @Content(mediaType = "application/json")),
-                    @ApiResponse(
-                            responseCode = "500",
-                            description = "An unplanned error occured.",
-                            content = @Content(mediaType = "application/json")),
-            }
-    )
-    @Transactional
-    @PutMapping("/edit-customer-email/{customerId}/{newCustomerEmail}")
-    String updateCustomerEmail(
-            @PathVariable
-            Integer customerId,
-            @PathVariable
-            String newCustomerEmail);
+@Operation(
+summary = "Updates a customer's email.",
+description = """
+    Accepts the id of the customer to be updated as a parameter along with the new email for the customer.
+    Returned response is a message as a string that the customers email has been updated.
+    For owner use only with proper auth."""
+        + "\n" + "\n" + "Example response: " + "\n" +  "\n" +
+        "Previous customer email: bobby@bobert.com, updated to: gussy@gus.com.",
+responses = {
+@ApiResponse(
+        responseCode = "200",
+        description = "Customer email updated.",
+        content = @Content(mediaType = "application/json",
+                schema = @Schema(implementation = OrderItem.class))),
+@ApiResponse(
+        responseCode = "400",
+        description = "Request parameters invalid.",
+        content = @Content(mediaType = "application/json")),
+@ApiResponse(
+        responseCode = "404",
+        description = "No customer found according to parameter.",
+        content = @Content(mediaType = "application/json")),
+@ApiResponse(
+        responseCode = "500",
+        description = "An unplanned error occured.",
+        content = @Content(mediaType = "application/json")),
+}
+)
+@Transactional
+@PutMapping("/edit-customer-email/{customerId}/{newCustomerEmail}")
+String updateCustomerEmail(
+@PathVariable
+Integer customerId,
+@PathVariable
+String newCustomerEmail);
 
 
 
-    //edit customer phone number
-    @Operation(
-            summary = "Updates a customer's phone number.",
-            description = "For owner use only with proper auth.",
-            responses = {
-                    @ApiResponse(
-                            responseCode = "200",
-                            description = "Customer phone number updated.",
-                            content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = OrderItem.class))),
-                    @ApiResponse(
-                            responseCode = "400",
-                            description = "Request parameters invalid.",
-                            content = @Content(mediaType = "application/json")),
-                    @ApiResponse(
-                            responseCode = "404",
-                            description = "No customer found according to parameter.",
-                            content = @Content(mediaType = "application/json")),
-                    @ApiResponse(
-                            responseCode = "500",
-                            description = "An unplanned error occured.",
-                            content = @Content(mediaType = "application/json")),
-            }
-    )
-    @Transactional
-    @PutMapping("/edit-customer-phone/{customerId}/{newCustomerPhone}")
-    String updateCustomerPhone(
-            @PathVariable
-            Integer customerId,
-            @PathVariable
-            String newCustomerPhone);
+//edit customer phone number
+@Operation(
+summary = "Updates a customer's phone number.",
+description = """
+ Accepts the id of the customer to be updated as a parameter along with the new phone number for the customer.
+ Returned response is a message as a string that the customers phone number has been updated.
+For owner use only with proper auth.
+"""
+        + "\n" + "\n" + "Example response: " + "\n" +  "\n" +
+        "Previous customer phone number: 555.555.5551, updated to: 555.555.5558.",
+responses = {
+@ApiResponse(
+        responseCode = "200",
+        description = "Customer phone number updated.",
+        content = @Content(mediaType = "application/json",
+                schema = @Schema(implementation = OrderItem.class))),
+@ApiResponse(
+        responseCode = "400",
+        description = "Request parameters invalid.",
+        content = @Content(mediaType = "application/json")),
+@ApiResponse(
+        responseCode = "404",
+        description = "No customer found according to parameter.",
+        content = @Content(mediaType = "application/json")),
+@ApiResponse(
+        responseCode = "500",
+        description = "An unplanned error occured.",
+        content = @Content(mediaType = "application/json")),
+}
+)
+@Transactional
+@PutMapping("/edit-customer-phone/{customerId}/{newCustomerPhone}")
+String updateCustomerPhone(
+@PathVariable
+Integer customerId,
+@PathVariable
+String newCustomerPhone);
 
-    // delete customer by id
-    @Operation(
-            summary = "Deletes a customer by id.",
-            description = "For owner use only with proper auth.",
-            responses = {
-                    @ApiResponse(
-                            responseCode = "200",
-                            description = "Customer deleted.",
-                            content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = OrderItem.class))),
-                    @ApiResponse(
-                            responseCode = "400",
-                            description = "Request parameters invalid.",
-                            content = @Content(mediaType = "application/json")),
-                    @ApiResponse(
-                            responseCode = "404",
-                            description = "No customer found according to parameter.",
-                            content = @Content(mediaType = "application/json")),
-                    @ApiResponse(
-                            responseCode = "500",
-                            description = "An unplanned error occured.",
-                            content = @Content(mediaType = "application/json")),
+// delete customer by id
+@Operation(
+summary = "Deletes a customer by id.",
+description = """
+        Accepts the id of an existing customer and removes their information from the application permanently.
+         Returned response is a message as a string that the customers records have been removed.
+         For owner use only with proper auth."""
+        + "\n" + "\n" + "Example response: " + "\n" +  "\n" +
+        "John Johnson removed from application records.",
+responses = {
+@ApiResponse(
+        responseCode = "200",
+        description = "Customer deleted.",
+        content = @Content(mediaType = "application/json",
+                schema = @Schema(implementation = OrderItem.class))),
+@ApiResponse(
+        responseCode = "400",
+        description = "Request parameters invalid.",
+        content = @Content(mediaType = "application/json")),
+@ApiResponse(
+        responseCode = "404",
+        description = "No customer found according to parameter.",
+        content = @Content(mediaType = "application/json")),
+@ApiResponse(
+        responseCode = "500",
+        description = "An unplanned error occured.",
+        content = @Content(mediaType = "application/json")),
 
-            }
-    )
-    @Transactional
-    @DeleteMapping("/delete-customer/{customerId}")
-    String deleteCustomer(@PathVariable Integer customerId);
+}
+)
+@Transactional
+@DeleteMapping("/delete-customer/{customerId}")
+String deleteCustomer(@PathVariable Integer customerId);
 }

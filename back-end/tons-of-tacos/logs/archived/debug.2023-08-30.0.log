@@ -1,0 +1,88 @@
+2023-08-30 05:03:30 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.1 with PID 74297 (/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-08-30 05:03:30 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-08-30 05:03:30 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-08-30 05:03:34 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-08-30 05:03:34 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.677 seconds (process running for 5.117)
+2023-08-30 05:34:22 [http-nio-8080-exec-5] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No orders for customer found., uri=/api/owners-tools/orders/get-order/customer, timestamp=Wed, 30 Aug 2023 05:34:22 -0700}
+2023-08-30 05:47:38 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.1 with PID 74721 (/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-08-30 05:47:38 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-08-30 05:47:38 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-08-30 05:47:42 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-08-30 05:47:42 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.663 seconds (process running for 5.137)
+2023-08-30 05:48:53 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.1 with PID 74880 (/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-08-30 05:48:53 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-08-30 05:48:53 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-08-30 05:48:57 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-08-30 05:48:57 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.596 seconds (process running for 5.059)
+2023-08-30 05:49:28 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.1 with PID 75024 (/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-08-30 05:49:28 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-08-30 05:49:28 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-08-30 05:49:32 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-08-30 05:49:33 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.796 seconds (process running for 5.245)
+2023-08-30 06:00:47 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.1 with PID 75209 (/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-08-30 06:00:47 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-08-30 06:00:47 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-08-30 06:00:50 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-08-30 06:00:51 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.581 seconds (process running for 5.031)
+2023-08-30 06:02:45 [http-nio-8080-exec-8] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Session expired., uri=/api/owners-tools/orders/get-order/orderUid, timestamp=Wed, 30 Aug 2023 06:02:45 -0700}
+2023-08-30 06:14:44 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.1 with PID 75407 (/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-08-30 06:14:44 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-08-30 06:14:44 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-08-30 06:14:47 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-08-30 06:14:48 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.522 seconds (process running for 4.93)
+2023-08-30 06:21:10 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.1 with PID 75553 (/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-08-30 06:21:10 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-08-30 06:21:10 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-08-30 06:21:14 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-08-30 06:21:14 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.425 seconds (process running for 4.982)
+2023-08-30 06:23:37 [http-nio-8080-exec-7] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Session expired., uri=/api/owners-tools/orders/get-orders, timestamp=Wed, 30 Aug 2023 06:23:37 -0700}
+2023-08-30 06:34:23 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.1 with PID 75831 (/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-08-30 06:34:23 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-08-30 06:34:23 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-08-30 06:34:27 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-08-30 06:34:28 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.684 seconds (process running for 5.134)
+2023-08-30 06:34:41 [http-nio-8080-exec-1] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Session expired., uri=/api/owners-tools/orders/order-ready/4, timestamp=Wed, 30 Aug 2023 06:34:41 -0700}
