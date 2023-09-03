@@ -48,16 +48,6 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
     }
 
     @Override
-    public OrderReturnedToOwner getOrderById(Integer orderId) {
-        System.out.println("service");
-        try {
-            return ownersGetOrderDtoConverter(ordersRepository.getReferenceById(orderId));
-        }catch (Exception e){
-            throw new EntityNotFoundException("Order with that id does not exist. Please verify id and try again.");
-        }
-        }
-
-    @Override
     public OrderReturnedToOwner getOrderByUid(String orderUid) {
         System.out.println("service");
         Orders order = ordersRepository.findByOrderUid(orderUid);
@@ -97,11 +87,13 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
 @Transactional
     @Override
     public OrderReturnedToOwner orderReady(Integer orderId) {
+//public OrderReturnedToOwner orderReady(String orderUid) {
         System.out.println("service");
         Orders order;
         String response;
         try {
              order = ordersRepository.getReferenceById(orderId);
+//            order = ordersRepository.findByOrderUid(orderUid);
             System.out.println(order);
         }catch (Exception e){
             throw new EntityNotFoundException("Order does not exist. Please verify order id and try again.");
@@ -148,15 +140,16 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
     @Override
     public String deleteOrder(Integer orderId) {
         System.out.println("service");
+        Orders order;
         try {
-            Orders order = ordersRepository.getReferenceById(orderId);
+            order = ordersRepository.getReferenceById(orderId);
             System.out.println(order);
         }catch (Exception e){
             throw new EntityNotFoundException("Can not delete order. Verify order id.");
         }
         ordersRepository.deleteById(orderId);
-        System.out.println("Order deleted");
-        return "Order deleted.";
+        System.out.println("Order " + order.getOrderUid() + " deleted");
+        return "Order " + order.getOrderUid() + " deleted.";
     }
 
     @Override
@@ -247,7 +240,6 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
         String formattedSales;
         LocalDate todaysDate = LocalDate.now();
         LocalDate dbDate;
-//        DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("E dd MMM yyyy");
         DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("dd MMM yyyy");
         Double salesTotal = 0.00;
         List<Orders> todaysOrders = new ArrayList<>();
@@ -261,7 +253,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
             }
         }
 //        System.out.println("todays orders:" + todaysOrders);
-//                create jpa query that takes today's date and is closed
+//                looks for all orders with today's timestamp and marked closed
         for (Orders order:todaysOrders){
             salesTotal += order.getOrderTotal();
         }
@@ -279,7 +271,6 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
     private OrderReturnedToOwner ownersGetOrderDtoConverter(Orders order) {
         OrderReturnedToOwner orderReturnedToOwner = new OrderReturnedToOwner();
 //        set the dto
-        orderReturnedToOwner.setOrderId(order.getOrderId());
         if (order.getCustomerId() != null) {
             orderReturnedToOwner.setName(customerRepository.getReferenceById(order.getCustomerId()).getName());
             orderReturnedToOwner.setEmail(customerRepository.getReferenceById(order.getCustomerId()).getEmail());

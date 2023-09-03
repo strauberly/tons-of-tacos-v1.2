@@ -1,30 +1,94 @@
-2023-08-29 06:55:12 [main] INFO  c.a.t.TonsOfTacosApplication -
-                Starting TonsOfTacosApplication using Java 17.0.1 with PID 70952 (/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
-2023-08-29 06:55:12 [main] DEBUG c.a.t.TonsOfTacosApplication -
-                Running with Spring Boot v3.0.1, Spring v6.0.3
-2023-08-29 06:55:12 [main] INFO  c.a.t.TonsOfTacosApplication -
-                No active profile set, falling back to 1 default profile: "default"
-2023-08-29 06:55:16 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+2023-09-02 16:46:50 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
                 Filter 'jwtAuthFilter' configured for use
-2023-08-29 06:55:16 [main] INFO  c.a.t.TonsOfTacosApplication -
-                Started TonsOfTacosApplication in 4.67 seconds (process running for 5.099)
-2023-08-29 07:01:31 [main] INFO  c.a.t.TonsOfTacosApplication -
-                Starting TonsOfTacosApplication using Java 17.0.1 with PID 71157 (/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
-2023-08-29 07:01:31 [main] DEBUG c.a.t.TonsOfTacosApplication -
+2023-09-02 16:46:51 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.704 seconds (process running for 5.177)
+2023-09-02 16:50:12 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.1 with PID 86474 (/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-02 16:50:12 [main] DEBUG c.a.t.TonsOfTacosApplication -
                 Running with Spring Boot v3.0.1, Spring v6.0.3
-2023-08-29 07:01:31 [main] INFO  c.a.t.TonsOfTacosApplication -
+2023-09-02 16:50:12 [main] INFO  c.a.t.TonsOfTacosApplication -
                 No active profile set, falling back to 1 default profile: "default"
-2023-08-29 07:01:35 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+2023-09-02 16:50:16 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
                 Filter 'jwtAuthFilter' configured for use
-2023-08-29 07:01:35 [main] INFO  c.a.t.TonsOfTacosApplication -
-                Started TonsOfTacosApplication in 4.707 seconds (process running for 5.141)
-2023-08-29 07:03:21 [main] INFO  c.a.t.TonsOfTacosApplication -
-                Starting TonsOfTacosApplication using Java 17.0.1 with PID 71319 (/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
-2023-08-29 07:03:21 [main] DEBUG c.a.t.TonsOfTacosApplication -
+2023-09-02 16:50:17 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.892 seconds (process running for 5.347)
+2023-09-02 16:54:26 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.1 with PID 86622 (/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-02 16:54:26 [main] DEBUG c.a.t.TonsOfTacosApplication -
                 Running with Spring Boot v3.0.1, Spring v6.0.3
-2023-08-29 07:03:21 [main] INFO  c.a.t.TonsOfTacosApplication -
+2023-09-02 16:54:26 [main] INFO  c.a.t.TonsOfTacosApplication -
                 No active profile set, falling back to 1 default profile: "default"
-2023-08-29 07:03:25 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+2023-09-02 16:54:29 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
                 Filter 'jwtAuthFilter' configured for use
-2023-08-29 07:03:26 [main] INFO  c.a.t.TonsOfTacosApplication -
-                Started TonsOfTacosApplication in 4.842 seconds (process running for 5.317)
+2023-09-02 16:54:30 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.794 seconds (process running for 5.369)
+2023-09-02 16:55:37 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.1 with PID 86770 (/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-02 16:55:37 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-02 16:55:37 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-02 16:55:40 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-02 16:55:41 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.737 seconds (process running for 5.193)
+2023-09-02 16:59:13 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.1 with PID 86946 (/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-02 16:59:13 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-02 16:59:13 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-02 16:59:17 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-02 16:59:18 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.799 seconds (process running for 5.255)
+2023-09-02 17:00:39 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.1 with PID 87105 (/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-02 17:00:39 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-02 17:00:39 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-02 17:00:42 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-02 17:00:43 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.56 seconds (process running for 4.989)
+2023-09-02 17:03:10 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.1 with PID 87270 (/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-02 17:03:10 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-02 17:03:10 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-02 17:03:14 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-02 17:03:14 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.618 seconds (process running for 5.057)
+2023-09-02 17:09:29 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.1 with PID 87437 (/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-02 17:09:29 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-02 17:09:29 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-02 17:09:33 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-02 17:09:33 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.75 seconds (process running for 5.206)
+2023-09-02 17:11:20 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.1 with PID 87580 (/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-02 17:11:20 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-02 17:11:20 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-02 17:11:24 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-02 17:11:25 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 5.133 seconds (process running for 5.606)
+2023-09-02 17:21:36 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.1 with PID 87762 (/media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-02 17:21:36 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-02 17:21:36 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-02 17:21:39 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-02 17:21:40 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.649 seconds (process running for 5.123)

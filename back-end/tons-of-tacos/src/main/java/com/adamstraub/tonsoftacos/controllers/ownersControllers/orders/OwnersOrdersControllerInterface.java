@@ -136,39 +136,51 @@ public interface OwnersOrdersControllerInterface {
     List<OrderReturnedToOwner> getAllOrders();
 
 
-//    get an order by order id
-    @Operation(
-            summary = "An order is returned by id.",
-            description = """
-                   For owner use only with proper auth.""",
-            responses = {
-                    @ApiResponse(
-                            responseCode = "200",
-                            description = "Order is returned.",
-                            content = @Content(mediaType = "application/json")),
-                    @ApiResponse(
-                            responseCode = "400",
-                            description = "Request parameters invalid.",
-                            content = @Content(mediaType = "application/json")),
-                    @ApiResponse(
-                            responseCode = "404",
-                            description = "No orders found.",
-                            content = @Content(mediaType = "application/json")),
-                    @ApiResponse(
-                            responseCode = "500",
-                            description = "An unplanned error occured.",
-                            content = @Content(mediaType = "application/json")),
-            }
-    )
-    @Transactional
-    @GetMapping("/get-order/orderId")
-    OrderReturnedToOwner getOrderById(@RequestParam Integer orderId);
-
 //    get an order by uid
     @Operation(
-            summary = "An order is returned by uid.",
+            summary = "An order is returned by its id.",
             description = """
-                  For owner use only with proper auth.""",
+                    When a customer creates an order a uid is generated. This end point allows for a customer to repeat the
+                    uid to the owner and have the order returned with out exposing the order id used in backend.  For owner use only with proper auth.
+                    """
+                    + "\n" +
+                    "Example request: localhost:8080/api/owners-tools/orders/get-order/orderUid?orderUid=654654-465465-555"
+                    + "\n"
+                    + "\n" + "Example response: " + "\n" +
+
+                    """
+                              {
+                                "name": "Tim Timson",
+                                "email": "tim@timson.com",
+                                "phone": "555.555.5553",
+                                "orderUid": "654654-465465-555",
+                                "orderItems": [
+                                    {
+                                        "orderItemId": 3,
+                                        "itemName": "cola",
+                                        "quantity": 2,
+                                        "total": 2.0
+                                    },
+                                    {
+                                        "orderItemId": 8,
+                                        "itemName": "cola",
+                                        "quantity": 3,
+                                        "total": 3.0
+                                    },
+                                    {
+                                        "orderItemId": 9,
+                                        "itemName": "cola",
+                                        "quantity": 3,
+                                        "total": 3.0
+                                    }
+                                ],
+                                "orderTotal": 40.55,
+                                "created": "2023-08-05T23:54:52.000+00:00",
+                                "ready": "no",
+                                "closed": "no"
+                            }
+                            """
+            ,
             responses = {
                     @ApiResponse(
                             responseCode = "200",
@@ -189,20 +201,68 @@ public interface OwnersOrdersControllerInterface {
             }
     )
     @Transactional
-    @GetMapping("/get-order/orderUid")
+    @GetMapping("/get-order/{orderId}")
     OrderReturnedToOwner getOrderByUid(@RequestParam String orderUid);
 
 
 
 //    get an order by customer name
     @Operation(
-            summary = "An order is returned by customer name.",
-            description = """
-                 For owner use only with proper auth.""",
+            summary = "Orders returned by customer name.",
+            description = """ 
+                 An array of open orders are returned to an owner by customer name. 
+                 For owner use only with proper auth."""
+            + "\n" + "\n" + "Example response: " + "\n" + "\n"
+            + """
+                    [
+                        {
+                            "name": "John Johnson",
+                            "email": "john@johnson.com",
+                            "phone": "555.555.5552",
+                            "orderUid": "654654-4655-555",
+                            "orderItems": [
+                                {
+                                    "orderItemId": 1,
+                                    "itemName": "pound",
+                                    "quantity": 3,
+                                    "total": 3.0
+                                },
+                                {
+                                    "orderItemId": 2,
+                                    "itemName": "golden pound",
+                                    "quantity": 4,
+                                    "total": 4.0
+                                }
+                            ],
+                            "orderTotal": 25.55,
+                            "created": "2023-08-05T23:54:52.000+00:00",
+                            "ready": "no",
+                            "closed": "no"
+                        },
+                        {
+                            "name": "John Johnson",
+                            "email": "john@johnson.com",
+                            "phone": "555.555.5552",
+                            "orderUid": "654654-4657-555",
+                            "orderItems": [
+                                {
+                                    "orderItemId": 4,
+                                    "itemName": "cola",
+                                    "quantity": 3,
+                                    "total": 1.5
+                                }
+                            ],
+                            "orderTotal": 10.0,
+                            "created": "2023-08-05T23:54:52.000+00:00",
+                            "ready": "no",
+                            "closed": "no"
+                        }
+                    ]
+                    """,
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Order is returned.",
+                            description = "Open orders for customer returned.",
                             content = @Content(mediaType = "application/json")),
                     @ApiResponse(
                             responseCode = "400",
@@ -226,7 +286,7 @@ public interface OwnersOrdersControllerInterface {
 
 // mark food ready by id
     @Operation(
-            summary = "Marks an order as having food ready for pick up.",
+            summary = "Marks an order by its id as having food ready for pick up.",
             description = """
                     A successful request will return a json object containing details of the order for the customer and the
                     the ready property will now contain the time when the order was marked as ready. For owner use only with proper auth.
@@ -288,12 +348,12 @@ public interface OwnersOrdersControllerInterface {
     @Transactional
     @PutMapping("/order-ready/{orderId}")
     OrderReturnedToOwner orderReady(@PathVariable Integer orderId);
+//    OrderReturnedToOwner orderReady(@PathVariable String orderUid);
 
 
 //    close order by id
-
     @Operation(
-            summary = "Closes an order by id.",
+            summary = "Closes an order by its id.",
             description = """
             Allows for marking an order as closed once payment received and food has been picked up by customer.
             A successful request returns an updated order object with the closed field containing the time an order was marked as closed. For owner use only with proper auth.
@@ -360,8 +420,8 @@ public interface OwnersOrdersControllerInterface {
 
 // delete order by id
     @Operation(
-            summary = "Deletes an order by id.",
-            description = " For owner use only with proper auth.",
+            summary = "Deletes an order by its id.",
+            description = "Returns a message as a string verifying that an order has been deleted. For owner use only with proper auth.",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
@@ -389,7 +449,7 @@ public interface OwnersOrdersControllerInterface {
 
 //    add menu item to order
     @Operation(
-            summary = "A menu item is added to an open order.",
+            summary = "A menu item is added to an open order by respective uid and id.",
             description = "If request is successful then a message string is returned indicating as such (ex. 'cola x 3 added to order.')." +
                     " For owner use only with proper auth.",
             responses = {
@@ -453,7 +513,7 @@ public interface OwnersOrdersControllerInterface {
 
 // get todays sales
     @Operation(
-            summary = "Gets sales for today's closed orders.",
+            summary = "Calculates and returns sales revenue for today's closed orders.",
             description = """
                     A successful request will return a sales object with fields indicating today's date,
                      the number of sales for the day, and the total amount accrued for the day. For owner use only with proper auth.
