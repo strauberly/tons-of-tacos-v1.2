@@ -88,3 +88,9 @@
                 Started TonsOfTacosApplication in 4.607 seconds (process running for 5.049)
 2023-09-05 06:04:19 [http-nio-8080-exec-3] DEBUG c.a.t.e.GlobalExceptionHandler -
                 {status code=404 NOT_FOUND, message=Can not delete order. Verify order exists., uri=/api/owners-tools/orders/delete-order/654654-4657-555, timestamp=Tue, 5 Sep 2023 06:04:19 -0700}
+2023-09-05 06:33:32 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.6 with PID 164042 (/media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-05 06:33:32 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-05 06:33:32 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
