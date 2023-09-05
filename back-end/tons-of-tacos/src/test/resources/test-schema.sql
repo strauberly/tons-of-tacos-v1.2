@@ -5,6 +5,7 @@ customer_pk INT unsigned NOT NULL AUTO_INCREMENT ,
 name VARCHAR(40) NOT NULL,
 email VARCHAR(40) NOT NULL,
 phone_number VARCHAR(12) NOT NULL,
+customer_uid VARCHAR(9) NOT NULL,
 PRIMARY KEY (customer_pk)
 );
 

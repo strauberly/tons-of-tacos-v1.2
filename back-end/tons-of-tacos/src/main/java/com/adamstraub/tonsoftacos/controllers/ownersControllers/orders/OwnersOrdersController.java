@@ -34,25 +34,27 @@ public class OwnersOrdersController implements OwnersOrdersControllerInterface {
     }
 
     @Override
-    public OrderReturnedToOwner orderReady(Integer orderId) {
-//    public OrderReturnedToOwner orderReady(String orderUid) {
+//    public OrderReturnedToOwner orderReady(Integer orderId) {
+    public OrderReturnedToOwner orderReady(String orderUid) {
         System.out.println("controller");
-//        return ownersOrdersService.orderReady(orderUid);
-        return ownersOrdersService.orderReady(orderId);
+        return ownersOrdersService.orderReady(orderUid);
+//        return ownersOrdersService.orderReady(orderId);
     }
 
     @Override
-    public OrderReturnedToOwner closeOrder(Integer orderId) {
-        System.out.println("controller");
+//    public OrderReturnedToOwner closeOrder(Integer orderId) {
+    public OrderReturnedToOwner closeOrder(String orderUid) {
+            System.out.println("controller");
 //        System.out.println(orderId);
-       return ownersOrdersService.closeOrder(orderId);
+       return ownersOrdersService.closeOrder(orderUid);
     }
 
 
     @Override
-    public String deleteOrder(Integer orderId) {
+//    public String deleteOrder(Integer orderId) {
+    public String deleteOrder(String orderUid) {
         System.out.println("controller");
-        return ownersOrdersService.deleteOrder(orderId);
+        return ownersOrdersService.deleteOrder(orderUid);
     }
 
     @Override

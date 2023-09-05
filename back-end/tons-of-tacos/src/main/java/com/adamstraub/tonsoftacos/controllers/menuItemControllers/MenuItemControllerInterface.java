@@ -22,33 +22,39 @@ import java.util.List;
 public interface MenuItemControllerInterface {
     @Operation(
             summary = "Return menu item by id.",
-            description = "For use by customers to view individual items and create an order.",
+            description = "For use by customers to view individual menu items and create an order."
+            + "\n"  + "\n" + "Example response: "  + "\n"  + "\n" +
+                    """
+                            {
+                                "id": 2,
+                                "category": "taco",
+                                "description": "nom nom",
+                                "itemName": "golden pound",
+                                "itemSize": null,
+                                "unitPrice": 5.3
+                            }
+                            """,
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "A menu-item is returned.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "A menu-item is returned."),
                     @ApiResponse(
                             responseCode = "400",
-                            description = "Request parameters invalid.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "Request parameters invalid."),
                     @ApiResponse(
                             responseCode = "404",
-                            description = "No menu-id found according to input.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "No menu-id found according to input."),
                     @ApiResponse(
                             responseCode = "500",
-                            description = "An unplanned error occured.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "An unplanned error occured."),
 
             },
             parameters = {
-                    @Parameter(name = "id", allowEmptyValue = false, required = false,
-                            description = "api/menu/id?id={a valid id number}. Returns a menu item by id number."),
+                    @Parameter(name = "id", allowEmptyValue = false, required = false),
             }
     )
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     MenuItem getById(
             @RequestParam Integer id);
 
@@ -56,32 +62,49 @@ public interface MenuItemControllerInterface {
 
     @Operation(
             summary = "Return menu items by category.",
-            description = "For use by customers to view menu items by category and create an order.",
+            description = """
+                    For use by customers to view menu items by category and create an order." +
+                    Current options include 'taco', 'side', 'drink', and 'topping'. Returns an array of menu items."""
+                    + "\n"  + "\n" + "Example: "  + "\n"  + "\n" +
+                    "api/menu/category?category=taco"
+                    + "\n"  + "\n" + "Example response: "  + "\n"  + "\n" +
+                    """
+                            [
+                                {
+                                    "id": 1,
+                                    "category": "taco",
+                                    "description": "nom nom",
+                                    "itemName": "pound",
+                                    "itemSize": null,
+                                    "unitPrice": 2.25
+                                },
+                                {
+                                    "id": 2,
+                                    "category": "taco",
+                                    "description": "nom nom",
+                                    "itemName": "golden pound",
+                                    "itemSize": null,
+                                    "unitPrice": 5.3
+                                }
+                            ]
+                            """,
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Menu items returned by category.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "Menu items returned by category."),
                     @ApiResponse(
                             responseCode = "400",
-                            description = "Request parameters invalid.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "Request parameters invalid."),
                     @ApiResponse(
                             responseCode = "404",
-                            description = "No menu-items found according to input. Check formatting",
-                            content = @Content(mediaType = "application/json")),
+                            description = "No menu-items found according to input. Check formatting"),
                     @ApiResponse(
                             responseCode = "500",
-                            description = "An unplanned error occured.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "An unplanned error occured."),
 
             },
             parameters = {
-                    @Parameter(name = "category", allowEmptyValue = false, required = false,
-                            description = """
-                            api/menu/category?category= {your desired menu item category ie. side}
-                            Returns menu items by the category side.
-                            Current options include taco, side, drink, and topping."""),
+                    @Parameter(name = "category", allowEmptyValue = false, required = false),
             }
     )
 

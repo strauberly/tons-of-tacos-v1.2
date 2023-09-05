@@ -115,20 +115,16 @@ public interface OwnersOrdersControllerInterface {
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "All orders returned.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "All orders returned."),
                     @ApiResponse(
                             responseCode = "400",
-                            description = "Request parameters invalid.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "Request parameters invalid."),
                     @ApiResponse(
                             responseCode = "404",
-                            description = "No orders found.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "No orders found."),
                     @ApiResponse(
                             responseCode = "500",
-                            description = "An unplanned error occured.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "An unplanned error occured."),
             }
     )
     @Transactional
@@ -138,7 +134,7 @@ public interface OwnersOrdersControllerInterface {
 
 //    get an order by uid
     @Operation(
-            summary = "An order is returned by its id.",
+            summary = "An order is returned by its uid.",
             description = """
                     When a customer creates an order a uid is generated. This end point allows for a customer to repeat the
                     uid to the owner and have the order returned with out exposing the order id used in backend.  For owner use only with proper auth.
@@ -184,24 +180,21 @@ public interface OwnersOrdersControllerInterface {
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Order is returned.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "Order is returned."),
                     @ApiResponse(
                             responseCode = "400",
-                            description = "Request parameters invalid.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "Request parameters invalid."),
                     @ApiResponse(
                             responseCode = "404",
-                            description = "No orders found.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "No orders found."),
                     @ApiResponse(
                             responseCode = "500",
-                            description = "An unplanned error occured.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "An unplanned error occured."),
             }
     )
     @Transactional
-    @GetMapping("/get-order/{orderId}")
+//    @GetMapping("/get-order/{orderId}")
+    @GetMapping("/get-order/{orderUid}")
     OrderReturnedToOwner getOrderByUid(@RequestParam String orderUid);
 
 
@@ -210,7 +203,7 @@ public interface OwnersOrdersControllerInterface {
     @Operation(
             summary = "Orders returned by customer name.",
             description = """ 
-                 An array of open orders are returned to an owner by customer name. 
+                 An array of open orders are returned to an owner by customer name.
                  For owner use only with proper auth."""
             + "\n" + "\n" + "Example response: " + "\n" + "\n"
             + """
@@ -262,20 +255,16 @@ public interface OwnersOrdersControllerInterface {
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Open orders for customer returned.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "Open orders for customer returned."),
                     @ApiResponse(
                             responseCode = "400",
-                            description = "Request parameters invalid.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "Request parameters invalid."),
                     @ApiResponse(
                             responseCode = "404",
-                            description = "No orders found.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "No orders found."),
                     @ApiResponse(
                             responseCode = "500",
-                            description = "An unplanned error occured.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "An unplanned error occured."),
             }
     )
     @Transactional
@@ -284,9 +273,9 @@ public interface OwnersOrdersControllerInterface {
 
 
 
-// mark food ready by id
+// mark food ready by uid
     @Operation(
-            summary = "Marks an order by its id as having food ready for pick up.",
+            summary = "Marks an order by its uid as having food ready for pick up.",
             description = """
                     A successful request will return a json object containing details of the order for the customer and the
                     the ready property will now contain the time when the order was marked as ready. For owner use only with proper auth.
@@ -327,33 +316,29 @@ public interface OwnersOrdersControllerInterface {
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Order ready.",
-                            content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = OrderItem.class))),
+                            description = "Order ready."),
                     @ApiResponse(
                             responseCode = "400",
-                            description = "Request parameters invalid.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "Request parameters invalid."),
                     @ApiResponse(
                             responseCode = "404",
-                            description = "No order-items found according to input.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "No order-items found according to input."),
                     @ApiResponse(
                             responseCode = "500",
-                            description = "An unplanned error occured.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "An unplanned error occured."),
 
             }
     )
     @Transactional
-    @PutMapping("/order-ready/{orderId}")
-    OrderReturnedToOwner orderReady(@PathVariable Integer orderId);
-//    OrderReturnedToOwner orderReady(@PathVariable String orderUid);
+//    @PutMapping("/order-ready/{orderId}")
+    @PutMapping("/order-ready/{orderUid}")
+//    OrderReturnedToOwner orderReady(@PathVariable Integer orderId);
+    OrderReturnedToOwner orderReady(@PathVariable String orderUid);
 
 
-//    close order by id
+//    close order by uid
     @Operation(
-            summary = "Closes an order by its id.",
+            summary = "Closes an order by its uid.",
             description = """
             Allows for marking an order as closed once payment received and food has been picked up by customer.
             A successful request returns an updated order object with the closed field containing the time an order was marked as closed. For owner use only with proper auth.
@@ -390,62 +375,55 @@ public interface OwnersOrdersControllerInterface {
                                 "created": "2023-08-22T13:42:46.000+00:00",
                                 "ready": "2023-08-25 07:11:52",
                                 "closed": "2023-08-25 07:26:16"
-                            }          
+                            }
                             """,
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Order closed.",
-                            content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = OrderItem.class))),
+                            description = "Order closed."),
                     @ApiResponse(
                             responseCode = "400",
-                            description = "Request parameters invalid.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "Request parameters invalid."),
                     @ApiResponse(
                             responseCode = "404",
-                            description = "No order-items found according to input.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "No order-items found according to input."),
                     @ApiResponse(
                             responseCode = "500",
-                            description = "An unplanned error occurred.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "An unplanned error occurred."),
 
             }
     )
     @Transactional
-    @PutMapping("/close-order/{orderId}")
-    OrderReturnedToOwner closeOrder(@PathVariable Integer orderId);
+//    @PutMapping("/close-order/{orderId}")
+    @PutMapping("/close-order/{orderUid}")
+//    OrderReturnedToOwner closeOrder(@PathVariable Integer orderId);
+    OrderReturnedToOwner closeOrder(@PathVariable String orderUid);
 
-
-// delete order by id
+// delete order by uid
     @Operation(
-            summary = "Deletes an order by its id.",
-            description = "Returns a message as a string verifying that an order has been deleted. For owner use only with proper auth.",
+            summary = "Deletes an order by its uid.",
+            description = " For owner use only with proper auth.",
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Order deleted.",
-                            content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = OrderItem.class))),
+                            description = "Order deleted."),
                     @ApiResponse(
                             responseCode = "400",
-                            description = "Request parameters invalid.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "Request parameters invalid."),
                     @ApiResponse(
                             responseCode = "404",
-                            description = "No order-items found according to input.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "No order-items found according to input."),
                     @ApiResponse(
                             responseCode = "500",
-                            description = "An unplanned error occurred.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "An unplanned error occurred."),
 
             }
     )
     @Transactional
-    @DeleteMapping("/delete-order/{orderId}")
-    String deleteOrder(@PathVariable Integer orderId);
+//    @DeleteMapping("/delete-order/{orderId}")
+    @DeleteMapping("/delete-order/{orderUid}")
+//    String deleteOrder(@PathVariable Integer orderId);
+    String deleteOrder(@PathVariable String orderUid);
 
 //    add menu item to order
     @Operation(
@@ -461,12 +439,10 @@ public interface OwnersOrdersControllerInterface {
                                     schema = @Schema(implementation = OrderItem.class))),
                     @ApiResponse(
                             responseCode = "404",
-                            description = "Either the order to be altered or the menu item to be altered can not be found and is invalid.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "Either the order to be altered or the menu item to be altered can not be found and is invalid."),
                     @ApiResponse(
                             responseCode = "500",
-                            description = "An unplanned error occurred.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "An unplanned error occurred."),
             }
     )
     @Transactional
@@ -485,21 +461,16 @@ public interface OwnersOrdersControllerInterface {
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Quantity updated.",
-                            content = @Content(mediaType = "application/json",
-                                    schema = @Schema(implementation = OrderItem.class))),
+                            description = "Quantity updated."),
                     @ApiResponse(
                             responseCode = "400",
-                            description = "Request parameters invalid.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "Request parameters invalid."),
                     @ApiResponse(
                             responseCode = "404",
-                            description = "No order-items found according to input. Or no order found for submitted order id.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "No order-items found according to input. Or no order found for submitted order id."),
                     @ApiResponse(
                             responseCode = "500",
-                            description = "An unplanned error occurred.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "An unplanned error occurred."),
             }
     )
     @PutMapping("/update-order-item/{orderId}/{orderItemId}/{newQuantity}")
@@ -513,7 +484,7 @@ public interface OwnersOrdersControllerInterface {
 
 // get todays sales
     @Operation(
-            summary = "Calculates and returns sales revenue for today's closed orders.",
+            summary = "Calculates and returns sales for today's closed orders.",
             description = """
                     A successful request will return a sales object with fields indicating today's date,
                      the number of sales for the day, and the total amount accrued for the day. For owner use only with proper auth.
@@ -530,21 +501,16 @@ public interface OwnersOrdersControllerInterface {
 responses = {
     @ApiResponse(
             responseCode = "200",
-            description = "Order deleted.",
-            content = @Content(mediaType = "application/json",
-                    schema = @Schema(implementation = OrderItem.class))),
+            description = "Order deleted."),
     @ApiResponse(
             responseCode = "400",
-            description = "Request parameters invalid.",
-            content = @Content(mediaType = "application/json")),
+            description = "Request parameters invalid."),
     @ApiResponse(
             responseCode = "404",
-            description = "No order-items found according to input.",
-            content = @Content(mediaType = "application/json")),
+            description = "No order-items found according to input."),
     @ApiResponse(
             responseCode = "500",
-            description = "An unplanned error occurred.",
-            content = @Content(mediaType = "application/json")),
+            description = "An unplanned error occurred."),
 
 }
 )

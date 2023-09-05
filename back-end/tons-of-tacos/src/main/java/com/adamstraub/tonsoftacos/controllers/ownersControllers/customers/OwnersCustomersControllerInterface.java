@@ -66,20 +66,16 @@ public interface OwnersCustomersControllerInterface {
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "All customers returned.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "All customers returned."),
                     @ApiResponse(
                             responseCode = "400",
-                            description = "Request parameters invalid.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "Request parameters invalid."),
                     @ApiResponse(
                             responseCode = "404",
-                            description = "No customers found.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "No customers found."),
                     @ApiResponse(
                             responseCode = "500",
-                            description = "An unplanned error occured.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "An unplanned error occured."),
             }
     )
     @Transactional
@@ -113,20 +109,16 @@ public interface OwnersCustomersControllerInterface {
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Customer is returned.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "Customer is returned."),
                     @ApiResponse(
                             responseCode = "400",
-                            description = "Request parameters invalid.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "Request parameters invalid."),
                     @ApiResponse(
                             responseCode = "404",
-                            description = "No customer found.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "No customer found."),
                     @ApiResponse(
                             responseCode = "500",
-                            description = "An unplanned error occured.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "An unplanned error occured."),
             }
     )
     @Transactional
@@ -161,20 +153,16 @@ public interface OwnersCustomersControllerInterface {
 responses = {
 @ApiResponse(
     responseCode = "200",
-    description = "Customer is returned.",
-    content = @Content(mediaType = "application/json")),
+    description = "Customer is returned."),
 @ApiResponse(
     responseCode = "400",
-    description = "Request parameters invalid.",
-    content = @Content(mediaType = "application/json")),
+    description = "Request parameters invalid."),
 @ApiResponse(
     responseCode = "404",
-    description = "No customers found.",
-    content = @Content(mediaType = "application/json")),
+    description = "No customers found."),
 @ApiResponse(
     responseCode = "500",
-    description = "An unplanned error occured.",
-    content = @Content(mediaType = "application/json")),
+    description = "An unplanned error occured."),
 }
 )
 @Transactional
@@ -194,21 +182,16 @@ description = """
 responses = {
 @ApiResponse(
         responseCode = "200",
-        description = "Customer name updated.",
-        content = @Content(mediaType = "application/json",
-                schema = @Schema(implementation = OrderItem.class))),
+        description = "Customer name updated."),
 @ApiResponse(
         responseCode = "400",
-        description = "Request parameters invalid.",
-        content = @Content(mediaType = "application/json")),
+        description = "Request parameters invalid."),
 @ApiResponse(
         responseCode = "404",
-        description = "No customer found for given parameter.",
-        content = @Content(mediaType = "application/json")),
+        description = "No customer found for given parameter."),
 @ApiResponse(
         responseCode = "500",
-        description = "An unplanned error occured.",
-        content = @Content(mediaType = "application/json")),
+        description = "An unplanned error occured."),
 }
 )
 @Transactional
@@ -232,21 +215,16 @@ description = """
 responses = {
 @ApiResponse(
         responseCode = "200",
-        description = "Customer email updated.",
-        content = @Content(mediaType = "application/json",
-                schema = @Schema(implementation = OrderItem.class))),
+        description = "Customer email updated."),
 @ApiResponse(
         responseCode = "400",
-        description = "Request parameters invalid.",
-        content = @Content(mediaType = "application/json")),
+        description = "Request parameters invalid."),
 @ApiResponse(
         responseCode = "404",
-        description = "No customer found according to parameter.",
-        content = @Content(mediaType = "application/json")),
+        description = "No customer found according to parameter."),
 @ApiResponse(
         responseCode = "500",
-        description = "An unplanned error occured.",
-        content = @Content(mediaType = "application/json")),
+        description = "An unplanned error occured."),
 }
 )
 @Transactional
@@ -272,21 +250,16 @@ For owner use only with proper auth.
 responses = {
 @ApiResponse(
         responseCode = "200",
-        description = "Customer phone number updated.",
-        content = @Content(mediaType = "application/json",
-                schema = @Schema(implementation = OrderItem.class))),
+        description = "Customer phone number updated."),
 @ApiResponse(
         responseCode = "400",
-        description = "Request parameters invalid.",
-        content = @Content(mediaType = "application/json")),
+        description = "Request parameters invalid."),
 @ApiResponse(
         responseCode = "404",
-        description = "No customer found according to parameter.",
-        content = @Content(mediaType = "application/json")),
+        description = "No customer found according to parameter."),
 @ApiResponse(
         responseCode = "500",
-        description = "An unplanned error occured.",
-        content = @Content(mediaType = "application/json")),
+        description = "An unplanned error occured."),
 }
 )
 @Transactional
@@ -309,21 +282,16 @@ description = """
 responses = {
 @ApiResponse(
         responseCode = "200",
-        description = "Customer deleted.",
-        content = @Content(mediaType = "application/json",
-                schema = @Schema(implementation = OrderItem.class))),
+        description = "Customer deleted."),
 @ApiResponse(
         responseCode = "400",
-        description = "Request parameters invalid.",
-        content = @Content(mediaType = "application/json")),
+        description = "Request parameters invalid."),
 @ApiResponse(
         responseCode = "404",
-        description = "No customer found according to parameter.",
-        content = @Content(mediaType = "application/json")),
+        description = "No customer found according to parameter."),
 @ApiResponse(
         responseCode = "500",
-        description = "An unplanned error occured.",
-        content = @Content(mediaType = "application/json")),
+        description = "An unplanned error occured."),
 
 }
 )

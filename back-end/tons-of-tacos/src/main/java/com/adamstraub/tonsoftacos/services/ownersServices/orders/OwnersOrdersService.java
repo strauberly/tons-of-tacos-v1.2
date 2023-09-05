@@ -86,14 +86,14 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
     }
 @Transactional
     @Override
-    public OrderReturnedToOwner orderReady(Integer orderId) {
-//public OrderReturnedToOwner orderReady(String orderUid) {
+//    public OrderReturnedToOwner orderReady(Integer orderId) {
+public OrderReturnedToOwner orderReady(String orderUid) {
         System.out.println("service");
         Orders order;
         String response;
         try {
-             order = ordersRepository.getReferenceById(orderId);
-//            order = ordersRepository.findByOrderUid(orderUid);
+//             order = ordersRepository.getReferenceById(orderId);
+            order = ordersRepository.findByOrderUid(orderUid);
             System.out.println(order);
         }catch (Exception e){
             throw new EntityNotFoundException("Order does not exist. Please verify order id and try again.");
@@ -105,12 +105,14 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
     }
 @Transactional
     @Override
-    public OrderReturnedToOwner closeOrder(Integer orderId) {
+//    public OrderReturnedToOwner closeOrder(Integer orderId) {
+public OrderReturnedToOwner closeOrder(String orderUid) {
         System.out.println("service");
         Orders order;
         String response;
         try {
-            order = ordersRepository.getReferenceById(orderId);
+//            order = ordersRepository.getReferenceById(orderUid);
+            order = ordersRepository.findByOrderUid(orderUid);
             System.out.println(order);
         }catch (Exception e){
             throw new EntityNotFoundException("Order does not exist. Please verify order id and try again.");
@@ -138,16 +140,24 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
     }
 @Transactional
     @Override
-    public String deleteOrder(Integer orderId) {
+//    public String deleteOrder(Integer orderId) {
+public String deleteOrder(String orderUid) {
         System.out.println("service");
         Orders order;
-        try {
-            order = ordersRepository.getReferenceById(orderId);
-            System.out.println(order);
-        }catch (Exception e){
-            throw new EntityNotFoundException("Can not delete order. Verify order id.");
+//        try {
+//            order = ordersRepository.getReferenceById(orderId);
+            order = ordersRepository.findByOrderUid(orderUid);
+//            System.out.println(order);
+//        }catch (Exception e){
+//            throw new EntityNotFoundException("Can not delete order. Verify order id.");
+//        }
+//    System.out.println(order);
+        if(order == null){
+            throw new EntityNotFoundException("Can not delete order. Verify order exists.");
         }
-        ordersRepository.deleteById(orderId);
+
+//    ordersRepository.deleteById(ordersRepository.getReferenceById(order.getOrderId()));
+        ordersRepository.deleteById(order.getOrderId());
         System.out.println("Order " + order.getOrderUid() + " deleted");
         return "Order " + order.getOrderUid() + " deleted.";
     }
