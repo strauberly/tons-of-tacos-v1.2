@@ -9,14 +9,22 @@ DROP TABLE IF EXISTS order_item;
 DROP TABLE IF EXISTS menu_item;
 DROP TABLE IF EXISTS customer;
 
-
 CREATE TABLE customer(
 customer_pk INT unsigned NOT NULL AUTO_INCREMENT ,
 name VARCHAR(40) NOT NULL,
 email VARCHAR(40) NOT NULL,
 phone_number VARCHAR(12) NOT NULL,
+customer_uid VARCHAR(9) NOT NULL,
 PRIMARY KEY (customer_pk)
 );
+
+-- CREATE TABLE customer(
+-- customer_pk INT unsigned NOT NULL AUTO_INCREMENT ,
+-- name VARCHAR(40) NOT NULL,
+-- email VARCHAR(40) NOT NULL,
+-- phone_number VARCHAR(12) NOT NULL,
+-- PRIMARY KEY (customer_pk)
+-- );
 
 CREATE TABLE menu_item(
 item_pk INT unsigned NOT NULL AUTO_INCREMENT,

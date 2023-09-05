@@ -1,10 +1,9 @@
 package com.adamstraub.tonsoftacos.controllers.ownersControllers.session;
 
-import com.adamstraub.tonsoftacos.dto.businessDto.security.OwnerAuthDto;
+import com.adamstraub.tonsoftacos.dto.businessDto.security.OwnerAuth;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.info.Info;
-import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.servers.Server;
 import org.springframework.validation.annotation.Validated;
@@ -25,7 +24,7 @@ public interface SessionControllerInterface {
             summary = "Login an owner.",
             description = """
                   This endpoint allows an owner to login and create a jwt token that will grant access to their
-                  endpoint tools. Note that password and username have already been encoded. Contact lead engineer 
+                  endpoint tools. Note that password and username have already been encoded. Contact lead engineer
                   for encryption algorithm details in order to create a successful request. Login endpoint currently for
                   owner use only after an entity has been created for them."""
             + "\n" + "\n" + "Sample request body: " + "\n" + "\n" +
@@ -38,23 +37,19 @@ public interface SessionControllerInterface {
             responses = {
                     @ApiResponse(
                             responseCode = "200",
-                            description = "Owner logged in.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "Owner logged in."),
                     @ApiResponse(
                             responseCode = "400",
-                            description = "Request parameters invalid.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "Request parameters invalid."),
                     @ApiResponse(
                             responseCode = "404",
-                            description = "No orders found.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "No orders found."),
                     @ApiResponse(
                             responseCode = "500",
-                            description = "An unplanned error occured.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "An unplanned error occured."),
             }
     )
 
     @PostMapping("/login")
-    String ownerLogin(@RequestBody OwnerAuthDto authDto) throws UnsupportedEncodingException;
+    String ownerLogin(@RequestBody OwnerAuth authDto) throws UnsupportedEncodingException;
 }

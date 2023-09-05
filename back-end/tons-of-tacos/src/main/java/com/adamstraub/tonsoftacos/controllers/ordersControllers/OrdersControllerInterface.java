@@ -94,16 +94,13 @@ public interface OrdersControllerInterface {
             responses = {
                     @ApiResponse(
                             responseCode = "201",
-                            description = "An order is created.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "An order is created."),
                     @ApiResponse(
                                     responseCode = "400",
-                                    description = "Request parameters invalid. Check formatting.",
-                                    content = @Content(mediaType = "application/json")),
+                                    description = "Request parameters invalid. Check formatting."),
                     @ApiResponse(
                             responseCode = "500",
-                            description = "An unplanned error occured.",
-                            content = @Content(mediaType = "application/json")),
+                            description = "An unplanned error occured."),
             }
     )
 

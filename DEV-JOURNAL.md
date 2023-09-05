@@ -2,6 +2,26 @@
 
 ---
 
+-- 05 Sep 2023 --
+
+- Mark an order as closed changed to use uid instead of id successfully.
+- Delete an order changed to use uid instead of id successfully.
+
+---
+
+-- 04 Sep 2023 --
+
+- Initialized refactor of order endpoints to use the order uid in lieu of the order database index as a parameter for searches and alterations by the owner.
+- Mark an order as ready changed from id to uid successfully. Will continue on with additional changes.
+
+---
+
+-- 03 Sep 2023 --
+
+- All menu item endpoint documentation updated with examples of successful requests and responses. Documentation formatting updated.
+
+---
+
 -- 02 Sep 2023 --
 
 - All owner endpoint documentation updated with examples of successful requests and responses.

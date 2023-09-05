@@ -32,6 +32,10 @@ public class Customer {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    @Column(name= "customer_uid")
+    private String customerUid;
+
+    //    refactor to reference customer uid
     @OneToMany(mappedBy = "customerId", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<Orders> orders = new ArrayList<>();
 
@@ -42,6 +46,7 @@ public class Customer {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", customerUid='" + customerUid + '\'' +
                 '}';
     }
 }

@@ -1,5 +1,5 @@
 package com.adamstraub.tonsoftacos.services.security;
-import com.adamstraub.tonsoftacos.dto.businessDto.security.OwnerAuthDto;
+import com.adamstraub.tonsoftacos.dto.businessDto.security.OwnerAuth;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,21 +18,21 @@ public class AuthService implements AuthServiceInterface {
     @Autowired
     private final AuthenticationManager authenticationManager;
 
-    public String ownerLogin(OwnerAuthDto ownerAuthDto) {
+    public String ownerLogin(OwnerAuth ownerAuth) {
         System.out.println("auth service");
 //        System.out.println(ownerAuthDto);
         try {
             Authentication authentication = authenticationManager
-                    .authenticate(new UsernamePasswordAuthenticationToken(jwtService.decrypt(ownerAuthDto.getUsername()),
-                            jwtService.decrypt(ownerAuthDto.getPsswrd())));
+                    .authenticate(new UsernamePasswordAuthenticationToken(jwtService.decrypt(ownerAuth.getUsername()),
+                            jwtService.decrypt(ownerAuth.getPsswrd())));
 //            if (!authentication.isAuthenticated()) {
 //                throw new BadCredentialsException("Bad credentials." + jwtService.decrypt(ownerAuthDto.getUsername()) + " " +  jwtService.decrypt(ownerAuthDto.getPsswrd()));
         }catch (Exception e) {
 //            throw new BadCredentialsException("Bad credentials. " + "username: " + jwtService.decrypt(ownerAuthDto.getUsername()) + " " + "password: " + jwtService.decrypt(ownerAuthDto.getPsswrd()));
-            throw new BadCredentialsException("Bad credentials. " + "username: " + ownerAuthDto.getUsername() + " " + "password: " + ownerAuthDto.getPsswrd());
+            throw new BadCredentialsException("Bad credentials. " + "username: " + ownerAuth.getUsername() + " " + "password: " + ownerAuth.getPsswrd());
 
         }
 //        }else
-                return jwtService.generateToken(ownerAuthDto.getUsername());
+                return jwtService.generateToken(ownerAuth.getUsername());
     }
 }
