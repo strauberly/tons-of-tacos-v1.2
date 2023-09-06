@@ -19,6 +19,7 @@ public class MenuItemService implements MenuItemServiceInterface {
         MenuItem menuItem;
 
         try{
+//            menuItem = menuItemRepository.findById(id).orElseThrow();
             menuItem = menuItemRepository.findById(id).orElseThrow();
         }catch (Exception e){
             throw new EntityNotFoundException("You have chosen a menu item that does not exist.");

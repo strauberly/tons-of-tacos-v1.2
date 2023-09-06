@@ -58,15 +58,19 @@ public class OwnersOrdersController implements OwnersOrdersControllerInterface {
     }
 
     @Override
-    public String addToOrder(Integer orderId, Integer menuItemId, Integer quantity) {
+//    public String addToOrder(Integer orderUid, Integer menuItemId, Integer quantity) {
+    public String addToOrder(String orderUid, Integer menuItemId, Integer quantity) {
         System.out.println("controller");
-      return ownersOrdersService.addToOrder(orderId, menuItemId, quantity);
+//      return ownersOrdersService.addToOrder(orderUid, menuItemId, quantity);
+        return ownersOrdersService.addToOrder(orderUid, menuItemId, quantity);
     }
 //@Transactional
     @Override
-    public String updateOrderItemQuantity(Integer orderId, Integer orderItemId, Integer newQuantity) {
-        System.out.println("controller");
-       return ownersOrdersService.updateOrderItemQuantity(orderId, orderItemId, newQuantity);
+//    public String updateOrderItemQuantity(Integer orderId, Integer orderItemId, Integer newQuantity) {
+    public String updateOrderItemQuantity(String orderUid, Integer orderItemId, Integer newQuantity) {
+            System.out.println("controller");
+        return ownersOrdersService.updateOrderItemQuantity(orderUid, orderItemId, newQuantity);
+//       return ownersOrdersService.updateOrderItemQuantity(orderId, orderItemId, newQuantity);
     }
 
     @Override
