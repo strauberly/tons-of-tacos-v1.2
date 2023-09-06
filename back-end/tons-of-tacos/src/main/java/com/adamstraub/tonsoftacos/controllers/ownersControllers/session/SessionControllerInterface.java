@@ -30,8 +30,8 @@ public interface SessionControllerInterface {
             + "\n" + "\n" + "Sample request body: " + "\n" + "\n" +
                     """
                             {
-                                "username":"m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5",
-                                "psswrd":"?aNwlfCd7glf(E&r)lLr}W?fT#Ld?aFw_ic"
+                                "username":"g)Kt7y{f0~nd$,hvNL16lP5u?5",
+                                "psswrd":"3aNw43rtrt40&r)lLr}W?fTLd?aFic"
                             }
                             """,
             responses = {

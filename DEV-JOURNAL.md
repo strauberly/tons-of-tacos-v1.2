@@ -6,6 +6,10 @@
 
 - Mark an order as closed changed to use uid instead of id successfully.
 - Delete an order changed to use uid instead of id successfully.
+- Add to order changed to use uid instead of id successfully.
+  - tests updated and functioning correctly.
+- Update order item quantity.
+- Addressed an issue with 404 not returning a satisfactory message.
 
 ---
 

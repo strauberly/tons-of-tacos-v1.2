@@ -446,10 +446,11 @@ public interface OwnersOrdersControllerInterface {
             }
     )
     @Transactional
-    @PutMapping("/add-to-order/{orderId}/{menuItemId}/{quantity}")
+    @PutMapping("/add-to-order/{orderUid}/{menuItemId}/{quantity}")
     String addToOrder(
             @PathVariable
-            Integer orderId, @PathVariable Integer menuItemId, @PathVariable Integer quantity);
+//            String orderUid, @PathVariable Integer menuItemId, @PathVariable Integer quantity);
+            String orderUid, @PathVariable Integer menuItemId, @PathVariable Integer quantity);
 
 //    edit order item
     @Operation(
@@ -473,10 +474,12 @@ public interface OwnersOrdersControllerInterface {
                             description = "An unplanned error occurred."),
             }
     )
-    @PutMapping("/update-order-item/{orderId}/{orderItemId}/{newQuantity}")
+//    @PutMapping("/update-order-item/{orderId}/{orderItemId}/{newQuantity}")
+    @PutMapping("/update-order-item/{orderUid}/{orderItemId}/{newQuantity}")
     String updateOrderItemQuantity(
             @PathVariable
-            Integer orderId,
+            String orderUid,
+//            Integer orderId,
             @PathVariable
             Integer orderItemId,
             @PathVariable

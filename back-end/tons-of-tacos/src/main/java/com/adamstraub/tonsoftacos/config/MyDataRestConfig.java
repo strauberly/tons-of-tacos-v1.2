@@ -35,11 +35,8 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         // get a list off all entity classes from entity manager
         Set<EntityType<?>> entities = entityManager.getMetamodel().getEntities();
         List<Class> entityClasses = new ArrayList<>();
-
-
         for (EntityType tempEntityType : entities) {
             entityClasses.add(tempEntityType.getJavaType());
-
         }
         //expose the ids for the array of entity/domain types
         Class[] domainTypes = entityClasses.toArray(new Class[0]);

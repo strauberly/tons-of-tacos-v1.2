@@ -163,8 +163,9 @@ public String deleteOrder(String orderUid) {
     }
 
     @Override
-    public String addToOrder(Integer orderId, Integer menuItemId, Integer quantity) {
-        System.out.println("service");
+//    public String addToOrder(Integer orderId, Integer menuItemId, Integer quantity) {
+    public String addToOrder(String orderUid, Integer menuItemId, Integer quantity) {
+            System.out.println("service");
         Optional<MenuItem> menuItem;
         Optional<Orders> orderToUpdate;
         try{
@@ -174,7 +175,7 @@ public String deleteOrder(String orderUid) {
             throw new EntityNotFoundException("Menu item can not be added to order. Verify menu item id.");
         }
         try{
-            orderToUpdate = Optional.of(ordersRepository.getReferenceById(orderId));
+            orderToUpdate = Optional.of(ordersRepository.findByOrderUid(orderUid));
 //            System.out.println(orderToUpdate);
         }catch (Exception e){
             throw new EntityNotFoundException("Menu item can not be added to order. Verify order id.");
@@ -184,13 +185,13 @@ public String deleteOrder(String orderUid) {
         OrderItem orderItem = OrderItem.builder()
                 .item(menuItemRepository.getReferenceById(menuItemId))
                 .quantity(quantity)
-                .order(ordersRepository.getReferenceById(orderId)).build();
+                .order(ordersRepository.findByOrderUid(orderUid)).build();
         orderItem.setTotal(menuItemRepository.getReferenceById(menuItemId).getUnitPrice() *
                 orderItem.getQuantity());
         orderItemRepository.save(orderItem);
 
 //        update order total
-        Orders order  = ordersRepository.getReferenceById(orderId);
+        Orders order  = ordersRepository.findByOrderUid(orderUid);
         order.setOrderTotal(order.getOrderTotal() + (menuItemRepository.getReferenceById(menuItemId).getUnitPrice() *
                 quantity));
         ordersRepository.save(order);
@@ -200,9 +201,10 @@ public String deleteOrder(String orderUid) {
 
     @Transactional
     @Override
-    public String updateOrderItemQuantity(Integer orderId, Integer orderItemId, Integer newQuantity) {
-        System.out.println("service");
-        Orders order = ordersRepository.getById(orderId);
+//    public String updateOrderItemQuantity(Integer orderId, Integer orderItemId, Integer newQuantity) {
+    public String updateOrderItemQuantity(String orderUid, Integer orderItemId, Integer newQuantity) {
+            System.out.println("service");
+        Orders order = ordersRepository.findByOrderUid(orderUid);
         if (order == null){
             throw new EntityNotFoundException("Order item not updated. Verify order exists.");
         }
