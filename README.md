@@ -116,6 +116,7 @@ Back-End
 - Lombok
 - Junit 5
 - Swagger
+- Logback
 - KWrite
 - Bash
 

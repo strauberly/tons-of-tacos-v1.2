@@ -47,11 +47,13 @@ public class OrderReadyTests {
                 authHeader.setBearerAuth(token);
                 HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
-                int orderId = 1;
+//                int orderId = 1;
+                String orderUid = "654654-465465-555";
 //            When: a connection is made
                 String uri =
-                        String.format("%s/%d", getBaseUriForOrderReady(), orderId);
-                System.out.println(uri);
+//                        String.format("%s/%d", getBaseUriForOrderReady(), orderId);
+                        String.format("%s/%s", getBaseUriForOrderReady(), orderUid);
+                        System.out.println(uri);
 
                 ResponseEntity<OrderReturnedToOwner> response =
                         getRestTemplate().exchange(uri, HttpMethod.PUT, headerEntity, new ParameterizedTypeReference<>() {
@@ -60,9 +62,11 @@ public class OrderReadyTests {
                 Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
                 System.out.println("Response code is " + response.getStatusCode() + ".");
 //            And: when the order is called ready does not == no
-                String parameter = "orderId";
+//                String parameter = "orderId";
+                String parameter = "orderUid";
                 String getOrderUri =
-                        String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter, orderId);
+//                        String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter, orderId);
+                        String.format("%s?%s=%s", getBaseUriForGetOrderById(), parameter, orderUid);
                 System.out.println(getOrderUri);
                 ResponseEntity<OrderReturnedToOwner> getOrderResponse =
                         getRestTemplate().exchange(getOrderUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
@@ -86,10 +90,12 @@ public class OrderReadyTests {
                 authHeader.setBearerAuth(token);
                 HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
-                int orderId = 88;
+//                int orderId = 88;
+                String orderId = "88";
 //            When: a connection is made
                 String uri =
-                        String.format("%s/%d", getBaseUriForOrderReady(), orderId);
+//                        String.format("%s/%d", getBaseUriForOrderReady(), orderId);
+                        String.format("%s/%s", getBaseUriForOrderReady(), orderId);
                 System.out.println(uri);
 
                 ResponseEntity<Map<String, Object>> response =

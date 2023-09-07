@@ -91,13 +91,13 @@ public OrderReturnedToOwner orderReady(String orderUid) {
         System.out.println("service");
         Orders order;
         String response;
-        try {
-//             order = ordersRepository.getReferenceById(orderId);
+
             order = ordersRepository.findByOrderUid(orderUid);
             System.out.println(order);
-        }catch (Exception e){
-            throw new EntityNotFoundException("Order does not exist. Please verify order id and try again.");
-        }
+            if (order == null){
+                throw new EntityNotFoundException("Order does not exist. Please verify order id and try again.");
+            }
+
         String timeReady = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
         order.setReady(timeReady);
         System.out.println("Order up!");
@@ -110,13 +110,17 @@ public OrderReturnedToOwner closeOrder(String orderUid) {
         System.out.println("service");
         Orders order;
         String response;
-        try {
+//        try {
 //            order = ordersRepository.getReferenceById(orderUid);
             order = ordersRepository.findByOrderUid(orderUid);
+
             System.out.println(order);
-        }catch (Exception e){
-            throw new EntityNotFoundException("Order does not exist. Please verify order id and try again.");
-        }
+            if (order == null){
+                throw new EntityNotFoundException("Order cannot be found and as such can not be closed. Please verify order id.");
+            }
+//        }catch (Exception e){
+//            throw new EntityNotFoundException("Order does not exist. Please verify order id and try again.");
+//        }
 
         if (order.getReady().equals("no")){
             throw new IllegalArgumentException("Order can not be closed if order is not ready.");

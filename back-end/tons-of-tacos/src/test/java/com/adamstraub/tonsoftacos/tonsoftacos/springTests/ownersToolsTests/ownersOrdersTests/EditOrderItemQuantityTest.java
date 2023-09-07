@@ -49,15 +49,20 @@ public class EditOrderItemQuantityTest {
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
-                int orderId = 1;
+//                int orderId = 1;
+            String orderUid = "654654-465465-555";
                 int orderItemId = 3;
                 int newQuantity = 2;
 
 //             get order before alteration
-            String parameter = "orderId";
+//            String parameter = "orderId";
+            String parameter = "orderUid";
             String getOrderUri =
-                    String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter, orderId);
+//                    String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter, orderId);
+                    String.format("%s?%s=%s", getBaseUriForGetOrderByUid(), parameter, orderUid);
+
             System.out.println(getOrderUri);
+
 //            call order item before alteration
             ResponseEntity<OrderReturnedToOwner> getOrderResponse =
                     getRestTemplate().exchange(getOrderUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
@@ -66,7 +71,8 @@ public class EditOrderItemQuantityTest {
 
 //            When: a successful connection is made
             String uri =
-                    String.format("%s/%d/%d/%d", getBaseUriForEditOrderItem(), orderId, orderItemId, newQuantity);
+//                    String.format("%s/%d/%d/%d", getBaseUriForEditOrderItem(), orderId, orderItemId, newQuantity);
+                    String.format("%s/%s/%d/%d", getBaseUriForEditOrderItem(), orderUid, orderItemId, newQuantity);
             System.out.println(uri);
 //
             ResponseEntity<String> response =
@@ -82,7 +88,8 @@ public class EditOrderItemQuantityTest {
 
 //            call order item after alteration
             String getOrderUri2 =
-                    String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter, orderId);
+//                    String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter, orderId);
+                    String.format("%s?%s=%s", getBaseUriForGetOrderById(), parameter, orderUid);
             System.out.println(getOrderUri2);
 
             ResponseEntity<OrderReturnedToOwner> getOrderResponse2 =
@@ -114,13 +121,14 @@ public class EditOrderItemQuantityTest {
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
-            int orderId = 77;
+//            int orderId = 77;
+            String orderId = "77";
             int orderItemId = 3;
             int newQuantity = 2;
 
 //            When: a successful connection is made
             String uri =
-                    String.format("%s/%d/%d/%d", getBaseUriForEditOrderItem(), orderId, orderItemId, newQuantity);
+                    String.format("%s/%s/%d/%d", getBaseUriForEditOrderItem(), orderId, orderItemId, newQuantity);
             System.out.println(uri);
 //
             ResponseEntity<Map<String, Object>> response =
@@ -159,13 +167,15 @@ public class EditOrderItemQuantityTest {
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
-            int orderId = 1;
+//            int orderId = 1;
+            String orderUid = "654654-465465-555";
             int orderItemId = 88;
             int newQuantity = 2;
 
 //            When: a successful connection is made
             String uri =
-                    String.format("%s/%d/%d/%d", getBaseUriForEditOrderItem(), orderId, orderItemId, newQuantity);
+//                    String.format("%s/%d/%d/%d", getBaseUriForEditOrderItem(), orderId, orderItemId, newQuantity);
+                    String.format("%s/%s/%d/%d", getBaseUriForEditOrderItem(), orderUid, orderItemId, newQuantity);
             System.out.println(uri);
 //
             ResponseEntity<Map<String, Object>> response =
@@ -181,7 +191,7 @@ public class EditOrderItemQuantityTest {
             Map<String, Object> error = response.getBody();
             assert error != null;
             Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.NOT_FOUND.toString().substring(0,3));
-            Assertions.assertTrue(error.containsValue("/api/owners-tools/orders/update-order-item/1/88/2"));
+            Assertions.assertTrue(error.containsValue("/api/owners-tools/orders/update-order-item/654654-465465-555/88/2"));
             Assertions.assertTrue(error.containsKey("message"));
             Assertions.assertTrue(error.containsKey("timestamp"));
             System.out.println("Negative test case complete for attempt to edit invalid order item.");
@@ -202,14 +212,17 @@ public class EditOrderItemQuantityTest {
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
-            int orderId = 1;
+//            int orderId = 1;
+            String orderUid = "654654-465465-555";
             int orderItemId = 3;
             int newQuantity = 12;
             System.out.println(newQuantity);
 
 //            When: a successful connection is made
             String uri =
-                    String.format("%s/%d/%d/%d", getBaseUriForEditOrderItem(), orderId, orderItemId, newQuantity);
+//                    String.format("%s/%d/%d/%d", getBaseUriForEditOrderItem(), orderId, orderItemId, newQuantity);
+                    String.format("%s/%s/%d/%d", getBaseUriForEditOrderItem(), orderUid, orderItemId, newQuantity);
+
             System.out.println(uri);
 //
             ResponseEntity<Map<String, Object>> response =
@@ -225,73 +238,10 @@ public class EditOrderItemQuantityTest {
             Map<String, Object> error = response.getBody();
             assert error != null;
             Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.BAD_REQUEST.toString().substring(0,3));
-            Assertions.assertTrue(error.containsValue("/api/owners-tools/orders/update-order-item/1/3/12"));
+            Assertions.assertTrue(error.containsValue("/api/owners-tools/orders/update-order-item/654654-465465-555/3/12"));
             Assertions.assertTrue(error.containsKey("message"));
             Assertions.assertTrue(error.containsKey("timestamp"));
             System.out.println("Negative test case complete for attempt to add more than 10 of any item to an order.");
         }
-
-//        @Test
-//        void callingOrderItemAfterChangingQuantityToZero404() {
-////  Edit quantity  to zero and then try to edit again
-////            Given: a valid order, order item, new quantity and auth header.
-//
-////            get valid token
-////            String token = validToken();
-//            String token = encryptedToken();
-//            Assertions.assertNotNull(token);
-//
-////           build authheader
-//            HttpHeaders authHeader = new HttpHeaders();
-//            authHeader.setContentType(MediaType.APPLICATION_JSON);
-//            authHeader.setBearerAuth(token);
-//            HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
-//
-//            int orderId = 1;
-//            int orderItemId = 3;
-//            int newQuantity = 0;
-//            int newQuantity2 = 2;
-//            System.out.println(newQuantity);
-//            System.out.println(newQuantity2);
-//
-////            When: a successful connection is made
-//            String uri =
-//                    String.format("%s/%d/%d/%d", getBaseUriForEditOrderItem(), orderId, orderItemId, newQuantity);
-//            System.out.println(uri);
-////
-//            ResponseEntity<String> response =
-//                    getRestTemplate().exchange(uri, HttpMethod.PUT, headerEntity,
-//                            new ParameterizedTypeReference<>() {});
-//            System.out.println("Response body: " + response.getBody());
-////            Then: a response of 200 returned
-//            Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
-//            System.out.println("Response code is " + response.getStatusCode() + ".");
-//            System.out.println("Response body: " + response.getBody());
-//
-////            And: if a second call to alter the same order item
-//            String uri2 =
-//                    String.format("%s/%d/%d/%d", getBaseUriForEditOrderItem(), orderId, orderItemId, newQuantity2);
-//            System.out.println(uri2);
-////
-//            ResponseEntity<String> response2 =
-//                    getRestTemplate().exchange(uri2, HttpMethod.PUT, headerEntity,
-//                            new ParameterizedTypeReference<>() {});
-//
-//
-////            Then: a response of 404 returned
-//            Assertions.assertEquals(HttpStatus.NOT_FOUND, response2.getStatusCode());
-//            System.out.println("Response code is " + response2.getStatusCode() + ".");
-//            System.out.println("Response body: " + response2.getBody());
-//
-////
-//////        And: the error message contains
-////            Map<String, Object> error = response2.getBody();
-////            assert error != null;
-////            Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.NOT_FOUND.toString().substring(0,3));
-////            Assertions.assertTrue(error.containsValue("/api/owners-tools/orders/update-order-item/1/3/2"));
-////            Assertions.assertTrue(error.containsKey("message"));
-////            Assertions.assertTrue(error.containsKey("timestamp"));
-////            System.out.println("Negative test case complete for attempt to call an order item that has been deleted by having its quantity changed to 0.");
-//        }
     }
 }
