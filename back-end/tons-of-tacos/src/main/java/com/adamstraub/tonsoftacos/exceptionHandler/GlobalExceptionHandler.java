@@ -44,8 +44,7 @@ public class GlobalExceptionHandler {
     public Map <String, Object> handleEntityNotFoundException(
             EntityNotFoundException e, WebRequest webRequest) {
         logger.debug(createExceptionMessage(e.getLocalizedMessage(), HttpStatus.NOT_FOUND, webRequest).toString());
-//        return createExceptionMessage(e.getLocalizedMessage(), HttpStatus.NOT_FOUND, webRequest);
-        return createExceptionMessage("Resource not found. Please verify you have submitted only correct identifiers.", HttpStatus.NOT_FOUND, webRequest);
+        return createExceptionMessage(e.getLocalizedMessage(), HttpStatus.NOT_FOUND, webRequest);
     }
 
     @ExceptionHandler(IllegalArgumentException.class)

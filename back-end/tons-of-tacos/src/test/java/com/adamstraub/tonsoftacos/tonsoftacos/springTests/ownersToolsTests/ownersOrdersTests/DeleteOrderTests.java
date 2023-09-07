@@ -46,11 +46,13 @@ public class DeleteOrderTests {
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
-            int orderId = 1;
+//            int orderId = 1;
+            String orderUid = "654654-465465-555";
 
             //        When: a connection is made
             String uri =
-                    String.format("%s/%d", getBaseUriForDeleteOrder(), orderId);
+//                    String.format("%s/%d", getBaseUriForDeleteOrder(), orderId);
+                    String.format("%s/%s", getBaseUriForDeleteOrder(), orderUid);
             System.out.println(uri);
 
             ResponseEntity<String> response =
@@ -62,9 +64,11 @@ public class DeleteOrderTests {
             System.out.println("Response body:  " + response.getBody());
             Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
 //        And: an attempt to call the order deleted will give a 404 response
-            String parameter = "orderId";
+//            String parameter = "orderId";
+            String parameter = "orderUid";
             String getOrderUri =
-                    String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter, orderId);
+//                    String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter, orderId);
+                    String.format("%s?%s=%s", getBaseUriForGetOrderByUid(), parameter, orderUid);
             System.out.println(getOrderUri);
             ResponseEntity<OrderReturnedToOwner> getOrderResponse =
                     getRestTemplate().exchange(getOrderUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
@@ -92,7 +96,7 @@ public class DeleteOrderTests {
 
             //        When: a successful connection is made
             String uri =
-                    String.format("%s/%d", getBaseUriForDeleteOrder(), orderId);
+                    String.format("%s/%s", getBaseUriForDeleteOrder(), orderId);
             System.out.println(uri);
 
             ResponseEntity<Map<String, Object>> response =

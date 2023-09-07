@@ -2,6 +2,17 @@
 
 ---
 
+-- 06 Sep 2023 --
+
+- Delete order tests updated to make use of order uid.
+- Edit order item quantity tests updated to make use of order uid.
+- Work on get order by id tests saved and removed from application as we will no longer be using them.
+- Today's sales tests updated to make use of order uid.
+- Order closed tests updated to make use of order uid.
+- Order ready tests updated to make use of order uid.
+
+---
+
 -- 05 Sep 2023 --
 
 - Mark an order as closed changed to use uid instead of id successfully.
