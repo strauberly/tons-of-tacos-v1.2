@@ -8,10 +8,10 @@ public interface OwnersCustomersServiceInterface {
 
     List<CustomerReturnedToOwner> getAllCustomers();
 
-    CustomerReturnedToOwner getCustomerByName(String name) throws Exception;
+    CustomerReturnedToOwner getCustomerByName(String name);
 
-    CustomerReturnedToOwner getCustomerById(Integer customerId);
-
+//    CustomerReturnedToOwner getCustomerById(Integer customerId);
+CustomerReturnedToOwner getCustomerByUid(String customerUid);
     String updateCustomerName(Integer customerId, String newCustomerName);
 
     String updateCustomerEmail(Integer customerId, String newCustomerEmail);

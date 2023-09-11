@@ -20,15 +20,18 @@ public class OwnersCustomersController implements OwnersCustomersControllerInter
     }
 
     @Override
-    public CustomerReturnedToOwner getCustomerByName(String name) throws Exception {
+//    public CustomerReturnedToOwner getCustomerByName(String name) throws Exception {
+    public CustomerReturnedToOwner getCustomerByName(String name){
         System.out.println("controller");
             return ownersCustomersService.getCustomerByName(name);
     }
 
     @Override
-    public CustomerReturnedToOwner getCustomerById(Integer customerId) {
+//    public CustomerReturnedToOwner getCustomerById(Integer customerId) {
+    public CustomerReturnedToOwner getCustomerByUid(String customerUid) {
         System.out.println("controller");
-        return ownersCustomersService.getCustomerById(customerId);
+//        return ownersCustomersService.getCustomerById(customerUid);
+        return ownersCustomersService.getCustomerByUid(customerUid);
     }
 
     @Override

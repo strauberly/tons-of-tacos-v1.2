@@ -82,8 +82,9 @@ public interface OwnersCustomersControllerInterface {
     @GetMapping("/get-customers")
     List<CustomerReturnedToOwner> getAllCustomers();
 
-    //  get a customer by customer name
-    @Operation(
+
+//  get a customer by customer name
+@Operation(
             summary = "A customer is returned by customer name.",
             description = """
                  A customers name is provided and if valid, will return a customer object. For owner use only with proper auth.
@@ -122,15 +123,15 @@ public interface OwnersCustomersControllerInterface {
             }
     )
     @Transactional
-    @GetMapping("/get-customer/name?name={name}")
-    CustomerReturnedToOwner getCustomerByName(@RequestParam String name) throws Exception;
+    @GetMapping("/get-customer-name/{name}")
+    CustomerReturnedToOwner getCustomerByName(@RequestParam String name);
 
 //    get customer by id
 @Operation(
-        summary = "A customer is returned by id.",
+        summary = "A customer is returned by uid.",
         description = """
 
-        A customers id is provided and if valid, will return a customer object. For owner use only with proper auth.
+        A customers uid is provided and if valid, will return a customer object. For owner use only with proper auth.
         """
            + "\n" + "Example query: "
            + "\n" +  "\n" +
@@ -166,8 +167,9 @@ responses = {
 }
 )
 @Transactional
-@GetMapping("/get-customer/customerId?customerId={id}")
-CustomerReturnedToOwner getCustomerById(@RequestParam Integer customerId);
+@GetMapping("/get-customer-uid/{customerUid}")
+//CustomerReturnedToOwner getCustomerById(@RequestParam Integer customerId);
+CustomerReturnedToOwner getCustomerByUid(@RequestParam String customerUid);
 
 
 //edit customer name
