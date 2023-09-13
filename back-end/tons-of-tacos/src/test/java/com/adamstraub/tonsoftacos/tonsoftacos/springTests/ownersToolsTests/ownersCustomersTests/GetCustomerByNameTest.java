@@ -100,7 +100,7 @@ public class GetCustomerByNameTest {
                 Map<String, Object> error = response.getBody();
                 assert error != null;
                 Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.NOT_FOUND.toString().substring(0,3));
-                Assertions.assertTrue(error.containsValue("/api/owners-tools/customers/get-customer/name"));
+                Assertions.assertTrue(error.containsValue("/api/owners-tools/customers/get-customer-name/name"));
                 Assertions.assertTrue(error.containsKey("message"));
                 Assertions.assertTrue(error.containsKey("timestamp"));
 

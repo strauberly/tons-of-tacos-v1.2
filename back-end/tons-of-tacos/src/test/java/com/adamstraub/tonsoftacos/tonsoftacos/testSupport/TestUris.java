@@ -86,11 +86,12 @@ public class TestUris {
     }
 
     protected  String getBaseUriForGetCustomerByName(){
-        return String.format("http://localhost:%d/api/owners-tools/customers/get-customer/name", Integer.valueOf(serverPort));
+        return String.format("http://localhost:%d/api/owners-tools/customers/get-customer-name/name", Integer.valueOf(serverPort));
     }
 
-    protected  String getBaseUriForGetCustomerById(){
-        return String.format("http://localhost:%d/api/owners-tools/customers/get-customer/customerId",
+//    protected  String getBaseUriForGetCustomerById(){
+protected  String getBaseUriForGetCustomerByUid(){
+        return String.format("http://localhost:%d/api/owners-tools/customers/get-customer-uid/customerUid",
                 Integer.valueOf(serverPort));
     }
 

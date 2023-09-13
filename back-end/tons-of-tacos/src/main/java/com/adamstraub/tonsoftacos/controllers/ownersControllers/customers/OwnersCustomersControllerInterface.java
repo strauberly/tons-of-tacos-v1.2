@@ -97,13 +97,13 @@ public interface OwnersCustomersControllerInterface {
                     + "\n" +  "\n" +
                     """
                             {
-                                "customerId": 1,
+                                "customerUid": "jk34-h5j0",
                                 "name": "John Johnson",
                                 "email": "john@johnson.com",
                                 "phone": "555.555.5552",
                                 "orderIds": [
-                                    2,
-                                    3
+                                    "654654-4655-555",
+                                    "654654-4657-555"
                                 ]
                             }
                             """,
@@ -126,7 +126,7 @@ public interface OwnersCustomersControllerInterface {
     @GetMapping("/get-customer-name/{name}")
     CustomerReturnedToOwner getCustomerByName(@RequestParam String name);
 
-//    get customer by id
+//    get customer by uid
 @Operation(
         summary = "A customer is returned by uid.",
         description = """
@@ -135,22 +135,22 @@ public interface OwnersCustomersControllerInterface {
         """
            + "\n" + "Example query: "
            + "\n" +  "\n" +
-           "localhost:8080/api/owners-tools/customers/get-customer/customerId?customerId=1"
+           "localhost:8080/api/owners-tools/customers/get-customer-uid/customerUid?customerUid=jk34-h5j0"
            + "\n" +
    "\n" + "Example response: "
            + "\n" +  "\n" +
            """
-        {
-        "customerId": 1,
-        "name": "John Johnson",
-        "email": "john@johnson.com",
-        "phone": "555.555.5552",
-        "orderIds": [
-        2,
-        3
-        ]
-        }
-        """,
+{
+    "customerUid": "jk34-h5j0",
+    "name": "John Johnson",
+    "email": "john@johnson.com",
+    "phone": "555.555.5552",
+    "orderIds": [
+        "654654-4655-555",
+        "654654-4657-555"
+    ]
+}
+                   """,
 responses = {
 @ApiResponse(
     responseCode = "200",

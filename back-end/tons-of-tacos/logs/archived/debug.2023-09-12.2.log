@@ -1,0 +1,88 @@
+2023-09-12 20:20:29 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-12 20:20:30 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.549 seconds (process running for 4.97)
+2023-09-12 20:21:15 [main] INFO  c.a.t.t.s.o.o.DeleteCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting DeleteCustomerByUidTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 504763 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-12 20:21:15 [main] DEBUG c.a.t.t.s.o.o.DeleteCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-12 20:21:15 [main] INFO  c.a.t.t.s.o.o.DeleteCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-12 20:21:20 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-12 20:21:21 [main] INFO  c.a.t.t.s.o.o.DeleteCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started DeleteCustomerByUidTest.testThatDoesNotPolluteTheApplicationContextUris in 6.12 seconds (process running for 7.236)
+2023-09-12 20:21:22 [http-nio-auto-1-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No customer with that uid found. Please check formatting and verify customer exists., uri=/api/owners-tools/customers/delete-customer/85, timestamp=Tue, 12 Sep 2023 20:21:22 -0700}
+2023-09-12 20:24:57 [main] INFO  c.a.t.t.s.o.o.GetCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting GetCustomerByUidTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 504990 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-12 20:24:57 [main] DEBUG c.a.t.t.s.o.o.GetCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-12 20:24:57 [main] INFO  c.a.t.t.s.o.o.GetCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-12 20:25:02 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-12 20:25:03 [main] INFO  c.a.t.t.s.o.o.GetCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started GetCustomerByUidTest.testThatDoesNotPolluteTheApplicationContextUris in 5.975 seconds (process running for 7.052)
+2023-09-12 20:32:52 [main] INFO  c.a.t.t.s.o.o.GetCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting GetCustomerByUidTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 505182 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-12 20:32:52 [main] DEBUG c.a.t.t.s.o.o.GetCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-12 20:32:52 [main] INFO  c.a.t.t.s.o.o.GetCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-12 20:32:57 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-12 20:32:57 [main] INFO  c.a.t.t.s.o.o.GetCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started GetCustomerByUidTest.testThatDoesNotPolluteTheApplicationContextUris in 5.952 seconds (process running for 7.104)
+2023-09-12 20:34:03 [main] INFO  c.a.t.t.s.o.o.GetCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting GetCustomerByUidTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 505344 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-12 20:34:03 [main] DEBUG c.a.t.t.s.o.o.GetCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-12 20:34:03 [main] INFO  c.a.t.t.s.o.o.GetCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-12 20:34:07 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-12 20:34:08 [main] INFO  c.a.t.t.s.o.o.GetCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started GetCustomerByUidTest.testThatDoesNotPolluteTheApplicationContextUris in 5.9 seconds (process running for 7.014)
+2023-09-12 20:34:09 [http-nio-auto-1-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No customer found with that UID. Please verify and try  again., uri=/api/owners-tools/customers/get-customer-uid/customerUid, timestamp=Tue, 12 Sep 2023 20:34:09 -0700}
+2023-09-12 20:35:03 [main] INFO  c.a.t.t.s.o.o.GetCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting GetCustomerByUidTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 505481 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-12 20:35:03 [main] DEBUG c.a.t.t.s.o.o.GetCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-12 20:35:03 [main] INFO  c.a.t.t.s.o.o.GetCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-12 20:35:08 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-12 20:35:09 [main] INFO  c.a.t.t.s.o.o.GetCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started GetCustomerByUidTest.testThatDoesNotPolluteTheApplicationContextUris in 6.148 seconds (process running for 7.222)
+2023-09-12 20:35:10 [http-nio-auto-1-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No customer found with that UID. Please verify and try  again., uri=/api/owners-tools/customers/get-customer-uid/customerUid, timestamp=Tue, 12 Sep 2023 20:35:10 -0700}
+2023-09-12 20:35:36 [main] INFO  c.a.t.t.s.o.o.GetCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting GetCustomerByUidTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 505626 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-12 20:35:36 [main] DEBUG c.a.t.t.s.o.o.GetCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-12 20:35:36 [main] INFO  c.a.t.t.s.o.o.GetCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-12 20:35:41 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-12 20:35:41 [main] INFO  c.a.t.t.s.o.o.GetCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started GetCustomerByUidTest.testThatDoesNotPolluteTheApplicationContextUris in 5.871 seconds (process running for 6.947)
+2023-09-12 20:35:42 [http-nio-auto-1-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No customer found with that UID. Please verify and try  again., uri=/api/owners-tools/customers/get-customer-uid/customerUid, timestamp=Tue, 12 Sep 2023 20:35:42 -0700}
+2023-09-12 20:40:36 [main] INFO  c.a.t.t.s.o.o.GetCustomerByNameTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting GetCustomerByNameTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 505880 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-12 20:40:36 [main] DEBUG c.a.t.t.s.o.o.GetCustomerByNameTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-12 20:40:36 [main] INFO  c.a.t.t.s.o.o.GetCustomerByNameTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-12 20:40:41 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-12 20:40:42 [main] INFO  c.a.t.t.s.o.o.GetCustomerByNameTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started GetCustomerByNameTest.testThatDoesNotPolluteTheApplicationContextUris in 6.067 seconds (process running for 7.159)
+2023-09-12 20:41:09 [main] INFO  c.a.t.t.s.o.o.GetCustomerByNameTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting GetCustomerByNameTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 506011 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-12 20:41:09 [main] DEBUG c.a.t.t.s.o.o.GetCustomerByNameTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-12 20:41:09 [main] INFO  c.a.t.t.s.o.o.GetCustomerByNameTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"

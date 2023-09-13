@@ -42,9 +42,10 @@ public class UpdateCustomerNameTest {
                 Assertions.assertNotNull(token);
 //            -----------------------------------------------------------------------------
 //            Given: a customerId, new name and valid auth header.
-                int customerId = 1;
+//                int customerId = 1;
+                String customerId = "gd34-igjr";
                 String newCustomerName = "Larry Lawson";
-                String parameter = "customerId";
+                String parameter = "customerUid";
 
                 HttpHeaders authHeader = new HttpHeaders();
                 authHeader.setContentType(MediaType.APPLICATION_JSON);
@@ -54,7 +55,8 @@ public class UpdateCustomerNameTest {
 //
 //             get customer before alteration
                 String getCustomerUri =
-                        String.format("%s?%s=%d", getBaseUriForGetCustomerById(),parameter, customerId);
+//                        String.format("%s?%s=%d", getBaseUriForGetCustomerById(),parameter, customerId);
+                        String.format("%s?%s=%s", getBaseUriForGetCustomerByUid(),parameter, customerId);
                 System.out.println(getCustomerUri);
 //            call order item before alteration
                 ResponseEntity<CustomerReturnedToOwner> getCustomerResponse =
@@ -64,7 +66,7 @@ public class UpdateCustomerNameTest {
 
 //            When: a successful connection is made
                 String uri =
-                        String.format("%s/%d/%s",  getBaseUriForUpdateName(), customerId, newCustomerName);
+                        String.format("%s/%s/%s",  getBaseUriForUpdateName(), customerId, newCustomerName);
                 System.out.println(uri);
 //
                 ResponseEntity<String> response =
@@ -80,7 +82,8 @@ public class UpdateCustomerNameTest {
 
 //            call customer after alteration
                 String getCustomerUri2 =
-                        String.format("%s?%s=%d", getBaseUriForGetCustomerById(), parameter, customerId);
+//                        String.format("%s?%s=%d", getBaseUriForGetCustomerById(), parameter, customerId);
+                String.format("%s?%s=%s", getBaseUriForGetCustomerByUid(), parameter, customerId);
                 System.out.println(getCustomerUri2);
 
                 ResponseEntity<OrderReturnedToOwner> getCustomerResponse2 =
@@ -101,9 +104,10 @@ public class UpdateCustomerNameTest {
                 Assertions.assertNotNull(token);
 //            -----------------------------------------------------------------------------
 //            Given: a valid customerId, invalid name and valid auth header.
-                int customerId = 1;
+//                int customerId = 1;
+                String customerId = "gd34-igjr";
                 String newCustomerName = "dsfk jh!@#";
-                String parameter = "customerId";
+                String parameter = "customerUid";
 
                 HttpHeaders authHeader = new HttpHeaders();
                 authHeader.setContentType(MediaType.APPLICATION_JSON);
@@ -112,7 +116,7 @@ public class UpdateCustomerNameTest {
 
 //            When: a successful connection is made
                 String uri =
-                        String.format("%s/%d/%s",  getBaseUriForUpdateName(), customerId, newCustomerName);
+                        String.format("%s/%s/%s",  getBaseUriForUpdateName(), customerId, newCustomerName);
                 System.out.println(uri);
 //
                 ResponseEntity<Map<String, Object>> response =
@@ -129,7 +133,7 @@ public class UpdateCustomerNameTest {
                 Map<String, Object> error = response.getBody();
                 assert error != null;
                 Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.BAD_REQUEST.toString().substring(0,3));
-                Assertions.assertTrue(error.containsValue("/api/owners-tools/customers/edit-customer-name/1/dsfk%20jh!@"));
+                Assertions.assertTrue(error.containsValue("/api/owners-tools/customers/edit-customer-name/gd34-igjr/dsfk%20jh!@"));
                 Assertions.assertTrue(error.containsKey("message"));
                 Assertions.assertTrue(error.containsKey("timestamp"));
                 System.out.println("Negative test case complete for changing the name of an existing customer.");

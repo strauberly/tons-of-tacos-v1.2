@@ -9,12 +9,17 @@
   - edit customer name updated.
   - edit customer email updated.
   - delete customer updated.
+- Updated tests for get all customers, delete customer by uid, get customer by uid, get customer by name, update customer email, update customer phone.
+
+---
 
 -- 10 Sep 2023 --
 
 - Refactored dtos to exclude entities id in favor of uid and for returned order to utilize uids in lieu of ids.
 - Updated owners tools customers requests to make use of uids.
 - Encountered a bug while returning customer by name that appeared to stem from endpoint paths too similar to looking up a customer by uid. Rectified through alteration to naming convention.
+
+---
 
 -- 06 Sep 2023 --
 

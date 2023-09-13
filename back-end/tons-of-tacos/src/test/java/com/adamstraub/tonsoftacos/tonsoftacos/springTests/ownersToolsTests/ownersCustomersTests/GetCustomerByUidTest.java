@@ -17,7 +17,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class GetCustomerByIdTest {
+public class GetCustomerByUidTest {
 
         @Autowired
         private JdbcTemplate jdbcTemplate;
@@ -32,23 +32,27 @@ public class GetCustomerByIdTest {
                 config = @SqlConfig(encoding = "utf-8"))
         class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSupport {
             @Test
-            void getCustomerById200() {
+            void getCustomerByUid200() {
+
                 //            get valid token
 //                String token = validToken();
                 String token = encryptedToken();
                 Assertions.assertNotNull(token);
 //            -----------------------------------------------------------------------------
 //            Given: a valid customer id and auth header
-                int customerId = 1;
+//                int customerId = 1;
+                String customerId = "gd34-igjr";
 
                 HttpHeaders headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
                 headers.setBearerAuth(token);
                 HttpEntity<String> headersEntity = new HttpEntity<>(headers);
 //            When: a connection is made
-                String parameter = "customerId";
+//                String parameter = "customerId";
+                String parameter = "customerUid";
                 String uri =
-                        String.format("%s?%s=%d", getBaseUriForGetCustomerById(), parameter, customerId);
+                        String.format("%s?%s=%s", getBaseUriForGetCustomerByUid(), parameter, customerId);
+//                        String.format("%s?%s=%d", getBaseUriForGetCustomerById(), parameter, customerId);
                 System.out.println(uri);
                 ResponseEntity<Map<String, Object>> response =
 //                ResponseEntity<OwnersGetCustomerDto> response =
@@ -77,10 +81,11 @@ public class GetCustomerByIdTest {
                 headers.setBearerAuth(token);
                 HttpEntity<String> headersEntity = new HttpEntity<>(headers);
 //            When: a connection is made
-                String parameter = "customerId";
+                String parameter = "customerUid";
                 String uri =
-                        String.format("%s?%s=%d", getBaseUriForGetCustomerById(), parameter, customerId);
-                System.out.println(uri);
+//                        String.format("%s?%s=%d", getBaseUriForGetCustomerById(), parameter, customerId);
+                        String.format("%s?%s=%s", getBaseUriForGetCustomerByUid(), parameter, customerId);
+                        System.out.println(uri);
 
                 ResponseEntity<Map<String, Object>> response =
                         getRestTemplate().exchange(uri, HttpMethod.GET, headersEntity, new ParameterizedTypeReference<>() {
@@ -93,7 +98,7 @@ public class GetCustomerByIdTest {
                 Map<String, Object> error = response.getBody();
                 assert error != null;
                 Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.NOT_FOUND.toString().substring(0,3));
-                Assertions.assertTrue(error.containsValue("/api/owners-tools/customers/get-customer/customerId"));
+                Assertions.assertTrue(error.containsValue("/api/owners-tools/customers/get-customer-uid/customerUid"));
                 Assertions.assertTrue(error.containsKey("message"));
                 Assertions.assertTrue(error.containsKey("timestamp"));
                 System.out.println("error message: " + error);

@@ -18,7 +18,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class DeleteCustomerByIdTest {
+public class DeleteCustomerByUidTest {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -50,13 +50,14 @@ public class DeleteCustomerByIdTest {
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
             System.out.println(headerEntity);
-            int customerId = 1;
-
+//            int customerId = 1;
+            String customerId = "gd34-igjr";
 
             //        When: a connection is made
             String uri=
-                    String.format("%s/%d", getBaseUriForDeleteCustomer(), customerId);
-            System.out.println(uri);
+//                    String.format("%s/%d", getBaseUriForDeleteCustomer(), customerId);
+                    String.format("%s/%s", getBaseUriForDeleteCustomer(), customerId);
+                    System.out.println(uri);
 
 
             ResponseEntity<String> response =
@@ -71,9 +72,10 @@ public class DeleteCustomerByIdTest {
 //             verify customer deleted
 
 //        And: an attempt to call the order deleted will give a 404
-            String parameter = "customerId";
+            String parameter = "customerUid";
             String getCustomerUri =
-                    String.format("%s?%s=%d", getBaseUriForGetCustomerById(), parameter, customerId);
+//                    String.format("%s?%s=%d", getBaseUriForGetCustomerById(), parameter, customerId);
+                    String.format("%s?%s=%s", getBaseUriForGetCustomerByUid(), parameter, customerId);
             System.out.println(getCustomerUri);
             ResponseEntity<CustomerReturnedToOwner> getCustomerResponse =
                     getRestTemplate().exchange
