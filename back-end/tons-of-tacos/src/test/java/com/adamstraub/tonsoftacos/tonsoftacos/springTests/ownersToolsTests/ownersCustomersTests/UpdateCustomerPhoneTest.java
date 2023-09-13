@@ -43,9 +43,10 @@ public class UpdateCustomerPhoneTest {
 //            -----------------------------------------------------------------------------
 
 //            Given: a valid customer id, phone number and valid auth header
-                int customerId = 1;
+//                int customerId = 1;
+                String customerId = "gd34-igjr";
                 String newCustomerPhone = "555.555.5155";
-                String parameter = "customerId";
+                String parameter = "customerUid";
 //             get order before alteration
 
                 HttpHeaders authHeader = new HttpHeaders();
@@ -56,7 +57,8 @@ public class UpdateCustomerPhoneTest {
 
 
                 String getCustomerUri =
-                        String.format("%s?%s=%d", getBaseUriForGetCustomerById(),parameter, customerId);
+//                        String.format("%s?%s=%d", getBaseUriForGetCustomerById(),parameter, customerId);
+                        String.format("%s?%s=%s", getBaseUriForGetCustomerByUid(),parameter, customerId);
                 System.out.println(getCustomerUri);
 //            call customer before alteration
                 ResponseEntity<CustomerReturnedToOwner> getCustomerResponse =
@@ -66,7 +68,7 @@ public class UpdateCustomerPhoneTest {
 
 //            When: a successful connection is made
                 String uri =
-                        String.format("%s/%d/%s",  getBaseUriForUpdatePhone(), customerId, newCustomerPhone);
+                        String.format("%s/%s/%s",  getBaseUriForUpdatePhone(), customerId, newCustomerPhone);
                 System.out.println(uri);
 //
                 ResponseEntity<String> response =
@@ -81,7 +83,8 @@ public class UpdateCustomerPhoneTest {
 
 //            call customer after alteration
                 String getCustomerUri2 =
-                        String.format("%s?%s=%d", getBaseUriForGetCustomerById(), parameter, customerId);
+//                        String.format("%s?%s=%d", getBaseUriForGetCustomerById(), parameter, customerId);
+                        String.format("%s?%s=%s", getBaseUriForGetCustomerByUid(), parameter, customerId);
                 System.out.println(getCustomerUri2);
 
                 ResponseEntity<OrderReturnedToOwner> getCustomerResponse2 =

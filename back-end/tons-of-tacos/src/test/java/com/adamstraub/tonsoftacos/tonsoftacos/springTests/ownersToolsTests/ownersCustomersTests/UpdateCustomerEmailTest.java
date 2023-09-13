@@ -41,9 +41,10 @@ public class UpdateCustomerEmailTest {
                 Assertions.assertNotNull(token);
 //            -----------------------------------------------------------------------------
 //            Given: a valid query, auth header and an email.
-                int customerId = 1;
+//                int customerId = 1;
+                String customerId = "gd34-igjr";
                 String newCustomerEmail = "larry@larbo.com";
-                String parameter = "customerId";
+                String parameter = "customerUid";
 //
                 HttpHeaders authHeader = new HttpHeaders();
                 authHeader.setContentType(MediaType.APPLICATION_JSON);
@@ -52,7 +53,7 @@ public class UpdateCustomerEmailTest {
 
 //             get email before alteration
                 String getCustomerUri =
-                        String.format("%s?%s=%d", getBaseUriForGetCustomerById(), parameter, customerId);
+                        String.format("%s?%s=%s", getBaseUriForGetCustomerByUid(), parameter, customerId);
                 System.out.println(getCustomerUri);
 //            call order item before alteration
                 ResponseEntity<CustomerReturnedToOwner> getCustomerResponse =
@@ -62,7 +63,7 @@ public class UpdateCustomerEmailTest {
 
 //            When: a successful connection is made
                 String uri =
-                        String.format("%s/%d/%s", getBaseUriForUpdateEmail(), customerId, newCustomerEmail);
+                        String.format("%s/%s/%s", getBaseUriForUpdateEmail(), customerId, newCustomerEmail);
                 System.out.println(uri);
 //
                 ResponseEntity<String> response =
@@ -78,7 +79,8 @@ public class UpdateCustomerEmailTest {
 //            before
 //            call order item after alteration
                 String getCustomerUri2 =
-                        String.format("%s?%s=%d", getBaseUriForGetCustomerById(), parameter, customerId);
+                        String.format("%s?%s=%s", getBaseUriForGetCustomerByUid(), parameter, customerId);
+//                        String.format("%s?%s=%d", getBaseUriForGetCustomerById(), parameter, customerId);
                 System.out.println(getCustomerUri2);
 
                 ResponseEntity<OrderReturnedToOwner> getCustomerResponse2 =
@@ -99,7 +101,8 @@ public class UpdateCustomerEmailTest {
                 Assertions.assertNotNull(token);
 //            -----------------------------------------------------------------------------
 //            Given: an invalid id, valid auth header and valid email.
-                int customerId = 1;
+//                int customerId = 1;
+                String customerId = "gd34-igjr";
                 String newCustomerEmail = "larrylarbo.com";
 //                String parameter = "customerId";
 //
@@ -110,7 +113,7 @@ public class UpdateCustomerEmailTest {
 
 //            When: a successful connection is made
                 String uri =
-                        String.format("%s/%d/%s", getBaseUriForUpdateEmail(), customerId, newCustomerEmail);
+                        String.format("%s/%s/%s", getBaseUriForUpdateEmail(), customerId, newCustomerEmail);
                 System.out.println(uri);
 //
                 ResponseEntity<Map<String, Object>> response =
@@ -127,7 +130,7 @@ public class UpdateCustomerEmailTest {
                 Map<String, Object> error = response.getBody();
                 assert error != null;
                 Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.BAD_REQUEST.toString().substring(0,3));
-                Assertions.assertTrue(error.containsValue("/api/owners-tools/customers/edit-customer-email/1/larrylarbo.com"));
+                Assertions.assertTrue(error.containsValue("/api/owners-tools/customers/edit-customer-email/gd34-igjr/larrylarbo.com"));
                 Assertions.assertTrue(error.containsKey("message"));
                 Assertions.assertTrue(error.containsKey("timestamp"));
                 System.out.println("Negative test case complete for changing the email of an existing customer.");

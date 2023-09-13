@@ -1,0 +1,86 @@
+2023-09-12 20:41:14 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-12 20:41:15 [main] INFO  c.a.t.t.s.o.o.GetCustomerByNameTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started GetCustomerByNameTest.testThatDoesNotPolluteTheApplicationContextUris in 5.827 seconds (process running for 6.939)
+2023-09-12 20:41:16 [http-nio-auto-1-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No customer found by that name. Please check your spelling and formatting., uri=/api/owners-tools/customers/get-customer-name/name, timestamp=Tue, 12 Sep 2023 20:41:16 -0700}
+2023-09-12 20:41:50 [main] INFO  c.a.t.t.s.o.o.GetCustomerByNameTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting GetCustomerByNameTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 506183 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-12 20:41:50 [main] DEBUG c.a.t.t.s.o.o.GetCustomerByNameTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-12 20:41:50 [main] INFO  c.a.t.t.s.o.o.GetCustomerByNameTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-12 20:41:55 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-12 20:41:56 [main] INFO  c.a.t.t.s.o.o.GetCustomerByNameTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started GetCustomerByNameTest.testThatDoesNotPolluteTheApplicationContextUris in 6.077 seconds (process running for 7.222)
+2023-09-12 20:41:57 [http-nio-auto-1-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No customer found by that name. Please check your spelling and formatting., uri=/api/owners-tools/customers/get-customer-name/name, timestamp=Tue, 12 Sep 2023 20:41:57 -0700}
+2023-09-12 20:45:43 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerEmailTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting UpdateCustomerEmailTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 506410 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-12 20:45:43 [main] DEBUG c.a.t.t.s.o.o.UpdateCustomerEmailTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-12 20:45:43 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerEmailTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-12 20:45:48 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-12 20:45:49 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerEmailTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started UpdateCustomerEmailTest.testThatDoesNotPolluteTheApplicationContextUris in 5.873 seconds (process running for 6.949)
+2023-09-12 20:47:30 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerEmailTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting UpdateCustomerEmailTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 506588 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-12 20:47:30 [main] DEBUG c.a.t.t.s.o.o.UpdateCustomerEmailTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-12 20:47:30 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerEmailTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-12 20:47:35 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-12 20:47:36 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerEmailTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started UpdateCustomerEmailTest.testThatDoesNotPolluteTheApplicationContextUris in 6.045 seconds (process running for 7.166)
+2023-09-12 20:47:36 [http-nio-auto-1-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No customer with that id found., uri=/api/owners-tools/customers/edit-customer-email/1/larrylarbo.com, timestamp=Tue, 12 Sep 2023 20:47:36 -0700}
+2023-09-12 20:48:13 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerEmailTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting UpdateCustomerEmailTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 506752 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-12 20:48:13 [main] DEBUG c.a.t.t.s.o.o.UpdateCustomerEmailTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-12 20:48:13 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerEmailTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-12 20:48:18 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-12 20:48:19 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerEmailTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started UpdateCustomerEmailTest.testThatDoesNotPolluteTheApplicationContextUris in 5.904 seconds (process running for 7.016)
+2023-09-12 20:48:20 [http-nio-auto-1-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=400 BAD_REQUEST, message=Email does not match formatting requirements, please consult the docs., uri=/api/owners-tools/customers/edit-customer-email/gd34-igjr/larrylarbo.com, timestamp=Tue, 12 Sep 2023 20:48:20 -0700}
+2023-09-12 20:49:20 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerEmailTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting UpdateCustomerEmailTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 506895 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-12 20:49:20 [main] DEBUG c.a.t.t.s.o.o.UpdateCustomerEmailTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-12 20:49:20 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerEmailTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-12 20:49:25 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-12 20:49:26 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerEmailTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started UpdateCustomerEmailTest.testThatDoesNotPolluteTheApplicationContextUris in 6.293 seconds (process running for 7.392)
+2023-09-12 20:49:27 [http-nio-auto-1-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=400 BAD_REQUEST, message=Email does not match formatting requirements, please consult the docs., uri=/api/owners-tools/customers/edit-customer-email/gd34-igjr/larrylarbo.com, timestamp=Tue, 12 Sep 2023 20:49:27 -0700}
+2023-09-12 20:49:47 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerEmailTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting UpdateCustomerEmailTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 507021 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-12 20:49:47 [main] DEBUG c.a.t.t.s.o.o.UpdateCustomerEmailTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-12 20:49:47 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerEmailTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-12 20:49:52 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-12 20:49:53 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerEmailTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started UpdateCustomerEmailTest.testThatDoesNotPolluteTheApplicationContextUris in 5.995 seconds (process running for 7.099)
+2023-09-12 20:49:54 [http-nio-auto-1-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No customer with that id found., uri=/api/owners-tools/customers/edit-customer-email/13/larry@larbo.com, timestamp=Tue, 12 Sep 2023 20:49:54 -0700}
+2023-09-12 20:50:02 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerEmailTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting UpdateCustomerEmailTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 507143 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-12 20:50:02 [main] DEBUG c.a.t.t.s.o.o.UpdateCustomerEmailTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-12 20:50:02 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerEmailTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-12 20:50:07 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-12 20:50:08 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerEmailTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started UpdateCustomerEmailTest.testThatDoesNotPolluteTheApplicationContextUris in 6.021 seconds (process running for 7.21)
