@@ -268,7 +268,7 @@ public interface OwnersOrdersControllerInterface {
             }
     )
     @Transactional
-    @GetMapping("/get-order/customer")
+    @GetMapping("/get-order/{customer}")
    List <OrderReturnedToOwner> getOpenOrderByCustomer(@RequestParam String customer);
 
 

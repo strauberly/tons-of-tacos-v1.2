@@ -2,6 +2,20 @@
 
 ---
 
+-- 11 Sep 2023 --
+
+- Updates to owners tools pertaining to customers for increased validation.
+  - edit customer phone number updated.
+  - edit customer name updated.
+  - edit customer email updated.
+  - delete customer updated.
+
+-- 10 Sep 2023 --
+
+- Refactored dtos to exclude entities id in favor of uid and for returned order to utilize uids in lieu of ids.
+- Updated owners tools customers requests to make use of uids.
+- Encountered a bug while returning customer by name that appeared to stem from endpoint paths too similar to looking up a customer by uid. Rectified through alteration to naming convention.
+
 -- 06 Sep 2023 --
 
 - Delete order tests updated to make use of order uid.

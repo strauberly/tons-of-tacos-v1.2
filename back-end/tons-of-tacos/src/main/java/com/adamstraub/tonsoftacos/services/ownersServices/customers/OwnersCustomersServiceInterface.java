@@ -8,16 +8,17 @@ public interface OwnersCustomersServiceInterface {
 
     List<CustomerReturnedToOwner> getAllCustomers();
 
-    CustomerReturnedToOwner getCustomerByName(String name) throws Exception;
+    CustomerReturnedToOwner getCustomerByName(String name);
 
-    CustomerReturnedToOwner getCustomerById(Integer customerId);
+//    CustomerReturnedToOwner getCustomerById(Integer customerId);
+CustomerReturnedToOwner getCustomerByUid(String customerUid);
+//    String updateCustomerName(Integer customerId, String newCustomerName);
+String updateCustomerName(String customerUid, String newCustomerName);
+//    String updateCustomerEmail(Integer customerId, String newCustomerEmail);
+String updateCustomerEmail(String customerUid, String newCustomerEmail);
 
-    String updateCustomerName(Integer customerId, String newCustomerName);
-
-    String updateCustomerEmail(Integer customerId, String newCustomerEmail);
-
-    String updateCustomerPhone(Integer customerId, String newCustomerPhone);
-
-    String deleteCustomer(Integer customerId);
-
+//    String updateCustomerPhone(Integer customerId, String newCustomerPhone);
+String updateCustomerPhone(String customerUid, String newCustomerPhone);
+//    String deleteCustomer(Integer customerId);
+String deleteCustomer(String customerUid);
 }

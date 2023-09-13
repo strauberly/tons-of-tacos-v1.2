@@ -82,8 +82,9 @@ public interface OwnersCustomersControllerInterface {
     @GetMapping("/get-customers")
     List<CustomerReturnedToOwner> getAllCustomers();
 
-    //  get a customer by customer name
-    @Operation(
+
+//  get a customer by customer name
+@Operation(
             summary = "A customer is returned by customer name.",
             description = """
                  A customers name is provided and if valid, will return a customer object. For owner use only with proper auth.
@@ -122,15 +123,15 @@ public interface OwnersCustomersControllerInterface {
             }
     )
     @Transactional
-    @GetMapping("/get-customer/name?name={name}")
-    CustomerReturnedToOwner getCustomerByName(@RequestParam String name) throws Exception;
+    @GetMapping("/get-customer-name/{name}")
+    CustomerReturnedToOwner getCustomerByName(@RequestParam String name);
 
 //    get customer by id
 @Operation(
-        summary = "A customer is returned by id.",
+        summary = "A customer is returned by uid.",
         description = """
 
-        A customers id is provided and if valid, will return a customer object. For owner use only with proper auth.
+        A customers uid is provided and if valid, will return a customer object. For owner use only with proper auth.
         """
            + "\n" + "Example query: "
            + "\n" +  "\n" +
@@ -166,17 +167,20 @@ responses = {
 }
 )
 @Transactional
-@GetMapping("/get-customer/customerId?customerId={id}")
-CustomerReturnedToOwner getCustomerById(@RequestParam Integer customerId);
+@GetMapping("/get-customer-uid/{customerUid}")
+//CustomerReturnedToOwner getCustomerById(@RequestParam Integer customerId);
+CustomerReturnedToOwner getCustomerByUid(@RequestParam String customerUid);
 
 
 //edit customer name
 @Operation(
 summary = "Updates a customer's name.",
 description = """
-        Accepts the id of the customer to be updated as a parameter along with the new name for the customer.
+        Accepts the uid of the customer to be updated as a parameter along with the new name for the customer.
          Returned response is a message as a string that the customers name has been updated.
         For owner use only with proper auth."""
+        + "\n" + "\n" + "Example request: " + "\n" +  "\n" +
+        "localhost:8080/api/owners-tools/customers/edit-customer-name/09t8-g093/Gus Gusson"
         + "\n" + "\n" + "Example response: " + "\n" +  "\n" +
         "Previous customer name: Bob Bobson, updated to: Gus Gusson.",
 responses = {
@@ -188,17 +192,19 @@ responses = {
         description = "Request parameters invalid."),
 @ApiResponse(
         responseCode = "404",
-        description = "No customer found for given parameter."),
+        description = "No customer found for given uid."),
 @ApiResponse(
         responseCode = "500",
         description = "An unplanned error occured."),
 }
 )
 @Transactional
-@PutMapping("/edit-customer-name/{customerId}/{newCustomerName}")
+//@PutMapping("/edit-customer-name/{customerId}/{newCustomerName}")
+@PutMapping("/edit-customer-name/{customerUid}/{newCustomerName}")
 String updateCustomerName(
 @PathVariable
-Integer customerId,
+//Integer customerId,
+String customerUid,
 @PathVariable
 String newCustomerName);
 
@@ -207,9 +213,11 @@ String newCustomerName);
 @Operation(
 summary = "Updates a customer's email.",
 description = """
-    Accepts the id of the customer to be updated as a parameter along with the new email for the customer.
+    Accepts the uid of the customer to be updated as a parameter along with the new email for the customer.
     Returned response is a message as a string that the customers email has been updated.
     For owner use only with proper auth."""
+        + "\n" + "\n" + "Example request: " + "\n" +  "\n" +
+        "localhost:8080/api/owners-tools/customers/edit-customer-email/09t8-g093/gussy@gus.com"
         + "\n" + "\n" + "Example response: " + "\n" +  "\n" +
         "Previous customer email: bobby@bobert.com, updated to: gussy@gus.com.",
 responses = {
@@ -228,10 +236,12 @@ responses = {
 }
 )
 @Transactional
-@PutMapping("/edit-customer-email/{customerId}/{newCustomerEmail}")
+//@PutMapping("/edit-customer-email/{customerId}/{newCustomerEmail}")
+@PutMapping("/edit-customer-email/{customerUid}/{newCustomerEmail}")
 String updateCustomerEmail(
 @PathVariable
-Integer customerId,
+//Integer customerId,
+String customerUid,
 @PathVariable
 String newCustomerEmail);
 
@@ -241,10 +251,12 @@ String newCustomerEmail);
 @Operation(
 summary = "Updates a customer's phone number.",
 description = """
- Accepts the id of the customer to be updated as a parameter along with the new phone number for the customer.
+ Accepts the uid of the customer to be updated as a parameter along with the new phone number for the customer.
  Returned response is a message as a string that the customers phone number has been updated.
 For owner use only with proper auth.
 """
+        + "\n" + "\n" + "Example request: " + "\n" +  "\n" +
+        "localhost:8080/api/owners-tools/customers/edit-customer-phone/gd34-igjr/555.555.5558"
         + "\n" + "\n" + "Example response: " + "\n" +  "\n" +
         "Previous customer phone number: 555.555.5551, updated to: 555.555.5558.",
 responses = {
@@ -263,22 +275,27 @@ responses = {
 }
 )
 @Transactional
-@PutMapping("/edit-customer-phone/{customerId}/{newCustomerPhone}")
+//@PutMapping("/edit-customer-phone/{customerId}/{newCustomerPhone}")
+@PutMapping("/edit-customer-phone/{customerUid}/{newCustomerPhone}")
 String updateCustomerPhone(
 @PathVariable
-Integer customerId,
+//Integer customerId,
+String customerUid,
 @PathVariable
 String newCustomerPhone);
 
+
 // delete customer by id
 @Operation(
-summary = "Deletes a customer by id.",
+summary = "Deletes a customer by uid.",
 description = """
         Accepts the id of an existing customer and removes their information from the application permanently.
          Returned response is a message as a string that the customers records have been removed.
          For owner use only with proper auth."""
+        + "\n" + "\n" + "Example request: " + "\n" +  "\n" +
+        "localhost:8080/api/owners-tools/customers/delete-customer/{customerUid}"
         + "\n" + "\n" + "Example response: " + "\n" +  "\n" +
-        "John Johnson removed from application records.",
+        "Customer Bob Bobson(09t8-g093), removed from application records.",
 responses = {
 @ApiResponse(
         responseCode = "200",
@@ -296,6 +313,7 @@ responses = {
 }
 )
 @Transactional
-@DeleteMapping("/delete-customer/{customerId}")
-String deleteCustomer(@PathVariable Integer customerId);
+@DeleteMapping("/delete-customer/{customerUid}")
+//String deleteCustomer(@PathVariable Integer customerId);
+String deleteCustomer(@PathVariable String customerUid);
 }
