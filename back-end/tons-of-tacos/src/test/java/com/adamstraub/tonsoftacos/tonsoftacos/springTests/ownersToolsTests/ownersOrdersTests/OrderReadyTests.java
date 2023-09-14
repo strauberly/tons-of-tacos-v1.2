@@ -66,7 +66,7 @@ public class OrderReadyTests {
                 String parameter = "orderUid";
                 String getOrderUri =
 //                        String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter, orderId);
-                        String.format("%s?%s=%s", getBaseUriForGetOrderById(), parameter, orderUid);
+                        String.format("%s?%s=%s", getBaseUriForGetOrderByUid(), parameter, orderUid);
                 System.out.println(getOrderUri);
                 ResponseEntity<OrderReturnedToOwner> getOrderResponse =
                         getRestTemplate().exchange(getOrderUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {

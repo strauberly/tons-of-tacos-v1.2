@@ -112,7 +112,7 @@ public class OrderClosedTests {
             String parameter2 = "orderUid";
             String getOrderUri =
 //                    String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter2, orderId);
-                    String.format("%s?%s=%s", getBaseUriForGetOrderById(), parameter2, orderUid);
+                    String.format("%s?%s=%s", getBaseUriForGetOrderByUid(), parameter2, orderUid);
                     System.out.println(getOrderUri);
             ResponseEntity<OrderReturnedToOwner> getOrderResponse =
                     getRestTemplate().exchange(getOrderUri, HttpMethod.GET, headerEntity2, new ParameterizedTypeReference<>() {

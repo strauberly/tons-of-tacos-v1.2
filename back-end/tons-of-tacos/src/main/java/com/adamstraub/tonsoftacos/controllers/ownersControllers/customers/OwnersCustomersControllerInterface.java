@@ -168,7 +168,6 @@ responses = {
 )
 @Transactional
 @GetMapping("/get-customer-uid/{customerUid}")
-//CustomerReturnedToOwner getCustomerById(@RequestParam Integer customerId);
 CustomerReturnedToOwner getCustomerByUid(@RequestParam String customerUid);
 
 
@@ -199,11 +198,9 @@ responses = {
 }
 )
 @Transactional
-//@PutMapping("/edit-customer-name/{customerId}/{newCustomerName}")
 @PutMapping("/edit-customer-name/{customerUid}/{newCustomerName}")
 String updateCustomerName(
 @PathVariable
-//Integer customerId,
 String customerUid,
 @PathVariable
 String newCustomerName);
@@ -236,11 +233,9 @@ responses = {
 }
 )
 @Transactional
-//@PutMapping("/edit-customer-email/{customerId}/{newCustomerEmail}")
 @PutMapping("/edit-customer-email/{customerUid}/{newCustomerEmail}")
 String updateCustomerEmail(
 @PathVariable
-//Integer customerId,
 String customerUid,
 @PathVariable
 String newCustomerEmail);
@@ -275,11 +270,9 @@ responses = {
 }
 )
 @Transactional
-//@PutMapping("/edit-customer-phone/{customerId}/{newCustomerPhone}")
 @PutMapping("/edit-customer-phone/{customerUid}/{newCustomerPhone}")
 String updateCustomerPhone(
 @PathVariable
-//Integer customerId,
 String customerUid,
 @PathVariable
 String newCustomerPhone);
@@ -314,6 +307,5 @@ responses = {
 )
 @Transactional
 @DeleteMapping("/delete-customer/{customerUid}")
-//String deleteCustomer(@PathVariable Integer customerId);
 String deleteCustomer(@PathVariable String customerUid);
 }

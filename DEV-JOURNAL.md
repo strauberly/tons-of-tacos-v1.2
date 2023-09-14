@@ -2,6 +2,14 @@
 
 ---
 
+-- 13 Sep 2023 --
+
+- Discovered bug linked to not enough variation in path names to differentiate between searching for a customer or order by uid or customer name. Appears to be remedied by adding uid or name to the paths concerned.
+
+  (ie "/get-order-uid/{orderUid}", "/get-order-customer/{customer}")
+
+---
+
 -- 11 Sep 2023 --
 
 - Updates to owners tools pertaining to customers for increased validation.

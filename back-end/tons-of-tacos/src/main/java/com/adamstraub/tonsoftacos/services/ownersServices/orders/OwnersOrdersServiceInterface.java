@@ -14,26 +14,16 @@ public interface OwnersOrdersServiceInterface {
 
     List<OrderReturnedToOwner> getOpenOrderByCustomer(String customer);
 
-
-//    OrderReturnedToOwner orderReady(Integer orderId);
-OrderReturnedToOwner orderReady(String orderUid);
+    OrderReturnedToOwner orderReady(String orderUid);
 
 
     OrderReturnedToOwner closeOrder(String orderUid);
 
-
-//    String deleteOrder(Integer orderId);
-String deleteOrder(String orderUid);
-
-
-
-//    String addToOrder(Integer orderId, Integer menuItemId, Integer quantity);
+    String deleteOrder(String orderUid);
 
     String addToOrder(String orderUid, Integer menuItemId, Integer quantity);
 
-
-//    String updateOrderItemQuantity(Integer orderId, Integer orderItemId, Integer newQuantity);
-String updateOrderItemQuantity(String orderUid, Integer orderItemId, Integer newQuantity);
+    String updateOrderItemQuantity(String orderUid, Integer orderItemId, Integer newQuantity);
 
     DailySales todaysSales();
 

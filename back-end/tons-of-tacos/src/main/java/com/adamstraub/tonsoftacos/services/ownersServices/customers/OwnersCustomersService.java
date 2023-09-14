@@ -28,8 +28,6 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
     @Autowired
     private MenuItemRepository menuItemRepository;
 
-
-
     @Override
     public List<CustomerReturnedToOwner> getAllCustomers() {
         System.out.println("service");
@@ -47,10 +45,8 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
     }
 
     @Override
-//    public CustomerReturnedToOwner getCustomerByName(String name) {
     public CustomerReturnedToOwner getCustomerByName(String name) {
         System.out.println("service");
-//        try {
             Customer customer = customerRepository.findByName(name);
             if (customer == null){
                 throw new EntityNotFoundException("No customer found by that name. Please check your spelling" +
@@ -58,41 +54,28 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
             }else {
                 return ownersCustomerDtoConvertor(customer);
             }
-//        }catch (Exception e){
-//            throw new EntityNotFoundException("No customer found by that name. Please check your spelling" +
-//                    " and formatting.");
-//        }
     }
-
-
 
     @Override
     public CustomerReturnedToOwner getCustomerByUid(String customerUid) {
-//    public CustomerReturnedToOwner getCustomerById(Integer customerId) {
-
         System.out.println("service");
-//    try{
         Customer customer = customerRepository.findByCustomerUid(customerUid);
+
         if (customer == null) {
             throw new EntityNotFoundException("No customer found with that UID. Please verify and try  again.");
         } else{
             return ownersCustomerDtoConvertor(customer);
-    }
-//        }catch (Exception e) {
-//            throw new EntityNotFoundException("Customer with that id not found.");
-//        }
+        }
     }
 
     @Override
-//    public String updateCustomerName(Integer customerId, String newCustomerName) {
     public String updateCustomerName(String customerUid, String newCustomerName) {
         System.out.println("service");
         Customer customer;
-//        try{
-             customer = customerRepository.findByCustomerUid(customerUid);
-//        } catch (Exception e){
-        if (customer == null){
 
+        customer = customerRepository.findByCustomerUid(customerUid);
+
+        if (customer == null){
             throw new EntityNotFoundException("No customer with that id found.");
         }
             byte[] nameChars = newCustomerName.getBytes(StandardCharsets.UTF_8);
@@ -108,6 +91,8 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
                 spaces += 1;
             }
         }
+
+
 //        possibly alter for just ^[a-zA-Z]$+ [a-zA-Z]+. currently accepting letters from any language.
         if (!newCustomerName.matches("^\\p{L}+[\\p{L}\\p{Pd}\\p{Zs}']*\\p{L}+$|^\\p{L}+$") ||
                 !(spaces == 1)) {
@@ -123,55 +108,41 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
     }
 
     @Override
-//    public String updateCustomerEmail(Integer customerId, String newCustomerEmail) {
+
     public String updateCustomerEmail(String customerUid, String newCustomerEmail) {
         System.out.println("service");
         Customer customer;
-//        try{
+
             customer = customerRepository.findByCustomerUid(customerUid);
             if (customer == null){
                 throw new EntityNotFoundException("No customer with that id found.");
             }
-//        System.out.println("customer: " + customer);
-//        } catch (Exception e) {
-//            throw new EntityNotFoundException("No customer with that id found.");
-//        }
-            String oldEmail = customer.getEmail();
-            boolean newCustomerEmailValid = true;
+
+        String oldEmail = customer.getEmail();
         if (oldEmail.equals(newCustomerEmail)) {
             throw new IllegalArgumentException("New customer email can not be same as previous.");
         }
         if (!newCustomerEmail.matches("^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,}")) {
             throw new IllegalArgumentException("Email does not match formatting requirements, please consult the docs.");
         }
-            if (newCustomerEmailValid) {
-                customer.setEmail(newCustomerEmail);
-                customerRepository.save(customer);
-            }
+        customer.setEmail(newCustomerEmail);
+        customerRepository.save(customer);
         return "Previous customer email: " + oldEmail + ", updated to: " + customer.getEmail() + ".";
     }
-    @Transactional
+
     @Override
-//    public String updateCustomerPhone(Integer customerId, String newCustomerPhone) {
     public String updateCustomerPhone(String customerUid, String newCustomerPhone) {
         System.out.println("service");
 
-//            Customer customer;
         boolean newCustomerPhoneNumberValid = false;
         Customer customer = customerRepository.findByCustomerUid(customerUid);
 
         if(customer == null){
             throw new EntityNotFoundException("No customer with that uid found. Please check formatting and verify customer exists.");
         }
-//        try{
-//            customer = customerRepository.getById(customerId);
-//        customer = customerRepository.getById(customerId);
-//            System.out.println("customer: " + customer);
-//        } catch (Exception e){
-//            throw new EntityNotFoundException("No customer with that id found.");
-//        }
+
         String oldCustomerPhone = customer.getPhoneNumber();
-//        boolean b = !oldCustomerPhone.equals(newCustomerPhone);
+
         if (newCustomerPhone.matches("[0-9.]*")
                 && newCustomerPhone.charAt(3) == (char) 46
                 && newCustomerPhone.charAt(7) == (char) 46
@@ -181,32 +152,17 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
         }
         if (!newCustomerPhoneNumberValid || oldCustomerPhone.equals(newCustomerPhone)){
             throw new NumberFormatException("New phone number invalid. Please check formatting and ensure new number is not the same as old number.");
-//            return "New phone number invalid. Please check formatting.";
-//        }
-//        if(oldCustomerPhone.equals(newCustomerPhone)){
-//            return "New phone number invalid. Please make sure it is not the same as old number.";
         }else {
-//        System.out.println("new number valid: " + newCustomerPhoneNumberValid);
-//        System.out.println(newCustomerPhone.charAt(3) == (char) 46);
-//        System.out.println(newCustomerPhone.charAt(7) == (char) 46);
-//        System.out.println(newCustomerPhone.length() == 12);
-//        System.out.println(newCustomerPhone.matches("[0-9.]*"));
-//        System.out.println(newCustomerPhone.charAt(3));
-//        System.out.println((char) 46);
-//        if (newCustomerPhoneNumberValid){
             customer.setPhoneNumber(newCustomerPhone);
             customerRepository.save(customer);
-//            System.out.println(customerRepository.getReferenceById(customerId));
-//        }
+
             return "Previous customer phone number: " + oldCustomerPhone + ", updated to: " + customer.getPhoneNumber() + ".";
         }
     }
 
     @Override
-//    public String deleteCustomer(Integer customerId) {
     public String deleteCustomer(String customerUid) {
         System.out.println("service");
-//        Optional<Customer> customer = customerRepository.findById(customerId);
         Customer customer = customerRepository.findByCustomerUid(customerUid);
         if (customer == null){
             throw new EntityNotFoundException("No customer with that uid found. Please check formatting and verify customer exists.");
@@ -220,17 +176,13 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
 
     private CustomerReturnedToOwner ownersCustomerDtoConvertor(Customer customer){
         CustomerReturnedToOwner ownersCustomerDto = new CustomerReturnedToOwner();
-//        ownersCustomerDto.setCustomerId(customer.getCustomerId());
-//        ownersCustomerDto.setCustomerId(customer.getCustomerId());
         ownersCustomerDto.setCustomerUid(customer.getCustomerUid());
         ownersCustomerDto.setName(customer.getName());
         ownersCustomerDto.setEmail(customer.getEmail());
         ownersCustomerDto.setPhone(customer.getPhoneNumber());
 
         List<Orders> orders = ordersRepository.findByCustomerId(customer.getCustomerId());
-//        List<Integer> orderIds = new ArrayList<>();
         List<String> orderIds = new ArrayList<>();
-//        orders.forEach(order -> orderIds.add(order.getOrderId()));
         orders.forEach(order -> orderIds.add(order.getOrderUid()));
         ownersCustomerDto.setOrderIds(orderIds);
         return ownersCustomerDto;
