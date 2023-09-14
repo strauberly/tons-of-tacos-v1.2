@@ -1,0 +1,6 @@
+2023-09-12 21:04:39 [http-nio-auto-1-exec-6] ERROR o.h.e.jdbc.spi.SqlExceptionHelper -
+                NULL not allowed for column "customer_uid"; SQL statement:
+insert into "customer" ("customer_pk", "customer_uid", "email", "name", "phone_number") values (default, ?, ?, ?, ?) [23502-214]
+2023-09-12 21:04:39 [http-nio-auto-1-exec-8] ERROR o.h.e.jdbc.spi.SqlExceptionHelper -
+                NULL not allowed for column "customer_uid"; SQL statement:
+insert into "customer" ("customer_pk", "customer_uid", "email", "name", "phone_number") values (default, ?, ?, ?, ?) [23502-214]

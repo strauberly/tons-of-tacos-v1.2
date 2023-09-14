@@ -67,8 +67,8 @@ public class EditOrderItemQuantityTest {
             ResponseEntity<OrderReturnedToOwner> getOrderResponse =
                     getRestTemplate().exchange(getOrderUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
                     });
-            System.out.println("unchanged order: " + Objects.requireNonNull(Objects.requireNonNull(getOrderResponse.getBody()).getOrderItems().get(0)));
-
+//            System.out.println("unchanged order: " + Objects.requireNonNull(Objects.requireNonNull(getOrderResponse.getBody()).getOrderItems().get(0)));
+            System.out.println("unchanged order: " + getOrderResponse.getBody());
 //            When: a successful connection is made
             String uri =
 //                    String.format("%s/%d/%d/%d", getBaseUriForEditOrderItem(), orderId, orderItemId, newQuantity);
@@ -89,14 +89,15 @@ public class EditOrderItemQuantityTest {
 //            call order item after alteration
             String getOrderUri2 =
 //                    String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter, orderId);
-                    String.format("%s?%s=%s", getBaseUriForGetOrderById(), parameter, orderUid);
+                    String.format("%s?%s=%s", getBaseUriForGetOrderByUid(), parameter, orderUid);
             System.out.println(getOrderUri2);
 
             ResponseEntity<OrderReturnedToOwner> getOrderResponse2 =
                     getRestTemplate().exchange(getOrderUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
                     });
 
-            System.out.println(Objects.requireNonNull(Objects.requireNonNull(getOrderResponse2.getBody()).getOrderItems().get(0)));
+//            System.out.println(Objects.requireNonNull(Objects.requireNonNull(getOrderResponse2.getBody()).getOrderItems().get(0)));
+            System.out.println("altered order: " + getOrderResponse2.getBody());
             Assertions.assertNotEquals(getOrderResponse.getBody().getOrderTotal(), getOrderResponse2.getBody().getOrderTotal());
             System.out.println("Order total changed.");
             Assertions.assertNotEquals(getOrderResponse.getBody().getOrderItems().get(0).getQuantity(), getOrderResponse2.getBody().getOrderItems().get(0).getQuantity());

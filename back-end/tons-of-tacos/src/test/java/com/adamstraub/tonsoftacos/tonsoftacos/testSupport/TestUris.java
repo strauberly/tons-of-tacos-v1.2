@@ -39,7 +39,7 @@ public class TestUris {
     }
 
     protected  String getBaseUriForGetOrderByUid(){
-        return String.format("http://localhost:%d/api/owners-tools/orders/get-order/orderUid",
+        return String.format("http://localhost:%d/api/owners-tools/orders/get-order-uid/orderUid",
                 Integer.valueOf(serverPort));
     }
 
@@ -50,7 +50,7 @@ public class TestUris {
 
 
     protected  String getBaseUriForGetOrderByCustomer(){
-        return String.format("http://localhost:%d/api/owners-tools/orders/get-order/customer",
+        return String.format("http://localhost:%d/api/owners-tools/orders/get-order-customer/customer",
                 Integer.valueOf(serverPort));
     }
 

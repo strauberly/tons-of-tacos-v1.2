@@ -74,6 +74,7 @@ public class DeleteOrderTests {
                     getRestTemplate().exchange(getOrderUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
                     });
             System.out.println("Response code is " + getOrderResponse.getStatusCode() + ".");
+            System.out.println("Body is " + getOrderResponse.getBody() + ".");
             System.out.println("Order has been deleted and can not be found.");
             Assertions.assertEquals(HttpStatus.NOT_FOUND, getOrderResponse.getStatusCode());
         }

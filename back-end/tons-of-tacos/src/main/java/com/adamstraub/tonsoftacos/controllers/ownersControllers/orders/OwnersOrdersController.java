@@ -34,43 +34,34 @@ public class OwnersOrdersController implements OwnersOrdersControllerInterface {
     }
 
     @Override
-//    public OrderReturnedToOwner orderReady(Integer orderId) {
     public OrderReturnedToOwner orderReady(String orderUid) {
         System.out.println("controller");
         return ownersOrdersService.orderReady(orderUid);
-//        return ownersOrdersService.orderReady(orderId);
     }
 
     @Override
-//    public OrderReturnedToOwner closeOrder(Integer orderId) {
     public OrderReturnedToOwner closeOrder(String orderUid) {
             System.out.println("controller");
-//        System.out.println(orderId);
        return ownersOrdersService.closeOrder(orderUid);
     }
 
 
     @Override
-//    public String deleteOrder(Integer orderId) {
     public String deleteOrder(String orderUid) {
         System.out.println("controller");
         return ownersOrdersService.deleteOrder(orderUid);
     }
 
     @Override
-//    public String addToOrder(Integer orderUid, Integer menuItemId, Integer quantity) {
     public String addToOrder(String orderUid, Integer menuItemId, Integer quantity) {
         System.out.println("controller");
-//      return ownersOrdersService.addToOrder(orderUid, menuItemId, quantity);
         return ownersOrdersService.addToOrder(orderUid, menuItemId, quantity);
     }
-//@Transactional
+
     @Override
-//    public String updateOrderItemQuantity(Integer orderId, Integer orderItemId, Integer newQuantity) {
     public String updateOrderItemQuantity(String orderUid, Integer orderItemId, Integer newQuantity) {
             System.out.println("controller");
         return ownersOrdersService.updateOrderItemQuantity(orderUid, orderItemId, newQuantity);
-//       return ownersOrdersService.updateOrderItemQuantity(orderId, orderItemId, newQuantity);
     }
 
     @Override

@@ -50,11 +50,13 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
     @Override
     public OrderReturnedToOwner getOrderByUid(String orderUid) {
         System.out.println("service");
-        Orders order = ordersRepository.findByOrderUid(orderUid);
-        if (order == null){
-            throw new EntityNotFoundException("No order found with that UID. Please verify and try again.");
-        }else {
+        Orders order;
+        try {
+            order = ordersRepository.findByOrderUid(orderUid);
+            System.out.println(order);
             return ownersGetOrderDtoConverter(order);
+        }catch (Exception e) {
+            throw new EntityNotFoundException("No order found with that UID. Please verify and try again.");
         }
     }
 
@@ -78,7 +80,7 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
             if (order.getClosed().equals("no")) {
             openOrders.add(ownersGetOrderDtoConverter(order));
             }
-        if (openOrders.size() > 0) {
+        if (!openOrders.isEmpty()) {
             return openOrders;
         }else{
             throw new EntityNotFoundException("No open orders for customer found");
@@ -86,14 +88,11 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
     }
 @Transactional
     @Override
-//    public OrderReturnedToOwner orderReady(Integer orderId) {
 public OrderReturnedToOwner orderReady(String orderUid) {
         System.out.println("service");
         Orders order;
-        String response;
 
             order = ordersRepository.findByOrderUid(orderUid);
-            System.out.println(order);
             if (order == null){
                 throw new EntityNotFoundException("Order does not exist. Please verify order id and try again.");
             }
@@ -105,30 +104,22 @@ public OrderReturnedToOwner orderReady(String orderUid) {
     }
 @Transactional
     @Override
-//    public OrderReturnedToOwner closeOrder(Integer orderId) {
 public OrderReturnedToOwner closeOrder(String orderUid) {
         System.out.println("service");
         Orders order;
-        String response;
-//        try {
-//            order = ordersRepository.getReferenceById(orderUid);
             order = ordersRepository.findByOrderUid(orderUid);
 
             System.out.println(order);
             if (order == null){
                 throw new EntityNotFoundException("Order cannot be found and as such can not be closed. Please verify order id.");
             }
-//        }catch (Exception e){
-//            throw new EntityNotFoundException("Order does not exist. Please verify order id and try again.");
-//        }
 
         if (order.getReady().equals("no")){
             throw new IllegalArgumentException("Order can not be closed if order is not ready.");
         }
         String timeClosed = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
         order.setClosed(timeClosed);
-//        check against customer to see if there are other open orders and if not delete customer
-//        Customer customer = customerRepository.getReferenceById(order.getCustomerId());
+
     Customer customer = customerRepository.getReferenceById(order.getCustomerId());
         List<Orders> customerOrders = customer.getOrders();
         List<Orders> openOrders = new ArrayList<>();
@@ -144,48 +135,36 @@ public OrderReturnedToOwner closeOrder(String orderUid) {
     }
 @Transactional
     @Override
-//    public String deleteOrder(Integer orderId) {
+
 public String deleteOrder(String orderUid) {
         System.out.println("service");
         Orders order;
-//        try {
-//            order = ordersRepository.getReferenceById(orderId);
-            order = ordersRepository.findByOrderUid(orderUid);
-//            System.out.println(order);
-//        }catch (Exception e){
-//            throw new EntityNotFoundException("Can not delete order. Verify order id.");
-//        }
-//    System.out.println(order);
+        order = ordersRepository.findByOrderUid(orderUid);
+
         if(order == null){
             throw new EntityNotFoundException("Can not delete order. Verify order exists.");
         }
 
-//    ordersRepository.deleteById(ordersRepository.getReferenceById(order.getOrderId()));
         ordersRepository.deleteById(order.getOrderId());
         System.out.println("Order " + order.getOrderUid() + " deleted");
         return "Order " + order.getOrderUid() + " deleted.";
     }
 
     @Override
-//    public String addToOrder(Integer orderId, Integer menuItemId, Integer quantity) {
     public String addToOrder(String orderUid, Integer menuItemId, Integer quantity) {
             System.out.println("service");
         Optional<MenuItem> menuItem;
         Optional<Orders> orderToUpdate;
         try{
             menuItem = Optional.of(menuItemRepository.getReferenceById(menuItemId));
-//            System.out.println(menuItem);
         }catch (Exception e){
             throw new EntityNotFoundException("Menu item can not be added to order. Verify menu item id.");
         }
         try{
             orderToUpdate = Optional.of(ordersRepository.findByOrderUid(orderUid));
-//            System.out.println(orderToUpdate);
         }catch (Exception e){
             throw new EntityNotFoundException("Menu item can not be added to order. Verify order id.");
         }
-
-
         OrderItem orderItem = OrderItem.builder()
                 .item(menuItemRepository.getReferenceById(menuItemId))
                 .quantity(quantity)
@@ -194,18 +173,15 @@ public String deleteOrder(String orderUid) {
                 orderItem.getQuantity());
         orderItemRepository.save(orderItem);
 
-//        update order total
         Orders order  = ordersRepository.findByOrderUid(orderUid);
         order.setOrderTotal(order.getOrderTotal() + (menuItemRepository.getReferenceById(menuItemId).getUnitPrice() *
                 quantity));
         ordersRepository.save(order);
-//        System.out.println("Item added to order");
         return  menuItem.get().getItemName() + " x " + quantity + " added to order.";
     }
 
     @Transactional
     @Override
-//    public String updateOrderItemQuantity(Integer orderId, Integer orderItemId, Integer newQuantity) {
     public String updateOrderItemQuantity(String orderUid, Integer orderItemId, Integer newQuantity) {
             System.out.println("service");
         Orders order = ordersRepository.findByOrderUid(orderUid);
@@ -217,36 +193,28 @@ public String deleteOrder(String orderUid) {
             throw new EntityNotFoundException("Order item not updated. Verify order item is part of order.");
         }
         String response;
-//        System.out.println("new quantity: " + newQuantity);
             if (newQuantity > 10) {
-//                System.out.println("quantity more than 10");
                 throw new IllegalArgumentException("We were unable to process your request. " +
                         "Please contact us when trying to order more than 10 of any given item.");
             }
         if(newQuantity == 0){
-//                System.out.println("order item: " + orderItem);
-//                System.out.println("old order: " + order.getOrderItems());
                 orderItemRepository.delete(orderItem);
             order.setOrderTotal(order.getOrderTotal() - orderItem.getTotal());
 
-//                System.out.println("new order: " + order.getOrderItems());
                 response = "Item quantity updated, item removed, cart updated.";
             }else{
             orderItem.setQuantity(newQuantity);
             orderItem.setTotal(menuItemRepository.getReferenceById(orderItem.getItem().getId()).getUnitPrice() *
                     orderItem.getQuantity());
-//            System.out.println("old total: " + ordersRepository.getReferenceById(orderId).getOrderTotal());
             order.setOrderTotal(order.getOrderTotal() + orderItem.getTotal());
             orderItemRepository.save(orderItem);
             ordersRepository.save(order);
-//            System.out.println("new total: " + ordersRepository.getReferenceById(orderId).getOrderTotal());
             response = "Item quantity updated, cart updated.";
         }
-//        System.out.println(response);
         return response;
     }
 
-// MARK ALL AS PRIVATE
+
 //    Ensure date time formatter is returning correctly
     @Transactional
     @Override
@@ -259,16 +227,14 @@ public String deleteOrder(String orderUid) {
         DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("dd MMM yyyy");
         Double salesTotal = 0.00;
         List<Orders> todaysOrders = new ArrayList<>();
-
-
         List<Orders> completedOrders = ordersRepository.findByClosed();
+
         for (Orders completedOrder: completedOrders){
             dbDate = completedOrder.getCreated().toLocalDateTime().toLocalDate();
             if(todaysDate.format(formattedDate).equals(dbDate.format(formattedDate))){
                 todaysOrders.add(completedOrder);
             }
         }
-//        System.out.println("todays orders:" + todaysOrders);
 //                looks for all orders with today's timestamp and marked closed
         for (Orders order:todaysOrders){
             salesTotal += order.getOrderTotal();

@@ -77,7 +77,7 @@ public class DeleteCustomerByUidTest {
 //                    String.format("%s?%s=%d", getBaseUriForGetCustomerById(), parameter, customerId);
                     String.format("%s?%s=%s", getBaseUriForGetCustomerByUid(), parameter, customerId);
             System.out.println(getCustomerUri);
-            ResponseEntity<CustomerReturnedToOwner> getCustomerResponse =
+            ResponseEntity<Map<String, Object>> getCustomerResponse =
                     getRestTemplate().exchange
             (getCustomerUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {});
             Assertions.assertEquals(HttpStatus.NOT_FOUND, getCustomerResponse.getStatusCode());

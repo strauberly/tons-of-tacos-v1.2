@@ -193,8 +193,7 @@ public interface OwnersOrdersControllerInterface {
             }
     )
     @Transactional
-//    @GetMapping("/get-order/{orderId}")
-    @GetMapping("/get-order/{orderUid}")
+    @GetMapping("/get-order-uid/{orderUid}")
     OrderReturnedToOwner getOrderByUid(@RequestParam String orderUid);
 
 
@@ -268,7 +267,7 @@ public interface OwnersOrdersControllerInterface {
             }
     )
     @Transactional
-    @GetMapping("/get-order/{customer}")
+    @GetMapping("/get-order-customer/{customer}")
    List <OrderReturnedToOwner> getOpenOrderByCustomer(@RequestParam String customer);
 
 
@@ -330,9 +329,7 @@ public interface OwnersOrdersControllerInterface {
             }
     )
     @Transactional
-//    @PutMapping("/order-ready/{orderId}")
     @PutMapping("/order-ready/{orderUid}")
-//    OrderReturnedToOwner orderReady(@PathVariable Integer orderId);
     OrderReturnedToOwner orderReady(@PathVariable String orderUid);
 
 
@@ -394,9 +391,7 @@ public interface OwnersOrdersControllerInterface {
             }
     )
     @Transactional
-//    @PutMapping("/close-order/{orderId}")
     @PutMapping("/close-order/{orderUid}")
-//    OrderReturnedToOwner closeOrder(@PathVariable Integer orderId);
     OrderReturnedToOwner closeOrder(@PathVariable String orderUid);
 
 // delete order by uid
@@ -420,9 +415,7 @@ public interface OwnersOrdersControllerInterface {
             }
     )
     @Transactional
-//    @DeleteMapping("/delete-order/{orderId}")
     @DeleteMapping("/delete-order/{orderUid}")
-//    String deleteOrder(@PathVariable Integer orderId);
     String deleteOrder(@PathVariable String orderUid);
 
 //    add menu item to order
@@ -448,9 +441,12 @@ public interface OwnersOrdersControllerInterface {
     @Transactional
     @PutMapping("/add-to-order/{orderUid}/{menuItemId}/{quantity}")
     String addToOrder(
-            @PathVariable
-//            String orderUid, @PathVariable Integer menuItemId, @PathVariable Integer quantity);
-            String orderUid, @PathVariable Integer menuItemId, @PathVariable Integer quantity);
+    @PathVariable
+    String orderUid,
+    @PathVariable
+    Integer menuItemId,
+    @PathVariable
+    Integer quantity);
 
 //    edit order item
     @Operation(
@@ -474,16 +470,14 @@ public interface OwnersOrdersControllerInterface {
                             description = "An unplanned error occurred."),
             }
     )
-//    @PutMapping("/update-order-item/{orderId}/{orderItemId}/{newQuantity}")
     @PutMapping("/update-order-item/{orderUid}/{orderItemId}/{newQuantity}")
     String updateOrderItemQuantity(
-            @PathVariable
-            String orderUid,
-//            Integer orderId,
-            @PathVariable
-            Integer orderItemId,
-            @PathVariable
-            Integer newQuantity);
+    @PathVariable
+    String orderUid,
+    @PathVariable
+    Integer orderItemId,
+    @PathVariable
+    Integer newQuantity);
 
 // get todays sales
     @Operation(

@@ -1,80 +1,18 @@
-2023-09-12 20:55:41 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
-                Filter 'jwtAuthFilter' configured for use
-2023-09-12 20:55:42 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerNameTest$testThatDoesNotPolluteTheApplicationContextUris -
-                Started UpdateCustomerNameTest.testThatDoesNotPolluteTheApplicationContextUris in 5.963 seconds (process running for 7.079)
-2023-09-12 20:55:43 [http-nio-auto-1-exec-6] DEBUG c.a.t.e.GlobalExceptionHandler -
-                {status code=400 BAD_REQUEST, message=Customer name incorrectly formatted. Please consult the documentation., uri=/api/owners-tools/customers/edit-customer-name/gd34-igjr/dsfk%20jh!@, timestamp=Tue, 12 Sep 2023 20:55:43 -0700}
-2023-09-12 20:55:43 [http-nio-auto-1-exec-8] DEBUG c.a.t.e.GlobalExceptionHandler -
-                {status code=404 NOT_FOUND, message=No customer with that id found., uri=/api/owners-tools/customers/edit-customer-name/54/Gary%20Garrison, timestamp=Tue, 12 Sep 2023 20:55:43 -0700}
-2023-09-12 20:58:50 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerPhoneTest$testThatDoesNotPolluteTheApplicationContextUris -
-                Starting UpdateCustomerPhoneTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 508588 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
-2023-09-12 20:58:50 [main] DEBUG c.a.t.t.s.o.o.UpdateCustomerPhoneTest$testThatDoesNotPolluteTheApplicationContextUris -
-                Running with Spring Boot v3.0.1, Spring v6.0.3
-2023-09-12 20:58:50 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerPhoneTest$testThatDoesNotPolluteTheApplicationContextUris -
-                No active profile set, falling back to 1 default profile: "default"
-2023-09-12 20:58:56 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
-                Filter 'jwtAuthFilter' configured for use
-2023-09-12 20:58:56 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerPhoneTest$testThatDoesNotPolluteTheApplicationContextUris -
-                Started UpdateCustomerPhoneTest.testThatDoesNotPolluteTheApplicationContextUris in 6.125 seconds (process running for 7.228)
-2023-09-12 20:59:24 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerPhoneTest$testThatDoesNotPolluteTheApplicationContextUris -
-                Starting UpdateCustomerPhoneTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 508715 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
-2023-09-12 20:59:24 [main] DEBUG c.a.t.t.s.o.o.UpdateCustomerPhoneTest$testThatDoesNotPolluteTheApplicationContextUris -
-                Running with Spring Boot v3.0.1, Spring v6.0.3
-2023-09-12 20:59:24 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerPhoneTest$testThatDoesNotPolluteTheApplicationContextUris -
-                No active profile set, falling back to 1 default profile: "default"
-2023-09-12 20:59:29 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
-                Filter 'jwtAuthFilter' configured for use
-2023-09-12 20:59:30 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerPhoneTest$testThatDoesNotPolluteTheApplicationContextUris -
-                Started UpdateCustomerPhoneTest.testThatDoesNotPolluteTheApplicationContextUris in 6.058 seconds (process running for 7.157)
-2023-09-12 20:59:31 [http-nio-auto-1-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
-                {status code=404 NOT_FOUND, message=No customer with that uid found. Please check formatting and verify customer exists., uri=/api/owners-tools/customers/edit-customer-phone/14/555.555.5156, timestamp=Tue, 12 Sep 2023 20:59:31 -0700}
-2023-09-12 21:00:07 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerPhoneTest$testThatDoesNotPolluteTheApplicationContextUris -
-                Starting UpdateCustomerPhoneTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 508906 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
-2023-09-12 21:00:07 [main] DEBUG c.a.t.t.s.o.o.UpdateCustomerPhoneTest$testThatDoesNotPolluteTheApplicationContextUris -
-                Running with Spring Boot v3.0.1, Spring v6.0.3
-2023-09-12 21:00:07 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerPhoneTest$testThatDoesNotPolluteTheApplicationContextUris -
-                No active profile set, falling back to 1 default profile: "default"
-2023-09-12 21:00:12 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
-                Filter 'jwtAuthFilter' configured for use
-2023-09-12 21:00:13 [main] INFO  c.a.t.t.s.o.o.UpdateCustomerPhoneTest$testThatDoesNotPolluteTheApplicationContextUris -
-                Started UpdateCustomerPhoneTest.testThatDoesNotPolluteTheApplicationContextUris in 6.024 seconds (process running for 7.184)
-2023-09-12 21:00:14 [http-nio-auto-1-exec-6] DEBUG c.a.t.e.GlobalExceptionHandler -
-                {status code=404 NOT_FOUND, message=No customer with that uid found. Please check formatting and verify customer exists., uri=/api/owners-tools/customers/edit-customer-phone/14/555.555.5156, timestamp=Tue, 12 Sep 2023 21:00:14 -0700}
-2023-09-12 21:00:23 [main] INFO  c.a.t.t.s.o.o.DeleteCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
-                Starting DeleteCustomerByUidTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 509042 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
-2023-09-12 21:00:23 [main] DEBUG c.a.t.t.s.o.o.DeleteCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
-                Running with Spring Boot v3.0.1, Spring v6.0.3
-2023-09-12 21:00:23 [main] INFO  c.a.t.t.s.o.o.DeleteCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
-                No active profile set, falling back to 1 default profile: "default"
-2023-09-12 21:00:28 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
-                Filter 'jwtAuthFilter' configured for use
-2023-09-12 21:00:29 [main] INFO  c.a.t.t.s.o.o.DeleteCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
-                Started DeleteCustomerByUidTest.testThatDoesNotPolluteTheApplicationContextUris in 5.977 seconds (process running for 7.187)
-2023-09-12 21:00:30 [http-nio-auto-1-exec-3] DEBUG c.a.t.e.GlobalExceptionHandler -
-                {status code=404 NOT_FOUND, message=No customer found with that UID. Please verify and try  again., uri=/api/owners-tools/customers/get-customer-uid/customerUid, timestamp=Tue, 12 Sep 2023 21:00:30 -0700}
-2023-09-12 21:00:30 [http-nio-auto-1-exec-5] DEBUG c.a.t.e.GlobalExceptionHandler -
-                {status code=404 NOT_FOUND, message=No customer with that uid found. Please check formatting and verify customer exists., uri=/api/owners-tools/customers/delete-customer/85, timestamp=Tue, 12 Sep 2023 21:00:30 -0700}
-2023-09-12 21:00:30 [http-nio-auto-1-exec-9] DEBUG c.a.t.e.GlobalExceptionHandler -
-                {status code=404 NOT_FOUND, message=No customer found by that name. Please check your spelling and formatting., uri=/api/owners-tools/customers/get-customer-name/name, timestamp=Tue, 12 Sep 2023 21:00:30 -0700}
-2023-09-12 21:00:30 [http-nio-auto-1-exec-5] DEBUG c.a.t.e.GlobalExceptionHandler -
-                {status code=404 NOT_FOUND, message=No customer with that uid found. Please check formatting and verify customer exists., uri=/api/owners-tools/customers/edit-customer-phone/14/555.555.5156, timestamp=Tue, 12 Sep 2023 21:00:30 -0700}
-2023-09-12 21:00:31 [http-nio-auto-1-exec-1] DEBUG c.a.t.e.GlobalExceptionHandler -
-                {status code=400 BAD_REQUEST, message=Customer name incorrectly formatted. Please consult the documentation., uri=/api/owners-tools/customers/edit-customer-name/gd34-igjr/dsfk%20jh!@, timestamp=Tue, 12 Sep 2023 21:00:31 -0700}
-2023-09-12 21:00:31 [http-nio-auto-1-exec-3] DEBUG c.a.t.e.GlobalExceptionHandler -
-                {status code=404 NOT_FOUND, message=No customer with that id found., uri=/api/owners-tools/customers/edit-customer-name/54/Gary%20Garrison, timestamp=Tue, 12 Sep 2023 21:00:31 -0700}
-2023-09-12 21:00:31 [main] INFO  c.a.t.t.s.o.o.GetAllCustomersTest$testThatDoesNotPolluteTheApplicationContextUris -
-                Starting GetAllCustomersTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 509042 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
-2023-09-12 21:00:31 [main] DEBUG c.a.t.t.s.o.o.GetAllCustomersTest$testThatDoesNotPolluteTheApplicationContextUris -
-                Running with Spring Boot v3.0.1, Spring v6.0.3
-2023-09-12 21:00:31 [main] INFO  c.a.t.t.s.o.o.GetAllCustomersTest$testThatDoesNotPolluteTheApplicationContextUris -
-                No active profile set, falling back to 1 default profile: "default"
-2023-09-12 21:00:32 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
-                Filter 'jwtAuthFilter' configured for use
-2023-09-12 21:00:32 [main] INFO  c.a.t.t.s.o.o.GetAllCustomersTest$testThatDoesNotPolluteTheApplicationContextUris -
-                Started GetAllCustomersTest.testThatDoesNotPolluteTheApplicationContextUris in 1.065 seconds (process running for 10.05)
-2023-09-12 21:00:32 [http-nio-auto-1-exec-5] DEBUG c.a.t.e.GlobalExceptionHandler -
-                {status code=404 NOT_FOUND, message=No customer found with that UID. Please verify and try  again., uri=/api/owners-tools/customers/get-customer-uid/customerUid, timestamp=Tue, 12 Sep 2023 21:00:32 -0700}
-2023-09-12 21:00:32 [http-nio-auto-1-exec-9] DEBUG c.a.t.e.GlobalExceptionHandler -
-                {status code=404 NOT_FOUND, message=No customer with that id found., uri=/api/owners-tools/customers/edit-customer-email/13/larry@larbo.com, timestamp=Tue, 12 Sep 2023 21:00:32 -0700}
-2023-09-12 21:00:33 [http-nio-auto-1-exec-5] DEBUG c.a.t.e.GlobalExceptionHandler -
-                {status code=400 BAD_REQUEST, message=Email does not match formatting requirements, please consult the docs., uri=/api/owners-tools/customers/edit-customer-email/gd34-igjr/larrylarbo.com, timestamp=Tue, 12 Sep 2023 21:00:33 -0700}
+2023-09-13 21:12:08 [http-nio-auto-2-exec-8] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=400 BAD_REQUEST, message=Customer name incorrectly formatted. Please consult the documentation., uri=/api/owners-tools/customers/edit-customer-name/gd34-igjr/dsfk%20jh!@, timestamp=Wed, 13 Sep 2023 21:12:08 -0700}
+2023-09-13 21:12:08 [http-nio-auto-2-exec-10] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No customer with that id found., uri=/api/owners-tools/customers/edit-customer-name/54/Gary%20Garrison, timestamp=Wed, 13 Sep 2023 21:12:08 -0700}
+2023-09-13 21:12:08 [http-nio-auto-2-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=400 BAD_REQUEST, message=Order can not be closed if order is not ready., uri=/api/owners-tools/orders/close-order/654654-465465-555, timestamp=Wed, 13 Sep 2023 21:12:08 -0700}
+2023-09-13 21:12:09 [http-nio-auto-2-exec-10] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=Order cannot be found and as such can not be closed. Please verify order id., uri=/api/owners-tools/orders/close-order/66, timestamp=Wed, 13 Sep 2023 21:12:09 -0700}
+2023-09-13 21:12:09 [http-nio-auto-2-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No customer found with that UID. Please verify and try  again., uri=/api/owners-tools/customers/get-customer-uid/customerUid, timestamp=Wed, 13 Sep 2023 21:12:09 -0700}
+2023-09-13 21:12:09 [http-nio-auto-2-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=Order does not exist. Please verify order id and try again., uri=/api/owners-tools/orders/order-ready/88, timestamp=Wed, 13 Sep 2023 21:12:09 -0700}
+2023-09-13 21:12:09 [http-nio-auto-1-exec-7] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=401 UNAUTHORIZED, message=Bad credentials. username: @5lw)W@rbnMqWO;|jY3 password: ?aNwlfCd7glf(E&r)lLr}W?fT, uri=/api/owners-tools/login, timestamp=Wed, 13 Sep 2023 21:12:09 -0700}
+2023-09-13 21:12:09 [http-nio-auto-2-exec-7] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No customer with that id found., uri=/api/owners-tools/customers/edit-customer-email/13/larry@larbo.com, timestamp=Wed, 13 Sep 2023 21:12:09 -0700}
+2023-09-13 21:12:10 [http-nio-auto-2-exec-3] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=400 BAD_REQUEST, message=Email does not match formatting requirements, please consult the docs., uri=/api/owners-tools/customers/edit-customer-email/gd34-igjr/larrylarbo.com, timestamp=Wed, 13 Sep 2023 21:12:10 -0700}
