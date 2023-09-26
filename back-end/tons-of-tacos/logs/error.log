@@ -1,45 +1,15 @@
-2023-09-13 05:12:04 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter -
-                
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Web server failed to start. Port 8080 was already in use.
-
-Action:
-
-Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
-
-2023-09-13 05:37:39 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter -
-                
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Web server failed to start. Port 8080 was already in use.
-
-Action:
-
-Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
-
-2023-09-13 05:44:32 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter -
-                
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Web server failed to start. Port 8080 was already in use.
-
-Action:
-
-Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
-
+2023-09-25 19:51:06 [http-nio-auto-1-exec-2] ERROR o.h.e.jdbc.spi.SqlExceptionHelper -
+                Table "orders" not found; SQL statement:
+select o1_0."order_pk",o1_0."closed",o1_0."created",o1_0."customer_fk",o1_0."order_total",o1_0."order_uid",o1_0."ready" from "orders" o1_0 [42102-214]
+2023-09-25 19:57:46 [http-nio-auto-1-exec-2] ERROR o.h.e.jdbc.spi.SqlExceptionHelper -
+                Table "orders" not found; SQL statement:
+select o1_0."order_pk",o1_0."closed",o1_0."created",o1_0."customer_fk",o1_0."order_total",o1_0."order_uid",o1_0."ready" from "orders" o1_0 [42102-214]
+2023-09-25 19:59:17 [main] ERROR o.h.e.jdbc.spi.SqlExceptionHelper -
+                Table "orders" not found; SQL statement:
+select o1_0."order_pk",o1_0."closed",o1_0."created",o1_0."customer_fk",o1_0."order_total",o1_0."order_uid",o1_0."ready" from "orders" o1_0 [42102-214]
+2023-09-25 20:01:08 [main] ERROR o.h.e.jdbc.spi.SqlExceptionHelper -
+                Table "orders" not found; SQL statement:
+select o1_0."order_pk",o1_0."closed",o1_0."created",o1_0."customer_fk",o1_0."order_total",o1_0."order_uid",o1_0."ready" from "orders" o1_0 [42102-214]
+2023-09-25 20:03:46 [main] ERROR o.h.e.jdbc.spi.SqlExceptionHelper -
+                Table "orders" not found; SQL statement:
+select o1_0."order_pk",o1_0."closed",o1_0."created",o1_0."customer_fk",o1_0."order_total",o1_0."order_uid",o1_0."ready" from "orders" o1_0 [42102-214]

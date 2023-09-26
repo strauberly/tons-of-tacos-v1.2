@@ -36,15 +36,16 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
     public List<OrderReturnedToOwner> getAllOrders() {
         System.out.println("service");
         List<OrderReturnedToOwner> orderItemDtos = new ArrayList<>();
-        List<Orders> orders = ordersRepository.findAll();
+        List<Orders> orders;
         try{
+         orders = ordersRepository.findAll();
             for (Orders order : orders) {
             orderItemDtos.add(ownersGetOrderDtoConverter(order));
         }
-            return orderItemDtos;
         } catch (Exception e){
-            throw new EntityNotFoundException("No orders found. Verify data integrity.");
+            throw new EntityNotFoundException("No orders found at all. Please contact your application team right away.");
         }
+        return orderItemDtos;
     }
 
     @Override

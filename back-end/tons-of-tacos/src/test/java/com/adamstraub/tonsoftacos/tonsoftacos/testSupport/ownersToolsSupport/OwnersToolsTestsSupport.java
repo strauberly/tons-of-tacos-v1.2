@@ -39,14 +39,6 @@ public class OwnersToolsTestsSupport extends TestUris {
                }""";
     }
 
-//    protected String badUsername(){
-//        return """
-//                {
-//                "username": "tony",
-//                "psswrd": "?aNwlfCd7glf(E&r)lLr}W?fT#Ld?aFw_ic"
-//                }
-//                """;
-//    }
 
     protected String badUsername(){
         String badUsername = jwtService.encrypt("tony");
@@ -122,15 +114,10 @@ public class OwnersToolsTestsSupport extends TestUris {
         System.out.println("token: " + token);
         System.out.println("token issued: " + new Date(System.currentTimeMillis()));
         System.out.println("token expires: " + new Date(System.currentTimeMillis() + (1000 * 60 * 60)));
-//        try {
-//            return token;
-//        }catch (io.jsonwebtoken.security.SignatureException exception){
-//            System.out.println(exception.getLocalizedMessage());
-//        }
         return token;
     }
 
-    private String buildGoodToken(){
+    protected String buildGoodToken(){
 //        set time variable instead of creating new
         String token = Jwts.builder()
                 .setSubject("m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5")

@@ -2,6 +2,13 @@
 
 ---
 
+-- 25 Sep 2023 --
+
+- Updated all endpoint documentation for swagger with more detailed instructions and examples.
+- Began work on tests with Mockito. Utilizing the framework to mock null instances of calls to the database and ensure global exception handler is operating as desired. These tests will serve as a refactor and replacement of earlier tests.
+
+---
+
 -- 13 Sep 2023 --
 
 - Discovered bug linked to not enough variation in path names to differentiate between searching for a customer or order by uid or customer name. Appears to be remedied by adding uid or name to the paths concerned.

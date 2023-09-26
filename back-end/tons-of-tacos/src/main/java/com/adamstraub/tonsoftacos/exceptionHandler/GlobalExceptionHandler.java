@@ -115,7 +115,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
-    public Map<String, Object> runtimeException(
+    public Map<String, Object> handleRuntimeException(
             HttpServerErrorException.InternalServerError e, WebRequest webRequest
     ){
         logger.error(createExceptionMessage(e.getLocalizedMessage(), HttpStatus.INTERNAL_SERVER_ERROR, webRequest).toString());

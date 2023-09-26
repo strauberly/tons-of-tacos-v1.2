@@ -1,10 +1,10 @@
 -- Sample customers
-INSERT INTO customer ( name, email, phone_number, customer_uid)
-VALUES( 'John Johnson', 'john@johnson.com', '555.555.5552', 'jk34-h5j0');
-INSERT INTO customer ( name, email, phone_number, customer_uid)
-VALUES('Tim Timson', 'tim@timson.com',  '555.555.5553', 'gd34-igjr' );
-INSERT INTO customer ( name, email, phone_number, customer_uid)
-VALUES('Bob Bobson', 'bob@bobson.com', '555.555.5551', '09t8-g093');
+--INSERT INTO customer ( name, email, phone_number, customer_uid)
+--VALUES( 'John Johnson', 'john@johnson.com', '555.555.5552', 'jk34-h5j0');
+--INSERT INTO customer ( name, email, phone_number, customer_uid)
+--VALUES('Tim Timson', 'tim@timson.com',  '555.555.5553', 'gd34-igjr' );
+--INSERT INTO customer ( name, email, phone_number, customer_uid)
+--VALUES('Bob Bobson', 'bob@bobson.com', '555.555.5551', '09t8-g093');
 
 -- Sample items
 
@@ -89,24 +89,24 @@ INSERT INTO menu_item (category, description , item_name, item_size, img_url,
 unit_price)
 VALUES('topping', 'a little extra', 'lime', NULL, 'TBD', 1.50);
 
-
----- Sample orders
-INSERT INTO orders (customer_fk, order_total, order_uid)
-VALUES(2, 30.55, '654654-465465-555');
-INSERT INTO orders (customer_fk, order_total, order_uid)
-VALUES(1, 25.55, '654654-4655-555');
-INSERT INTO orders (customer_fk, order_total, order_uid)
-VALUES(1, 10.00, '654654-4657-555');
 --
----- Sample order items
-INSERT INTO order_items (item_fk, quantity, total, order_fk)
-VALUES(1, 3, 3.00, 2);
-INSERT INTO order_items (item_fk, quantity, total, order_fk)
-VALUES(2, 4, 4.00, 2);
-INSERT INTO order_items (item_fk, quantity, total, order_fk)
-VALUES(3, 3, 1.50, 1);
-INSERT INTO order_items (item_fk, quantity, total, order_fk)
-VALUES(3, 3, 1.50, 3);
+------ Sample orders
+--INSERT INTO orders (customer_fk, order_total, order_uid)
+--VALUES(2, 30.55, '654654-465465-555');
+--INSERT INTO orders (customer_fk, order_total, order_uid)
+--VALUES(1, 25.55, '654654-4655-555');
+--INSERT INTO orders (customer_fk, order_total, order_uid)
+--VALUES(1, 10.00, '654654-4657-555');
+----
+------ Sample order items
+--INSERT INTO order_items (item_fk, quantity, total, order_fk)
+--VALUES(1, 3, 3.00, 2);
+--INSERT INTO order_items (item_fk, quantity, total, order_fk)
+--VALUES(2, 4, 4.00, 2);
+--INSERT INTO order_items (item_fk, quantity, total, order_fk)
+--VALUES(3, 3, 1.50, 1);
+--INSERT INTO order_items (item_fk, quantity, total, order_fk)
+--VALUES(3, 3, 1.50, 3);
 
 -- Sample owners
 INSERT INTO owners (name, username, psswrd, contact, role)

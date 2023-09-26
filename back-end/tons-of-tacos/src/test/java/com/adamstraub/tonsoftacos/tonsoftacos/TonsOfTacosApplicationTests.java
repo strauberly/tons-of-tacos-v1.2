@@ -7,10 +7,7 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootTest
 class TonsOfTacosApplicationTests {
-	@Bean
-	public ModelMapper modelMapper() {
-		return new ModelMapper();
-	}
+
 	@Test
 	void contextLoads() {
 	}

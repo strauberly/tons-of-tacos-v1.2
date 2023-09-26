@@ -1,0 +1,104 @@
+2023-09-24 14:31:28 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-24 14:31:29 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Started EmptyDBTest in 5.834 seconds (process running for 7.553)
+2023-09-24 14:32:53 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 223825 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-24 14:32:53 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-24 14:32:53 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-24 14:32:58 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-24 14:32:58 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Started EmptyDBTest in 5.573 seconds (process running for 7.186)
+2023-09-24 14:33:59 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 223972 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-24 14:33:59 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-24 14:33:59 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-24 14:34:03 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-24 14:34:04 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Started EmptyDBTest in 5.486 seconds (process running for 7.127)
+2023-09-24 14:34:35 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 224154 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-24 14:34:35 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-24 14:34:35 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-24 14:34:40 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-24 14:34:41 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Started EmptyDBTest in 5.869 seconds (process running for 6.976)
+2023-09-24 14:34:51 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 224269 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-24 14:34:51 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-24 14:34:51 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-24 14:34:56 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-24 14:34:57 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Started EmptyDBTest in 5.832 seconds (process running for 7.001)
+2023-09-24 14:36:42 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 224480 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-24 14:36:42 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-24 14:36:42 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-24 14:36:47 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-24 14:36:48 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Started EmptyDBTest in 5.823 seconds (process running for 7.538)
+2023-09-24 14:38:49 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 224690 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-24 14:38:49 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-24 14:38:49 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-24 14:38:53 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-24 14:38:54 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Started EmptyDBTest in 5.582 seconds (process running for 7.221)
+2023-09-24 14:50:28 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 224884 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-24 14:50:28 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-24 14:50:28 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-24 14:50:32 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-24 14:50:33 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Started EmptyDBTest in 5.476 seconds (process running for 7.055)
+2023-09-24 15:03:30 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 225256 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-24 15:03:30 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-24 15:03:30 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-24 15:03:35 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-24 15:03:35 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Started EmptyDBTest in 5.468 seconds (process running for 7.079)
+2023-09-24 15:06:35 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 225407 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-24 15:06:35 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-24 15:06:35 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-24 15:06:40 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-24 15:06:41 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Started EmptyDBTest in 5.487 seconds (process running for 7.073)
+2023-09-24 15:08:10 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 225574 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-24 15:08:10 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-24 15:08:10 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-24 15:08:14 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-24 15:08:15 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Started EmptyDBTest in 5.557 seconds (process running for 7.243)
