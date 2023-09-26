@@ -1,0 +1,122 @@
+2023-09-21 05:15:42 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.6 with PID 98870 (/media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-21 05:15:42 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-21 05:15:42 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-21 05:15:45 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-21 05:15:46 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.483 seconds (process running for 4.919)
+2023-09-21 05:18:12 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.6 with PID 99093 (/media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-21 05:18:12 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-21 05:18:12 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-21 05:18:15 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-21 05:18:16 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.452 seconds (process running for 4.891)
+2023-09-21 06:13:06 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 104114 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-21 06:13:06 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-21 06:13:06 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-21 06:15:08 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 104266 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-21 06:15:08 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-21 06:15:08 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-21 06:17:46 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 104435 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-21 06:17:46 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-21 06:17:46 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-21 06:23:31 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 104614 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-21 06:23:31 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-21 06:23:31 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-21 06:23:35 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-21 06:23:36 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Started EmptyDBTest in 5.441 seconds (process running for 6.967)
+2023-09-21 06:31:33 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 104981 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-21 06:31:33 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-21 06:31:33 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-21 06:31:38 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-21 06:31:38 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Started EmptyDBTest in 5.405 seconds (process running for 6.976)
+2023-09-21 06:32:18 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 105121 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-21 06:32:18 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-21 06:32:18 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-21 06:32:22 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-21 06:32:23 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Started EmptyDBTest in 5.286 seconds (process running for 6.79)
+2023-09-21 06:34:40 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 105343 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-21 06:34:40 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-21 06:34:40 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-21 06:34:58 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 105462 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-21 06:34:58 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-21 06:34:58 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-21 06:44:58 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 106263 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-21 06:44:58 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-21 06:44:58 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-21 06:48:53 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 106519 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-21 06:48:53 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-21 06:48:53 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-21 06:49:44 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 106664 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-21 06:49:44 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-21 06:49:44 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-21 06:50:59 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 106832 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-21 06:50:59 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-21 06:50:59 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-21 06:51:54 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 106976 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-21 06:51:54 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-21 06:51:54 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-21 06:52:21 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 107119 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-21 06:52:21 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-21 06:52:21 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-21 06:53:33 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 107266 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-21 06:53:33 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-21 06:53:33 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"

@@ -56,7 +56,8 @@ public interface MenuItemControllerInterface {
 
     @GetMapping("/{id}")
     MenuItem getById(
-            @RequestParam Integer id);
+            @RequestParam
+            Integer id);
 
 
 

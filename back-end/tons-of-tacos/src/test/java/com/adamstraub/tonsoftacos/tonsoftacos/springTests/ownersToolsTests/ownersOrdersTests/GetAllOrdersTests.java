@@ -46,6 +46,8 @@ class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSu
         authHeader.setContentType(MediaType.APPLICATION_JSON);
         authHeader.setBearerAuth(token);
         HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
+        System.out.println(authHeader);
+        System.out.println(headerEntity);
 //        When:  a successful connection made
         String uri =
                 String.format("%s", getBaseUriForGetAllOrders());

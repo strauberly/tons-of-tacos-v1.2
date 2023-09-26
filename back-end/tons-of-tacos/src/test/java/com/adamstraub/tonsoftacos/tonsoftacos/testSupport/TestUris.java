@@ -14,7 +14,7 @@ public class TestUris {
 
     @Autowired
     @Getter
-    private TestRestTemplate restTemplate;
+    public TestRestTemplate restTemplate;
 
     //============== menu uris ====================//
         protected String getBaseUriForMenuItemByIdQuery(){
