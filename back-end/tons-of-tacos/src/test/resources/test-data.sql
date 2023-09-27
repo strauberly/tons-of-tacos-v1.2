@@ -90,13 +90,22 @@ unit_price)
 VALUES('topping', 'a little extra', 'lime', NULL, 'TBD', 1.50);
 
 
+------ Sample orders
+--INSERT INTO orders (customer_fk, order_total, order_uid)
+--VALUES(2, 30.55, '654654-465465-555');
+--INSERT INTO orders (customer_fk, order_total, order_uid)
+--VALUES(1, 25.55, '654654-4655-555');
+--INSERT INTO orders (customer_fk, order_total, order_uid)
+--VALUES(1, 10.00, '654654-4657-555');
+
 ---- Sample orders
-INSERT INTO orders (customer_fk, order_total, order_uid)
-VALUES(2, 30.55, '654654-465465-555');
-INSERT INTO orders (customer_fk, order_total, order_uid)
-VALUES(1, 25.55, '654654-4655-555');
-INSERT INTO orders (customer_fk, order_total, order_uid)
-VALUES(1, 10.00, '654654-4657-555');
+INSERT INTO orders (customer_fk, order_total, order_uid, customer_uid)
+VALUES(2, 30.55, '654654-465465-555', 'gd34-igjr');
+INSERT INTO orders (customer_fk, order_total, order_uid, customer_uid)
+VALUES(1, 25.55, '654654-4655-555', 'jk34-h5j0');
+INSERT INTO orders (customer_fk, order_total, order_uid, customer_uid)
+VALUES(1, 10.00, '654654-4657-555', 'jk34-h5j0');
+
 --
 ---- Sample order items
 INSERT INTO order_items (item_fk, quantity, total, order_fk)

@@ -45,6 +45,7 @@ order_uid VARCHAR(255) NOT NULL,
 created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 ready VARCHAR(30) DEFAULT 'no',
 closed VARCHAR(30)DEFAULT 'no',
+customer_uid VARCHAR(9) NOT NULL,
 PRIMARY KEY (order_pk),
 FOREIGN KEY (customer_fk) REFERENCES customer(customer_pk)ON DELETE SET NULL
 );

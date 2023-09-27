@@ -60,7 +60,7 @@ class CreateOrderTests {
             headers.setContentType(MediaType.APPLICATION_JSON);
 
             HttpEntity<String> bodyEntity = new HttpEntity<>(body, headers);
-            ResponseEntity<OrderReturnedToCustomer> response = getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
+            ResponseEntity<OrderReturnedToCustomer> response = restTemplate.getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
                     OrderReturnedToCustomer.class);
             System.out.println("response body: " + response.getBody());
 //                System.out.println(Objects.requireNonNull(response.getBody()).getOrderUid());
@@ -68,6 +68,7 @@ class CreateOrderTests {
 //                Then: an order is successfully stored with a 201 response
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
             System.out.println("Response code is " + response.getStatusCode() + ".");
+
 
 //                And: The order is successfully retrieved by the test Uid as verification
             String parameter = "orderUid";

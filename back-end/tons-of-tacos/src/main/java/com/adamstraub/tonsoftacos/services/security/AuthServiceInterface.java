@@ -6,5 +6,5 @@ import java.io.UnsupportedEncodingException;
 
 public interface AuthServiceInterface {
 
-    String ownerLogin(OwnerAuth ownerAuth) throws UnsupportedEncodingException;
+    String ownerLogin(OwnerAuth ownerAuth);
 }

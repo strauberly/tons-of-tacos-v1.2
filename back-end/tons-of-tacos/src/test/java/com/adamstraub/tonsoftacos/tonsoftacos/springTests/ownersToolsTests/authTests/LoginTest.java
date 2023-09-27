@@ -128,7 +128,8 @@ public class LoginTest implements JwtSignatureValidator {
             });
             System.out.println(response.getBody());
 //            Then: status code of 403 is returned
-            Assertions.assertEquals(HttpStatus.FORBIDDEN, response.getStatusCode());
+//            Assertions.assertEquals(HttpStatus.FORBIDDEN, response.getStatusCode());
+            Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
             System.out.println(("Response code is " + response.getStatusCode() + "."));
 
 //            And: the error message contains
@@ -157,7 +158,8 @@ public class LoginTest implements JwtSignatureValidator {
             System.out.println(response.getBody());
 
 //           Then: a status code of 403 UNAUTHORIZED is returned
-            Assertions.assertEquals(HttpStatus.FORBIDDEN, response.getStatusCode());
+//            Assertions.assertEquals(HttpStatus.FORBIDDEN, response.getStatusCode());
+            Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
             System.out.println(("Response code is " + response.getStatusCode() + "."));
 //           And: the error contains
             Map<String, Object> error = response.getBody();

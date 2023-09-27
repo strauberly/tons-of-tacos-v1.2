@@ -34,7 +34,7 @@ public class SecurityConfig {
         return
                 http
                         .csrf().disable()
-//                whitelisted
+//                available
                         .authorizeHttpRequests()
                         .requestMatchers("/api/menu/**", "/api/order/**", "/api/owners-tools/login", "/api/v1/auth/**",
                                 "/v3/api-docs/**",

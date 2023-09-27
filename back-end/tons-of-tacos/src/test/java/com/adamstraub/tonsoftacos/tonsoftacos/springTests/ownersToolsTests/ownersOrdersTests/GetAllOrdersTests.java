@@ -60,34 +60,34 @@ class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSu
         System.out.println(("Response code is " + response.getStatusCode() + "."));
 
     }
-// create as mockito test
-    @Test
-    void noOrdersReturned404() {
-//  Given: a successful connection, auth header, and test data is commented out from test database
-        //            get valid token
-//        String token = validToken();
-        String token = encryptedToken();
-        Assertions.assertNotNull(token);
-
-//           build auth header
-        HttpHeaders authHeader = new HttpHeaders();
-        authHeader.setContentType(MediaType.APPLICATION_JSON);
-        authHeader.setBearerAuth(token);
-        HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
-//        When:  a successful connection made
-        String uri =
-                String.format("%s", getBaseUriForGetAllOrders());
-//        ResponseEntity<String> response =
-//                use mockito to to mock a null response body
-        ResponseEntity<Map<String, Object>> response =
-                getRestTemplate().exchange(uri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
-                });
-        System.out.println("Response body: " + response.getBody());
-//  Then: a 404 response is returned if no orders found
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
-        System.out.println(("Response code is " + response.getStatusCode() + "."));
-        System.out.println("Response body: " + response.getBody());
-        System.out.println("Negative test case complete for no orders returned.");
-    }
+// create as mockito test - check
+//    @Test
+//    void noOrdersReturned404() {
+////  Given: a successful connection, auth header, and test data is commented out from test database
+//        //            get valid token
+////        String token = validToken();
+//        String token = encryptedToken();
+//        Assertions.assertNotNull(token);
+//
+////           build auth header
+//        HttpHeaders authHeader = new HttpHeaders();
+//        authHeader.setContentType(MediaType.APPLICATION_JSON);
+//        authHeader.setBearerAuth(token);
+//        HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
+////        When:  a successful connection made
+//        String uri =
+//                String.format("%s", getBaseUriForGetAllOrders());
+////        ResponseEntity<String> response =
+////                use mockito to to mock a null response body
+//        ResponseEntity<Map<String, Object>> response =
+//                getRestTemplate().exchange(uri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
+//                });
+//        System.out.println("Response body: " + response.getBody());
+////  Then: a 404 response is returned if no orders found
+//        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+//        System.out.println(("Response code is " + response.getStatusCode() + "."));
+//        System.out.println("Response body: " + response.getBody());
+//        System.out.println("Negative test case complete for no orders returned.");
+//    }
 }
 }

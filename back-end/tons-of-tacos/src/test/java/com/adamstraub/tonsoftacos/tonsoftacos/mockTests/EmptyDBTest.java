@@ -249,7 +249,7 @@ public class EmptyDBTest extends OwnersToolsTestsSupport{
 //    @Autowired
 //    private JdbcTemplate jdbcTemplate;
 
-    @Mock
+    @MockBean
     private OrdersRepository ordersRepository;
 /*
     @Mock
