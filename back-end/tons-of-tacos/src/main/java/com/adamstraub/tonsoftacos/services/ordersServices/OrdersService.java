@@ -41,7 +41,7 @@ public class OrdersService implements OrdersServiceInterface {
     @Transactional
     public OrderReturnedToCustomer createOrder(@RequestBody @NotNull NewOrder order) {
         System.out.println("service");
-
+        System.out.println("order: " + order);
 
         Double orderTotal = 0.00;
         OrderReturnedToCustomer customerCopyDto = new OrderReturnedToCustomer();
@@ -49,7 +49,8 @@ public class OrdersService implements OrdersServiceInterface {
         Orders orderConfirmation;
         List<OrderItem> orderItems = newOrder.getOrderItems();
         List<OrderItemReturnedToCustomer> orderItemDtos = new ArrayList<>();
-
+        System.out.println("order: " + newOrder);
+        System.out.println("new order: " + order.getOrder());
 //        order validation
         validateCustomerName(order.getCustomer().getName());
 
@@ -73,50 +74,72 @@ public class OrdersService implements OrdersServiceInterface {
 //                if customer already exists, use existing customer id else create new customer
 
         Customer newCustomer = order.getCustomer();
+        System.out.println("customer: " + newCustomer);
             if (customerRepository.findByName(newCustomer.getName()) != null &&
                     Objects.equals
                             (customerRepository.findByName(newCustomer.getName()).getEmail(),
                                     order.getCustomer().getEmail())
             && Objects.equals(customerRepository.findByName(newCustomer.getName()).getPhoneNumber(),
-                    order.getCustomer().getPhoneNumber())) {
+                    order.getCustomer().getPhoneNumber())
+// will need a clause for not duplicate order at some point
+//                    && Objects.equals(customerRepository.findByName(newCustomer.getName()).getCustomerUid(),
+//                    order.getCustomer().getCustomerUid())
+            ) {
                 newOrder.setCustomerId(customerRepository.findByName(newCustomer.getName()).getCustomerId());
+                newOrder.setCustomerUid(customerRepository.findByName(newCustomer.getName()).getCustomerUid());
             } else {
+                newCustomer.setCustomerUid(genCustomerUid());
+//                System.out.println("customer with uid: " + newCustomer);
                 customerRepository.save(newCustomer);
                 newCustomer = customerRepository.findByName(newCustomer.getName());
-                newOrder.setCustomerId(newCustomer.getCustomerId());
-            }
+//                newOrder.setCustomerId(newCustomer.getCustomerId());
+//                newOrder.setCustomerUid(genCustomerUid());
+                System.out.println("customer after save: " + newCustomer);
+//            }
 
 //            set order items and total
-            newOrder.setOrderItems(orderItems);
 
-            for (OrderItem orderItem : orderItems) {
-            orderItem.setTotal(orderItem.getQuantity() *
-                    menuItemRepository.getReferenceById(orderItem.getItem().getId()).getUnitPrice());
-            orderTotal += orderItem.getTotal();
-        }
-            newOrder.setOrderTotal(orderTotal);
+                newOrder.setOrderItems(orderItems);
+
+                System.out.println( "newOrder: "  + newOrder);
+
+                for (OrderItem orderItem : orderItems) {
+                    orderItem.setTotal(orderItem.getQuantity() *
+                            menuItemRepository.getReferenceById(orderItem.getItem().getId()).getUnitPrice());
+                    orderTotal += orderItem.getTotal();
+                }
+                newOrder.setOrderTotal(orderTotal);
+                System.out.println("new order with total: " + newOrder);
+                System.out.println("customer uuid: " + newCustomer.getCustomerUid());
+                newOrder.setCustomerUid(newCustomer.getCustomerUid());
+                System.out.println("new order with customer uid: " + newOrder);
+                newOrder.setCustomerId(newCustomer.getCustomerId());
+                System.out.println("new order with customer id: " + newOrder);
+
 
 //        set order uid
-        newOrder.setOrderUid(genOrderUid());
-        ordersRepository.save(newOrder);
-        System.out.println("Order created.");
+                newOrder.setOrderUid(genOrderUid());
+                System.out.println("new order with order uid: " + newOrder);
+                ordersRepository.save(newOrder);
+                System.out.println("Order created.");
 
 //        reset valid flags
-        customerNameValid = false;
-        customerPhoneNumberValid = false;
-        customerEmailValid = false;
+                customerNameValid = false;
+                customerPhoneNumberValid = false;
+                customerEmailValid = false;
 
 //create an order confirmation
-            orderConfirmation = ordersRepository.findByOrderUid(newOrder.getOrderUid());
-            customerCopyDto.setCustomerName(newCustomer.getName());
-            customerCopyDto.setOrderUid(newOrder.getOrderUid());
-            customerCopyDto.setOrderTotal(newOrder.getOrderTotal());
+                orderConfirmation = ordersRepository.findByOrderUid(newOrder.getOrderUid());
+                customerCopyDto.setCustomerName(newCustomer.getName());
+                customerCopyDto.setOrderUid(newOrder.getOrderUid());
+                customerCopyDto.setOrderTotal(newOrder.getOrderTotal());
 
-            orderItems = orderConfirmation.getOrderItems();
-            for (OrderItem orderItem : orderItems) {
-                orderItemDtos.add(orderItemDtoConvertor(orderItem));
+                orderItems = orderConfirmation.getOrderItems();
+                for (OrderItem orderItem : orderItems) {
+                    orderItemDtos.add(orderItemDtoConvertor(orderItem));
+                }
+                customerCopyDto.setOrderItems(orderItemDtos);
             }
-            customerCopyDto.setOrderItems(orderItemDtos);
         return customerCopyDto;
     }
 
@@ -131,19 +154,52 @@ public class OrdersService implements OrdersServiceInterface {
 
         return orderItemDto;
     }
-
+// set uid proper == first half(sub 0-3) +"-"+ second half(sub 4-7)
     private String genOrderUid() {
         // desired result example: 11A32
         String orderUid = null;
+
+
         StringBuilder orderUidBuilder = new StringBuilder(5);
         for (int i = 0; i < 5; i++) {
             orderUid = String.valueOf(orderUidBuilder.append(randomUidChar()));
+
         }
 //        compare uid against others by doing a find by uid and if null then return if not re-run
         if (ordersRepository.findByOrderUid(orderUid) != null) {
             genOrderUid();
         }
         return orderUid;
+    }
+
+    private String genCustomerUid() {
+        // desired result example: 11A32
+        String customerUid = null;
+        String customerUidFront = null;
+        String customerUidBack = null;
+        String formattedCustomerUid = null;
+        StringBuilder orderUidBuilder = new StringBuilder(8);
+        for (int i = 0; i < 8; i++) {
+            customerUid = String.valueOf(orderUidBuilder.append(randomUidChar()));
+//        customerUidFront = customerUid.substring(0,3);
+//            System.out.println(customerUidFront);
+//            customerUidBack = customerUid.substring(4, customerUid.length() -1);
+//            System.out.println(customerUidBack);
+//            formattedCustomerUid = customerUidFront + "-" + customerUidBack;
+//            System.out.println(formattedCustomerUid);
+        }
+                customerUidFront = customerUid.substring(0,4);
+            System.out.println(customerUidFront);
+            customerUidBack = customerUid.substring(4);
+            System.out.println(customerUidBack);
+            formattedCustomerUid = customerUidFront + "-" + customerUidBack;
+            System.out.println(formattedCustomerUid);
+//        compare uid against others by doing a find by uid and if null then return if not re-run
+        if (customerRepository.findByCustomerUid(customerUid) != null) {
+            genCustomerUid();
+        }
+//        System.out.println(customerUid);
+        return formattedCustomerUid;
     }
 
     private char randomUidChar() {

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpHeaders;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -83,7 +84,8 @@ private final HandlerExceptionResolver resolver;
     @Bean
     UserDetailsService userDetailsService(){
         return username -> ownerRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User unauthorized."));
+//                .orElseThrow(() -> new UsernameNotFoundException("User unauthorized."));
+                .orElseThrow(() -> new BadCredentialsException("User unauthorized."));
     }
 }
 

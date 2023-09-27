@@ -43,6 +43,9 @@ public class Orders implements Serializable {
     @Column (name = "closed")
     private String closed = "no";
 
+    @Column (name = "customer_uid")
+    private String customerUid;
+
 
 @OneToMany(cascade = CascadeType.ALL, mappedBy = "order", fetch = FetchType.LAZY)
     @JsonManagedReference
@@ -59,6 +62,10 @@ public class Orders implements Serializable {
                 ", created=" + created +
                 ", ready='" + ready + '\'' +
                 ", closed='" + closed + '\'' +
+                ", customerUid='" + customerUid + '\'' +
                 '}';
+    }
+
+    public void setCustomerUid(String s) {
     }
 }

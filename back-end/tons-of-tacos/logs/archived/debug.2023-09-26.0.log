@@ -1,0 +1,104 @@
+2023-09-25 19:50:00 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-25 19:50:00 [main] INFO  c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Started GetAllOrdersTests.testThatDoesNotPolluteTheApplicationContextUris in 7.135 seconds (process running for 8.219)
+2023-09-25 19:51:00 [main] INFO  c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting GetAllOrdersTests.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 266535 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-25 19:51:00 [main] DEBUG c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-25 19:51:00 [main] INFO  c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-25 19:51:05 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-25 19:51:06 [main] INFO  c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Started GetAllOrdersTests.testThatDoesNotPolluteTheApplicationContextUris in 6.244 seconds (process running for 7.441)
+2023-09-25 19:57:39 [main] INFO  c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting GetAllOrdersTests.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 266717 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-25 19:57:39 [main] DEBUG c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-25 19:57:39 [main] INFO  c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-25 19:57:44 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-25 19:57:45 [main] INFO  c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Started GetAllOrdersTests.testThatDoesNotPolluteTheApplicationContextUris in 6.298 seconds (process running for 7.534)
+2023-09-25 19:57:46 [http-nio-auto-1-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No orders found. Verify data integrity., uri=/api/owners-tools/orders/get-orders, timestamp=Mon, 25 Sep 2023 19:57:46 -0700}
+2023-09-25 19:59:11 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 266874 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-25 19:59:11 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-25 19:59:11 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-25 19:59:15 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-25 19:59:16 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Started EmptyDBTest in 5.752 seconds (process running for 7.597)
+2023-09-25 19:59:17 [main] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No orders found. Verify data integrity., uri=/api/owners-tools/orders/get-orders, timestamp=Mon, 25 Sep 2023 19:59:17 -0700}
+2023-09-25 20:01:03 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 267111 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-25 20:01:03 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-25 20:01:03 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-25 20:01:07 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-25 20:01:08 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Started EmptyDBTest in 5.437 seconds (process running for 7.125)
+2023-09-25 20:01:08 [main] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No orders found. Verify data integrity., uri=/api/owners-tools/orders/get-orders, timestamp=Mon, 25 Sep 2023 20:01:08 -0700}
+2023-09-25 20:03:41 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 267250 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-25 20:03:41 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-25 20:03:41 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-25 20:03:45 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-25 20:03:46 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Started EmptyDBTest in 5.677 seconds (process running for 7.329)
+2023-09-25 20:03:46 [main] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No orders found. Verify data integrity., uri=/api/owners-tools/orders/get-orders, timestamp=Mon, 25 Sep 2023 20:03:46 -0700}
+2023-09-26 12:24:10 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.7 with PID 7080 (started by josie in /media/josie/Backup 1/2016/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-26 12:24:10 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-26 12:24:10 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-26 12:24:20 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-26 12:24:22 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Started EmptyDBTest in 12.597 seconds (process running for 18.169)
+2023-09-26 12:25:54 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.7 with PID 7207 (started by josie in /media/josie/Backup 1/2016/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-26 12:25:54 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-26 12:25:54 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-26 12:26:04 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-26 12:26:06 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Started EmptyDBTest in 12.768 seconds (process running for 18.878)
+2023-09-26 12:26:07 [main] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No orders found at all. Please contact your application team right away., uri=/api/owners-tools/orders/get-orders, timestamp=Tue, 26 Sep 2023 12:26:07 -0400}
+2023-09-26 12:26:56 [main] INFO  c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting GetAllOrdersTests.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.7 with PID 7311 (started by josie in /media/josie/Backup 1/2016/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-26 12:26:56 [main] DEBUG c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-26 12:26:56 [main] INFO  c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-26 12:27:06 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-26 12:27:08 [main] INFO  c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Started GetAllOrdersTests.testThatDoesNotPolluteTheApplicationContextUris in 12.892 seconds (process running for 17.471)
+2023-09-26 12:27:11 [main] INFO  c.a.t.t.s.m.GetMenuItemsByCategoryTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting GetMenuItemsByCategoryTests.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.7 with PID 7311 (started by josie in /media/josie/Backup 1/2016/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-26 12:27:11 [main] DEBUG c.a.t.t.s.m.GetMenuItemsByCategoryTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-26 12:27:11 [main] INFO  c.a.t.t.s.m.GetMenuItemsByCategoryTests$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-26 12:27:14 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-26 12:27:14 [main] INFO  c.a.t.t.s.m.GetMenuItemsByCategoryTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Started GetMenuItemsByCategoryTests.testThatDoesNotPolluteTheApplicationContextUris in 3.104 seconds (process running for 23.378)
