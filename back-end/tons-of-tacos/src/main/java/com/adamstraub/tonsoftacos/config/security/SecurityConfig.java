@@ -36,6 +36,7 @@ public class SecurityConfig {
                         .csrf().disable()
 //                available
                         .authorizeHttpRequests()
+
                         .requestMatchers("/api/menu/**", "/api/order/**", "/api/owners-tools/login", "/api/v1/auth/**",
                                 "/v3/api-docs/**",
                                 "/v3/api-docs.yaml",
@@ -47,6 +48,7 @@ public class SecurityConfig {
                         .authenticated().and()
                         .sessionManagement()
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+
                         .and()
                         .authenticationProvider(authenticationProvider())
                         .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)

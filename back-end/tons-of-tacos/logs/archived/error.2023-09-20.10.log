@@ -1,6 +1,6 @@
 2023-09-20 20:31:51 [main] ERROR o.s.test.context.TestContextManager -
-                Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener] to prepare test instance [com.adamstraub.tonsoftacos.tonsoftacos.mockTests.EmptyDBTest@24afdf18]
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'com.adamstraub.tonsoftacos.tonsoftacos.mockTests.EmptyDBTest': Injection of autowired dependencies failed
+                Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener] to prepare test instance [com.adamstraub.tonsoftacos.tonsoftacos.mockTests.CustomersDBTests@24afdf18]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'com.adamstraub.tonsoftacos.tonsoftacos.mockTests.CustomersDBTests': Injection of autowired dependencies failed
 	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:487)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1397)
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:397)

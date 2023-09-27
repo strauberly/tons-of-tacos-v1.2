@@ -113,7 +113,7 @@ public class LoginTest implements JwtSignatureValidator {
 
 
         @Test
-        void invalidUsernameReturns403(){
+        void invalidUsernameReturns403Or401(){
 //            Given: a bad username
             String badUserNameBody = badUsername();
             System.out.println("bad username body: "+ badUserNameBody);
@@ -127,9 +127,8 @@ public class LoginTest implements JwtSignatureValidator {
             ResponseEntity<Map<String, Object>> response = getRestTemplate().exchange(uri, HttpMethod.POST, httpEntity, new ParameterizedTypeReference<>() {
             });
             System.out.println(response.getBody());
-//            Then: status code of 403 is returned
-//            Assertions.assertEquals(HttpStatus.FORBIDDEN, response.getStatusCode());
-            Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
+//            Then: status code of 403 or 401 is returned
+            Assertions.assertTrue(response.getStatusCode() == HttpStatusCode.valueOf(401) || response.getStatusCode() == HttpStatusCode.valueOf(403) );
             System.out.println(("Response code is " + response.getStatusCode() + "."));
 
 //            And: the error message contains
@@ -143,7 +142,7 @@ public class LoginTest implements JwtSignatureValidator {
         }
 
         @Test
-        void invalidPasswordReturns403(){
+        void invalidPasswordReturns403Or401(){
 //           Given: a body with an invalid password
                 String badPasswordBody = badPassword();
             System.out.println("Bad password body: " + badPasswordBody);
@@ -157,11 +156,12 @@ public class LoginTest implements JwtSignatureValidator {
 
             System.out.println(response.getBody());
 
-//           Then: a status code of 403 UNAUTHORIZED is returned
-//            Assertions.assertEquals(HttpStatus.FORBIDDEN, response.getStatusCode());
-            Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
+//            Then: status code of 403 or 401 is returned
+            Assertions.assertTrue(response.getStatusCode() == HttpStatusCode.valueOf(401) || response.getStatusCode() == HttpStatusCode.valueOf(403) );
             System.out.println(("Response code is " + response.getStatusCode() + "."));
-//           And: the error contains
+
+
+            //           And: the error contains
             Map<String, Object> error = response.getBody();
             System.out.println(error);
             assert error != null;

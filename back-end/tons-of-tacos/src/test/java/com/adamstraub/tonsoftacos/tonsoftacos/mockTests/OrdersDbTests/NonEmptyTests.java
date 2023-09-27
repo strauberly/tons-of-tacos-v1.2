@@ -1,8 +1,5 @@
-package com.adamstraub.tonsoftacos.tonsoftacos.mockTests;
+package com.adamstraub.tonsoftacos.tonsoftacos.mockTests.OrdersDbTests;
 
-import com.adamstraub.tonsoftacos.config.security.JwtAuthFilter;
-import com.adamstraub.tonsoftacos.config.security.SecurityConfig;
-import com.adamstraub.tonsoftacos.controllers.menuItemControllers.MenuItemController;
 //import com.adamstraub.tonsoftacos.controllers.menuItemControllers.MenuItemControllerInterface;
 //import com.adamstraub.tonsoftacos.dao.MenuItemRepository;
 //import com.adamstraub.tonsoftacos.dao.OrdersRepository;
@@ -10,31 +7,17 @@ import com.adamstraub.tonsoftacos.controllers.menuItemControllers.MenuItemContro
 //import com.adamstraub.tonsoftacos.exceptionHandler.GlobalExceptionHandler;
 //import com.adamstraub.tonsoftacos.services.menuItemServices.MenuItemService;
 //import com.adamstraub.tonsoftacos.services.ownersServices.orders.OwnersOrdersService;
-import com.adamstraub.tonsoftacos.controllers.menuItemControllers.MenuItemControllerInterface;
-import com.adamstraub.tonsoftacos.dao.MenuItemRepository;
+import com.adamstraub.tonsoftacos.dao.CustomerRepository;
 import com.adamstraub.tonsoftacos.dao.OrdersRepository;
-import com.adamstraub.tonsoftacos.dao.OwnerRepository;
-import com.adamstraub.tonsoftacos.dto.businessDto.OrderReturnedToOwner;
-import com.adamstraub.tonsoftacos.exceptionHandler.GlobalExceptionHandler;
-import com.adamstraub.tonsoftacos.services.menuItemServices.MenuItemService;
-import com.adamstraub.tonsoftacos.services.menuItemServices.MenuItemServiceInterface;
-import com.adamstraub.tonsoftacos.services.ownersServices.orders.OwnersOrdersService;
-import com.adamstraub.tonsoftacos.services.security.AuthService;
-import com.adamstraub.tonsoftacos.services.security.JwtService;
-import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ownersToolsSupport.OwnersToolsTestsSupport;
+        import com.adamstraub.tonsoftacos.services.ownersServices.orders.OwnersOrdersService;
+        import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ownersToolsSupport.OwnersToolsTestsSupport;
 //import io.restassured.module.mockmvc.RestAssuredMockMvc;
 //import jakarta.persistence.EntityNotFoundException;
 //import org.aspectj.lang.annotation.Before;
-import jakarta.persistence.EntityNotFoundException;
-import lombok.Getter;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
+        import org.junit.jupiter.api.Test;
+        import org.mockito.InjectMocks;
 //import org.mockito.Mock;
 import org.mockito.Mock;
-import org.mockito.Spy;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 //import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -42,20 +25,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.boot.test.mock.mockito.MockBean;
 //import org.springframework.http.HttpHeaders;
 //import org.springframework.http.HttpStatus;
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
+        import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+        import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.MediaType;
+        import org.springframework.http.MediaType;
 //import org.springframework.http.ResponseEntity;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.test.context.jdbc.SqlConfig;
-import org.springframework.test.web.servlet.*;
 //import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 //import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -75,25 +49,13 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 //import static org.mockito.Mockito.*;
 //import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.BDDMockito.then;
-import static org.mockito.Mockito.*;
+        import static org.mockito.Mockito.*;
 //import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+        import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
+        import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
-import java.util.ArrayList;
-import java.util.List;
 //====================================================================
 //@ExtendWith(MockitoExtension.class)
 //@WebMvcTest(controllers = MenuItemController.class, excludeAutoConfiguration = {SecurityAutoConfiguration.class})
@@ -236,21 +198,27 @@ import java.util.List;
 //@Nested
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-    @TestPropertySource("classpath:test-application.properties")
-@Sql(scripts = {
-        "classpath:/test-schema.sql",
-        "classpath:/test-data.sql",
-},
-        config = @SqlConfig(encoding = "utf-8"))
+//    @TestPropertySource("classpath:test-application.properties")
+//@Sql(scripts = {
+//        "classpath:/test-schema.sql",
+//        "classpath:/test-data.sql",
+//},
+//        config = @SqlConfig(encoding = "utf-8"))
 
-public class EmptyDBTest extends OwnersToolsTestsSupport{
+public class NonEmptyTests extends OwnersToolsTestsSupport{
     @Autowired
     private MockMvc mockMvc;
 //    @Autowired
 //    private JdbcTemplate jdbcTemplate;
 
-    @MockBean
+    @Mock
     private OrdersRepository ordersRepository;
+
+    @Mock
+    CustomerRepository customerRepository;
+
+//    @Mock
+//    private OrdersRepository ordersRepositoryMock;
 /*
     @Mock
     GlobalExceptionHandler exceptionHandler;
@@ -274,26 +242,39 @@ public class EmptyDBTest extends OwnersToolsTestsSupport{
 //    OwnersOrdersService ownersOrdersService;
 
 
-
+//Break out into two different tests
+//    @mockbean for 404
 
     @InjectMocks
     OwnersOrdersService ownersOrdersService;
 
     @Test
-        void nonEmptyOrdersTest200() throws Exception {
+        void nonEmptyOrdersDBTest200() throws Exception {
                 RequestBuilder request = MockMvcRequestBuilders
                 .get(getBaseUriForGetAllOrders())
                 .header("Authorization", "Bearer " + buildGoodToken())
                 .accept(MediaType.APPLICATION_JSON);
-        System.out.println(request);
+//        System.out.println(request);
         MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
-        System.out.println(result.getRequest());
+//        System.out.println(result.getRequest());
         System.out.println(result.getResponse().getStatus());
         System.out.println(result.getResponse().getContentAsString());
+        System.out.println("All orders returned successfully.");
     }
 
     @Test
-    void emptyOrdersTest404() throws Exception {
+    void nonEmptyCustomersDBTest200() throws Exception {
+
+        RequestBuilder request = MockMvcRequestBuilders
+                .get(getBaseUriForGetAllCustomers())
+                .header("Authorization", "Bearer " + buildGoodToken())
+                .accept(MediaType.APPLICATION_JSON);
+//        System.out.println(request);
+        MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
+//        System.out.println(result.getRequest());
+        System.out.println(result.getResponse().getStatus());
+        System.out.println(result.getResponse().getContentAsString());
+    }
 //        OrderReturnedToOwner orderReturnedToOwner = mock(OrderReturnedToOwner.class);
 //        ownersOrdersService.getAllOrders() = null
 ////        OwnersOrdersService mockOwnersOrdersService = mock(OwnersOrdersService.class);
@@ -304,7 +285,7 @@ public class EmptyDBTest extends OwnersToolsTestsSupport{
 //        when(ordersRepository.findAll()).thenThrow(EntityNotFoundException.class);
 //        when(ordersRepository.findAll()).thenThrow(new EntityNotFoundException("No orders found. Verify data integrity."));
 //        ownersOrdersService.getAllOrders();
-       when(ordersRepository.findAll()).thenReturn(null);
+//       when(ordersRepository.findAll()).thenReturn(null);
 //        when(ownersOrdersService.getAllOrders()).thenThrow(new EntityNotFoundException("No orders found. Verify data integrity."));
 //        System.out.println(ownersOrdersService.getAllOrders());
 //        System.out.println(exception.getMessage());
@@ -312,25 +293,27 @@ public class EmptyDBTest extends OwnersToolsTestsSupport{
 
 
 
+////
+////
+//        RequestBuilder request = MockMvcRequestBuilders
+//                .get(getBaseUriForGetAllOrders())
+//                .header("Authorization", "Bearer " + buildGoodToken())
+//                .accept(MediaType.APPLICATION_JSON);
+////        System.out.println(request);
+//        MvcResult result = mockMvc.perform(request).andExpect(status().isNotFound()).andReturn();
 //
+////        System.out.println(result.getRequest());
+////        System.out.println(result.getResponse().getStatus());
+//        System.out.println(result.getResponse().getContentAsString());
+//        System.out.println("Test for unsuccessful use case complete.");
 //
-        RequestBuilder request = MockMvcRequestBuilders
-                .get(getBaseUriForGetAllOrders())
-                .header("Authorization", "Bearer " + buildGoodToken())
-                .accept(MediaType.APPLICATION_JSON);
-        System.out.println(request);
-        MvcResult result = mockMvc.perform(request).andExpect(status().isNotFound()).andReturn();
-        System.out.println(result.getRequest());
-        System.out.println(result.getResponse().getStatus());
-        System.out.println(result.getResponse().getContentAsString());
-
-//        Exception exception = assertThrows(EntityNotFoundException.class, () -> ownersOrdersService.getAllOrders().isEmpty());
-//        String expectedMessage = "No orders found. Verify data integrity.";
-//        String actualMessage = exception.getMessage();
-//        assertTrue(actualMessage.contains(expectedMessage));
-//
-//        Exception exception = new EntityNotFoundException();
-//        given(ownersOrdersService.getAllOrders()).willThrow(exception);
-    }
+////        Exception exception = assertThrows(EntityNotFoundException.class, () -> ownersOrdersService.getAllOrders().isEmpty());
+////        String expectedMessage = "No orders found. Verify data integrity.";
+////        String actualMessage = exception.getMessage();
+////        assertTrue(actualMessage.contains(expectedMessage));
+////
+////        Exception exception = new EntityNotFoundException();
+////        given(ownersOrdersService.getAllOrders()).willThrow(exception);
+//    }
 
 }
