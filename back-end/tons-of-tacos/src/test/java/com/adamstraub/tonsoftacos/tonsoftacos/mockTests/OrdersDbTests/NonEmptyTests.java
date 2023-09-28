@@ -31,6 +31,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
         import org.springframework.http.MediaType;
 //import org.springframework.http.ResponseEntity;
 //import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 //import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 //import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -198,24 +202,24 @@ import org.springframework.test.web.servlet.RequestBuilder;
 //@Nested
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-//    @TestPropertySource("classpath:test-application.properties")
-//@Sql(scripts = {
-//        "classpath:/test-schema.sql",
-//        "classpath:/test-data.sql",
-//},
-//        config = @SqlConfig(encoding = "utf-8"))
+    @TestPropertySource("classpath:test-application.properties")
+@Sql(scripts = {
+        "classpath:/test-schema.sql",
+        "classpath:/test-data.sql",
+},
+        config = @SqlConfig(encoding = "utf-8"))
 
 public class NonEmptyTests extends OwnersToolsTestsSupport{
     @Autowired
     private MockMvc mockMvc;
-//    @Autowired
-//    private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
-    @Mock
-    private OrdersRepository ordersRepository;
+//    @Mock
+//    private OrdersRepository ordersRepository;
 
-    @Mock
-    CustomerRepository customerRepository;
+//    @Mock
+//   private CustomerRepository customerRepository;
 
 //    @Mock
 //    private OrdersRepository ordersRepositoryMock;
@@ -245,8 +249,10 @@ public class NonEmptyTests extends OwnersToolsTestsSupport{
 //Break out into two different tests
 //    @mockbean for 404
 
-    @InjectMocks
-    OwnersOrdersService ownersOrdersService;
+//    @InjectMocks
+//    OwnersOrdersService ownersOrdersService;
+
+//    not mocking just calling the db and returning no need for mockito - consider use case and if neccesary
 
     @Test
         void nonEmptyOrdersDBTest200() throws Exception {
@@ -257,6 +263,7 @@ public class NonEmptyTests extends OwnersToolsTestsSupport{
 //        System.out.println(request);
         MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
 //        System.out.println(result.getRequest());
+//        assert results
         System.out.println(result.getResponse().getStatus());
         System.out.println(result.getResponse().getContentAsString());
         System.out.println("All orders returned successfully.");
@@ -274,6 +281,7 @@ public class NonEmptyTests extends OwnersToolsTestsSupport{
 //        System.out.println(result.getRequest());
         System.out.println(result.getResponse().getStatus());
         System.out.println(result.getResponse().getContentAsString());
+        System.out.println("All orders returned successfully.");
     }
 //        OrderReturnedToOwner orderReturnedToOwner = mock(OrderReturnedToOwner.class);
 //        ownersOrdersService.getAllOrders() = null
