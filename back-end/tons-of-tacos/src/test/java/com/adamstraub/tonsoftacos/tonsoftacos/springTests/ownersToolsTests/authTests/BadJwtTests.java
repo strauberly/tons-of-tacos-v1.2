@@ -105,7 +105,7 @@ public class BadJwtTests {
         System.out.println(response.getBody());
         System.out.println(response);
 //        Then: a 403 FORBIDDEN is returned
-        Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
+        Assertions.assertEquals( response.getStatusCode(), HttpStatus.UNAUTHORIZED);
         System.out.println("Response code is " + response.getStatusCode() + ".");
         System.out.println("response body: " + response.getBody());
 

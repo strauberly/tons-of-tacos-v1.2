@@ -64,37 +64,37 @@ public class GetAllCustomersTest {
             }
 // must comment out sections of test db before this test in order for it to operate as intended.
 // Try this test with Mockito.
-    @Test
-    void noCustomersReturned404() {
-//  Given: a valid auth header
-        String token = encryptedToken();
-        System.out.println(token);
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setBearerAuth(token);
-        HttpEntity<String> headersEntity = new HttpEntity<>(headers);
-
-// When: successful connection is made to the end point and no customers are found
-        String uri =
-                String.format("%s", getBaseUriForGetAllCustomers());
-        ResponseEntity<Map<String, Object>> response =
-//        ResponseEntity<List<Map<String, Object>>> response =
-        //        ResponseEntity<List<OwnersGetCustomerDto>> response =
-                getRestTemplate().exchange(uri, HttpMethod.GET, headersEntity,
-                        new ParameterizedTypeReference<>() {});
-        System.out.println(response.getStatusCode());
-        System.out.println(response.getBody());
-//  Then: a collection of orders is returned with a response of 200
-        System.out.println(("Response code is " + response.getStatusCode() + "."));
-//        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-//  And:  the size of the array of customers matches the id of the last customer
-//        int numberOfCustomers = Objects.requireNonNull(response.getBody()).size();
-//        Assertions.assertEquals(Objects.requireNonNull(response.getBody()).size(),
-//                (int) response.getBody().get(response.getBody().size()-1).getCustomerId());
-//        System.out.println("Response body is: " + response.getBody());
-//        System.out.println("All customers found: " + (numberOfCustomers == response.getBody().get(response.getBody().size() - 1).getCustomerId()));
-//        System.out.println("Successful test case complete.");
-    }
+//    @Test
+//    void noCustomersReturned404() {
+////  Given: a valid auth header
+//        String token = encryptedToken();
+//        System.out.println(token);
+//
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setContentType(MediaType.APPLICATION_JSON);
+//        headers.setBearerAuth(token);
+//        HttpEntity<String> headersEntity = new HttpEntity<>(headers);
+//
+//// When: successful connection is made to the end point and no customers are found
+//        String uri =
+//                String.format("%s", getBaseUriForGetAllCustomers());
+//        ResponseEntity<Map<String, Object>> response =
+////        ResponseEntity<List<Map<String, Object>>> response =
+//        //        ResponseEntity<List<OwnersGetCustomerDto>> response =
+//                getRestTemplate().exchange(uri, HttpMethod.GET, headersEntity,
+//                        new ParameterizedTypeReference<>() {});
+//        System.out.println(response.getStatusCode());
+//        System.out.println(response.getBody());
+////  Then: a collection of orders is returned with a response of 200
+//        System.out.println(("Response code is " + response.getStatusCode() + "."));
+////        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+////  And:  the size of the array of customers matches the id of the last customer
+////        int numberOfCustomers = Objects.requireNonNull(response.getBody()).size();
+////        Assertions.assertEquals(Objects.requireNonNull(response.getBody()).size(),
+////                (int) response.getBody().get(response.getBody().size()-1).getCustomerId());
+////        System.out.println("Response body is: " + response.getBody());
+////        System.out.println("All customers found: " + (numberOfCustomers == response.getBody().get(response.getBody().size() - 1).getCustomerId()));
+////        System.out.println("Successful test case complete.");
+//    }
 }
 }

@@ -6,7 +6,6 @@ import lombok.Data;
 
 @Data
 public class NewOrder {
-
     private Customer customer;
     private Orders order;
 

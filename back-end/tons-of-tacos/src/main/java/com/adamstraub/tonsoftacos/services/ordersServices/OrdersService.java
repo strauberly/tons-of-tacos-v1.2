@@ -41,7 +41,7 @@ public class OrdersService implements OrdersServiceInterface {
     @Transactional
     public OrderReturnedToCustomer createOrder(@RequestBody @NotNull NewOrder order) {
         System.out.println("service");
-        System.out.println("order: " + order);
+//        System.out.println("order: " + order);
 
         Double orderTotal = 0.00;
         OrderReturnedToCustomer customerCopyDto = new OrderReturnedToCustomer();
@@ -51,11 +51,10 @@ public class OrdersService implements OrdersServiceInterface {
         List<OrderItemReturnedToCustomer> orderItemDtos = new ArrayList<>();
         System.out.println("order: " + newOrder);
         System.out.println("new order: " + order.getOrder());
-//        order validation
+
+//  validation
         validateCustomerName(order.getCustomer().getName());
-
         validateCustomerPhone(order.getCustomer().getPhoneNumber());
-
         validateCustomerEmail(order.getCustomer().getEmail());
 
 
@@ -71,8 +70,8 @@ public class OrdersService implements OrdersServiceInterface {
             if (order.getOrder().getOrderItems().isEmpty()) {
             throw new IllegalArgumentException("An order must contain at least 1 menu item and must not be null. Please consult the documentation.");
             }
-//                if customer already exists, use existing customer id else create new customer
 
+//  if customer already exists, use existing customer id else create new customer
         Customer newCustomer = order.getCustomer();
         System.out.println("customer: " + newCustomer);
             if (customerRepository.findByName(newCustomer.getName()) != null &&
@@ -81,9 +80,6 @@ public class OrdersService implements OrdersServiceInterface {
                                     order.getCustomer().getEmail())
             && Objects.equals(customerRepository.findByName(newCustomer.getName()).getPhoneNumber(),
                     order.getCustomer().getPhoneNumber())
-// will need a clause for not duplicate order at some point
-//                    && Objects.equals(customerRepository.findByName(newCustomer.getName()).getCustomerUid(),
-//                    order.getCustomer().getCustomerUid())
             ) {
                 newOrder.setCustomerId(customerRepository.findByName(newCustomer.getName()).getCustomerId());
                 newOrder.setCustomerUid(customerRepository.findByName(newCustomer.getName()).getCustomerUid());
@@ -92,16 +88,13 @@ public class OrdersService implements OrdersServiceInterface {
 //                System.out.println("customer with uid: " + newCustomer);
                 customerRepository.save(newCustomer);
                 newCustomer = customerRepository.findByName(newCustomer.getName());
-//                newOrder.setCustomerId(newCustomer.getCustomerId());
-//                newOrder.setCustomerUid(genCustomerUid());
-                System.out.println("customer after save: " + newCustomer);
+//                System.out.println("customer after save: " + newCustomer);
 //            }
 
-//            set order items and total
-
+//  set order and total
                 newOrder.setOrderItems(orderItems);
 
-                System.out.println( "newOrder: "  + newOrder);
+//                System.out.println( "newOrder: "  + newOrder);
 
                 for (OrderItem orderItem : orderItems) {
                     orderItem.setTotal(orderItem.getQuantity() *
@@ -109,19 +102,18 @@ public class OrdersService implements OrdersServiceInterface {
                     orderTotal += orderItem.getTotal();
                 }
                 newOrder.setOrderTotal(orderTotal);
-                System.out.println("new order with total: " + newOrder);
-                System.out.println("customer uuid: " + newCustomer.getCustomerUid());
+//                System.out.println("new order with total: " + newOrder);
+//                System.out.println("customer uuid: " + newCustomer.getCustomerUid());
                 newOrder.setCustomerUid(newCustomer.getCustomerUid());
-                System.out.println("new order with customer uid: " + newOrder);
+//                System.out.println("new order with customer uid: " + newOrder);
                 newOrder.setCustomerId(newCustomer.getCustomerId());
-                System.out.println("new order with customer id: " + newOrder);
-
+//                System.out.println("new order with customer id: " + newOrder);
 
 //        set order uid
                 newOrder.setOrderUid(genOrderUid());
-                System.out.println("new order with order uid: " + newOrder);
+//                System.out.println("new order with order uid: " + newOrder);
                 ordersRepository.save(newOrder);
-                System.out.println("Order created.");
+//                System.out.println("Order created.");
 
 //        reset valid flags
                 customerNameValid = false;
@@ -154,13 +146,12 @@ public class OrdersService implements OrdersServiceInterface {
 
         return orderItemDto;
     }
-// set uid proper == first half(sub 0-3) +"-"+ second half(sub 4-7)
+
     private String genOrderUid() {
         // desired result example: 11A32
         String orderUid = null;
-
-
         StringBuilder orderUidBuilder = new StringBuilder(5);
+
         for (int i = 0; i < 5; i++) {
             orderUid = String.valueOf(orderUidBuilder.append(randomUidChar()));
 
@@ -173,7 +164,7 @@ public class OrdersService implements OrdersServiceInterface {
     }
 
     private String genCustomerUid() {
-        // desired result example: 11A32
+        // desired result example: 11A3-ewr3
         String customerUid = null;
         String customerUidFront = null;
         String customerUidBack = null;
@@ -181,24 +172,17 @@ public class OrdersService implements OrdersServiceInterface {
         StringBuilder orderUidBuilder = new StringBuilder(8);
         for (int i = 0; i < 8; i++) {
             customerUid = String.valueOf(orderUidBuilder.append(randomUidChar()));
-//        customerUidFront = customerUid.substring(0,3);
-//            System.out.println(customerUidFront);
-//            customerUidBack = customerUid.substring(4, customerUid.length() -1);
-//            System.out.println(customerUidBack);
-//            formattedCustomerUid = customerUidFront + "-" + customerUidBack;
-//            System.out.println(formattedCustomerUid);
         }
-                customerUidFront = customerUid.substring(0,4);
-            System.out.println(customerUidFront);
+            customerUidFront = customerUid.substring(0,4);
+//            System.out.println(customerUidFront);
             customerUidBack = customerUid.substring(4);
-            System.out.println(customerUidBack);
+//            System.out.println(customerUidBack);
             formattedCustomerUid = customerUidFront + "-" + customerUidBack;
-            System.out.println(formattedCustomerUid);
+//            System.out.println(formattedCustomerUid);
 //        compare uid against others by doing a find by uid and if null then return if not re-run
         if (customerRepository.findByCustomerUid(customerUid) != null) {
             genCustomerUid();
         }
-//        System.out.println(customerUid);
         return formattedCustomerUid;
     }
 
@@ -230,8 +214,6 @@ public class OrdersService implements OrdersServiceInterface {
     }
 
     private void validateCustomerPhone(String customerPhone){
-        byte [] phoneDigits = customerPhone.getBytes(StandardCharsets.UTF_8);
-        System.out.println((char) 46);
         if (customerPhone.matches("[0-9.]*")
                 && customerPhone.charAt(3) == (char) 46
                 && customerPhone.charAt(7) == (char) 46
