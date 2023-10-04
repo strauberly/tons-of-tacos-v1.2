@@ -2,6 +2,12 @@
 
 ---
 
+-- 3 Oct 2023 --
+
+- Application wide refactor mostly focused on eliminating outdated comments and commenting out print lines in order to reduce noise. Commented out instead of eliminated as I appreciate not having to completely rewriting the line when trouble shooting is required.
+
+---
+
 -- 25 Sep 2023 --
 
 - Updated all endpoint documentation for swagger with more detailed instructions and examples.

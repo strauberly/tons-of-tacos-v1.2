@@ -1,4 +1,4 @@
-package com.adamstraub.tonsoftacos.tonsoftacos.mockTests.OrdersDbTests;
+package com.adamstraub.tonsoftacos.tonsoftacos.mockTests.DbTests;
 
 import com.adamstraub.tonsoftacos.dao.CustomerRepository;
 import com.adamstraub.tonsoftacos.dao.OrdersRepository;

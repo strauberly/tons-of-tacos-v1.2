@@ -126,7 +126,7 @@ public interface OwnersCustomersControllerInterface {
     @GetMapping("/get-customer-name/{name}")
     CustomerReturnedToOwner getCustomerByName(@RequestParam String name);
 
-//    get customer by uid
+//get customer by uid
 @Operation(
         summary = "A customer is returned by uid.",
         description = """
@@ -278,7 +278,7 @@ String customerUid,
 String newCustomerPhone);
 
 
-// delete customer by id
+// delete customer by uid
 @Operation(
 summary = "Deletes a customer by uid.",
 description = """

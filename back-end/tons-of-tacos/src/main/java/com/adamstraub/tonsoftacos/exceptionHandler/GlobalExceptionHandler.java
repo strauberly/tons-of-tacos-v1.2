@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -72,11 +73,11 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(AuthenticationException.class)
-    @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
+    @ResponseStatus(code = HttpStatus.FORBIDDEN)
     public Map<String, Object> handleAuthenticationException(
             AuthenticationException e, WebRequest webRequest){
-        logger.debug(createExceptionMessage(e.getLocalizedMessage(), HttpStatus.UNAUTHORIZED, webRequest).toString());
-        return  createExceptionMessage(e.getLocalizedMessage(), HttpStatus.UNAUTHORIZED, webRequest);
+        logger.debug(createExceptionMessage(e.getLocalizedMessage(), HttpStatus.FORBIDDEN, webRequest).toString());
+        return  createExceptionMessage(e.getLocalizedMessage(), HttpStatus.FORBIDDEN, webRequest);
     }
 
     @ExceptionHandler(JwtException.class)
@@ -88,7 +89,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(MalformedJwtException.class)
-    @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
+    @ResponseStatus(code = HttpStatus.FORBIDDEN)
     public Map<String, Object> handleMalformedJwtException(
             MalformedJwtException e, WebRequest webRequest){
         logger.debug(createExceptionMessage(e.getLocalizedMessage(), HttpStatus.UNAUTHORIZED, webRequest).toString());
@@ -104,12 +105,12 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(BadCredentialsException.class)
-    @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
+    @ResponseStatus(code = HttpStatus.FORBIDDEN)
     public Map<String, Object> handleBadCredentialsException(
             BadCredentialsException e, WebRequest webRequest
     ){
-        logger.debug(createExceptionMessage(e.getLocalizedMessage(), HttpStatus.UNAUTHORIZED, webRequest).toString());
-        return createExceptionMessage(e.getLocalizedMessage(), HttpStatus.UNAUTHORIZED, webRequest);
+        logger.debug(createExceptionMessage(e.getLocalizedMessage(), HttpStatus.FORBIDDEN, webRequest).toString());
+        return createExceptionMessage(e.getLocalizedMessage(), HttpStatus.FORBIDDEN, webRequest);
     }
 
 
@@ -120,6 +121,14 @@ public class GlobalExceptionHandler {
     ){
         logger.error(createExceptionMessage(e.getLocalizedMessage(), HttpStatus.INTERNAL_SERVER_ERROR, webRequest).toString());
         return createExceptionMessage(e.getLocalizedMessage(), HttpStatus.INTERNAL_SERVER_ERROR, webRequest);
+    }
+
+    @ExceptionHandler(InternalAuthenticationServiceException.class)
+    @ResponseStatus(code = HttpStatus.UNAUTHORIZED)
+    public Map<String, Object> handleInternalAuthenticationServiceException(
+            InternalAuthenticationServiceException e, WebRequest webRequest){
+        logger.debug(createExceptionMessage(e.getLocalizedMessage(), HttpStatus.UNAUTHORIZED, webRequest).toString());
+        return createExceptionMessage(e.getLocalizedMessage(), HttpStatus.UNAUTHORIZED, webRequest);
     }
 
 

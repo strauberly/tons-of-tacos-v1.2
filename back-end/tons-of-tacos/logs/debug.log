@@ -1,26 +1,4 @@
-2023-09-27 20:58:07 [main] INFO  c.a.t.t.m.OrdersDbTests.EmptyTests -
-                Started EmptyTests in 5.692 seconds (process running for 6.754)
-2023-09-27 20:58:08 [main] DEBUG c.a.t.e.GlobalExceptionHandler -
-                {status code=404 NOT_FOUND, message=No orders found at all. Please contact your application team right away., uri=/api/owners-tools/orders/get-orders, timestamp=Wed, 27 Sep 2023 20:58:08 -0700}
-2023-09-27 21:00:24 [main] INFO  c.a.t.t.m.OrdersDbTests.EmptyTests -
-                Starting EmptyTests using Java 17.0.6 with PID 360312 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
-2023-09-27 21:00:24 [main] DEBUG c.a.t.t.m.OrdersDbTests.EmptyTests -
-                Running with Spring Boot v3.0.1, Spring v6.0.3
-2023-09-27 21:00:24 [main] INFO  c.a.t.t.m.OrdersDbTests.EmptyTests -
-                No active profile set, falling back to 1 default profile: "default"
-2023-09-27 21:00:29 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+2023-10-03 07:12:18 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
                 Filter 'jwtAuthFilter' configured for use
-2023-09-27 21:00:30 [main] INFO  c.a.t.t.m.OrdersDbTests.EmptyTests -
-                Started EmptyTests in 5.809 seconds (process running for 6.94)
-2023-09-27 21:09:21 [main] INFO  c.a.t.t.m.OrdersDbTests.EmptyTests -
-                Starting EmptyTests using Java 17.0.6 with PID 360691 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
-2023-09-27 21:09:21 [main] DEBUG c.a.t.t.m.OrdersDbTests.EmptyTests -
-                Running with Spring Boot v3.0.1, Spring v6.0.3
-2023-09-27 21:09:21 [main] INFO  c.a.t.t.m.OrdersDbTests.EmptyTests -
-                No active profile set, falling back to 1 default profile: "default"
-2023-09-27 21:09:26 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
-                Filter 'jwtAuthFilter' configured for use
-2023-09-27 21:09:27 [main] INFO  c.a.t.t.m.OrdersDbTests.EmptyTests -
-                Started EmptyTests in 5.931 seconds (process running for 7.015)
-2023-09-27 21:09:27 [main] DEBUG c.a.t.e.GlobalExceptionHandler -
-                {status code=404 NOT_FOUND, message=No customers found at all. Please contact your application team right away., uri=/api/owners-tools/customers/get-customers, timestamp=Wed, 27 Sep 2023 21:09:27 -0700}
+2023-10-03 07:12:19 [main] INFO  c.a.t.t.m.DbTests.NonEmptyTests -
+                Started NonEmptyTests in 6.053 seconds (process running for 7.231)

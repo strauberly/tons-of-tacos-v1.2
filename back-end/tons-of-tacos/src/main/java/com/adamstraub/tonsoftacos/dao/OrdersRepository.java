@@ -20,13 +20,11 @@ Orders findByOrderUid (@RequestParam ("order_uid") String orderUid) throws Entit
     default List<Orders> findByClosed(){
         List<Orders> closedOrders = new ArrayList<>();
         List<Orders> orders = findAll();
-//        System.out.println(orders);
         for (Orders order: orders){
             if (!order.getClosed().equals("no")){
                 closedOrders.add(order);
             }
         }
-//        System.out.println("closed orders" + closedOrders);
         return closedOrders;
     }
 
