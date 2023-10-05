@@ -2,6 +2,8 @@ package com.adamstraub.tonsoftacos.tonsoftacos.testSupport.menuItemTestsSupport;
 import com.adamstraub.tonsoftacos.entities.MenuItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.TestUris;
 
+import java.math.BigDecimal;
+
 
 public class GetMenuItemsTestsSupport extends TestUris {
 
@@ -14,7 +16,7 @@ public class GetMenuItemsTestsSupport extends TestUris {
                .itemName("pound")
                .itemSize("NULL")
                .imgUrl("TBD")
-               .unitPrice(2.25)
+               .unitPrice(BigDecimal.valueOf(2.25))
                .build();
         }
     }

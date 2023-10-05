@@ -100,10 +100,13 @@ public class AddToOrderTest {
             System.out.println("Order size has increased");
 
             //        And:   order total will have increased
-            Assertions.assertTrue(getOrderResponse2.getBody().getOrderTotal() >
-                    getOrderResponse.getBody().getOrderTotal());
+//            Assertions.assertTrue(getOrderResponse2.getBody().getOrderTotal() >
+//                    getOrderResponse.getBody().getOrderTotal());
+            assert(getOrderResponse2.getBody().getOrderTotal().compareTo(
+                    getOrderResponse.getBody().getOrderTotal())) > 0;
             System.out.println("Order total has increased by: " +
-                    (getOrderResponse2.getBody().getOrderTotal() - getOrderResponse.getBody().getOrderTotal()));
+//                    (getOrderResponse2.getBody().getOrderTotal() - getOrderResponse.getBody().getOrderTotal()));
+                    (getOrderResponse2.getBody().getOrderTotal().subtract(getOrderResponse.getBody().getOrderTotal())));
         }
         @Test
         void menuItemToAddToOrderInvalid404() {

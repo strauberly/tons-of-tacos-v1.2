@@ -2,6 +2,7 @@ package com.adamstraub.tonsoftacos.dto.businessDto;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 
@@ -9,5 +10,6 @@ import java.time.LocalDate;
 public class DailySales {
     private LocalDate date;
     private int numberOfSales;
-    private double total;
+//    private double total;
+private BigDecimal total;
 }

@@ -35,88 +35,89 @@ public class BadJwtTests {
 
 
 
-    @Test
-    void expiredToken403() {
+        @Test
+        void expiredToken403() {
 //            Given: an expired token but valid auth header
-        String token = expiredToken();
-        Assertions.assertNotNull(token);
-        System.out.println(token);
+            String token = expiredToken();
+            Assertions.assertNotNull(token);
+            System.out.println(token);
 
 //           build authheader
-        HttpHeaders authHeader = new HttpHeaders();
-        authHeader.setContentType(MediaType.APPLICATION_JSON);
-        authHeader.setBearerAuth(token);
-        HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
-        System.out.println(headerEntity);
-        int customerId = 1;
+            HttpHeaders authHeader = new HttpHeaders();
+            authHeader.setContentType(MediaType.APPLICATION_JSON);
+            authHeader.setBearerAuth(token);
+            HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
+            System.out.println(headerEntity);
+            int customerId = 1;
 
 
-        //        When: a successful connection is made to an endpoint requiring auth
-        String uri=
-                String.format("%s/%d", getBaseUriForDeleteCustomer(), customerId);
-        System.out.println(uri);
+            //        When: a successful connection is made to an endpoint requiring auth
+            String uri=
+                    String.format("%s/%d", getBaseUriForDeleteCustomer(), customerId);
+            System.out.println(uri);
 
 
-        ResponseEntity<Map<String, Object>> response =
-                getRestTemplate().exchange(uri, HttpMethod.DELETE, headerEntity, new ParameterizedTypeReference<>() {
-                });
+            ResponseEntity<Map<String, Object>> response =
+                    getRestTemplate().exchange(uri, HttpMethod.DELETE, headerEntity, new ParameterizedTypeReference<>() {
+                    });
 
-        //          Then: a 403 FORBIDDEN response is returned
-        Assertions.assertSame(response.getStatusCode(), HttpStatus.FORBIDDEN);
-        System.out.println("Response code is " + response.getStatusCode() + ".");
-        System.out.println("response body: " + response.getBody());
-        //        And: the error message contains
-        Map<String, Object> error = response.getBody();
-        assert error != null;
-        Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.FORBIDDEN.toString().substring(0,3));
-        Assertions.assertTrue(error.containsValue("/api/owners-tools/customers/delete-customer/1"));
-        Assertions.assertTrue(error.containsKey("message"));
-        Assertions.assertTrue(error.containsKey("timestamp"));
-        System.out.println("Test complete and expired jwt exception is caught and handled.");
-    }
+            //          Then: a 403 FORBIDDEN response is returned
+            Assertions.assertSame(response.getStatusCode(), HttpStatus.FORBIDDEN);
+            System.out.println("Response code is " + response.getStatusCode() + ".");
+            System.out.println("response body: " + response.getBody());
+            //        And: the error message contains
+            Map<String, Object> error = response.getBody();
+            assert error != null;
+            Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.FORBIDDEN.toString().substring(0,3));
+            Assertions.assertTrue(error.containsValue("/api/owners-tools/customers/delete-customer/1"));
+            Assertions.assertTrue(error.containsKey("message"));
+            Assertions.assertTrue(error.containsKey("timestamp"));
+            System.out.println("Test complete and expired jwt exception is caught and handled.");
+        }
 
-    @Test
+        @Test
         void invalidSubject401(){
 //        Given: a jwt with an invalid subject
-        String badToken = badToken();
-        System.out.println(badToken);
+            String badToken = badToken();
+            System.out.println(badToken);
 //
 //        String goodToken = goodToken();
 //        System.out.println(goodToken);
 
-        //           build authheader
-        HttpHeaders authHeader = new HttpHeaders();
-        authHeader.setContentType(MediaType.APPLICATION_JSON);
+            //           build authheader
+            HttpHeaders authHeader = new HttpHeaders();
+            authHeader.setContentType(MediaType.APPLICATION_JSON);
 //        authHeader.setBearerAuth(goodToken);
-        authHeader.setBearerAuth(badToken);
-        HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
-        System.out.println(headerEntity);
-        int customerId = 1;
+            authHeader.setBearerAuth(badToken);
+            HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
+            System.out.println(headerEntity);
+            int customerId = 1;
 
 //        When: a successful connection is made to an endpoint requiring auth
-        String uri=
-                String.format("%s/%d", getBaseUriForDeleteCustomer(), customerId);
-        System.out.println(uri);
+            String uri=
+                    String.format("%s/%d", getBaseUriForDeleteCustomer(), customerId);
+            System.out.println(uri);
 
 
-        ResponseEntity<Map<String, Object>> response =
-                getRestTemplate().exchange(uri, HttpMethod.DELETE, headerEntity, new ParameterizedTypeReference<>() {
-                });
-        System.out.println(response.getBody());
-        System.out.println(response);
+            ResponseEntity<Map<String, Object>> response =
+                    getRestTemplate().exchange(uri, HttpMethod.DELETE, headerEntity, new ParameterizedTypeReference<>() {
+                    });
+            System.out.println(response.getBody());
+            System.out.println(response);
 //        Then: a 403 FORBIDDEN is returned
-        Assertions.assertEquals( response.getStatusCode(), HttpStatus.UNAUTHORIZED);
-        System.out.println("Response code is " + response.getStatusCode() + ".");
-        System.out.println("response body: " + response.getBody());
+            Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
+            System.out.println("Response code is " + response.getStatusCode() + ".");
+            System.out.println("response body: " + response.getBody());
 
 //        And: the exception message contains
-        Map<String, Object> error = response.getBody();
-        assert error != null;
+            Map<String, Object> error = response.getBody();
+            assert error != null;
 //        Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus..toString().substring(0,3));
-        Assertions.assertTrue(error.containsValue("/api/owners-tools/customers/delete-customer/1"));
-        Assertions.assertTrue(error.containsKey("message"));
-        Assertions.assertTrue(error.containsKey("timestamp"));
-        System.out.println("Test complete and invalid token is caught and handled.");
+            Assertions.assertTrue(error.containsValue("/api/owners-tools/customers/delete-customer/1"));
+            Assertions.assertTrue(error.containsKey("message"));
+            Assertions.assertTrue(error.containsKey("timestamp"));
+            System.out.println("Test complete and invalid token is caught and handled.");
+        }
     }
 }
-}
+

@@ -2,6 +2,7 @@ package com.adamstraub.tonsoftacos.dto.businessDto;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -12,7 +13,8 @@ public class OrderReturnedToOwner {
     private String email = null;
     private String phone = null;
     private List<OrderItemReturnedToOwner> orderItems;
-    private Double orderTotal;
+//    private Double orderTotal;
+    private BigDecimal orderTotal;
     private Timestamp created;
     private String ready;
     private String closed;

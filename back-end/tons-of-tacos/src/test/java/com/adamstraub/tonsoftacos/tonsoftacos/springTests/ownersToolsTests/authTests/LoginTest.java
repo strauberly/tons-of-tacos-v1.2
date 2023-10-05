@@ -128,29 +128,23 @@ public class LoginTest implements JwtSignatureValidator {
             });
             System.out.println(response.getBody());
 //            Then: status code of 403 or 401 is returned
-//            Assertions.assertTrue(response.getStatusCode() == HttpStatusCode.valueOf(401) || response.getStatusCode() == HttpStatusCode.valueOf(403) );
-            Assertions.assertSame(response.getStatusCode(), HttpStatus.UNAUTHORIZED);
+            Assertions.assertTrue(response.getStatusCode() == HttpStatusCode.valueOf(401) || response.getStatusCode() == HttpStatusCode.valueOf(403) );
             System.out.println(("Response code is " + response.getStatusCode() + "."));
 
-
-            Assertions.assertTrue(response.getBody().containsValue("/api/owners-tools/login"));
-            Assertions.assertTrue(response.getBody().containsKey("message"));
-            Assertions.assertTrue(response.getBody().containsKey("timestamp"));
-            System.out.println("Test for unsuccessful use case with bad username complete.");
 //            And: the error message contains
-//            Map<String, Object> error = response.getBody();
-//            System.out.println(error);
-//            assert error != null;
-//            Assertions.assertTrue(error.containsValue("/api/owners-tools/login"));
-//            Assertions.assertTrue(error.containsKey("message"));
-//            Assertions.assertTrue(error.containsKey("timestamp"));
-//            System.out.println("Test for unsuccessful use case with bad username complete.");
+            Map<String, Object> error = response.getBody();
+            System.out.println(error);
+            assert error != null;
+            Assertions.assertTrue(error.containsValue("/api/owners-tools/login"));
+            Assertions.assertTrue(error.containsKey("message"));
+            Assertions.assertTrue(error.containsKey("timestamp"));
+            System.out.println("Test for unsuccessful use case with bad username complete.");
         }
 
         @Test
         void invalidPasswordReturns403Or401(){
 //           Given: a body with an invalid password
-                String badPasswordBody = badPassword();
+            String badPasswordBody = badPassword();
             System.out.println("Bad password body: " + badPasswordBody);
 //           When: a successful connection is made to the login endpoint
             HttpHeaders headers = new HttpHeaders();
@@ -163,29 +157,22 @@ public class LoginTest implements JwtSignatureValidator {
             System.out.println(response.getBody());
 
 //            Then: status code of 403 or 401 is returned
-            Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
-//            Assertions.assertSame(response.getStatusCode(), HttpStatus.UNAUTHORIZED);
-//            Assertions.assertTrue(response.getStatusCode().is4xxClientError());
-//            Assertions.assertTrue(response.getStatusCode() == HttpStatusCode.valueOf(401) || response.getStatusCode() == HttpStatusCode.valueOf(403) );
+            Assertions.assertTrue(response.getStatusCode() == HttpStatusCode.valueOf(401) || response.getStatusCode() == HttpStatusCode.valueOf(403) );
             System.out.println(("Response code is " + response.getStatusCode() + "."));
-
-//            Assertions.assertTrue(response.getBody().containsValue("/api/owners-tools/login"));
-//            Assertions.assertTrue(response.getBody().containsKey("message"));
-//            Assertions.assertTrue(response.getBody().containsKey("timestamp"));
-//            System.out.println("Test for unsuccessful use case with bad password complete.");
 
 
             //           And: the error contains
-//            Map<String, Object> error = response.getBody();
-//            System.out.println(error);
-////            assert error != null;
-//            Assertions.assertTrue(error.containsValue("/api/owners-tools/login"));
-//            Assertions.assertTrue(error.containsKey("message"));
-//            Assertions.assertTrue(error.containsKey("timestamp"));
-//            System.out.println("Test for unsuccessful use case with bad password complete.");
+            Map<String, Object> error = response.getBody();
+            System.out.println(error);
+            assert error != null;
+            Assertions.assertTrue(error.containsValue("/api/owners-tools/login"));
+            Assertions.assertTrue(error.containsKey("message"));
+            Assertions.assertTrue(error.containsKey("timestamp"));
+            System.out.println("Test for unsuccessful use case with bad password complete.");
         }
     }
 }
+
 
 
 

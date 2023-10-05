@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +28,11 @@ public class Orders implements Serializable {
     @Column(name = "customer_fk")
     private Integer customerId;
 
+//    @Column (name = "order_total")
+//    private Double orderTotal;
+
     @Column (name = "order_total")
-    private Double orderTotal;
+    private BigDecimal orderTotal;
 
     @Column (name = "order_uid")
     private String orderUid;
