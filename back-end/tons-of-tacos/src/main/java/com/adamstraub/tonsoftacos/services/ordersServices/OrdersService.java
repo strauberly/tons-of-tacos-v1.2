@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +44,9 @@ public class OrdersService implements OrdersServiceInterface {
         System.out.println("service");
 //        System.out.println("order: " + order);
 
-        Double orderTotal = 0.00;
+        BigDecimal orderTotal = BigDecimal.valueOf(0.00);
+
+//        Double orderTotal = 0.00;
         OrderReturnedToCustomer customerCopyDto = new OrderReturnedToCustomer();
         Orders newOrder = order.getOrder();
         Orders orderConfirmation;
@@ -96,10 +99,14 @@ public class OrdersService implements OrdersServiceInterface {
 
 //                System.out.println( "newOrder: "  + newOrder);
 
+//                for (OrderItem orderItem : orderItems) {
+//                    orderItem.setTotal(orderItem.getQuantity() *
+//                            menuItemRepository.getReferenceById(orderItem.getItem().getId()).getUnitPrice());
+//                    orderTotal += orderItem.getTotal();
                 for (OrderItem orderItem : orderItems) {
-                    orderItem.setTotal(orderItem.getQuantity() *
-                            menuItemRepository.getReferenceById(orderItem.getItem().getId()).getUnitPrice());
-                    orderTotal += orderItem.getTotal();
+                    orderItem.setTotal(BigDecimal.valueOf(orderItem.getQuantity()).multiply(
+                            menuItemRepository.getReferenceById(orderItem.getItem().getId()).getUnitPrice()));
+                    orderTotal.add(orderItem.getTotal());
                 }
                 newOrder.setOrderTotal(orderTotal);
 //                System.out.println("new order with total: " + newOrder);

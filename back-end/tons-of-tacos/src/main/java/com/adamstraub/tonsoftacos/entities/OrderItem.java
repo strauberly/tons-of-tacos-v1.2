@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
@@ -29,8 +30,11 @@ public class OrderItem implements Serializable {
     @Column(name = "quantity")
     private Integer quantity;
 
+//    @Column(name = "total")
+//    private Double total;
+
     @Column(name = "total")
-    private Double total;
+    private BigDecimal total;
 
     @ManyToOne()
     @JoinColumn(name = "order_fk")

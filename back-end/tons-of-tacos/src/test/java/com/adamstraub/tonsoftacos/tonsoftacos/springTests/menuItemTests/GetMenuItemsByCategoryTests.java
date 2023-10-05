@@ -26,18 +26,18 @@ import java.util.function.BooleanSupplier;
 
 class GetMenuItemsByCategoryTests {
 
-        @Autowired
-        private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
-        @Nested
-        @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-        @TestPropertySource("classpath:/test-application.properties")
-        @Sql(scripts = {
-                "classpath:/test-schema.sql",
-                "classpath:/test-data.sql",
-        },
-                config = @SqlConfig(encoding = "utf-8"))
-        class testThatDoesNotPolluteTheApplicationContextUris extends GetMenuItemsTestsSupport {
+    @Nested
+    @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+    @TestPropertySource("classpath:/test-application.properties")
+    @Sql(scripts = {
+            "classpath:/test-schema.sql",
+            "classpath:/test-data.sql",
+    },
+            config = @SqlConfig(encoding = "utf-8"))
+    class testThatDoesNotPolluteTheApplicationContextUris extends GetMenuItemsTestsSupport {
 
         @Test
         void menuItemsAreReturnedByCategoryWith200() {
@@ -66,34 +66,34 @@ class GetMenuItemsByCategoryTests {
                     "category = " + categoryName);
         }
 
-            @Test
-            void badCategoryEntryReturns404(){
+        @Test
+        void badCategoryEntryReturns404(){
 //          Given: a category that does not exist
-                String badInput = "!#%$^";
-                String parameter = "category";
-                String uri =
-                String.format("%s?%s=%s", getBaseUriForMenuItemByCategoryQuery(), parameter, badInput);
+            String badInput = "!#%$^";
+            String parameter = "category";
+            String uri =
+                    String.format("%s?%s=%s", getBaseUriForMenuItemByCategoryQuery(), parameter, badInput);
 //          When: a connection is made
 //                needed map as we hit the error handler which is looking for a map
-                ResponseEntity<Map<String, Object>> response =
-                        getRestTemplate().exchange(uri, HttpMethod.GET, null,
-                                new ParameterizedTypeReference<>() {
-                        });
-                System.out.println(uri);
+            ResponseEntity<Map<String, Object>> response =
+                    getRestTemplate().exchange(uri, HttpMethod.GET, null,
+                            new ParameterizedTypeReference<>() {
+                            });
+            System.out.println(uri);
 //          Then: a 404 not found status code is returned
-                Assertions.assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
-                System.out.println(("Response code is " + response.getStatusCode() + "."));
-                System.out.println(response.getBody());
-                System.out.println(response);
+            Assertions.assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
+            System.out.println(("Response code is " + response.getStatusCode() + "."));
+            System.out.println(response.getBody());
+            System.out.println(response);
 //          And: the error message contains
-                Map<String, Object> error = response.getBody();
-                assert error != null;
-                System.out.println(error.get("status code").toString().substring(0,3));
-                System.out.println(HttpStatus.NOT_FOUND.toString().substring(0,3));
-                Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.NOT_FOUND.toString().substring(0,3));
-                Assertions.assertTrue(error.containsValue("/api/menu/category"));
-                Assertions.assertTrue(error.containsKey("message"));
-                Assertions.assertTrue(error.containsKey("timestamp"));
+            Map<String, Object> error = response.getBody();
+            assert error != null;
+            System.out.println(error.get("status code").toString().substring(0,3));
+            System.out.println(HttpStatus.NOT_FOUND.toString().substring(0,3));
+            Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.NOT_FOUND.toString().substring(0,3));
+            Assertions.assertTrue(error.containsValue("/api/menu/category"));
+            Assertions.assertTrue(error.containsKey("message"));
+            Assertions.assertTrue(error.containsKey("timestamp"));
         }
     }
 }

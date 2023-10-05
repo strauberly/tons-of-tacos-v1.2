@@ -2,6 +2,13 @@
 
 ---
 
+-- 5 Oct 2023 --
+
+- tests refactored and improved upon.
+- noticed double data type utilized in application to describe currency variables. Updated to utilize big decimal instead for precision.
+
+---
+
 -- 3 Oct 2023 --
 
 - Application wide refactor mostly focused on eliminating outdated comments and commenting out print lines in order to reduce noise. Commented out instead of eliminated as I appreciate not having to completely rewriting the line when trouble shooting is required.
