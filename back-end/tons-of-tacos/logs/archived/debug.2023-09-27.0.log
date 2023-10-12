@@ -1,0 +1,96 @@
+2023-09-27 06:43:34 [main] INFO  c.a.t.t.m.O.NonEmptyTests -
+                Starting NonEmptyTests using Java 17.0.6 with PID 337595 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-27 06:43:34 [main] DEBUG c.a.t.t.m.O.NonEmptyTests -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-27 06:43:34 [main] INFO  c.a.t.t.m.O.NonEmptyTests -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-27 06:43:38 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-27 06:43:39 [main] INFO  c.a.t.t.m.O.NonEmptyTests -
+                Started NonEmptyTests in 5.312 seconds (process running for 6.969)
+2023-09-27 06:50:59 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting LoginTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 338112 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-27 06:50:59 [main] DEBUG c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-27 06:50:59 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-27 06:51:04 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-27 06:51:05 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started LoginTest.testThatDoesNotPolluteTheApplicationContextUris in 6.127 seconds (process running for 7.192)
+2023-09-27 06:52:37 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting LoginTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 338259 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-27 06:52:37 [main] DEBUG c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-27 06:52:37 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-27 06:52:42 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-27 06:52:42 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started LoginTest.testThatDoesNotPolluteTheApplicationContextUris in 5.999 seconds (process running for 7.174)
+2023-09-27 06:52:43 [http-nio-auto-1-exec-1] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=401 UNAUTHORIZED, message=Bad credentials. username: 2RxwORFr(bLq_ul|]-Y password: ?aNwlfCd7glf(E&r)lLr}W?fT, uri=/api/owners-tools/login, timestamp=Wed, 27 Sep 2023 06:52:43 -0700}
+2023-09-27 06:55:10 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting LoginTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 338437 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-27 06:55:10 [main] DEBUG c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-27 06:55:10 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-27 06:55:14 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-27 06:55:15 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started LoginTest.testThatDoesNotPolluteTheApplicationContextUris in 5.931 seconds (process running for 7.142)
+2023-09-27 06:57:02 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting LoginTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 338612 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-27 06:57:02 [main] DEBUG c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-27 06:57:02 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-27 06:57:07 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-27 06:57:08 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started LoginTest.testThatDoesNotPolluteTheApplicationContextUris in 6.187 seconds (process running for 7.404)
+2023-09-27 06:57:08 [http-nio-auto-1-exec-1] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=401 UNAUTHORIZED, message=Bad credentials. username: clYwHSHr=fWqQn>|c[p password: ?aNwlfCd7glf(E&r)lLr}W?fT, uri=/api/owners-tools/login, timestamp=Wed, 27 Sep 2023 06:57:08 -0700}
+2023-09-27 06:59:43 [main] INFO  c.a.t.t.s.o.a.BadJwtTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting BadJwtTests.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 338774 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-27 06:59:43 [main] DEBUG c.a.t.t.s.o.a.BadJwtTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-27 06:59:43 [main] INFO  c.a.t.t.s.o.a.BadJwtTests$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-27 06:59:48 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-27 06:59:49 [main] INFO  c.a.t.t.s.o.a.BadJwtTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Started BadJwtTests.testThatDoesNotPolluteTheApplicationContextUris in 6.191 seconds (process running for 7.444)
+2023-09-27 06:59:49 [http-nio-auto-1-exec-1] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Session expired., uri=/api/owners-tools/customers/delete-customer/1, timestamp=Wed, 27 Sep 2023 06:59:49 -0700}
+2023-09-27 06:59:49 [http-nio-auto-1-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=401 UNAUTHORIZED, message=User unauthorized., uri=/api/owners-tools/customers/delete-customer/1, timestamp=Wed, 27 Sep 2023 06:59:49 -0700}
+2023-09-27 06:59:50 [http-nio-auto-1-exec-5] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=401 UNAUTHORIZED, message=Bad credentials. username: &.UwUTprZBTqmag|6cF password: ?aNwlfCd7glf(E&r)lLr}W?fT, uri=/api/owners-tools/login, timestamp=Wed, 27 Sep 2023 06:59:50 -0700}
+2023-09-27 07:00:12 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting LoginTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 338964 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-27 07:00:12 [main] DEBUG c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-27 07:00:12 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-27 07:00:17 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-27 07:00:18 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started LoginTest.testThatDoesNotPolluteTheApplicationContextUris in 6.459 seconds (process running for 7.596)
+2023-09-27 07:02:04 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting LoginTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 339191 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-27 07:02:04 [main] DEBUG c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-27 07:02:04 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-27 07:02:09 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-27 07:02:10 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started LoginTest.testThatDoesNotPolluteTheApplicationContextUris in 6.11 seconds (process running for 7.25)
+2023-09-27 07:13:51 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting LoginTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 339597 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-27 07:13:51 [main] DEBUG c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-27 07:13:51 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"

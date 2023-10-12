@@ -1,0 +1,82 @@
+2023-10-11 17:35:05 [http-nio-auto-2-exec-3] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No customer found with that UID. Please verify and try  again., uri=/api/owners-tools/customers/get-customer-uid/customerUid, timestamp=Wed, 11 Oct 2023 17:35:05 -0700}
+2023-10-11 17:35:05 [http-nio-auto-2-exec-5] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No customer with that uid found. Please check formatting and verify customer exists., uri=/api/owners-tools/customers/delete-customer/85, timestamp=Wed, 11 Oct 2023 17:35:05 -0700}
+2023-10-11 17:35:05 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Starting EmptyDBTest using Java 17.0.6 with PID 131265 (started by brian in /media/brian/Expansion/disk 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-11 17:35:05 [main] DEBUG c.a.t.t.mockTests.EmptyDBTest -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-10-11 17:35:05 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                No active profile set, falling back to 1 default profile: "default"
+2023-10-11 17:35:06 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-11 17:35:06 [main] INFO  c.a.t.t.mockTests.EmptyDBTest -
+                Started EmptyDBTest in 0.647 seconds (process running for 6.582)
+2023-10-11 17:35:06 [main] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No orders found at all. Please contact your application team right away., uri=/api/owners-tools/orders/get-orders, timestamp=Wed, 11 Oct 2023 17:35:06 -0700}
+2023-10-11 17:35:06 [http-nio-auto-2-exec-7] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=You have chosen a category that does not exist. Please check your spelling and formatting., uri=/api/menu/category, timestamp=Wed, 11 Oct 2023 17:35:06 -0700}
+2023-10-11 17:35:07 [http-nio-auto-2-exec-3] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No customer with that uid found. Please check formatting and verify customer exists., uri=/api/owners-tools/customers/edit-customer-phone/14/555.555.5156, timestamp=Wed, 11 Oct 2023 17:35:07 -0700}
+2023-10-11 17:35:07 [http-nio-auto-2-exec-5] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=You have chosen a menu item that does not exist., uri=/api/menu/id, timestamp=Wed, 11 Oct 2023 17:35:07 -0700}
+2023-10-11 17:35:07 [http-nio-auto-2-exec-7] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=Order item not updated. Verify order item is part of order., uri=/api/owners-tools/orders/update-order-item/654654-465465-555/88/2, timestamp=Wed, 11 Oct 2023 17:35:07 -0700}
+2023-10-11 17:35:07 [http-nio-auto-2-exec-9] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=400 BAD_REQUEST, message=We were unable to process your request. Please contact us when trying to order more than 10 of any given item., uri=/api/owners-tools/orders/update-order-item/654654-465465-555/3/12, timestamp=Wed, 11 Oct 2023 17:35:07 -0700}
+2023-10-11 17:35:07 [http-nio-auto-2-exec-5] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=Order item not updated. Verify order exists., uri=/api/owners-tools/orders/update-order-item/77/3/2, timestamp=Wed, 11 Oct 2023 17:35:07 -0700}
+2023-10-11 17:35:07 [http-nio-auto-2-exec-8] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No order found with that UID. Please verify and try again., uri=/api/owners-tools/orders/get-order-uid/orderUid, timestamp=Wed, 11 Oct 2023 17:35:07 -0700}
+2023-10-11 17:35:07 [http-nio-auto-2-exec-10] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=Can not delete order. Verify order exists., uri=/api/owners-tools/orders/delete-order/78, timestamp=Wed, 11 Oct 2023 17:35:07 -0700}
+2023-10-11 17:35:07 [http-nio-auto-2-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=Menu item can not be added to order. Verify order id., uri=/api/owners-tools/orders/add-to-order/78/2/2, timestamp=Wed, 11 Oct 2023 17:35:07 -0700}
+2023-10-11 17:35:08 [http-nio-auto-2-exec-4] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=Unable to find com.adamstraub.tonsoftacos.entities.MenuItem with id 66, uri=/api/owners-tools/orders/add-to-order/654654-465465-555/66/2, timestamp=Wed, 11 Oct 2023 17:35:08 -0700}
+2023-10-11 17:35:08 [http-nio-auto-2-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No order found with that UID. Please verify and try again., uri=/api/owners-tools/orders/get-order-uid/orderUid, timestamp=Wed, 11 Oct 2023 17:35:08 -0700}
+2023-10-11 17:35:08 [http-nio-auto-1-exec-10] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No orders for customer found., uri=/api/owners-tools/orders/get-order-customer/customer, timestamp=Wed, 11 Oct 2023 17:35:08 -0700}
+2023-10-11 17:35:08 [http-nio-auto-2-exec-6] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No customer found by that name. Please check your spelling and formatting., uri=/api/owners-tools/customers/get-customer-name/name, timestamp=Wed, 11 Oct 2023 17:35:08 -0700}
+2023-10-11 17:35:08 [http-nio-auto-1-exec-1] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Session expired., uri=/api/owners-tools/customers/delete-customer/1, timestamp=Wed, 11 Oct 2023 17:35:08 -0700}
+2023-10-11 17:35:08 [http-nio-auto-1-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=401 UNAUTHORIZED, message=User unauthorized., uri=/api/owners-tools/customers/delete-customer/1, timestamp=Wed, 11 Oct 2023 17:35:08 -0700}
+2023-10-11 17:35:08 [http-nio-auto-2-exec-8] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=400 BAD_REQUEST, message=Order can not be closed if order is not ready., uri=/api/owners-tools/orders/close-order/654654-465465-555, timestamp=Wed, 11 Oct 2023 17:35:08 -0700}
+2023-10-11 17:35:09 [http-nio-auto-2-exec-6] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=Order cannot be found and as such can not be closed. Please verify order id., uri=/api/owners-tools/orders/close-order/66, timestamp=Wed, 11 Oct 2023 17:35:09 -0700}
+2023-10-11 17:35:09 [http-nio-auto-2-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=400 BAD_REQUEST, message=Customer name incorrectly formatted. Please consult the documentation., uri=/api/owners-tools/customers/edit-customer-name/gd34-igjr/dsfk%20jh!@, timestamp=Wed, 11 Oct 2023 17:35:09 -0700}
+2023-10-11 17:35:09 [http-nio-auto-2-exec-4] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No customer with that id found., uri=/api/owners-tools/customers/edit-customer-name/54/Gary%20Garrison, timestamp=Wed, 11 Oct 2023 17:35:09 -0700}
+2023-10-11 17:35:09 [http-nio-auto-2-exec-6] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No customer found with that UID. Please verify and try  again., uri=/api/owners-tools/customers/get-customer-uid/customerUid, timestamp=Wed, 11 Oct 2023 17:35:09 -0700}
+2023-10-11 17:35:09 [http-nio-auto-2-exec-6] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=Order does not exist. Please verify order id and try again., uri=/api/owners-tools/orders/order-ready/88, timestamp=Wed, 11 Oct 2023 17:35:09 -0700}
+2023-10-11 17:35:10 [http-nio-auto-1-exec-7] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=400 BAD_REQUEST, message=Customer name incorrectly formatted. Please consult the documentation., uri=/api/order/checkout, timestamp=Wed, 11 Oct 2023 17:35:10 -0700}
+2023-10-11 17:35:10 [http-nio-auto-1-exec-9] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=401 UNAUTHORIZED, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: 1Daeg,hlG7GjI+vWFLbr8*gqxkl|wSi5|&n5D}t, uri=/api/owners-tools/login, timestamp=Wed, 11 Oct 2023 17:35:10 -0700}
+2023-10-11 17:35:10 [http-nio-auto-1-exec-10] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=401 UNAUTHORIZED, message=Bad credentials. username: =`VwJJGryC{q;r?|pde password: ?aNwlfCd7glf(E&r)lLr}W?fT, uri=/api/owners-tools/login, timestamp=Wed, 11 Oct 2023 17:35:10 -0700}
+2023-10-11 17:35:10 [main] INFO  c.a.t.t.TonsOfTacosApplicationTests -
+                Starting TonsOfTacosApplicationTests using Java 17.0.6 with PID 131265 (started by brian in /media/brian/Expansion/disk 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-11 17:35:10 [main] DEBUG c.a.t.t.TonsOfTacosApplicationTests -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-10-11 17:35:10 [main] INFO  c.a.t.t.TonsOfTacosApplicationTests -
+                No active profile set, falling back to 1 default profile: "default"
+2023-10-11 17:35:10 [main] INFO  c.a.t.t.TonsOfTacosApplicationTests -
+                Started TonsOfTacosApplicationTests in 0.529 seconds (process running for 10.771)
+2023-10-11 17:35:10 [http-nio-auto-2-exec-1] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No customer with that id found., uri=/api/owners-tools/customers/edit-customer-email/13/larry@larbo.com, timestamp=Wed, 11 Oct 2023 17:35:10 -0700}
+2023-10-11 17:35:11 [http-nio-auto-2-exec-7] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=400 BAD_REQUEST, message=Email does not match formatting requirements, please consult the docs., uri=/api/owners-tools/customers/edit-customer-email/gd34-igjr/larrylarbo.com, timestamp=Wed, 11 Oct 2023 17:35:11 -0700}
+2023-10-11 18:08:40 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.6 with PID 132718 (/media/brian/Expansion/disk 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Expansion/disk 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-11 18:08:40 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-10-11 18:08:40 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"

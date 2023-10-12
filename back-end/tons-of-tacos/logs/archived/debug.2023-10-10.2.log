@@ -1,0 +1,96 @@
+2023-10-10 20:14:17 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-10 20:14:17 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started LoginTest.testThatDoesNotPolluteTheApplicationContextUris in 3.6 seconds (process running for 4.357)
+2023-10-10 20:15:03 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting LoginTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 67730 (started by brian in /media/brian/Expansion/disk 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-10 20:15:03 [main] DEBUG c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-10-10 20:15:03 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-10-10 20:15:06 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-10 20:15:07 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started LoginTest.testThatDoesNotPolluteTheApplicationContextUris in 3.644 seconds (process running for 4.401)
+2023-10-10 20:15:49 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting LoginTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 67851 (started by brian in /media/brian/Expansion/disk 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-10 20:15:49 [main] DEBUG c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-10-10 20:15:49 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-10-10 20:15:52 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-10 20:15:52 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started LoginTest.testThatDoesNotPolluteTheApplicationContextUris in 3.764 seconds (process running for 4.5)
+2023-10-10 20:27:16 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.6 with PID 69280 (/media/brian/Expansion/disk 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Expansion/disk 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-10 20:27:16 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-10-10 20:27:16 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-10-10 20:27:19 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-10 20:27:19 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 3.238 seconds (process running for 3.58)
+2023-10-10 20:32:22 [http-nio-8080-exec-1] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=401 UNAUTHORIZED, message=Invalid username or password., uri=/api/owners-tools/login, timestamp=Tue, 10 Oct 2023 20:32:22 -0700}
+2023-10-10 20:32:35 [http-nio-8080-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=401 UNAUTHORIZED, message=Invalid username or password., uri=/api/owners-tools/login, timestamp=Tue, 10 Oct 2023 20:32:35 -0700}
+2023-10-10 20:32:37 [http-nio-8080-exec-3] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=401 UNAUTHORIZED, message=Invalid username or password., uri=/api/owners-tools/login, timestamp=Tue, 10 Oct 2023 20:32:37 -0700}
+2023-10-10 20:32:39 [http-nio-8080-exec-4] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=401 UNAUTHORIZED, message=Invalid username or password., uri=/api/owners-tools/login, timestamp=Tue, 10 Oct 2023 20:32:39 -0700}
+2023-10-10 20:32:39 [http-nio-8080-exec-5] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=401 UNAUTHORIZED, message=Invalid username or password., uri=/api/owners-tools/login, timestamp=Tue, 10 Oct 2023 20:32:39 -0700}
+2023-10-10 20:32:40 [http-nio-8080-exec-6] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=401 UNAUTHORIZED, message=Invalid username or password., uri=/api/owners-tools/login, timestamp=Tue, 10 Oct 2023 20:32:40 -0700}
+2023-10-10 20:36:50 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.6 with PID 69827 (/media/brian/Expansion/disk 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Expansion/disk 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-10 20:36:50 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-10-10 20:36:50 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-10-10 20:36:53 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-10 20:36:53 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 3.11 seconds (process running for 3.456)
+2023-10-10 20:37:03 [http-nio-8080-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=401 UNAUTHORIZED, message=Invalid username or password., uri=/api/owners-tools/login, timestamp=Tue, 10 Oct 2023 20:37:03 -0700}
+2023-10-10 20:45:31 [http-nio-8080-exec-5] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=401 UNAUTHORIZED, message=Invalid username or password., uri=/api/owners-tools/login, timestamp=Tue, 10 Oct 2023 20:45:31 -0700}
+2023-10-10 20:45:33 [http-nio-8080-exec-6] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=401 UNAUTHORIZED, message=Invalid username or password., uri=/api/owners-tools/login, timestamp=Tue, 10 Oct 2023 20:45:33 -0700}
+2023-10-10 20:46:04 [http-nio-8080-exec-7] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=401 UNAUTHORIZED, message=Invalid username or password., uri=/api/owners-tools/login, timestamp=Tue, 10 Oct 2023 20:46:04 -0700}
+2023-10-10 20:51:08 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.6 with PID 71894 (/media/brian/Expansion/disk 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Expansion/disk 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-10 20:51:08 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-10-10 20:51:08 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-10-10 20:51:11 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-10 20:51:11 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 3.618 seconds (process running for 3.974)
+2023-10-10 20:51:30 [http-nio-8080-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=401 UNAUTHORIZED, message=Invalid username or password., uri=/api/owners-tools/login, timestamp=Tue, 10 Oct 2023 20:51:30 -0700}
+2023-10-10 20:55:16 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.6 with PID 72161 (/media/brian/Expansion/disk 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Expansion/disk 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-10 20:55:16 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-10-10 20:55:16 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-10-10 20:55:18 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-10 20:55:19 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 3.791 seconds (process running for 4.179)
+2023-10-10 21:13:25 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.6 with PID 72959 (/media/brian/Expansion/disk 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Expansion/disk 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-10 21:13:25 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-10-10 21:13:25 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-10-10 21:13:27 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-10 21:13:28 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 3.539 seconds (process running for 3.899)

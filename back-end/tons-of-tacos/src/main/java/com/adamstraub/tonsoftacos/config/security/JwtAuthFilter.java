@@ -77,6 +77,7 @@ private final HandlerExceptionResolver resolver;
             }
             filterChain.doFilter(request, response);
         } catch (Exception e) {
+            System.out.println(e);
             resolver.resolveException(request, response, null, e);
         }
     }

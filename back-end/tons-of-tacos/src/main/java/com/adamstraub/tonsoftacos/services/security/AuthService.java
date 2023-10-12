@@ -20,17 +20,20 @@ public class AuthService implements AuthServiceInterface {
 
     public String ownerLogin(OwnerAuth ownerAuth) {
         System.out.println("auth service");
-//        System.out.println(ownerAuthDto);
-        try {
+        System.out.println(ownerAuth);
+//        try {
             Authentication authentication = authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(jwtService.decrypt(ownerAuth.getUsername()),
                             jwtService.decrypt(ownerAuth.getPsswrd())));
-//            if (!authentication.isAuthenticated()) {
-//                throw new BadCredentialsException("Bad credentials." + jwtService.decrypt(ownerAuthDto.getUsername()) + " " +  jwtService.decrypt(ownerAuthDto.getPsswrd()));
-        }catch (Exception e) {
-//            throw new BadCredentialsException("Bad credentials. " + "username: " + jwtService.decrypt(ownerAuthDto.getUsername()) + " " + "password: " + jwtService.decrypt(ownerAuthDto.getPsswrd()));
-            throw new BadCredentialsException("Bad credentials. " + "username: " + ownerAuth.getUsername() + " " + "password: " + ownerAuth.getPsswrd());
+        System.out.println(authentication);
+            if (!authentication.isAuthenticated()) {
+                throw new BadCredentialsException("Bad credentials." + jwtService.decrypt(ownerAuth.getUsername()) + " " +  jwtService.decrypt(ownerAuth.getPsswrd()));
 
+//        }catch (Exception e) {
+//            System.out.println(e);
+////            throw new BadCredentialsException("Bad credentials. " + "username: " + jwtService.decrypt(ownerAuthDto.getUsername()) + " " + "password: " + jwtService.decrypt(ownerAuthDto.getPsswrd()));
+//            throw new BadCredentialsException("Bad credentials. " + "username: " + ownerAuth.getUsername() + " " + "password: " + ownerAuth.getPsswrd());
+//
         }
 //        }else
                 return jwtService.generateToken(ownerAuth.getUsername());

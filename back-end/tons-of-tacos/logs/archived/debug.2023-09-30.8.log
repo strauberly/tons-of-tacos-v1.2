@@ -1,0 +1,82 @@
+2023-09-30 07:24:08 [http-nio-8080-exec-9] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:24:08 -0700}
+2023-09-30 07:24:09 [http-nio-8080-exec-10] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:24:09 -0700}
+2023-09-30 07:24:10 [http-nio-8080-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:24:10 -0700}
+2023-09-30 07:24:11 [http-nio-8080-exec-1] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:24:11 -0700}
+2023-09-30 07:24:12 [http-nio-8080-exec-3] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:24:12 -0700}
+2023-09-30 07:24:12 [http-nio-8080-exec-4] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:24:12 -0700}
+2023-09-30 07:24:13 [http-nio-8080-exec-5] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:24:13 -0700}
+2023-09-30 07:24:14 [http-nio-8080-exec-6] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:24:14 -0700}
+2023-09-30 07:24:14 [http-nio-8080-exec-7] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:24:14 -0700}
+2023-09-30 07:24:15 [http-nio-8080-exec-8] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:24:15 -0700}
+2023-09-30 07:26:52 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.6 with PID 464568 (/media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-30 07:26:52 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-30 07:26:52 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-30 07:26:55 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-30 07:26:56 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.772 seconds (process running for 5.214)
+2023-09-30 07:28:24 [http-nio-8080-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Session expired., uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:28:24 -0700}
+2023-09-30 07:29:09 [http-nio-8080-exec-3] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Session expired., uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:29:09 -0700}
+2023-09-30 07:29:12 [http-nio-8080-exec-4] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Session expired., uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:29:12 -0700}
+2023-09-30 07:29:13 [http-nio-8080-exec-5] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Session expired., uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:29:13 -0700}
+2023-09-30 07:29:13 [http-nio-8080-exec-6] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Session expired., uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:29:13 -0700}
+2023-09-30 07:29:14 [http-nio-8080-exec-7] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Session expired., uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:29:14 -0700}
+2023-09-30 07:29:15 [http-nio-8080-exec-8] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Session expired., uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:29:15 -0700}
+2023-09-30 07:30:29 [http-nio-8080-exec-1] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Session expired., uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:30:29 -0700}
+2023-09-30 07:31:45 [http-nio-8080-exec-5] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:31:45 -0700}
+2023-09-30 07:31:46 [http-nio-8080-exec-6] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:31:46 -0700}
+2023-09-30 07:31:48 [http-nio-8080-exec-7] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:31:48 -0700}
+2023-09-30 07:31:49 [http-nio-8080-exec-8] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:31:49 -0700}
+2023-09-30 07:31:52 [http-nio-8080-exec-9] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:31:52 -0700}
+2023-09-30 07:31:53 [http-nio-8080-exec-10] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:31:53 -0700}
+2023-09-30 07:31:54 [http-nio-8080-exec-1] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:31:54 -0700}
+2023-09-30 07:31:54 [http-nio-8080-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:31:54 -0700}
+2023-09-30 07:31:55 [http-nio-8080-exec-4] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:31:55 -0700}
+2023-09-30 07:31:59 [http-nio-8080-exec-3] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:31:59 -0700}
+2023-09-30 07:32:46 [http-nio-8080-exec-5] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Session expired., uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:32:46 -0700}
+2023-09-30 07:34:21 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.6 with PID 464898 (/media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-30 07:34:21 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-30 07:34:21 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-30 07:34:25 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-30 07:34:25 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.562 seconds (process running for 5.009)
+2023-09-30 07:34:39 [http-nio-8080-exec-1] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Session expired., uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:34:39 -0700}
+2023-09-30 07:35:01 [http-nio-8080-exec-3] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: tomtomtomtom password: ?aNwlfCd7glf(E&r)lLr}W?fT#Ld?aFw_ic, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:35:01 -0700}

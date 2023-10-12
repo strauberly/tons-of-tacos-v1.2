@@ -82,3 +82,18 @@ select o1_0."order_pk",o1_0."closed",o1_0."created",o1_0."customer_fk",o1_0."cus
 2023-09-26 16:13:31 [http-nio-auto-1-exec-2] ERROR o.h.e.jdbc.spi.SqlExceptionHelper -
                 NULL not allowed for column "customer_uid"; SQL statement:
 insert into "orders" ("order_pk", "closed", "created", "customer_fk", "customer_uid", "order_total", "order_uid", "ready") values (default, ?, ?, ?, ?, ?, ?, ?) [23502-214]
+2023-10-11 18:08:43 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter -
+                
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+

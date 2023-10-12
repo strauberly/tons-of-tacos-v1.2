@@ -1,0 +1,84 @@
+2023-09-30 07:36:16 [http-nio-8080-exec-6] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: tomtomtomtom password: ?aNwlfCd7glf(E&r)lLr}W?fT#Ld?aFw_ic, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:36:16 -0700}
+2023-09-30 07:36:18 [http-nio-8080-exec-7] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: tomtomtomtom password: ?aNwlfCd7glf(E&r)lLr}W?fT#Ld?aFw_ic, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:36:18 -0700}
+2023-09-30 07:36:19 [http-nio-8080-exec-8] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: tomtomtomtom password: ?aNwlfCd7glf(E&r)lLr}W?fT#Ld?aFw_ic, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:36:19 -0700}
+2023-09-30 07:37:03 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.6 with PID 465594 (/media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-30 07:37:03 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-30 07:37:03 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-30 07:37:07 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-30 07:37:07 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.874 seconds (process running for 5.315)
+2023-09-30 07:37:14 [http-nio-8080-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: tomtomtomtom password: ?aNwlfCd7glf(E&r)lLr}W?fT#Ld?aFw_ic, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:37:14 -0700}
+2023-09-30 07:37:16 [http-nio-8080-exec-3] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: tomtomtomtom password: ?aNwlfCd7glf(E&r)lLr}W?fT#Ld?aFw_ic, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:37:16 -0700}
+2023-09-30 07:37:17 [http-nio-8080-exec-4] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: tomtomtomtom password: ?aNwlfCd7glf(E&r)lLr}W?fT#Ld?aFw_ic, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:37:17 -0700}
+2023-09-30 07:37:17 [http-nio-8080-exec-5] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: tomtomtomtom password: ?aNwlfCd7glf(E&r)lLr}W?fT#Ld?aFw_ic, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:37:17 -0700}
+2023-09-30 07:37:18 [http-nio-8080-exec-6] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: tomtomtomtom password: ?aNwlfCd7glf(E&r)lLr}W?fT#Ld?aFw_ic, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:37:18 -0700}
+2023-09-30 07:37:20 [http-nio-8080-exec-7] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: tomtomtomtom password: ?aNwlfCd7glf(E&r)lLr}W?fT#Ld?aFw_ic, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:37:20 -0700}
+2023-09-30 07:41:43 [http-nio-8080-exec-4] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: tomtomtomtom password: ?aNwlfCd7glf(E&r)lLr}W?fT#Ld?aFw_ic, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:41:43 -0700}
+2023-09-30 07:50:18 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Starting TonsOfTacosApplication using Java 17.0.6 with PID 465947 (/media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos/target/classes started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-30 07:50:18 [main] DEBUG c.a.t.TonsOfTacosApplication -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-30 07:50:18 [main] INFO  c.a.t.TonsOfTacosApplication -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-30 07:50:21 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-30 07:50:22 [main] INFO  c.a.t.TonsOfTacosApplication -
+                Started TonsOfTacosApplication in 4.572 seconds (process running for 5.023)
+2023-09-30 07:50:41 [http-nio-8080-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: tomtomtomtom password: ?aNwlfCd7glf(E&r)lLr}W?fT#Ld?aFw_ic, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:50:41 -0700}
+2023-09-30 07:51:05 [http-nio-8080-exec-3] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: tomtomtomtom password: ?aNwlfCd7glf(E&r)lLr}W?fT#Ld?aFw_ic, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:51:05 -0700}
+2023-09-30 07:51:06 [http-nio-8080-exec-4] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: tomtomtomtom password: ?aNwlfCd7glf(E&r)lLr}W?fT#Ld?aFw_ic, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:51:06 -0700}
+2023-09-30 07:51:15 [http-nio-8080-exec-5] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:51:15 -0700}
+2023-09-30 07:51:16 [http-nio-8080-exec-6] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:51:16 -0700}
+2023-09-30 07:51:17 [http-nio-8080-exec-7] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: tosdpfjYU&^9OHW%jksk, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:51:17 -0700}
+2023-09-30 07:51:50 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting LoginTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 466152 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-30 07:51:50 [main] DEBUG c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-30 07:51:50 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-30 07:51:55 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-30 07:51:56 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started LoginTest.testThatDoesNotPolluteTheApplicationContextUris in 6.194 seconds (process running for 7.38)
+2023-09-30 07:52:11 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting LoginTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 466298 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-30 07:52:11 [main] DEBUG c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-30 07:52:11 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-30 07:52:16 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-30 07:52:17 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started LoginTest.testThatDoesNotPolluteTheApplicationContextUris in 6.325 seconds (process running for 7.456)
+2023-09-30 07:52:17 [http-nio-auto-1-exec-1] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Bad credentials. username: m)Km7y{f0~nd$,hvNLOw0.F5FlP5u?5 password: ?h4eK-LlI@wjwG-W_K!rt.jq5N||iG_5Vs@572P, uri=/api/owners-tools/login, timestamp=Sat, 30 Sep 2023 07:52:17 -0700}
+2023-09-30 07:52:28 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting LoginTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 466418 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-09-30 07:52:28 [main] DEBUG c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-09-30 07:52:28 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-09-30 07:52:33 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-09-30 07:52:34 [main] INFO  c.a.t.t.s.o.a.LoginTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started LoginTest.testThatDoesNotPolluteTheApplicationContextUris in 6.052 seconds (process running for 7.196)

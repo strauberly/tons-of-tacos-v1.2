@@ -1,0 +1,92 @@
+2023-10-10 19:42:12 [main] INFO  c.a.t.t.s.o.o.GetTodaysSalesTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting GetTodaysSalesTests.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 65331 (started by brian in /media/brian/Expansion/disk 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-10 19:42:12 [main] DEBUG c.a.t.t.s.o.o.GetTodaysSalesTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-10-10 19:42:12 [main] INFO  c.a.t.t.s.o.o.GetTodaysSalesTests$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-10-10 19:42:15 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-10 19:42:16 [main] INFO  c.a.t.t.s.o.o.GetTodaysSalesTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Started GetTodaysSalesTests.testThatDoesNotPolluteTheApplicationContextUris in 3.746 seconds (process running for 4.565)
+2023-10-10 19:52:02 [main] INFO  c.a.t.t.s.o.o.GetTodaysSalesTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting GetTodaysSalesTests.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 65770 (started by brian in /media/brian/Expansion/disk 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-10 19:52:02 [main] DEBUG c.a.t.t.s.o.o.GetTodaysSalesTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-10-10 19:52:02 [main] INFO  c.a.t.t.s.o.o.GetTodaysSalesTests$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-10-10 19:52:05 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-10 19:52:05 [main] INFO  c.a.t.t.s.o.o.GetTodaysSalesTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Started GetTodaysSalesTests.testThatDoesNotPolluteTheApplicationContextUris in 3.532 seconds (process running for 4.298)
+2023-10-10 19:56:22 [main] INFO  c.a.t.t.s.o.o.GetTodaysSalesTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting GetTodaysSalesTests.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 66039 (started by brian in /media/brian/Expansion/disk 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-10 19:56:22 [main] DEBUG c.a.t.t.s.o.o.GetTodaysSalesTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-10-10 19:56:22 [main] INFO  c.a.t.t.s.o.o.GetTodaysSalesTests$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-10-10 19:56:25 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-10 19:56:26 [main] INFO  c.a.t.t.s.o.o.GetTodaysSalesTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Started GetTodaysSalesTests.testThatDoesNotPolluteTheApplicationContextUris in 3.494 seconds (process running for 4.23)
+2023-10-10 19:57:29 [main] INFO  c.a.t.t.s.o.o.DeleteCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting DeleteCustomerByUidTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 66184 (started by brian in /media/brian/Expansion/disk 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-10 19:57:29 [main] DEBUG c.a.t.t.s.o.o.DeleteCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-10-10 19:57:29 [main] INFO  c.a.t.t.s.o.o.DeleteCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-10-10 19:57:31 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-10 19:57:32 [main] INFO  c.a.t.t.s.o.o.DeleteCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started DeleteCustomerByUidTest.testThatDoesNotPolluteTheApplicationContextUris in 3.489 seconds (process running for 4.341)
+2023-10-10 19:57:33 [http-nio-auto-1-exec-3] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No customer found with that UID. Please verify and try  again., uri=/api/owners-tools/customers/get-customer-uid/customerUid, timestamp=Tue, 10 Oct 2023 19:57:33 -0700}
+2023-10-10 19:57:33 [http-nio-auto-1-exec-5] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No customer with that uid found. Please check formatting and verify customer exists., uri=/api/owners-tools/customers/delete-customer/85, timestamp=Tue, 10 Oct 2023 19:57:33 -0700}
+2023-10-10 19:57:33 [main] INFO  c.a.t.t.m.DbTests.NonEmptyTests -
+                Starting NonEmptyTests using Java 17.0.6 with PID 66184 (started by brian in /media/brian/Expansion/disk 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-10 19:57:33 [main] DEBUG c.a.t.t.m.DbTests.NonEmptyTests -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-10-10 19:57:33 [main] INFO  c.a.t.t.m.DbTests.NonEmptyTests -
+                No active profile set, falling back to 1 default profile: "default"
+2023-10-10 19:57:33 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-10 19:57:33 [main] INFO  c.a.t.t.m.DbTests.NonEmptyTests -
+                Started NonEmptyTests in 0.627 seconds (process running for 5.717)
+2023-10-10 19:57:34 [http-nio-auto-1-exec-7] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=You have chosen a category that does not exist. Please check your spelling and formatting., uri=/api/menu/category, timestamp=Tue, 10 Oct 2023 19:57:34 -0700}
+2023-10-10 19:57:34 [http-nio-auto-1-exec-3] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No customer with that uid found. Please check formatting and verify customer exists., uri=/api/owners-tools/customers/edit-customer-phone/14/555.555.5156, timestamp=Tue, 10 Oct 2023 19:57:34 -0700}
+2023-10-10 19:57:34 [main] INFO  c.a.t.t.mockTests.DbTests.EmptyTests -
+                Starting EmptyTests using Java 17.0.6 with PID 66184 (started by brian in /media/brian/Expansion/disk 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-10 19:57:34 [main] DEBUG c.a.t.t.mockTests.DbTests.EmptyTests -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-10-10 19:57:34 [main] INFO  c.a.t.t.mockTests.DbTests.EmptyTests -
+                No active profile set, falling back to 1 default profile: "default"
+2023-10-10 19:57:35 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-10 19:57:35 [main] INFO  c.a.t.t.mockTests.DbTests.EmptyTests -
+                Started EmptyTests in 0.753 seconds (process running for 6.963)
+2023-10-10 19:57:35 [main] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No orders found at all. Please contact your application team right away., uri=/api/owners-tools/orders/get-orders, timestamp=Tue, 10 Oct 2023 19:57:35 -0700}
+2023-10-10 19:57:35 [main] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No customers found at all. Please contact your application team right away., uri=/api/owners-tools/customers/get-customers, timestamp=Tue, 10 Oct 2023 19:57:35 -0700}
+2023-10-10 19:57:35 [http-nio-auto-1-exec-5] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=You have chosen a menu item that does not exist., uri=/api/menu/id, timestamp=Tue, 10 Oct 2023 19:57:35 -0700}
+2023-10-10 19:57:35 [http-nio-auto-1-exec-7] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=Order item not updated. Verify order item is part of order., uri=/api/owners-tools/orders/update-order-item/654654-465465-555/88/2, timestamp=Tue, 10 Oct 2023 19:57:35 -0700}
+2023-10-10 19:57:35 [http-nio-auto-1-exec-9] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=400 BAD_REQUEST, message=We were unable to process your request. Please contact us when trying to order more than 10 of any given item., uri=/api/owners-tools/orders/update-order-item/654654-465465-555/3/12, timestamp=Tue, 10 Oct 2023 19:57:35 -0700}
+2023-10-10 19:57:35 [http-nio-auto-1-exec-5] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=Order item not updated. Verify order exists., uri=/api/owners-tools/orders/update-order-item/77/3/2, timestamp=Tue, 10 Oct 2023 19:57:35 -0700}
+2023-10-10 19:57:35 [http-nio-auto-1-exec-8] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=No order found with that UID. Please verify and try again., uri=/api/owners-tools/orders/get-order-uid/orderUid, timestamp=Tue, 10 Oct 2023 19:57:35 -0700}
+2023-10-10 19:57:35 [http-nio-auto-1-exec-10] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=Can not delete order. Verify order exists., uri=/api/owners-tools/orders/delete-order/78, timestamp=Tue, 10 Oct 2023 19:57:35 -0700}
+2023-10-10 19:57:36 [http-nio-auto-1-exec-1] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=Menu item can not be added to order. Verify order id., uri=/api/owners-tools/orders/add-to-order/78/2/2, timestamp=Tue, 10 Oct 2023 19:57:36 -0700}
+2023-10-10 19:57:36 [http-nio-auto-1-exec-4] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=Unable to find com.adamstraub.tonsoftacos.entities.MenuItem with id 66, uri=/api/owners-tools/orders/add-to-order/654654-465465-555/66/2, timestamp=Tue, 10 Oct 2023 19:57:36 -0700}
+2023-10-10 19:57:36 [main] INFO  c.a.t.t.s.o.o.GetOrdersByCustomerTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting GetOrdersByCustomerTests.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 66184 (started by brian in /media/brian/Expansion/disk 2/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-10 19:57:36 [main] DEBUG c.a.t.t.s.o.o.GetOrdersByCustomerTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3

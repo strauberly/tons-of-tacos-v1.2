@@ -1,0 +1,8 @@
+2023-09-27 12:35:50 [main] ERROR o.h.e.jdbc.spi.SqlExceptionHelper -
+                Unknown column 'c1_0.customer_uid' in 'field list'
+2023-09-27 12:36:15 [main] ERROR o.h.e.jdbc.spi.SqlExceptionHelper -
+                Unknown column 'o1_0.customer_uid' in 'field list'
+2023-09-27 12:37:40 [main] ERROR o.h.e.jdbc.spi.SqlExceptionHelper -
+                Unknown column 'o1_0.customer_uid' in 'field list'
+2023-09-27 12:43:52 [main] ERROR o.h.e.jdbc.spi.SqlExceptionHelper -
+                Unknown column 'o1_0.customer_uid' in 'field list'

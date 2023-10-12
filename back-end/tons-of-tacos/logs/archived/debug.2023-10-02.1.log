@@ -1,0 +1,88 @@
+2023-10-02 06:45:06 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-02 06:45:07 [main] INFO  c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Started GetAllOrdersTests.testThatDoesNotPolluteTheApplicationContextUris in 5.566 seconds (process running for 6.86)
+2023-10-02 06:45:08 [main] INFO  c.a.t.t.s.o.o.DeleteCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting DeleteCustomerByUidTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 535298 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-02 06:45:08 [main] DEBUG c.a.t.t.s.o.o.DeleteCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-10-02 06:45:08 [main] INFO  c.a.t.t.s.o.o.DeleteCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-10-02 06:45:09 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-02 06:45:09 [main] INFO  c.a.t.t.s.o.o.DeleteCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started DeleteCustomerByUidTest.testThatDoesNotPolluteTheApplicationContextUris in 1.047 seconds (process running for 8.879)
+2023-10-02 06:45:09 [http-nio-auto-2-exec-6] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=You have chosen a category that does not exist. Please check your spelling and formatting., uri=/api/menu/category, timestamp=Mon, 2 Oct 2023 06:45:09 -0700}
+2023-10-02 06:45:10 [http-nio-auto-2-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=You have chosen a menu item that does not exist., uri=/api/menu/id, timestamp=Mon, 2 Oct 2023 06:45:10 -0700}
+2023-10-02 06:45:11 [http-nio-auto-1-exec-9] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Session expired., uri=/api/owners-tools/customers/delete-customer/1, timestamp=Mon, 2 Oct 2023 06:45:11 -0700}
+2023-10-02 06:45:12 [http-nio-auto-1-exec-5] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=400 BAD_REQUEST, message=Customer name incorrectly formatted. Please consult the documentation., uri=/api/order/checkout, timestamp=Mon, 2 Oct 2023 06:45:12 -0700}
+2023-10-02 06:46:38 [main] INFO  c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting GetAllOrdersTests.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 535500 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-02 06:46:38 [main] DEBUG c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-10-02 06:46:38 [main] INFO  c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-10-02 06:46:43 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-02 06:46:44 [main] INFO  c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Started GetAllOrdersTests.testThatDoesNotPolluteTheApplicationContextUris in 5.817 seconds (process running for 7.057)
+2023-10-02 06:46:45 [main] INFO  c.a.t.t.s.o.o.DeleteCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting DeleteCustomerByUidTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 535500 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-02 06:46:45 [main] DEBUG c.a.t.t.s.o.o.DeleteCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-10-02 06:46:45 [main] INFO  c.a.t.t.s.o.o.DeleteCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-10-02 06:46:46 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-02 06:46:46 [main] INFO  c.a.t.t.s.o.o.DeleteCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started DeleteCustomerByUidTest.testThatDoesNotPolluteTheApplicationContextUris in 1.034 seconds (process running for 9.03)
+2023-10-02 06:46:46 [http-nio-auto-2-exec-6] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=You have chosen a category that does not exist. Please check your spelling and formatting., uri=/api/menu/category, timestamp=Mon, 2 Oct 2023 06:46:46 -0700}
+2023-10-02 06:46:47 [http-nio-auto-2-exec-2] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=You have chosen a menu item that does not exist., uri=/api/menu/id, timestamp=Mon, 2 Oct 2023 06:46:47 -0700}
+2023-10-02 06:46:48 [http-nio-auto-1-exec-9] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Session expired., uri=/api/owners-tools/customers/delete-customer/1, timestamp=Mon, 2 Oct 2023 06:46:48 -0700}
+2023-10-02 06:46:50 [http-nio-auto-1-exec-5] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=400 BAD_REQUEST, message=Customer name incorrectly formatted. Please consult the documentation., uri=/api/order/checkout, timestamp=Mon, 2 Oct 2023 06:46:50 -0700}
+2023-10-02 06:46:50 [http-nio-auto-1-exec-7] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=401 UNAUTHORIZED, message=Invalid username or password., uri=/api/owners-tools/login, timestamp=Mon, 2 Oct 2023 06:46:50 -0700}
+2023-10-02 06:46:50 [http-nio-auto-1-exec-8] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=401 UNAUTHORIZED, message=Invalid username or password., uri=/api/owners-tools/login, timestamp=Mon, 2 Oct 2023 06:46:50 -0700}
+2023-10-02 06:47:40 [main] INFO  c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting GetAllOrdersTests.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 535665 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-02 06:47:40 [main] DEBUG c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-10-02 06:47:40 [main] INFO  c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-10-02 06:47:44 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-02 06:47:45 [main] INFO  c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Started GetAllOrdersTests.testThatDoesNotPolluteTheApplicationContextUris in 5.784 seconds (process running for 7.087)
+2023-10-02 06:47:46 [main] INFO  c.a.t.t.s.o.o.DeleteCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting DeleteCustomerByUidTest.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 535665 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-02 06:47:46 [main] DEBUG c.a.t.t.s.o.o.DeleteCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-10-02 06:47:46 [main] INFO  c.a.t.t.s.o.o.DeleteCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"
+2023-10-02 06:47:47 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-02 06:47:47 [main] INFO  c.a.t.t.s.o.o.DeleteCustomerByUidTest$testThatDoesNotPolluteTheApplicationContextUris -
+                Started DeleteCustomerByUidTest.testThatDoesNotPolluteTheApplicationContextUris in 1.071 seconds (process running for 9.073)
+2023-10-02 06:47:47 [http-nio-auto-2-exec-7] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=You have chosen a category that does not exist. Please check your spelling and formatting., uri=/api/menu/category, timestamp=Mon, 2 Oct 2023 06:47:47 -0700}
+2023-10-02 06:47:48 [http-nio-auto-2-exec-3] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=404 NOT_FOUND, message=You have chosen a menu item that does not exist., uri=/api/menu/id, timestamp=Mon, 2 Oct 2023 06:47:48 -0700}
+2023-10-02 06:47:49 [http-nio-auto-1-exec-9] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=403 FORBIDDEN, message=Session expired., uri=/api/owners-tools/customers/delete-customer/1, timestamp=Mon, 2 Oct 2023 06:47:49 -0700}
+2023-10-02 06:47:51 [http-nio-auto-1-exec-5] DEBUG c.a.t.e.GlobalExceptionHandler -
+                {status code=400 BAD_REQUEST, message=Customer name incorrectly formatted. Please consult the documentation., uri=/api/order/checkout, timestamp=Mon, 2 Oct 2023 06:47:51 -0700}
+2023-10-02 06:48:33 [main] INFO  c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Starting GetAllOrdersTests.testThatDoesNotPolluteTheApplicationContextUris using Java 17.0.6 with PID 535832 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-02 06:48:33 [main] DEBUG c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-10-02 06:48:33 [main] INFO  c.a.t.t.s.o.o.GetAllOrdersTests$testThatDoesNotPolluteTheApplicationContextUris -
+                No active profile set, falling back to 1 default profile: "default"

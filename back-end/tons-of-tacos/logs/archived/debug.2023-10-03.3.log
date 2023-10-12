@@ -1,0 +1,4 @@
+2023-10-03 07:12:18 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-03 07:12:19 [main] INFO  c.a.t.t.m.DbTests.NonEmptyTests -
+                Started NonEmptyTests in 6.053 seconds (process running for 7.231)

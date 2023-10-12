@@ -1,0 +1,24 @@
+2023-10-02 20:49:51 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-02 20:49:51 [main] INFO  c.a.t.t.m.O.NonEmptyTests -
+                Started NonEmptyTests in 6.049 seconds (process running for 7.077)
+2023-10-02 21:02:27 [main] INFO  c.a.t.t.m.O.NonEmptyTests -
+                Starting NonEmptyTests using Java 17.0.6 with PID 555686 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-02 21:02:27 [main] DEBUG c.a.t.t.m.O.NonEmptyTests -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-10-02 21:02:27 [main] INFO  c.a.t.t.m.O.NonEmptyTests -
+                No active profile set, falling back to 1 default profile: "default"
+2023-10-02 21:02:32 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-02 21:02:32 [main] INFO  c.a.t.t.m.O.NonEmptyTests -
+                Started NonEmptyTests in 5.648 seconds (process running for 6.712)
+2023-10-02 21:02:38 [main] INFO  c.a.t.t.m.O.NonEmptyTests -
+                Starting NonEmptyTests using Java 17.0.6 with PID 555835 (started by brian in /media/brian/Backup 22/Documents/Tablet Backup/Documents/Courses/Java/personal projects/TonsOfTacosV1.2/back-end/tons-of-tacos)
+2023-10-02 21:02:38 [main] DEBUG c.a.t.t.m.O.NonEmptyTests -
+                Running with Spring Boot v3.0.1, Spring v6.0.3
+2023-10-02 21:02:38 [main] INFO  c.a.t.t.m.O.NonEmptyTests -
+                No active profile set, falling back to 1 default profile: "default"
+2023-10-02 21:02:43 [main] DEBUG c.a.t.config.security.JwtAuthFilter -
+                Filter 'jwtAuthFilter' configured for use
+2023-10-02 21:02:44 [main] INFO  c.a.t.t.m.O.NonEmptyTests -
+                Started NonEmptyTests in 5.765 seconds (process running for 6.825)
