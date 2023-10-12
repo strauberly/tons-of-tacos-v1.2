@@ -21,13 +21,32 @@ public class AuthService implements AuthServiceInterface {
 
     public String ownerLogin(OwnerAuth ownerAuth) {
         System.out.println("auth service");
-        try {
+//        try {
+//            Authentication authentication = authenticationManager
+//                    .authenticate(new UsernamePasswordAuthenticationToken(jwtService.decrypt(ownerAuth.getUsername()),
+//                            jwtService.decrypt(ownerAuth.getPsswrd())));
+//        } catch (Exception e) {
+//            throw new InternalAuthenticationServiceException("Invalid username or password.");
+//
+//            System.out.println(ownerAuth);
+//        try {
             Authentication authentication = authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(jwtService.decrypt(ownerAuth.getUsername()),
                             jwtService.decrypt(ownerAuth.getPsswrd())));
-        }catch (Exception e) {
-                throw new InternalAuthenticationServiceException("Invalid username or password.");
+            System.out.println(authentication);
+            if (!authentication.isAuthenticated()) {
+                throw new BadCredentialsException("Bad credentials." + jwtService.decrypt(ownerAuth.getUsername()) + " " + jwtService.decrypt(ownerAuth.getPsswrd()));
+
+//        }catch (Exception e) {
+//            System.out.println(e);
+////            throw new BadCredentialsException("Bad credentials. " + "username: " + jwtService.decrypt(ownerAuthDto.getUsername()) + " " + "password: " + jwtService.decrypt(ownerAuthDto.getPsswrd()));
+//            throw new BadCredentialsException("Bad credentials. " + "username: " + ownerAuth.getUsername() + " " + "password: " + ownerAuth.getPsswrd());
+//
+
+
+//            }
+//            return jwtService.generateToken(ownerAuth.getUsername());
         }
-                return jwtService.generateToken(ownerAuth.getUsername());
+        return jwtService.generateToken(ownerAuth.getUsername());
     }
 }
