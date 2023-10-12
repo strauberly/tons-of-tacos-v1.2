@@ -2,19 +2,19 @@ package com.adamstraub.tonsoftacos.dto.businessDto;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
 @Data
 public class OrderReturnedToOwner {
     private String orderUid;
-//    private Integer orderId;
     private String name = null;
     private String email = null;
     private String phone = null;
-//    private String orderUid;
     private List<OrderItemReturnedToOwner> orderItems;
-    private Double orderTotal;
+//    private Double orderTotal;
+    private BigDecimal orderTotal;
     private Timestamp created;
     private String ready;
     private String closed;

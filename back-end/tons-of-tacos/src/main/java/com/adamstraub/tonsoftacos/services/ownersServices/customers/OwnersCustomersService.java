@@ -29,20 +29,22 @@ public class OwnersCustomersService implements OwnersCustomersServiceInterface {
     private MenuItemRepository menuItemRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public List<CustomerReturnedToOwner> getAllCustomers() {
         System.out.println("service");
-
-            List<Customer> customers = customerRepository.findAll();
-        if (customers.size() == 0){
-            throw new EntityNotFoundException("No customers found. Verify database integrity.");
-        }else {
-            List<CustomerReturnedToOwner> allCustomersDto = new ArrayList<>();
-            customers.forEach(customer -> allCustomersDto.add(ownersCustomerDtoConvertor(customer)));
-//            System.out.println(allCustomersDto);
-
-            return allCustomersDto;
+        List<CustomerReturnedToOwner> allCustomersDtos = new ArrayList<>();
+        List<Customer> customers;
+        try {
+            customers = customerRepository.findAll();
+            for (Customer customer : customers) {
+                allCustomersDtos.add(ownersCustomerDtoConvertor(customer));
+            }
+        } catch (Exception e) {
+            throw new EntityNotFoundException("No customers found at all. Please contact your application team right away.");
         }
+        return  allCustomersDtos;
     }
+
 
     @Override
     public CustomerReturnedToOwner getCustomerByName(String name) {

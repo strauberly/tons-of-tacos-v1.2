@@ -35,11 +35,11 @@ class GetMenuItemsByIdTests {
     @Sql(scripts = {
             "classpath:/test-schema.sql",
             "classpath:/test-data.sql",
-            },
+    },
             config = @SqlConfig(encoding = "utf-8"))
     class testThatDoesNotPolluteTheApplicationContextUris extends GetMenuItemsTestsSupport {
         @Test
-         void validMenuItemIsReturnedByIdWith200() {
+        void validMenuItemIsReturnedByIdWith200() {
             System.out.println(getBaseUriForMenuItemByIdQuery());
 //        Given: a valid menu id
             int itemId = 1;
@@ -93,4 +93,5 @@ class GetMenuItemsByIdTests {
         }
     }
 }
+
 

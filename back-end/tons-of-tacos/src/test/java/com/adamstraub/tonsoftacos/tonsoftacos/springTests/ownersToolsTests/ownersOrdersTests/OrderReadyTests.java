@@ -21,92 +21,93 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class OrderReadyTests {
 
-        @Autowired
-        private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
-        @Nested
-        @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-        @TestPropertySource("classpath:/test-application.properties")
-        @Sql(scripts = {
-                "classpath:/test-schema.sql",
-                "classpath:/test-data.sql",
-        },
-                config = @SqlConfig(encoding = "utf-8"))
-        class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSupport {
-            @Test
-            void orderMarkedReadyWith200() {
+    @Nested
+    @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+    @TestPropertySource("classpath:/test-application.properties")
+    @Sql(scripts = {
+            "classpath:/test-schema.sql",
+            "classpath:/test-data.sql",
+    },
+            config = @SqlConfig(encoding = "utf-8"))
+    class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSupport {
+        @Test
+        void orderMarkedReadyWith200() {
 //            Given: a valid order id and valid authheader
-                //            get valid token
+            //            get valid token
 //                String token = validToken();
-                String token = encryptedToken();
-                Assertions.assertNotNull(token);
+            String token = encryptedToken();
+            Assertions.assertNotNull(token);
 
 //           build authheader
-                HttpHeaders authHeader = new HttpHeaders();
-                authHeader.setContentType(MediaType.APPLICATION_JSON);
-                authHeader.setBearerAuth(token);
-                HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
+            HttpHeaders authHeader = new HttpHeaders();
+            authHeader.setContentType(MediaType.APPLICATION_JSON);
+            authHeader.setBearerAuth(token);
+            HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
 //                int orderId = 1;
-                String orderUid = "654654-465465-555";
+            String orderUid = "654654-465465-555";
 //            When: a connection is made
-                String uri =
+            String uri =
 //                        String.format("%s/%d", getBaseUriForOrderReady(), orderId);
-                        String.format("%s/%s", getBaseUriForOrderReady(), orderUid);
-                        System.out.println(uri);
+                    String.format("%s/%s", getBaseUriForOrderReady(), orderUid);
+            System.out.println(uri);
 
-                ResponseEntity<OrderReturnedToOwner> response =
-                        getRestTemplate().exchange(uri, HttpMethod.PUT, headerEntity, new ParameterizedTypeReference<>() {
-                        });
+            ResponseEntity<OrderReturnedToOwner> response =
+                    getRestTemplate().exchange(uri, HttpMethod.PUT, headerEntity, new ParameterizedTypeReference<>() {
+                    });
 //            Then: order is marked ready and response code is 200
-                Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
-                System.out.println("Response code is " + response.getStatusCode() + ".");
+            Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
+            System.out.println("Response code is " + response.getStatusCode() + ".");
 //            And: when the order is called ready does not == no
 //                String parameter = "orderId";
-                String parameter = "orderUid";
-                String getOrderUri =
+            String parameter = "orderUid";
+            String getOrderUri =
 //                        String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter, orderId);
-                        String.format("%s?%s=%s", getBaseUriForGetOrderByUid(), parameter, orderUid);
-                System.out.println(getOrderUri);
-                ResponseEntity<OrderReturnedToOwner> getOrderResponse =
-                        getRestTemplate().exchange(getOrderUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
-                        });
-                Assertions.assertNotEquals("no", Objects.requireNonNull(getOrderResponse.getBody()).getReady());
-                System.out.println("Order ready as of: " + Objects.requireNonNull(getOrderResponse.getBody()).getReady());
+                    String.format("%s?%s=%s", getBaseUriForGetOrderByUid(), parameter, orderUid);
+            System.out.println(getOrderUri);
+            ResponseEntity<OrderReturnedToOwner> getOrderResponse =
+                    getRestTemplate().exchange(getOrderUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
+                    });
+            Assertions.assertNotEquals("no", Objects.requireNonNull(getOrderResponse.getBody()).getReady());
+            System.out.println("Order ready as of: " + Objects.requireNonNull(getOrderResponse.getBody()).getReady());
 
-            }
+        }
 
-            @Test
-            void orderNotFound404() {
+        @Test
+        void orderNotFound404() {
 //            Given: an invalid order id and valid authheader
-                //            get valid token
+            //            get valid token
 //                String token = validToken();
-                String token = encryptedToken();
-                Assertions.assertNotNull(token);
+            String token = encryptedToken();
+            Assertions.assertNotNull(token);
 
 //           build authheader
-                HttpHeaders authHeader = new HttpHeaders();
-                authHeader.setContentType(MediaType.APPLICATION_JSON);
-                authHeader.setBearerAuth(token);
-                HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
+            HttpHeaders authHeader = new HttpHeaders();
+            authHeader.setContentType(MediaType.APPLICATION_JSON);
+            authHeader.setBearerAuth(token);
+            HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
 //                int orderId = 88;
-                String orderId = "88";
+            String orderId = "88";
 //            When: a connection is made
-                String uri =
+            String uri =
 //                        String.format("%s/%d", getBaseUriForOrderReady(), orderId);
-                        String.format("%s/%s", getBaseUriForOrderReady(), orderId);
-                System.out.println(uri);
+                    String.format("%s/%s", getBaseUriForOrderReady(), orderId);
+            System.out.println(uri);
 
-                ResponseEntity<Map<String, Object>> response =
-                        getRestTemplate().exchange(uri, HttpMethod.PUT, headerEntity, new ParameterizedTypeReference<>() {
-                        });
+            ResponseEntity<Map<String, Object>> response =
+                    getRestTemplate().exchange(uri, HttpMethod.PUT, headerEntity, new ParameterizedTypeReference<>() {
+                    });
 //           Then: a 404 response is returned if no orders found
-                org.assertj.core.api.Assertions.assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
-                System.out.println(("Response code is " + response.getStatusCode() + "."));
-                System.out.println("Response body: " + response.getBody());
-                System.out.println("Negative test case complete for order status not changed if id invalid.");
-            }
+            org.assertj.core.api.Assertions.assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+            System.out.println(("Response code is " + response.getStatusCode() + "."));
+            System.out.println("Response body: " + response.getBody());
+            System.out.println("Negative test case complete for order status not changed if id invalid.");
         }
+    }
 }
+
 

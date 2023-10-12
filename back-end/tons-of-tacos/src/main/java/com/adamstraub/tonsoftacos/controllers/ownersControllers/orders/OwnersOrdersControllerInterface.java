@@ -132,7 +132,7 @@ public interface OwnersOrdersControllerInterface {
     List<OrderReturnedToOwner> getAllOrders();
 
 
-//    get an order by uid
+//get an order by uid
     @Operation(
             summary = "An order is returned by its uid.",
             description = """
@@ -198,7 +198,7 @@ public interface OwnersOrdersControllerInterface {
 
 
 
-//    get an order by customer name
+//get an order by customer name
     @Operation(
             summary = "Orders returned by customer name.",
             description = """ 
@@ -272,7 +272,7 @@ public interface OwnersOrdersControllerInterface {
 
 
 
-// mark food ready by uid
+//mark food ready by uid
     @Operation(
             summary = "Marks an order by its uid as having food ready for pick up.",
             description = """
@@ -333,7 +333,7 @@ public interface OwnersOrdersControllerInterface {
     OrderReturnedToOwner orderReady(@PathVariable String orderUid);
 
 
-//    close order by uid
+//close order by uid
     @Operation(
             summary = "Closes an order by its uid.",
             description = """
@@ -394,7 +394,8 @@ public interface OwnersOrdersControllerInterface {
     @PutMapping("/close-order/{orderUid}")
     OrderReturnedToOwner closeOrder(@PathVariable String orderUid);
 
-// delete order by uid
+
+    //delete order by uid
     @Operation(
             summary = "Deletes an order by its uid.",
             description = " For owner use only with proper auth.",
@@ -418,7 +419,7 @@ public interface OwnersOrdersControllerInterface {
     @DeleteMapping("/delete-order/{orderUid}")
     String deleteOrder(@PathVariable String orderUid);
 
-//    add menu item to order
+//add menu item to order
     @Operation(
             summary = "A menu item is added to an open order by respective uid and id.",
             description = "If request is successful then a message string is returned indicating as such (ex. 'cola x 3 added to order.')." +
@@ -448,7 +449,7 @@ public interface OwnersOrdersControllerInterface {
     @PathVariable
     Integer quantity);
 
-//    edit order item
+//edit order item
     @Operation(
             summary = " Updates an order item quantity and corresponding order total.",
             description = """ 
@@ -479,7 +480,8 @@ public interface OwnersOrdersControllerInterface {
     @PathVariable
     Integer newQuantity);
 
-// get todays sales
+
+//get todays sales
     @Operation(
             summary = "Calculates and returns sales for today's closed orders.",
             description = """

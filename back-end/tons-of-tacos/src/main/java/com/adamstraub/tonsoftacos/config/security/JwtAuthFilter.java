@@ -1,6 +1,7 @@
 package com.adamstraub.tonsoftacos.config.security;
 import com.adamstraub.tonsoftacos.dao.OwnerRepository;
 import com.adamstraub.tonsoftacos.services.security.JwtService;
+import io.jsonwebtoken.JwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -36,8 +37,6 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
 @Autowired
 @Qualifier("handlerExceptionResolver")
-
-@NonNull
 private final HandlerExceptionResolver resolver;
 
     @Override
@@ -48,6 +47,7 @@ private final HandlerExceptionResolver resolver;
         try {
 //            System.out.println("request: " + request);
             String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
+//        System.out.println("auth header: " + authHeader);
             String token = null;
             String username = null;
             Date expiration = null;
@@ -74,6 +74,7 @@ private final HandlerExceptionResolver resolver;
                         , userDetails.getAuthorities());
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authToken);
+//                System.out.println("authToken: " + authToken);
             }
             filterChain.doFilter(request, response);
         } catch (Exception e) {
@@ -85,8 +86,8 @@ private final HandlerExceptionResolver resolver;
     @Bean
     UserDetailsService userDetailsService(){
         return username -> ownerRepository.findByUsername(username)
-//                .orElseThrow(() -> new UsernameNotFoundException("User unauthorized."));
-                .orElseThrow(() -> new BadCredentialsException("User unauthorized."));
+                .orElseThrow(() -> new UsernameNotFoundException("User unauthorized."));
+
     }
 }
 

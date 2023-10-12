@@ -51,8 +51,8 @@ public class EditOrderItemQuantityTest {
 
 //                int orderId = 1;
             String orderUid = "654654-465465-555";
-                int orderItemId = 3;
-                int newQuantity = 2;
+            int orderItemId = 3;
+            int newQuantity = 2;
 
 //             get order before alteration
 //            String parameter = "orderId";
@@ -246,3 +246,4 @@ public class EditOrderItemQuantityTest {
         }
     }
 }
+

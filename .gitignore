@@ -20,7 +20,7 @@ update-repo-script.sh
 
 TonsOfTacosV1.2.ctb
 
-.properties
+*.properties
 
 .ctb
 
@@ -28,6 +28,6 @@ TonsOfTacosV1.2.ctb
 
 .xml
 
-.log
+**/*.log
 
 .idea/

@@ -3,17 +3,13 @@ package com.adamstraub.tonsoftacos.services.security;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
-import java.security.SignatureException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.function.Function;
@@ -26,38 +22,38 @@ public class JwtService {
     //create token
 
 //    make these all caps and dash between
-    @Value("${key}")
-    private String SECRET;
+    @Value("${KEY}")
+    private String secret;
 
     @Value("${BEGIN_KEY}")
-    private int BEGIN_KEY;
+    private int beginKey;
     @Value("${END_KEY}")
-    private int END_KEY;
+    private int endKey;
 
-    @Value("${charmin}")
-    private int charmin;
+    @Value("${CHAR_MIN}")
+    private int charMin;
 
-    @Value("${charmax}")
-    private int charmax;
+    @Value("${CHAR_MAX}")
+    private int charMax;
 
-    @Value("${submin}")
-    private int submin;
+    @Value("${SUB_MIN}")
+    private int subMin;
 
-    @Value("${submax}")
-    private int submax;
+    @Value("${SUB_MAX}")
+    private int subMax;
 
-    @Value("${ex1}")
+    @Value("${EX1}")
     private int ex1;
-    @Value("${ex2}")
+    @Value("${EX2}")
     private int ex2;
-    @Value("${ex3}")
+    @Value("${EX3}")
     private int ex3;
 
     @Value("${CHARSET}")
     private String CHARSET;
 
     private Key getSignKey(){
-        byte[] keyBytes = Decoders.BASE64.decode(SECRET);
+        byte[] keyBytes = Decoders.BASE64.decode(secret);
         return Keys.hmacShaKeyFor(keyBytes);
     }
     private String buildToken(String username){
@@ -89,6 +85,7 @@ public class JwtService {
                             .parseClaimsJws(token)
                             .getBody();
         } catch (Exception e) {
+//            System.out.println(e.getMessage());
             throw new JwtException("Session expired.");
         }
     }
@@ -133,7 +130,7 @@ public class JwtService {
         int codeByteValue;
         for (byte codeByte : codeBytes) {
             codeByteValue = codeByte;
-            codeByteValue += BEGIN_KEY;
+            codeByteValue += beginKey;
             rolledCodeBytes.add(codeByteValue);
         }
 
@@ -167,14 +164,14 @@ public class JwtService {
 public String decrypt(String encodedString)  {
 //        System.out.println("encoded: " + encodedString);
 
-        String decodedStart = String.valueOf(encodedString.charAt(BEGIN_KEY));
-        String decodedEnd = String.valueOf(encodedString.charAt(encodedString.length() - END_KEY));
+        String decodedStart = String.valueOf(encodedString.charAt(beginKey));
+        String decodedEnd = String.valueOf(encodedString.charAt(encodedString.length() - endKey));
         String wholeDecoded = "";
         StringBuilder decoded = new StringBuilder();
-        for (int i = BEGIN_KEY; i < encodedString.length(); i = i + END_KEY) {
+        for (int i = beginKey; i < encodedString.length(); i = i + endKey) {
             decoded.append(encodedString.charAt(i));
         }
-        decoded = new StringBuilder(decoded.substring(submin, decoded.toString().length() - submax));
+        decoded = new StringBuilder(decoded.substring(subMin, decoded.toString().length() - subMax));
         wholeDecoded = wholeDecoded.concat(decodedStart + decoded + decodedEnd);
 //        System.out.println("decoded: " + wholeDecoded);
         byte[] decodedBytes = wholeDecoded.getBytes(StandardCharsets.UTF_8);
@@ -183,7 +180,7 @@ public String decrypt(String encodedString)  {
         StringBuilder decrypt = new StringBuilder(0);
         for (byte codeByte : decodedBytes) {
             decodeByteValue = codeByte;
-            decodeByteValue -= BEGIN_KEY;
+            decodeByteValue -= beginKey;
             decodedChars.add((char) decodeByteValue);
         }
         for (Character ch : decodedChars) {
@@ -194,7 +191,7 @@ public String decrypt(String encodedString)  {
     }
 
     private char randomChar() {
-        int min = charmin, max = charmax;
+        int min = charMin, max = charMax;
         int random = (int) (Math.random() * ((max - min)) + min);
         int[] excluded = {ex1, ex2, ex3};
         char choice = 0;

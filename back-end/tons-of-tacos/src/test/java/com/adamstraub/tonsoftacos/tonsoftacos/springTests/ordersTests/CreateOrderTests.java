@@ -34,7 +34,7 @@ class CreateOrderTests {
     class testThatDoesNotPolluteTheApplicationContextUris extends OrdersTestsSupport {
         @Test
         void orderCreated201() {
-//            re-organize
+//            address is service the multiple print outs
 //                Given: a valid order and authheader
 
             // get valid token for authheader to search for the newly created order
@@ -87,7 +87,7 @@ class CreateOrderTests {
         }
 
 
-//        test for bad data
+        //        test for bad data
         @Test
         void invalidOrder400() {
 //        Given: an invalid order(ie incomplete. missing fields, bad formatting etc) but valid auth header

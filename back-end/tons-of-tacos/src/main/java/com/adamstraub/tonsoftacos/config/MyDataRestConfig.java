@@ -14,7 +14,7 @@ import java.util.Set;
 @Configuration
 public class MyDataRestConfig implements RepositoryRestConfigurer {
 
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
     @Autowired
     public MyDataRestConfig(EntityManager theEntityManager){
@@ -24,7 +24,9 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
-//        internal helper ids could be hidden if data called through another manner
+//      allows calling menu items by their index id for current ease of development
+//        all other entities utilize a separate id for obfuscation consider menu item name as the means to call it by
+//        and eliminate use of index ids.
         exposeIds(config);
 // turn off default action of exposing repository through the initial endpoint
         config.disableDefaultExposure();

@@ -6,6 +6,8 @@ import lombok.*;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
+import java.math.BigDecimal;
+
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity
 @Builder
@@ -38,8 +40,11 @@ public class MenuItem {
     @JsonIgnore
     private String imgUrl;
 
+//    @Column(name = "unit_price")
+//    private Double unitPrice;
+
     @Column(name = "unit_price")
-    private Double unitPrice;
+    private BigDecimal unitPrice;
 
     @Override
     public String toString() {

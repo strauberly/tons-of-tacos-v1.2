@@ -14,7 +14,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.ExceptionTranslationFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 
 @Configuration
@@ -25,7 +27,7 @@ public class SecurityConfig {
     private final JwtAuthFilter jwtAuthFilter;
 @Autowired
     private final UserDetailsService userDetailsService;
-
+@Autowired
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -37,8 +39,13 @@ public class SecurityConfig {
                         .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
 //                available
                         .authorizeHttpRequests()
+
 //                        .requestMatchers("/api/menu/**", "/api/order/**", "/api/owners-tools/login", "/api/v1/auth/**",
-                        .requestMatchers("/api/menu/**", "/api/order/**", "/api/owners-tools/login",
+
+
+
+                        .requestMatchers("/api/menu/**", "/api/order/**", "/api/owners-tools/login", "/api/v1/auth/**",
+
                                 "/v3/api-docs/**",
                                 "/v3/api-docs.yaml",
                                 "/swagger-ui/**",
@@ -51,6 +58,7 @@ public class SecurityConfig {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                         .and()
                         .authenticationProvider(authenticationProvider())
+//                        filters
                         .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                         .build();
     }
