@@ -39,13 +39,13 @@ public class SecurityConfig {
                         .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
 //                available
                         .authorizeHttpRequests()
-<<<<<<< HEAD
 
-                        .requestMatchers("/api/menu/**", "/api/order/**", "/api/owners-tools/login", "/api/v1/auth/**",
-=======
+
+
+
 //                        .requestMatchers("/api/menu/**", "/api/order/**", "/api/owners-tools/login", "/api/v1/auth/**",
                         .requestMatchers("/api/menu/**", "/api/order/**", "/api/owners-tools/login",
->>>>>>> main
+
                                 "/v3/api-docs/**",
                                 "/v3/api-docs.yaml",
                                 "/swagger-ui/**",
