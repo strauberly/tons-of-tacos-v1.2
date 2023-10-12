@@ -85,7 +85,6 @@ public class JwtService {
                             .parseClaimsJws(token)
                             .getBody();
         } catch (Exception e) {
-//            System.out.println(e.getMessage());
             throw new JwtException("Session expired.");
         }
     }
