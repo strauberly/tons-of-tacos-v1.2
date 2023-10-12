@@ -251,7 +251,7 @@ public String deleteOrder(String orderUid) {
 //                looks for all orders with today's timestamp and marked closed
         for (Orders order:todaysOrders){
 //            salesTotal += order.getOrderTotal();
-            salesTotal.add(new BigDecimal(String.valueOf(order.getOrderTotal())));
+            salesTotal = salesTotal.add(new BigDecimal(String.valueOf(order.getOrderTotal())));
         }
         int numberOfOrders = todaysOrders.size();
         salesToday.setDate(todaysDate);

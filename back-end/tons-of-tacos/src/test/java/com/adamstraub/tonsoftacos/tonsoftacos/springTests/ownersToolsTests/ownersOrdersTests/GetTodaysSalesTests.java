@@ -1,6 +1,7 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.ownersToolsTests.ownersOrdersTests;
 
 import com.adamstraub.tonsoftacos.dao.OrdersRepository;
+import com.adamstraub.tonsoftacos.dto.businessDto.DailySales;
 import com.adamstraub.tonsoftacos.dto.businessDto.OrderReturnedToOwner;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ownersToolsSupport.OwnersToolsTestsSupport;
 import org.junit.jupiter.api.Assertions;
@@ -118,8 +119,8 @@ public class GetTodaysSalesTests {
             String salesUri =
                     String.format("%s", getBaseUriForSales());
             System.out.println(salesUri);
-
-            ResponseEntity<Map<String, Object>> response =
+            ResponseEntity<DailySales> response =
+//            ResponseEntity<Map<String, Object>> response =
                     getRestTemplate().exchange(salesUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
                     });
 //            Then:  response code will be 200
@@ -128,8 +129,12 @@ public class GetTodaysSalesTests {
             System.out.println(response.getBody());
 
 //            And: the sum of the orders totals will equal the daily sales total
-            Assertions.assertEquals(Objects.requireNonNull(orderOneReadyResponse.getBody()).getOrderTotal() + Objects.requireNonNull(orderTwoReadyResponse.getBody()).getOrderTotal(), Objects.requireNonNull(response.getBody()).get("total"));
-            System.out.println("Total of order 1 and order 2 equals daily sales total: " + (orderOneReadyResponse.getBody().getOrderTotal() + orderTwoReadyResponse.getBody().getOrderTotal() == (double) response.getBody().get("total")));
+//            Assertions.assertEquals(Objects.requireNonNull(orderOneReadyResponse.getBody()).getOrderTotal() + Objects.requireNonNull(orderTwoReadyResponse.getBody()).getOrderTotal(), Objects.requireNonNull(response.getBody()).get("total"));
+            Assertions.assertEquals(Objects.requireNonNull(orderOneReadyResponse.getBody()).getOrderTotal().add(Objects.requireNonNull(orderTwoReadyResponse.getBody()).getOrderTotal()), Objects.requireNonNull(response.getBody()).getTotal());
+
+//            System.out.println("Total of order 1 and order 2 equals daily sales total: " + (orderOneReadyResponse.getBody().getOrderTotal() + orderTwoReadyResponse.getBody().getOrderTotal() == (double) response.getBody().get("total")));
+            System.out.println("Total of order 1 and order 2 equals daily sales total: " + (orderOneReadyResponse.getBody().getOrderTotal().add(orderTwoReadyResponse.getBody().getOrderTotal()).equals(response.getBody().getTotal())));
+
             System.out.println("Successful test case for daily sales complete.");
         }
     }
