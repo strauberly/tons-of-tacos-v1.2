@@ -25,7 +25,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
-
+// search for unused handlers and eliminate
 @Data
 @RestControllerAdvice
 public class GlobalExceptionHandler {

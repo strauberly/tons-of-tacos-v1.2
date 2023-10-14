@@ -39,7 +39,7 @@ public class Owner implements UserDetails {
     @Column(name = "contact")
     private String contact;
 
-//research stronger implementation
+//research implementation of roles
 
     @Column
     @Enumerated(EnumType.STRING)
