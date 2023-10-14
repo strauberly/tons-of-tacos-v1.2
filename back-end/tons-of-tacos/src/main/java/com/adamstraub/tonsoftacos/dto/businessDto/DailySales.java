@@ -10,6 +10,5 @@ import java.time.LocalDate;
 public class DailySales {
     private LocalDate date;
     private int numberOfSales;
-//    private double total;
-private BigDecimal total;
+    private BigDecimal total;
 }

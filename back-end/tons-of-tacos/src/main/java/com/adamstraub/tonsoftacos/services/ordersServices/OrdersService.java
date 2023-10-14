@@ -163,6 +163,7 @@ public class OrdersService implements OrdersServiceInterface {
             orderUid = String.valueOf(orderUidBuilder.append(randomUidChar()));
 
         }
+//        ensure uid is unique
 //        compare uid against others by doing a find by uid and if null then return if not re-run
         if (ordersRepository.findByOrderUid(orderUid) != null) {
             genOrderUid();

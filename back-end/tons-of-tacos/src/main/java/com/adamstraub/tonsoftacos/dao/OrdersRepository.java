@@ -13,7 +13,6 @@ import java.util.List;
 @Repository
 public interface OrdersRepository extends JpaRepository<Orders, Integer> {
 
-//    Orders findByOrderUid (@RequestParam ("order_uid") String orderUid);
 Orders findByOrderUid (@RequestParam ("order_uid") String orderUid) throws EntityNotFoundException;
     List<Orders> findByCustomerId(@RequestParam("customer_fk") Integer customerId);
 

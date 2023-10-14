@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 
 //service pertains to authentication functions(login, logout, session timeout etc.)
+//refactor for try catch methodology and test
 @Service
 @RequiredArgsConstructor
 public class AuthService implements AuthServiceInterface {

@@ -13,7 +13,6 @@ public class OrderReturnedToOwner {
     private String email = null;
     private String phone = null;
     private List<OrderItemReturnedToOwner> orderItems;
-//    private Double orderTotal;
     private BigDecimal orderTotal;
     private Timestamp created;
     private String ready;

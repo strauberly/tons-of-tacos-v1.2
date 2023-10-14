@@ -5,11 +5,9 @@ import java.math.BigDecimal;
 
 @Data
 public class OrderItemReturnedToCustomer {
-    String itemName;
-//    Double unitPrice;
-     BigDecimal unitPrice;
-     Integer quantity;
-//     Double total;
-     BigDecimal total;
+     private String itemName;
+     private BigDecimal unitPrice;
+     private Integer quantity;
+     private BigDecimal total;
 
 }

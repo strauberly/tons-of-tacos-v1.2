@@ -10,9 +10,10 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-
+//    utilize for ease of initial development. to be removed before production.
 @Configuration
 public class MyDataRestConfig implements RepositoryRestConfigurer {
+
 
     private final EntityManager entityManager;
 
@@ -24,11 +25,11 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
-//      allows calling menu items by their index id for current ease of development
-//        all other entities utilize a separate id for obfuscation consider menu item name as the means to call it by
-//        and eliminate use of index ids.
+//      allows calling menu items by their index id for ease of development
+//      will eventually be negated with menu items called by menu item name as their uid
+//        all other entities utilize a uid
         exposeIds(config);
-// turn off default action of exposing repository through the initial endpoint
+// turn off default action of exposing available paths through the initial endpoint
         config.disableDefaultExposure();
 
     }
