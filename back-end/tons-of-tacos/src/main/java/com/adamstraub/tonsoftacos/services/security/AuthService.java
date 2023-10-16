@@ -11,42 +11,25 @@ import org.springframework.stereotype.Service;
 
 
 //service pertains to authentication functions(login, logout, session timeout etc.)
-//refactor for try catch methodology and test
 @Service
 @RequiredArgsConstructor
-public class AuthService implements AuthServiceInterface {
+public class AuthService {
+//public class AuthService implements AuthServiceInterface {
     @Autowired
     private final JwtService jwtService;
     @Autowired
     private final AuthenticationManager authenticationManager;
 
+
+//possibly add logger here for bad login attempts in order to log the submitted credentials separately.
     public String ownerLogin(OwnerAuth ownerAuth) {
         System.out.println("auth service");
-//        try {
-//            Authentication authentication = authenticationManager
-//                    .authenticate(new UsernamePasswordAuthenticationToken(jwtService.decrypt(ownerAuth.getUsername()),
-//                            jwtService.decrypt(ownerAuth.getPsswrd())));
-//        } catch (Exception e) {
-//            throw new InternalAuthenticationServiceException("Invalid username or password.");
-//
-//            System.out.println(ownerAuth);
-//        try {
             Authentication authentication = authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(jwtService.decrypt(ownerAuth.getUsername()),
                             jwtService.decrypt(ownerAuth.getPsswrd())));
             System.out.println(authentication);
             if (!authentication.isAuthenticated()) {
-                throw new BadCredentialsException("Bad credentials." + jwtService.decrypt(ownerAuth.getUsername()) + " " + jwtService.decrypt(ownerAuth.getPsswrd()));
-
-//        }catch (Exception e) {
-//            System.out.println(e);
-////            throw new BadCredentialsException("Bad credentials. " + "username: " + jwtService.decrypt(ownerAuthDto.getUsername()) + " " + "password: " + jwtService.decrypt(ownerAuthDto.getPsswrd()));
-//            throw new BadCredentialsException("Bad credentials. " + "username: " + ownerAuth.getUsername() + " " + "password: " + ownerAuth.getPsswrd());
-//
-
-
-//            }
-//            return jwtService.generateToken(ownerAuth.getUsername());
+                throw new BadCredentialsException("Bad credentials.");
         }
         return jwtService.generateToken(ownerAuth.getUsername());
     }

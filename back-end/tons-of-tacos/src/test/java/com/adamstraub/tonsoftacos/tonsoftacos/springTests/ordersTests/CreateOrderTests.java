@@ -1,6 +1,8 @@
 package com.adamstraub.tonsoftacos.tonsoftacos.springTests.ordersTests;
+import com.adamstraub.tonsoftacos.dto.businessDto.OrderItemReturnedToOwner;
 import com.adamstraub.tonsoftacos.dto.customerDto.ordersDto.OrderReturnedToCustomer;
 import com.adamstraub.tonsoftacos.dto.businessDto.OrderReturnedToOwner;
+import com.adamstraub.tonsoftacos.entities.OrderItem;
 import com.adamstraub.tonsoftacos.tonsoftacos.testSupport.ordersTestsSupport.OrdersTestsSupport;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
@@ -14,6 +16,9 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -84,6 +89,16 @@ class CreateOrderTests {
             System.out.println(orderUidResponse.getBody());
             System.out.println("Response code is " + orderUidResponse.getStatusCode() + ".");
             System.out.println("Newly created order was found which verifies proper functionality.");
+
+            BigDecimal orderItemsTotal = BigDecimal.valueOf(0.00);
+            List<OrderItemReturnedToOwner> orderItems = new ArrayList<>(orderUidResponse.getBody().getOrderItems());
+
+            for (OrderItemReturnedToOwner orderItem : orderItems){
+            orderItemsTotal = orderItemsTotal.add(orderItem.getTotal());
+            }
+            Assertions.assertEquals(orderUidResponse.getBody().getOrderTotal(), orderItemsTotal);
+            System.out.println("And order total calculated correctly: " + orderUidResponse.getBody().getOrderTotal().equals(orderItemsTotal));
+
         }
 
 
