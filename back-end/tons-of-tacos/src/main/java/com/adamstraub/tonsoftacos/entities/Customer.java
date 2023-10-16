@@ -34,8 +34,7 @@ public class Customer {
 
     @Column(name= "customer_uid")
     private String customerUid;
-//test refctor for issues
-//    //    refactor to reference customer uid
+
     @OneToMany(mappedBy = "customerId", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<Orders> orders = new ArrayList<>();
 

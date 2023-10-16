@@ -27,8 +27,7 @@ import java.util.Objects;
 public class OrdersService implements OrdersServiceInterface {
     @Autowired
     private OrdersRepository ordersRepository;
-    @Autowired
-    private OrderItemRepository orderItemRepository;
+
     @Autowired
     private MenuItemRepository menuItemRepository;
     @Autowired
@@ -42,11 +41,8 @@ public class OrdersService implements OrdersServiceInterface {
     @Transactional
     public OrderReturnedToCustomer createOrder(@RequestBody @NotNull NewOrder order) {
         System.out.println("service");
-//        System.out.println("order: " + order);
 
         BigDecimal orderTotal = BigDecimal.valueOf(0.00);
-
-//        Double orderTotal = 0.00;
         OrderReturnedToCustomer customerCopyDto = new OrderReturnedToCustomer();
         Orders newOrder = order.getOrder();
         Orders orderConfirmation;
@@ -88,39 +84,25 @@ public class OrdersService implements OrdersServiceInterface {
                 newOrder.setCustomerUid(customerRepository.findByName(newCustomer.getName()).getCustomerUid());
             } else {
                 newCustomer.setCustomerUid(genCustomerUid());
-//                System.out.println("customer with uid: " + newCustomer);
                 customerRepository.save(newCustomer);
                 newCustomer = customerRepository.findByName(newCustomer.getName());
-//                System.out.println("customer after save: " + newCustomer);
-//            }
 
-//  set order and total
+//  set order items
                 newOrder.setOrderItems(orderItems);
-
-//                System.out.println( "newOrder: "  + newOrder);
-
-//                for (OrderItem orderItem : orderItems) {
-//                    orderItem.setTotal(orderItem.getQuantity() *
-//                            menuItemRepository.getReferenceById(orderItem.getItem().getId()).getUnitPrice());
-//                    orderTotal += orderItem.getTotal();
+//  calculate order total
                 for (OrderItem orderItem : orderItems) {
                     orderItem.setTotal(BigDecimal.valueOf(orderItem.getQuantity()).multiply(
                             menuItemRepository.getReferenceById(orderItem.getItem().getId()).getUnitPrice()));
-                    orderTotal.add(orderItem.getTotal());
+                    orderTotal = orderTotal.add(orderItem.getTotal());
                 }
+//  set order total, customer uid and customer id for new customer
                 newOrder.setOrderTotal(orderTotal);
-//                System.out.println("new order with total: " + newOrder);
-//                System.out.println("customer uuid: " + newCustomer.getCustomerUid());
                 newOrder.setCustomerUid(newCustomer.getCustomerUid());
-//                System.out.println("new order with customer uid: " + newOrder);
                 newOrder.setCustomerId(newCustomer.getCustomerId());
-//                System.out.println("new order with customer id: " + newOrder);
 
-//        set order uid
+//  set order uid
                 newOrder.setOrderUid(genOrderUid());
-//                System.out.println("new order with order uid: " + newOrder);
                 ordersRepository.save(newOrder);
-//                System.out.println("Order created.");
 
 //        reset valid flags
                 customerNameValid = false;
@@ -182,11 +164,9 @@ public class OrdersService implements OrdersServiceInterface {
             customerUid = String.valueOf(orderUidBuilder.append(randomUidChar()));
         }
             customerUidFront = customerUid.substring(0,4);
-//            System.out.println(customerUidFront);
             customerUidBack = customerUid.substring(4);
-//            System.out.println(customerUidBack);
             formattedCustomerUid = customerUidFront + "-" + customerUidBack;
-//            System.out.println(formattedCustomerUid);
+
 //        compare uid against others by doing a find by uid and if null then return if not re-run
         if (customerRepository.findByCustomerUid(customerUid) != null) {
             genCustomerUid();
@@ -209,8 +189,8 @@ public class OrdersService implements OrdersServiceInterface {
     private void validateCustomerName(String customerName) {
         byte[] nameChars = customerName.getBytes(StandardCharsets.UTF_8);
         int spaces = 0;
-        for (Byte namechar : nameChars) {
-            if (Objects.equals(namechar, (byte) 32)) {
+        for (Byte nameChar : nameChars) {
+            if (Objects.equals(nameChar, (byte) 32)) {
                 spaces += 1;
             }
         }

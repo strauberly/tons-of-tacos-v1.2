@@ -191,6 +191,7 @@ public String deleteOrder(String orderUid) {
     @Override
     public String updateOrderItemQuantity(String orderUid, Integer orderItemId, Integer newQuantity) {
             System.out.println("service");
+//            validation
         Orders order = ordersRepository.findByOrderUid(orderUid);
         if (order == null){
             throw new EntityNotFoundException("Order item not updated. Verify order exists.");
@@ -202,22 +203,17 @@ public String deleteOrder(String orderUid) {
         String response;
             if (newQuantity > 10) {
                 throw new IllegalArgumentException("We were unable to process your request. " +
-                        "Please contact us when trying to order more than 10 of any given item.");
+                        "Please contact us directly when trying to order more than 10 of any given item.");
             }
-//            see big decimal methods
+//          remove item if total 0
         if(newQuantity == 0){
                 orderItemRepository.delete(orderItem);
-//            order.setOrderTotal(order.getOrderTotal() - orderItem.getTotal());
             order.setOrderTotal(order.getOrderTotal().subtract(orderItem.getTotal()));
-
                 response = "Item quantity updated, item removed, cart updated.";
             }else{
             orderItem.setQuantity(newQuantity);
-//            orderItem.setTotal(menuItemRepository.getReferenceById(orderItem.getItem().getId()).getUnitPrice() *
-//                    orderItem.getQuantity());
             orderItem.setTotal(menuItemRepository.getReferenceById(orderItem.getItem().getId()).getUnitPrice().multiply(
                     BigDecimal.valueOf(orderItem.getQuantity())));
-//            order.setOrderTotal(order.getOrderTotal() + orderItem.getTotal());
             order.setOrderTotal(order.getOrderTotal().add(orderItem.getTotal()));
             orderItemRepository.save(orderItem);
             ordersRepository.save(order);
@@ -227,7 +223,6 @@ public String deleteOrder(String orderUid) {
     }
 
 
-//    Ensure date time formatter is returning correctly
     @Transactional
     @Override
     public DailySales todaysSales() {
@@ -237,22 +232,23 @@ public String deleteOrder(String orderUid) {
         LocalDate todaysDate = LocalDate.now();
         LocalDate dbDate;
         DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("dd MMM yyyy");
-//        Double salesTotal = 0.00;
         BigDecimal salesTotal = BigDecimal.valueOf(0.00);
         List<Orders> todaysOrders = new ArrayList<>();
-        List<Orders> completedOrders = ordersRepository.findByClosed();
 
+//        find orders by if they closed meaning transaction complete
+        List<Orders> completedOrders = ordersRepository.findByClosed();
         for (Orders completedOrder: completedOrders){
             dbDate = completedOrder.getCreated().toLocalDateTime().toLocalDate();
             if(todaysDate.format(formattedDate).equals(dbDate.format(formattedDate))){
                 todaysOrders.add(completedOrder);
             }
         }
-//                looks for all orders with today's timestamp and marked closed
+//                looks for all orders with today's timestamp
         for (Orders order:todaysOrders){
-//            salesTotal += order.getOrderTotal();
             salesTotal = salesTotal.add(new BigDecimal(String.valueOf(order.getOrderTotal())));
         }
+
+//        calculate todays sales and return a formatted response
         int numberOfOrders = todaysOrders.size();
         salesToday.setDate(todaysDate);
         salesToday.setNumberOfSales(todaysOrders.size());
