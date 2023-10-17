@@ -37,7 +37,6 @@ public class OrderReadyTests {
         void orderMarkedReadyWith200() {
 //            Given: a valid order id and valid authheader
             //            get valid token
-//                String token = validToken();
             String token = encryptedToken();
             Assertions.assertNotNull(token);
 
@@ -47,11 +46,10 @@ public class OrderReadyTests {
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
-//                int orderId = 1;
             String orderUid = "654654-465465-555";
+
 //            When: a connection is made
             String uri =
-//                        String.format("%s/%d", getBaseUriForOrderReady(), orderId);
                     String.format("%s/%s", getBaseUriForOrderReady(), orderUid);
             System.out.println(uri);
 
@@ -61,11 +59,10 @@ public class OrderReadyTests {
 //            Then: order is marked ready and response code is 200
             Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
             System.out.println("Response code is " + response.getStatusCode() + ".");
+
 //            And: when the order is called ready does not == no
-//                String parameter = "orderId";
             String parameter = "orderUid";
             String getOrderUri =
-//                        String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter, orderId);
                     String.format("%s?%s=%s", getBaseUriForGetOrderByUid(), parameter, orderUid);
             System.out.println(getOrderUri);
             ResponseEntity<OrderReturnedToOwner> getOrderResponse =
@@ -80,7 +77,6 @@ public class OrderReadyTests {
         void orderNotFound404() {
 //            Given: an invalid order id and valid authheader
             //            get valid token
-//                String token = validToken();
             String token = encryptedToken();
             Assertions.assertNotNull(token);
 
@@ -90,11 +86,9 @@ public class OrderReadyTests {
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
-//                int orderId = 88;
             String orderId = "88";
 //            When: a connection is made
             String uri =
-//                        String.format("%s/%d", getBaseUriForOrderReady(), orderId);
                     String.format("%s/%s", getBaseUriForOrderReady(), orderId);
             System.out.println(uri);
 

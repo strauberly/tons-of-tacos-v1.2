@@ -36,12 +36,12 @@ public class GetTodaysSalesTests {
     class testThatDoesNotPolluteTheApplicationContextUris extends OwnersToolsTestsSupport {
         @Autowired
         OrdersRepository ordersRepository;
+
         @Test
         void todaysSalesReturned200() {
 
 //            Given: one or more orders have been closed marking a sale and a valid authheader
             //            get valid token
-//            String token = validToken();
             String token = encryptedToken();
             Assertions.assertNotNull(token);
 
@@ -51,14 +51,12 @@ public class GetTodaysSalesTests {
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
-//            int orderIdOne = 1;
-            String orderIdOne = "654654-465465-555";
-//            int orderIdTwo = 2;
-            String orderIdTwo = "654654-4655-555";
-//            mark order one ready
 
+            String orderIdOne = "654654-465465-555";
+            String orderIdTwo = "654654-4655-555";
+
+//            mark order one ready
             String orderOneReadyUri =
-//                    String.format("%s/%d", getBaseUriForOrderReady(), orderIdOne);
                     String.format("%s/%s", getBaseUriForOrderReady(), orderIdOne);
             System.out.println(orderOneReadyUri);
 
@@ -68,11 +66,10 @@ public class GetTodaysSalesTests {
 
             System.out.println(orderOneReadyResponse.getStatusCode());
             System.out.println(orderOneReadyResponse.getBody());
-//            System.out.println("Order one ready: " + (!ordersRepository.getById(orderIdOne).getReady().equals("no")));
             System.out.println("Order one ready: " + (!ordersRepository.findByOrderUid(orderIdOne).getReady().equals("no")));
-//            mark order one closed
+
+            //            mark order one closed
             String closeOrderOneUri =
-//                    String.format("%s/%d", getBaseUriForCloseOrder(), orderIdOne);
                     String.format("%s/%s", getBaseUriForCloseOrder(), orderIdOne);
             System.out.println(closeOrderOneUri);
 
@@ -81,12 +78,10 @@ public class GetTodaysSalesTests {
                     });
             System.out.println(orderOneClosedResponse.getStatusCode());
             System.out.println(orderOneClosedResponse.getBody());
-//            System.out.println( "Order one closed: " + !ordersRepository.getById(orderIdOne).getClosed().equals("no"));
-            System.out.println( "Order one closed: " + !ordersRepository.findByOrderUid(orderIdOne).getClosed().equals("no"));
-            //            mark order two ready
+            System.out.println("Order one closed: " + !ordersRepository.findByOrderUid(orderIdOne).getClosed().equals("no"));
 
+            //            mark order two ready
             String orderTwoReadyUri =
-//                    String.format("%s/%d", getBaseUriForOrderReady(), orderIdTwo);
                     String.format("%s/%s", getBaseUriForOrderReady(), orderIdTwo);
             System.out.println(orderOneReadyUri);
 
@@ -96,12 +91,10 @@ public class GetTodaysSalesTests {
 
             System.out.println(orderTwoReadyResponse.getStatusCode());
             System.out.println(orderTwoReadyResponse.getBody());
-//            System.out.println("Order two ready: " + (!ordersRepository.getById(orderIdOne).getReady().equals("no")));
             System.out.println("Order two ready: " + (!ordersRepository.findByOrderUid(orderIdTwo).getReady().equals("no")));
 
             //            mark order two closed
             String closeOrderTwoUri =
-//                    String.format("%s/%d", getBaseUriForCloseOrder(), orderIdTwo);
                     String.format("%s/%s", getBaseUriForCloseOrder(), orderIdTwo);
             System.out.println(closeOrderTwoUri);
 
@@ -110,9 +103,7 @@ public class GetTodaysSalesTests {
                     });
             System.out.println(orderTwoClosedResponse.getStatusCode());
             System.out.println(orderTwoClosedResponse.getBody());
-//            System.out.println( "Order two closed: " + !ordersRepository.getById(orderIdOne).getClosed().equals("no"));
-            System.out.println( "Order two closed: " + !ordersRepository.findByOrderUid(orderIdTwo).getClosed().equals("no"));
-
+            System.out.println("Order two closed: " + !ordersRepository.findByOrderUid(orderIdTwo).getClosed().equals("no"));
 
 
 //            When:  a successful connection made
@@ -120,7 +111,6 @@ public class GetTodaysSalesTests {
                     String.format("%s", getBaseUriForSales());
             System.out.println(salesUri);
             ResponseEntity<DailySales> response =
-//            ResponseEntity<Map<String, Object>> response =
                     getRestTemplate().exchange(salesUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
                     });
 //            Then:  response code will be 200
@@ -129,12 +119,9 @@ public class GetTodaysSalesTests {
             System.out.println(response.getBody());
 
 //            And: the sum of the orders totals will equal the daily sales total
-//            Assertions.assertEquals(Objects.requireNonNull(orderOneReadyResponse.getBody()).getOrderTotal() + Objects.requireNonNull(orderTwoReadyResponse.getBody()).getOrderTotal(), Objects.requireNonNull(response.getBody()).get("total"));
             Assertions.assertEquals(Objects.requireNonNull(orderOneReadyResponse.getBody()).getOrderTotal().add(Objects.requireNonNull(orderTwoReadyResponse.getBody()).getOrderTotal()), Objects.requireNonNull(response.getBody()).getTotal());
 
-//            System.out.println("Total of order 1 and order 2 equals daily sales total: " + (orderOneReadyResponse.getBody().getOrderTotal() + orderTwoReadyResponse.getBody().getOrderTotal() == (double) response.getBody().get("total")));
             System.out.println("Total of order 1 and order 2 equals daily sales total: " + (orderOneReadyResponse.getBody().getOrderTotal().add(orderTwoReadyResponse.getBody().getOrderTotal()).equals(response.getBody().getTotal())));
-
             System.out.println("Successful test case for daily sales complete.");
         }
     }

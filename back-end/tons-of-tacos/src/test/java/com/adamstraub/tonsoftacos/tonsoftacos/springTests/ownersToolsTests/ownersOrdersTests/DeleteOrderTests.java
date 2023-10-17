@@ -36,7 +36,6 @@ public class DeleteOrderTests {
         void orderDeleted200() {
 //        Given: given a valid order id and auth header.
             //            get valid token
-//            String token = validToken();
             String token = encryptedToken();
             Assertions.assertNotNull(token);
 
@@ -46,12 +45,10 @@ public class DeleteOrderTests {
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
-//            int orderId = 1;
             String orderUid = "654654-465465-555";
 
             //        When: a connection is made
             String uri =
-//                    String.format("%s/%d", getBaseUriForDeleteOrder(), orderId);
                     String.format("%s/%s", getBaseUriForDeleteOrder(), orderUid);
             System.out.println(uri);
 
@@ -67,7 +64,6 @@ public class DeleteOrderTests {
 //            String parameter = "orderId";
             String parameter = "orderUid";
             String getOrderUri =
-//                    String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter, orderId);
                     String.format("%s?%s=%s", getBaseUriForGetOrderByUid(), parameter, orderUid);
             System.out.println(getOrderUri);
             ResponseEntity<OrderReturnedToOwner> getOrderResponse =
@@ -83,7 +79,7 @@ public class DeleteOrderTests {
         void orderToBeDeletedInvalid404() {
 //        Given: given an invalid order id and valid auth header.
             //            get valid token
-//            String token = validToken();
+
             String token = encryptedToken();
             Assertions.assertNotNull(token);
 

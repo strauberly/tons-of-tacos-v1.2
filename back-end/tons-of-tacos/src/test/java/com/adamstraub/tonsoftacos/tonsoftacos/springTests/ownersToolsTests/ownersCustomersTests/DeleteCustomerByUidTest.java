@@ -63,7 +63,6 @@ public class DeleteCustomerByUidTest {
             System.out.println("Response code is " + response.getStatusCode() + ".");
             System.out.println("Response body: " + response.getBody() + ".");
 
-//             verify customer deleted
 //        And: an attempt to call the deleted customer will return a 404
             String parameter = "customerUid";
             String getCustomerUri =
@@ -99,11 +98,9 @@ public class DeleteCustomerByUidTest {
                     String.format("%s/%d", getBaseUriForDeleteCustomer(), customerId);
             System.out.println(uri);
 
-
             ResponseEntity<Map<String, Object>> response =
                     getRestTemplate().exchange(uri, HttpMethod.DELETE, headerEntity, new ParameterizedTypeReference<>() {
                     });
-
             System.out.println("Response body: " + response.getBody());
 
             //          Then: a 404 NOT FOUND response is returned

@@ -60,7 +60,6 @@ class GetMenuItemsByCategoryTests {
 //
 //           And: returned items category = category entered for query
             LinkedList<MenuItem> returnedCategoryItems = new LinkedList<>(Objects.requireNonNull(response.getBody()));
-//            assertThat(returnedCategoryItems.get(0).getCategory().equals(categoryName));
             Assertions.assertEquals(returnedCategoryItems.get(0).getCategory(), categoryName);
             System.out.println("Returned category = " + returnedCategoryItems.get(0).getCategory() + ". Queried " +
                     "category = " + categoryName);
@@ -74,7 +73,6 @@ class GetMenuItemsByCategoryTests {
             String uri =
                     String.format("%s?%s=%s", getBaseUriForMenuItemByCategoryQuery(), parameter, badInput);
 //          When: a connection is made
-//                needed map as we hit the error handler which is looking for a map
             ResponseEntity<Map<String, Object>> response =
                     getRestTemplate().exchange(uri, HttpMethod.GET, null,
                             new ParameterizedTypeReference<>() {
@@ -84,12 +82,9 @@ class GetMenuItemsByCategoryTests {
             Assertions.assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
             System.out.println(("Response code is " + response.getStatusCode() + "."));
             System.out.println(response.getBody());
-            System.out.println(response);
 //          And: the error message contains
             Map<String, Object> error = response.getBody();
             assert error != null;
-            System.out.println(error.get("status code").toString().substring(0,3));
-            System.out.println(HttpStatus.NOT_FOUND.toString().substring(0,3));
             Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.NOT_FOUND.toString().substring(0,3));
             Assertions.assertTrue(error.containsValue("/api/menu/category"));
             Assertions.assertTrue(error.containsKey("message"));
