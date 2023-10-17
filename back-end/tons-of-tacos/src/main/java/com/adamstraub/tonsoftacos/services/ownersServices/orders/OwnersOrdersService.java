@@ -55,7 +55,6 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
         Orders order;
         try {
             order = ordersRepository.findByOrderUid(orderUid);
-            System.out.println(order);
             return ownersGetOrderDtoConverter(order);
         }catch (Exception e) {
             throw new EntityNotFoundException("No order found with that UID. Please verify and try again.");
@@ -93,7 +92,6 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
 public OrderReturnedToOwner orderReady(String orderUid) {
         System.out.println("service");
         Orders order;
-
             order = ordersRepository.findByOrderUid(orderUid);
             if (order == null){
                 throw new EntityNotFoundException("Order does not exist. Please verify order id and try again.");
@@ -110,8 +108,6 @@ public OrderReturnedToOwner closeOrder(String orderUid) {
         System.out.println("service");
         Orders order;
             order = ordersRepository.findByOrderUid(orderUid);
-
-            System.out.println(order);
             if (order == null){
                 throw new EntityNotFoundException("Order cannot be found and as such can not be closed. Please verify order id.");
             }
@@ -148,7 +144,6 @@ public String deleteOrder(String orderUid) {
         }
 
         ordersRepository.deleteById(order.getOrderId());
-        System.out.println("Order " + order.getOrderUid() + " deleted");
         return "Order " + order.getOrderUid() + " deleted.";
     }
 
@@ -171,16 +166,10 @@ public String deleteOrder(String orderUid) {
                 .item(menuItemRepository.getReferenceById(menuItemId))
                 .quantity(quantity)
                 .order(ordersRepository.findByOrderUid(orderUid)).build();
-//        orderItem.setTotal(menuItemRepository.getReferenceById(menuItemId).getUnitPrice() *
-//                orderItem.getQuantity());
-//        orderItem.setTotal(menuItemRepository.getReferenceById(menuItemId).getUnitPrice().multiply(
-//                (BigDecimal)orderItem.getQuantity());
         orderItem.setTotal(BigDecimal.valueOf(orderItem.getQuantity()).multiply(menuItemRepository.getReferenceById(menuItemId).getUnitPrice()));
         orderItemRepository.save(orderItem);
 
         Orders order  = ordersRepository.findByOrderUid(orderUid);
-//        order.setOrderTotal(order.getOrderTotal() + (menuItemRepository.getReferenceById(menuItemId).getUnitPrice() *
-//                quantity));
         order.setOrderTotal(order.getOrderTotal().add(menuItemRepository.getReferenceById(menuItemId).getUnitPrice().multiply(
                 BigDecimal.valueOf(quantity))));
         ordersRepository.save(order);

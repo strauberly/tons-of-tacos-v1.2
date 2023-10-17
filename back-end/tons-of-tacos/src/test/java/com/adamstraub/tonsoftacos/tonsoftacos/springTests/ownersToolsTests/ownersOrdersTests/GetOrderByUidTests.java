@@ -38,7 +38,6 @@ public class GetOrderByUidTests {
 //            Given: a valid uid and authheader
 
             //            get valid token
-//            String token = validToken();
             String token = encryptedToken();
             Assertions.assertNotNull(token);
 
@@ -70,7 +69,6 @@ public class GetOrderByUidTests {
 //            Given: an invalid uid and valid authheader
 
             //            get valid token
-//            String token = validToken();
             String token = encryptedToken();
             Assertions.assertNotNull(token);
 

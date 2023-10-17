@@ -34,11 +34,10 @@ public class OrderClosedTests {
         @Test
         void orderMarkedClosedWith200() {
 //            Given: a valid order id with valid auth header
-//            int orderId = 1;
+
             String orderUid = "654654-465465-555";
 
             //            get valid token
-//            String token = validToken();
             String token = encryptedToken();
             Assertions.assertNotNull(token);
 
@@ -51,7 +50,6 @@ public class OrderClosedTests {
 //            connect and mark order ready
 
             String statusUri =
-//                    String.format("%s/%d", getBaseUriForOrderReady(), orderId);
                     String.format("%s/%s", getBaseUriForOrderReady(), orderUid);
             System.out.println(statusUri);
 
@@ -59,16 +57,13 @@ public class OrderClosedTests {
                     getRestTemplate().exchange(statusUri, HttpMethod.PUT, headerEntity, new ParameterizedTypeReference<>() {
                     });
 
-//            System.out.println(statusResponse);
             System.out.println(statusResponse.getStatusCode());
             System.out.println(statusResponse.getBody());
 
 
 
 //            get order and verify its status is ready
-
             //            get valid token
-//            String token = validToken();
             String token2 = encryptedToken();
             Assertions.assertNotNull(token2);
 
@@ -77,17 +72,16 @@ public class OrderClosedTests {
             authHeader2.setContentType(MediaType.APPLICATION_JSON);
             authHeader2.setBearerAuth(token2);
             HttpEntity<String> headerEntity2 = new HttpEntity<>(authHeader2);
-//            String parameter1 = "orderId";
+
             String parameter1 = "orderUid";
             String verificationUri =
-//                    String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter1, orderId);
                     String.format("%s?%s=%s", getBaseUriForGetOrderByUid(), parameter1, orderUid);
             System.out.println(verificationUri);
 
             ResponseEntity<OrderReturnedToOwner> verificationResponse =
                     getRestTemplate().exchange(verificationUri, HttpMethod.GET, headerEntity2, new ParameterizedTypeReference<>() {
                     });
-//            System.out.println(verificationResponse);
+
             Assertions.assertEquals(HttpStatus.OK, verificationResponse.getStatusCode());
             System.out.println(verificationResponse.getStatusCode());
             System.out.println(verificationResponse.getBody());
@@ -96,7 +90,6 @@ public class OrderClosedTests {
 
 //            When: a connection is made to close order
             String uri =
-//                    String.format("%s/%d", getBaseUriForCloseOrder(), orderId);
                     String.format("%s/%s", getBaseUriForCloseOrder(), orderUid);
             System.out.println(uri);
 
@@ -108,10 +101,9 @@ public class OrderClosedTests {
             System.out.println("Response code is " + response.getStatusCode() + ".");
 
             //            And: when the order is called the closed is indeed closed
-//            String parameter2 = "orderId";
+
             String parameter2 = "orderUid";
             String getOrderUri =
-//                    String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter2, orderId);
                     String.format("%s?%s=%s", getBaseUriForGetOrderByUid(), parameter2, orderUid);
             System.out.println(getOrderUri);
             ResponseEntity<OrderReturnedToOwner> getOrderResponse =
@@ -127,10 +119,8 @@ public class OrderClosedTests {
         @Test
         void orderDoesNotExist404() {
 //            Given: an invalid order id with valid auth header
-//            int orderId = 66;
             String orderUid = "66";
             //            get valid token
-//            String token = validToken();
             String token = encryptedToken();
             Assertions.assertNotNull(token);
 
@@ -143,7 +133,6 @@ public class OrderClosedTests {
 
 //            When: a connection is made to close order
             String uri =
-//                    String.format("%s/%d", getBaseUriForCloseOrder(), orderId);
                     String.format("%s/%s", getBaseUriForCloseOrder(), orderUid);
             System.out.println(uri);
 
@@ -160,11 +149,9 @@ public class OrderClosedTests {
         @Test
         void orderNotReadyBeforeClosing400() {
 //            Given: a valid order id with valid auth header but has not been marked ready
-//            int orderId = 1;
             String orderUid = "654654-465465-555";
 
             //            get valid token
-//            String token = validToken();
             String token = encryptedToken();
             Assertions.assertNotNull(token);
 
@@ -176,7 +163,6 @@ public class OrderClosedTests {
 
 //            When: a connection is made to close order
             String uri =
-//                    String.format("%s/%d", getBaseUriForCloseOrder(), orderId);
                     String.format("%s/%s", getBaseUriForCloseOrder(), orderUid);
             System.out.println(uri);
 

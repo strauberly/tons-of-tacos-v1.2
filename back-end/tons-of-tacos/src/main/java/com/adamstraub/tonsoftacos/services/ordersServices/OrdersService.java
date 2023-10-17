@@ -48,8 +48,6 @@ public class OrdersService implements OrdersServiceInterface {
         Orders orderConfirmation;
         List<OrderItem> orderItems = newOrder.getOrderItems();
         List<OrderItemReturnedToCustomer> orderItemDtos = new ArrayList<>();
-        System.out.println("order: " + newOrder);
-        System.out.println("new order: " + order.getOrder());
 
 //  validation
         validateCustomerName(order.getCustomer().getName());
@@ -72,7 +70,6 @@ public class OrdersService implements OrdersServiceInterface {
 
 //  if customer already exists, use existing customer id else create new customer
         Customer newCustomer = order.getCustomer();
-        System.out.println("customer: " + newCustomer);
             if (customerRepository.findByName(newCustomer.getName()) != null &&
                     Objects.equals
                             (customerRepository.findByName(newCustomer.getName()).getEmail(),

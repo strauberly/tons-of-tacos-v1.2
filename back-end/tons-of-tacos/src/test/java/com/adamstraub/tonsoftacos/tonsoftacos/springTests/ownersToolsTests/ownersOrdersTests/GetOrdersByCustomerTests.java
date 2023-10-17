@@ -37,7 +37,6 @@ public class GetOrdersByCustomerTests {
 //            Given: a customer that has already placed an order and a valid auth header
 
             //            get valid token
-//            String token = validToken();
             String token = encryptedToken();
             org.junit.jupiter.api.Assertions.assertNotNull(token);
 
@@ -56,9 +55,6 @@ public class GetOrdersByCustomerTests {
             ResponseEntity<List<OrderReturnedToOwner>> response =
                     getRestTemplate().exchange(uri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
                     });
-
-//            rewrite
-
 //            Then: all  open orders will be returned belonging to customer matching provided name with a response
 //            code of 200
             System.out.println(response.getBody().stream().findAny().get().getName().equals(customer));
@@ -75,7 +71,6 @@ public class GetOrdersByCustomerTests {
 //            Given: a invalid customer and a valid auth header
 
             //            get valid token
-//            String token = validToken();
             String token = encryptedToken();
             org.junit.jupiter.api.Assertions.assertNotNull(token);
 
@@ -87,6 +82,7 @@ public class GetOrdersByCustomerTests {
 
             String parameter = "customer";
             String customer = "Johnny Nson";
+
 //            When: a successful connection is made
             String uri =
                     String.format("%s?%s=%s", getBaseUriForGetOrderByCustomer(), parameter, customer );

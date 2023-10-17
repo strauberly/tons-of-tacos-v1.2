@@ -39,7 +39,6 @@ public class EditOrderItemQuantityTest {
 //            Given: a valid order, order item, new quantity and auth header.
 
 //            get valid token
-//            String token = validToken();
             String token = encryptedToken();
             Assertions.assertNotNull(token);
 
@@ -49,16 +48,13 @@ public class EditOrderItemQuantityTest {
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
-//                int orderId = 1;
             String orderUid = "654654-465465-555";
             int orderItemId = 3;
             int newQuantity = 2;
 
 //             get order before alteration
-//            String parameter = "orderId";
             String parameter = "orderUid";
             String getOrderUri =
-//                    String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter, orderId);
                     String.format("%s?%s=%s", getBaseUriForGetOrderByUid(), parameter, orderUid);
 
             System.out.println(getOrderUri);
@@ -67,11 +63,9 @@ public class EditOrderItemQuantityTest {
             ResponseEntity<OrderReturnedToOwner> getOrderResponse =
                     getRestTemplate().exchange(getOrderUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
                     });
-//            System.out.println("unchanged order: " + Objects.requireNonNull(Objects.requireNonNull(getOrderResponse.getBody()).getOrderItems().get(0)));
             System.out.println("unchanged order: " + getOrderResponse.getBody());
 //            When: a successful connection is made
             String uri =
-//                    String.format("%s/%d/%d/%d", getBaseUriForEditOrderItem(), orderId, orderItemId, newQuantity);
                     String.format("%s/%s/%d/%d", getBaseUriForEditOrderItem(), orderUid, orderItemId, newQuantity);
             System.out.println(uri);
 //
@@ -88,7 +82,6 @@ public class EditOrderItemQuantityTest {
 
 //            call order item after alteration
             String getOrderUri2 =
-//                    String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter, orderId);
                     String.format("%s?%s=%s", getBaseUriForGetOrderByUid(), parameter, orderUid);
             System.out.println(getOrderUri2);
 
@@ -96,7 +89,6 @@ public class EditOrderItemQuantityTest {
                     getRestTemplate().exchange(getOrderUri, HttpMethod.GET, headerEntity, new ParameterizedTypeReference<>() {
                     });
 
-//            System.out.println(Objects.requireNonNull(Objects.requireNonNull(getOrderResponse2.getBody()).getOrderItems().get(0)));
             System.out.println("altered order: " + getOrderResponse2.getBody());
             Assertions.assertNotEquals(getOrderResponse.getBody().getOrderTotal(), getOrderResponse2.getBody().getOrderTotal());
             System.out.println("Order total changed.");
@@ -112,7 +104,6 @@ public class EditOrderItemQuantityTest {
 //            Given: an invalid order, valid order item, valid quantity and valid auth header.
 
 //            get valid token
-//            String token = validToken();
             String token = encryptedToken();
             Assertions.assertNotNull(token);
 
@@ -122,7 +113,6 @@ public class EditOrderItemQuantityTest {
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
-//            int orderId = 77;
             String orderId = "77";
             int orderItemId = 3;
             int newQuantity = 2;
@@ -158,7 +148,6 @@ public class EditOrderItemQuantityTest {
 //            Given: a valid order, order item, new quantity and auth header.
 
 //            get valid token
-//            String token = validToken();
             String token = encryptedToken();
             Assertions.assertNotNull(token);
 
@@ -168,14 +157,13 @@ public class EditOrderItemQuantityTest {
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
-//            int orderId = 1;
+
             String orderUid = "654654-465465-555";
             int orderItemId = 88;
             int newQuantity = 2;
 
 //            When: a successful connection is made
             String uri =
-//                    String.format("%s/%d/%d/%d", getBaseUriForEditOrderItem(), orderId, orderItemId, newQuantity);
                     String.format("%s/%s/%d/%d", getBaseUriForEditOrderItem(), orderUid, orderItemId, newQuantity);
             System.out.println(uri);
 //
@@ -203,7 +191,6 @@ public class EditOrderItemQuantityTest {
 //            Given: a valid order, order item, new quantity and auth header.
 
 //            get valid token
-//            String token = validToken();
             String token = encryptedToken();
             Assertions.assertNotNull(token);
 
@@ -213,7 +200,6 @@ public class EditOrderItemQuantityTest {
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
-//            int orderId = 1;
             String orderUid = "654654-465465-555";
             int orderItemId = 3;
             int newQuantity = 12;
@@ -221,7 +207,6 @@ public class EditOrderItemQuantityTest {
 
 //            When: a successful connection is made
             String uri =
-//                    String.format("%s/%d/%d/%d", getBaseUriForEditOrderItem(), orderId, orderItemId, newQuantity);
                     String.format("%s/%s/%d/%d", getBaseUriForEditOrderItem(), orderUid, orderItemId, newQuantity);
 
             System.out.println(uri);

@@ -97,7 +97,6 @@ public class UpdateCustomerPhoneTest {
 //                String token = validToken();
             String token = encryptedToken();
             Assertions.assertNotNull(token);
-//            -----------------------------------------------------------------------------
 
 //            Given: an invalid customer id, valid phone number and valid auth header
             int customerId = 14;

@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class AuthService {
-//public class AuthService implements AuthServiceInterface {
     @Autowired
     private final JwtService jwtService;
     @Autowired
@@ -27,7 +26,7 @@ public class AuthService {
             Authentication authentication = authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(jwtService.decrypt(ownerAuth.getUsername()),
                             jwtService.decrypt(ownerAuth.getPsswrd())));
-            System.out.println(authentication);
+//            System.out.println(authentication);
             if (!authentication.isAuthenticated()) {
                 throw new BadCredentialsException("Bad credentials.");
         }

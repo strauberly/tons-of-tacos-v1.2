@@ -39,8 +39,7 @@ class CreateOrderTests {
     class testThatDoesNotPolluteTheApplicationContextUris extends OrdersTestsSupport {
         @Test
         void orderCreated201() {
-//            address is service the multiple print outs
-//                Given: a valid order and authheader
+//           Given: a valid order and authheader
 
             // get valid token for authheader to search for the newly created order
             String token = encryptedToken();
@@ -67,13 +66,11 @@ class CreateOrderTests {
             HttpEntity<String> bodyEntity = new HttpEntity<>(body, headers);
             ResponseEntity<OrderReturnedToCustomer> response = restTemplate.getRestTemplate().exchange(uri, HttpMethod.POST, bodyEntity,
                     OrderReturnedToCustomer.class);
-            System.out.println("response body: " + response.getBody());
-//                System.out.println(Objects.requireNonNull(response.getBody()).getOrderUid());
 
-//                Then: an order is successfully stored with a 201 response
+//            Then: an order is successfully stored with a 201 response
             assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
             System.out.println("Response code is " + response.getStatusCode() + ".");
-
+            System.out.println("response body: " + response.getBody());
 
 //                And: The order is successfully retrieved by the test Uid as verification
             String parameter = "orderUid";
@@ -102,7 +99,6 @@ class CreateOrderTests {
         }
 
 
-        //        test for bad data
         @Test
         void invalidOrder400() {
 //        Given: an invalid order(ie incomplete. missing fields, bad formatting etc) but valid auth header
@@ -115,9 +111,9 @@ class CreateOrderTests {
             authHeader.setContentType(MediaType.APPLICATION_JSON);
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
+
 //          invalid order
             String body = improperlyFormattedOrder();
-//                String body = validOrderBody();
             System.out.println("invalid order body: " + body);
 
 
