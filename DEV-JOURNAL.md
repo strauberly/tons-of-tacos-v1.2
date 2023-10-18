@@ -2,6 +2,21 @@
 
 ---
 
+--- 17 Oct 2023 ---
+
+- Application files scrubbed for outdated code and comments.
+- Test files scrubbed for outdated code and comments.
+- ERD updated.
+- ReadMe updated.
+
+---
+
+-- 10 Oct 2023 --
+
+Had a drive fail and lost a bit of work but was able to get drive cloned and then utilize git to repair damaged files merged from a cloned drive. Both drives appear to be synced and operational and program is chugging along. Next steps will include a cleanup from the file repairs.
+
+---
+
 -- 5 Oct 2023 --
 
 - tests refactored and improved upon.
