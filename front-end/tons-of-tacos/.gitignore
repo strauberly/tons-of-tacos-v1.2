@@ -1,38 +1,4 @@
-#IGNORE THE FOLLOWING FILES
-
-node_modules
-
-.next
-
-.env
-
-.client.js
-
-application.properties
-
-test-application.properties
-
-.config
- 
-create-repo-script.sh
-
-update-repo-script.sh
-
-TonsOfTacosV1.2.ctb
-
-*.properties
-
-.ctb
-
-.sh
-
-.xml
-
-*.log
-
-.idea/
-
-#front end
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
 /node_modules
