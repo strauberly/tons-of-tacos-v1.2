@@ -2,6 +2,12 @@
 
 ---
 
+--- 23 Oct 2023 ---
+
+- Frontend application initiated.
+
+---
+
 --- 17 Oct 2023 ---
 
 - Application files scrubbed for outdated code and comments.
