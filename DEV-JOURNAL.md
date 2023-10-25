@@ -2,6 +2,18 @@
 
 ---
 
+--- 25 Oct 2023 ---
+
+- Git project updated with notes for specific tasks. Will be focusing on asset collection for a bit.
+
+---
+
+--- 24 Oct 2023 ---
+
+- Initialized frontend development steps and plan. Saved to my notes.
+
+---
+
 --- 23 Oct 2023 ---
 
 - Frontend application initiated.
