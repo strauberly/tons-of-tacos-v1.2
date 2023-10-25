@@ -4,7 +4,7 @@
 
 --- 25 Oct 2023 ---
 
-- Git project updated.
+- Git project updated with notes for specific tasks. Will be focusing on asset collection for a bit.
 
 ---
 
