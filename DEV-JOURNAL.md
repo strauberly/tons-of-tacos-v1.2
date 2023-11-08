@@ -4,6 +4,24 @@
 
 --- 25 Oct 2023 ---
 
+- Began creating color templates, logo concept art, and wire frames. Below are a few samples. Will begin work on wire frames for task flows (ie. Selecting menu items and submitting an order, owner login and various tasks.) next.
+
+<p align="center">
+  <img src="./front-end/concept-art/logo-collection.png"/>
+</p>
+
+<p align="center">
+  <img src="./front-end/concept-art/theme-layout.png"/>
+</p>
+
+<p align="center">
+  <img src="./front-end/concept-art/wire-frames/general-layout.png"/>
+</p>
+
+---
+
+--- 25 Oct 2023 ---
+
 - Git project updated with notes for specific tasks. Will be focusing on asset collection for a bit.
 
 ---
