@@ -2,7 +2,17 @@
 
 ---
 
---- 25 Oct 2023 ---
+--- 10 Nov 2023 ---
+
+- Created wire frame demonstrating action to add a menu item to cart. More or less created to demonstrate knowledge of design life cycle and demonstrate how I might convey that information to others. I may create more for additional actions as time allows in the future but am chomping at the bit to get moving on development.
+
+<p align="center">
+  <img src="./front-end/concept-art/wire-frames/desktop/actions/add-item-to-cart.png"/>
+</p>
+
+---
+
+--- 3 Nov 2023 ---
 
 - Began creating color templates, logo concept art, and wire frames. Below are a few samples. Will begin work on wire frames for task flows (ie. Selecting menu items and submitting an order, owner login and various tasks.) next.
 
