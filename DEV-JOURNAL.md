@@ -2,6 +2,29 @@
 
 ---
 
+--- 13 Nov 2023 ---
+
+Spent time refining logo designs (included below).
+
+Next steps to include:
+
+- landing page mockups
+- gathering and formatting remaining menu item images
+
+<p align="center">
+  <img src="./front-end/concept-art/bird-logo/media/bird-logo-revised-comparison.png"/>
+</p>
+
+<p align="center">
+  <img src="./front-end/concept-art/temple-logo/media/temple-logo-comparison.png"/>
+</p>
+
+<p align="center">
+  <img src="./front-end/concept-art/ton-logo/media/ton-logo-comparison.png"/>
+</p>
+
+---
+
 --- 10 Nov 2023 ---
 
 - Created wire frame demonstrating action to add a menu item to cart. More or less created to demonstrate knowledge of design life cycle and demonstrate how I might convey that information to others. I may create more for additional actions as time allows in the future but am chomping at the bit to get moving on development.
