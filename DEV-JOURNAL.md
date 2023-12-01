@@ -1,4 +1,27 @@
-## This Journal tracks development progress, ideas and thoughts.
+## This Journal tracks development progress, ideas and thoughts as proof I (Adam Straub) am the developer.
+
+---
+
+--- 1 Dec 2023 ---
+
+- Created site design mockups using logos and color schemes. See below.
+- Gathered and resized images to be used with our menu items.
+- Initialized Next.js application in front-end folder.
+- Will start get images into public asset folder and then update backend with correct paths for the images.
+
+### Sample Mock Ups For Consideration
+
+<p align="center">
+  <img src="./front-end/concept-art/bird-logo/media/main-page-mockup.png"/>
+</p>
+
+<p align="center">
+  <img src="./front-end/concept-art/temple-logo/media/mainpage-mockup1.png"/>
+</p>
+
+<p align="center">
+  <img src="./front-end/concept-art/ton-logo/media/mainpage-mockup.png"/>
+</p>
 
 ---
 
