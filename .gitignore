@@ -69,3 +69,13 @@ yarn-error.log*
 next-env.d.ts
 
 images/
+
+# adobe files
+
+*.psd
+*.ai
+
+/concept-art
+
+
+
