@@ -22,7 +22,7 @@ public class JwtService {
     //create token
 
 //    make these all caps and dash between
-    @Value("${KEY}")
+    @Value("${key}")
     private String secret;
 
     @Value("${BEGIN_KEY}")

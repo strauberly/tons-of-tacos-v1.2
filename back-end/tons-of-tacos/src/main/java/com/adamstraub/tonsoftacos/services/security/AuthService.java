@@ -13,22 +13,27 @@ import org.springframework.stereotype.Service;
 //service pertains to authentication functions(login, logout, session timeout etc.)
 @Service
 @RequiredArgsConstructor
-public class AuthService implements AuthServiceInterface {
+public class AuthService {
     @Autowired
     private final JwtService jwtService;
     @Autowired
     private final AuthenticationManager authenticationManager;
 
+
+//possibly add logger here for bad login attempts in order to log the submitted credentials separately.
     public String ownerLogin(OwnerAuth ownerAuth) {
         System.out.println("auth service");
 
+
         System.out.println(ownerAuth);
 //        try {
+
             Authentication authentication = authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(jwtService.decrypt(ownerAuth.getUsername()),
                             jwtService.decrypt(ownerAuth.getPsswrd())));
-        System.out.println(authentication);
+//            System.out.println(authentication);
             if (!authentication.isAuthenticated()) {
+
                 throw new BadCredentialsException("Bad credentials." + jwtService.decrypt(ownerAuth.getUsername()) + " " +  jwtService.decrypt(ownerAuth.getPsswrd()));
 
 //        }catch (Exception e) {
@@ -44,7 +49,9 @@ public class AuthService implements AuthServiceInterface {
 //        }catch (Exception e) {
 //                throw new InternalAuthenticationServiceException("Invalid username or password.");
 //
+                throw new BadCredentialsException("Bad credentials.");
+
         }
-                return jwtService.generateToken(ownerAuth.getUsername());
+        return jwtService.generateToken(ownerAuth.getUsername());
     }
 }

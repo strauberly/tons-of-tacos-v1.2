@@ -80,14 +80,10 @@ public class BadJwtTests {
 //        Given: a jwt with an invalid subject
             String badToken = badToken();
             System.out.println(badToken);
-//
-//        String goodToken = goodToken();
-//        System.out.println(goodToken);
 
             //           build authheader
             HttpHeaders authHeader = new HttpHeaders();
             authHeader.setContentType(MediaType.APPLICATION_JSON);
-//        authHeader.setBearerAuth(goodToken);
             authHeader.setBearerAuth(badToken);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
             System.out.println(headerEntity);
@@ -112,7 +108,6 @@ public class BadJwtTests {
 //        And: the exception message contains
             Map<String, Object> error = response.getBody();
             assert error != null;
-//        Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus..toString().substring(0,3));
             Assertions.assertTrue(error.containsValue("/api/owners-tools/customers/delete-customer/1"));
             Assertions.assertTrue(error.containsKey("message"));
             Assertions.assertTrue(error.containsKey("timestamp"));

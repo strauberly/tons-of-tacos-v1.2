@@ -46,10 +46,9 @@ public class NonEmptyTests extends OwnersToolsTestsSupport{
                 .get(getBaseUriForGetAllOrders())
                 .header("Authorization", "Bearer " + buildGoodToken())
                 .accept(MediaType.APPLICATION_JSON);
-//        System.out.println(request);
+
         MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
 
-//        assert results
         Assertions.assertNotNull(result.getResponse().getContentAsString());
         System.out.println(result.getResponse().getStatus());
         System.out.println(result.getResponse().getContentAsString());
@@ -62,9 +61,9 @@ public class NonEmptyTests extends OwnersToolsTestsSupport{
                 .get(getBaseUriForGetAllCustomers())
                 .header("Authorization", "Bearer " + buildGoodToken())
                 .accept(MediaType.APPLICATION_JSON);
-//        System.out.println(request);
+
         MvcResult result = mockMvc.perform(request).andExpect(status().isOk()).andReturn();
-//        System.out.println(result.getRequest());
+
         Assertions.assertNotNull(result.getResponse().getContentAsString());
         System.out.println(result.getResponse().getStatus());
         System.out.println(result.getResponse().getContentAsString());

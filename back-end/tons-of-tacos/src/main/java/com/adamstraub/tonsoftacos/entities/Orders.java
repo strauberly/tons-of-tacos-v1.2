@@ -28,9 +28,6 @@ public class Orders implements Serializable {
     @Column(name = "customer_fk")
     private Integer customerId;
 
-//    @Column (name = "order_total")
-//    private Double orderTotal;
-
     @Column (name = "order_total")
     private BigDecimal orderTotal;
 

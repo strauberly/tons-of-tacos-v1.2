@@ -11,7 +11,6 @@ public class OrderReturnedToCustomer {
     private String customerName;
     private String orderUid;
     private List<OrderItemReturnedToCustomer> orderItems;
-//    private Double orderTotal;
-private BigDecimal orderTotal;
+    private BigDecimal orderTotal;
 
 }

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @OpenAPIDefinition(info = @Info(title = "Services pertaining to creating a new order for customers. "),
         servers = {@Server(url="http://localhost:8080", description = "Local server")})
 public interface OrdersControllerInterface {
-//    order is written to database
+
     @Operation(
           summary = "A food order is submitted to the company.",
           description = """

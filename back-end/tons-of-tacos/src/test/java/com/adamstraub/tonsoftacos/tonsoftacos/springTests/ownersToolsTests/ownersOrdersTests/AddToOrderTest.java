@@ -34,7 +34,7 @@ public class AddToOrderTest {
 
         @Test
         void addItemToOrder200() {
-//      Given: a valid orderId, valid menuItemId and  authheader.
+//      Given: a valid orderId, valid menu item ids and authheader.
 //            get valid token
             String token = encryptedToken();
             Assertions.assertNotNull(token);
@@ -45,16 +45,14 @@ public class AddToOrderTest {
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
-//            int orderId = 1;
+
             String orderUid = "654654-465465-555";
             int menuItemId = 4;
             int quantity = 2;
 
 //            call order before alteration
-//            String parameter = "orderId";
             String parameter = "orderUid";
             String getOrderUri =
-//                    String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter, orderId);
                     String.format("%s?%s=%s", getBaseUriForGetOrderByUid(), parameter, orderUid);
             System.out.println(getOrderUri);
 
@@ -65,23 +63,22 @@ public class AddToOrderTest {
             System.out.println(getOrderResponse.getBody());
             System.out.println("Number of items in order: " + Objects.requireNonNull(getOrderResponse.getBody()).getOrderItems().toArray().length);
 
-            //        When:  a successful connection made
+            //        When:  a successful connection made to add a menu item to existing order
             String uri =
-//                    String.format("%s/%d/%d/%d", getBaseUriForAddOrderItem(), orderId, menuItemId, quantity);
                     String.format("%s/%s/%d/%d", getBaseUriForAddOrderItem(), orderUid, menuItemId, quantity);
             System.out.println(uri);
 
             ResponseEntity<String> response =
                     getRestTemplate().exchange(uri, HttpMethod.PUT, headerEntity,
                             new ParameterizedTypeReference<>() {});
+
 //        Then:  response will return 200
             Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
             System.out.println(response.getStatusCode());
             System.out.println(response.getBody());
-//        And:   number of items in the order will have increased
 
+//        And:   number of items in the order will have increased
             String getOrderUri2 =
-//                    String.format("%s?%s=%d", getBaseUriForGetOrderById(), parameter, orderId);
                     String.format("%s?%s=%s", getBaseUriForGetOrderByUid(), parameter, orderUid);
             System.out.println(getOrderUri2);
 
@@ -97,20 +94,17 @@ public class AddToOrderTest {
                             .getOrderItems().toArray().length >
                             getOrderResponse.getBody().getOrderItems().toArray().length);
 
-            System.out.println("Order size has increased");
+            System.out.println("Order size has increased.");
 
             //        And:   order total will have increased
-//            Assertions.assertTrue(getOrderResponse2.getBody().getOrderTotal() >
-//                    getOrderResponse.getBody().getOrderTotal());
             assert(getOrderResponse2.getBody().getOrderTotal().compareTo(
                     getOrderResponse.getBody().getOrderTotal())) > 0;
             System.out.println("Order total has increased by: " +
-//                    (getOrderResponse2.getBody().getOrderTotal() - getOrderResponse.getBody().getOrderTotal()));
                     (getOrderResponse2.getBody().getOrderTotal().subtract(getOrderResponse.getBody().getOrderTotal())));
         }
         @Test
         void menuItemToAddToOrderInvalid404() {
-//      Given: a valid orderId, invalid menuItemId and  valid authheader.
+//      Given: a valid orderId, invalid menu item and  valid authheader.
 //            get valid token
             String token = encryptedToken();
             Assertions.assertNotNull(token);
@@ -121,14 +115,12 @@ public class AddToOrderTest {
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
-//            int orderId = 1;
             String orderUid = "654654-465465-555";
             int menuItemId = 66;
             int quantity = 2;
 
-            //        When:  a successful connection made with an invalid order uid
+            //        When:  a successful connection made with an invalid menu item
             String uri =
-//                    String.format("%s/%d/%d/%d", getBaseUriForAddOrderItem(), orderId, menuItemId, quantity);
                     String.format("%s/%s/%d/%d", getBaseUriForAddOrderItem(), orderUid, menuItemId, quantity);
                     System.out.println(uri);
 
@@ -144,7 +136,6 @@ public class AddToOrderTest {
             Map<String, Object> error = response.getBody();
             assert error != null;
             Assertions.assertEquals(error.get("status code").toString().substring(0,3), HttpStatus.NOT_FOUND.toString().substring(0,3));
-//            Assertions.assertTrue(error.containsValue("/api/owners-tools/orders/add-to-order/1/66/2"));
             Assertions.assertTrue(error.containsValue("/api/owners-tools/orders/add-to-order/654654-465465-555/66/2"));
             Assertions.assertTrue(error.containsKey("message"));
             Assertions.assertTrue(error.containsKey("timestamp"));
@@ -164,14 +155,12 @@ public class AddToOrderTest {
             authHeader.setBearerAuth(token);
             HttpEntity<String> headerEntity = new HttpEntity<>(authHeader);
 
-//            int orderId = 78;
             String orderUid = "78";
             int menuItemId = 2;
             int quantity = 2;
 
             //        When:  a successful connection made
             String uri =
-//                    String.format("%s/%d/%d/%d", getBaseUriForAddOrderItem(), orderId, menuItemId, quantity);
                     String.format("%s/%s/%d/%d", getBaseUriForAddOrderItem(), orderUid, menuItemId, quantity);
                     System.out.println(uri);
 

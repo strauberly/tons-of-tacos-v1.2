@@ -55,7 +55,6 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
         Orders order;
         try {
             order = ordersRepository.findByOrderUid(orderUid);
-            System.out.println(order);
             return ownersGetOrderDtoConverter(order);
         }catch (Exception e) {
             throw new EntityNotFoundException("No order found with that UID. Please verify and try again.");
@@ -93,7 +92,6 @@ public class OwnersOrdersService implements OwnersOrdersServiceInterface {
 public OrderReturnedToOwner orderReady(String orderUid) {
         System.out.println("service");
         Orders order;
-
             order = ordersRepository.findByOrderUid(orderUid);
             if (order == null){
                 throw new EntityNotFoundException("Order does not exist. Please verify order id and try again.");
@@ -110,8 +108,6 @@ public OrderReturnedToOwner closeOrder(String orderUid) {
         System.out.println("service");
         Orders order;
             order = ordersRepository.findByOrderUid(orderUid);
-
-            System.out.println(order);
             if (order == null){
                 throw new EntityNotFoundException("Order cannot be found and as such can not be closed. Please verify order id.");
             }
@@ -148,7 +144,6 @@ public String deleteOrder(String orderUid) {
         }
 
         ordersRepository.deleteById(order.getOrderId());
-        System.out.println("Order " + order.getOrderUid() + " deleted");
         return "Order " + order.getOrderUid() + " deleted.";
     }
 
@@ -171,16 +166,10 @@ public String deleteOrder(String orderUid) {
                 .item(menuItemRepository.getReferenceById(menuItemId))
                 .quantity(quantity)
                 .order(ordersRepository.findByOrderUid(orderUid)).build();
-//        orderItem.setTotal(menuItemRepository.getReferenceById(menuItemId).getUnitPrice() *
-//                orderItem.getQuantity());
-//        orderItem.setTotal(menuItemRepository.getReferenceById(menuItemId).getUnitPrice().multiply(
-//                (BigDecimal)orderItem.getQuantity());
         orderItem.setTotal(BigDecimal.valueOf(orderItem.getQuantity()).multiply(menuItemRepository.getReferenceById(menuItemId).getUnitPrice()));
         orderItemRepository.save(orderItem);
 
         Orders order  = ordersRepository.findByOrderUid(orderUid);
-//        order.setOrderTotal(order.getOrderTotal() + (menuItemRepository.getReferenceById(menuItemId).getUnitPrice() *
-//                quantity));
         order.setOrderTotal(order.getOrderTotal().add(menuItemRepository.getReferenceById(menuItemId).getUnitPrice().multiply(
                 BigDecimal.valueOf(quantity))));
         ordersRepository.save(order);
@@ -191,6 +180,7 @@ public String deleteOrder(String orderUid) {
     @Override
     public String updateOrderItemQuantity(String orderUid, Integer orderItemId, Integer newQuantity) {
             System.out.println("service");
+//            validation
         Orders order = ordersRepository.findByOrderUid(orderUid);
         if (order == null){
             throw new EntityNotFoundException("Order item not updated. Verify order exists.");
@@ -202,22 +192,17 @@ public String deleteOrder(String orderUid) {
         String response;
             if (newQuantity > 10) {
                 throw new IllegalArgumentException("We were unable to process your request. " +
-                        "Please contact us when trying to order more than 10 of any given item.");
+                        "Please contact us directly when trying to order more than 10 of any given item.");
             }
-//            see big decimal methods
+//          remove item if total 0
         if(newQuantity == 0){
                 orderItemRepository.delete(orderItem);
-//            order.setOrderTotal(order.getOrderTotal() - orderItem.getTotal());
             order.setOrderTotal(order.getOrderTotal().subtract(orderItem.getTotal()));
-
                 response = "Item quantity updated, item removed, cart updated.";
             }else{
             orderItem.setQuantity(newQuantity);
-//            orderItem.setTotal(menuItemRepository.getReferenceById(orderItem.getItem().getId()).getUnitPrice() *
-//                    orderItem.getQuantity());
             orderItem.setTotal(menuItemRepository.getReferenceById(orderItem.getItem().getId()).getUnitPrice().multiply(
                     BigDecimal.valueOf(orderItem.getQuantity())));
-//            order.setOrderTotal(order.getOrderTotal() + orderItem.getTotal());
             order.setOrderTotal(order.getOrderTotal().add(orderItem.getTotal()));
             orderItemRepository.save(orderItem);
             ordersRepository.save(order);
@@ -227,7 +212,6 @@ public String deleteOrder(String orderUid) {
     }
 
 
-//    Ensure date time formatter is returning correctly
     @Transactional
     @Override
     public DailySales todaysSales() {
@@ -237,22 +221,23 @@ public String deleteOrder(String orderUid) {
         LocalDate todaysDate = LocalDate.now();
         LocalDate dbDate;
         DateTimeFormatter formattedDate = DateTimeFormatter.ofPattern("dd MMM yyyy");
-//        Double salesTotal = 0.00;
         BigDecimal salesTotal = BigDecimal.valueOf(0.00);
         List<Orders> todaysOrders = new ArrayList<>();
-        List<Orders> completedOrders = ordersRepository.findByClosed();
 
+//        find orders by if they closed meaning transaction complete
+        List<Orders> completedOrders = ordersRepository.findByClosed();
         for (Orders completedOrder: completedOrders){
             dbDate = completedOrder.getCreated().toLocalDateTime().toLocalDate();
             if(todaysDate.format(formattedDate).equals(dbDate.format(formattedDate))){
                 todaysOrders.add(completedOrder);
             }
         }
-//                looks for all orders with today's timestamp and marked closed
+//                looks for all orders with today's timestamp
         for (Orders order:todaysOrders){
-//            salesTotal += order.getOrderTotal();
             salesTotal = salesTotal.add(new BigDecimal(String.valueOf(order.getOrderTotal())));
         }
+
+//        calculate todays sales and return a formatted response
         int numberOfOrders = todaysOrders.size();
         salesToday.setDate(todaysDate);
         salesToday.setNumberOfSales(todaysOrders.size());
