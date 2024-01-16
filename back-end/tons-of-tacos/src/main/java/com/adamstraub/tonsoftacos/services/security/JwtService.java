@@ -153,7 +153,7 @@ public class JwtService {
         chars.add(randomChar());
         chars.add(randomChar());
         chars.add(randomChar());
-//        -----------------------------------
+
         StringBuilder encryptionBuilder = new StringBuilder(chars.size());
         for (Character ch : chars) {
             encryptionBuilder.append(ch);
