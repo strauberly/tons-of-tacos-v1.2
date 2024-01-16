@@ -33,21 +33,6 @@ public class AuthService {
                             jwtService.decrypt(ownerAuth.getPsswrd())));
 //            System.out.println(authentication);
             if (!authentication.isAuthenticated()) {
-
-                throw new BadCredentialsException("Bad credentials." + jwtService.decrypt(ownerAuth.getUsername()) + " " +  jwtService.decrypt(ownerAuth.getPsswrd()));
-
-//        }catch (Exception e) {
-//            System.out.println(e);
-////            throw new BadCredentialsException("Bad credentials. " + "username: " + jwtService.decrypt(ownerAuthDto.getUsername()) + " " + "password: " + jwtService.decrypt(ownerAuthDto.getPsswrd()));
-//            throw new BadCredentialsException("Bad credentials. " + "username: " + ownerAuth.getUsername() + " " + "password: " + ownerAuth.getPsswrd());
-//
-
-//        try {
-//            Authentication authentication = authenticationManager
-//                    .authenticate(new UsernamePasswordAuthenticationToken(jwtService.decrypt(ownerAuth.getUsername()),
-//                            jwtService.decrypt(ownerAuth.getPsswrd())));
-//        }catch (Exception e) {
-//                throw new InternalAuthenticationServiceException("Invalid username or password.");
 //
                 throw new BadCredentialsException("Bad credentials.");
 

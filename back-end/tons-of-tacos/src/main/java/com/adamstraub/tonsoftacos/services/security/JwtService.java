@@ -124,7 +124,7 @@ public class JwtService {
 
 //        System.out.println("value to be encrypted: " + string);
 
-//        byte[] codeBytes = string.getBytes(StandardCharsets.UTF_8);
+
 
                 byte[] codeBytes = string.getBytes(StandardCharsets.UTF_8);
         List<Integer> rolledCodeBytes = new ArrayList<>();
