@@ -2,6 +2,13 @@
 
 ---
 
+--- 16 Jan 2023 ---
+
+- Implementation of CORS configuration allowing for connection to front-end application.
+- Taking note of areas of improvement in overall design and structure. Will evaluate for impact, test new changes and then update documentation.
+
+---
+
 --- 17 Oct 2023 ---
 
 - Application files scrubbed for outdated code and comments.
