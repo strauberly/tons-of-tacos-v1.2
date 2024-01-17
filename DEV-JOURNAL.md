@@ -2,6 +2,14 @@
 
 ---
 
+--- 17 Jan 2023 ---
+
+- Notes from front-end team implemented into database.
+  - Removed img_url  from menu items as images are able to be retrieved through just the menu item name and category. Changes needed in back-end application to reflect this.
+  - Table created created for menu item categories to facilate menu navigation dynamic population. Also needs to be addressed in backend (ie. data modeling, controller and service implementation, tests created.) 
+  - Descriptions for menu items updated.
+---
+
 --- 16 Jan 2023 ---
 
 - Implementation of CORS configuration allowing for connection to front-end application.

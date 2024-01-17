@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS order_item;
 DROP TABLE IF EXISTS menu_item;
 DROP TABLE IF EXISTS customer;
+DROP TABLE IF EXISTS menu_categories;
 
 CREATE TABLE customer(
 customer_pk INT unsigned NOT NULL AUTO_INCREMENT ,
@@ -24,15 +25,14 @@ category VARCHAR(30) NOT NUll,
 description VARCHAR(255) NOT NUll,
 item_name VARCHAR(30) NOT NUll,
 item_size VARCHAR(100) DEFAULT NULL,
-img_url VARCHAR(255) NOT NUll,
-unit_price DECIMAL(19, 2) NOT NUll,
+unit_price DECIMAL(5, 2) NOT NUll,
 PRIMARY KEY (item_pk)
 );
 
 CREATE TABLE orders(
 order_pk INT unsigned NOT NULL AUTO_INCREMENT,
 customer_fk INT unsigned,
-order_total DECIMAL(3, 2) NOT NULL,
+order_total DECIMAL(5, 2) NOT NULL,
 order_uid VARCHAR(255) NOT NULL,
 created TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 ready VARCHAR(30) DEFAULT 'no',
@@ -55,10 +55,17 @@ FOREIGN KEY (order_fk) REFERENCES orders(order_pk)
 
 CREATE TABLE owners(
 owners_pk INT unsigned NOT NULL AUTO_INCREMENT,
-name varchar(20) NOT NULL,
-username varchar(20) NOT NULL,
-psswrd varchar(68) NOT NULL,
-contact varchar(44) NOT NULL,
-role varchar(12) NOT NULL,
+name VARCHAR(20) NOT NULL,
+username VARCHAR(20) NOT NULL,
+psswrd VARCHAR(68) NOT NULL,
+contact VARCHAR(44) NOT NULL,
+role VARCHAR(12) NOT NULL,
 PRIMARY KEY (owners_pk)
 );
+
+CREATE TABLE menu_categories(
+menu_category_pk INT unsigned NOT NULL AUTO_INCREMENT,
+category VARCHAR (20) NOT NULL,
+description VARCHAR (255) NOT NULL,
+PRIMARY KEY (menu_category_pk)
+)
