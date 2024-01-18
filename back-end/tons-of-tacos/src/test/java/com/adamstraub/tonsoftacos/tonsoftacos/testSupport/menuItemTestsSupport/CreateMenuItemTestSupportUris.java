@@ -9,7 +9,6 @@ public class CreateMenuItemTestSupportUris extends TestUris {
                     " \"description\" : \"nom-nom\", \n" +
                     " \"item_name\" : \"ton\", \n" +
                     " \"item_size\" : \"NULL\", \n" +
-                    " \"img_url\" : \"TBD\", \n" +
                     " \"unit_price\" : \"2.25\", \n" +
                     "}";
         }

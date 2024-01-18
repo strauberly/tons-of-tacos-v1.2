@@ -15,7 +15,6 @@ public class GetMenuItemsTestsSupport extends TestUris {
                .description("nom nom")
                .itemName("pound")
                .itemSize("NULL")
-               .imgUrl("TBD")
                .unitPrice(BigDecimal.valueOf(2.25))
                .build();
         }

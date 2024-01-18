@@ -83,6 +83,7 @@ public class OrdersService implements OrdersServiceInterface {
                 newCustomer.setCustomerUid(genCustomerUid());
                 customerRepository.save(newCustomer);
                 newCustomer = customerRepository.findByName(newCustomer.getName());
+            }
 
 //  set order items
                 newOrder.setOrderItems(orderItems);
@@ -93,13 +94,16 @@ public class OrdersService implements OrdersServiceInterface {
                     orderTotal = orderTotal.add(orderItem.getTotal());
                 }
 //  set order total, customer uid and customer id for new customer
-                newOrder.setOrderTotal(orderTotal);
-                newOrder.setCustomerUid(newCustomer.getCustomerUid());
-                newOrder.setCustomerId(newCustomer.getCustomerId());
+                    newOrder.setOrderTotal(orderTotal);
+                    newOrder.setCustomerUid(newCustomer.getCustomerUid());
+                    newOrder.setCustomerId(newCustomer.getCustomerId());
 
 //  set order uid
-                newOrder.setOrderUid(genOrderUid());
-                ordersRepository.save(newOrder);
+                    newOrder.setOrderUid(genOrderUid());
+
+                    System.out.println("new order before save: " + newOrder);
+
+                    ordersRepository.save(newOrder);
 
 //        reset valid flags
                 customerNameValid = false;
@@ -117,9 +121,10 @@ public class OrdersService implements OrdersServiceInterface {
                     orderItemDtos.add(orderItemDtoConvertor(orderItem));
                 }
                 customerCopyDto.setOrderItems(orderItemDtos);
-            }
+
         return customerCopyDto;
     }
+
 
 
     private OrderItemReturnedToCustomer orderItemDtoConvertor(OrderItem orderItem) {
