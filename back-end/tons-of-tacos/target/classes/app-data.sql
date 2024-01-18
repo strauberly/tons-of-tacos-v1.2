@@ -73,6 +73,28 @@ INSERT INTO menu_item (category, description , item_name, item_size,
 unit_price)
 VALUES('toppings', 'That little extra tang that adds so much.', 'lime', NULL, 1.50);
 
+INSERT INTO menu_item (category, description , item_name, item_size,
+unit_price)
+VALUES('toppings', 'Made fresh from our home adding that authentic goodness.', 'queso fresco', NULL, 1.50);
+
+INSERT INTO menu_item (category, description , item_name, item_size,
+unit_price)
+VALUES('toppings', 'Four cheese blend fiesta mix.', 'mixed queso', NULL, .50);
+
+INSERT INTO menu_item (category, description , item_name, item_size,
+unit_price)
+VALUES('toppings', 'Picked fresh each morning.', 'diced tomato', NULL, .50);
+
+INSERT INTO menu_item (category, description , item_name, item_size,
+unit_price)
+VALUES('toppings', 'A little heat, more tang and incredible amounts of delicious.', 'salsa verde', NULL, .50);
+
+INSERT INTO menu_item (category, description , item_name, item_size,
+unit_price)
+VALUES('toppings', 'Delicious spicy roasted tomato and garlic flavors. ', 'salsa roja', NULL, .50);
+
+
+
 
 ---- Sample orders
 INSERT INTO orders (customer_fk, order_total, order_uid, customer_uid)
