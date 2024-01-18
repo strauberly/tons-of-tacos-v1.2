@@ -36,12 +36,6 @@ public class MenuItem {
     @Column (name = "item_size")
     private String itemSize;
 
-    @Column(name = "img_url")
-    @JsonIgnore
-    private String imgUrl;
-
-//    @Column(name = "unit_price")
-//    private Double unitPrice;
 
     @Column(name = "unit_price")
     private BigDecimal unitPrice;
@@ -54,7 +48,6 @@ public class MenuItem {
                 ", description='" + description + '\'' +
                 ", itemName='" + itemName + '\'' +
                 ", itemSize='" + itemSize + '\'' +
-                ", imgUrl='" + imgUrl + '\'' +
                 ", unitPrice=" + unitPrice +
                 '}';
     }

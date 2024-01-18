@@ -67,6 +67,6 @@ public class Orders implements Serializable {
                 '}';
     }
 
-    public void setCustomerUid(String s) {
-    }
+//    public void setCustomerUid(String s) {
+//    }
 }

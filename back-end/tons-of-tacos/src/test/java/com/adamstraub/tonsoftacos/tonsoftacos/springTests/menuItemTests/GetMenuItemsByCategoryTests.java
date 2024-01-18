@@ -43,7 +43,7 @@ class GetMenuItemsByCategoryTests {
         void menuItemsAreReturnedByCategoryWith200() {
             System.out.println(getBaseUriForMenuItemByCategoryQuery());
 //        Given: a valid menu id category
-            String categoryName = "taco";
+            String categoryName = "tacos";
             String parameter = "category";
             String uri =
                     String.format("%s?%s=%s", getBaseUriForMenuItemByCategoryQuery(), parameter, categoryName);

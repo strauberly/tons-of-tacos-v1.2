@@ -30,9 +30,6 @@ public class OrderItem implements Serializable {
     @Column(name = "quantity")
     private Integer quantity;
 
-//    @Column(name = "total")
-//    private Double total;
-
     @Column(name = "total")
     private BigDecimal total;
 
