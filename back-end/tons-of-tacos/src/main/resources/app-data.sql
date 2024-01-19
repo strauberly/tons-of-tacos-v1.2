@@ -125,10 +125,12 @@ VALUES('Jenny Castillo', 'jcast33',
 'jenny@tonsoftacos.com', 'ADMIN');
 
 -- Sample categories
-INSERT INTO menu_categories(category, description)
-VALUES('tacos', 'Delicious tacos built with ingredients from our own farm.' ),
-('sides', 'Delightful on their own, but our side dishes perfectly compliment our savory tacos.'),
-('toppingss', 'Add a little extra of that flavor your crave.'),
-('drinks', 'Refreshing beverages to wet your whistle.');
+INSERT INTO menu_categories(category, description, available)
+VALUES('tacos', 'Delicious tacos built with ingredients from our own farm.', 
+'y' ),
+('sides', 'Delightful on their own, but our side dishes perfectly compliment our 
+savory tacos.', 'y'),
+('toppings', 'Add a little extra of that flavor your crave.', 'y'),
+('drinks', 'Refreshing beverages to wet your whistle.', 'y');
 
 
