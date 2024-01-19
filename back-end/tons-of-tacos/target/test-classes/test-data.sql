@@ -1,5 +1,3 @@
-USE tonsOfTacos;
-
 -- Sample customers
 INSERT INTO customer ( name, email, phone_number, customer_uid)
 VALUES( 'John Johnson', 'john@johnson.com', '555.555.5552', 'jk34-h5j0');
@@ -73,28 +71,6 @@ INSERT INTO menu_item (category, description , item_name, item_size,
 unit_price)
 VALUES('toppings', 'That little extra tang that adds so much.', 'lime', NULL, 1.50);
 
-INSERT INTO menu_item (category, description , item_name, item_size,
-unit_price)
-VALUES('toppings', 'Made fresh from our home adding that authentic goodness.', 'queso fresco', NULL, 1.50);
-
-INSERT INTO menu_item (category, description , item_name, item_size,
-unit_price)
-VALUES('toppings', 'Four cheese blend fiesta mix.', 'mixed queso', NULL, .50);
-
-INSERT INTO menu_item (category, description , item_name, item_size,
-unit_price)
-VALUES('toppings', 'Picked fresh each morning.', 'diced tomato', NULL, .50);
-
-INSERT INTO menu_item (category, description , item_name, item_size,
-unit_price)
-VALUES('toppings', 'A little heat, more tang and incredible amounts of delicious.', 'salsa verde', NULL, .50);
-
-INSERT INTO menu_item (category, description , item_name, item_size,
-unit_price)
-VALUES('toppings', 'Delicious spicy roasted tomato and garlic flavors. ', 'salsa roja', NULL, .50);
-
-
-
 
 ---- Sample orders
 INSERT INTO orders (customer_fk, order_total, order_uid, customer_uid)
@@ -116,20 +92,17 @@ VALUES(3, 3, 1.50, 3);
 
 -- Sample owners
 INSERT INTO owners (name, username, psswrd, contact, role)
-VALUES('Jim Castillo', 'jcast22', 
-'$2a$10$MIGqdrc1JzTC1NWCfsWnsuY9L3OpAO4.gWmGiFKzUrq26Q1ejmjS2', 
+VALUES('Jim Castillo', 'jcast22',
+'$2a$10$MIGqdrc1JzTC1NWCfsWnsuY9L3OpAO4.gWmGiFKzUrq26Q1ejmjS2',
 'jim@tonsoftacos.com', 'ADMIN');
 INSERT INTO owners (name, username, psswrd, contact, role)
-VALUES('Jenny Castillo', 'jcast33', 
-'$2a$10$oJU3y8przJfPudPzXAH8FOVNSeNl3YEZdckyPJzia0fq/lYIvJhWC', 
+VALUES('Jenny Castillo', 'jcast33',
+'$2a$10$oJU3y8przJfPudPzXAH8FOVNSeNl3YEZdckyPJzia0fq/lYIvJhWC',
 'jenny@tonsoftacos.com', 'ADMIN');
 
 -- Sample categories
-INSERT INTO menu_categories(category, description, available)
-VALUES('tacos', 'Delicious tacos built with ingredients from our own farm.', 
-'y' ),
-('sides', 'Delightful on their own, but our side dishes perfectly compliment our savory tacos.', 'y'),
-('toppings', 'Add a little extra of that flavor your crave.', 'y'),
-('drinks', 'Refreshing beverages to wet your whistle.', 'y');
-
-
+INSERT INTO menu_categories(category, description)
+VALUES('tacos', 'Delicious tacos built with ingredients from our own farm.' ),
+('sides', 'Delightful on their own, but our side dishes perfectly compliment our savory tacos.'),
+('toppingss', 'Add a little extra of that flavor your crave.'),
+('drinks', 'Refreshing beverages to wet your whistle.');
