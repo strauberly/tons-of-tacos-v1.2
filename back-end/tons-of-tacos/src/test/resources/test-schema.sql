@@ -57,5 +57,6 @@ CREATE TABLE menu_categories(
 menu_category_pk INT unsigned NOT NULL AUTO_INCREMENT,
 category VARCHAR (20) NOT NULL,
 description VARCHAR (255) NOT NULL,
+available CHAR (1) NOT NULL,
 PRIMARY KEY (menu_category_pk)
 )
