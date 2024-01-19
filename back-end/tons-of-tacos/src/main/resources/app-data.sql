@@ -128,8 +128,7 @@ VALUES('Jenny Castillo', 'jcast33',
 INSERT INTO menu_categories(category, description, available)
 VALUES('tacos', 'Delicious tacos built with ingredients from our own farm.', 
 'y' ),
-('sides', 'Delightful on their own, but our side dishes perfectly compliment our 
-savory tacos.', 'y'),
+('sides', 'Delightful on their own, but our side dishes perfectly compliment our savory tacos.', 'y'),
 ('toppings', 'Add a little extra of that flavor your crave.', 'y'),
 ('drinks', 'Refreshing beverages to wet your whistle.', 'y');
 
